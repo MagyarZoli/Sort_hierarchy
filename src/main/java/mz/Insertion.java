@@ -5,6 +5,7 @@ package mz;
  * Values from the unsorted part are picked and placed at the correct position in the sorted part.
  * @since 1.0
  * @author <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see mz.Shell
  */
 public class Insertion
 extends SortComparable {
@@ -24,12 +25,13 @@ extends SortComparable {
      * </dl>
      * <dl>
      *     <dt>Walks through the array based on the number of <em>n</em> elements:</dt>
-     *     <dd>- if jj is smaller than the selected <em>i</em>, it is checked by selecting the next element <em>i</em>.</dd>
+     *     <dd>- if <em>j</em> is smaller than the selected <em>i</em>, it is checked by selecting the next element <em>i</em>.</dd>
      *     <dd>- if the element <em>j</em> is greater than or equal to <em>i</em>, then the value of <em>i</em> will be <em>j</em> and <em>j</em> will be the selected element with which it will be compared with the first element of the unordered mind.</dd>
      * </dl>
      * <b>Property:</b><br>
      * Time Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space: <em>O(1)</em>
+     * @see mz.Shell#Shell()
      */
     public Insertion(){}
 
@@ -55,6 +57,7 @@ extends SortComparable {
      * Checks the selected element to see where it can be inserted in the sorted array.
      * @param array to be arranged.
      * @param index start the examined from the last index of the array.
+     * @see mz.Shell#shellInc(Comparable[])
      */
     @SuppressWarnings("unchecked")
     void insertionInc(Comparable[] array, int index) {
@@ -73,6 +76,7 @@ extends SortComparable {
      * Checks the selected element to see where it can be inserted in the sorted array.
      * @param array to be arranged.
      * @param index start the examined from the last index of the array.
+     * @see mz.Shell#shellDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     void insertionDec(Comparable[] array, int index) {

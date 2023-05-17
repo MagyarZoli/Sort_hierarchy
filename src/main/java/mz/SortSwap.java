@@ -4,6 +4,8 @@ package mz;
  * The inheritors of this interface arrange any data type that is Comparable.
  * @since 1.0
  * @author <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see mz.Selection
+ * @see mz.Bubble
  */
 public interface SortSwap
 extends Sort<Comparable>{

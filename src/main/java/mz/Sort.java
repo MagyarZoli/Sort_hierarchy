@@ -7,6 +7,13 @@ import java.util.Arrays;
  * @param <T> setting of a type based on which the elements can be sorted. It is not mandatory to specify, additional pre-written subclasses specify the type.
  * @since 1.0
  * @author <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see mz.SortSwap
+ * @see mz.SortComparable
+ * @see mz.SortLong
+ * @see mz.Selection
+ * @see mz.Insertion
+ * @see mz.Shell
+ * @see mz.Bubble
  */
 public interface Sort<T>{
 
