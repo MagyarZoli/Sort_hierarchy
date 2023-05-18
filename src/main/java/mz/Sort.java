@@ -1,6 +1,7 @@
 package mz;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * The topmost interface of the hierarchy, through which all other interface, abstract, super, sub, classes are available with polymorphism.
@@ -86,6 +87,6 @@ public interface Sort<T>{
      * @param array
      */
     private void sortArrayRev(T[] array) {
-        Arrays.setAll(array, i -> array[(array.length - 1 - i)]);
+        Collections.reverse(Arrays.asList(array));
     }
 }
