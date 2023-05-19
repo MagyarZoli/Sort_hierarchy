@@ -43,7 +43,7 @@ extends Insertion {
      * Average Case Complexity: <em>θ(n log(n)2)</em><br>
      * Auxiliary Space: <em>O(1)</em>
      */
-    public Shell(){}
+    public Shell() {}
 
     /**
      * {@inheritDoc}

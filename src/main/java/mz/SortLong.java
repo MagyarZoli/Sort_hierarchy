@@ -6,7 +6,7 @@ package mz;
  * @author <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 public abstract class SortLong
-implements Sort<Long>{
+implements Sort<Long> {
 
     /**
      * For additional methods to store the elements of the specified array in an array.

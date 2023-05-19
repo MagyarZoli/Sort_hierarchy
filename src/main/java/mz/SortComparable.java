@@ -10,7 +10,7 @@ package mz;
  * @see mz.Bubble
  */
 public abstract class SortComparable
-implements Sort<Comparable>{
+implements Sort<Comparable> {
 
     /**
      * SortComparable abstract class modifies the input type.

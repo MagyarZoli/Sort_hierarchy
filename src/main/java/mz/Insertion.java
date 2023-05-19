@@ -33,7 +33,7 @@ extends SortComparable {
      * Auxiliary Space: <em>O(1)</em>
      * @see mz.Shell#Shell()
      */
-    public Insertion(){}
+    public Insertion() {}
 
     /**
      * {@inheritDoc}

@@ -8,7 +8,7 @@ package mz;
  */
 public class Bubble
 extends SortComparable
-implements SortSwap {
+implements SortSwap<Comparable> {
 
     /**
      * <b>Bubble Sort:</b><br>
@@ -32,7 +32,7 @@ implements SortSwap {
      * Time Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space: <em>O(1)</em>
      */
-    public Bubble(){}
+    public Bubble() {}
 
     /**
      * {@inheritDoc}<br>

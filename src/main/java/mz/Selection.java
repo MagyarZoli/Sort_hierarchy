@@ -10,7 +10,7 @@ package mz;
  */
 public class Selection
 extends SortComparable
-implements SortSwap {
+implements SortSwap<Comparable> {
 
     /**
      * <b>Selection Sort:</b><br>
@@ -35,7 +35,7 @@ implements SortSwap {
      * Time Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space: <em>O(1)</em>
      */
-    public Selection(){}
+    public Selection() {}
 
     /**
      * {@inheritDoc}
@@ -47,7 +47,7 @@ implements SortSwap {
         int n = array.length;
         for (int i = 0; i < (n - 1); i++) {
             int index = i;
-            for (int j = (i + 1) ; j < n; j++) {
+            for (int j = (i + 1); j < n; j++) {
                 if (array[j].compareTo(array[index]) < 0) {
                     index = j;
                 }
@@ -66,7 +66,7 @@ implements SortSwap {
         int n = array.length;
         for (int i = 0; i < (n - 1); i++) {
             int index = i;
-            for (int j = (i + 1) ; j < n; j++) {
+            for (int j = (i + 1); j < n; j++) {
                 if (array[j].compareTo(array[index]) > 0) {
                     index = j;
                 }

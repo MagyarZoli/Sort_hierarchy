@@ -16,7 +16,7 @@ import java.util.Collections;
  * @see mz.Shell
  * @see mz.Bubble
  */
-public interface Sort<T>{
+public interface Sort<T> {
 
     /**
      * You can set the desired sort by specifying sort type.
@@ -60,7 +60,7 @@ public interface Sort<T>{
      * @param sequence {@code SortType} you can choose from 4 selectable queue layout types. Order can be specified here, which row arrangement you want to use.
      * @see Sort.SortType
      */
-    default public void sortArray(T[] array, SortType sequence){
+    default public void sortArray(T[] array, SortType sequence) {
         switch (sequence) {
             case INCREASING -> sortArrayInc(array);
             case DECREASING -> sortArrayDec(array);
