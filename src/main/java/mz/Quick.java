@@ -7,6 +7,7 @@ package mz;
  * and the sorted sub-arrays are combined to produce the final sorted array.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see         mz.Quick3
  */
 public class Quick
 extends SortComparable
@@ -42,6 +43,7 @@ implements SortSwap<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
+     * @see         mz.Quick3#Quick3()
      */
     public Quick() {}
 
@@ -89,6 +91,7 @@ implements SortSwap<Comparable> {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.Quick3#quick3Inc(Comparable[], int, int)
      */
     void quickInc(Comparable[] array, int left, int right) {
         if (left < right) {
@@ -122,6 +125,7 @@ implements SortSwap<Comparable> {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.Quick3#quick3Dec(Comparable[], int, int)
      */
     void quickDec(Comparable[] array, int left, int right) {
         if (left < right) {

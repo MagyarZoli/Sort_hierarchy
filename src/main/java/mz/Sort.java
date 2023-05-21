@@ -13,6 +13,7 @@ import java.util.Collections;
  * @see         mz.SortComparable
  * @see         mz.SortLong
  * @see         mz.Quick
+ * @see         mz.Quick3
  * @see         mz.Selection
  * @see         mz.Insertion
  * @see         mz.Shell
