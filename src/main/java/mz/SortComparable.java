@@ -9,6 +9,7 @@ package mz;
  * @see         mz.Selection
  * @see         mz.Insertion
  * @see         mz.Shell
+ * @see         mz.Gnome
  * @see         mz.Bubble
  */
 public abstract class SortComparable

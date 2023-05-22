@@ -8,6 +8,7 @@ package mz;
  * @see         mz.Quick
  * @see         mz.Quick3
  * @see         mz.Selection
+ * @see         mz.Gnome
  * @see         mz.Bubble
  */
 public interface SortSwap<T>
@@ -32,6 +33,8 @@ extends Sort<T> {
      * @see         mz.Quick3#partition3Dec(Comparable[], int, int)
      * @see         mz.Selection#selectionInc(Comparable[])
      * @see         mz.Selection#selectionDec(Comparable[])
+     * @see         mz.Gnome#gnomeInc(Comparable[]) 
+     * @see         mz.Gnome#gnomeDec(Comparable[]) 
      * @see         mz.Bubble#bubbleInc(Comparable[])
      * @see         mz.Bubble#bubbleDec(Comparable[])
      */

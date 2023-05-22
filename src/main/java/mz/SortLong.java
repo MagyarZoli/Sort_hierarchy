@@ -20,6 +20,7 @@ implements Sort<Long> {
 
     /**
      * Iterates through the array elements and selects the largest/last element.
+     * @param       array to be arranged.
      * @return      largest/last element.
      */
     Long findMax(Long[] array) {
@@ -34,6 +35,7 @@ implements Sort<Long> {
 
     /**
      * iterates through the array elements and selects the smallest/first element.
+     * @param       array to be arranged.
      * @return      smallest/first element.
      */
     Long findMin(Long[] array) {

@@ -17,6 +17,7 @@ import java.util.Collections;
  * @see         mz.Selection
  * @see         mz.Insertion
  * @see         mz.Shell
+ * @see         mz.Gnome
  * @see         mz.Bubble
  * @see         mz.Counting
  */

@@ -68,7 +68,6 @@ extends Quick {
         quick3Dec(array, 0, (array.length - 1));
     }
 
-
     /**
      * {@code quick3Inc} that implements the Quick Sort algorithm to sort an array of Comparable objects in ascending order.
      * <ul>
