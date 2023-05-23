@@ -7,6 +7,7 @@ package mz;
  * thereby expanding the sorted portion. This process continues until the entire array becomes sorted.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see         mz.DoubleSelection
  */
 public class Selection
 extends SortComparable
@@ -37,6 +38,7 @@ implements SortSwap<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>No</b>
+     * @see         mz.DoubleSelection#DoubleSelection()
      */
     public Selection() {}
 
@@ -145,6 +147,8 @@ implements SortSwap<Comparable> {
      * @param       index representing the current index of the maximum element.
      * @return      the index of the maximum element.
      * @see         mz.Selection#selectionInc(Comparable[])
+     * @see         mz.DoubleSelection#doubleSelectionInc(Comparable[])
+     * @see         mz.DoubleSelection#doubleSelectionDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     int minIndex(Comparable[] array, int j, int index) {
@@ -171,6 +175,8 @@ implements SortSwap<Comparable> {
      * @param       index representing the current index of the maximum element.
      * @return      the index of the maximum element.
      * @see         mz.Selection#selectionDec(Comparable[])
+     * @see         mz.DoubleSelection#doubleSelectionInc(Comparable[])
+     * @see         mz.DoubleSelection#doubleSelectionDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     int maxIndex(Comparable[] array, int j, int index) {

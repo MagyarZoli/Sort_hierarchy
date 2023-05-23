@@ -7,6 +7,7 @@ package mz;
  * @see         mz.Quick
  * @see         mz.Quick3
  * @see         mz.Selection
+ * @see         mz.DoubleSelection
  * @see         mz.Insertion
  * @see         mz.Shell
  * @see         mz.Gnome
