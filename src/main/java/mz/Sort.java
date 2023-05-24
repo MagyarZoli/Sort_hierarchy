@@ -20,6 +20,7 @@ import java.util.Collections;
  * @see         mz.Shell
  * @see         mz.Gnome
  * @see         mz.Bubble
+ * @see         mz.Cocktail
  * @see         mz.Counting
  */
 public interface Sort<T> {

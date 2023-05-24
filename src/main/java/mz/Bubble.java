@@ -5,6 +5,7 @@ package mz;
  * It works by repeatedly "bubbling" the largest (or smallest) element to its correct position in each iteration.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see         mz.Cocktail
  */
 public class Bubble
 extends SortComparable
@@ -35,6 +36,7 @@ implements SortSwap<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.Cocktail#Cocktail()
      */
     public Bubble() {}
 

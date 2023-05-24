@@ -12,6 +12,7 @@ package mz;
  * @see         mz.Shell
  * @see         mz.Gnome
  * @see         mz.Bubble
+ * @see         mz.Cocktail
  */
 public abstract class SortComparable
 implements Sort<Comparable> {

@@ -11,6 +11,7 @@ package mz;
  * @see         mz.DoubleSelection
  * @see         mz.Gnome
  * @see         mz.Bubble
+ * @see         mz.Cocktail
  */
 public interface SortSwap<T>
 extends Sort<T> {
@@ -40,6 +41,8 @@ extends Sort<T> {
      * @see         mz.Gnome#gnomeDec(Comparable[]) 
      * @see         mz.Bubble#bubbleInc(Comparable[])
      * @see         mz.Bubble#bubbleDec(Comparable[])
+     * @see         mz.Cocktail#isSwapInc(Comparable[], int, int)
+     * @see         mz.Cocktail#isSwapDec(Comparable[], int, int)
      */
     default void swap(T[] array, int a, int b) {
         T select = array[a];
