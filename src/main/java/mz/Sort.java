@@ -9,6 +9,7 @@ import java.util.Collections;
  *              It is not mandatory to specify, additional pre-written subclasses specify the type.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see         mz.Sort.SortType
  * @see         mz.SortSwap
  * @see         mz.SortComparable
  * @see         mz.SortLong
@@ -21,6 +22,7 @@ import java.util.Collections;
  * @see         mz.Gnome
  * @see         mz.Bubble
  * @see         mz.Cocktail
+ * @see         mz.Comb
  * @see         mz.Counting
  */
 public interface Sort<T> {

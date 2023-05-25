@@ -12,6 +12,7 @@ package mz;
  * @see         mz.Gnome
  * @see         mz.Bubble
  * @see         mz.Cocktail
+ * @see         mz.Comb
  */
 public interface SortSwap<T>
 extends Sort<T> {

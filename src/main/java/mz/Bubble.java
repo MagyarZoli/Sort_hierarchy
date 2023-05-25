@@ -6,6 +6,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  * @see         mz.Cocktail
+ * @see         mz.Comb
  */
 public class Bubble
 extends SortComparable
@@ -37,6 +38,7 @@ implements SortSwap<Comparable> {
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
      * @see         mz.Cocktail#Cocktail()
+     * @see         mz.Comb#Comb()
      */
     public Bubble() {}
 

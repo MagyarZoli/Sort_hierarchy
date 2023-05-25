@@ -6,6 +6,7 @@ package mz;
  * This bidirectional movement helps to optimize the sorting process by sorting the largest and smallest elements simultaneously.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see         mz.Comb
  */
 public class Cocktail
 extends Bubble {
@@ -44,6 +45,7 @@ extends Bubble {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.Comb#Comb()
      */
     public Cocktail() {}
 
@@ -197,6 +199,7 @@ extends Bubble {
      * @param       j elements to be compared
      * @return      the value of swapped,
      * @see         mz.Cocktail#cocktailInc(Comparable[])
+     * @see         mz.Comb#combInc(Comparable[])
      */
     @SuppressWarnings("unchecked")
     boolean isSwapInc(Comparable[] array, int i, int j){
@@ -234,6 +237,7 @@ extends Bubble {
      * @param       j elements to be compared
      * @return      the value of swapped,
      * @see         mz.Cocktail#cocktailDec(Comparable[])
+     * @see         mz.Comb#combDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     boolean isSwapDec(Comparable[] array, int i, int j){
