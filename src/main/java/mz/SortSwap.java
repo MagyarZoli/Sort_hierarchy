@@ -9,6 +9,7 @@ package mz;
  * @see         mz.Quick3
  * @see         mz.Selection
  * @see         mz.DoubleSelection
+ * @see         mz.Heap
  * @see         mz.Gnome
  * @see         mz.Bubble
  * @see         mz.Cocktail
@@ -38,6 +39,10 @@ extends Sort<T> {
      * @see         mz.Selection#selectionDec(Comparable[])
      * @see         mz.DoubleSelection#doubleSelectionInc(Comparable[])
      * @see         mz.DoubleSelection#doubleSelectionDec(Comparable[])
+     * @see         mz.Heap#heapInc(Comparable[])
+     * @see         mz.Heap#heapDec(Comparable[])
+     * @see         mz.Heap#heapifyInc(Comparable[], int, int)
+     * @see         mz.Heap#heapifyDec(Comparable[], int, int)
      * @see         mz.Gnome#gnomeInc(Comparable[]) 
      * @see         mz.Gnome#gnomeDec(Comparable[]) 
      * @see         mz.Bubble#bubbleInc(Comparable[])

@@ -7,6 +7,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  * @see         mz.Shell
+ * @see         mz.Heap
  */
 public class Insertion
 extends SortComparable {
@@ -38,6 +39,7 @@ extends SortComparable {
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
      * @see         mz.Shell#Shell()
+     * @see         mz.Heap#Heap()
      */
     public Insertion() {}
 

@@ -9,6 +9,7 @@ package mz;
  * @see         mz.Selection
  * @see         mz.DoubleSelection
  * @see         mz.Insertion
+ * @see         mz.Heap
  * @see         mz.Shell
  * @see         mz.Gnome
  * @see         mz.Bubble
