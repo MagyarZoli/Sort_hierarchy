@@ -6,6 +6,7 @@ package mz;
  * the maximum (or minimum) element from the heap and placing it at the end of the sorted portion of the array.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see         mz.WeakHeap
  */
 public class Heap
 extends Insertion
@@ -48,13 +49,14 @@ implements SortSwap<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
+     * @see         mz.WeakHeap#WeakHeap()
      */
     public Heap() {}
 
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         Heap#heapInc(Comparable[])
+     * @see         mz.Heap#heapInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -64,7 +66,7 @@ implements SortSwap<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         Heap#heapDec(Comparable[])
+     * @see         mz.Heap#heapDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
@@ -160,7 +162,8 @@ implements SortSwap<Comparable> {
      * @param       array to be arranged.
      * @param       length of the array.
      * @param       i the current element
-     * @see         Heap#heapInc(Comparable[])
+     * @see         mz.Heap#heapInc(Comparable[])
+     * @see         mz.WeakHeap#heapifyInc(Comparable[], int, int)
      */
     void heapifyInc(Comparable[] array, int length, int i) {
         int largest = heapSplitInc(array, length, i);
@@ -193,7 +196,8 @@ implements SortSwap<Comparable> {
      * @param       array to be arranged.
      * @param       length of the array.
      * @param       i the current element
-     * @see         Heap#heapDec(Comparable[])
+     * @see         mz.Heap#heapDec(Comparable[])
+     * @see         mz.WeakHeap#heapifyDec(Comparable[], int, int)
      */
     void heapifyDec(Comparable[] array, int length, int i) {
         int largest = heapSplitDec(array, length, i);
@@ -229,7 +233,7 @@ implements SortSwap<Comparable> {
      * @param       length of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
-     * @see         Heap#heapifyInc(Comparable[], int, int)
+     * @see         mz.Heap#heapifyInc(Comparable[], int, int)
      */
     int heapSplitInc(Comparable[] array, int length, int i) {
         int left = ((2 * i) + 1);
@@ -265,7 +269,7 @@ implements SortSwap<Comparable> {
      * @param       length of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
-     * @see         Heap#heapifyDec(Comparable[], int, int)
+     * @see         mz.Heap#heapifyDec(Comparable[], int, int)
      */
     int heapSplitDec(Comparable[] array, int length, int i) {
         int left = ((2 * i) + 1);
@@ -294,7 +298,7 @@ implements SortSwap<Comparable> {
      * @param       result the current result value.
      * @param       child the index of the child element to compare.
      * @return      the updated {@code result} value
-     * @see         Heap#heapSplitInc(Comparable[], int, int)
+     * @see         mz.Heap#heapSplitInc(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     int heapChildInc(Comparable[] array, int length, int result, int child) {
@@ -323,7 +327,7 @@ implements SortSwap<Comparable> {
      * @param       result the current result value.
      * @param       child the index of the child element to compare.
      * @return      the updated {@code result} value.
-     * @see         Heap#heapSplitDec(Comparable[], int, int)
+     * @see         mz.Heap#heapSplitDec(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     int heapChildDec(Comparable[] array, int length, int result, int child) {

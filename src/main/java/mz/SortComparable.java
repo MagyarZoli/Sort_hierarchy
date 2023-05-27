@@ -10,6 +10,7 @@ package mz;
  * @see         mz.DoubleSelection
  * @see         mz.Insertion
  * @see         mz.Heap
+ * @see         mz.WeakHeap
  * @see         mz.Shell
  * @see         mz.Gnome
  * @see         mz.Bubble
