@@ -11,6 +11,7 @@ package mz;
  * @see         mz.DoubleSelection
  * @see         mz.Heap
  * @see         mz.WeakHeap
+ * @see         mz.TernaryHeap
  * @see         mz.Gnome
  * @see         mz.Bubble
  * @see         mz.Cocktail

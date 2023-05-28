@@ -9,6 +9,7 @@ package mz;
  * @see         mz.Shell
  * @see         mz.Heap
  * @see         mz.WeakHeap
+ * @see         mz.TernaryHeap
  */
 public class Insertion
 extends SortComparable {
@@ -42,6 +43,7 @@ extends SortComparable {
      * @see         mz.Shell#Shell()
      * @see         mz.Heap#Heap()
      * @see         mz.WeakHeap#WeakHeap()
+     * @see         mz.TernaryHeap#TernaryHeap()
      */
     public Insertion() {}
 

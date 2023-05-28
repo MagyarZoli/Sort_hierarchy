@@ -66,6 +66,7 @@ extends Heap {
      * @param       array to be arranged.
      * @param       length of the array.
      * @param       i the current element
+     * @see         mz.Heap#heapInc(Comparable[])
      */
     @Override
     @SuppressWarnings("unchecked")
@@ -113,6 +114,7 @@ extends Heap {
      * @param       array to be arranged.
      * @param       length of the array.
      * @param       i the current element
+     * @see         mz.Heap#heapDec(Comparable[])
      */
     @Override
     @SuppressWarnings("unchecked")

@@ -7,6 +7,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  * @see         mz.WeakHeap
+ * @see         mz.TernaryHeap
  */
 public class Heap
 extends Insertion
@@ -50,6 +51,7 @@ implements SortSwap<Comparable> {
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
      * @see         mz.WeakHeap#WeakHeap()
+     * @see         mz.TernaryHeap#TernaryHeap()
      */
     public Heap() {}
 
@@ -234,6 +236,7 @@ implements SortSwap<Comparable> {
      * @param       i the current element
      * @return      the value of {@code largest}
      * @see         mz.Heap#heapifyInc(Comparable[], int, int)
+     * @see         mz.TernaryHeap#heapSplitInc(Comparable[], int, int)
      */
     int heapSplitInc(Comparable[] array, int length, int i) {
         int left = ((2 * i) + 1);
@@ -270,6 +273,7 @@ implements SortSwap<Comparable> {
      * @param       i the current element
      * @return      the value of {@code largest}
      * @see         mz.Heap#heapifyDec(Comparable[], int, int)
+     * @see         mz.TernaryHeap#heapSplitDec(Comparable[], int, int)
      */
     int heapSplitDec(Comparable[] array, int length, int i) {
         int left = ((2 * i) + 1);
@@ -299,6 +303,7 @@ implements SortSwap<Comparable> {
      * @param       child the index of the child element to compare.
      * @return      the updated {@code result} value
      * @see         mz.Heap#heapSplitInc(Comparable[], int, int)
+     * @see         mz.TernaryHeap#heapSplitInc(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     int heapChildInc(Comparable[] array, int length, int result, int child) {
@@ -328,6 +333,7 @@ implements SortSwap<Comparable> {
      * @param       child the index of the child element to compare.
      * @return      the updated {@code result} value.
      * @see         mz.Heap#heapSplitDec(Comparable[], int, int)
+     * @see         mz.TernaryHeap#heapSplitDec(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     int heapChildDec(Comparable[] array, int length, int result, int child) {

@@ -11,6 +11,7 @@ package mz;
  * @see         mz.Insertion
  * @see         mz.Heap
  * @see         mz.WeakHeap
+ * @see         mz.TernaryHeap
  * @see         mz.Shell
  * @see         mz.Gnome
  * @see         mz.Bubble
