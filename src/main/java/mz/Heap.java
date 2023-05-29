@@ -8,6 +8,7 @@ package mz;
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  * @see         mz.WeakHeap
  * @see         mz.TernaryHeap
+ * @see         mz.SmoothHeap
  */
 public class Heap
 extends Insertion
@@ -52,6 +53,7 @@ implements SortSwap<Comparable> {
      * Stability:               <b>No</b>
      * @see         mz.WeakHeap#WeakHeap()
      * @see         mz.TernaryHeap#TernaryHeap()
+     * @see         mz.SmoothHeap#SmoothHeap()
      */
     public Heap() {}
 

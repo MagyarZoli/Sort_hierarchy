@@ -12,6 +12,7 @@ package mz;
  * @see         mz.Heap
  * @see         mz.WeakHeap
  * @see         mz.TernaryHeap
+ * @see         mz.SmoothHeap
  * @see         mz.Shell
  * @see         mz.Gnome
  * @see         mz.Bubble

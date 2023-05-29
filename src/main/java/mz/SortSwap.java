@@ -12,6 +12,7 @@ package mz;
  * @see         mz.Heap
  * @see         mz.WeakHeap
  * @see         mz.TernaryHeap
+ * @see         mz.SmoothHeap
  * @see         mz.Gnome
  * @see         mz.Bubble
  * @see         mz.Cocktail
@@ -47,6 +48,10 @@ extends Sort<T> {
      * @see         mz.Heap#heapifyDec(Comparable[], int, int)
      * @see         mz.WeakHeap#heapifyInc(Comparable[], int, int)
      * @see         mz.WeakHeap#heapifyDec(Comparable[], int, int)
+     * @see         mz.SmoothHeap#insertInc(Comparable)
+     * @see         mz.SmoothHeap#insertDec(Comparable)
+     * @see         mz.SmoothHeap#deleteMinInc()
+     * @see         mz.SmoothHeap#deleteMinDec()
      * @see         mz.Gnome#gnomeInc(Comparable[]) 
      * @see         mz.Gnome#gnomeDec(Comparable[]) 
      * @see         mz.Bubble#bubbleInc(Comparable[])
