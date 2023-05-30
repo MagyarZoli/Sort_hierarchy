@@ -13,21 +13,22 @@ import java.util.Collections;
  * @see         mz.SortSwap
  * @see         mz.SortComparable
  * @see         mz.SortLong
- * @see         mz.Quick
- * @see         mz.Quick3
- * @see         mz.Selection
- * @see         mz.DoubleSelection
- * @see         mz.Insertion
- * @see         mz.Heap
- * @see         mz.WeakHeap
- * @see         mz.TernaryHeap
- * @see         mz.SmoothHeap
- * @see         mz.Shell
- * @see         mz.Gnome
  * @see         mz.Bubble
  * @see         mz.Cocktail
  * @see         mz.Comb
  * @see         mz.Counting
+ * @see         mz.DoubleSelection
+ * @see         mz.Gnome
+ * @see         mz.Heap
+ * @see         mz.Insertion
+ * @see         mz.Merge
+ * @see         mz.Quick
+ * @see         mz.Quick3
+ * @see         mz.Selection
+ * @see         mz.Shell
+ * @see         mz.SmoothHeap
+ * @see         mz.TernaryHeap
+ * @see         mz.WeakHeap
  */
 public interface Sort<T> {
 
