@@ -91,7 +91,7 @@ extends Insertion {
      */
     void shellInc(Comparable[] array) {
         for (int k = (array.length / 2); k > 0; k /= 2) {
-            insertionInc(array, k);
+            insertionInc(array, k, array.length);
         }
     }
 
@@ -121,7 +121,7 @@ extends Insertion {
      */
     void shellDec(Comparable[] array) {
         for (int k = (array.length / 2); k > 0; k /= 2) {
-            insertionDec(array, k);
+            insertionDec(array, k, array.length);
         }
     }
 }

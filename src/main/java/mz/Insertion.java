@@ -13,7 +13,8 @@ package mz;
  * @see         mz.SmoothHeap
  */
 public class Insertion
-extends SortComparable {
+extends SortComparable
+implements InsertionInterface<Comparable> {
 
     /**
      * <b>Insertion Sort:</b><br>
@@ -52,114 +53,20 @@ extends SortComparable {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Insertion#insertionInc(Comparable[], int)
+     * @see         mz.InsertionInterface#insertionInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
-        insertionInc(array, 1);
+        insertionInc(array);
     }
 
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Insertion#insertionDec(Comparable[], int)
+     * @see         mz.InsertionInterface#insertionDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
-        insertionDec(array, 1);
-    }
-
-    /**
-     * {@code insertionInc} that performs the Insertion Sort algorithm on a portion of an array of Comparable objects.
-     * The sorting is done in ascending order.
-     * <ul>
-     *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
-     *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@code compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
-     *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
-     *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
-     *     the {@code select} element within the portion of the array.</li>
-     *     <ul>
-     *         <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
-     *         is within the specified portion of the array.</li>
-     *         <li>The condition {@code array[(j - index)].compareTo(select) > 0}
-     *         compares the element at index {@code (j - index)} with the {@code select} element.
-     *         If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be shifted to the right.</li>
-     *         <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
-     *         effectively shifting the element to the right.</li>
-     *         <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
-     *         the correct position for the {@code select} element is found.</li>
-     *     </ul>
-     *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
-     * </ul>
-     * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.
-     * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
-     * and places the selected element at its correct position within the portion of the array.
-     * The sorting is done in ascending order.
-     * @param       array to be arranged.
-     * @param       index start the examined from the last index of the array.
-     * @see         mz.Shell#shellInc(Comparable[])
-     */
-    @SuppressWarnings("unchecked")
-    void insertionInc(Comparable[] array, int index) {
-        for (int i = index; i < array.length; i++) {
-            Comparable select = array[i];
-            int j = i;
-            while ((j >= index) && (array[(j - index)].compareTo(select) > 0)) {
-                array[j] = array[(j - index)];
-                j -= index;
-            }
-            array[j] = select;
-        }
-    }
-
-    /**
-     * {@code insertionDec} that performs the Insertion Sort algorithm on a portion of an array of Comparable objects.
-     * The sorting is done in descending order.
-     * <ul>
-     *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
-     *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@code compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
-     *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
-     *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
-     *     the {@code select} element within the portion of the array.</li>
-     *     <ul>
-     *         <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
-     *         is within the specified portion of the array.</li>
-     *         <li>The condition {@code array[(j - index)].compareTo(select) < 0}
-     *         compares the element at index {@code (j - index)} with the {@code select} element.
-     *         If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be shifted to the right.</li>
-     *         <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
-     *         effectively shifting the element to the right.</li>
-     *         <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
-     *         the correct position for the {@code select} element is found.</li>
-     *     </ul>
-     *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
-     * </ul>
-     * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.
-     * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
-     * and places the selected element at its correct position within the portion of the array.
-     * The sorting is done in descending order.
-     * @param       array to be arranged.
-     * @param       index start the examined from the last index of the array.
-     * @see         mz.Shell#shellDec(Comparable[])
-     */
-    @SuppressWarnings("unchecked")
-    void insertionDec(Comparable[] array, int index) {
-        for (int i = index; i < array.length; i++) {
-            Comparable select = array[i];
-            int j = i;
-            while ((j >= index) && (array[(j - index)].compareTo(select) < 0)) {
-                array[j] = array[(j - index)];
-                j -= index;
-            }
-            array[j] = select;
-        }
+        insertionDec(array);
     }
 }
