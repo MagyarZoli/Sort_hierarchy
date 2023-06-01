@@ -5,8 +5,8 @@ package mz;
  * @param       <T> setting of a type based on which the elements can be sorted.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         Insertion
- * @see         Shell
+ * @see         mz.Insertion
+ * @see         mz.Shell
  */
 public interface InsertionInterface<T extends Comparable>
 extends Sort<T> {
@@ -42,7 +42,7 @@ extends Sort<T> {
      * and places the selected element at its correct position within the portion of the array.
      * The sorting is done in ascending order.
      * @param       array to be arranged.
-     * @see         Insertion#sortArrayInc(Comparable[])
+     * @see         mz.Insertion#sortArrayInc(Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void insertionInc(T[] array) {
@@ -88,7 +88,7 @@ extends Sort<T> {
      * and places the selected element at its correct position within the portion of the array.
      * The sorting is done in descending order.
      * @param       array to be arranged.
-     * @see         Insertion#sortArrayDec(Comparable[])
+     * @see         mz.Insertion#sortArrayDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void insertionDec(T[] array) {
@@ -136,7 +136,7 @@ extends Sort<T> {
      * @param       array to be arranged.
      * @param       from the element from which to start the analysis.
      * @param       to the element to be analyzed.
-     * @see         Shell#shellInc(Comparable[])
+     * @see         mz.Shell#shellInc(Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void insertionInc(T[] array, int from, int to) {
@@ -184,7 +184,7 @@ extends Sort<T> {
      * @param       array to be arranged.
      * @param       from the element from which to start the analysis.
      * @param       to the element to be analyzed.
-     * @see         Shell#shellDec(Comparable[])
+     * @see         mz.Shell#shellDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void insertionDec(T[] array, int from, int to) {
