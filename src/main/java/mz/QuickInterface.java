@@ -8,7 +8,7 @@ package mz;
  * @see         mz.Quick
  * @see         mz.Quick3
  */
-interface QuickInterface<T extends Comparable>
+public interface QuickInterface<T extends Comparable>
 extends Sort<T>, SortSwap<T> {
 
     /**

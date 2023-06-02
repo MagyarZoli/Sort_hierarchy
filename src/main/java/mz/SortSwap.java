@@ -5,6 +5,7 @@ package mz;
  * @param       <T> when entering it, you can set which class type the interface is used as.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see         mz.HeapInterface
  * @see         mz.Bubble
  * @see         mz.Cocktail
  * @see         mz.Comb
@@ -42,10 +43,10 @@ extends Sort<T> {
      * @see         mz.DoubleSelection#doubleSelectionDec(Comparable[])
      * @see         mz.Gnome#gnomeInc(Comparable[])
      * @see         mz.Gnome#gnomeDec(Comparable[])
-     * @see         mz.Heap#heapInc(Comparable[])
-     * @see         mz.Heap#heapDec(Comparable[])
-     * @see         mz.Heap#heapifyInc(Comparable[], int, int)
-     * @see         mz.Heap#heapifyDec(Comparable[], int, int)
+     * @see         mz.HeapInterface#heapInc(Comparable[])
+     * @see         mz.HeapInterface#heapDec(Comparable[])
+     * @see         mz.HeapInterface#heapifyInc(Comparable[], int, int)
+     * @see         mz.HeapInterface#heapifyDec(Comparable[], int, int)
      * @see         mz.Quick#partitionInc(Comparable[], int, int)
      * @see         mz.Quick#partitionDec(Comparable[], int, int)
      * @see         mz.Quick3#partition3Inc(Comparable[], int, int)

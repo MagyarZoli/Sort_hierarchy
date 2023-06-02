@@ -7,10 +7,6 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  * @see         mz.Shell
- * @see         mz.Heap
- * @see         mz.WeakHeap
- * @see         mz.TernaryHeap
- * @see         mz.SmoothHeap
  */
 public class Insertion
 extends SortComparable
@@ -43,10 +39,6 @@ implements InsertionInterface<Comparable> {
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
      * @see         mz.Shell#Shell()
-     * @see         mz.Heap#Heap()
-     * @see         mz.WeakHeap#WeakHeap()
-     * @see         mz.TernaryHeap#TernaryHeap()
-     * @see         mz.SmoothHeap#SmoothHeap()
      */
     public Insertion() {}
 

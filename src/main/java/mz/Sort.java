@@ -10,6 +10,7 @@ import java.util.Collections;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  * @see         mz.Sort.SortType
+ * @see         mz.HeapInterface
  * @see         mz.InsertionInterface
  * @see         mz.SortSwap
  * @see         mz.SortComparable
