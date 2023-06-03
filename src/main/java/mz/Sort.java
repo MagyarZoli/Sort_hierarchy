@@ -12,6 +12,7 @@ import java.util.Collections;
  * @see         mz.Sort.SortType
  * @see         mz.HeapInterface
  * @see         mz.InsertionInterface
+ * @see         mz.MergeInterface
  * @see         mz.SortSwap
  * @see         mz.SortComparable
  * @see         mz.SortLong
