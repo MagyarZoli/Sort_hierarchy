@@ -6,6 +6,7 @@ package mz;
  *              It is not mandatory to specify, additional pre-written subclasses specify the type.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ * @see         mz.SelectionInterface
  */
 public interface SortFind<T extends Comparable>
 extends Sort<T> {

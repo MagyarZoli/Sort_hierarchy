@@ -6,6 +6,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  * @see         mz.HeapInterface
+ * @see         mz.SelectionInterface
  * @see         mz.Bubble
  * @see         mz.Cocktail
  * @see         mz.Comb
