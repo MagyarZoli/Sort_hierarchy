@@ -5,22 +5,8 @@ package mz;
  * @param       <T> when entering it, you can set which class type the interface is used as.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.HeapInterface
- * @see         mz.SelectionInterface
- * @see         mz.Bubble
- * @see         mz.Cocktail
- * @see         mz.Comb
- * @see         mz.DoubleSelection
- * @see         mz.Gnome
- * @see         mz.Heap
- * @see         mz.Quick
- * @see         mz.Quick3
- * @see         mz.Selection
- * @see         mz.SmoothHeap
- * @see         mz.TernaryHeap
- * @see         mz.WeakHeap
  */
-public interface SortSwap<T>
+public interface SortSwap<T extends Comparable>
 extends Sort<T> {
 
     /**
@@ -36,34 +22,60 @@ extends Sort<T> {
      * @param       array in which the two selected elements are swapped.
      * @param       a element whose value will be changed to the value of element b.
      * @param       b element whose value will be changed to the value of element a.
-     * @see         mz.Bubble#bubbleInc(Comparable[])
-     * @see         mz.Bubble#bubbleDec(Comparable[])
-     * @see         mz.Cocktail#isSwapInc(Comparable[], int, int)
-     * @see         mz.Cocktail#isSwapDec(Comparable[], int, int)
-     * @see         mz.DoubleSelection#doubleSelectionInc(Comparable[])
-     * @see         mz.DoubleSelection#doubleSelectionDec(Comparable[])
-     * @see         mz.Gnome#gnomeInc(Comparable[])
-     * @see         mz.Gnome#gnomeDec(Comparable[])
-     * @see         mz.HeapInterface#heapInc(Comparable[])
-     * @see         mz.HeapInterface#heapDec(Comparable[])
-     * @see         mz.HeapInterface#heapifyInc(Comparable[], int, int)
-     * @see         mz.HeapInterface#heapifyDec(Comparable[], int, int)
-     * @see         mz.Quick#partitionInc(Comparable[], int, int)
-     * @see         mz.Quick#partitionDec(Comparable[], int, int)
-     * @see         mz.Quick3#partition3Inc(Comparable[], int, int)
-     * @see         mz.Quick3#partition3Dec(Comparable[], int, int)
-     * @see         mz.Selection#selectionInc(Comparable[])
-     * @see         mz.Selection#selectionDec(Comparable[])
-     * @see         mz.SmoothHeap#insertInc(Comparable)
-     * @see         mz.SmoothHeap#insertDec(Comparable)
-     * @see         mz.SmoothHeap#deleteMinInc()
-     * @see         mz.SmoothHeap#deleteMinDec()
-     * @see         mz.WeakHeap#heapifyInc(Comparable[], int, int)
-     * @see         mz.WeakHeap#heapifyDec(Comparable[], int, int)
      */
     default void swap(T[] array, int a, int b) {
         T select = array[a];
         array[a] = array[b];
         array[b] = select;
+    }
+
+    /**
+     * {@code flip}, which takes an array {@code array} and one indices {@code to} as input.
+     * It performs an in-place flipping of elements within the specified range of the array.
+     * <ul>
+     *     <li>The method enters a {@code while} loop, which continues as long as the {@code from} index is <i>0</i>, is less than the {@code to} index.</li>
+     *     <li>Inside the loop, the {@link mz.SortSwap#swap(Comparable[], int, int) swap} method
+     *     is called to exchange the elements at indices {@code from} and {@code to} in the {@code array}.
+     *     The {@code swap} method is assumed to be defined elsewhere, and it swaps the elements in-place.</li>
+     *     <li>After swapping the elements, the {@code from} index is incremented by one {@code from++},
+     *     and the {@code to} index is decremented by one {@code to--}.</li>
+     *     <li>The loop continues until the {@code from} index is no longer less than
+     *     the {@code to} index, at which point the flipping is complete.</li>
+     * </ul>
+     * {@code flip} method reverses the order of elements in the specified range of the array.
+     * It does this by swapping elements from the beginning and end of the range, gradually moving towards the middle until the entire range is flipped.
+     * @param       array in which the two selected index are flip.
+     * @param       to is the index by which to finish the analyzed.
+     */
+    default void flip(T[] array, int to) {
+        int from = 0;
+        while (from < to) {
+            swap(array, from++, to--);
+        }
+    }
+
+    /**
+     * {@code flip}, which takes an array {@code array} and two indices {@code from} and {@code to} as input.
+     * It performs an in-place flipping of elements within the specified range of the array.
+     * <ul>
+     *     <li>The method enters a {@code while} loop, which continues as long as the {@code from} index is less than the {@code to} index.</li>
+     *     <li>Inside the loop, the {@link mz.SortSwap#swap(Comparable[], int, int) swap} method
+     *     is called to exchange the elements at indices {@code from} and {@code to} in the {@code array}.
+     *     The {@code swap} method is assumed to be defined elsewhere, and it swaps the elements in-place.</li>
+     *     <li>After swapping the elements, the {@code from} index is incremented by one {@code from++},
+     *     and the {@code to} index is decremented by one {@code to--}.</li>
+     *     <li>The loop continues until the {@code from} index is no longer less than
+     *     the {@code to} index, at which point the flipping is complete.</li>
+     * </ul>
+     * {@code flip} method reverses the order of elements in the specified range of the array.
+     * It does this by swapping elements from the beginning and end of the range, gradually moving towards the middle until the entire range is flipped.
+     * @param       array in which the two selected index are flip.
+     * @param       from is the index from which the analyzed should start.
+     * @param       to is the index by which to finish the analyzed.
+     */
+    default void flip(T[] array, int from, int to) {
+        while (from < to) {
+            swap(array, from++, to--);
+        }
     }
 }

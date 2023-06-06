@@ -4,21 +4,6 @@ package mz;
  * The inheritors of this abstract class arrange any data type that is Comparable.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.Bubble
- * @see         mz.Cocktail
- * @see         mz.Comb
- * @see         mz.DoubleSelection
- * @see         mz.Gnome
- * @see         mz.Heap
- * @see         mz.Insertion
- * @see         mz.Merge
- * @see         mz.Quick
- * @see         mz.Quick3
- * @see         mz.Selection
- * @see         mz.Shell
- * @see         mz.SmoothHeap
- * @see         mz.TernaryHeap
- * @see         mz.WeakHeap
  */
 public abstract class SortComparable
 implements Sort<Comparable> {

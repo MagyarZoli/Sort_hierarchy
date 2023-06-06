@@ -6,9 +6,6 @@ package mz;
  * the maximum (or minimum) element from the heap and placing it at the end of the sorted portion of the array.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.WeakHeap
- * @see         mz.TernaryHeap
- * @see         mz.SmoothHeap
  */
 public class Heap
 extends SortComparable
@@ -60,7 +57,6 @@ implements HeapInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Heap#heapInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -70,7 +66,6 @@ implements HeapInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Heap#heapDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {

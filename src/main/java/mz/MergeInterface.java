@@ -7,7 +7,6 @@ import java.util.Arrays;
  * @param       <T> setting of a type based on which the elements can be sorted.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.Merge
  */
 public interface MergeInterface<T extends Comparable>
 extends Sort<T> {
@@ -39,7 +38,6 @@ extends Sort<T> {
      * @param       left from the array, index value, must be smaller than the {@code mid} and {@code right} value.
      * @param       mid from the array, index value, must be smaller than the {@code right} value, and must be greater than the {@code left}.
      * @param       right from the array, index value, must be greater than the {@code left} and {@code mid} value.
-     * @see         mz.Merge#sortArrayInc(Comparable[])
      */
     default void mergeInc(T[] array, int left, int mid, int right) {
         if (left < right) {
@@ -76,7 +74,6 @@ extends Sort<T> {
      * @param       left from the array, index value, must be smaller than the {@code mid} and {@code right} value.
      * @param       mid from the array, index value, must be smaller than the {@code right} value, and must be greater than the {@code left}.
      * @param       right from the array, index value, must be greater than the {@code left} and {@code mid} value.
-     * @see         mz.Merge#sortArrayDec(Comparable[])
      */
     default void mergeDec(T[] array, int left, int mid, int right) {
         if (left < right) {
@@ -424,7 +421,7 @@ extends Sort<T> {
      * from index {@code (mid + 1)} to {@code right}, are already sorted in increasing order.
      * <ul>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The method starts by checking if the indices {@code left}, {@code mid}, and {@code right} are within valid bounds.
      *     If the {@code condition left > mid || mid + 1 > right} is true, it means that either the left portion or
@@ -448,7 +445,6 @@ extends Sort<T> {
      * @param       left from the array, index value, must be smaller than the {@code mid} and {@code right} value.
      * @param       mid from the array, index value, must be smaller than the {@code right} value, and must be greater than the {@code left}.
      * @param       right from the array, index value, must be greater than the {@code left} and {@code mid} value.
-     * @see         mz.MergeInterface#mergeInc(Comparable[], int, int, int)
      */
     @SuppressWarnings("unchecked")
     default void mergingInc(T[] array, int left, int mid, int right) {
@@ -479,7 +475,7 @@ extends Sort<T> {
      * from index {@code (mid + 1)} to {@code right}, are already sorted in increasing order.
      * <ul>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The method starts by checking if the indices {@code left}, {@code mid}, and {@code right} are within valid bounds.
      *     If the {@code condition left > mid || mid + 1 > right} is true, it means that either the left portion or
@@ -503,7 +499,6 @@ extends Sort<T> {
      * @param       left from the array, index value, must be smaller than the {@code mid} and {@code right} value.
      * @param       mid from the array, index value, must be smaller than the {@code right} value, and must be greater than the {@code left}.
      * @param       right from the array, index value, must be greater than the {@code left} and {@code mid} value.
-     * @see         mz.MergeInterface#mergeDec(Comparable[], int, int, int)
      */
     @SuppressWarnings("unchecked")
     default void mergingDec(T[] array, int left, int mid, int right) {
@@ -559,7 +554,6 @@ extends Sort<T> {
      * @param       mid The index of the midpoint element in the subarray to be merged.
      * @param       right The index of the rightmost element of the subarray to be merged.
      * @param       buffer An auxiliary array used for storing the merged elements temporarily.
-     * @see         mz.MergeInterface#mergeInc(Comparable[], int, int, Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void mergingInc(T[] array, int left, int mid, int right, T[] buffer) {
@@ -605,7 +599,6 @@ extends Sort<T> {
      * @param       mid The index of the midpoint element in the subarray to be merged.
      * @param       right The index of the rightmost element of the subarray to be merged.
      * @param       buffer An auxiliary array used for storing the merged elements temporarily.
-     * @see         mz.MergeInterface#mergeDec(Comparable[], int, int, Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void mergingDec(T[] array, int left, int mid, int right, T[] buffer) {

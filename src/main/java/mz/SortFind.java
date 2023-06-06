@@ -6,7 +6,6 @@ package mz;
  *              It is not mandatory to specify, additional pre-written subclasses specify the type.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.SelectionInterface
  */
 public interface SortFind<T extends Comparable>
 extends Sort<T> {
@@ -23,7 +22,7 @@ extends Sort<T> {
      *     <li>The method takes an array of type {@code T} as a parameter.</li>
      *     <li>The first element of the array is assigned to the {@code max} variable as the initial maximum value.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1)
-     *     and compares each element to the current maximum using the {@code compareTo} method.
+     *     and compares each element to the current maximum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is greater than the current maximum, it becomes the new maximum.</li>
      *     <li>Finally, the method returns the maximum element found in the array.</li>
      * </ul>
@@ -53,7 +52,7 @@ extends Sort<T> {
      *     <li>The method takes an array of type {@code T} as a parameter.</li>
      *     <li>The first element of the array is assigned to the {@code min} variable as the initial minimum value.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1)
-     *     and compares each element to the current minimum using the {@code compareTo} method.
+     *     and compares each element to the current minimum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is smaller than the current minimum, it becomes the new minimum.</li>
      *     <li>Finally, the method returns the minimum element found in the array.</li>
      * </ul>
@@ -83,7 +82,7 @@ extends Sort<T> {
      *     <li>The method takes an array of type {@code T} as a parameter.</li>
      *     <li>The first element of the array is assigned to the {@code max} variable as the initial maximum value.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1)
-     *     and compares each element to the current maximum using the {@code compareTo} method.
+     *     and compares each element to the current maximum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is greater than the current maximum, it becomes the new maximum.</li>
      *     <li>Finally, the method returns the maximum element found in the array.</li>
      * </ul>
@@ -114,7 +113,7 @@ extends Sort<T> {
      *     <li>The method takes an array of type {@code T} as a parameter.</li>
      *     <li>The first element of the array is assigned to the {@code min} variable as the initial minimum value.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1)
-     *     and compares each element to the current minimum using the {@code compareTo} method.
+     *     and compares each element to the current minimum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is smaller than the current minimum, it becomes the new minimum.</li>
      *     <li>Finally, the method returns the minimum element found in the array.</li>
      * </ul>
@@ -145,7 +144,7 @@ extends Sort<T> {
      *     <li>The method takes an array of type {@code T} as a parameter.</li>
      *     <li>The first element of the array is assigned to the {@code max} variable as the initial maximum value.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1)
-     *     and compares each element to the current maximum using the {@code compareTo} method.
+     *     and compares each element to the current maximum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is greater than the current maximum, it becomes the new maximum.</li>
      *     <li>Finally, the method returns the maximum element found in the array.</li>
      * </ul>
@@ -177,7 +176,7 @@ extends Sort<T> {
      *     <li>The method takes an array of type {@code T} as a parameter.</li>
      *     <li>The first element of the array is assigned to the {@code min} variable as the initial minimum value.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1)
-     *     and compares each element to the current minimum using the {@code compareTo} method.
+     *     and compares each element to the current minimum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is smaller than the current minimum, it becomes the new minimum.</li>
      *     <li>Finally, the method returns the minimum element found in the array.</li>
      * </ul>
@@ -210,7 +209,7 @@ extends Sort<T> {
      *     <li>The first element of the array is assigned to the max variable as the initial maximum value.</li>
      *     <li>The {@code maxIndex} variable is initialized with 0, representing the index of the current maximum element.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1) and compares each element to
-     *     the current maximum using the {@code compareTo} method.
+     *     the current maximum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is greater than the current maximum, it becomes the new maximum, and its index becomes the new {@code maxIndex}.</li>
      *     <li>Finally, the method returns the index of the maximum element found in the array.</li>
      * </ul>
@@ -243,7 +242,7 @@ extends Sort<T> {
      *     <li>The first element of the array is assigned to the min variable as the initial minimum value.</li>
      *     <li>The {@code minIndex} variable is initialized with 0, representing the index of the current minimum element.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1) and compares each element to
-     *     the current minimum using the {@code compareTo} method.
+     *     the current minimum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is smaller than the current minimum, it becomes the new minimum, and its index becomes the new {@code minIndex}.</li>
      *     <li>Finally, the method returns the index of the minimum element found in the array.</li>
      * </ul>
@@ -276,7 +275,7 @@ extends Sort<T> {
      *     <li>The first element of the array is assigned to the max variable as the initial maximum value.</li>
      *     <li>The {@code maxIndex} variable is initialized with 0, representing the index of the current maximum element.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1) and compares each element to
-     *     the current maximum using the {@code compareTo} method.
+     *     the current maximum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is greater than the current maximum, it becomes the new maximum, and its index becomes the new {@code maxIndex}.</li>
      *     <li>Finally, the method returns the index of the maximum element found in the array.</li>
      * </ul>
@@ -310,7 +309,7 @@ extends Sort<T> {
      *     <li>The first element of the array is assigned to the min variable as the initial minimum value.</li>
      *     <li>The {@code minIndex} variable is initialized with 0, representing the index of the current minimum element.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1) and compares each element to
-     *     the current minimum using the {@code compareTo} method.
+     *     the current minimum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is smaller than the current minimum, it becomes the new minimum, and its index becomes the new {@code minIndex}.</li>
      *     <li>Finally, the method returns the index of the minimum element found in the array.</li>
      * </ul>
@@ -344,7 +343,7 @@ extends Sort<T> {
      *     <li>The first element of the array is assigned to the max variable as the initial maximum value.</li>
      *     <li>The {@code maxIndex} variable is initialized with 0, representing the index of the current maximum element.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1) and compares each element to
-     *     the current maximum using the {@code compareTo} method.
+     *     the current maximum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is greater than the current maximum, it becomes the new maximum, and its index becomes the new {@code maxIndex}.</li>
      *     <li>Finally, the method returns the index of the maximum element found in the array.</li>
      * </ul>
@@ -379,7 +378,7 @@ extends Sort<T> {
      *     <li>The first element of the array is assigned to the min variable as the initial minimum value.</li>
      *     <li>The {@code minIndex} variable is initialized with 0, representing the index of the current minimum element.</li>
      *     <li>The method then iterates over the remaining elements of the array (starting from index 1) and compares each element to
-     *     the current minimum using the {@code compareTo} method.
+     *     the current minimum using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     If an element is smaller than the current minimum, it becomes the new minimum, and its index becomes the new {@code minIndex}.</li>
      *     <li>Finally, the method returns the index of the minimum element found in the array.</li>
      * </ul>
@@ -406,7 +405,7 @@ extends Sort<T> {
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, an integer {@code a} representing the current b,
      *     and an integer {@code b} representing the current b of the maximum element.</li>
-     *     <li>The method compares the element at b {@code a} with the element at b {@code b} using the {@code compareTo} method.</li>
+     *     <li>The method compares the element at b {@code a} with the element at b {@code b} using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>If the element at b {@code a} is greater than the element at b {@code b}, the {@code if} condition evaluates to true,
      *     and the value of {@code b} is updated to {@code a}.</li>
      *     <li>The updated value of {@code b} is then returned.</li>
@@ -431,7 +430,7 @@ extends Sort<T> {
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, an integer {@code a} representing the current b,
      *     and an integer {@code b} representing the current b of the minimum element.</li>
-     *     <li>The method compares the element at b {@code a} with the element at b {@code b} using the {@code compareTo} method.</li>
+     *     <li>The method compares the element at b {@code a} with the element at b {@code b} using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>If the element at b {@code a} is smaller than the element at b {@code b}, the {@code if} condition evaluates to true,
      *     and the value of {@code b} is updated to {@code a}.</li>
      *     <li>The updated value of {@code b} is then returned.</li>

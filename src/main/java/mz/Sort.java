@@ -9,30 +9,6 @@ import java.util.Collections;
  *              It is not mandatory to specify, additional pre-written subclasses specify the type.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.Sort.SortType
- * @see         mz.HeapInterface
- * @see         mz.InsertionInterface
- * @see         mz.MergeInterface
- * @see         mz.SelectionInterface
- * @see         mz.SortSwap
- * @see         mz.SortComparable
- * @see         mz.SortLong
- * @see         mz.Bubble
- * @see         mz.Cocktail
- * @see         mz.Comb
- * @see         mz.Counting
- * @see         mz.DoubleSelection
- * @see         mz.Gnome
- * @see         mz.Heap
- * @see         mz.Insertion
- * @see         mz.Merge
- * @see         mz.Quick
- * @see         mz.Quick3
- * @see         mz.Selection
- * @see         mz.Shell
- * @see         mz.SmoothHeap
- * @see         mz.TernaryHeap
- * @see         mz.WeakHeap
  */
 public interface Sort<T> {
 

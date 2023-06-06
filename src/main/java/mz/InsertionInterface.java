@@ -5,8 +5,6 @@ package mz;
  * @param       <T> setting of a type based on which the elements can be sorted.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.Insertion
- * @see         mz.Shell
  */
 public interface InsertionInterface<T extends Comparable>
 extends Sort<T> {
@@ -18,7 +16,7 @@ extends Sort<T> {
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
      *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@code compareTo} method.</li>
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
      *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
@@ -42,7 +40,6 @@ extends Sort<T> {
      * and places the selected element at its correct position within the portion of the array.
      * The sorting is done in ascending order.
      * @param       array to be arranged.
-     * @see         mz.Insertion#sortArrayInc(Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void insertionInc(T[] array) {
@@ -64,7 +61,7 @@ extends Sort<T> {
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
      *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@code compareTo} method.</li>
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
      *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
@@ -88,7 +85,6 @@ extends Sort<T> {
      * and places the selected element at its correct position within the portion of the array.
      * The sorting is done in descending order.
      * @param       array to be arranged.
-     * @see         mz.Insertion#sortArrayDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void insertionDec(T[] array) {
@@ -110,7 +106,7 @@ extends Sort<T> {
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
      *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@code compareTo} method.</li>
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
      *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
@@ -136,7 +132,6 @@ extends Sort<T> {
      * @param       array to be arranged.
      * @param       from the element from which to start the analysis.
      * @param       to the element to be analyzed.
-     * @see         mz.Shell#shellInc(Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void insertionInc(T[] array, int from, int to) {
@@ -158,7 +153,7 @@ extends Sort<T> {
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
      *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@code compareTo} method.</li>
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
      *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
@@ -184,7 +179,6 @@ extends Sort<T> {
      * @param       array to be arranged.
      * @param       from the element from which to start the analysis.
      * @param       to the element to be analyzed.
-     * @see         mz.Shell#shellDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     default void insertionDec(T[] array, int from, int to) {

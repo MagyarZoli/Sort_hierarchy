@@ -51,7 +51,6 @@ extends Cocktail {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         Comb#combInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -61,7 +60,6 @@ extends Cocktail {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         Comb#combDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
@@ -158,8 +156,6 @@ extends Cocktail {
      * The specific formula used to calculate the next gap value may vary depending on the implementation.
      * @param       gap value to be used.
      * @return      the calculated or adjusted {@code gap} value.
-     * @see         mz.Comb#combInc(Comparable[])
-     * @see         mz.Comb#combDec(Comparable[])
      */
     int getNextGap(int gap) {
         gap = ((gap * 10) / 13);

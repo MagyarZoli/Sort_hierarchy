@@ -6,7 +6,6 @@ package mz;
  * This bidirectional movement helps to optimize the sorting process by sorting the largest and smallest elements simultaneously.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.Comb
  */
 public class Cocktail
 extends Bubble {
@@ -52,7 +51,6 @@ extends Bubble {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         Cocktail#cocktailInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -62,7 +60,6 @@ extends Bubble {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         Cocktail#cocktailDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
@@ -181,7 +178,7 @@ extends Bubble {
      *     denoted by {@code array}, and the indices {@code i} and {@code j} of
      *     the two elements to be compared and potentially swapped.</li>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The variable {@code swap} is initially set to {@code false}, indicating that no swap operation has been performed yet.</li>
      *     <li>The condition {@code if (array[i].compareTo(array[(i + j)]) > 0)} compares the elements at indices {@code i} and {@code (i + j)} in
@@ -197,9 +194,7 @@ extends Bubble {
      * @param       array to be arranged.
      * @param       i elements to be compared
      * @param       j elements to be compared
-     * @return      the value of swapped,
-     * @see         mz.Cocktail#cocktailInc(Comparable[])
-     * @see         mz.Comb#combInc(Comparable[])
+     * @return      the value of swapped.
      */
     @SuppressWarnings("unchecked")
     boolean isSwapInc(Comparable[] array, int i, int j){
@@ -219,7 +214,7 @@ extends Bubble {
      *     denoted by {@code array}, and the indices {@code i} and {@code j} of
      *     the two elements to be compared and potentially swapped.</li>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The variable {@code swap} is initially set to {@code false}, indicating that no swap operation has been performed yet.</li>
      *     <li>The condition {@code if (array[i].compareTo(array[(i + j)]) < 0)} compares the elements at indices {@code i} and {@code (i + j)} in
@@ -235,9 +230,7 @@ extends Bubble {
      * @param       array to be arranged.
      * @param       i elements to be compared
      * @param       j elements to be compared
-     * @return      the value of swapped,
-     * @see         mz.Cocktail#cocktailDec(Comparable[])
-     * @see         mz.Comb#combDec(Comparable[])
+     * @return      the value of swapped.
      */
     @SuppressWarnings("unchecked")
     boolean isSwapDec(Comparable[] array, int i, int j){

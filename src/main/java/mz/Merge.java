@@ -52,7 +52,6 @@ implements MergeInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.MergeInterface#mergeInc(Comparable[], int, int, int)
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -62,7 +61,6 @@ implements MergeInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.MergeInterface#mergeDec(Comparable[], int, int, int)
      */
     @Override
     public void sortArrayDec(Comparable[] array) {

@@ -5,10 +5,6 @@ package mz;
  * @param       <T> setting of a type based on which the elements can be sorted.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.Heap
- * @see         mz.WeakHeap
- * @see         mz.TernaryHeap
- * @see         mz.SmoothHeap
  */
 public interface HeapInterface<T extends Comparable>
 extends Sort<T>, SortSwap<T> {
@@ -26,7 +22,7 @@ extends Sort<T>, SortSwap<T> {
      *     <li>After the first {@code for} loop, the array is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
      *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the end of the array.
-     *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
+     *     In each iteration, it {@link mz.SortSwap#swap(Comparable[], int, int) swaps} the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyInc} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the array is sorted in ascending order.</li>
@@ -59,7 +55,7 @@ extends Sort<T>, SortSwap<T> {
      *     <li>After the first {@code for} loop, the array is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
      *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the end of the array.
-     *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
+     *     In each iteration, it {@link mz.SortSwap#swap(Comparable[], int, int) swaps} the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyDec} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the array is sorted in ascending order.</li>
@@ -92,7 +88,7 @@ extends Sort<T>, SortSwap<T> {
      *     <li>After the first {@code for} loop, the array is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
      *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the to of the array.
-     *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
+     *     In each iteration, it {@link mz.SortSwap#swap(Comparable[], int, int) swaps} the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyInc} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the array is sorted in ascending order.</li>
@@ -126,7 +122,7 @@ extends Sort<T>, SortSwap<T> {
      *     <li>After the first {@code for} loop, the array is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
      *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the end of the array.
-     *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
+     *     In each iteration, it {@link mz.SortSwap#swap(Comparable[], int, int) swaps} the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyDec} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the array is sorted in ascending order.</li>
@@ -159,7 +155,7 @@ extends Sort<T>, SortSwap<T> {
      *     <li>If the {@code largest} value returned from {@code heapSplitInc} is different from the original index {@code i},
      *     it means that the element at index {@code i} is not the largest among its child elements.
      *     In this case, the method proceeds to swap the element at index {@code i} with
-     *     the element at index {@code largest} using a {@code swap} method.</li>
+     *     the element at index {@code largest} using a {@link mz.SortSwap#swap(Comparable[], int, int) swap} method.</li>
      *     <li>After the swap, the method recursively calls itself with the updated index largest.
      *     This recursive call is performed to continue the heapification process downward from the new index largest.
      *     By recursively calling {@code heapifyInc} on the updated index, the method ensures that the heap property
@@ -170,7 +166,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       array to be arranged.
      * @param       n of the array.
      * @param       i the current element
-     * @see         mz.Heap#heapInc(Comparable[])
      */
     default void heapifyInc(T[] array, int n, int i) {
         int largest = heapSplitInc(array, n, i);
@@ -192,7 +187,7 @@ extends Sort<T>, SortSwap<T> {
      *     <li>If the {@code largest} value returned from {@code heapSplitDec} is different from the original index {@code i},
      *     it means that the element at index {@code i} is not the largest among its child elements.
      *     In this case, the method proceeds to swap the element at index {@code i} with
-     *     the element at index {@code largest} using a {@code swap} method.</li>
+     *     the element at index {@code largest} using a {@link mz.SortSwap#swap(Comparable[], int, int) swap} method.</li>
      *     <li>After the swap, the method recursively calls itself with the updated index largest.
      *     This recursive call is performed to continue the heapification process downward from the new index largest.
      *     By recursively calling {@code heapifyDec} on the updated index, the method ensures that the heap property
@@ -203,7 +198,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       array to be arranged.
      * @param       n of the array.
      * @param       i the current element
-     * @see         mz.Heap#heapDec(Comparable[])
      */
     default void heapifyDec(T[] array, int n, int i) {
         int largest = heapSplitDec(array, n, i);
@@ -239,7 +233,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       n of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
-     * @see         mz.Heap#heapifyInc(Comparable[], int, int)
      */
     default int heapSplitInc(T[] array, int n, int i) {
         int left = ((2 * i) + 1);
@@ -275,7 +268,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       n of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
-     * @see         mz.Heap#heapifyDec(Comparable[], int, int)
      */
     default int heapSplitDec(T[] array, int n, int i) {
         int left = ((2 * i) + 1), right = ((2 * i) + 2);
@@ -290,7 +282,7 @@ extends Sort<T>, SortSwap<T> {
      * and if the {@code child} element is greater, it updates the {@code result} to the {@code child} index.
      * <ul>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The {@code if} condition checks if the {@code child} index is within the valid range (less than {@code n})
      *     and if the {@code child} element is greater than the element at the {@code result} index.
@@ -303,7 +295,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       result the current result value.
      * @param       child the index of the child element to compare.
      * @return      the updated {@code result} value
-     * @see         mz.Heap#heapSplitInc(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     default int heapChildInc(T[] array, int n, int result, int child) {
@@ -319,7 +310,7 @@ extends Sort<T>, SortSwap<T> {
      * and if the {@code child} element is smaller, it updates the {@code result} to the {@code child} index.
      * <ul>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The {@code if} condition checks if the {@code child} index is within the valid range (less than {@code n})
      *     and if the {@code child} element is smaller than the element at the {@code result} index.
@@ -332,7 +323,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       result the current result value.
      * @param       child the index of the child element to compare.
      * @return      the updated {@code result} value.
-     * @see         mz.Heap#heapSplitDec(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     default int heapChildDec(T[] array, int n, int result, int child) {

@@ -51,7 +51,6 @@ extends Quick {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Quick3#quick3Inc(Comparable[], int, int)
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -61,7 +60,6 @@ extends Quick {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Quick3#quick3Dec(Comparable[], int, int)
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
@@ -152,10 +150,10 @@ extends Quick {
      *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left and right indices specifying the portion of the array to be partitioned.</li>
      *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@code compareTo} method.</li>
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method first checks if the portion of the array to be partitioned has one or zero elements.
      *     If so, it performs a simple check to ensure that the elements are in the correct order,
-     *     swaps them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
+     *     {@link mz.SortSwap#swap(Comparable[], int, int) swaps} them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
      *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition using the pivot element.</li>
      *     <li>The {@code mid} variable is initialized with the value of {@code left}.
      *     This variable represents the current index being considered during the partitioning process.</li>
@@ -182,7 +180,6 @@ extends Quick {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
-     * @see         mz.Quick3#quick3Inc(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     void partition3Inc(Comparable[] array, int left, int right) {
@@ -217,10 +214,10 @@ extends Quick {
      *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left and right indices specifying the portion of the array to be partitioned.</li>
      *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@code compareTo} method.</li>
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method first checks if the portion of the array to be partitioned has one or zero elements.
      *     If so, it performs a simple check to ensure that the elements are in the correct order,
-     *     swaps them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
+     *     {@link mz.SortSwap#swap(Comparable[], int, int) swaps} them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
      *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition using the pivot element.</li>
      *     <li>The {@code mid} variable is initialized with the value of {@code left}.
      *     This variable represents the current index being considered during the partitioning process.</li>
@@ -247,7 +244,6 @@ extends Quick {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
-     * @see         mz.Quick3#quick3Dec(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     void partition3Dec(Comparable[] array, int left, int right) {

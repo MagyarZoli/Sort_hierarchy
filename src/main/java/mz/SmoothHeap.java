@@ -10,7 +10,7 @@ public class SmoothHeap
 extends Heap {
 
     /**
-     * Which is an array of {@code Comparable} objects with an initial size of 256,
+     * Which is an array of {@link java.lang.Comparable Comparable} objects with an initial size of 256,
      */
     private Comparable[] buffer = new Comparable[256];
 
@@ -49,7 +49,6 @@ extends Heap {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.SmoothHeap#smoothInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -59,7 +58,6 @@ extends Heap {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.SmoothHeap#smoothDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
@@ -68,7 +66,7 @@ extends Heap {
 
     /**
      * {@code smoothInc}. This method performs a Smooth Heap Sort on an array of {@code Comparable} objects in increasing order.
-     * It utilizes the {@code insertInc} and {@code deleteMinInc} methods to build a heap from the array elements and then extract
+     * It utilizes the {@link mz.SmoothHeap#insertInc(Comparable) insertInc} and {@link SmoothHeap#deleteMinInc() deleteMinInc} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, as a parameter.</li>
@@ -97,7 +95,7 @@ extends Heap {
 
     /**
      * {@code smoothDec}. This method performs a Smooth Heap Sort on an array of {@code Comparable} objects in increasing order.
-     * It utilizes the {@code insertDec} and {@code deleteMinDec} methods to build a heap from the array elements and then extract
+     * It utilizes the {@link mz.SmoothHeap#insertDec(Comparable) insertDec} and {@link SmoothHeap#deleteMinDec() deleteMinDec} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, as a parameter.</li>
@@ -130,12 +128,12 @@ extends Heap {
      * The method takes a Comparable object called insert as a parameter.
      * <ul>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The method starts by inserting the {@code insert} element at index {@code size} in the {@code buffer}
      *     array and then increments the {@code size} variable.
      *     This step adds the new element to the end of the heap structure.</li>
-     *     <li>The {@code resize} method is called to check if the size of the buffer exceeds half of its capacity.
+     *     <li>The {@link mz.SmoothHeap#resize(int) resize} method is called to check if the size of the buffer exceeds half of its capacity.
      *     If it does, the buffer is resized by doubling its capacity using the expression {@code (buffer.length * 2)}.</li>
      *     <li>The {@code if (size > 1)} condition checks if there is more than one element in the buffer.
      *     If so, the method enters a loop that continues as long as the current index {@code i} is not equal to 0 (the root of the heap).</li>
@@ -143,7 +141,7 @@ extends Heap {
      *     at index {@code i}, calculated using the expression {@code ((i - 1) / 2)}.</li>
      *     <li>The subsequent {@code if} condition {@code buffer[i].compareTo(buffer[j]) < 0} compares
      *     the current element at index {@code i} with its parent element at index {@code j}.
-     *     If the current element is smaller than its parent, it performs a swap between the elements at indices {@code i} and {@code j}.
+     *     If the current element is smaller than its parent, it performs a {@link mz.SortSwap#swap(Comparable[], int, int) swap} between the elements at indices {@code i} and {@code j}.
      *     After the swap, it updates {@code i} to {@code j}, allowing the loop to continue comparing and swapping elements with their parents.</li>
      *     <li>If the current element is not smaller than its parent, the {@code else} block is executed, and the loop is terminated using {@code break},
      *     as the heap property is already satisfied.</li>
@@ -153,7 +151,6 @@ extends Heap {
      * It achieves this by adding the element to the end of the heap, resizing the buffer if necessary, 
      * and iteratively comparing and swapping elements with their parents to restore the heap property.
      * @param       insert starts by inserting the element.
-     * @see         mz.SmoothHeap#smoothInc(Comparable[])
      */
     @SuppressWarnings("unchecked")
     void insertInc(Comparable insert) {
@@ -179,12 +176,12 @@ extends Heap {
      * The method takes a Comparable object called insert as a parameter.
      * <ul>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The method starts by inserting the {@code insert} element at index {@code size} in the {@code buffer}
      *     array and then increments the {@code size} variable.
      *     This step adds the new element to the end of the heap structure.</li>
-     *     <li>The {@code resize} method is called to check if the size of the buffer exceeds half of its capacity.
+     *     <li>The {@link mz.SmoothHeap#resize(int) resize} method is called to check if the size of the buffer exceeds half of its capacity.
      *     If it does, the buffer is resized by doubling its capacity using the expression {@code (buffer.length * 2)}.</li>
      *     <li>The {@code if (size > 1)} condition checks if there is more than one element in the buffer.
      *     If so, the method enters a loop that continues as long as the current index {@code i} is not equal to 0 (the root of the heap).</li>
@@ -192,7 +189,7 @@ extends Heap {
      *     at index {@code i}, calculated using the expression {@code ((i - 1) / 2)}.</li>
      *     <li>The subsequent {@code if} condition {@code buffer[i].compareTo(buffer[j]) > 0} compares
      *     the current element at index {@code i} with its parent element at index {@code j}.
-     *     If the current element is greater than its parent, it performs a swap between the elements at indices {@code i} and {@code j}.
+     *     If the current element is greater than its parent, it performs a {@link mz.SortSwap#swap(Comparable[], int, int) swap} between the elements at indices {@code i} and {@code j}.
      *     After the swap, it updates {@code i} to {@code j}, allowing the loop to continue comparing and swapping elements with their parents.</li>
      *     <li>If the current element is not greater than its parent, the {@code else} block is executed, and the loop is terminated using {@code break},
      *     as the heap property is already satisfied.</li>
@@ -202,7 +199,6 @@ extends Heap {
      * It achieves this by adding the element to the end of the heap, resizing the buffer if necessary, 
      * and iteratively comparing and swapping elements with their parents to restore the heap property.
      * @param       insert starts by inserting the element.
-     * @see         mz.SmoothHeap#smoothDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     void insertDec(Comparable insert) {
@@ -229,12 +225,12 @@ extends Heap {
      * The method returns the deleted minimum element, which is of type {@code Comparable}.
      * <ul>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The method starts by assigning the value of the element at index 0 in the {@code buffer} to the variable {@code result}.
      *     This represents the minimum element that will be deleted.</li>
      *     <li>The {@code size} variable is decremented by 1 to reflect the removal of an element from the heap.</li>
-     *     <li>The {@code swap} method is called to exchange the elements at indices 0 and {@code size} in the {@code buffer} array.
+     *     <li>The {@link mz.SortSwap#swap(Comparable[], int, int) swap} method is called to exchange the elements at indices 0 and {@code size} in the {@code buffer} array.
      *     This step effectively removes the minimum element from the heap by moving it to the last position in the buffer.</li>
      *     <li>The method then enters a loop that continues as long as the left child of the current element at index {@code i} {@code ((2 * i) + 1)}
      *     is within the valid range of the buffer (less than {@code size}).</li>
@@ -257,7 +253,6 @@ extends Heap {
      * It achieves this by swapping the minimum element with the last element, adjusting the size of the heap,
      * and iteratively comparing and swapping elements to restore the heap property.
      * @return      the deleted minimum element stored in the {@code result} variable
-     * @see         mz.SmoothHeap#smoothInc(Comparable[])
      */
     @SuppressWarnings("unchecked")
     Comparable deleteMinInc() {
@@ -287,12 +282,12 @@ extends Heap {
      * The method returns the deleted minimum element, which is of type {@code Comparable}.
      * <ul>
      *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@code compareTo} method.
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The method starts by assigning the value of the element at index 0 in the {@code buffer} to the variable {@code result}.
      *     This represents the minimum element that will be deleted.</li>
      *     <li>The {@code size} variable is decremented by 1 to reflect the removal of an element from the heap.</li>
-     *     <li>The {@code swap} method is called to exchange the elements at indices 0 and {@code size} in the {@code buffer} array.
+     *     <li>The {@link mz.SortSwap#swap(Comparable[], int, int) swap} method is called to exchange the elements at indices 0 and {@code size} in the {@code buffer} array.
      *     This step effectively removes the minimum element from the heap by moving it to the last position in the buffer.</li>
      *     <li>The method then enters a loop that continues as long as the left child of the current element at index {@code i} {@code ((2 * i) + 1)}
      *     is within the valid range of the buffer (less than {@code size}).</li>
@@ -315,7 +310,6 @@ extends Heap {
      * It achieves this by swapping the minimum element with the last element, adjusting the size of the heap,
      * and iteratively comparing and swapping elements to restore the heap property.
      * @return      the deleted minimum element stored in the {@code result} variable
-     * @see         mz.SmoothHeap#smoothDec(Comparable[])
      */
     @SuppressWarnings("unchecked")
     Comparable deleteMinDec() {
@@ -357,8 +351,6 @@ extends Heap {
      * {@code resize} method ensures that the buffer is resized when the number of elements stored in it reaches half of its capacity.
      * It creates a new buffer with the desired capacity and copies the existing elements from the old buffer to the new buffer.
      * @param       capacity the new capacity of the buffer
-     * @see         mz.SmoothHeap#insertInc(Comparable)
-     * @see         mz.SmoothHeap#insertDec(Comparable)
      */
     void resize(int capacity) {
         if (size == (capacity / 2)) {

@@ -5,8 +5,6 @@ package mz;
  * @param       <T> setting of a type based on which the elements can be sorted.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.Quick
- * @see         mz.Quick3
  */
 public interface QuickInterface<T extends Comparable>
 extends Sort<T>, SortSwap<T> {
@@ -57,8 +55,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
-     * @see         mz.QuickInterface#quickInc(Comparable[])
-     * @see         mz.Quick3#quick3Inc(Comparable[], int, int)
      */
     default void quickInc(T[] array, int left, int right) {
         if (left < right) {
@@ -92,8 +88,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
-     * @see         mz.QuickInterface#quickInc(Comparable[])
-     * @see         mz.Quick3#quick3Dec(Comparable[], int, int)
      */
     default void quickDec(T[] array, int left, int right) {
         if (left < right) {
@@ -114,11 +108,11 @@ extends Sort<T>, SortSwap<T> {
      *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the elements smaller
      *     than the pivot and those greater than or equal to the pivot.</li>
      *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the subarray.</li>
-     *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@code compareTo} method of {@code Comparable}.
+     *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@link java.lang.Comparable#compareTo(Object) compareTo} method of {@code Comparable}.
      *     If the element is smaller than the pivot, the following steps are executed:</li>
      *     <ul>
      *         <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
-     *         <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
+     *         <li>The swap method is called to {@link mz.SortSwap#swap(Comparable[], int, int) swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
      *     </ul>
      *     <li>After the loop, the pivot element is moved to its correct position by swapping it with {@code array[i + 1]}.
      *     This ensures that all elements to the left of {@code array[i + 1]} are smaller than or equal to the pivot,
@@ -128,7 +122,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
      * @return      index of the pivot element.
-     * @see         mz.QuickInterface#quickInc(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     default int partitionInc(T[] array, int left, int right) {
@@ -154,11 +147,11 @@ extends Sort<T>, SortSwap<T> {
      *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the elements smaller
      *     than the pivot and those greater than or equal to the pivot.</li>
      *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the subarray.</li>
-     *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@code compareTo} method of {@code Comparable}.
+     *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@link java.lang.Comparable#compareTo(Object) compareTo} method of {@code Comparable}.
      *     If the element is greater than the pivot, the following steps are executed:</li>
      *     <ul>
      *         <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
-     *         <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
+     *         <li>The swap method is called to {@link mz.SortSwap#swap(Comparable[], int, int) swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
      *     </ul>
      *     <li>After the loop, the pivot element is moved to its correct position by swapping it with {@code array[i + 1]}.
      *     This ensures that all elements to the left of {@code array[i + 1]} are smaller than or equal to the pivot,
@@ -168,7 +161,6 @@ extends Sort<T>, SortSwap<T> {
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
      * @return      the index of the pivot element.
-     * @see         mz.QuickInterface#quickDec(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
     default int partitionDec(T[] array, int left, int right) {

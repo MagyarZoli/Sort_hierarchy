@@ -48,7 +48,6 @@ extends Insertion {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Shell#shellInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -58,7 +57,6 @@ extends Insertion {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Shell#shellDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
@@ -77,7 +75,7 @@ extends Insertion {
      *         <li>In each iteration of the loop, the value of {@code k} is divided by 2: {@code k /= 2}.</li>
      *         <li>The loop continues as long as {@code k} is greater than 0.</li>
      *     </ul>
-     *     <li>Inside the loop, the {@code insertionInc} method is called with the current value
+     *     <li>Inside the loop, the {@link mz.InsertionInterface#insertionInc(Comparable[], int, int) insertionInc} method is called with the current value
      *     of {@code k} to perform an insertion sort on the array.</li>
      *     <ul>
      *         <li>The {@code insertionInc} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code k} value.</li>
@@ -107,7 +105,7 @@ extends Insertion {
      *         <li>In each iteration of the loop, the value of {@code k} is divided by 2: {@code k /= 2}.</li>
      *         <li>The loop continues as long as {@code k} is greater than 0.</li>
      *     </ul>
-     *     <li>Inside the loop, the {@code insertionDec} method is called with the current value
+     *     <li>Inside the loop, the {@link mz.InsertionInterface#insertionDec(Comparable[], int, int) insertionDec} method is called with the current value
      *     of {@code k} to perform an insertion sort on the array.</li>
      *     <ul>
      *         <li>The {@code insertionDec} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code k} value.</li>

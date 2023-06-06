@@ -6,7 +6,6 @@ package mz;
  * the unsorted portion and "inserts" each element into its correct position in the sorted portion.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.Shell
  */
 public class Insertion
 extends SortComparable
@@ -45,7 +44,6 @@ implements InsertionInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.InsertionInterface#insertionInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -55,7 +53,6 @@ implements InsertionInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.InsertionInterface#insertionDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {

@@ -5,7 +5,6 @@ package mz;
  * @param       <T> setting of a type based on which the elements can be sorted.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         Selection
  */
 public interface SelectionInterface<T extends Comparable>
 extends Sort<T>, SortSwap<T>, SortFind<T> {
@@ -23,7 +22,7 @@ extends Sort<T>, SortSwap<T>, SortFind<T> {
      *     <li>Inside the inner loop, the {@code minIndex} method is called to find the index of the minimum element between
      *     the current index {@code j} and the current minimum {@code index} index.</li>
      *     <li>After the inner loop completes, the minimum element in the unsorted portion of the array is found, and its index is stored in {@code index}.</li>
-     *     <li>The {@code swap} method is called to swap the elements at indices {@code index} and {@code i}.
+     *     <li>The {@link mz.SortSwap#swap(Comparable[], int, int) swap} method is called to swap the elements at indices {@code index} and {@code i}.
      *     This places the minimum element in its correct sorted position.</li>
      *     <li>The process repeats until the entire array is sorted.</li>
      * </ul>
@@ -32,7 +31,6 @@ extends Sort<T>, SortSwap<T>, SortFind<T> {
      * and swaps it with the element at the current position in the sorted portion.
      * This process is repeated until the array is fully sorted.
      * @param       array to be arranged.
-     * @see         Selection#sortArrayInc(Comparable[])
      */
     default void selectionInc(T[] array) {
         int n = array.length;
@@ -58,7 +56,7 @@ extends Sort<T>, SortSwap<T>, SortFind<T> {
      *     <li>Inside the inner loop, the {@code maxIndex} method is called to find the index of the maximum element between
      *     the current index {@code j} and the current maximum {@code index} index.</li>
      *     <li>After the inner loop completes, the maximum element in the unsorted portion of the array is found, and its index is stored in {@code index}.</li>
-     *     <li>The {@code swap} method is called to swap the elements at indices {@code index} and {@code i}.
+     *     <li>The {@link mz.SortSwap#swap(Comparable[], int, int) swap} method is called to swap the elements at indices {@code index} and {@code i}.
      *     This places the maximum element in its correct sorted position.</li>
      *     <li>The process repeats until the entire array is sorted.</li>
      * </ul>
@@ -67,7 +65,6 @@ extends Sort<T>, SortSwap<T>, SortFind<T> {
      * and swaps it with the element at the current position in the sorted portion.
      * This process is repeated until the array is fully sorted.
      * @param       array to be arranged.
-     * @see         Selection#sortArrayDec(Comparable[])
      */
     default void selectionDec(T[] array) {
         int n = array.length;
@@ -93,7 +90,7 @@ extends Sort<T>, SortSwap<T>, SortFind<T> {
      *     <li>Inside the inner loop, the {@code minIndex} method is called to find the index of the minimum element between
      *     the current index {@code j} and the current minimum {@code index} index.</li>
      *     <li>After the inner loop completes, the minimum element in the unsorted portion of the array is found, and its index is stored in {@code index}.</li>
-     *     <li>The {@code swap} method is called to swap the elements at indices {@code index} and {@code i}.
+     *     <li>The {@link mz.SortSwap#swap(Comparable[], int, int) swap} method is called to swap the elements at indices {@code index} and {@code i}.
      *     This places the minimum element in its correct sorted position.</li>
      *     <li>The process repeats until the entire array is sorted.</li>
      * </ul>
@@ -128,7 +125,7 @@ extends Sort<T>, SortSwap<T>, SortFind<T> {
      *     <li>Inside the inner loop, the {@code maxIndex} method is called to find the index of the maximum element between
      *     the current index {@code j} and the current maximum {@code index} index.</li>
      *     <li>After the inner loop completes, the maximum element in the unsorted portion of the array is found, and its index is stored in {@code index}.</li>
-     *     <li>The {@code swap} method is called to swap the elements at indices {@code index} and {@code i}.
+     *     <li>The {@link mz.SortSwap#swap(Comparable[], int, int) swap} method is called to swap the elements at indices {@code index} and {@code i}.
      *     This places the maximum element in its correct sorted position.</li>
      *     <li>The process repeats until the entire array is sorted.</li>
      * </ul>

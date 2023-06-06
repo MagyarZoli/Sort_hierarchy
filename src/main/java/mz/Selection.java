@@ -7,7 +7,6 @@ package mz;
  * thereby expanding the sorted portion. This process continues until the entire array becomes sorted.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.DoubleSelection
  */
 public class Selection
 extends SortComparable
@@ -45,7 +44,6 @@ implements SelectionInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Selection#sortArrayInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -55,7 +53,6 @@ implements SelectionInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Selection#sortArrayDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {

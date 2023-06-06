@@ -52,7 +52,6 @@ extends SortLong {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Counting#countingInc(Long[]) 
      */
     @Override
     public void sortArrayInc(Long[] array) {
@@ -62,7 +61,6 @@ extends SortLong {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Counting#countingDec(Long[])                    
      */
     @Override
     public void sortArrayDec(Long[] array) {
@@ -185,8 +183,6 @@ extends SortLong {
      * @param       n an integer representing the length of the array that needs to be processed.
      * @param       array an array of Long values that will be used for counting.
      * @param       min a long value that will be subtracted from each element in the array.
-     * @see         mz.Counting#countingInc(Long[])
-     * @see         mz.Counting#countingDec(Long[])
      */
     void countingUpload(int[] count, int n, Long[] array, long min) {
         for (int i = 0; i < n; i++) {
@@ -207,8 +203,6 @@ extends SortLong {
      * resulting in a cumulative count. The loop iterates from 1 to {@code k} and updates the array accordingly.
      * @param       count an array of integers that will store the count of occurrences.
      * @param       k a Long value representing the maximum value to iterate up to.
-     * @see         mz.Counting#countingInc(Long[])
-     * @see         mz.Counting#countingDec(Long[])
      */
     void countingCycles(int[] count, Long k) {
         for (int i = 1; i <= k; i++) {

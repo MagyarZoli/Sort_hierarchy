@@ -45,7 +45,6 @@ extends Selection {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         DoubleSelection#doubleSelectionInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -55,7 +54,6 @@ extends Selection {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         DoubleSelection#doubleSelectionDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
@@ -86,16 +84,15 @@ extends Selection {
             int minIndex = left;
             int maxIndex = right;
             for (int j = left; j <= right; j++) {
-                minIndex = minIndex(array, j, minIndex);
-                maxIndex = maxIndex(array, j, maxIndex);
+                minIndex = findMinimumIndex(array, j, minIndex);
+                maxIndex = findMaximumIndex(array, j, maxIndex);
             }
             swap(array, minIndex, left);
             if (maxIndex == left) {
                 maxIndex = minIndex;
             }
-            swap(array, maxIndex, right);
+            swap(array, maxIndex, right--);
             left++;
-            right--;
         }
     }
 
@@ -123,16 +120,15 @@ extends Selection {
             int minIndex = left;
             int maxIndex = right;
             for (int j = left; j <= right; j++) {
-                minIndex = minIndex(array, j, minIndex);
-                maxIndex = maxIndex(array, j, maxIndex);
+                minIndex = findMinimumIndex(array, j, minIndex);
+                maxIndex = findMaximumIndex(array, j, maxIndex);
             }
             swap(array, maxIndex, left);
             if (minIndex == left) {
                 minIndex = maxIndex;
             }
-            swap(array, minIndex, right);
+            swap(array, minIndex, right--);
             left++;
-            right--;
         }
     }
 }

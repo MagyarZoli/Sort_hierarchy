@@ -80,10 +80,9 @@ extends Heap {
      * @param       length of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
-     * @see         Heap#heapifyInc(Comparable[], int, int)
      */
     @Override
-    int heapSplitInc(Comparable[] array, int length, int i) {
+    public int heapSplitInc(Comparable[] array, int length, int i) {
         int left = ((3 * i) + 1);
         int mid = ((3 * i) + 2);
         int right = ((3 * i) + 3);
@@ -122,10 +121,9 @@ extends Heap {
      * @param       length of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
-     * @see         Heap#heapifyInc(Comparable[], int, int)
      */
     @Override
-    int heapSplitDec(Comparable[] array, int length, int i) {
+    public int heapSplitDec(Comparable[] array, int length, int i) {
         int left = ((3 * i) + 1);
         int mid = ((3 * i) + 2);
         int right = ((3 * i) + 3);

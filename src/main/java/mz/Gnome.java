@@ -49,7 +49,6 @@ implements SortSwap<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Gnome#gnomeInc(Comparable[])
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -59,7 +58,6 @@ implements SortSwap<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.Gnome#gnomeDec(Comparable[])
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
@@ -76,7 +74,7 @@ implements SortSwap<Comparable> {
      *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
      *         move to the next position by incrementing {@code pos}.</li>
      *         <li>If the current element is out of order with the previous element,
-     *         swap them and move one position back by decrementing {@code pos}.</li>
+     *         {@link mz.SortSwap#swap(Comparable[], int, int) swap} them and move one position back by decrementing {@code pos}.</li>
      *     </ul>
      *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
      * </ul>
@@ -108,7 +106,7 @@ implements SortSwap<Comparable> {
      *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
      *         move to the next position by incrementing {@code pos}.</li>
      *         <li>If the current element is out of order with the previous element,
-     *         swap them and move one position back by decrementing {@code pos}.</li>
+     *         {@link mz.SortSwap#swap(Comparable[], int, int) swap} them and move one position back by decrementing {@code pos}.</li>
      *     </ul>
      *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
      * </ul>

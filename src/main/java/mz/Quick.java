@@ -7,7 +7,6 @@ package mz;
  * and the sorted sub-arrays are combined to produce the final sorted array.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- * @see         mz.Quick3
  */
 public class Quick
 extends SortComparable
@@ -50,7 +49,6 @@ implements QuickInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.QuickInterface#quickInc(Comparable[], int, int)
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
@@ -60,7 +58,6 @@ implements QuickInterface<Comparable> {
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
-     * @see         mz.QuickInterface#quickDec(Comparable[], int, int)
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
