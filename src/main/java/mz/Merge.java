@@ -46,6 +46,7 @@ implements MergeInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.Wiki#Wiki() Wiki
      */
     public Merge() {}
 
@@ -55,7 +56,7 @@ implements MergeInterface<Comparable> {
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
-        mergeInc(array, 0, (array.length / 2), (array.length - 1));
+        mergeInc(array);
     }
 
     /**
@@ -64,6 +65,6 @@ implements MergeInterface<Comparable> {
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
-        mergeDec(array, 0, (array.length / 2), (array.length - 1));
+        mergeDec(array);
     }
 }

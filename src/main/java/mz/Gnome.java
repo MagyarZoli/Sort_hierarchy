@@ -8,8 +8,7 @@ package mz;
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 public class Gnome
-extends SortComparable
-implements SortSwap<Comparable> {
+extends Bubble {
 
     /**
      * <b>Gnome Sort:</b><br>
@@ -67,6 +66,8 @@ implements SortSwap<Comparable> {
     /**
      * {@code gnomeInc} that implements the Gnome Sort algorithm to sort an array of Comparable objects in ascending order.
      * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
      *     <li>While {@code pos} is less than the length of the array:</li>
@@ -74,16 +75,17 @@ implements SortSwap<Comparable> {
      *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
      *         move to the next position by incrementing {@code pos}.</li>
      *         <li>If the current element is out of order with the previous element,
-     *         {@link mz.SortSwap#swap(Comparable[], int, int) swap} them and move one position back by decrementing {@code pos}.</li>
+     *         swap them and move one position back by decrementing {@code pos}.</li>
      *     </ul>
      *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
      * </ul>
      * {@code gnomeInc} method implements the Gnome Sort algorithm to sort the given
      * {@code array} of Comparable objects in ascending order.
      * @param       array to be arranged.
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
-    void gnomeInc(Comparable[] array) {
+    protected void gnomeInc(Comparable[] array) {
         int n = array.length;
         int pos = 0;
         while (pos < n) {
@@ -99,6 +101,8 @@ implements SortSwap<Comparable> {
     /**
      * {@code gnomeDec} that implements the Gnome Sort algorithm to sort an array of Comparable objects in descending order.
      * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
      *     <li>While {@code pos} is less than the length of the array:</li>
@@ -106,18 +110,93 @@ implements SortSwap<Comparable> {
      *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
      *         move to the next position by incrementing {@code pos}.</li>
      *         <li>If the current element is out of order with the previous element,
-     *         {@link mz.SortSwap#swap(Comparable[], int, int) swap} them and move one position back by decrementing {@code pos}.</li>
+     *         swap them and move one position back by decrementing {@code pos}.</li>
      *     </ul>
      *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
      * </ul>
      * {@code gnomeDec} method implements the Gnome Sort algorithm to sort the given
      * {@code array} of Comparable objects in descending order.
      * @param       array to be arranged.
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
-    void gnomeDec(Comparable[] array) {
+    protected void gnomeDec(Comparable[] array) {
         int n = array.length;
         int pos = 0;
+        while (pos < n) {
+            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) <= 0) {
+                pos++;
+            } else {
+                swap(array, pos, (pos - 1));
+                pos--;
+            }
+        }
+    }
+
+    /**
+     * {@code gnomeInc} that implements the Gnome Sort algorithm to sort an array of Comparable objects in ascending order.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>Start with an unsorted array of elements.</li>
+     *     <li>Set the current position {@code (pos)} to 0.</li>
+     *     <li>While {@code pos} is less than the length of the array:</li>
+     *     <ul>
+     *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
+     *         move to the next position by incrementing {@code pos}.</li>
+     *         <li>If the current element is out of order with the previous element,
+     *         swap them and move one position back by decrementing {@code pos}.</li>
+     *     </ul>
+     *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
+     * </ul>
+     * {@code gnomeInc} method implements the Gnome Sort algorithm to sort the given
+     * {@code array} of Comparable objects in ascending order.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    @SuppressWarnings("unchecked")
+    protected void gnomeInc(Comparable[] array, int left, int right) {
+        int n = right;
+        int pos = left;
+        while (pos < n) {
+            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) >= 0) {
+                pos++;
+            } else {
+                swap(array, pos, (pos - 1));
+                pos--;
+            }
+        }
+    }
+
+    /**
+     * {@code gnomeDec} that implements the Gnome Sort algorithm to sort an array of Comparable objects in descending order.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>Start with an unsorted array of elements.</li>
+     *     <li>Set the current position {@code (pos)} to 0.</li>
+     *     <li>While {@code pos} is less than the length of the array:</li>
+     *     <ul>
+     *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
+     *         move to the next position by incrementing {@code pos}.</li>
+     *         <li>If the current element is out of order with the previous element,
+     *         swap them and move one position back by decrementing {@code pos}.</li>
+     *     </ul>
+     *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
+     * </ul>
+     * {@code gnomeDec} method implements the Gnome Sort algorithm to sort the given
+     * {@code array} of Comparable objects in descending order.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    @SuppressWarnings("unchecked")
+    protected void gnomeDec(Comparable[] array, int left, int right) {
+        int n = right;
+        int pos = left;
         while (pos < n) {
             if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) <= 0) {
                 pos++;

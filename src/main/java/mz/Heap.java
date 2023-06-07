@@ -48,9 +48,9 @@ implements HeapInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.WeakHeap#WeakHeap()
-     * @see         mz.TernaryHeap#TernaryHeap()
-     * @see         mz.SmoothHeap#SmoothHeap()
+     * @see         mz.WeakHeap#WeakHeap() WeakHeap
+     * @see         mz.TernaryHeap#TernaryHeap() TernaryHeap
+     * @see         mz.SmoothHeap#SmoothHeap() SmoothHeap
      */
     public Heap() {}
 

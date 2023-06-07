@@ -75,8 +75,11 @@ extends Selection {
      * {@code doubleSelectionInc} method implements the Double Selection Sort algorithm to sort the given
      * {@code array} of Comparable objects in ascending order.
      * @param       array to be arranged.
+     * @see         mz.SortFind#findMinimumIndex(Comparable[], int, int)
+     * @see         mz.SortFind#findMaximumIndex(Comparable[], int, int)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
-    void doubleSelectionInc(Comparable[] array) {
+    protected void doubleSelectionInc(Comparable[] array) {
         int n = array.length;
         int left = 0;
         int right = (n - 1);
@@ -111,11 +114,90 @@ extends Selection {
      * {@code doubleSelectionDec} method implements the Double Selection Sort algorithm to sort the given
      * {@code array} of Comparable objects in descending order.
      * @param       array to be arranged.
+     * @see         mz.SortFind#findMinimumIndex(Comparable[], int, int)
+     * @see         mz.SortFind#findMaximumIndex(Comparable[], int, int)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
-    void doubleSelectionDec(Comparable[] array) {
+    protected void doubleSelectionDec(Comparable[] array) {
         int n = array.length;
         int left = 0;
         int right = (n - 1);
+        while (left < right) {
+            int minIndex = left;
+            int maxIndex = right;
+            for (int j = left; j <= right; j++) {
+                minIndex = findMinimumIndex(array, j, minIndex);
+                maxIndex = findMaximumIndex(array, j, maxIndex);
+            }
+            swap(array, maxIndex, left);
+            if (minIndex == left) {
+                minIndex = maxIndex;
+            }
+            swap(array, minIndex, right--);
+            left++;
+        }
+    }
+
+    /**
+     * {@code doubleSelectionInc} that implements the Double Selection Sort algorithm to sort an array
+     * of Comparable objects in ascending order.
+     * <ul>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
+     *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
+     *     <li>The {@code while} loop can now be performed from {@code maxIndex} to {@code minIndex}.</li>
+     *     <li>One important thing to take into account is that the inner loop should not go to the next item if
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
+     *     (that is, it should not increase the loop index variable).</li>
+     *     <li>At the end of the outer loop, assign {@code maxIndex} to {@code minIndex}.</li>
+     * </ul>
+     * {@code doubleSelectionInc} method implements the Double Selection Sort algorithm to sort the given
+     * {@code array} of Comparable objects in ascending order.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortFind#findMinimumIndex(Comparable[], int, int)
+     * @see         mz.SortFind#findMaximumIndex(Comparable[], int, int)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    protected void doubleSelectionInc(Comparable[] array, int left, int right) {
+        while (left < right) {
+            int minIndex = left;
+            int maxIndex = right;
+            for (int j = left; j <= right; j++) {
+                minIndex = findMinimumIndex(array, j, minIndex);
+                maxIndex = findMaximumIndex(array, j, maxIndex);
+            }
+            swap(array, minIndex, left);
+            if (maxIndex == left) {
+                maxIndex = minIndex;
+            }
+            swap(array, maxIndex, right--);
+            left++;
+        }
+    }
+
+    /**
+     * {@code doubleSelectionDec} that implements the Double Selection Sort algorithm to sort an array
+     * of Comparable objects in descending order.
+     * <ul>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
+     *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
+     *     <li>The {@code while} loop can now be performed from {@code minIndex} to {@code maxIndex}.</li>
+     *     <li>One important thing to take into account is that the inner loop should not go to the next item if
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
+     *     (that is, it should not increase the loop index variable).</li>
+     *     <li>At the end of the outer loop, assign {@code minIndex} to {@code maxIndex}.</li>
+     * </ul>
+     * {@code doubleSelectionDec} method implements the Double Selection Sort algorithm to sort the given
+     * {@code array} of Comparable objects in descending order.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortFind#findMinimumIndex(Comparable[], int, int)
+     * @see         mz.SortFind#findMaximumIndex(Comparable[], int, int)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    protected void doubleSelectionDec(Comparable[] array, int left, int right) {
         while (left < right) {
             int minIndex = left;
             int maxIndex = right;

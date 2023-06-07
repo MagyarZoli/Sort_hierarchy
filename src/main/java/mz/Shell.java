@@ -68,28 +68,29 @@ extends Insertion {
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
-     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code k},
+     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
      *     which represents the gap between elements to be compared and swapped.</li>
      *     <ul>
-     *         <li>The initial value of {@code k} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
-     *         <li>In each iteration of the loop, the value of {@code k} is divided by 2: {@code k /= 2}.</li>
-     *         <li>The loop continues as long as {@code k} is greater than 0.</li>
+     *         <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
+     *         <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *         <li>The loop continues as long as {@code i} is greater than 0.</li>
      *     </ul>
-     *     <li>Inside the loop, the {@link mz.InsertionInterface#insertionInc(Comparable[], int, int) insertionInc} method is called with the current value
-     *     of {@code k} to perform an insertion sort on the array.</li>
+     *     <li>Inside the loop, the {@code insertionInc} method is called with the current value
+     *     of {@code i} to perform an insertion sort on the array.</li>
      *     <ul>
-     *         <li>The {@code insertionInc} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code k} value.</li>
-     *         <li>The insertion sort is performed on elements that are {@code k} positions apart.</li>
+     *         <li>The {@code insertionInc} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *         <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
      *     </ul>
-     *     <li>The process continues with decreasing values of {@code k} until {@code k} becomes 0, at which point the array is sorted.</li>
+     *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the array is sorted.</li>
      * </ul>
      * {@code shellInc} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.
-     * It performs insertion sort on different portions of the array with decreasing gaps {@code k} until the entire array is sorted.
+     * It performs insertion sort on different portions of the array with decreasing gaps {@code i} until the entire array is sorted.
      * @param       array to be arranged.
+     * @see         mz.InsertionInterface#insertionInc(Comparable[], int, int)
      */
-    void shellInc(Comparable[] array) {
-        for (int k = (array.length / 2); k > 0; k /= 2) {
-            insertionInc(array, k, array.length);
+    protected void shellInc(Comparable[] array) {
+        for (int i = (array.length / 2) ; i > 0; i /= 2) {
+            insertionInc(array, (i - 1), (array.length - 1));
         }
     }
 
@@ -98,28 +99,95 @@ extends Insertion {
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
-     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code k},
+     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
      *     which represents the gap between elements to be compared and swapped.</li>
      *     <ul>
-     *         <li>The initial value of {@code k} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
-     *         <li>In each iteration of the loop, the value of {@code k} is divided by 2: {@code k /= 2}.</li>
-     *         <li>The loop continues as long as {@code k} is greater than 0.</li>
+     *         <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
+     *         <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *         <li>The loop continues as long as {@code i} is greater than 0.</li>
      *     </ul>
-     *     <li>Inside the loop, the {@link mz.InsertionInterface#insertionDec(Comparable[], int, int) insertionDec} method is called with the current value
-     *     of {@code k} to perform an insertion sort on the array.</li>
+     *     <li>Inside the loop, the {@code insertionDec} method is called with the current value
+     *     of {@code i} to perform an insertion sort on the array.</li>
      *     <ul>
-     *         <li>The {@code insertionDec} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code k} value.</li>
-     *         <li>The insertion sort is performed on elements that are {@code k} positions apart.</li>
+     *         <li>The {@code insertionDec} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *         <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
      *     </ul>
-     *     <li>The process continues with decreasing values of {@code k} until {@code k} becomes 0, at which point the array is sorted.</li>
+     *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the array is sorted.</li>
      * </ul>
      * {@code shellDec} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.
-     * It performs insertion sort on different portions of the array with decreasing gaps {@code k} until the entire array is sorted.
+     * It performs insertion sort on different portions of the array with decreasing gaps {@code i} until the entire array is sorted.
      * @param       array to be arranged.
+     * @see         mz.InsertionInterface#insertionDec(Comparable[], int, int)
      */
-    void shellDec(Comparable[] array) {
-        for (int k = (array.length / 2); k > 0; k /= 2) {
-            insertionDec(array, k, array.length);
+    protected void shellDec(Comparable[] array) {
+        for (int i = (array.length / 2); i > 0; i /= 2) {
+            insertionDec(array, (i - 1), (array.length - 1));
+        }
+    }
+
+    /**
+     * {@code shellInc} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * The sorting is done in ascending order.
+     * <ul>
+     *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
+     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
+     *     which represents the gap between elements to be compared and swapped.</li>
+     *     <ul>
+     *         <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
+     *         <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *         <li>The loop continues as long as {@code i} is greater than 0.</li>
+     *     </ul>
+     *     <li>Inside the loop, the {@code insertionInc} method is called with the current value
+     *     of {@code i} to perform an insertion sort on the array.</li>
+     *     <ul>
+     *         <li>The {@code insertionInc} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *         <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
+     *     </ul>
+     *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the array is sorted.</li>
+     * </ul>
+     * {@code shellInc} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the array with decreasing gaps {@code i} until the entire array is sorted.
+     * @param       array to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @see         mz.InsertionInterface#insertionInc(Comparable[], int, int)
+     */
+    protected void shellInc(Comparable[] array, int left, int right) {
+        for (int i = (right / 2); i > left; i /= 2) {
+            insertionInc(array, left, right);
+        }
+    }
+
+    /**
+     * {@code shellDec} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * The sorting is done in descending order.
+     * <ul>
+     *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
+     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
+     *     which represents the gap between elements to be compared and swapped.</li>
+     *     <ul>
+     *         <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
+     *         <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *         <li>The loop continues as long as {@code i} is greater than 0.</li>
+     *     </ul>
+     *     <li>Inside the loop, the {@code insertionDec} method is called with the current value
+     *     of {@code i} to perform an insertion sort on the array.</li>
+     *     <ul>
+     *         <li>The {@code insertionDec} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *         <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
+     *     </ul>
+     *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the array is sorted.</li>
+     * </ul>
+     * {@code shellDec} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the array with decreasing gaps {@code i} until the entire array is sorted.
+     * @param       array to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @see         mz.InsertionInterface#insertionDec(Comparable[], int, int)
+     */
+    protected void shellDec(Comparable[] array, int left, int right) {
+        for (int i = (right / 2); i > left; i /= 2) {
+            insertionDec(array, i, right);
         }
     }
 }

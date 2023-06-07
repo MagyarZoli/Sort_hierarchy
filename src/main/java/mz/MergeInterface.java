@@ -17,6 +17,68 @@ extends Sort<T> {
      * and then merges them together using the {@code mergingInc} method.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array},
+     *     and the indices {@code left} is <i>0</i>, {@code mid} is {@code (array.length / 2)}, and {@code right}
+     *     is {@code (array.length - 1)} that define the portion of the array to be sorted.</li>
+     *     <li>The condition {@code if (left < right)} checks if the portion of the array has more than one element.
+     *     If so, it proceeds with the merge sort algorithm.</li>
+     *     <li>Inside the condition, the method recursively calls itself to sort the left and right halves of the portion.</li>
+     *     <ul>
+     *         <li>The first recursive call {@code mergeInc(array, left, ((left + mid) / 2), mid)} divides the left half of
+     *         the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
+     *         <li>The second recursive call {@code mergeInc(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
+     *         the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
+     *     </ul>
+     *     <li>After the recursive calls, the {@code mergingInc} method is called to merge the two sorted halves together.
+     *     The {@code mergingInc} method takes the {@code array}, {@code left}, {@code mid}, and {@code right} indices as arguments.</li>
+     *     <li>The overall effect of the {@code mergeInc} method is to recursively divide the array into smaller subarrays until they consist of individual elements.
+     *     Then, it merges and sorts these individual elements to gradually build the sorted array.</li>
+     * </ul>
+     * {@code mergeInc} this implementation follows the divide-and-conquer strategy of merge sort, where the array is recursively divided into smaller subarrays,
+     * sorted individually, and then merged back together.
+     * @param       array to be arranged.
+     * @see         mz.MergeInterface#mergeInc(Comparable[], int, int, int)
+     */
+    default void mergeInc(T[] array) {
+        mergeInc(array, 0, (array.length / 2), (array.length - 1));
+    }
+
+    /**
+     * {@code mergeDec} that performs a Merge Sort on an array of {@code Comparable} objects in decreasing order.
+     * The method recursively divides the array into smaller subarrays, sorts them individually,
+     * and then merges them together using the {@code mergingDec} method.
+     * <ul>
+     *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array},
+     *     and the indices {@code left} is <i>0</i>, {@code mid} is {@code (array.length / 2)}, and {@code right}
+     *     is {@code (array.length - 1)} that define the portion of the array to be sorted.</li>
+     *     <li>The condition {@code if (left < right)} checks if the portion of the array has more than one element.
+     *     If so, it proceeds with the merge sort algorithm.</li>
+     *     <li>Inside the condition, the method recursively calls itself to sort the left and right halves of the portion.</li>
+     *     <ul>
+     *         <li>The first recursive call {@code mergeDec(array, left, ((left + mid) / 2), mid)} divides the left half of
+     *         the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
+     *         <li>The second recursive call {@code mergeDec(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
+     *         the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
+     *     </ul>
+     *     <li>After the recursive calls, the {@code mergingDec} method is called to merge the two sorted halves together.
+     *     The {@code mergingDec} method takes the {@code array}, {@code left}, {@code mid}, and {@code right} indices as arguments.</li>
+     *     <li>The overall effect of the {@code mergeDec} method is to recursively divide the array into greater subarrays until they consist of individual elements.
+     *     Then, it merges and sorts these individual elements to gradually build the sorted array.</li>
+     * </ul>
+     * {@code mergeDec} this implementation follows the divide-and-conquer strategy of merge sort, where the array is recursively divided into smaller subarrays,
+     * sorted individually, and then merged back together.
+     * @param       array to be arranged.
+     * @see         mz.MergeInterface#mergeDec(Comparable[], int, int, int)
+     */
+    default void mergeDec(T[] array) {
+        mergeDec(array, 0, (array.length / 2), (array.length - 1));
+    }
+
+    /**
+     * {@code mergeInc} that performs a Merge Sort on an array of {@code Comparable} objects in increasing order.
+     * The method recursively divides the array into smaller subarrays, sorts them individually,
+     * and then merges them together using the {@code mergingInc} method.
+     * <ul>
+     *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array},
      *     and the indices {@code left}, {@code mid}, and {@code right} that define the portion of the array to be sorted.</li>
      *     <li>The condition {@code if (left < right)} checks if the portion of the array has more than one element.
      *     If so, it proceeds with the merge sort algorithm.</li>
@@ -38,6 +100,7 @@ extends Sort<T> {
      * @param       left from the array, index value, must be smaller than the {@code mid} and {@code right} value.
      * @param       mid from the array, index value, must be smaller than the {@code right} value, and must be greater than the {@code left}.
      * @param       right from the array, index value, must be greater than the {@code left} and {@code mid} value.
+     * @see         mz.MergeInterface#mergingInc(Comparable[], int, int, int)
      */
     default void mergeInc(T[] array, int left, int mid, int right) {
         if (left < right) {
@@ -74,6 +137,7 @@ extends Sort<T> {
      * @param       left from the array, index value, must be smaller than the {@code mid} and {@code right} value.
      * @param       mid from the array, index value, must be smaller than the {@code right} value, and must be greater than the {@code left}.
      * @param       right from the array, index value, must be greater than the {@code left} and {@code mid} value.
+     * @see         mz.MergeInterface#mergingDec(Comparable[], int, int, int)
      */
     default void mergeDec(T[] array, int left, int mid, int right) {
         if (left < right) {
@@ -106,6 +170,7 @@ extends Sort<T> {
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @see         mz.MergeInterface#mergingInc(Comparable[], int, int, int)
      */
     default void mergeInc(T[] array, int left, int right) {
         while (left < right) {
@@ -140,6 +205,7 @@ extends Sort<T> {
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @see         mz.MergeInterface#mergingDec(Comparable[], int, int, int)
      */
     default void mergeDec(T[] array, int left, int right) {
         while (left < right) {
@@ -175,6 +241,7 @@ extends Sort<T> {
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (exclusive) of the subarray to be sorted.
      * @param       buffer An auxiliary array used for merging.
+     * @see         mz.MergeInterface#mergingInc(Comparable[], int, int, int, Comparable[])
      */
     default void mergeInc(T[] array, int left, int right, T[] buffer) {
         while (left < right) {
@@ -210,6 +277,7 @@ extends Sort<T> {
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (exclusive) of the subarray to be sorted.
      * @param       buffer An auxiliary array used for merging.
+     * @see         mz.MergeInterface#mergingDec(Comparable[], int, int, int, Comparable[])
      */
     default void mergeDec(T[] array, int left, int right, T[] buffer) {
         while (left < right) {
@@ -225,7 +293,7 @@ extends Sort<T> {
      * {@code mergeInc} method for merging three sorted subarrays into a single array. It takes the indices of the subarray boundaries
      * and uses four pointers {@code i, j, k, l} to iterate through the subarrays and merge them into a buffer array.
      * <ul>
-     *     <li>{@code @SuppressWarnings("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
+     *     <li>{@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
      *     indicating that the code will handle any necessary type checking appropriately.</li>
      *     <li>Initializes four pointers {@code i, j, k, l}.
      *     {@code i} points to the current position in the first subarray,
@@ -322,7 +390,7 @@ extends Sort<T> {
      * {@code mergeDec} method for merging three sorted subarrays into a single array. It takes the indices of the subarray boundaries
      * and uses four pointers {@code i, j, k, l} to iterate through the subarrays and merge them into a buffer array.
      * <ul>
-     *     <li>{@code @SuppressWarnings("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
+     *     <li>{@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
      *     indicating that the code will handle any necessary type checking appropriately.</li>
      *     <li>Initializes four pointers {@code i, j, k, l}.
      *     {@code i} points to the current position in the first subarray,
@@ -420,15 +488,15 @@ extends Sort<T> {
      * The method assumes that the left portion of the array, from index {@code left} to {@code mid}, and the {@code right} portion,
      * from index {@code (mid + 1)} to {@code right}, are already sorted in increasing order.
      * <ul>
-     *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@code compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The method starts by checking if the indices {@code left}, {@code mid}, and {@code right} are within valid bounds.
      *     If the {@code condition left > mid || mid + 1 > right} is true, it means that either the left portion or
      *     the right portion is empty or the indices are not properly specified.
      *     In such cases, the method returns without performing any merging.</li>
      *     <li>The variables {@code n1} and {@code n2} are assigned the sizes of the left and right portions, respectively.</li>
-     *     <li>Two new arrays, {@code leftArray} and {@code rightArray}, are created using the {@code Arrays.copyOfRange} method.
+     *     <li>Two new arrays, {@code leftArray} and {@code rightArray}, are created using the {@link java.util.Arrays#copyOfRange(Object[], int, int) Arrays.copyOfRange} method.
      *     These arrays contain copies of the respective portions of the original {@code array}.</li>
      *     <li>The variables {@code i} and {@code j} are used as indices to iterate over {@code leftArray} and {@code rightArray}, respectively.</li>
      *     <li>The variable {@code k} is used as an index to update the {@code array} with the merged elements.</li>
@@ -474,15 +542,15 @@ extends Sort<T> {
      * The method assumes that the left portion of the array, from index {@code left} to {@code mid}, and the {@code right} portion,
      * from index {@code (mid + 1)} to {@code right}, are already sorted in increasing order.
      * <ul>
-     *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@code compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The method starts by checking if the indices {@code left}, {@code mid}, and {@code right} are within valid bounds.
      *     If the {@code condition left > mid || mid + 1 > right} is true, it means that either the left portion or
      *     the right portion is empty or the indices are not properly specified.
      *     In such cases, the method returns without performing any merging.</li>
      *     <li>The variables {@code n1} and {@code n2} are assigned the sizes of the left and right portions, respectively.</li>
-     *     <li>Two new arrays, {@code leftArray} and {@code rightArray}, are created using the {@code Arrays.copyOfRange} method.
+     *     <li>Two new arrays, {@code leftArray} and {@code rightArray}, are created using the {@link java.util.Arrays#copyOfRange(Object[], int, int) Arrays.copyOfRange} method.
      *     These arrays contain copies of the respective portions of the original {@code array}.</li>
      *     <li>The variables {@code i} and {@code j} are used as indices to iterate over {@code leftArray} and {@code rightArray}, respectively.</li>
      *     <li>The variable {@code k} is used as an index to update the {@code array} with the merged elements.</li>
@@ -526,7 +594,7 @@ extends Sort<T> {
     /**
      * {@code mergingInc} method for merging two sorted subarrays within an array using the merge sort algorithm.
      * <ul>
-     *     <li>{@code @SuppressWarnings("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
+     *     <li>{@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
      *     indicating that the code will handle any necessary type checking appropriately.</li>
      *     <li>Initializes two pointers {@code n1} and {@code n2} to keep track of
      *     the current positions within the subarrays to be merged.
@@ -548,7 +616,7 @@ extends Sort<T> {
      * </ul>
      * {@code mergingInc} this method performs the merging step of the merge sort algorithm by comparing elements from two sorted subarrays
      * and merging them into a temporary buffer array.
-     * After the merging is complete, the merged elements are copied back to the original array.
+     * After the merging is complete, the merged elements are copied back {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy} to the original array.
      * @param       array to be arranged.
      * @param       left The index of the leftmost element of the subarray to be merged.
      * @param       mid The index of the midpoint element in the subarray to be merged.
@@ -571,7 +639,7 @@ extends Sort<T> {
     /**
      * {@code mergingDec} method for merging two sorted subarrays within an array using the merge sort algorithm.
      * <ul>
-     *     <li>{@code @SuppressWarnings("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
+     *     <li>{@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
      *     indicating that the code will handle any necessary type checking appropriately.</li>
      *     <li>Initializes two pointers {@code n1} and {@code n2} to keep track of
      *     the current positions within the subarrays to be merged.
@@ -593,7 +661,7 @@ extends Sort<T> {
      * </ul>
      * {@code mergingDec} this method performs the merging step of the merge sort algorithm by comparing elements from two sorted subarrays
      * and merging them into a temporary buffer array.
-     * After the merging is complete, the merged elements are copied back to the original array.
+     * After the merging is complete, the merged elements are copied back {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy} to the original array.
      * @param       array to be arranged.
      * @param       left The index of the leftmost element of the subarray to be merged.
      * @param       mid The index of the midpoint element in the subarray to be merged.
@@ -616,7 +684,7 @@ extends Sort<T> {
     /**
      * {@code mergingInc} method for merging two sorted subarrays into a single array.
      * <ul>
-     *     <li>{@code @SuppressWarnings("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
+     *     <li>{@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
      *     indicating that the code will handle any necessary type checking appropriately.</li>
      *     <li>Initializes three pointers {@code i, j, k}. {@code i} points to the current position in the left subarray,
      *     {@code j} points to the current position in the right subarray, and {@code k} points to the current position in the merged array.</li>
@@ -664,7 +732,7 @@ extends Sort<T> {
     /**
      * {@code mergingDec} method for merging two sorted subarrays into a single array.
      * <ul>
-     *     <li>{@code @SuppressWarnings("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
+     *     <li>{@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")}: This annotation suppresses unchecked warnings that might occur when using generics,
      *     indicating that the code will handle any necessary type checking appropriately.</li>
      *     <li>Initializes three pointers {@code i, j, k}. {@code i} points to the current position in the left subarray,
      *     {@code j} points to the current position in the right subarray, and {@code k} points to the current position in the merged array.</li>

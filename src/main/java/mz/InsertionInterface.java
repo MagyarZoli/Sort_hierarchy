@@ -15,7 +15,7 @@ extends Sort<T> {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
      *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
@@ -43,7 +43,7 @@ extends Sort<T> {
      */
     @SuppressWarnings("unchecked")
     default void insertionInc(T[] array) {
-        for (int i = 1; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             T select = array[i];
             int j = i;
             while ((j >= 1) && (array[(j - 1)].compareTo(select) > 0)) {
@@ -60,7 +60,7 @@ extends Sort<T> {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
      *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
@@ -88,7 +88,7 @@ extends Sort<T> {
      */
     @SuppressWarnings("unchecked")
     default void insertionDec(T[] array) {
-        for (int i = 1; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             T select = array[i];
             int j = i;
             while ((j >= 1) && (array[(j - 1)].compareTo(select) < 0)) {
@@ -105,7 +105,7 @@ extends Sort<T> {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
      *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
@@ -152,7 +152,7 @@ extends Sort<T> {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
      *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>

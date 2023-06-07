@@ -14,7 +14,7 @@ extends Quick {
     /**
      * Storing {@code i} and {@code j} in the variable field.
      */
-    private static int i, j;
+    protected int i, j;
 
     /**
      * <b>Quick Sort 3-Way:</b><br>
@@ -54,7 +54,7 @@ extends Quick {
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
-        quick3Inc(array, 0, (array.length - 1));
+        quick3Inc(array);
     }
 
     /**
@@ -63,6 +63,64 @@ extends Quick {
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
+        quick3Dec(array);
+    }
+
+    /**
+     * {@code quick3Inc} that implements the Quick Sort algorithm to sort an array of Comparable objects in ascending order.
+     * <ul>
+     *     <li>The method takes in an array of Comparable objects, {@cocde array},
+     *     and the left is <i>0</i> and right is {@code (array.length - 1)} indices specifying the portion of the array to be sorted.</li>
+     *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
+     *     it means the portion of the array is empty or contains only one element, and no further sorting is required.
+     *     In such cases, the method returns.</li>
+     *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
+     *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
+     *     representing the boundaries of the partition.</li>
+     *     <li>The {@code partition3Inc} method is called to partition the array into three parts using the three-way partitioning technique.</li>
+     *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
+     *     elements equal to the pivot, and elements greater than the pivot.</li>
+     *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
+     *     <ul>
+     *         <li>The first recursive call, {@code quickInc(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
+     *         <li>The second recursive call, {@code quickInc(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     </ul>
+     *     <li>The sorting process continues recursively until the entire array is sorted.</li>
+     * </ul>
+     * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in ascending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array is sorted.
+     * @param       array to be arranged.
+     */
+    protected void quick3Inc(Comparable[] array) {
+        quick3Inc(array, 0, (array.length - 1));
+    }
+
+    /**
+     * {@code quick3Dec} that implements the Quick Sort algorithm to sort an array of Comparable objects in descending order.
+     * <ul>
+     *     <li>The method takes in an array of Comparable objects, {@cocde array},
+     *     and the left is <i>0</i> and right is {@code (array.length - 1)} indices specifying the portion of the array to be sorted.</li>
+     *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
+     *     it means the portion of the array is empty or contains only one element, and no further sorting is required.
+     *     In such cases, the method returns.</li>
+     *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
+     *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
+     *     representing the boundaries of the partition.</li>
+     *     <li>The {@code partition3Dec} method is called to partition the array into three parts using the three-way partitioning technique.</li>
+     *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
+     *     elements equal to the pivot, and elements greater than the pivot.</li>
+     *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
+     *     <ul>
+     *         <li>The first recursive call, {@code quickDec(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
+     *         <li>The second recursive call, {@code quickDec(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     </ul>
+     *     <li>The sorting process continues recursively until the entire array is sorted.</li>
+     * </ul>
+     * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in descending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array is sorted.
+     * @param       array to be arranged.
+     */
+    protected void quick3Dec(Comparable[] array) {
         quick3Dec(array, 0, (array.length - 1));
     }
 
@@ -92,8 +150,9 @@ extends Quick {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.Quick3#partition3Inc(Comparable[], int, int)
      */
-    void quick3Inc(Comparable[] array, int left, int right) {
+    protected void quick3Inc(Comparable[] array, int left, int right) {
         if (left >= right) {
             return;
         }
@@ -130,8 +189,9 @@ extends Quick {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.Quick3#partition3Dec(Comparable[], int, int)
      */
-    void quick3Dec(Comparable[] array, int left, int right) {
+    protected void quick3Dec(Comparable[] array, int left, int right) {
         if (left >= right) {
             return;
         }
@@ -149,11 +209,11 @@ extends Quick {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left and right indices specifying the portion of the array to be partitioned.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method first checks if the portion of the array to be partitioned has one or zero elements.
      *     If so, it performs a simple check to ensure that the elements are in the correct order,
-     *     {@link mz.SortSwap#swap(Comparable[], int, int) swaps} them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
+     *     swaps them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
      *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition using the pivot element.</li>
      *     <li>The {@code mid} variable is initialized with the value of {@code left}.
      *     This variable represents the current index being considered during the partitioning process.</li>
@@ -180,9 +240,10 @@ extends Quick {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
-    void partition3Inc(Comparable[] array, int left, int right) {
+    protected void partition3Inc(Comparable[] array, int left, int right) {
         if (((right + 1) - left) <= 1) {
             if (array[right].compareTo(array[left]) < 0) {
                 swap(array, right, left);
@@ -213,11 +274,11 @@ extends Quick {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left and right indices specifying the portion of the array to be partitioned.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method first checks if the portion of the array to be partitioned has one or zero elements.
      *     If so, it performs a simple check to ensure that the elements are in the correct order,
-     *     {@link mz.SortSwap#swap(Comparable[], int, int) swaps} them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
+     *     swaps them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
      *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition using the pivot element.</li>
      *     <li>The {@code mid} variable is initialized with the value of {@code left}.
      *     This variable represents the current index being considered during the partitioning process.</li>
@@ -244,9 +305,10 @@ extends Quick {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
-    void partition3Dec(Comparable[] array, int left, int right) {
+    protected void partition3Dec(Comparable[] array, int left, int right) {
         if (((right + 1) - left) <= 1) {
             if (array[right].compareTo(array[left]) < 0) {
                 swap(array, right, left);

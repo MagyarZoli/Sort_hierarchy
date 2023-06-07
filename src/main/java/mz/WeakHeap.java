@@ -42,10 +42,10 @@ extends Heap {
      * and is used to maintain the max heap property within a heap structure.
      * It takes an array of {@code Comparable} objects, the {@code length} of the heap (or array), and an index {@code i} as parameters.
      * <ul>
-     *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The method uses a {@code while} loop to iteratively perform comparisons and {@link mz.SortSwap#swap(Comparable[], int, int) swaps} to maintain the max heap property.</li>
+     *     <li>The method uses a {@code while} loop to iteratively perform comparisons and swaps to maintain the max heap property.</li>
      *     <li>The loop condition {@code (2 * i) < length} checks if the current element {@code i} has at least one child within the heap structure.
      *     If it does not have a child, it means the element is already in its correct position within the heap.</li>
      *     <li>Inside the loop, the variable {@code k} is assigned the index of the left child of
@@ -64,15 +64,17 @@ extends Heap {
      * {@code heapifyInc} method is used to maintain the max heap property within a heap structure by iteratively comparing
      * and swapping elements until the current element is in its correct position within the heap.
      * @param       array to be arranged.
-     * @param       length of the array.
+     * @param       n of the array.
      * @param       i the current element
+     * @see         mz.HeapInterface#heapifyInc(Comparable[], int, int)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @Override
     @SuppressWarnings("unchecked")
-    public void heapifyInc(Comparable[] array, int length, int i) {
-        while ((2 * i) < length) {
+    public void heapifyInc(Comparable[] array, int n, int i) {
+        while ((2 * i) < n) {
             int k = (2 * i);
-            if ((k + 1) < length && array[(k + 1)].compareTo(array[k]) > 0) {
+            if ((k + 1) < n && array[(k + 1)].compareTo(array[k]) > 0) {
                 k++;
             }
             if (array[k].compareTo(array[i]) > 0) {
@@ -89,10 +91,10 @@ extends Heap {
      * and is used to maintain the max heap property within a heap structure.
      * It takes an array of {@code Comparable} objects, the {@code length} of the heap (or array), and an index {@code i} as parameters.
      * <ul>
-     *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The method uses a {@code while} loop to iteratively perform comparisons and {@link mz.SortSwap#swap(Comparable[], int, int) swaps} to maintain the max heap property.</li>
+     *     <li>The method uses a {@code while} loop to iteratively perform comparisons and swaps to maintain the max heap property.</li>
      *     <li>The loop condition {@code (2 * i) < length} checks if the current element {@code i} has at least one child within the heap structure.
      *     If it does not have a child, it means the element is already in its correct position within the heap.</li>
      *     <li>Inside the loop, the variable {@code k} is assigned the index of the left child of
@@ -111,15 +113,17 @@ extends Heap {
      * {@code heapifyDec} method is used to maintain the max heap property within a heap structure by iteratively comparing
      * and swapping elements until the current element is in its correct position within the heap.
      * @param       array to be arranged.
-     * @param       length of the array.
+     * @param       n of the array.
      * @param       i the current element
+     * @see         mz.HeapInterface#heapifyDec(Comparable[], int, int)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @Override
     @SuppressWarnings("unchecked")
-    public void heapifyDec(Comparable[] array, int length, int i) {
-        while ((2 * i) < length) {
+    public void heapifyDec(Comparable[] array, int n, int i) {
+        while ((2 * i) < n) {
             int k = (2 * i);
-            if ((k + 1) < length && array[(k + 1)].compareTo(array[k]) < 0) {
+            if ((k + 1) < n && array[(k + 1)].compareTo(array[k]) < 0) {
                 k++;
             }
             if (array[k].compareTo(array[i]) < 0) {

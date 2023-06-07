@@ -77,18 +77,18 @@ extends Heap {
      * {@code heapSplitInc} method is used to find the index of the largest child element among
      * the {@code left}, {@code mid}, and {@code right} children of a given element in a heap structure.
      * @param       array to be arranged.
-     * @param       length of the array.
+     * @param       n of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
+     * @see         mz.HeapInterface#heapSplitInc(Comparable[], int, int)
+     * @see         mz.HeapInterface#heapChildInc(Comparable[], int, int, int)
      */
     @Override
-    public int heapSplitInc(Comparable[] array, int length, int i) {
-        int left = ((3 * i) + 1);
-        int mid = ((3 * i) + 2);
-        int right = ((3 * i) + 3);
-        int largest = heapChildInc(array, length, i, left);
-        largest = heapChildInc(array, length, largest, mid);
-        largest = heapChildInc(array, length, largest, right);
+    public int heapSplitInc(Comparable[] array, int n, int i) {
+        int left = ((3 * i) + 1), mid = ((3 * i) + 2), right = ((3 * i) + 3);
+        int largest = heapChildInc(array, n, i, left);
+        largest = heapChildInc(array, n, largest, mid);
+        largest = heapChildInc(array, n, largest, right);
         return largest;
     }
 
@@ -118,18 +118,18 @@ extends Heap {
      * {@code heapSplitDec} method is used to find the index of the smallest child element among
      * the {@code left}, {@code mid}, and {@code right} children of a given element in a heap structure.
      * @param       array to be arranged.
-     * @param       length of the array.
+     * @param       n of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
+     * @see         mz.HeapInterface#heapSplitInc(Comparable[], int, int)
+     * @see         mz.HeapInterface#heapChildDec(Comparable[], int, int, int)
      */
     @Override
-    public int heapSplitDec(Comparable[] array, int length, int i) {
-        int left = ((3 * i) + 1);
-        int mid = ((3 * i) + 2);
-        int right = ((3 * i) + 3);
-        int largest = heapChildDec(array, length, i, left);
-        largest = heapChildDec(array, length, largest, mid);
-        largest = heapChildDec(array, length, largest, right);
+    public int heapSplitDec(Comparable[] array, int n, int i) {
+        int left = ((3 * i) + 1), mid = ((3 * i) + 2), right = ((3 * i) + 3);
+        int largest = heapChildDec(array, n, i, left);
+        largest = heapChildDec(array, n, largest, mid);
+        largest = heapChildDec(array, n, largest, right);
         return largest;
     }
 }

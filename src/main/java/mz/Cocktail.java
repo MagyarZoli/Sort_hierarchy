@@ -44,7 +44,7 @@ extends Bubble {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.Comb#Comb()
+     * @see         mz.Comb#Comb() Comb
      */
     public Cocktail() {}
 
@@ -69,20 +69,23 @@ extends Bubble {
     /**
      * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of Comparable objects in increasing order.
      * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the cocktail sort algorithm on it.</li>
      *     <li>The swapped variable is initially set to {@code true}, indicating that there may be swaps to perform in the array.</li>
      *     <li>The {@code start} variable is set to the index 0, representing the starting point of the current iteration.</li>
      *     <li>The {@code end} variable is set to the index of the last element in the array, representing the end point of the current iteration.</li>
      *     <li>The outer {@code while} loop continues as long as there are swaps being made in the array.</li>
      *     <li>Inside the {@code while} loop, the first {@code for} loop iterates from {@code start} to {@code (end - 1)}.
-     *     It checks pairs of adjacent elements and calls the {@code isSwapInc} method to determine if a swap is necessary.
+     *     It checks pairs of adjacent elements and calls the {@code isSwap} method to determine if a swap is necessary.
      *     If a {@code swap} is made, the swapped variable is set to {@code true}.</li>
      *     <li>After the first {@code for} loop, an if condition checks {@code if} any swaps were made in the iteration.
      *     If no swaps were made {@code (!swapped)}, it means the array is already sorted, and the loop breaks.</li>
      *     <li>Next, the {@code end} index is decremented by 1, as the largest element has already been placed at
      *     the correct position in the previous iteration.</li>
      *     <li>The second {@code for} loop iterates from {@code (end - 1)} to {@code start} in reverse order.
-     *     It also checks pairs of adjacent elements and calls the {@code isSwapInc} method to determine if a {@code swap} is necessary.
+     *     It also checks pairs of adjacent elements and calls the {@code isSwap} method to determine if a {@code swap} is necessary.
      *     If a {@code swap} is made, the swapped variable is set to true.</li>
      *     <li>After the second {@code for} loop, the {@code start} index is incremented by 1, as the smallest element
      *     has already been placed at the correct position in the previous iteration.</li>
@@ -92,11 +95,120 @@ extends Bubble {
      * repeatedly swapping adjacent elements if they are out of order.
      * This process continues until the array becomes fully sorted.
      * @param       array to be arranged.
+     * @see         mz.Cocktail#isSwapInc(Comparable[], int, int)
      */
-    void cocktailInc(Comparable[] array) {
+    protected void cocktailInc(Comparable[] array) {
         boolean swapped = true;
-        int start = 0;
-        int end = (array.length - 1);
+        int start = 0, end = (array.length - 1);
+        while (swapped) {
+            swapped = false;
+            for (int i = start; i < end; ++i) {
+                if (isSwapInc(array, i, 1)) {
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+            swapped = false;
+            --end;
+            for (int i = end - 1; i >= start; i--) {
+                if (isSwapInc(array, i, 1)) {
+                    swapped = true;
+                }
+            }
+            ++start;
+        }
+    }
+
+    /**
+     * {@code cocktailDec} that implements the cocktail sort algorithm to sort an array of Comparable objects in decreasing order.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the cocktail sort algorithm on it.</li>
+     *     <li>The swapped variable is initially set to {@code true}, indicating that there may be swaps to perform in the array.</li>
+     *     <li>The {@code start} variable is set to the index 0, representing the starting point of the current iteration.</li>
+     *     <li>The {@code end} variable is set to the index of the last element in the array, representing the end point of the current iteration.</li>
+     *     <li>The outer {@code while} loop continues as long as there are swaps being made in the array.</li>
+     *     <li>Inside the {@code while} loop, the first {@code for} loop iterates from {@code start} to {@code (end - 1)}.
+     *     It checks pairs of adjacent elements and calls the {@code isSwap} method to determine if a swap is necessary.
+     *     If a {@code swap} is made, the swapped variable is set to {@code true}.</li>
+     *     <li>After the first {@code for} loop, an if condition checks {@code if} any swaps were made in the iteration.
+     *     If no swaps were made {@code (!swapped)}, it means the array is already sorted, and the loop breaks.</li>
+     *     <li>Next, the {@code end} index is decremented by 1, as the largest element has already been placed at
+     *     the correct position in the previous iteration.</li>
+     *     <li>The second {@code for} loop iterates from {@code (end - 1)} to {@code start} in reverse order.
+     *     It also checks pairs of adjacent elements and calls the {@code isSwap} method to determine if a {@code swap} is necessary.
+     *     If a {@code swap} is made, the swapped variable is set to true.</li>
+     *     <li>After the second {@code for} loop, the {@code start} index is incremented by 1, as the smallest element
+     *     has already been placed at the correct position in the previous iteration.</li>
+     *     <li>The outer {@code while} loop continues until no swaps are made in the array, indicating that the array is fully sorted.</li>
+     * </ul>
+     * {@code cocktailDec} method combines the concepts of bubble sort and selection sort by traversing the array bidirectionally,
+     * repeatedly swapping adjacent elements if they are out of order.
+     * This process continues until the array becomes fully sorted.
+     * @param       array to be arranged.
+     * @see         mz.Cocktail#isSwapDec(Comparable[], int, int)
+     */
+    protected void cocktailDec(Comparable[] array) {
+        boolean swapped = true;
+        int start = 0, end = (array.length - 1);
+        while (swapped) {
+            swapped = false;
+            for (int i = start; i < end; ++i) {
+                if (isSwapDec(array, i, 1)) {
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+            swapped = false;
+            --end;
+            for (int i = (end - 1); i >= start; i--) {
+                if (isSwapDec(array, i, 1)) {
+                    swapped = true;
+                }
+            }
+            ++start;
+        }
+    }
+
+    /**
+     * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of Comparable objects in increasing order.
+     * <ul>
+     *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the cocktail sort algorithm on it.</li>
+     *     <li>The swapped variable is initially set to {@code true}, indicating that there may be swaps to perform in the array.</li>
+     *     <li>The {@code start} variable is set to the index 0, representing the starting point of the current iteration.</li>
+     *     <li>The {@code end} variable is set to the index of the last element in the array, representing the end point of the current iteration.</li>
+     *     <li>The outer {@code while} loop continues as long as there are swaps being made in the array.</li>
+     *     <li>Inside the {@code while} loop, the first {@code for} loop iterates from {@code start} to {@code (end - 1)}.
+     *     It checks pairs of adjacent elements and calls the {@code isSwap} method to determine if a swap is necessary.
+     *     If a {@code swap} is made, the swapped variable is set to {@code true}.</li>
+     *     <li>After the first {@code for} loop, an if condition checks {@code if} any swaps were made in the iteration.
+     *     If no swaps were made {@code (!swapped)}, it means the array is already sorted, and the loop breaks.</li>
+     *     <li>Next, the {@code end} index is decremented by 1, as the largest element has already been placed at
+     *     the correct position in the previous iteration.</li>
+     *     <li>The second {@code for} loop iterates from {@code (end - 1)} to {@code start} in reverse order.
+     *     It also checks pairs of adjacent elements and calls the {@code isSwap} method to determine if a {@code swap} is necessary.
+     *     If a {@code swap} is made, the swapped variable is set to true.</li>
+     *     <li>After the second {@code for} loop, the {@code start} index is incremented by 1, as the smallest element
+     *     has already been placed at the correct position in the previous iteration.</li>
+     *     <li>The outer {@code while} loop continues until no swaps are made in the array, indicating that the array is fully sorted.</li>
+     * </ul>
+     * {@code cocktailInc} method combines the concepts of bubble sort and selection sort by traversing the array bidirectionally,
+     * repeatedly swapping adjacent elements if they are out of order.
+     * This process continues until the array becomes fully sorted.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortSwap#isSwapInc(Comparable[], int, int)
+     */
+    protected void cocktailInc(Comparable[] array, int left, int right) {
+        boolean swapped = true;
+        int start = left, end = (right - 1);
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
@@ -127,14 +239,14 @@ extends Bubble {
      *     <li>The {@code end} variable is set to the index of the last element in the array, representing the end point of the current iteration.</li>
      *     <li>The outer {@code while} loop continues as long as there are swaps being made in the array.</li>
      *     <li>Inside the {@code while} loop, the first {@code for} loop iterates from {@code start} to {@code (end - 1)}.
-     *     It checks pairs of adjacent elements and calls the {@code isSwapDec} method to determine if a swap is necessary.
+     *     It checks pairs of adjacent elements and calls the {@code isSwap} method to determine if a swap is necessary.
      *     If a {@code swap} is made, the swapped variable is set to {@code true}.</li>
      *     <li>After the first {@code for} loop, an if condition checks {@code if} any swaps were made in the iteration.
      *     If no swaps were made {@code (!swapped)}, it means the array is already sorted, and the loop breaks.</li>
      *     <li>Next, the {@code end} index is decremented by 1, as the largest element has already been placed at
      *     the correct position in the previous iteration.</li>
      *     <li>The second {@code for} loop iterates from {@code (end - 1)} to {@code start} in reverse order.
-     *     It also checks pairs of adjacent elements and calls the {@code isSwapDec} method to determine if a {@code swap} is necessary.
+     *     It also checks pairs of adjacent elements and calls the {@code isSwap} method to determine if a {@code swap} is necessary.
      *     If a {@code swap} is made, the swapped variable is set to true.</li>
      *     <li>After the second {@code for} loop, the {@code start} index is incremented by 1, as the smallest element
      *     has already been placed at the correct position in the previous iteration.</li>
@@ -144,11 +256,13 @@ extends Bubble {
      * repeatedly swapping adjacent elements if they are out of order.
      * This process continues until the array becomes fully sorted.
      * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortSwap#isSwapDec(Comparable[], int, int)
      */
-    void cocktailDec(Comparable[] array) {
+    protected void cocktailDec(Comparable[] array, int left, int right) {
         boolean swapped = true;
-        int start = 0;
-        int end = (array.length - 1);
+        int start = left, end = (right - 1);
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
@@ -168,77 +282,5 @@ extends Bubble {
             }
             ++start;
         }
-    }
-
-    /**
-     * {@code isSwapInc} that checks if a swap operation is necessary between two elements in an array
-     * of {@code Comparable} objects in order to maintain the increasing order.
-     * <ul>
-     *     <li>The method takes an array of {@code Comparable} objects,
-     *     denoted by {@code array}, and the indices {@code i} and {@code j} of
-     *     the two elements to be compared and potentially swapped.</li>
-     *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The variable {@code swap} is initially set to {@code false}, indicating that no swap operation has been performed yet.</li>
-     *     <li>The condition {@code if (array[i].compareTo(array[(i + j)]) > 0)} compares the elements at indices {@code i} and {@code (i + j)} in
-     *     the array to check if a swap is necessary. If the element at index {@code i} is greater than the element
-     *     at index {@code (i + j)}, a swap operation is performed.</li>
-     *     <li>Inside the {@code if} block, the swap method is called to {@code swap} the elements at indices {@code i} and {@code (i + j)} in the array.
-     *     After the {@code swap}, the swapped variable is set to {@code true}.</li>
-     *     <li>Finally, the method returns the value of swapped, indicating whether a swap operation
-     *     was performed ({@code true}) or not ({@code false}).</li>
-     * </ul>
-     * {@code isSwapInc} method can be used as a helper method in sorting algorithms to check if a swap is necessary between
-     * two elements in order to maintain the increasing order of the array.
-     * @param       array to be arranged.
-     * @param       i elements to be compared
-     * @param       j elements to be compared
-     * @return      the value of swapped.
-     */
-    @SuppressWarnings("unchecked")
-    boolean isSwapInc(Comparable[] array, int i, int j){
-        boolean swapped = false;
-        if (array[i].compareTo(array[(i + j)]) > 0) {
-            swap(array, i, (i + j));
-            swapped = true;
-        }
-        return swapped;
-    }
-
-    /**
-     * {@code isSwapDec} that checks if a swap operation is necessary between two elements in an array
-     * of {@code Comparable} objects in order to maintain the increasing order.
-     * <ul>
-     *     <li>The method takes an array of {@code Comparable} objects,
-     *     denoted by {@code array}, and the indices {@code i} and {@code j} of
-     *     the two elements to be compared and potentially swapped.</li>
-     *     <li>The {@code @SuppressWarnings("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The variable {@code swap} is initially set to {@code false}, indicating that no swap operation has been performed yet.</li>
-     *     <li>The condition {@code if (array[i].compareTo(array[(i + j)]) < 0)} compares the elements at indices {@code i} and {@code (i + j)} in
-     *     the array to check if a swap is necessary. If the element at index {@code i} is smaller than the element
-     *     at index {@code (i + j)}, a swap operation is performed.</li>
-     *     <li>Inside the {@code if} block, the swap method is called to {@code swap} the elements at indices {@code i} and {@code (i + j)} in the array.
-     *     After the {@code swap}, the swapped variable is set to {@code true}.</li>
-     *     <li>Finally, the method returns the value of swapped, indicating whether a swap operation
-     *     was performed ({@code true}) or not ({@code false}).</li>
-     * </ul>
-     * {@code isSwapDec} method can be used as a helper method in sorting algorithms to check if a swap is necessary between
-     * two elements in order to maintain the increasing order of the array.
-     * @param       array to be arranged.
-     * @param       i elements to be compared
-     * @param       j elements to be compared
-     * @return      the value of swapped.
-     */
-    @SuppressWarnings("unchecked")
-    boolean isSwapDec(Comparable[] array, int i, int j){
-        boolean swapped = false;
-        if (array[i].compareTo(array[(i + j)]) < 0) {
-            swap(array, i, (i + j));
-            swapped = true;
-        }
-        return swapped;
     }
 }

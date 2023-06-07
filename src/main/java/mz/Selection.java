@@ -37,7 +37,7 @@ implements SelectionInterface<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.DoubleSelection#DoubleSelection()
+     * @see         mz.DoubleSelection#DoubleSelection() DoubleSelection
      */
     public Selection() {}
 

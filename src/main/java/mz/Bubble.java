@@ -7,8 +7,7 @@ package mz;
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 public class Bubble
-extends SortComparable
-implements SortSwap<Comparable> {
+extends Selection {
 
     /**
      * <b>Bubble Sort:</b><br>
@@ -35,8 +34,9 @@ implements SortSwap<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.Cocktail#Cocktail()
-     * @see         mz.Comb#Comb()
+     * @see         mz.Cocktail#Cocktail() Cocktail
+     * @see         mz.Comb#Comb() Comb
+     * @see         mz.Gnome#Gnome() Gnome
      */
     public Bubble() {}
 
@@ -63,7 +63,7 @@ implements SortSwap<Comparable> {
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method starts with defining the length of the {@code array} as {@code n}.</li>
      *     <li>Two nested {@code for} loops are used for iterating over the elements of the array and comparing adjacent elements to perform the sorting.</li>
@@ -75,14 +75,15 @@ implements SortSwap<Comparable> {
      *         index {@code (j - 1)} is greater than the element at index {@code j}, the elements are swapped to bring
      *         the smaller element towards the beginning of the array.</li>
      *     </ul>
-     *     <li>The {@link mz.SortSwap#swap(Comparable[], int, int) swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
+     *     <li>The {@code swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
      * </ul>
      * {@code bubbleInc} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in ascending order.
      * It repeatedly compares adjacent elements and swaps them if necessary until the array is sorted.
      * @param       array to be arranged.
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
-    void bubbleInc(Comparable[] array) {
+    protected void bubbleInc(Comparable[] array) {
         int n = array.length;
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
@@ -98,7 +99,7 @@ implements SortSwap<Comparable> {
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
-     *     <li>The {@code SuppressWarnings("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method starts with defining the length of the {@code array} as {@code n}.</li>
      *     <li>Two nested {@code for} loops are used for iterating over the elements of the array and comparing adjacent elements to perform the sorting.</li>
@@ -110,16 +111,92 @@ implements SortSwap<Comparable> {
      *         index {@code (j - 1)} is smaller than the element at index {@code j}, the elements are swapped to bring
      *         the greater element towards the beginning of the array.</li>
      *     </ul>
-     *     <li>The {@link mz.SortSwap#swap(Comparable[], int, int) swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
+     *     <li>The {@code swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
      * </ul>
      * {@code bubbleInc} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in descending order.
      * It repeatedly compares adjacent elements and swaps them if necessary until the array is sorted.
      * @param       array to be arranged.
      */
     @SuppressWarnings("unchecked")
-    void bubbleDec(Comparable[] array) {
+    protected void bubbleDec(Comparable[] array) {
         int n = array.length;
         for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n - i); j++) {
+                if (array[(j - 1)].compareTo(array[j]) < 0) {
+                    swap(array, (j - 1), j);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code bubbleInc} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * The sorting is done in ascending order.
+     * <ul>
+     *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>The method starts with defining the length of the {@code array} as {@code n}.</li>
+     *     <li>Two nested {@code for} loops are used for iterating over the elements of the array and comparing adjacent elements to perform the sorting.</li>
+     *     <ul>
+     *         <li>The outer loop iterates from 0 to {@code (n - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
+     *         <li>The inner loop iterates from 1 to {@code (n - i) - 1} and represents the range of elements to be compared in each pass.
+     *         The {@code (n - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
+     *         <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
+     *         index {@code (j - 1)} is greater than the element at index {@code j}, the elements are swapped to bring
+     *         the smaller element towards the beginning of the array.</li>
+     *     </ul>
+     *     <li>The {@code swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
+     * </ul>
+     * {@code bubbleInc} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in ascending order.
+     * It repeatedly compares adjacent elements and swaps them if necessary until the array is sorted.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    @SuppressWarnings("unchecked")
+    protected void bubbleInc(Comparable[] array, int left, int right) {
+        int n = right;
+        for (int i = left; i < n; i++) {
+            for (int j = 1; j < (n - i); j++) {
+                if (array[(j - 1)].compareTo(array[j]) > 0) {
+                    swap(array, (j - 1), j);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code bubbleDec} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * The sorting is done in descending order.
+     * <ul>
+     *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>The method starts with defining the length of the {@code array} as {@code n}.</li>
+     *     <li>Two nested {@code for} loops are used for iterating over the elements of the array and comparing adjacent elements to perform the sorting.</li>
+     *     <ul>
+     *         <li>The outer loop iterates from 0 to {@code (n - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
+     *         <li>The inner loop iterates from 1 to {@code (n - i) - 1} and represents the range of elements to be compared in each pass.
+     *         The {@code (n - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
+     *         <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
+     *         index {@code (j - 1)} is smaller than the element at index {@code j}, the elements are swapped to bring
+     *         the greater element towards the beginning of the array.</li>
+     *     </ul>
+     *     <li>The {@code swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
+     * </ul>
+     * {@code bubbleInc} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in descending order.
+     * It repeatedly compares adjacent elements and swaps them if necessary until the array is sorted.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    @SuppressWarnings("unchecked")
+    protected void bubbleDec(Comparable[] array, int left, int right) {
+        int n = right;
+        for (int i = left; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
                 if (array[(j - 1)].compareTo(array[j]) < 0) {
                     swap(array, (j - 1), j);

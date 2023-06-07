@@ -42,7 +42,7 @@ implements QuickInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.Quick3#Quick3()
+     * @see         mz.Quick3#Quick3() Quick3
      */
     public Quick() {}
 
@@ -52,7 +52,7 @@ implements QuickInterface<Comparable> {
      */
     @Override
     public void sortArrayInc(Comparable[] array) {
-        quickInc(array, 0, (array.length - 1));
+        quickInc(array);
     }
 
     /**
@@ -61,6 +61,6 @@ implements QuickInterface<Comparable> {
      */
     @Override
     public void sortArrayDec(Comparable[] array) {
-        quickDec(array, 0, (array.length - 1));
+        quickDec(array);
     }
 }
