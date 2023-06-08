@@ -45,6 +45,7 @@ extends Quick {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
+     * @see         mz.intro.IntroQuick3#IntroQuick3() IntroQuick3
      */
     public Quick3() {}
 

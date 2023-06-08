@@ -42,6 +42,7 @@ extends Insertion {
      * Average Case Complexity: <em>O(n log(n)^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>No</b>
+     * @see         mz.intro.IntroShell#IntroShell() IntroShell
      */
     public Shell() {}
 

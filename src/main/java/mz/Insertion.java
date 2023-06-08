@@ -37,7 +37,9 @@ implements InsertionInterface<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.Shell#Shell()
+     * @see         mz.intro.IntroInsertion#IntroInsertion() IntroInsertion
+     * @see         mz.intro.IntroShell#IntroShell() IntroShell
+     * @see         mz.Shell#Shell() Shell
      */
     public Insertion() {}
 

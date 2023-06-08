@@ -46,6 +46,10 @@ implements MergeInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.intro.IntroMerge#IntroMerge() IntroMerge
+     * @see         mz.intro.IntroTim#IntroTim() IntroTim
+     * @see         mz.intro.IntroWiki#IntroWiki() IntroWiki
+     * @see         mz.Tim#Tim() Tim
      * @see         mz.Wiki#Wiki() Wiki
      */
     public Merge() {}

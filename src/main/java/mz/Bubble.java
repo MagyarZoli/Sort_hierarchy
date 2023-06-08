@@ -37,6 +37,10 @@ extends Selection {
      * @see         mz.Cocktail#Cocktail() Cocktail
      * @see         mz.Comb#Comb() Comb
      * @see         mz.Gnome#Gnome() Gnome
+     * @see         mz.intro.IntroBubble#IntroBubble() IntroBubble
+     * @see         mz.intro.IntroCocktail#IntroCocktail() IntroCocktail
+     * @see         mz.intro.IntroComb#IntroComb() IntroComb
+     * @see         mz.intro.IntroGnome#IntroGnome() IntroGnome
      */
     public Bubble() {}
 

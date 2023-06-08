@@ -45,6 +45,8 @@ extends Bubble {
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
      * @see         mz.Comb#Comb() Comb
+     * @see         mz.intro.IntroCocktail#IntroCocktail() IntroCocktail
+     * @see         mz.intro.IntroComb#IntroComb() IntroComb
      */
     public Cocktail() {}
 

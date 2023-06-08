@@ -11,6 +11,9 @@ public class Wiki
 extends Merge
 implements InsertionInterface<Comparable> {
 
+    /**
+     * Block merge size storage.
+     */
     protected final int WIKI_BLOCK = 32;
 
     /**
@@ -45,6 +48,7 @@ implements InsertionInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.intro.IntroWiki#IntroWiki() IntroWiki
      */
     public Wiki() {}
 
@@ -82,6 +86,7 @@ implements InsertionInterface<Comparable> {
      * This process is a part of the overall Wiki Sort algorithm, which involves dividing the array into blocks,
      * sorting the blocks, and then merging them to obtain the final sorted array.
      * @param       array to be arranged.
+     * @see         mz.Wiki#WIKI_BLOCK
      * @see         mz.InsertionInterface#insertionInc(Comparable[], int, int)
      * @see         mz.MergeInterface#mergeInc(Comparable[], int, int, int)
      */
@@ -110,6 +115,7 @@ implements InsertionInterface<Comparable> {
      * This process is a part of the overall Wiki Sort algorithm, which involves dividing the array into blocks,
      * sorting the blocks, and then merging them to obtain the final sorted array.
      * @param       array to be arranged.
+     * @see         mz.Wiki#WIKI_BLOCK
      * @see         mz.InsertionInterface#insertionDec(Comparable[], int, int)
      * @see         mz.MergeInterface#mergeDec(Comparable[], int, int, int)
      */
@@ -141,6 +147,7 @@ implements InsertionInterface<Comparable> {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.Wiki#WIKI_BLOCK
      * @see         mz.InsertionInterface#insertionInc(Comparable[], int, int)
      * @see         mz.MergeInterface#mergeInc(Comparable[], int, int, int)
      */
@@ -172,6 +179,7 @@ implements InsertionInterface<Comparable> {
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @see         mz.Wiki#WIKI_BLOCK
      * @see         mz.InsertionInterface#insertionDec(Comparable[], int, int)
      * @see         mz.MergeInterface#mergeDec(Comparable[], int, int, int)
      */

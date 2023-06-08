@@ -37,7 +37,17 @@ implements SelectionInterface<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>No</b>
+     * @see         mz.Bubble#Bubble() Bubble
+     * @see         mz.Cocktail#Cocktail() Cocktail
+     * @see         mz.Comb#Comb() Comb
      * @see         mz.DoubleSelection#DoubleSelection() DoubleSelection
+     * @see         mz.Gnome#Gnome() Gnome
+     * @see         mz.intro.IntroBubble#IntroBubble() IntroBubble
+     * @see         mz.intro.IntroCocktail#IntroCocktail() IntroCocktail
+     * @see         mz.intro.IntroComb#IntroComb() IntroComb
+     * @see         mz.intro.IntroDoubleSelection#IntroDoubleSelection() IntroDoubleSelection
+     * @see         mz.intro.IntroGnome#IntroGnome() IntroGnome
+     * @see         mz.intro.IntroSelection#IntroSelection() IntroSelection
      */
     public Selection() {}
 

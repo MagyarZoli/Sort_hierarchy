@@ -45,6 +45,7 @@ extends Cocktail {
      * Average Case Complexity: <em>O(n^2 / 2^p)</em> where <em>p</em> is the number of increments<br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.intro.IntroComb#IntroComb() IntroComb
      */
     public Comb() {}
 
