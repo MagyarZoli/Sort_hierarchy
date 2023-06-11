@@ -47,8 +47,10 @@ implements MergeInterface<Comparable> {
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
      * @see         mz.intro.IntroMerge#IntroMerge() IntroMerge
+     * @see         mz.intro.IntroMerge3#IntroMerge3() IntroMerge3
      * @see         mz.intro.IntroTim#IntroTim() IntroTim
      * @see         mz.intro.IntroWiki#IntroWiki() IntroWiki
+     * @see         mz.Merge3#Merge3() Merge3
      * @see         mz.Tim#Tim() Tim
      * @see         mz.Wiki#Wiki() Wiki
      */
