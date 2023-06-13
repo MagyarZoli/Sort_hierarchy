@@ -1,7 +1,5 @@
 package mz;
 
-import java.util.Arrays;
-
 /**
  * Merge Sort is a comparison-based sorting algorithm that follows the divide-and-conquer approach.
  * It works by dividing the unsorted list into smaller sublists, sorting those sublists recursively,
@@ -48,10 +46,12 @@ implements MergeInterface<Comparable> {
      * Stability:               <b>Yes</b>
      * @see         mz.intro.IntroMerge#IntroMerge() IntroMerge
      * @see         mz.intro.IntroMerge3#IntroMerge3() IntroMerge3
+     * @see         mz.intro.IntroMergeInPlace#IntroMergeInPlace() IntroMergeInPlace
      * @see         mz.intro.IntroTim#IntroTim() IntroTim
      * @see         mz.intro.IntroWeaveMerge#IntroWeaveMerge() IntroWeaveMerge
      * @see         mz.intro.IntroWiki#IntroWiki() IntroWiki
      * @see         mz.Merge3#Merge3() Merge3
+     * @see         mz.MergeInPlace#MergeInPlace() MergeInPlace
      * @see         mz.Tim#Tim() Tim
      * @see         mz.WeaveMerge#WeaveMerge() WeaveMerge
      * @see         mz.Wiki#Wiki() Wiki
