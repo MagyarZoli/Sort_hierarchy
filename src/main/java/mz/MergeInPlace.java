@@ -33,7 +33,7 @@ extends Merge {
      * </ol>
      * <b>Note:</b><br>
      * Time Complexity of above approach is <em>O(n^2 * log(n))</em> because merge is <em>O(n^2)</em>.
-     * Time complexity of standard merge sort is less, <em>O(n log(n))</em>.
+     * Time complexity of standard merge sort is less, <em>O(n log(n))</em>.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(n^2)</em><br>
      * Best Case Complexity:    <em>O(n log(n))</em><br>

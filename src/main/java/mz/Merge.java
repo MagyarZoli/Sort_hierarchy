@@ -47,11 +47,13 @@ implements MergeInterface<Comparable> {
      * @see         mz.intro.IntroMerge#IntroMerge() IntroMerge
      * @see         mz.intro.IntroMerge3#IntroMerge3() IntroMerge3
      * @see         mz.intro.IntroMergeInPlace#IntroMergeInPlace() IntroMergeInPlace
+     * @see         mz.intro.IntroMergeInsertion#IntroMergeInsertion() IntroMergeInsertion
      * @see         mz.intro.IntroTim#IntroTim() IntroTim
      * @see         mz.intro.IntroWeaveMerge#IntroWeaveMerge() IntroWeaveMerge
      * @see         mz.intro.IntroWiki#IntroWiki() IntroWiki
      * @see         mz.Merge3#Merge3() Merge3
      * @see         mz.MergeInPlace#MergeInPlace() MergeInPlace
+     * @see         mz.MergeInsertion#MergeInsertion() MergeInsertion
      * @see         mz.Tim#Tim() Tim
      * @see         mz.WeaveMerge#WeaveMerge() WeaveMerge
      * @see         mz.Wiki#Wiki() Wiki
