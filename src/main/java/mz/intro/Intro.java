@@ -17,6 +17,7 @@ import mz.Sort;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public interface Intro<T extends Comparable>
 extends Sort<T>, InsertionInterface<T>, QuickInterface<T> {
 

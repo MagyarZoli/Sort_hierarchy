@@ -13,6 +13,7 @@ import mz.Selection;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class IntroSelection
 extends Selection
 implements Intro<Comparable> {

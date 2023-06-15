@@ -7,6 +7,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class Wiki
 extends Merge
 implements InsertionInterface<Comparable> {
@@ -132,7 +133,7 @@ implements InsertionInterface<Comparable> {
      * {@code wikiInc}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input array.
      * <ul>
      *     <li>It assigns the value of {@code right} (the index of the rightmost element in
-     *     the current portion of the array being sorted) to the variable {@code n}.</li>
+     *     the current portion of the array being sorted) to the variable {@code right}.</li>
      *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionInc} method.
@@ -152,19 +153,18 @@ implements InsertionInterface<Comparable> {
      * @see         mz.MergeInterface#mergeInc(Comparable[], int, int, int)
      */
     protected void wikiInc(Comparable[] array, int left, int right) {
-        int n = right;
-        Comparable[] buffer = new Comparable[n];
-        for (int i = left; i < n; i += WIKI_BLOCK) {
-            insertionInc(array, i, (Math.min((i + WIKI_BLOCK), n) - 1));
+        Comparable[] buffer = new Comparable[right];
+        for (int i = left; i < right; i += WIKI_BLOCK) {
+            insertionInc(array, i, (Math.min((i + WIKI_BLOCK), right) - 1));
         }
-        mergeInc(array, WIKI_BLOCK, n, buffer);
+        mergeInc(array, WIKI_BLOCK, right, buffer);
     }
 
     /**
      * {@code wikiDec}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input array.
      * <ul>
      *     <li>It assigns the value of {@code right} (the index of the rightmost element in
-     *     the current portion of the array being sorted) to the variable {@code n}.</li>
+     *     the current portion of the array being sorted) to the variable {@code right}.</li>
      *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionDec} method.
@@ -184,11 +184,10 @@ implements InsertionInterface<Comparable> {
      * @see         mz.MergeInterface#mergeDec(Comparable[], int, int, int)
      */
     protected void wikiDec(Comparable[] array, int left, int right) {
-        int n = right;
-        Comparable[] buffer = new Comparable[n];
-        for (int i = left; i < n; i += 32) {
-            insertionDec(array, i, (Math.min((i + WIKI_BLOCK), n) - 1));
+        Comparable[] buffer = new Comparable[right];
+        for (int i = left; i < right; i += 32) {
+            insertionDec(array, i, (Math.min((i + WIKI_BLOCK), right) - 1));
         }
-        mergeDec(array, WIKI_BLOCK, n, buffer);
+        mergeDec(array, WIKI_BLOCK, right, buffer);
     }
 }

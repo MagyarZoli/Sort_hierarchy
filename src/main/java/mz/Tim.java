@@ -6,6 +6,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class Tim
 extends Merge
 implements InsertionInterface<Comparable> {
@@ -164,16 +165,16 @@ implements InsertionInterface<Comparable> {
      * {@code timInc} that takes an array of {@code Comparable} objects, an integer {@code left}, and an integer {@code right} as input.
      * This method performs an incremental variant of the Tim Sort algorithm to sort the specified range of the array.
      * <ul>
-     *     <li>The method starts by initializing the variables {@code n} and {@code minRun}.
-     *     The {@code n} variable is assigned the value of the {@code right} parameter, which represents the exclusive upper bound of the range to be sorted.
+     *     <li>The method starts by initializing the variable {@code minRun}.
+     *     The {@code right} parameter, which represents the exclusive upper bound of the range to be sorted.
      *     The {@code minRun} variable is assigned the result of the {@code minRunLength} method called with the {@code MIN_MERGE} constant.</li>
-     *     <li>The first {@code for} loop iterates over the range from <i>0</i> to {@code n} with a step size of {@code minRun}.
+     *     <li>The first {@code for} loop iterates over the range from <i>0</i> to {@code right} with a step size of {@code minRun}.
      *     It calls the {@code insertionInc} method to perform an incremental insertion sort on the subarray from {@code i}
-     *     to ({@link java.lang.Math Math.min}{@code ((i + MIN_MERGE), n) - 1}).
+     *     to ({@link java.lang.Math Math.min}{@code ((i + MIN_MERGE), right) - 1}).
      *     This step is used to ensure that each small run within the array is sorted.</li>
      *     <li>The second {@code for} loop performs the merging step of the Tim Sort algorithm.
      *     It starts with a {@code size} value of {@code minRun} and doubles the value of {@code size} in each iteration.
-     *     It iterates over the range from {@code left} to {@code n} with a step size of {@code (2 * size)}.
+     *     It iterates over the range from {@code left} to {@code right} with a step size of {@code (2 * size)}.
      *     Within each iteration, it determines the mid index {@code mid} and the upper bound index {@code j} of the current subarray.
      *     If {@code mid} is less than {@code j}, it calls the {@code mergeInc} method to merge the subarrays
      *     from {@code i} to mid and from {@code (mid + 1)} to {@code j}.
@@ -192,13 +193,13 @@ implements InsertionInterface<Comparable> {
      * @see         mz.MergeInterface#mergeInc(Comparable[], int, int, int)
      */
     protected void timInc(Comparable[] array, int left, int right) {
-        int n = right, minRun = minRunLength(MIN_MERGE);
-        for (int i = 0; i < n; i += minRun) {
-            insertionInc(array, i, (Math.min((i + MIN_MERGE), n) - 1));
+        int minRun = minRunLength(MIN_MERGE);
+        for (int i = 0; i < right; i += minRun) {
+            insertionInc(array, i, (Math.min((i + MIN_MERGE), right) - 1));
         }
-        for (int size = minRun; size < n; size *= 2) {
-            for (int i = left; i < n; i += (2 * size)) {
-                int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
+        for (int size = minRun; size < right; size *= 2) {
+            for (int i = left; i < right; i += (2 * size)) {
+                int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
                 if (mid < j) {
                     mergeInc(array, i, mid, j);
                 }
@@ -210,16 +211,16 @@ implements InsertionInterface<Comparable> {
      * {@code timDec} that takes an array of {@code Comparable} objects, an integer {@code left}, and an integer {@code right} as input.
      * This method performs a decremental variant of the Tim Sort algorithm to sort the specified range of the array.
      * <ul>
-     *     <li>The method starts by initializing the variables {@code n} and {@code minRun}.
-     *     The {@code n} variable is assigned the value of the {@code right} parameter, which represents the exclusive upper bound of the range to be sorted.
+     *     <li>The method starts by initializing the variable {@code minRun}.
+     *     The {@code right} parameter, which represents the exclusive upper bound of the range to be sorted.
      *     The {@code minRun} variable is assigned the result of the {@code minRunLength} method called with the {@code MIN_MERGE} constant.</li>
-     *     <li>The first {@code for} loop iterates over the range from <i>0</i> to {@code n} with a step size of {@code minRun}.
+     *     <li>The first {@code for} loop iterates over the range from <i>0</i> to {@code right} with a step size of {@code minRun}.
      *     It calls the {@code insertionDec} method to perform an incremental insertion sort on the subarray from {@code i}
-     *     to ({@link java.lang.Math Math.min}{@code ((i + MIN_MERGE), n) - 1}).
+     *     to ({@link java.lang.Math Math.min}{@code ((i + MIN_MERGE), right) - 1}).
      *     This step is used to ensure that each small run within the array is sorted.</li>
      *     <li>The second {@code for} loop performs the merging step of the Tim Sort algorithm.
      *     It starts with a {@code size} value of {@code minRun} and doubles the value of {@code size} in each iteration.
-     *     It iterates over the range from {@code left} to {@code n} with a step size of {@code (2 * size)}.
+     *     It iterates over the range from {@code left} to {@code right} with a step size of {@code (2 * size)}.
      *     Within each iteration, it determines the mid index {@code mid} and the upper bound index {@code j} of the current subarray.
      *     If {@code mid} is less than {@code j}, it calls the {@code mergeDec} method to merge the subarrays
      *     from {@code i} to mid and from {@code (mid + 1)} to {@code j}.
@@ -238,13 +239,13 @@ implements InsertionInterface<Comparable> {
      * @see         mz.MergeInterface#mergeInc(Comparable[], int, int, int)
      */
     protected void timDec(Comparable[] array, int left, int right) {
-        int n = right, minRun = minRunLength(MIN_MERGE);
-        for (int i = 0; i < n; i += minRun) {
-            insertionInc(array, i, (Math.min((i + MIN_MERGE), n) - 1));
+        int minRun = minRunLength(MIN_MERGE);
+        for (int i = 0; i < right; i += minRun) {
+            insertionInc(array, i, (Math.min((i + MIN_MERGE), right) - 1));
         }
-        for (int size = minRun; size < n; size *= 2) {
-            for (int i = left; i < n; i += (2 * size)) {
-                int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
+        for (int size = minRun; size < right; size *= 2) {
+            for (int i = left; i < right; i += (2 * size)) {
+                int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
                 if (mid < j) {
                     mergeDec(array, i, mid, j);
                 }

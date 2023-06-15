@@ -13,9 +13,10 @@ import mz.Merge3;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class IntroMerge3
-        extends Merge3
-        implements Intro<Comparable> {
+extends Merge3
+implements Intro<Comparable> {
 
     /**
      * <b>Intro Merge3 Sort:</b><br>

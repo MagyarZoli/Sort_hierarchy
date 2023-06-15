@@ -9,6 +9,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class TernaryHeap
 extends Heap {
 

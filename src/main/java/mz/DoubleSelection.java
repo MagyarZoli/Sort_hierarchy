@@ -1,12 +1,13 @@
 package mz;
 
 /**
- * Double Selection if an item is not a smallest item, it's possible to check to see if it's the largest item and if it is, move it to the end of the array.
+ * Double Selection if an item is not the smallest item, it's possible to check to see if it's the largest item and if it is, move it to the end of the array.
  * This way we can achieve two goals at the same time and perform the job faster.
  * This kind of addition to the burst-selection sort makes it somewhat faster.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class DoubleSelection
 extends Selection {
 
@@ -81,12 +82,9 @@ extends Selection {
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     protected void doubleSelectionInc(Comparable[] array) {
-        int n = array.length;
-        int left = 0;
-        int right = (n - 1);
+        int n = array.length, left = 0, right = (n - 1);
         while (left < right) {
-            int minIndex = left;
-            int maxIndex = right;
+            int minIndex = left, maxIndex = right;
             for (int j = left; j <= right; j++) {
                 minIndex = findMinimumIndex(array, j, minIndex);
                 maxIndex = findMaximumIndex(array, j, maxIndex);
@@ -120,12 +118,9 @@ extends Selection {
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     protected void doubleSelectionDec(Comparable[] array) {
-        int n = array.length;
-        int left = 0;
-        int right = (n - 1);
+        int n = array.length, left = 0, right = (n - 1);
         while (left < right) {
-            int minIndex = left;
-            int maxIndex = right;
+            int minIndex = left, maxIndex = right;
             for (int j = left; j <= right; j++) {
                 minIndex = findMinimumIndex(array, j, minIndex);
                 maxIndex = findMaximumIndex(array, j, maxIndex);
@@ -162,8 +157,7 @@ extends Selection {
      */
     protected void doubleSelectionInc(Comparable[] array, int left, int right) {
         while (left < right) {
-            int minIndex = left;
-            int maxIndex = right;
+            int minIndex = left, maxIndex = right;
             for (int j = left; j <= right; j++) {
                 minIndex = findMinimumIndex(array, j, minIndex);
                 maxIndex = findMaximumIndex(array, j, maxIndex);
@@ -200,8 +194,7 @@ extends Selection {
      */
     protected void doubleSelectionDec(Comparable[] array, int left, int right) {
         while (left < right) {
-            int minIndex = left;
-            int maxIndex = right;
+            int minIndex = left, maxIndex = right;
             for (int j = left; j <= right; j++) {
                 minIndex = findMinimumIndex(array, j, minIndex);
                 maxIndex = findMaximumIndex(array, j, maxIndex);

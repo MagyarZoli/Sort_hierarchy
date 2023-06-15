@@ -13,6 +13,7 @@ import mz.Quick;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class IntroQuick
 extends Quick
 implements Intro<Comparable> {

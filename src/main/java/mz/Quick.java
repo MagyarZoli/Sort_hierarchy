@@ -8,6 +8,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class Quick
 extends SortComparable
 implements QuickInterface<Comparable> {
@@ -42,6 +43,8 @@ implements QuickInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
+     * @see         mz.DualPivotQuick#DualPivotQuick() DualPivotQuick
+     * @see         mz.intro.IntroDualPivotQuick#IntroDualPivotQuick() IntroDualPivotQuick
      * @see         mz.intro.IntroQuick#IntroQuick() IntroQuick
      * @see         mz.intro.IntroQuick3#IntroQuick3() IntroQuick3
      * @see         mz.Quick3#Quick3() Quick3

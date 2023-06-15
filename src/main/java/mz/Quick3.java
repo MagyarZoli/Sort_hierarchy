@@ -8,6 +8,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class Quick3
 extends Quick {
 
@@ -70,7 +71,7 @@ extends Quick {
     /**
      * {@code quick3Inc} that implements the Quick Sort algorithm to sort an array of Comparable objects in ascending order.
      * <ul>
-     *     <li>The method takes in an array of Comparable objects, {@cocde array},
+     *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left is <i>0</i> and right is {@code (array.length - 1)} indices specifying the portion of the array to be sorted.</li>
      *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
      *     it means the portion of the array is empty or contains only one element, and no further sorting is required.
@@ -99,7 +100,7 @@ extends Quick {
     /**
      * {@code quick3Dec} that implements the Quick Sort algorithm to sort an array of Comparable objects in descending order.
      * <ul>
-     *     <li>The method takes in an array of Comparable objects, {@cocde array},
+     *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left is <i>0</i> and right is {@code (array.length - 1)} indices specifying the portion of the array to be sorted.</li>
      *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
      *     it means the portion of the array is empty or contains only one element, and no further sorting is required.
@@ -128,7 +129,7 @@ extends Quick {
     /**
      * {@code quick3Inc} that implements the Quick Sort algorithm to sort an array of Comparable objects in ascending order.
      * <ul>
-     *     <li>The method takes in an array of Comparable objects, {@cocde array},
+     *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left and right indices specifying the portion of the array to be sorted.</li>
      *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
      *     it means the portion of the array is empty or contains only one element, and no further sorting is required.
@@ -167,7 +168,7 @@ extends Quick {
     /**
      * {@code quick3Dec} that implements the Quick Sort algorithm to sort an array of Comparable objects in descending order.
      * <ul>
-     *     <li>The method takes in an array of Comparable objects, {@cocde array},
+     *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left and right indices specifying the portion of the array to be sorted.</li>
      *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
      *     it means the portion of the array is empty or contains only one element, and no further sorting is required.

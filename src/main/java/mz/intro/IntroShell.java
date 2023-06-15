@@ -13,6 +13,7 @@ import mz.Shell;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class IntroShell
 extends Shell
 implements Intro<Comparable> {

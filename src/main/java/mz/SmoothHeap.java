@@ -6,6 +6,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class SmoothHeap
 extends Heap {
 
@@ -133,7 +134,7 @@ extends Heap {
      * the elements from the heap in sorted order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, as a parameter.</li>
-     *     <li>The variable {@code n} is assigned the length of the {@code array}.</li>
+     *     <li>The variable {@code right} is assigned the length of the {@code array}.</li>
      *     <li>The first {@code for} loop iterates over the elements of the {@code array}. For each element, it calls the {@code insertInc} method
      *     to insert the element into the heap represented by the {@code buffer}.</li>
      *     <li>After the first loop completes, the {@code buffer} contains all the elements from the {@code array} in a heap structure.</li>
@@ -151,11 +152,10 @@ extends Heap {
      * @see         SmoothHeap#deleteMinInc()
      */
     protected void smoothInc(Comparable[] array, int left, int right) {
-        int n = right;
-        for (int i = left; i < n; i++) {
+        for (int i = left; i < right; i++) {
             insertInc(array[i]);
         }
-        for (int i = left; i < n; i++) {
+        for (int i = left; i < right; i++) {
             array[i] = deleteMinInc();
         }
     }
@@ -184,11 +184,10 @@ extends Heap {
      * @see         SmoothHeap#deleteMinDec()
      */
     protected void smoothDec(Comparable[] array, int left, int right) {
-        int n = right;
-        for (int i = left; i < n; i++) {
+        for (int i = left; i < right; i++) {
             insertDec(array[i]);
         }
-        for (int i = left; i < n; i++) {
+        for (int i = left; i < right; i++) {
             array[i] = deleteMinDec();
         }
     }

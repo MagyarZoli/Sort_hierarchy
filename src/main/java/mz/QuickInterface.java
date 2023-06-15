@@ -6,6 +6,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public interface QuickInterface<T extends Comparable>
 extends Sort<T>, SortSwap<T> {
 
@@ -208,7 +209,7 @@ extends Sort<T>, SortSwap<T> {
      *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses {@code newRight}.</li>
      *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and {@code newRight} is decremented by 1.
      *     Then, if the element at {@code selectIndex} is smaller than {@code pivot1},
-     *     the element is swapped with the element at {@codee newLeft}, and {@code newLeft} is incremented by 1.</li>
+     *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
      *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex} surpasses {@code newRight}.</li>
      *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at {@code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
      *     This step puts the pivots in their correct positions.</li>
@@ -267,7 +268,7 @@ extends Sort<T>, SortSwap<T> {
      *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses {@code newRight}.</li>
      *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and {@code newRight} is decremented by 1.
      *     Then, if the element at {@code selectIndex} is greater than {@code pivot1},
-     *     the element is swapped with the element at {@codee newLeft}, and {@code newLeft} is incremented by 1.</li>
+     *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
      *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex} surpasses {@code newRight}.</li>
      *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at {@code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
      *     This step puts the pivots in their correct positions.</li>

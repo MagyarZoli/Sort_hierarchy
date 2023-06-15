@@ -1,6 +1,6 @@
 package mz.intro;
 
-import mz.Cocktail;
+import mz.DualPivotQuick;
 
 /**
  * Intro Sort is a hybrid sorting algorithm that combines the strengths of Quick Sort and Insertion Sort.
@@ -9,24 +9,24 @@ import mz.Cocktail;
  * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.
  * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
- * Another Sort is Cocktail Sort.
+ * Another Sort is Dual Pivot Quick Sort.
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
-public class IntroCocktail
-extends Cocktail
+public class IntroDualPivotQuick
+extends DualPivotQuick
 implements Intro<Comparable> {
 
     /**
-     * <b>Intro Cocktail Sort:</b><br>
+     * <b>Intro Dual Pivot Quick Sort:</b><br>
      * Is a hybrid sorting algorithm that combines the strengths of Quick Sort and Insertion Sort.
      * It aims to provide fast average-case performance while maintaining worst-case guarantees.
      * The basic idea behind Intro Sort is to start with Quick Sort, which is known for its efficiency on average,
      * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.<br><br>
      * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
      * If the depth exceeds a certain threshold, the algorithm switches to
-     * Another Sort is Cocktail Sort.
+     * Another Sort is Dual Pivot Quick Sort.
      * Implements an adaptive sorting algorithm called Intro Sort Interface.<br><br>
      * <b>Example:</b>
      * <ol>
@@ -34,7 +34,7 @@ implements Intro<Comparable> {
      *     If true, the array is large enough to be sorted using QuickSort.</li>
      *     <li>This condition checks if the maximum depth has been reached.
      *     If true, the maximum depth has been exceeded,
-     *     and the sorting algorithm switches to another sorting method is Cocktail Sort</li>
+     *     and the sorting algorithm switches to another sorting method is Dual Pivot Quick Sort</li>
      *     <li>If the maximum depth has been reached, the sort the subarray using a different sorting algorithm.</li>
      *     <li>If the maximum depth has not been reached,
      *     the to perform the partitioning step of QuickSort.
@@ -48,7 +48,7 @@ implements Intro<Comparable> {
      * </ol>
      * <b>Note:</b><br>
      * Implements an adaptive sorting algorithm called Intro Sort. It combines the Quick Sort
-     * algorithm with a switch to another sorting algorithm Cocktail Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * algorithm with a switch to another sorting algorithm Dual Pivot Quick Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
      * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(n^2)</em><br>
@@ -57,7 +57,7 @@ implements Intro<Comparable> {
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
      */
-    public IntroCocktail() {}
+    public IntroDualPivotQuick() {}
 
     /**
      * {@inheritDoc}
@@ -85,7 +85,7 @@ implements Intro<Comparable> {
      */
     @Override
     public void introSortClassInc(Comparable[] array, int left, int right) {
-        cocktailInc(array, left, right);
+        dualPivotQuickInc(array, left, right);
     }
 
     /**
@@ -96,6 +96,6 @@ implements Intro<Comparable> {
      */
     @Override
     public void introSortClassDec(Comparable[] array, int left, int right) {
-        cocktailDec(array, left, right);
+        dualPivotQuickDec(array, left, right);
     }
 }

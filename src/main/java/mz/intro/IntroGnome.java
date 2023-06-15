@@ -13,6 +13,7 @@ import mz.Gnome;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class IntroGnome
 extends Gnome
 implements Intro<Comparable> {

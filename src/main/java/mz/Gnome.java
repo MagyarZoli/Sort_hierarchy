@@ -7,6 +7,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class Gnome
 extends Bubble {
 
@@ -87,8 +88,7 @@ extends Bubble {
      */
     @SuppressWarnings("unchecked")
     protected void gnomeInc(Comparable[] array) {
-        int n = array.length;
-        int pos = 0;
+        int n = array.length, pos = 0;
         while (pos < n) {
             if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) >= 0) {
                 pos++;
@@ -122,8 +122,7 @@ extends Bubble {
      */
     @SuppressWarnings("unchecked")
     protected void gnomeDec(Comparable[] array) {
-        int n = array.length;
-        int pos = 0;
+        int n = array.length, pos = 0;
         while (pos < n) {
             if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) <= 0) {
                 pos++;
@@ -159,9 +158,8 @@ extends Bubble {
      */
     @SuppressWarnings("unchecked")
     protected void gnomeInc(Comparable[] array, int left, int right) {
-        int n = right;
         int pos = left;
-        while (pos < n) {
+        while (pos < right) {
             if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) >= 0) {
                 pos++;
             } else {
@@ -196,9 +194,8 @@ extends Bubble {
      */
     @SuppressWarnings("unchecked")
     protected void gnomeDec(Comparable[] array, int left, int right) {
-        int n = right;
         int pos = left;
-        while (pos < n) {
+        while (pos < right) {
             if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) <= 0) {
                 pos++;
             } else {

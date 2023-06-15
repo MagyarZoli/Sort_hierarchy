@@ -13,6 +13,7 @@ import mz.DoubleSelection;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class IntroDoubleSelection
 extends DoubleSelection
 implements Intro<Comparable> {

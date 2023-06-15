@@ -7,6 +7,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class Comb
 extends Cocktail {
 
@@ -145,12 +146,12 @@ extends Cocktail {
      * {@code combInc} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in increasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
-     *     <li>The variable {@code n} is assigned the length of the array, representing the total number of elements in the array.</li>
-     *     <li>The variable {@code gap} is initially set to {@code n}, representing the initial gap value for comparisons and swaps.</li>
+     *     <li>The variable {@code right} is assigned the length of the array, representing the total number of elements in the array.</li>
+     *     <li>The variable {@code gap} is initially set to {@code right}, representing the initial gap value for comparisons and swaps.</li>
      *     <li>The swapped variable is initially set to {@code true}, indicating that there may be swaps to perform in the array.</li>
      *     <li>The outer {@code while} loop continues as long as the gap is not equal to 1 or there are still swaps being made in the array.</li>
      *     <li>Inside the {@code while} loop, the {@code getNextGap} method is called to calculate the next gap value based on the current gap.</li>
-     *     <li>The {@code for} loop iterates from 0 to {@code (n - gap)}, performing comparisons and swaps between elements with a specific gap.</li>
+     *     <li>The {@code for} loop iterates from 0 to {@code (right - gap)}, performing comparisons and swaps between elements with a specific gap.</li>
      *     <li>Inside the {@code for} loop, the {@code isSwap} method is called to determine if a swap is necessary between two elements with the given gap.
      *     If a swap is made, the swapped variable is set to {@code true}.</li>
      *     <li>After the {@code for} loop, the outer {@code while} loop continues until the gap becomes 1 and no more swaps are made in the array.</li>
@@ -167,12 +168,12 @@ extends Cocktail {
      * @see         mz.SortSwap#isSwapInc(Comparable[], int, int)
      */
     protected void combInc(Comparable[] array, int left, int right) {
-        int n = right, gap = n;
+        int gap = right;
         boolean swapped = true;
         while (gap != 1 || swapped) {
             gap = getNextGap(gap);
             swapped = false;
-            for (int i = left; i < (n - gap); i++) {
+            for (int i = left; i < (right - gap); i++) {
                 if (isSwapInc(array, i, gap)) {
                     swapped = true;
                 }
@@ -184,12 +185,12 @@ extends Cocktail {
      * {@code combDec} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in decreasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
-     *     <li>The variable {@code n} is assigned the length of the array, representing the total number of elements in the array.</li>
-     *     <li>The variable {@code gap} is initially set to {@code n}, representing the initial gap value for comparisons and swaps.</li>
+     *     <li>The variable {@code right} is assigned the length of the array, representing the total number of elements in the array.</li>
+     *     <li>The variable {@code gap} is initially set to {@code right}, representing the initial gap value for comparisons and swaps.</li>
      *     <li>The swapped variable is initially set to {@code true}, indicating that there may be swaps to perform in the array.</li>
      *     <li>The outer {@code while} loop continues as long as the gap is not equal to 1 or there are still swaps being made in the array.</li>
      *     <li>Inside the {@code while} loop, the {@code getNextGap} method is called to calculate the next gap value based on the current gap.</li>
-     *     <li>The {@code for} loop iterates from 0 to {@code (n - gap)}, performing comparisons and swaps between elements with a specific gap.</li>
+     *     <li>The {@code for} loop iterates from 0 to {@code (right - gap)}, performing comparisons and swaps between elements with a specific gap.</li>
      *     <li>Inside the {@code for} loop, the {@code isSwap} method is called to determine if a swap is necessary between two elements with the given gap.
      *     If a swap is made, the swapped variable is set to {@code true}.</li>
      *     <li>After the {@code for} loop, the outer {@code while} loop continues until the gap becomes 1 and no more swaps are made in the array.</li>
@@ -206,12 +207,12 @@ extends Cocktail {
      * @see         mz.SortSwap#isSwapDec(Comparable[], int, int)
      */
     protected void combDec(Comparable[] array, int left, int right) {
-        int n = right, gap = n;
+        int gap = right;
         boolean swapped = true;
         while (gap != 1 || swapped) {
             gap = getNextGap(gap);
             swapped = false;
-            for (int i = left; i < (n - gap); i++) {
+            for (int i = left; i < (right - gap); i++) {
                 if (isSwapDec(array, i, gap)) {
                     swapped = true;
                 }

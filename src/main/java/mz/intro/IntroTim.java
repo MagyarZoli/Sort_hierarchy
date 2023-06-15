@@ -13,6 +13,7 @@ import mz.Tim;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class IntroTim
 extends Tim
 implements Intro<Comparable> {

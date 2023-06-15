@@ -10,6 +10,7 @@ import java.util.Arrays;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public class WeaveMerge
 extends Merge {
 

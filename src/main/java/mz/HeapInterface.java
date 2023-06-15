@@ -6,6 +6,7 @@ package mz;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
+@SuppressWarnings("rawtypes")
 public interface HeapInterface<T extends Comparable>
 extends Sort<T>, SortSwap<T> {
 
@@ -250,9 +251,7 @@ extends Sort<T>, SortSwap<T> {
      * @see         mz.HeapInterface#heapChildInc(Comparable[], int, int, int)
      */
     default int heapSplitInc(T[] array, int n, int i) {
-        int left = ((2 * i) + 1);
-        int right = ((2 * i) + 2);
-        int largest = heapChildInc(array, n, i, left);
+        int left = ((2 * i) + 1), right = ((2 * i) + 2), largest = heapChildInc(array, n, i, left);
         largest = heapChildInc(array, n, largest, right);
         return largest;
     }
@@ -286,8 +285,7 @@ extends Sort<T>, SortSwap<T> {
      * @see         mz.HeapInterface#heapChildDec(Comparable[], int, int, int)
      */
     default int heapSplitDec(T[] array, int n, int i) {
-        int left = ((2 * i) + 1), right = ((2 * i) + 2);
-        int largest = heapChildDec(array, n, i, left);
+        int left = ((2 * i) + 1), right = ((2 * i) + 2), largest = heapChildDec(array, n, i, left);
         largest = heapChildDec(array, n, largest, right);
         return largest;
     }
