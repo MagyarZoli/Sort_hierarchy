@@ -47,7 +47,9 @@ implements QuickInterface<Comparable> {
      * @see         mz.intro.IntroDualPivotQuick#IntroDualPivotQuick() IntroDualPivotQuick
      * @see         mz.intro.IntroQuick#IntroQuick() IntroQuick
      * @see         mz.intro.IntroQuick3#IntroQuick3() IntroQuick3
+     * @see         mz.intro.IntroStableQuick#IntroStableQuick() IntroStableQuick
      * @see         mz.Quick3#Quick3() Quick3
+     * @see         mz.StableQuick#StableQuick() StableQuick
      */
     public Quick() {}
 
