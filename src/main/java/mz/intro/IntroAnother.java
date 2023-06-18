@@ -57,6 +57,7 @@ implements Intro<Comparable> {
      * Average Case Complexity: <em>O(?)</em><br>
      * Auxiliary Space:         <em>O(?)</em><br>
      * Stability:               <b>No</b>
+     * @see         mz.intro.introDPQ.IntroDPQAnother#IntroDPQAnother() IntroDPQAnother
      */
     public IntroAnother() {}
 

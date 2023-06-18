@@ -48,6 +48,7 @@ extends Quick {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.intro.introDPQ.IntroDPQStableQuick#IntroDPQStableQuick() IntroDPQStableQuick
      * @see         mz.intro.IntroStableQuick#IntroStableQuick() IntroStableQuick
      */
     public StableQuick() {}

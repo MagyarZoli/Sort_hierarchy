@@ -44,6 +44,10 @@ implements QuickInterface<Comparable> {
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
      * @see         mz.DualPivotQuick#DualPivotQuick() DualPivotQuick
+     * @see         mz.intro.introDPQ.IntroDPQDualPivotQuick#IntroDPQDualPivotQuick() IntroDPQDualPivotQuick
+     * @see         mz.intro.introDPQ.IntroDPQQuick#IntroDPQQuick() IntroDPQQuick
+     * @see         mz.intro.introDPQ.IntroDPQQuick3#IntroDPQQuick3() IntroDPQQuick3
+     * @see         mz.intro.introDPQ.IntroDPQStableQuick#IntroDPQStableQuick() IntroDPQStableQuick
      * @see         mz.intro.IntroDualPivotQuick#IntroDualPivotQuick() IntroDualPivotQuick
      * @see         mz.intro.IntroQuick#IntroQuick() IntroQuick
      * @see         mz.intro.IntroQuick3#IntroQuick3() IntroQuick3

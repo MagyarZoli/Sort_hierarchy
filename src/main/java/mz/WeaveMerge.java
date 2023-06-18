@@ -48,6 +48,7 @@ extends Merge {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.intro.introDPQ.IntroDPQWeakHeap#IntroDPQWeakHeap() IntroDPQWeakHeap
      * @see         mz.intro.IntroWeaveMerge#IntroWeaveMerge() IntroWeaveMerge
      */
     public WeaveMerge() {}

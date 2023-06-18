@@ -47,6 +47,7 @@ extends Cocktail {
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
      * @see         mz.intro.IntroComb#IntroComb() IntroComb
+     * @see         mz.intro.introDPQ.IntroDPQComb#IntroDPQComb() IntroDPQComb
      */
     public Comb() {}
 

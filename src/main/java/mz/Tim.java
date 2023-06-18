@@ -51,6 +51,7 @@ implements InsertionInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.intro.introDPQ.IntroDPQTim#IntroDPQTim() IntroDPQTim
      * @see         mz.intro.IntroTim#IntroTim() IntroTim
      */
     public Tim() {}

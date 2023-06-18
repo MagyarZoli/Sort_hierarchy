@@ -45,6 +45,13 @@ implements MergeInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.intro.introDPQ.IntroDPQMerge#IntroDPQMerge() IntroDPQMerge
+     * @see         mz.intro.introDPQ.IntroDPQMerge3#IntroDPQMerge3() IntroDPQMerge3
+     * @see         mz.intro.introDPQ.IntroDPQMergeInPlace#IntroDPQMergeInPlace() IntroDPQMergeInPlace
+     * @see         mz.intro.introDPQ.IntroDPQMergeInsertion#IntroDPQMergeInsertion() IntroDPQMergeInsertion
+     * @see         mz.intro.introDPQ.IntroDPQTim#IntroDPQTim() IntroDPQTim
+     * @see         mz.intro.introDPQ.IntroDPQWeaveMerge#IntroDPQWeaveMerge() IntroDPQWeaveMerge
+     * @see         mz.intro.introDPQ.IntroDPQWiki#IntroDPQWiki() IntroDPQWiki
      * @see         mz.intro.IntroMerge#IntroMerge() IntroMerge
      * @see         mz.intro.IntroMerge3#IntroMerge3() IntroMerge3
      * @see         mz.intro.IntroMergeInPlace#IntroMergeInPlace() IntroMergeInPlace

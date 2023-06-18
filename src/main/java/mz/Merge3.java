@@ -34,6 +34,7 @@ extends Merge {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.intro.introDPQ.IntroDPQMerge3#IntroDPQMerge3() IntroDPQMerge3
      * @see         mz.intro.IntroMerge3#IntroMerge3() IntroMerge3
      */
     public Merge3() {}
