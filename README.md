@@ -1,4 +1,4 @@
-![Apache License, Version 2.0, January 2004](https://img.shields.io/github/license/apache/maven.svg?label=License)
+[![Apache License, Version 2.0, January 2004](https://img.shields.io/github/license/apache/maven.svg?label=License)][license]
 
 # Sort hierarchy
 
@@ -14,3 +14,5 @@ Magyar Zoltán
 
 ### Contact
 magyarz95@gmail.com
+
+[license]: https://www.apache.org/licenses/LICENSE-2.0
