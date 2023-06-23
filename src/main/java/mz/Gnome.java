@@ -21,12 +21,10 @@ extends Bubble {
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
      *     <li>While {@code pos} is less than the length of the array:</li>
-     *     <ul>
-     *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
-     *         move to the next position by incrementing {@code pos}.</li>
-     *         <li>If the current element is out of order with the previous element,
-     *         swap them and move one position back by decrementing {@code pos}.</li>
-     *     </ul>
+     *     <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
+     *     move to the next position by incrementing {@code pos}.</li>
+     *     <li>If the current element is out of order with the previous element,
+     *     swap them and move one position back by decrementing {@code pos}.</li>
      *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
      *     <li>The array is now sorted.</li>
      * </ol>
@@ -74,12 +72,10 @@ extends Bubble {
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
      *     <li>While {@code pos} is less than the length of the array:</li>
-     *     <ul>
-     *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
-     *         move to the next position by incrementing {@code pos}.</li>
-     *         <li>If the current element is out of order with the previous element,
-     *         swap them and move one position back by decrementing {@code pos}.</li>
-     *     </ul>
+     *     <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
+     *     move to the next position by incrementing {@code pos}.</li>
+     *     <li>If the current element is out of order with the previous element,
+     *     swap them and move one position back by decrementing {@code pos}.</li>
      *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
      * </ul>
      * {@code gnomeInc} method implements the Gnome Sort algorithm to sort the given
@@ -108,12 +104,10 @@ extends Bubble {
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
      *     <li>While {@code pos} is less than the length of the array:</li>
-     *     <ul>
-     *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
-     *         move to the next position by incrementing {@code pos}.</li>
-     *         <li>If the current element is out of order with the previous element,
-     *         swap them and move one position back by decrementing {@code pos}.</li>
-     *     </ul>
+     *     <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
+     *     move to the next position by incrementing {@code pos}.</li>
+     *     <li>If the current element is out of order with the previous element,
+     *     swap them and move one position back by decrementing {@code pos}.</li>
      *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
      * </ul>
      * {@code gnomeDec} method implements the Gnome Sort algorithm to sort the given
@@ -142,12 +136,10 @@ extends Bubble {
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
      *     <li>While {@code pos} is less than the length of the array:</li>
-     *     <ul>
-     *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
-     *         move to the next position by incrementing {@code pos}.</li>
-     *         <li>If the current element is out of order with the previous element,
-     *         swap them and move one position back by decrementing {@code pos}.</li>
-     *     </ul>
+     *     <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
+     *     move to the next position by incrementing {@code pos}.</li>
+     *     <li>If the current element is out of order with the previous element,
+     *     swap them and move one position back by decrementing {@code pos}.</li>
      *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
      * </ul>
      * {@code gnomeInc} method implements the Gnome Sort algorithm to sort the given
@@ -178,12 +170,10 @@ extends Bubble {
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
      *     <li>While {@code pos} is less than the length of the array:</li>
-     *     <ul>
-     *         <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
-     *         move to the next position by incrementing {@code pos}.</li>
-     *         <li>If the current element is out of order with the previous element,
-     *         swap them and move one position back by decrementing {@code pos}.</li>
-     *     </ul>
+     *     <li>If {@code pos} is 0 or the current element is in the correct order with the previous element,
+     *     move to the next position by incrementing {@code pos}.</li>
+     *     <li>If the current element is out of order with the previous element,
+     *     swap them and move one position back by decrementing {@code pos}.</li>
      *     <li>Repeat step 3 until {@code pos} reaches the end of the array.</li>
      * </ul>
      * {@code gnomeDec} method implements the Gnome Sort algorithm to sort the given

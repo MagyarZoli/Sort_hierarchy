@@ -21,14 +21,12 @@ extends Bubble {
      *     <li>Start with an unsorted list of elements.</li>
      *     <li>Set two pointers, {@code start} and {@code end}, initially pointing to the first and last elements of the list, respectively.</li>
      *     <li>Repeat the following steps until no more swaps are made:</li>
-     *     <ul>
-     *         <li>Move the {@code start} pointer from left to right, comparing adjacent elements and swapping them if they are in the wrong order.</li>
-     *         <li>If any swaps are made during this pass, mark that a swap occurred.</li>
-     *         <li>Move the {@code end} pointer from right to left, comparing adjacent elements and swapping them if they are in the wrong order.</li>
-     *         <li>If any swaps are made during this pass, mark that a swap occurred.</li>
-     *         <li>If no swaps occurred during the entire pass (both from {@code start} to {@code end} and from {@code end} to {@code start}),
-     *         the list is already sorted, and the algorithm can terminate.</li>
-     *     </ul>
+     *     <li>Move the {@code start} pointer from left to right, comparing adjacent elements and swapping them if they are in the wrong order.</li>
+     *     <li>If any swaps are made during this pass, mark that a swap occurred.</li>
+     *     <li>Move the {@code end} pointer from right to left, comparing adjacent elements and swapping them if they are in the wrong order.</li>
+     *     <li>If any swaps are made during this pass, mark that a swap occurred.</li>
+     *     <li>If no swaps occurred during the entire pass (both from {@code start} to {@code end} and from {@code end} to {@code start}),
+     *     the list is already sorted, and the algorithm can terminate.</li>
      *     <li>The sorted list is obtained once the algorithm terminates.</li>
      * </ol>
      * <b>Note:</b><br>

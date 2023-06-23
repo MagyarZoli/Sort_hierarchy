@@ -3,6 +3,7 @@ mz\intro\IntroWeaveMerge.class
 mz\intro\IntroTim.class
 mz\MergeInPlace.class
 mz\QuickInterface.class
+mz\intro\introDPQ\IntroDPQOddEvenMerge.class
 mz\Sort.class
 mz\DualPivotQuick.class
 mz\intro\introDPQ\IntroDPQ.class
@@ -20,6 +21,7 @@ mz\Shell.class
 mz\TernaryHeap.class
 mz\intro\introDPQ\IntroDPQTim.class
 mz\intro\introDPQ\IntroDPQWeaveMerge.class
+mz\intro\IntroOddEvenMerge.class
 mz\intro\IntroQuick.class
 mz\intro\IntroCocktail.class
 mz\intro\IntroBubble.class
@@ -41,6 +43,7 @@ mz\Merge3.class
 mz\SortComparable.class
 mz\Quick.class
 mz\intro\introDPQ\IntroDPQMergeInPlace.class
+mz\OddEvenMerge.class
 mz\intro\introDPQ\IntroDPQCocktail.class
 mz\intro\IntroWeakHeap.class
 mz\intro\introDPQ\IntroDPQWeakHeap.class

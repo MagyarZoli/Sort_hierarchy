@@ -29,16 +29,12 @@ extends Intro<T> {
      *     it directly uses the {@code introSortClassInc} method to sort the sub-array using a different sorting algorithm.
      *     This is a base case to prevent excessive recursion.</li>
      *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>, it performs the following steps:</li>
-     *     <ul>
-     *         <li>Calls the {@code partitionDualInc} method to partition the sub-array and obtain the pivot indices.</li>
-     *         <li>Recursively calls {@code introRecursiveInc} on the three sub-arrays:</li>
-     *         <ul>
-     *             <li>From {@code left} to {@code (pivots[0] - 1)} (elements smaller than the first pivot)</li>
-     *             <li>From {@code (pivots[0] + 1)} to {@code (pivots[1] - 1)} (elements between the two pivots)</li>
-     *             <li>From {@code (pivots[1] + 1)} to {@code right} (elements greater than the second pivot)</li>
-     *         </ul>
-     *         <li>The recursion depth {@code maxDepth} is decremented by <i>1</i> in each recursive call.</li>
-     *     </ul>
+     *     <li>Calls the {@code partitionDualInc} method to partition the sub-array and obtain the pivot indices.</li>
+     *     <li>Recursively calls {@code introRecursiveInc} on the three sub-arrays:</li>
+     *     <li>From {@code left} to {@code (pivots[0] - 1)} (elements smaller than the first pivot)</li>
+     *     <li>From {@code (pivots[0] + 1)} to {@code (pivots[1] - 1)} (elements between the two pivots)</li>
+     *     <li>From {@code (pivots[1] + 1)} to {@code right} (elements greater than the second pivot)</li>
+     *     <li>The recursion depth {@code maxDepth} is decremented by <i>1</i> in each recursive call.</li>
      *     <li>If the sub-array size is smaller or equal to {@code INTRO_SIZE}, it uses
      *     the {@code insertionInc} method to perform insertion sort on the sub-array.</li>
      * </ul>
@@ -75,16 +71,12 @@ extends Intro<T> {
      *     it directly uses the {@code introSortClassDec} method to sort the sub-array using a different sorting algorithm.
      *     This is a base case to prevent excessive recursion.</li>
      *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>, it performs the following steps:</li>
-     *     <ul>
-     *         <li>Calls the {@code partitionDualDec} method to partition the sub-array and obtain the pivot indices.</li>
-     *         <li>Recursively calls {@code introRecursiveDec} on the three sub-arrays:</li>
-     *         <ul>
-     *             <li>From {@code left} to {@code (pivots[0] - 1)} (elements smaller than the first pivot)</li>
-     *             <li>From {@code (pivots[0] + 1)} to {@code (pivots[1] - 1)} (elements between the two pivots)</li>
-     *             <li>From {@code (pivots[1] + 1)} to {@code right} (elements greater than the second pivot)</li>
-     *         </ul>
-     *         <li>The recursion depth {@code maxDepth} is decremented by <i>1</i> in each recursive call.</li>
-     *     </ul>
+     *     <li>Calls the {@code partitionDualDec} method to partition the sub-array and obtain the pivot indices.</li>
+     *     <li>Recursively calls {@code introRecursiveDec} on the three sub-arrays:</li>
+     *     <li>From {@code left} to {@code (pivots[0] - 1)} (elements smaller than the first pivot)</li>
+     *     <li>From {@code (pivots[0] + 1)} to {@code (pivots[1] - 1)} (elements between the two pivots)</li>
+     *     <li>From {@code (pivots[1] + 1)} to {@code right} (elements greater than the second pivot)</li>
+     *     <li>The recursion depth {@code maxDepth} is decremented by <i>1</i> in each recursive call.</li>
      *     <li>If the sub-array size is smaller or equal to {@code INTRO_SIZE}, it uses
      *     the {@code insertionDec} method to perform insertion sort on the sub-array.</li>
      * </ul>

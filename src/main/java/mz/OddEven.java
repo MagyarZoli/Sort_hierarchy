@@ -18,11 +18,9 @@ extends Bubble {
      * <ol>
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Repeat the following steps until the array is sorted:</li>
-     *     <ul>
-     *         <li>Compare and swap adjacent elements in pairs, starting from the first and second elements.</li>
-     *         <li>Compare and swap adjacent elements in pairs, starting from the second and third elements.</li>
-     *         <li>Continue alternating between odd and even adjacent element comparisons and swaps until the last pair of elements.</li>
-     *     </ul>
+     *     <li>Compare and swap adjacent elements in pairs, starting from the first and second elements.</li>
+     *     <li>Compare and swap adjacent elements in pairs, starting from the second and third elements.</li>
+     *     <li>Continue alternating between odd and even adjacent element comparisons and swaps until the last pair of elements.</li>
      *     <li>After each iteration, the largest element in the unsorted portion of the array will move to its correct position at the end.</li>
      *     <li>Repeat the above steps until the entire array is sorted.</li>
      * </ol>
@@ -42,7 +40,10 @@ extends Bubble {
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
      * @see         mz.intro.introDPQ.IntroDPQOddEven#IntroDPQOddEven() IntroDPQOddEven
+     * @see         mz.intro.introDPQ.IntroDPQOddEvenMerge#IntroDPQOddEvenMerge() IntroDPQOddEvenMerge
      * @see         mz.intro.IntroOddEven#IntroOddEven() IntroOddEven
+     * @see         mz.intro.IntroOddEvenMerge#IntroOddEvenMerge() IntroOddEvenMerge
+     * @see         mz.OddEvenMerge#OddEvenMerge() OddEvenMerge
      */
     public OddEven() {}
 
@@ -73,10 +74,8 @@ extends Bubble {
      *     <li>There is a {@code while} loop that continues until {@code isSorted} is {@code true}.
      *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the array is already sorted.</li>
      *     <li>The {@code indexedElementInc} method is then called twice within the loop.
-     *     <ul>
-     *         <li>The first call passes the array, index <i>1</i>, and the length of the {@code array} as parameters.</li>
-     *         <li>The second call passes the array, index <i>0</i>, and the length of the {@code array} as parameters.</li>
-     *     </ul>
+     *     <li>The first call passes the array, index <i>1</i>, and the length of the {@code array} as parameters.</li>
+     *     <li>The second call passes the array, index <i>0</i>, and the length of the {@code array} as parameters.</li>
      *     <li>The purpose of these calls is to check if the indexed elements of the array are sorted in incremental order.
      *     The {@code indexedElementInc} method, returns {@code true}
      *     if the elements at the specified indices do not require any swaps to achieve incremental order,
@@ -109,10 +108,8 @@ extends Bubble {
      *     <li>There is a {@code while} loop that continues until {@code isSorted} is {@code true}.
      *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the array is already sorted.</li>
      *     <li>The {@code indexedElementDec} method is then called twice within the loop.</li>
-     *     <ul>
-     *         <li>The first call passes the array, index <i>1</i>, and the length of the {@code array} as parameters.</li>
-     *         <li>The second call passes the array, index <i>0</i>, and the length of the {@code array} as parameters.</li>
-     *     </ul>
+     *     <li>The first call passes the array, index <i>1</i>, and the length of the {@code array} as parameters.</li>
+     *     <li>The second call passes the array, index <i>0</i>, and the length of the {@code array} as parameters.</li>
      *     <li>The purpose of these calls is to check if the indexed elements of the array are sorted in decremental order.
      *     The {@code indexedElementDec} method, returns {@code true}
      *     if the elements at the specified indices do not require any swaps to achieve decremental order,
@@ -147,10 +144,8 @@ extends Bubble {
      *     Within the loop, the value of {@code isSorted} is set to {@code true}
      *     to assume that the {@code array} range is already sorted.</li>
      *     <li>The {@code indexedElementInc} method is called twice within the loop.</li>
-     *     <ul>
-     *         <li>The first call passes the array, {@code (left + 1)}, and {@code right} as parameters.</li>
-     *         <li>The second call passes the array, {@code left}, and {@code right} as parameters.</li>
-     *     </ul>
+     *     <li>The first call passes the array, {@code (left + 1)}, and {@code right} as parameters.</li>
+     *     <li>The second call passes the array, {@code left}, and {@code right} as parameters.</li>
      *     <li>The purpose of these calls is to check if the indexed elements of the array range are sorted in incremental order.
      *     The {@code indexedElementInc} method, as previously discussed,
      *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to achieve incremental order,
@@ -189,10 +184,8 @@ extends Bubble {
      *     Within the loop, the value of {@code isSorted} is set to {@code true}
      *     to assume that the {@code array} range is already sorted.</li>
      *     <li>The {@code indexedElementDec} method is called twice within the loop.</li>
-     *     <ul>
-     *         <li>The first call passes the array, {@code (left + 1)}, and {@code right} as parameters.</li>
-     *         <li>The second call passes the array, {@code left}, and {@code right} as parameters.</li>
-     *     </ul>
+     *     <li>The first call passes the array, {@code (left + 1)}, and {@code right} as parameters.</li>
+     *     <li>The second call passes the array, {@code left}, and {@code right} as parameters.</li>
      *     <li>The purpose of these calls is to check if the indexed elements of the array range are sorted in decremental order.
      *     The {@code indexedElementDec} method, as previously discussed,
      *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to achieve decremental order,

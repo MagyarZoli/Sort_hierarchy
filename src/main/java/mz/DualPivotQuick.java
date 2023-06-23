@@ -30,14 +30,12 @@ extends Quick {
      *     <li>After partitioning the array, three subarrays are created:
      *     the left section, the middle section, and the right section.
      *     The Dual Pivot Quick Sort algorithm is then recursively applied to these subarrays.</li>
-     *     <ul>
-     *         <li>The left section contains elements smaller than pivot1.
-     *         The Dual Pivot Quick Sort is called recursively on this section.</li>
-     *         <li>The middle section contains elements between pivot1 and pivot2. If the middle section is non-empty,
-     *         the Dual Pivot Quick Sort is called recursively on this section.</li>
-     *         <li>The right section contains elements greater than pivot2.
-     *         The Dual Pivot Quick Sort is called recursively on this section.</li>
-     *     </ul>
+     *     <li>The left section contains elements smaller than pivot1.
+     *     The Dual Pivot Quick Sort is called recursively on this section.</li>
+     *     <li>The middle section contains elements between pivot1 and pivot2. If the middle section is non-empty,
+     *     the Dual Pivot Quick Sort is called recursively on this section.</li>
+     *     <li>The right section contains elements greater than pivot2.
+     *     The Dual Pivot Quick Sort is called recursively on this section.</li>
      *     <li>Once the recursive sorting calls return, the subarrays are already sorted.
      *     The algorithm then combines these sorted subarrays to produce the final sorted array.</li>
      * </ol>
@@ -83,7 +81,7 @@ extends Quick {
      *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
      *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
-     *     <li>If the condition left < right is satisfied,
+     *     <li>If the condition {@code (left < right)} is satisfied,
      *     the method proceeds to call the {@code partitionDualInc} method to partition the subarray into three sections based on two pivot values.
      *     The {@code partitionDualInc} method would update the {@code array} such that elements smaller than the first pivot value are placed to the left,
      *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
@@ -110,7 +108,7 @@ extends Quick {
      *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
      *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
-     *     <li>If the condition left < right is satisfied,
+     *     <li>If the condition {@code (left < right)} is satisfied,
      *     the method proceeds to call the {@code partitionDualDec} method to partition the subarray into three sections based on two pivot values.
      *     The {@code partitionDualDec} method would update the {@code array} such that elements smaller than the first pivot value are placed to the left,
      *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
@@ -137,7 +135,7 @@ extends Quick {
      *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
      *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
-     *     <li>If the condition left < right is satisfied,
+     *     <li>If the condition {@code (left < right)} is satisfied,
      *     the method proceeds to call the {@code partitionDualInc} method to partition the subarray into three sections based on two pivot values.
      *     The {@code partitionDualInc} method would update the {@code array} such that elements smaller than the first pivot value are placed to the left,
      *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
@@ -171,7 +169,7 @@ extends Quick {
      *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
      *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
-     *     <li>If the condition left < right is satisfied,
+     *     <li>If the condition {@code (left < right)} is satisfied,
      *     the method proceeds to call the {@code partitionDualDec} method to partition the subarray into three sections based on two pivot values.
      *     The {@code partitionDualDec} method would update the {@code array} such that elements smaller than the first pivot value are placed to the left,
      *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.

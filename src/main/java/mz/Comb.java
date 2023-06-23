@@ -21,14 +21,12 @@ extends Cocktail {
      *     <li>Start with an unsorted list of elements.</li>
      *     <li>Initialize the gap value as the length of the list.</li>
      *     <li>Repeat the following steps until the gap becomes 1:</li>
-     *     <ul>
-     *         <li>Calculate the new gap value by dividing the current gap by a shrink factor, typically around<br>
-     *         <em>1.3 (commonly denoted as 1.3 or 1.3-sqrt(2))</em>.</li>
-     *         <li>If the new gap value is less than 1, set it to 1 to ensure a final pass with a gap of 1.</li>
-     *         <li>Perform a pass through the list, comparing elements that are {@code gap} positions apart
-     *         and swapping them if they are in the wrong order.</li>
-     *         <li>Continue moving through the list with the specified gap until reaching the end of the list.</li>
-     *     </ul>
+     *     <li>Calculate the new gap value by dividing the current gap by a shrink factor, typically around<br>
+     *     <em>1.3 (commonly denoted as 1.3 or 1.3-sqrt(2))</em>.</li>
+     *     <li>If the new gap value is less than 1, set it to 1 to ensure a final pass with a gap of 1.</li>
+     *     <li>Perform a pass through the list, comparing elements that are {@code gap} positions apart
+     *     and swapping them if they are in the wrong order.</li>
+     *     <li>Continue moving through the list with the specified gap until reaching the end of the list.</li>
      *     <li>Once the gap becomes 1, perform a final pass similar to Bubble Sort, comparing adjacent elements and swapping them if necessary.</li>
      *     <li>The sorted list is obtained once the final pass is completed.</li>
      * </ol>

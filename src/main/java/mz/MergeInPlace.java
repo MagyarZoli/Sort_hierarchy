@@ -21,14 +21,12 @@ extends Merge {
      *     <li>The algorithm recursively divides the array into smaller subarrays until each subarray contains only one element (considered sorted).</li>
      *     <li>Then, it starts merging the subarrays in pairs, using an in-place merging technique.</li>
      *     <li>To perform an in-place merge of two subarrays, the algorithm follows these steps:</li>
-     *     <ul>
-     *         <li> It compares the first element of the left subarray with the first element of the right subarray.
-     *         If the left element is greater, it swaps the two elements.</li>
-     *         <li>After the swap, it compares the new first element of the right subarray with the next element in the left subarray,
-     *         and so on, until the elements in both subarrays are in the correct sorted order.</li>
-     *         <li>Meanwhile, the elements in the left subarray are shifted one position to the right to make space for
-     *         the swapped element from the right subarray.</li>
-     *     </ul>
+     *     <li> It compares the first element of the left subarray with the first element of the right subarray.
+     *     If the left element is greater, it swaps the two elements.</li>
+     *     <li>After the swap, it compares the new first element of the right subarray with the next element in the left subarray,
+     *     and so on, until the elements in both subarrays are in the correct sorted order.</li>
+     *     <li>Meanwhile, the elements in the left subarray are shifted one position to the right to make space for
+     *     the swapped element from the right subarray.</li>
      *     <li>Once the merging of two subarrays is complete, the algorithm moves on to merge the next pair of subarrays,
      *     until the entire array is sorted.</li>
      * </ol>

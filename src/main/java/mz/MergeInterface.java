@@ -23,12 +23,10 @@ extends Sort<T> {
      *     <li>The condition {@code if (left < right)} checks if the portion of the array has more than one element.
      *     If so, it proceeds with the merge sort algorithm.</li>
      *     <li>Inside the condition, the method recursively calls itself to sort the left and right halves of the portion.</li>
-     *     <ul>
-     *         <li>The first recursive call {@code mergeInc(array, left, ((left + mid) / 2), mid)} divides the left half of
-     *         the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
-     *         <li>The second recursive call {@code mergeInc(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
-     *         the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
-     *     </ul>
+     *     <li>The first recursive call {@code mergeInc(array, left, ((left + mid) / 2), mid)} divides the left half of
+     *     the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
+     *     <li>The second recursive call {@code mergeInc(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
+     *     the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
      *     <li>After the recursive calls, the {@code mergingInc} method is called to merge the two sorted halves together.
      *     The {@code mergingInc} method takes the {@code array}, {@code left}, {@code mid}, and {@code right} indices as arguments.</li>
      *     <li>The overall effect of the {@code mergeInc} method is to recursively divide the array into smaller subarrays until they consist of individual elements.
@@ -54,12 +52,10 @@ extends Sort<T> {
      *     <li>The condition {@code if (left < right)} checks if the portion of the array has more than one element.
      *     If so, it proceeds with the merge sort algorithm.</li>
      *     <li>Inside the condition, the method recursively calls itself to sort the left and right halves of the portion.</li>
-     *     <ul>
-     *         <li>The first recursive call {@code mergeDec(array, left, ((left + mid) / 2), mid)} divides the left half of
-     *         the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
-     *         <li>The second recursive call {@code mergeDec(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
-     *         the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
-     *     </ul>
+     *     <li>The first recursive call {@code mergeDec(array, left, ((left + mid) / 2), mid)} divides the left half of
+     *     the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
+     *     <li>The second recursive call {@code mergeDec(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
+     *     the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
      *     <li>After the recursive calls, the {@code mergingDec} method is called to merge the two sorted halves together.
      *     The {@code mergingDec} method takes the {@code array}, {@code left}, {@code mid}, and {@code right} indices as arguments.</li>
      *     <li>The overall effect of the {@code mergeDec} method is to recursively divide the array into greater subarrays until they consist of individual elements.
@@ -84,12 +80,10 @@ extends Sort<T> {
      *     <li>The condition {@code if (left < right)} checks if the portion of the array has more than one element.
      *     If so, it proceeds with the merge sort algorithm.</li>
      *     <li>Inside the condition, the method recursively calls itself to sort the left and right halves of the portion.</li>
-     *     <ul>
-     *         <li>The first recursive call {@code mergeInc(array, left, ((left + mid) / 2), mid)} divides the left half of
-     *         the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
-     *         <li>The second recursive call {@code mergeInc(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
-     *         the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
-     *     </ul>
+     *     <li>The first recursive call {@code mergeInc(array, left, ((left + mid) / 2), mid)} divides the left half of
+     *     the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
+     *     <li>The second recursive call {@code mergeInc(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
+     *     the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
      *     <li>After the recursive calls, the {@code mergingInc} method is called to merge the two sorted halves together.
      *     The {@code mergingInc} method takes the {@code array}, {@code left}, {@code mid}, and {@code right} indices as arguments.</li>
      *     <li>The overall effect of the {@code mergeInc} method is to recursively divide the array into smaller subarrays until they consist of individual elements.
@@ -121,12 +115,10 @@ extends Sort<T> {
      *     <li>The condition {@code if (left < right)} checks if the portion of the array has more than one element.
      *     If so, it proceeds with the merge sort algorithm.</li>
      *     <li>Inside the condition, the method recursively calls itself to sort the left and right halves of the portion.</li>
-     *     <ul>
-     *         <li>The first recursive call {@code mergeDec(array, left, ((left + mid) / 2), mid)} divides the left half of
-     *         the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
-     *         <li>The second recursive call {@code mergeDec(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
-     *         the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
-     *     </ul>
+     *     <li>The first recursive call {@code mergeDec(array, left, ((left + mid) / 2), mid)} divides the left half of
+     *     the portion by updating the {@code mid} index to be the midpoint between {@code left} and {@code mid}.</li>
+     *     <li>The second recursive call {@code mergeDec(array, (mid + 1), (((mid + 1) + right) / 2), right)} divides
+     *     the right half of the portion by updating the {@code mid} index to be the midpoint between {@code (mid + 1)} and {@code right}.</li>
      *     <li>After the recursive calls, the {@code mergingDec} method is called to merge the two sorted halves together.
      *     The {@code mergingDec} method takes the {@code array}, {@code left}, {@code mid}, and {@code right} indices as arguments.</li>
      *     <li>The overall effect of the {@code mergeDec} method is to recursively divide the array into greater subarrays until they consist of individual elements.

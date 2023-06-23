@@ -73,17 +73,13 @@ extends Insertion {
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
      *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
      *     which represents the gap between elements to be compared and swapped.</li>
-     *     <ul>
-     *         <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
-     *         <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
-     *         <li>The loop continues as long as {@code i} is greater than 0.</li>
-     *     </ul>
+     *     <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
+     *     <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *     <li>The loop continues as long as {@code i} is greater than 0.</li>
      *     <li>Inside the loop, the {@code insertionInc} method is called with the current value
      *     of {@code i} to perform an insertion sort on the array.</li>
-     *     <ul>
-     *         <li>The {@code insertionInc} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
-     *         <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
-     *     </ul>
+     *     <li>The {@code insertionInc} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *     <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
      *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the array is sorted.</li>
      * </ul>
      * {@code shellInc} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.
@@ -104,17 +100,13 @@ extends Insertion {
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
      *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
      *     which represents the gap between elements to be compared and swapped.</li>
-     *     <ul>
-     *         <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
-     *         <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
-     *         <li>The loop continues as long as {@code i} is greater than 0.</li>
-     *     </ul>
+     *     <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
+     *     <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *     <li>The loop continues as long as {@code i} is greater than 0.</li>
      *     <li>Inside the loop, the {@code insertionDec} method is called with the current value
      *     of {@code i} to perform an insertion sort on the array.</li>
-     *     <ul>
-     *         <li>The {@code insertionDec} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
-     *         <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
-     *     </ul>
+     *     <li>The {@code insertionDec} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *     <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
      *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the array is sorted.</li>
      * </ul>
      * {@code shellDec} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.
@@ -135,17 +127,13 @@ extends Insertion {
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
      *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
      *     which represents the gap between elements to be compared and swapped.</li>
-     *     <ul>
-     *         <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
-     *         <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
-     *         <li>The loop continues as long as {@code i} is greater than 0.</li>
-     *     </ul>
+     *     <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
+     *     <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *     <li>The loop continues as long as {@code i} is greater than 0.</li>
      *     <li>Inside the loop, the {@code insertionInc} method is called with the current value
      *     of {@code i} to perform an insertion sort on the array.</li>
-     *     <ul>
-     *         <li>The {@code insertionInc} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
-     *         <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
-     *     </ul>
+     *     <li>The {@code insertionInc} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *     <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
      *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the array is sorted.</li>
      * </ul>
      * {@code shellInc} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.
@@ -168,17 +156,13 @@ extends Insertion {
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
      *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
      *     which represents the gap between elements to be compared and swapped.</li>
-     *     <ul>
-     *         <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
-     *         <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
-     *         <li>The loop continues as long as {@code i} is greater than 0.</li>
-     *     </ul>
+     *     <li>The initial value of {@code i} is set to half the length of the {@code array}: {@code (array.length / 2)}.</li>
+     *     <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *     <li>The loop continues as long as {@code i} is greater than 0.</li>
      *     <li>Inside the loop, the {@code insertionDec} method is called with the current value
      *     of {@code i} to perform an insertion sort on the array.</li>
-     *     <ul>
-     *         <li>The {@code insertionDec} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
-     *         <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
-     *     </ul>
+     *     <li>The {@code insertionDec} method sorts a portion of the array using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *     <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
      *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the array is sorted.</li>
      * </ul>
      * {@code shellDec} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.

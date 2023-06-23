@@ -68,10 +68,8 @@ implements IntroDPQ<Comparable> {
      *     it directly uses the {@code introSortClassInc} method to sort the sub-array.</li>
      *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not 0,
      *     it performs the following steps:</li>
-     *     <ul>
-     *         <li>Calls the {@code partitionDualInc} method to partition the sub-array and obtain the pivot indices.</li>
-     *         <li>Recursively calls {@code introRecursiveInc} on the three sub-arrays as before.</li>
-     *     </ul>
+     *     <li>Calls the {@code partitionDualInc} method to partition the sub-array and obtain the pivot indices.</li>
+     *     <li>Recursively calls {@code introRecursiveInc} on the three sub-arrays as before.</li>
      *     <li>If the sub-array size is smaller or equal to {@code INTRO_SIZE},
      *     it uses the {@code introSortClass2Inc} method instead of {@code insertionInc} to sort the sub-array.
      *     It seems like a different sorting algorithm is being used for smaller sub-arrays in this case.</li>
@@ -112,10 +110,8 @@ implements IntroDPQ<Comparable> {
      *     it directly uses the {@code introSortClassInc} method to sort the sub-array.</li>
      *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not 0,
      *     it performs the following steps:</li>
-     *     <ul>
-     *         <li>Calls the {@code partitionDualInc} method to partition the sub-array and obtain the pivot indices.</li>
-     *         <li>Recursively calls {@code introRecursiveInc} on the three sub-arrays as before.</li>
-     *     </ul>
+     *     <li>Calls the {@code partitionDualInc} method to partition the sub-array and obtain the pivot indices.</li>
+     *     <li>Recursively calls {@code introRecursiveInc} on the three sub-arrays as before.</li>
      *     <li>If the sub-array size is smaller or equal to {@code INTRO_SIZE},
      *     it uses the {@code introSortClass2Inc} method instead of {@code insertionInc} to sort the sub-array.
      *     It seems like a different sorting algorithm is being used for smaller sub-arrays in this case.</li>

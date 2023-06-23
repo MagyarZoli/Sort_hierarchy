@@ -79,7 +79,7 @@ public interface Sort<T> {
      * Pre-prepared method, so that every inherited class does not have to prepare the method, it cannot be overridden. Its task is to reverse the order of the elements of the array.
      * @param       array to be arranged.
      */
-    private void sortArrayRev(T[] array) {
+    default void sortArrayRev(T[] array) {
         Collections.reverse(Arrays.asList(array));
     }
 }

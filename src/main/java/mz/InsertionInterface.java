@@ -23,17 +23,15 @@ extends Sort<T> {
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the array.</li>
-     *     <ul>
-     *         <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
-     *         is within the specified portion of the array.</li>
-     *         <li>The condition {@code array[(j - index)].compareTo(select) > 0}
-     *         compares the element at index {@code (j - index)} with the {@code select} element.
-     *         If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be shifted to the right.</li>
-     *         <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
-     *         effectively shifting the element to the right.</li>
-     *         <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
-     *         the correct position for the {@code select} element is found.</li>
-     *     </ul>
+     *     <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
+     *     is within the specified portion of the array.</li>
+     *     <li>The condition {@code array[(j - index)].compareTo(select) > 0}
+     *     compares the element at index {@code (j - index)} with the {@code select} element.
+     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     effectively shifting the element to the right.</li>
+     *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
+     *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
      * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.
@@ -68,17 +66,15 @@ extends Sort<T> {
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the array.</li>
-     *     <ul>
-     *         <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
-     *         is within the specified portion of the array.</li>
-     *         <li>The condition {@code array[(j - index)].compareTo(select) < 0}
-     *         compares the element at index {@code (j - index)} with the {@code select} element.
-     *         If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be shifted to the right.</li>
-     *         <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
-     *         effectively shifting the element to the right.</li>
-     *         <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
-     *         the correct position for the {@code select} element is found.</li>
-     *     </ul>
+     *     <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
+     *     is within the specified portion of the array.</li>
+     *     <li>The condition {@code array[(j - index)].compareTo(select) < 0}
+     *     compares the element at index {@code (j - index)} with the {@code select} element.
+     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     effectively shifting the element to the right.</li>
+     *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
+     *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
      * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.
@@ -113,17 +109,15 @@ extends Sort<T> {
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the array.</li>
-     *     <ul>
-     *         <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
-     *         is within the specified portion of the array.</li>
-     *         <li>The condition {@code array[(j - index)].compareTo(select) > 0}
-     *         compares the element at index {@code (j - index)} with the {@code select} element.
-     *         If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be shifted to the right.</li>
-     *         <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
-     *         effectively shifting the element to the right.</li>
-     *         <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
-     *         the correct position for the {@code select} element is found.</li>
-     *     </ul>
+     *     <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
+     *     is within the specified portion of the array.</li>
+     *     <li>The condition {@code array[(j - index)].compareTo(select) > 0}
+     *     compares the element at index {@code (j - index)} with the {@code select} element.
+     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     effectively shifting the element to the right.</li>
+     *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
+     *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
      * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.
@@ -160,17 +154,15 @@ extends Sort<T> {
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the array.</li>
-     *     <ul>
-     *         <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
-     *         is within the specified portion of the array.</li>
-     *         <li>The condition {@code array[(j - index)].compareTo(select) < 0}
-     *         compares the element at index {@code (j - index)} with the {@code select} element.
-     *         If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be shifted to the right.</li>
-     *         <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
-     *         effectively shifting the element to the right.</li>
-     *         <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
-     *         the correct position for the {@code select} element is found.</li>
-     *     </ul>
+     *     <li>The condition {@code (j >= index)} ensures that the {@code while} loop executes as long as the index
+     *     is within the specified portion of the array.</li>
+     *     <li>The condition {@code array[(j - index)].compareTo(select) < 0}
+     *     compares the element at index {@code (j - index)} with the {@code select} element.
+     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     effectively shifting the element to the right.</li>
+     *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
+     *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
      * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.

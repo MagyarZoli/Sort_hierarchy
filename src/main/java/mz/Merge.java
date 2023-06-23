@@ -22,12 +22,10 @@ implements MergeInterface<Comparable> {
      *     <li>Divide the unsorted list into two equal-sized sublists.</li>
      *     <li>Recursively sort each sublist by applying Merge Sort to them.</li>
      *     <li>Merge the sorted sublists back together to form a single sorted list.</li>
-     *     <ul>
-     *         <li>Start with two pointers, one for each sublist, pointing to the beginning of each sublist.</li>
-     *         <li>Compare the elements at the pointers and select the smaller (or larger) element to be placed in the merged list.</li>
-     *         <li>Move the pointer of the selected element to the next position.</li>
-     *         <li>Repeat the comparison and merging process until all elements from both sublists are merged into the final sorted list.</li>
-     *     </ul>
+     *     <li>Start with two pointers, one for each sublist, pointing to the beginning of each sublist.</li>
+     *     <li>Compare the elements at the pointers and select the smaller (or larger) element to be placed in the merged list.</li>
+     *     <li>Move the pointer of the selected element to the next position.</li>
+     *     <li>Repeat the comparison and merging process until all elements from both sublists are merged into the final sorted list.</li>
      * </ol>
      * <b>Note:</b><br>
      * The key step in Merge Sort is the merging process, where two sorted sublists are combined to form a single sorted list.

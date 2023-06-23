@@ -36,11 +36,8 @@ extends Sort<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>The maximum depth or recursion level allowed for <b>Quick Sort</b>.
      *     It is calculated as twice the logarithm (base 2) of the length of the array, rounded down to the nearest integer.
      *     This value determines when the algorithm switches to a different sorting method.</li>
-     *     <pre>
-     *     default void introInc(T[] array) {
-     *         introRecursiveInc(array, 0, (array.length - 1), (int) (2 * {@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}(array.length))));
-     *     }
-     *     </pre>
+     *     <li>default void introInc(T[] array),
+     *     call introRecursiveInc(array, 0, (array.length - 1), (int) (2 * {@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}(array.length))));</li>
      * </ul>
      * {@code introInc} method provides a convenient entry point for sorting an array using the IntroSort algorithm.
      * It calculates the maximum depth based on the array length and then calls the introRecursiveInc method to perform the sorting.
@@ -61,11 +58,8 @@ extends Sort<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>The maximum depth or recursion level allowed for <b>Quick Sort</b>.
      *     It is calculated as twice the logarithm (base 2) of the length of the array, rounded down to the nearest integer.
      *     This value determines when the algorithm switches to a different sorting method.</li>
-     *     <pre>
-     *     default void introDec(T[] array) {
-     *         introRecursiveDec(array, 0, (array.length - 1), (int) (2 * {@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}(array.length))));
-     *     }
-     *     </pre>
+     *     <li>default void introDec(T[] array),
+     *     call introRecursiveDec(array, 0, (array.length - 1), (int) (2 * {@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}(array.length))));</li>
      * </ul>
      * {@code introInc} method provides a convenient entry point for sorting an array using the IntroSort algorithm.
      * It calculates the maximum depth based on the array length and then calls the introRecursiveInc method to perform the sorting.

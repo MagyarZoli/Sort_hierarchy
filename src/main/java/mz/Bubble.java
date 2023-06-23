@@ -46,9 +46,12 @@ extends Selection {
      * @see         mz.intro.introDPQ.IntroDPQComb#IntroDPQComb() IntroDPQComb
      * @see         mz.intro.introDPQ.IntroDPQGnome#IntroDPQGnome() IntroDPQGnome
      * @see         mz.intro.introDPQ.IntroDPQOddEven#IntroDPQOddEven() IntroDPQOddEven
+     * @see         mz.intro.introDPQ.IntroDPQOddEvenMerge#IntroDPQOddEvenMerge() IntroDPQOddEvenMerge
      * @see         mz.intro.IntroGnome#IntroGnome() IntroGnome
      * @see         mz.intro.IntroOddEven#IntroOddEven() IntroOddEven
+     * @see         mz.intro.IntroOddEvenMerge#IntroOddEvenMerge() IntroOddEvenMerge
      * @see         mz.OddEven#OddEven() OddEven
+     * @see         mz.OddEvenMerge#OddEvenMerge() OddEvenMerge
      */
     public Bubble() {}
 
@@ -79,14 +82,12 @@ extends Selection {
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method starts with defining the length of the {@code array} as {@code n}.</li>
      *     <li>Two nested {@code for} loops are used for iterating over the elements of the array and comparing adjacent elements to perform the sorting.</li>
-     *     <ul>
-     *         <li>The outer loop iterates from 0 to {@code (n - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
-     *         <li>The inner loop iterates from 1 to {@code (n - i) - 1} and represents the range of elements to be compared in each pass.
-     *         The {@code (n - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
-     *         <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
-     *         index {@code (j - 1)} is greater than the element at index {@code j}, the elements are swapped to bring
-     *         the smaller element towards the beginning of the array.</li>
-     *     </ul>
+     *     <li>The outer loop iterates from 0 to {@code (n - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
+     *     <li>The inner loop iterates from 1 to {@code (n - i) - 1} and represents the range of elements to be compared in each pass.
+     *     The {@code (n - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
+     *     <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
+     *     index {@code (j - 1)} is greater than the element at index {@code j}, the elements are swapped to bring
+     *     the smaller element towards the beginning of the array.</li>
      *     <li>The {@code swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
      * </ul>
      * {@code bubbleInc} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in ascending order.
@@ -115,14 +116,12 @@ extends Selection {
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method starts with defining the length of the {@code array} as {@code n}.</li>
      *     <li>Two nested {@code for} loops are used for iterating over the elements of the array and comparing adjacent elements to perform the sorting.</li>
-     *     <ul>
-     *         <li>The outer loop iterates from 0 to {@code (n - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
-     *         <li>The inner loop iterates from 1 to {@code (n - i) - 1} and represents the range of elements to be compared in each pass.
-     *         The {@code (n - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
-     *         <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
-     *         index {@code (j - 1)} is smaller than the element at index {@code j}, the elements are swapped to bring
-     *         the greater element towards the beginning of the array.</li>
-     *     </ul>
+     *     <li>The outer loop iterates from 0 to {@code (n - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
+     *     <li>The inner loop iterates from 1 to {@code (n - i) - 1} and represents the range of elements to be compared in each pass.
+     *     The {@code (n - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
+     *     <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
+     *     index {@code (j - 1)} is smaller than the element at index {@code j}, the elements are swapped to bring
+     *     the greater element towards the beginning of the array.</li>
      *     <li>The {@code swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
      * </ul>
      * {@code bubbleInc} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in descending order.
@@ -150,14 +149,12 @@ extends Selection {
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method starts with defining the length of the {@code array} as {@code right}.</li>
      *     <li>Two nested {@code for} loops are used for iterating over the elements of the array and comparing adjacent elements to perform the sorting.</li>
-     *     <ul>
-     *         <li>The outer loop iterates from 0 to {@code (right - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
-     *         <li>The inner loop iterates from 1 to {@code (right - i) - 1} and represents the range of elements to be compared in each pass.
-     *         The {@code (right - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
-     *         <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
-     *         index {@code (j - 1)} is greater than the element at index {@code j}, the elements are swapped to bring
-     *         the smaller element towards the beginning of the array.</li>
-     *     </ul>
+     *     <li>The outer loop iterates from 0 to {@code (right - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
+     *     <li>The inner loop iterates from 1 to {@code (right - i) - 1} and represents the range of elements to be compared in each pass.
+     *     The {@code (right - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
+     *     <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
+     *     index {@code (j - 1)} is greater than the element at index {@code j}, the elements are swapped to bring
+     *     the smaller element towards the beginning of the array.</li>
      *     <li>The {@code swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
      * </ul>
      * {@code bubbleInc} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in ascending order.
@@ -187,14 +184,12 @@ extends Selection {
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>The method starts with defining the length of the {@code array} as {@code right}.</li>
      *     <li>Two nested {@code for} loops are used for iterating over the elements of the array and comparing adjacent elements to perform the sorting.</li>
-     *     <ul>
-     *         <li>The outer loop iterates from 0 to {@code (right - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
-     *         <li>The inner loop iterates from 1 to {@code (right - i) - 1} and represents the range of elements to be compared in each pass.
-     *         The {@code (right - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
-     *         <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
-     *         index {@code (j - 1)} is smaller than the element at index {@code j}, the elements are swapped to bring
-     *         the greater element towards the beginning of the array.</li>
-     *     </ul>
+     *     <li>The outer loop iterates from 0 to {@code (right - 1)} and represents the number of passes performed in the Bubble Sort algorithm.</li>
+     *     <li>The inner loop iterates from 1 to {@code (right - i) - 1} and represents the range of elements to be compared in each pass.
+     *     The {@code (right - i)} part is because the largest {@code i} elements are already sorted and placed at the end in each pass.</li>
+     *     <li>Inside the inner loop, an {@code if} condition is used to compare adjacent elements. If the element at
+     *     index {@code (j - 1)} is smaller than the element at index {@code j}, the elements are swapped to bring
+     *     the greater element towards the beginning of the array.</li>
      *     <li>The {@code swap} method is called to swap the elements at indices {@code (j - 1)} and {@code j}.</li>
      * </ul>
      * {@code bubbleInc} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in descending order.

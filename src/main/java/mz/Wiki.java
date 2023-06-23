@@ -80,8 +80,8 @@ implements InsertionInterface<Comparable> {
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionInc} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer array.
-     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer array.
+     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiInc} method is to sort a portion of the input array using incremental insertion sort for small blocks
      * and then perform the merging step using the {@code mergeInc} method.
@@ -109,8 +109,8 @@ implements InsertionInterface<Comparable> {
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionDec} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer array.
-     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer array.
+     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiDec} method is to sort a portion of the input array using incremental insertion sort for small blocks
      * and then perform the merging step using the {@code mergeDec} method.
@@ -139,8 +139,8 @@ implements InsertionInterface<Comparable> {
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionInc} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer array.
-     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer array.
+     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiInc} method is to sort a portion of the input array using incremental insertion sort for small blocks
      * and then perform the merging step using the {@code mergeInc} method.
@@ -170,8 +170,8 @@ implements InsertionInterface<Comparable> {
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionDec} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer array.
-     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer array.
+     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiDec} method is to sort a portion of the input array using incremental insertion sort for small blocks
      * and then perform the merging step using the {@code mergeDec} method.

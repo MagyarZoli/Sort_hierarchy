@@ -84,10 +84,8 @@ extends Quick {
      *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <ul>
-     *         <li>The first recursive call, {@code quickInc(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *         <li>The second recursive call, {@code quickInc(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
-     *     </ul>
+     *     <li>The first recursive call, {@code quickInc(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickInc(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire array is sorted.</li>
      * </ul>
      * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in ascending order.
@@ -113,10 +111,8 @@ extends Quick {
      *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <ul>
-     *         <li>The first recursive call, {@code quickDec(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *         <li>The second recursive call, {@code quickDec(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
-     *     </ul>
+     *     <li>The first recursive call, {@code quickDec(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickDec(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire array is sorted.</li>
      * </ul>
      * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in descending order.
@@ -142,10 +138,8 @@ extends Quick {
      *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <ul>
-     *         <li>The first recursive call, {@code quickInc(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *         <li>The second recursive call, {@code quickInc(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
-     *     </ul>
+     *     <li>The first recursive call, {@code quickInc(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickInc(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire array is sorted.</li>
      * </ul>
      * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in ascending order.
@@ -181,10 +175,8 @@ extends Quick {
      *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <ul>
-     *         <li>The first recursive call, {@code quickDec(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *         <li>The second recursive call, {@code quickDec(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
-     *     </ul>
+     *     <li>The first recursive call, {@code quickDec(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickDec(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire array is sorted.</li>
      * </ul>
      * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in descending order.
@@ -223,14 +215,12 @@ extends Quick {
      *     <li>The pivot element is chosen as the element at index {@code right}.</li>
      *     <li>A {@code while} loop is used to iterate from {@code left} to {@code right},
      *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way partition.</li>
-     *     <ul>
-     *         <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at index {@code left}.
-     *         {@code left} and {@code mid} are then incremented to move to the next elements.</li>
-     *         <li>If the element at index {@code mid} is equal to the pivot,
-     *         {@code mid} is incremented to move to the next element without performing any swaps.</li>
-     *         <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at index {@code right}.
-     *         {@code right} is decremented to move to the next element.</li>
-     *     </ul>
+     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at index {@code left}.
+     *     {@code left} and {@code mid} are then incremented to move to the next elements.</li>
+     *     <li>If the element at index {@code mid} is equal to the pivot,
+     *     {@code mid} is incremented to move to the next element without performing any swaps.</li>
+     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at index {@code right}.
+     *     {@code right} is decremented to move to the next element.</li>
      *     <li>After the {@code while} loop completes, the array is partitioned into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element in the left partition.</li>
@@ -288,14 +278,12 @@ extends Quick {
      *     <li>The pivot element is chosen as the element at index {@code right}.</li>
      *     <li>A {@code while} loop is used to iterate from {@code left} to {@code right},
      *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way partition.</li>
-     *     <ul>
-     *         <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at index {@code left}.
-     *         {@code left} and {@code mid} are then incremented to move to the next elements.</li>
-     *         <li>If the element at index {@code mid} is equal to the pivot,
-     *         {@code mid} is incremented to move to the next element without performing any swaps.</li>
-     *         <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at index {@code right}.
-     *         {@code right} is decremented to move to the next element.</li>
-     *     </ul>
+     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at index {@code left}.
+     *     {@code left} and {@code mid} are then incremented to move to the next elements.</li>
+     *     <li>If the element at index {@code mid} is equal to the pivot,
+     *     {@code mid} is incremented to move to the next element without performing any swaps.</li>
+     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at index {@code right}.
+     *     {@code right} is decremented to move to the next element.</li>
      *     <li>After the {@code while} loop completes, the array is partitioned into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements smaller than the pivot.</li>
      *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element in the left partition.</li>

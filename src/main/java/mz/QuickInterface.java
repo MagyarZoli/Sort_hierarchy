@@ -39,7 +39,7 @@ extends Sort<T>, SortSwap<T> {
      * The {@code quickInc} method follows the divide-and-conquer strategy of quicksort,
      * recursively partitioning the array into smaller subarrays and sorting them individually.
      * The base case of the recursion is when the subarray has only one element, in which case it is considered already sorted.
-     * <ull>
+     * <ul>
      *     <li>The method {@code quickInc} takes an array of Comparable objects,
      *     along with the indices {@code left} and {@code right} that define the range of the subarray being sorted.</li>
      *     <li>The first condition {@code if (left < right)} checks if the subarray has more than one element.
@@ -47,14 +47,12 @@ extends Sort<T>, SortSwap<T> {
      *     <li>Inside the condition, the {@code quickInc} method is called to partition the array and obtain the {@code partitionIndex},
      *     which represents the correct position of the pivot element after the partitioning.</li>
      *     <li>The {@code quickInc} method is recursively called twice:</li>
-     *     <ul>
-     *         <li>The first recursive call sorts the left partition of the array by calling {@code quickInc}
-     *         with left as the start index and {@code (partitionIndex - 1)} as the end index.</li>
-     *         <li>The second recursive call sorts the right partition of the array by calling {@code quickInc} with
-     *         {@code (partitionIndex + 1)} as the start index and {@code right} as the end index.</li>
-     *     </ul>
+     *     <li>The first recursive call sorts the left partition of the array by calling {@code quickInc}
+     *     with left as the start index and {@code (partitionIndex - 1)} as the end index.</li>
+     *     <li>The second recursive call sorts the right partition of the array by calling {@code quickInc} with
+     *     {@code (partitionIndex + 1)} as the start index and {@code right} as the end index.</li>
      *     <li>This process is repeated until the entire array is sorted.</li>
-     * </ull>
+     * </ul>
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
@@ -81,12 +79,10 @@ extends Sort<T>, SortSwap<T> {
      *     <li>Inside the condition, the {@code quickDec} method is called to partition the array and obtain the {@code partitionIndex},
      *     which represents the correct position of the pivot element after the partitioning.</li>
      *     <li>The {@code quickDec} method is recursively called twice:</li>
-     *     <ul>
-     *         <li>The first recursive call sorts the left partition of the array by calling {@code quickDec}
-     *         with left as the start index and {@code (partitionIndex - 1)} as the end index.</li>
-     *         <li>The second recursive call sorts the right partition of the array by calling {@code quickDec} with
-     *         {@code (partitionIndex + 1)} as the start index and {@code right} as the end index.</li>
-     *     </ul>
+     *     <li>The first recursive call sorts the left partition of the array by calling {@code quickDec}
+     *     with left as the start index and {@code (partitionIndex - 1)} as the end index.</li>
+     *     <li>The second recursive call sorts the right partition of the array by calling {@code quickDec} with
+     *     {@code (partitionIndex + 1)} as the start index and {@code right} as the end index.</li>
      *     <li>This process is repeated until the entire array is sorted.</li>
      * </ul>
      * @param       array to be arranged.
@@ -105,7 +101,7 @@ extends Sort<T>, SortSwap<T> {
     /**
      * Provided seems to be an implementation of the partitioning step of the quicksort algorithm.
      * It partitions an array into two parts, one with elements smaller than a pivot and another with elements greater than or equal to the pivot.
-     * <ull>
+     * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
@@ -118,14 +114,12 @@ extends Sort<T>, SortSwap<T> {
      *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the subarray.</li>
      *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@code compareTo} method of {@code Comparable}.
      *     If the element is smaller than the pivot, the following steps are executed:</li>
-     *     <ul>
-     *         <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
-     *         <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
-     *     </ul>
+     *     <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
+     *     <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
      *     <li>After the loop, the pivot element is moved to its correct position by swapping it with {@code array[i + 1]}.
      *     This ensures that all elements to the left of {@code array[i + 1]} are smaller than or equal to the pivot,
      *     and all elements to the right are greater than the pivot.</li>
-     * </ull>
+     * </ul>
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
@@ -148,7 +142,7 @@ extends Sort<T>, SortSwap<T> {
     /**
      * Provided seems to be an implementation of the partitioning step of the quicksort algorithm.
      * It partitions an array into two parts, one with elements smaller than a pivot and another with elements greater than or equal to the pivot.
-     * <ull>
+     * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
      *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
@@ -161,14 +155,12 @@ extends Sort<T>, SortSwap<T> {
      *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the subarray.</li>
      *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@code compareTo} method of {@code Comparable}.
      *     If the element is greater than the pivot, the following steps are executed:</li>
-     *     <ul>
-     *         <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
-     *         <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
-     *     </ul>
+     *     <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
+     *     <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
      *     <li>After the loop, the pivot element is moved to its correct position by swapping it with {@code array[i + 1]}.
      *     This ensures that all elements to the left of {@code array[i + 1]} are smaller than or equal to the pivot,
      *     and all elements to the right are greater than the pivot.</li>
-     * </ull>
+     * </ul>
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.

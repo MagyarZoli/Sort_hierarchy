@@ -37,6 +37,7 @@ C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\introDPQ\Int
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\InsertionInterface.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\IntroMergeInPlace.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\introDPQ\IntroDPQMergeInsertion.java
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\introDPQ\IntroDPQOddEvenMerge.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\IntroHeap.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\DualPivotQuick.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\IntroQuick3.java
@@ -49,6 +50,7 @@ C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\IntroDualPiv
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\IntroStableQuick.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\MergeInsertion.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\IntroWeaveMerge.java
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\IntroOddEvenMerge.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\Selection.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\Heap.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\introDPQ\IntroDPQWiki.java
@@ -76,6 +78,7 @@ C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\introDPQ\Int
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\introDPQ\IntroDPQStableQuick.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\introDPQ\IntroDPQTernaryHeap.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\IntroSelection.java
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\OddEvenMerge.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\Shell.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\MergeInPlace.java
 C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java\mz\intro\IntroCocktail.java

@@ -211,12 +211,10 @@ extends Quick {
      *     <li>The algorithm creates two empty lists, {@code smaller} and {@code greater},
      *     to hold the elements smaller and greater than the {@code pivot}, respectively.</li>
      *     <li>It iterates through the original {@code list} and compares each element to the {@code pivot}.</li>
-     *     <ul>
-     *         <li>If the element is smaller than the {@code pivot}, it adds it to the {@code smaller} list.</li>
-     *         <li>If the element is greater than the {@code pivot}, it adds it to the {@code greater} list.</li>
-     *         <li>If the element is equal to the {@code pivot}, it determines its relative position to the pivot index
-     *         and adds it to either the {@code smaller} or {@code greater} list accordingly.</li>
-     *     </ul>
+     *     <li>If the element is smaller than the {@code pivot}, it adds it to the {@code smaller} list.</li>
+     *     <li>If the element is greater than the {@code pivot}, it adds it to the {@code greater} list.</li>
+     *     <li>If the element is equal to the {@code pivot}, it determines its relative position to the pivot index
+     *     and adds it to either the {@code smaller} or {@code greater} list accordingly.</li>
      *     <li>After the iteration, the algorithm recursively calls itself with the {@code smaller} list and the {@code greater} list, separately.</li>
      *     <li>The results of the recursive calls are stored in two lists, {@code sa1} and {@code sa2}.</li>
      *     <li>The algorithm creates a new list, "{@code ans}", and populates it by adding all the elements from {@code sa1},
@@ -275,12 +273,10 @@ extends Quick {
      *     <li>The algorithm creates two empty lists, {@code smaller} and {@code greater},
      *     to hold the elements smaller and greater than the {@code pivot}, respectively.</li>
      *     <li>It iterates through the original {@code list} and compares each element to the {@code pivot}.</li>
-     *     <ul>
-     *         <li>If the element is greater than the {@code pivot}, it adds it to the {@code smaller} list.</li>
-     *         <li>If the element is smaller than the {@code pivot}, it adds it to the {@code greater} list.</li>
-     *         <li>If the element is equal to the {@code pivot}, it determines its relative position to the pivot index
-     *         and adds it to either the {@code smaller} or {@code greater} list accordingly.</li>
-     *     </ul>
+     *     <li>If the element is greater than the {@code pivot}, it adds it to the {@code smaller} list.</li>
+     *     <li>If the element is smaller than the {@code pivot}, it adds it to the {@code greater} list.</li>
+     *     <li>If the element is equal to the {@code pivot}, it determines its relative position to the pivot index
+     *     and adds it to either the {@code smaller} or {@code greater} list accordingly.</li>
      *     <li>After the iteration, the algorithm recursively calls itself with the {@code smaller} list and the {@code greater} list, separately.</li>
      *     <li>The results of the recursive calls are stored in two lists, {@code sa1} and {@code sa2}.</li>
      *     <li>The algorithm creates a new list, "{@code ans}", and populates it by adding all the elements from {@code sa1},

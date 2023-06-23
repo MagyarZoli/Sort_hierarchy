@@ -21,19 +21,15 @@ implements HeapInterface<Comparable> {
      * <ol>
      *     <li>Build a binary heap from the input array. This is done by starting with the last parent node in the array
      *     and repeatedly {@code heapify} the array to satisfy the heap property.</li>
-     *     <ul>
-     *         <li>{@code heapify} is a process where the element at index i is compared with its children, and if necessary,
-     *         swapped to maintain the heap property (max-heap or min-heap).</li>
-     *         <li>This process is performed for all parent nodes, starting from the last parent down to the root.</li>
-     *     </ul>
+     *     <li>{@code heapify} is a process where the element at index i is compared with its children, and if necessary,
+     *     swapped to maintain the heap property (max-heap or min-heap).</li>
+     *     <li>This process is performed for all parent nodes, starting from the last parent down to the root.</li>
      *     <li>Once the binary heap is constructed, repeatedly extract the maximum (or minimum)
      *     element from the heap and place it at the end of the array.</li>
-     *     <ul>
-     *         <li>Swap the root element (which is the maximum or minimum element depending on whether it's a max-heap or min-heap)
-     *         with the last element of the heap.</li>
-     *         <li>Reduce the size of the heap by one.</li>
-     *         <li>Perform {@code heapify} on the root to restore the heap property.</li>
-     *     </ul>
+     *     <li>Swap the root element (which is the maximum or minimum element depending on whether it's a max-heap or min-heap)
+     *     with the last element of the heap.</li>
+     *     <li>Reduce the size of the heap by one.</li>
+     *     <li>Perform {@code heapify} on the root to restore the heap property.</li>
      *     <li>Repeat step 2 until all elements have been extracted from the heap. The extracted elements will be in the reverse order for
      *     a max-heap (sorted in ascending order) or in the correct order for a min-heap (sorted in descending order).</li>
      * </ol>

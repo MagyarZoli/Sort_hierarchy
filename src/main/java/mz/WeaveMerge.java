@@ -33,8 +33,8 @@ extends Merge {
      *     The second recursive call sorts the right subarray by passing the range from the middle index to the right index.</li>
      *     <li>After the recursive calls, passing the original array, left Array, and right Array as parameters.
      *     This helper method performs the merging step by comparing elements from left Array and right Array and placing them in the correct order in the original array.</li>
-     *     The recursion continues until the base case is reached, which occurs when the range to be sorted has a size of <i>1</i> or less.
-     *     At this point, the recursive calls stop, and the sorting process is complete.
+     *     <li>The recursion continues until the base case is reached, which occurs when the range to be sorted has a size of <i>1</i> or less.
+     *     At this point, the recursive calls stop, and the sorting process is complete.</li>
      * </ol>
      * <b>Note:</b><br>
      * By performing the merging step directly on the original array, Weave Merge Sort eliminates the need for creating
