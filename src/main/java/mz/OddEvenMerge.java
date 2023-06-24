@@ -46,6 +46,9 @@ implements MergeInterface<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
+     * @see         mz.BatcherOddEvenMerge#BatcherOddEvenMerge() BatcherOddEvenMerge
+     * @see         mz.intro.IntroBatcherOddEvenMerge#IntroBatcherOddEvenMerge() IntroBatcherOddEvenMerge
+     * @see         mz.intro.introDPQ.IntroDPQBatcherOddEvenMerge#IntroDPQBatcherOddEvenMerge() IntroDPQBatcherOddEvenMerge
      * @see         mz.intro.introDPQ.IntroDPQOddEvenMerge#IntroDPQOddEvenMerge() IntroDPQOddEvenMerge
      * @see         mz.intro.IntroOddEvenMerge#IntroOddEvenMerge() IntroOddEvenMerge
      */
