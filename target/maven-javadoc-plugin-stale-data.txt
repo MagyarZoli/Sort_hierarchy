@@ -1,0 +1,140 @@
+@options
+@packages
+@argfile
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Sort_hierarchy 1.0.0 API'
+-use
+-version
+-windowtitle
+'Sort_hierarchy 1.0.0 API'
+mz
+mz.intro
+mz.intro.introDPQ
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/BatcherOddEvenMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Bubble.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Cocktail.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Comb.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Counting.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/DoubleSelection.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/DualPivotQuick.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Gnome.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Heap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/HeapInterface.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Insertion.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/InsertionInterface.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/Intro.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroAnother.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroBatcherOddEvenMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroBubble.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroCocktail.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroComb.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroDoubleSelection.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQ.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQAnother.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQBatcherOddEvenMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQBubble.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQCocktail.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQComb.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQDoubleSelection.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQDualPivotQuick.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQGnome.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQInsertion.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQMerge3.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQMergeInPlace.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQMergeInsertion.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQOddEven.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQOddEvenMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQQuick.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQQuick3.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQSelection.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQShell.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQSmoothHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQStableQuick.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQTernaryHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQTim.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQWeakHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQWeaveMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/introDPQ/IntroDPQWiki.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroDualPivotQuick.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroGnome.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroInsertion.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroMerge3.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroMergeInPlace.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroMergeInsertion.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroOddEven.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroOddEvenMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroQuick.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroQuick3.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroSelection.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroShell.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroSmoothHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroStableQuick.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroTernaryHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroTim.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroWeakHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroWeaveMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/intro/IntroWiki.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Merge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Merge3.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/MergeInPlace.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/MergeInsertion.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/MergeInterface.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/OddEven.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/OddEvenMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Quick.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Quick3.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/QuickInterface.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Selection.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/SelectionInterface.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Shell.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/SmoothHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Sort.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/SortComparable.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/SortFind.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/SortLong.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/SortSwap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/StableQuick.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/TernaryHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Tim.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/WeakHeap.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/WeaveMerge.java'
+'C:/Users/Zoltan/Documents/VSCODE/GitHub/Sort/src/main/java/mz/Wiki.java'
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\src\main\java = 1684067350641
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\allclasses-index.html = 1687709826245
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\allpackages-index.html = 1687709826249
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\constant-values.html = 1687709824802
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\element-list = 1687709824647
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\help-doc.html = 1687709826373
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\index-all.html = 1687709826362
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\index.html = 1687709826139
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\jquery-ui.overrides.css = 1687709826430
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\member-search-index.js = 1687709826264
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\module-search-index.js = 1687709826252
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\overview-summary.html = 1687709826366
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\overview-tree.html = 1687709826131
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\package-search-index.js = 1687709826254
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\script.js = 1687709826381
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\search.js = 1687709826386
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\stylesheet.css = 1687709826378
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\tag-search-index.js = 1687709826266
+C:\Users\Zoltan\Documents\VSCODE\GitHub\Sort\target\apidocs\type-search-index.js = 1687709826257
