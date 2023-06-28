@@ -7,7 +7,7 @@ import java.util.Collections;
  * The topmost interface of the hierarchy, through which all other interface, abstract, super, sub, classes are available with polymorphism.
  * @param       <T> setting of a type based on which the elements can be sorted.
  *              It is not mandatory to specify, additional pre-written subclasses specify the type.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 public interface Sort<T> {
