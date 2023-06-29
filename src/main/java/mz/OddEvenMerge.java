@@ -46,11 +46,8 @@ implements MergeInterface<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.BatcherOddEvenMerge#BatcherOddEvenMerge() BatcherOddEvenMerge
-     * @see         mz.intro.IntroBatcherOddEvenMerge#IntroBatcherOddEvenMerge() IntroBatcherOddEvenMerge
-     * @see         mz.intro.introDPQ.IntroDPQBatcherOddEvenMerge#IntroDPQBatcherOddEvenMerge() IntroDPQBatcherOddEvenMerge
-     * @see         mz.intro.introDPQ.IntroDPQOddEvenMerge#IntroDPQOddEvenMerge() IntroDPQOddEvenMerge
      * @see         mz.intro.IntroOddEvenMerge#IntroOddEvenMerge() IntroOddEvenMerge
+     * @see         mz.BatcherOddEvenMerge#BatcherOddEvenMerge() BatcherOddEvenMerge
      */
     public OddEvenMerge() {}
 
@@ -205,13 +202,12 @@ implements MergeInterface<Comparable> {
      */
     @SuppressWarnings("unchecked")
     protected void oddEvenMergeInc(Comparable[] array, int left, int right) {
-        int n = right;
-        if (n <= 1) {
+        if (right <= 1) {
             return;
         }
-        int mid = (n / 2);
+        int mid = (right / 2);
         Comparable[] oddHalf = Arrays.copyOfRange(array, 0, mid);
-        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, n);
+        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, right);
         oddEvenMergeInc(oddHalf);
         oddEvenMergeInc(evenHalf);
         for (int i = left; i < mid; i++) {
@@ -257,13 +253,12 @@ implements MergeInterface<Comparable> {
      */
     @SuppressWarnings("unchecked")
     protected void oddEvenMergeDec(Comparable[] array, int left, int right) {
-        int n = right;
-        if (n <= 1) {
+        if (right <= 1) {
             return;
         }
-        int mid = (n / 2);
+        int mid = (right / 2);
         Comparable[] oddHalf = Arrays.copyOfRange(array, 0, mid);
-        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, n);
+        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, right);
         oddEvenMergeDec(oddHalf);
         oddEvenMergeDec(evenHalf);
         for (int i = left; i < mid; i++) {

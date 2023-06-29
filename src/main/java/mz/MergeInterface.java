@@ -333,14 +333,14 @@ extends Sort<T> {
     default void mergeInc(T[] array, int left, int mid1, int mid2, int right, T[] buffer) {
         int i = left, j = mid1, k = mid2, l = left;
         while ((i < mid1) && (j < mid2) && (k < right)) {
-            if (array[i].compareTo(array[j]) < 0) {
-                if (array[i].compareTo(array[k]) < 0) {
+            if (array[j].compareTo(array[i]) > 0) {
+                if (array[k].compareTo(array[i]) > 0) {
                     buffer[l++] = array[i++];
                 } else {
                     buffer[l++] = array[k++];
                 }
             } else {
-                if (array[j].compareTo(array[k]) < 0) {
+                if (array[k].compareTo(array[j]) > 0) {
                     buffer[l++] = array[j++];
                 } else {
                     buffer[l++] = array[k++];
@@ -348,21 +348,21 @@ extends Sort<T> {
             }
         }
         while ((i < mid1) && (j < mid2)) {
-            if (array[i].compareTo(array[j]) < 0) {
+            if (array[j].compareTo(array[i]) > 0) {
                 buffer[l++] = array[i++];
             } else {
                 buffer[l++] = array[j++];
             }
         }
         while ((j < mid2) && (k < right)) {
-            if (array[j].compareTo(array[k]) < 0) {
+            if (array[k].compareTo(array[j]) > 0) {
                 buffer[l++] = array[j++];
             } else {
                 buffer[l++] = array[k++];
             }
         }
         while ((i < mid1) && (k < right)) {
-            if (array[i].compareTo(array[k]) < 0) {
+            if (array[k].compareTo(array[i]) > 0) {
                 buffer[l++] = array[i++];
             } else {
                 buffer[l++] = array[k++];
@@ -430,14 +430,14 @@ extends Sort<T> {
     default void mergeDec(T[] array, int left, int mid1, int mid2, int right, T[] buffer) {
         int i = left, j = mid1, k = mid2, l = left;
         while ((i < mid1) && (j < mid2) && (k < right)) {
-            if (array[i].compareTo(array[j]) > 0) {
-                if (array[i].compareTo(array[k]) > 0) {
+            if (array[j].compareTo(array[i]) < 0) {
+                if (array[k].compareTo(array[i]) < 0) {
                     buffer[l++] = array[i++];
                 } else {
                     buffer[l++] = array[k++];
                 }
             } else {
-                if (array[j].compareTo(array[k]) > 0) {
+                if (array[k].compareTo(array[j]) < 0) {
                     buffer[l++] = array[j++];
                 } else {
                     buffer[l++] = array[k++];
@@ -445,21 +445,21 @@ extends Sort<T> {
             }
         }
         while ((i < mid1) && (j < mid2)) {
-            if (array[i].compareTo(array[j]) > 0) {
+            if (array[j].compareTo(array[i]) < 0) {
                 buffer[l++] = array[i++];
             } else {
                 buffer[l++] = array[j++];
             }
         }
         while ((j < mid2) && (k < right)) {
-            if (array[j].compareTo(array[k]) > 0) {
+            if (array[k].compareTo(array[j]) < 0) {
                 buffer[l++] = array[j++];
             } else {
                 buffer[l++] = array[k++];
             }
         }
         while ((i < mid1) && (k < right)) {
-            if (array[i].compareTo(array[k]) > 0) {
+            if (array[k].compareTo(array[i]) < 0) {
                 buffer[l++] = array[i++];
             } else {
                 buffer[l++] = array[k++];
@@ -509,13 +509,13 @@ extends Sort<T> {
      */
     @SuppressWarnings("unchecked")
     default void mergingInc(T[] array, int left, int mid, int right) {
-        if (left > mid || (mid + 1) > right) {
+        if ((left > mid) || ((mid + 1) > right)) {
             return;
         }
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         T[] leftArray = Arrays.copyOfRange(array, left, (mid + 1)), rightArray = Arrays.copyOfRange(array, (mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (leftArray[i].compareTo(rightArray[j]) < 0) {
+            if (rightArray[j].compareTo(leftArray[i]) > 0) {
                 array[k] = leftArray[i++];
             } else {
                 array[k] = rightArray[j++];
@@ -563,13 +563,13 @@ extends Sort<T> {
      */
     @SuppressWarnings("unchecked")
     default void mergingDec(T[] array, int left, int mid, int right) {
-        if (left > mid || (mid + 1) > right) {
+        if ((left > mid) || ((mid + 1) > right)) {
             return;
         }
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         T[] leftArray = Arrays.copyOfRange(array, left, (mid + 1)), rightArray = Arrays.copyOfRange(array, (mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (leftArray[i].compareTo(rightArray[j]) > 0) {
+            if (rightArray[j].compareTo(leftArray[i]) < 0) {
                 array[k] = leftArray[i++];
             } else {
                 array[k] = rightArray[j++];
@@ -620,7 +620,7 @@ extends Sort<T> {
     default void mergingInc(T[] array, int left, int mid, int right, T[] buffer) {
         int n1 = left, n2 = (mid + 1);
         for (int i = left; i <= right; i++) {
-            if (n1 <= mid && (n2 > right || array[n1].compareTo(array[n2]) <= 0)) {
+            if ((n1 <= mid) && ((n2 > right) || (array[n2].compareTo(array[n1]) >= 0))) {
                 buffer[i] = array[n1++];
             } else {
                 buffer[i] = array[n2++];
@@ -665,7 +665,7 @@ extends Sort<T> {
     default void mergingDec(T[] array, int left, int mid, int right, T[] buffer) {
         int n1 = left, n2 = (mid + 1);
         for (int i = left; i <= right; i++) {
-            if (n1 <= mid && (n2 > right || array[n1].compareTo(array[n2]) >= 0)) {
+            if ((n1 <= mid) && ((n2 > right) || (array[n2].compareTo(array[n1]) <= 0))) {
                 buffer[i] = array[n1++];
             } else {
                 buffer[i] = array[n2++];
@@ -707,8 +707,8 @@ extends Sort<T> {
     @SuppressWarnings("unchecked")
     default void mergingInc(T[] array, T[] leftArray, T[] rightArray) {
         int i = 0, j = 0, k = 0;
-        while (i < leftArray.length && j < rightArray.length) {
-            if (leftArray[i].compareTo(rightArray[j]) < 0) {
+        while ((i < leftArray.length) && (j < rightArray.length)) {
+            if (rightArray[j].compareTo(leftArray[i]) > 0) {
                 array[k++] = leftArray[i++];
             } else {
                 array[k++] = rightArray[j++];
@@ -755,8 +755,8 @@ extends Sort<T> {
     @SuppressWarnings("unchecked")
     default void mergingDec(T[] array, T[] leftArray, T[] rightArray) {
         int i = 0, j = 0, k = 0;
-        while (i < leftArray.length && j < rightArray.length) {
-            if (leftArray[i].compareTo(rightArray[j]) > 0) {
+        while ((i < leftArray.length) && (j < rightArray.length)) {
+            if (rightArray[j].compareTo(leftArray[i]) < 0) {
                 array[k++] = leftArray[i++];
             } else {
                 array[k++] = rightArray[j++];

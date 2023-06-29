@@ -35,26 +35,10 @@ extends Selection {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.BatcherOddEvenMerge#BatcherOddEvenMerge() BatcherOddEvenMerge
-     * @see         mz.Cocktail#Cocktail() Cocktail
-     * @see         mz.Comb#Comb() Comb
-     * @see         mz.Gnome#Gnome() Gnome
-     * @see         mz.intro.IntroBatcherOddEvenMerge#IntroBatcherOddEvenMerge() IntroBatcherOddEvenMerge
      * @see         mz.intro.IntroBubble#IntroBubble() IntroBubble
-     * @see         mz.intro.IntroCocktail#IntroCocktail() IntroCocktail
-     * @see         mz.intro.IntroComb#IntroComb() IntroComb
-     * @see         mz.intro.introDPQ.IntroDPQBatcherOddEvenMerge#IntroDPQBatcherOddEvenMerge() IntroDPQBatcherOddEvenMerge
-     * @see         mz.intro.introDPQ.IntroDPQBubble#IntroDPQBubble() IntroDPQBubble
-     * @see         mz.intro.introDPQ.IntroDPQCocktail#IntroDPQCocktail() IntroDPQCocktail
-     * @see         mz.intro.introDPQ.IntroDPQComb#IntroDPQComb() IntroDPQComb
-     * @see         mz.intro.introDPQ.IntroDPQGnome#IntroDPQGnome() IntroDPQGnome
-     * @see         mz.intro.introDPQ.IntroDPQOddEven#IntroDPQOddEven() IntroDPQOddEven
-     * @see         mz.intro.introDPQ.IntroDPQOddEvenMerge#IntroDPQOddEvenMerge() IntroDPQOddEvenMerge
-     * @see         mz.intro.IntroGnome#IntroGnome() IntroGnome
-     * @see         mz.intro.IntroOddEven#IntroOddEven() IntroOddEven
-     * @see         mz.intro.IntroOddEvenMerge#IntroOddEvenMerge() IntroOddEvenMerge
+     * @see         mz.Cocktail#Cocktail() Cocktail
+     * @see         mz.Gnome#Gnome() Gnome
      * @see         mz.OddEven#OddEven() OddEven
-     * @see         mz.OddEvenMerge#OddEvenMerge() OddEvenMerge
      */
     public Bubble() {}
 

@@ -46,7 +46,6 @@ extends Quick {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQQuick3#IntroDPQQuick3() IntroDPQQuick3
      * @see         mz.intro.IntroQuick3#IntroQuick3() IntroQuick3
      */
     public Quick3() {}
@@ -248,11 +247,11 @@ extends Quick {
         int mid = left;
         Comparable pivot = array[right];
         while (mid <= right) {
-            if (array[mid].compareTo(pivot) < 0) {
+            if (pivot.compareTo(array[mid]) > 0) {
                 swap(array, left++, mid++);
-            } else if (array[mid].compareTo(pivot) == 0) {
+            } else if (pivot.compareTo(array[mid]) == 0) {
                 mid++;
-            } else if (array[mid].compareTo(pivot) > 0) {
+            } else if (pivot.compareTo(array[mid]) < 0) {
                 swap(array, mid, right--);
             }
         }
@@ -311,11 +310,11 @@ extends Quick {
         int mid = left;
         Comparable pivot = array[right];
         while (mid <= right) {
-            if (array[mid].compareTo(pivot) > 0) {
+            if (pivot.compareTo(array[mid]) < 0) {
                 swap(array, left++, mid++);
-            } else if (array[mid].compareTo(pivot) == 0) {
+            } else if (pivot.compareTo(array[mid]) == 0) {
                 mid++;
-            } else if (array[mid].compareTo(pivot) < 0) {
+            } else if (pivot.compareTo(array[mid]) > 0) {
                 swap(array, mid, right--);
             }
         }

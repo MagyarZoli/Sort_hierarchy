@@ -41,7 +41,6 @@ extends Bubble {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQGnome#IntroDPQGnome() IntroDPQGnome
      * @see         mz.intro.IntroGnome#IntroGnome() IntroGnome
      */
     public Gnome() {}
@@ -87,7 +86,7 @@ extends Bubble {
     protected void gnomeInc(Comparable[] array) {
         int n = array.length, pos = 0;
         while (pos < n) {
-            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) >= 0) {
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) >= 0)) {
                 pos++;
             } else {
                 swap(array, pos, (pos - 1));
@@ -119,7 +118,7 @@ extends Bubble {
     protected void gnomeDec(Comparable[] array) {
         int n = array.length, pos = 0;
         while (pos < n) {
-            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) <= 0) {
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) <= 0)) {
                 pos++;
             } else {
                 swap(array, pos, (pos - 1));
@@ -153,7 +152,7 @@ extends Bubble {
     protected void gnomeInc(Comparable[] array, int left, int right) {
         int pos = left;
         while (pos < right) {
-            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) >= 0) {
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) >= 0)) {
                 pos++;
             } else {
                 swap(array, pos, (pos - 1));
@@ -187,7 +186,7 @@ extends Bubble {
     protected void gnomeDec(Comparable[] array, int left, int right) {
         int pos = left;
         while (pos < right) {
-            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) <= 0) {
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) <= 0)) {
                 pos++;
             } else {
                 swap(array, pos, (pos - 1));

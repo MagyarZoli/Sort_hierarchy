@@ -34,7 +34,7 @@ extends Sort<T> {
     default T findMax(T[] array) {
         T max = array[0];
         for (int i = 1; i < array.length; i++) {
-            if (array[i].compareTo(max) > 0) {
+            if (max.compareTo(array[i]) < 0) {
                 max = array[i];
             }
         }
@@ -64,7 +64,7 @@ extends Sort<T> {
     default T findMin(T[] array) {
         T min = array[0];
         for (int i = 1; i < array.length; i++) {
-            if (array[i].compareTo(min) < 0) {
+            if (min.compareTo(array[i]) > 0) {
                 min = array[i];
             }
         }
@@ -95,7 +95,7 @@ extends Sort<T> {
     default T findMax(T[] array, int to) {
         T max = array[0];
         for (int i = 1; i < to; i++) {
-            if (array[i].compareTo(max) > 0) {
+            if (max.compareTo(array[i]) < 0) {
                 max = array[i];
             }
         }
@@ -126,7 +126,7 @@ extends Sort<T> {
     default T findMin(T[] array, int to) {
         T min = array[0];
         for (int i = 1; i < to; i++) {
-            if (array[i].compareTo(min) < 0) {
+            if (min.compareTo(array[i]) > 0) {
                 min = array[i];
             }
         }
@@ -158,7 +158,7 @@ extends Sort<T> {
     default T findMax(T[] array, int from, int to) {
         T max = array[from];
         for (int i = (from + 1); i < to; i++) {
-            if (array[i].compareTo(max) > 0) {
+            if (max.compareTo(array[i]) < 0) {
                 max = array[i];
             }
         }
@@ -190,7 +190,7 @@ extends Sort<T> {
     default T findMin(T[] array, int from, int to) {
         T min = array[from];
         for (int i = (from + 1); i < to; i++) {
-            if (array[i].compareTo(min) < 0) {
+            if (min.compareTo(array[i]) > 0) {
                 min = array[i];
             }
         }
@@ -222,7 +222,7 @@ extends Sort<T> {
         T max = array[0];
         int maxIndex = 0;
         for (int i = 1; i < array.length; i++) {
-            if (array[i].compareTo(max) > 0) {
+            if (max.compareTo(array[i]) < 0) {
                 max = array[i];
                 maxIndex = i;
             }
@@ -255,7 +255,7 @@ extends Sort<T> {
         T min = array[0];
         int minIndex = 0;
         for (int i = 1; i < array.length; i++) {
-            if (array[i].compareTo(min) < 0) {
+            if (min.compareTo(array[i]) > 0) {
                 min = array[i];
                 minIndex = i;
             }
@@ -289,7 +289,7 @@ extends Sort<T> {
         T max = array[0];
         int maxIndex = 0;
         for (int i = 1; i < to; i++) {
-            if (array[i].compareTo(max) > 0) {
+            if (max.compareTo(array[i]) < 0) {
                 max = array[i];
                 maxIndex = i;
             }
@@ -323,7 +323,7 @@ extends Sort<T> {
         T min = array[0];
         int minIndex = 0;
         for (int i = 1; i < to; i++) {
-            if (array[i].compareTo(min) < 0) {
+            if (min.compareTo(array[i]) > 0) {
                 min = array[i];
                 minIndex = i;
             }
@@ -358,7 +358,7 @@ extends Sort<T> {
         T max = array[0];
         int maxIndex = 0;
         for (int i = (from + 1); i < to; i++) {
-            if (array[i].compareTo(max) > 0) {
+            if (max.compareTo(array[i]) < 0) {
                 max = array[i];
                 maxIndex = i;
             }
@@ -393,7 +393,7 @@ extends Sort<T> {
         T min = array[0];
         int minIndex = 0;
         for (int i = (from + 1); i < to; i++) {
-            if (array[i].compareTo(min) < 0) {
+            if (min.compareTo(array[i]) > 0) {
                 min = array[i];
                 minIndex = i;
             }
@@ -420,7 +420,7 @@ extends Sort<T> {
      */
     @SuppressWarnings("unchecked")
     default int findMaximumIndex(T[] array, int a, int b) {
-        if (array[a].compareTo(array[b]) > 0) {
+        if (array[b].compareTo(array[a]) < 0) {
             b = a;
         }
         return b;
@@ -445,7 +445,7 @@ extends Sort<T> {
      */
     @SuppressWarnings("unchecked")
     default int findMinimumIndex(T[] array, int a, int b) {
-        if (array[a].compareTo(array[b]) < 0) {
+        if (array[b].compareTo(array[a]) > 0) {
             b = a;
         }
         return b;

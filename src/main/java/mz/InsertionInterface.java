@@ -133,7 +133,7 @@ extends Sort<T> {
         for (int i = from; i <= to; i++) {
             T select = array[i];
             int j = i;
-            while ((j > from) && (array[(j - 1)] != null && array[(j - 1)].compareTo(select) > 0)) {
+            while ((j > from) && ((array[(j - 1)] != null) && (array[(j - 1)].compareTo(select) > 0))) {
                 array[j] = array[(j - 1)];
                 j--;
             }

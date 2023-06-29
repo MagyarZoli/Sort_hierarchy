@@ -312,7 +312,7 @@ extends Sort<T>, SortSwap<T> {
      */
     @SuppressWarnings("unchecked")
     default int heapChildInc(T[] array, int n, int result, int child) {
-        if (child < n && array[child].compareTo(array[result]) > 0) {
+        if ((child < n) && (array[child].compareTo(array[result]) > 0)) {
             result = child;
         }
         return result;
@@ -340,7 +340,7 @@ extends Sort<T>, SortSwap<T> {
      */
     @SuppressWarnings("unchecked")
     default int heapChildDec(T[] array, int n, int result, int child) {
-        if (child < n && array[child].compareTo(array[result]) < 0) {
+        if ((child < n) && (array[child].compareTo(array[result]) < 0)) {
             result = child;
         }
         return result;

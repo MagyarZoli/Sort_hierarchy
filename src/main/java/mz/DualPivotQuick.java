@@ -50,7 +50,6 @@ extends Quick {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQDualPivotQuick#IntroDPQDualPivotQuick() IntroDPQDualPivotQuick
      * @see         mz.intro.IntroDualPivotQuick#IntroDualPivotQuick() IntroDualPivotQuick
      */
     public DualPivotQuick() {}

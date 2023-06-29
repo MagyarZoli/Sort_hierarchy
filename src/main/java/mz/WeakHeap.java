@@ -35,7 +35,6 @@ extends Heap {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQWeakHeap#IntroDPQWeakHeap() IntroDPQWeakHeap
      * @see         mz.intro.IntroWeakHeap#IntroWeakHeap() IntroWeakHeap
      */
     public WeakHeap() {}
@@ -77,7 +76,7 @@ extends Heap {
     public void heapifyInc(Comparable[] array, int n, int i) {
         while ((2 * i) < n) {
             int k = (2 * i);
-            if ((k + 1) < n && array[(k + 1)].compareTo(array[k]) > 0) {
+            if (((k + 1) < n) && (array[(k + 1)].compareTo(array[k]) > 0)) {
                 k++;
             }
             if (array[k].compareTo(array[i]) > 0) {
@@ -126,7 +125,7 @@ extends Heap {
     public void heapifyDec(Comparable[] array, int n, int i) {
         while ((2 * i) < n) {
             int k = (2 * i);
-            if ((k + 1) < n && array[(k + 1)].compareTo(array[k]) < 0) {
+            if (((k + 1) < n) && (array[(k + 1)].compareTo(array[k]) < 0)) {
                 k++;
             }
             if (array[k].compareTo(array[i]) < 0) {

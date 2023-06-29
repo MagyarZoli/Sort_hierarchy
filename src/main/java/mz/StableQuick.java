@@ -48,7 +48,6 @@ extends Quick {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.intro.introDPQ.IntroDPQStableQuick#IntroDPQStableQuick() IntroDPQStableQuick
      * @see         mz.intro.IntroStableQuick#IntroStableQuick() IntroStableQuick
      */
     public StableQuick() {}
@@ -237,9 +236,9 @@ extends Quick {
         for (int i = 0; i < n; i++) {
             Comparable value = list.get(i);
             if (i != mid) {
-                if (value.compareTo(pivot) < 0) {
+                if (pivot.compareTo(value) > 0) {
                     smaller.add(value);
-                } else if (value.compareTo(pivot) > 0) {
+                } else if (pivot.compareTo(value) < 0) {
                     greater.add(value);
                 } else {
                     if (i < mid) {
@@ -299,12 +298,12 @@ extends Quick {
         for (int i = 0; i < n; i++) {
             Comparable value = list.get(i);
             if (i != mid) {
-                if (value.compareTo(pivot) > 0) {
+                if (pivot.compareTo(value) < 0) {
                     smaller.add(value);
-                } else if (value.compareTo(pivot) < 0) {
+                } else if (pivot.compareTo(value) > 0) {
                     greater.add(value);
                 } else {
-                    if (i > mid) {
+                    if (i < mid) {
                         smaller.add(value);
                     } else {
                         greater.add(value);

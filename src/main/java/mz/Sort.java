@@ -10,7 +10,28 @@ import java.util.Collections;
  * @since       1.0
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
-public interface Sort<T> {
+@SuppressWarnings("rawtypes")
+public interface Sort<T extends Comparable> {
+
+    /**
+     * Puts items in ascending order.
+     */
+    int INC = 1;
+
+    /**
+     * Places the elements in descending order.
+     */
+    int DEC = 2;
+
+    /**
+     * Does not change the order of the elements!
+     */
+    int NOT = 3;
+
+    /**
+     * It reverses the order of the elements, what was first becomes last.
+     */
+    int REV = 4;
 
     /**
      * You can set the desired sort by specifying sort type.
@@ -64,6 +85,23 @@ public interface Sort<T> {
          * @return      the returns a boolean value.
          */
         boolean functionalCompareTo(T a, T b);
+    }
+
+    /**
+     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
+     * The {@code sortArray} method takes the {@code array} and the sorting {@code type} as parameters.
+     * It then uses a switch statement to determine the value of type and perform the corresponding sorting operation.
+     * @param       array to be arranged.
+     * @param       type sorting is done according to 4 different integer type settings.
+     */
+    default public void sortArray(T[] array, int type) {
+        switch (type) {
+            case INC -> sortArrayInc(array);
+            case DEC -> sortArrayDec(array);
+            case NOT -> {}
+            case REV -> sortArrayRev(array);
+            default -> {}
+        }
     }
 
     /**

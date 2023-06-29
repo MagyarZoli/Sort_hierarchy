@@ -48,7 +48,6 @@ extends OddEvenMerge {
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
      * @see         mz.intro.IntroBatcherOddEvenMerge#IntroBatcherOddEvenMerge() IntroBatcherOddEvenMerge
-     * @see         mz.intro.introDPQ.IntroDPQBatcherOddEvenMerge#IntroDPQBatcherOddEvenMerge() IntroDPQBatcherOddEvenMerge
      */
     public BatcherOddEvenMerge() {}
 
@@ -222,11 +221,10 @@ extends OddEvenMerge {
      */
     @SuppressWarnings("unchecked")
     protected void batcherMergingInc(Comparable[] array, int left, int mid, int right) {
-        int n = (right - left);
+        int n = (right - left), i = left, j = mid, k = 0;
         Comparable[] merged = new Comparable[n];
-        int i = left, j = mid, k = 0;
         while (i < mid && j < right) {
-            if (array[i].compareTo(array[j]) <= 0) {
+            if (array[j].compareTo(array[i]) >= 0) {
                 merged[k++] = array[i++];
             } else {
                 merged[k++] = array[j++];
@@ -284,11 +282,10 @@ extends OddEvenMerge {
      */
     @SuppressWarnings("unchecked")
     protected void batcherMergingDec(Comparable[] array, int left, int mid, int right) {
-        int n = (right - left);
+        int n = (right - left), i = left, j = mid, k = 0;
         Comparable[] merged = new Comparable[n];
-        int i = left, j = mid, k = 0;
         while (i < mid && j < right) {
-            if (array[i].compareTo(array[j]) >= 0) {
+            if (array[j].compareTo(array[i]) <= 0) {
                 merged[k++] = array[i++];
             } else {
                 merged[k++] = array[j++];

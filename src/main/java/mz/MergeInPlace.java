@@ -39,7 +39,6 @@ extends Merge {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.intro.introDPQ.IntroDPQMergeInPlace#IntroDPQMergeInPlace() IntroDPQMergeInPlace
      * @see         mz.intro.IntroMergeInPlace#IntroMergeInPlace() IntroMergeInPlace
      */
     public MergeInPlace() {}
@@ -103,11 +102,11 @@ extends Merge {
     @SuppressWarnings("unchecked")
     public void mergingInc(Comparable[] array, int left, int mid, int right) {
         int start = (mid + 1);
-        if (array[mid].compareTo(array[start]) <= 0) {
+        if (array[start].compareTo(array[mid]) >= 0) {
             return;
         }
-        while (left <= mid && start <= right) {
-            if (array[left].compareTo(array[start]) <= 0) {
+        while ((left <= mid) && (start <= right)) {
+            if (array[start].compareTo(array[left]) >= 0) {
                 left++;
             } else {
                 Comparable value = array[start];
@@ -164,11 +163,11 @@ extends Merge {
     @SuppressWarnings("unchecked")
     public void mergingDec(Comparable[] array, int left, int mid, int right) {
         int start = (mid + 1);
-        if (array[mid].compareTo(array[start]) >= 0) {
+        if (array[start].compareTo(array[mid]) <= 0) {
             return;
         }
-        while (left <= mid && start <= right) {
-            if (array[left].compareTo(array[start]) >= 0) {
+        while ((left <= mid) && (start <= right)) {
+            if (array[start].compareTo(array[left]) <= 0) {
                 left++;
             } else {
                 Comparable value = array[start];

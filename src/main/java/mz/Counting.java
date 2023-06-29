@@ -85,13 +85,11 @@ extends SortLong {
      *     <li>The {@code countingCycles} method is called to perform cumulative counting on the {@code count} array.</li>
      *     <li>A backward {@code for} loop is used to iterate through the elements of the {@code array} in reverse order.
      *     This loop is responsible for placing the elements in their sorted positions in the {@code output} array.</li>
-     *     <ul>
-     *         <li>The {@code output} array is updated by assigning the value {@code array[i]} to the index calculated based on
-     *         the count of the element in the {@code count} array:
-     *         {@code output[count[Math.toIntExact(array[i])] - 1] = array[i]}.</li>
-     *         <li>The {@code count} of the element in the count array is then decremented:
-     *         {@code count[Math.toIntExact(array[i])]--}.</li>
-     *     </ul>
+     *     <li>The {@code output} array is updated by assigning the value {@code array[i]} to the index calculated based on
+     *     the count of the element in the {@code count} array:
+     *     {@code output[count[Math.toIntExact(array[i])] - 1] = array[i]}.</li>
+     *     <li>The {@code count} of the element in the count array is then decremented:
+     *     {@code count[Math.toIntExact(array[i])]--}.</li>
      *     <li>Finally, a forward {@code for} loop is used to copy the sorted elements from the {@code output} array
      *     back to the original {@code array} in ascending order.</li>
      * </ul>
@@ -134,13 +132,11 @@ extends SortLong {
      *     <li>The {@code countingCycles} method is called to perform cumulative counting on the {@code count} array.</li>
      *     <li>A backward {@code for} loop is used to iterate through the elements of the {@code array} in reverse order.
      *     This loop is responsible for placing the elements in their sorted positions in the {@code output} array.</li>
-     *     <ul>
-     *         <li>The {@code output} array is updated by assigning the value {@code array[i]} to the index calculated based on
-     *         the count of the element in the {@code count} array:
-     *         {@code output[count[Math.toIntExact(array[i])] - 1] = array[i]}.</li>
-     *         <li>The {@code count} of the element in the count array is then decremented:
-     *         {@code count[Math.toIntExact(array[i])]--}.</li>
-     *     </ul>
+     *     <li>The {@code output} array is updated by assigning the value {@code array[i]} to the index calculated based on
+     *     the count of the element in the {@code count} array:
+     *     {@code output[count[Math.toIntExact(array[i])] - 1] = array[i]}.</li>
+     *     <li>The {@code count} of the element in the count array is then decremented:
+     *     {@code count[Math.toIntExact(array[i])]--}.</li>
      *     <li>Finally, a forward {@code for} loop is used to copy the sorted elements from the {@code output} array
      *     back to the original {@code array} in descending order.</li>
      * </ul>

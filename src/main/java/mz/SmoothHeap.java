@@ -44,7 +44,6 @@ extends Heap {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQSmoothHeap#IntroDPQSmoothHeap() IntroDPQSmoothHeap
      * @see         mz.intro.IntroSmoothHeap#IntroSmoothHeap() IntroSmoothHeap
      */
     public SmoothHeap() {}
@@ -233,7 +232,7 @@ extends Heap {
             int i = (size - 1);
             while (i != 0) {
                 int j = ((i - 1) / 2);
-                if (buffer[i].compareTo(buffer[j]) < 0) {
+                if (buffer[j].compareTo(buffer[i]) > 0) {
                     swap(buffer, i, j);
                     i = j;
                 } else {
@@ -284,7 +283,7 @@ extends Heap {
             int i = (size - 1);
             while (i != 0) {
                 int j = ((i - 1) / 2);
-                if (buffer[i].compareTo(buffer[j]) > 0) {
+                if (buffer[j].compareTo(buffer[i]) < 0) {
                     swap(buffer, i, j);
                     i = j;
                 } else {
@@ -334,15 +333,14 @@ extends Heap {
     @SuppressWarnings("unchecked")
     protected Comparable deleteMinInc() {
         Comparable result = buffer[0];
-        size--;
-        swap(buffer, 0, size);
+        swap(buffer, 0, --size);
         int i = 0;
         while (((2 * i) + 1) < size) {
             int j = ((2 * i) + 1);
-            if ((j + 1) < size && buffer[j].compareTo(buffer[(j + 1)]) > 0) {
+            if (((j + 1) < size) && (buffer[j].compareTo(buffer[(j + 1)]) > 0)) {
                 j++;
             }
-            if (buffer[j].compareTo(buffer[i]) < 0) {
+            if (buffer[i].compareTo(buffer[j]) > 0) {
                 swap(buffer, j, i);
                 i = j;
             } else {
@@ -392,15 +390,14 @@ extends Heap {
     @SuppressWarnings("unchecked")
     protected Comparable deleteMinDec() {
         Comparable result = buffer[0];
-        size--;
-        swap(buffer, 0, size);
+        swap(buffer, 0, --size);
         int i = 0;
         while (((2 * i) + 1) < size) {
             int j = ((2 * i) + 1);
-            if ((j + 1) < size && buffer[j].compareTo(buffer[(j + 1)]) < 0) {
+            if (((j + 1) < size) && (buffer[j].compareTo(buffer[(j + 1)]) < 0)) {
                 j++;
             }
-            if (buffer[j].compareTo(buffer[i]) > 0) {
+            if (buffer[i].compareTo(buffer[j]) < 0) {
                 swap(buffer, j, i);
                 i = j;
             } else {

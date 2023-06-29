@@ -43,11 +43,8 @@ extends Bubble {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.Comb#Comb() Comb
      * @see         mz.intro.IntroCocktail#IntroCocktail() IntroCocktail
-     * @see         mz.intro.IntroComb#IntroComb() IntroComb
-     * @see         mz.intro.introDPQ.IntroDPQCocktail#IntroDPQCocktail() IntroDPQCocktail
-     * @see         mz.intro.introDPQ.IntroDPQComb#IntroDPQComb() IntroDPQComb
+     * @see         mz.Comb#Comb() Comb
      */
     public Cocktail() {}
 
@@ -114,8 +111,7 @@ extends Bubble {
                 break;
             }
             swapped = false;
-            --end;
-            for (int i = end - 1; i >= start; i--) {
+            for (int i = (--end - 1); i >= start; i--) {
                 if (isSwapInc(array, i, 1)) {
                     swapped = true;
                 }
@@ -169,8 +165,7 @@ extends Bubble {
                 break;
             }
             swapped = false;
-            --end;
-            for (int i = (end - 1); i >= start; i--) {
+            for (int i = (--end - 1); i >= start; i--) {
                 if (isSwapDec(array, i, 1)) {
                     swapped = true;
                 }
@@ -223,8 +218,7 @@ extends Bubble {
                 break;
             }
             swapped = false;
-            --end;
-            for (int i = (end - 1); i >= start; i--) {
+            for (int i = (--end - 1); i >= start; i--) {
                 if (isSwapInc(array, i, 1)) {
                     swapped = true;
                 }
@@ -277,8 +271,7 @@ extends Bubble {
                 break;
             }
             swapped = false;
-            --end;
-            for (int i = (end - 1); i >= start; i--) {
+            for (int i = (--end - 1); i >= start; i--) {
                 if (isSwapDec(array, i, 1)) {
                     swapped = true;
                 }

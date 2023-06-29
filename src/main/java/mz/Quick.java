@@ -43,15 +43,8 @@ implements QuickInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.DualPivotQuick#DualPivotQuick() DualPivotQuick
-     * @see         mz.intro.introDPQ.IntroDPQDualPivotQuick#IntroDPQDualPivotQuick() IntroDPQDualPivotQuick
-     * @see         mz.intro.introDPQ.IntroDPQQuick#IntroDPQQuick() IntroDPQQuick
-     * @see         mz.intro.introDPQ.IntroDPQQuick3#IntroDPQQuick3() IntroDPQQuick3
-     * @see         mz.intro.introDPQ.IntroDPQStableQuick#IntroDPQStableQuick() IntroDPQStableQuick
-     * @see         mz.intro.IntroDualPivotQuick#IntroDualPivotQuick() IntroDualPivotQuick
      * @see         mz.intro.IntroQuick#IntroQuick() IntroQuick
-     * @see         mz.intro.IntroQuick3#IntroQuick3() IntroQuick3
-     * @see         mz.intro.IntroStableQuick#IntroStableQuick() IntroStableQuick
+     * @see         mz.DualPivotQuick#DualPivotQuick() DualPivotQuick
      * @see         mz.Quick3#Quick3() Quick3
      * @see         mz.StableQuick#StableQuick() StableQuick
      */

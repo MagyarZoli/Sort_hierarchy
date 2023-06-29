@@ -131,7 +131,7 @@ extends Sort<T>, SortSwap<T> {
         T pivot = array[right];
         int i = (left - 1);
         for (int j = left; j <= (right -1); j++) {
-            if (array[j].compareTo(pivot) < 0) {
+            if (pivot.compareTo(array[j]) > 0) {
                 swap(array, ++i, j);
             }
         }
@@ -172,7 +172,7 @@ extends Sort<T>, SortSwap<T> {
         T pivot = array[right];
         int i = (left - 1);
         for (int j = left; j <= (right - 1); j++) {
-            if (array[j].compareTo(pivot) > 0) {
+            if (pivot.compareTo(array[j]) < 0) {
                 swap(array, ++i, j);
             }
         }
@@ -219,16 +219,16 @@ extends Sort<T>, SortSwap<T> {
             swap(array, left, right);
         }
         int newLeft = (left + 1), newRight = (right - 1), selectIndex = (left + 1);
-        Comparable pivot1 = array[left], pivot2 = array[right];
+        T pivot1 = array[left], pivot2 = array[right];
         while(selectIndex <= newRight) {
-            if(array[selectIndex].compareTo(pivot1) < 0) {
+            if(pivot1.compareTo(array[selectIndex]) > 0) {
                 swap(array, selectIndex, newLeft++);
             } else if (array[selectIndex].compareTo(pivot2) >= 0) {
-                while (array[newRight].compareTo(pivot2) > 0 && selectIndex < newRight) {
+                while ((array[newRight].compareTo(pivot2) > 0) && (selectIndex < newRight)) {
                     newRight--;
                 }
                 swap(array, selectIndex, newRight--);
-                if ( array[selectIndex].compareTo(pivot1) < 0) {
+                if (pivot1.compareTo(array[selectIndex]) > 0) {
                     swap(array, selectIndex, newLeft++);
                 }
             }
@@ -278,16 +278,16 @@ extends Sort<T>, SortSwap<T> {
             swap(array, left, right);
         }
         int newLeft = (left + 1), newRight = (right - 1), selectIndex = (left + 1);
-        Comparable pivot1 = array[left], pivot2 = array[right];
+        T pivot1 = array[left], pivot2 = array[right];
         while(selectIndex <= newRight) {
-            if(array[selectIndex].compareTo(pivot1) > 0) {
+            if(pivot1.compareTo(array[selectIndex]) < 0) {
                 swap(array, selectIndex, newLeft++);
             } else if (array[selectIndex].compareTo(pivot2) <= 0) {
-                while (array[newRight].compareTo(pivot2) < 0 && selectIndex < newRight) {
+                while ((array[newRight].compareTo(pivot2) < 0) && (selectIndex < newRight)) {
                     newRight--;
                 }
                 swap(array, selectIndex, newRight--);
-                if ( array[selectIndex].compareTo(pivot1) > 0) {
+                if (pivot1.compareTo(array[selectIndex]) < 0) {
                     swap(array, selectIndex, newLeft++);
                 }
             }
