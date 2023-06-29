@@ -10,7 +10,28 @@ import java.util.Collections;
  * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
-public interface Sort<T> {
+@SuppressWarnings("rawtypes")
+public interface Sort<T extends Comparable> {
+
+    /**
+     * Puts items in ascending order.
+     */
+    int INC = 1;
+
+    /**
+     * Places the elements in descending order.
+     */
+    int DEC = 2;
+
+    /**
+     * Does not change the order of the elements!
+     */
+    int NOT = 3;
+
+    /**
+     * It reverses the order of the elements, what was first becomes last.
+     */
+    int REV = 4;
 
     /**
      * You can set the desired sort by specifying sort type.
@@ -68,6 +89,23 @@ public interface Sort<T> {
 
     /**
      * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
+     * The {@code sortArray} method takes the {@code array} and the sorting {@code type} as parameters.
+     * It then uses a switch statement to determine the value of type and perform the corresponding sorting operation.
+     * @param       array to be arranged.
+     * @param       type sorting is done according to 4 different integer type settings.
+     */
+    default public void sortArray(T[] array, int type) {
+        switch (type) {
+            case INC -> sortArrayInc(array);
+            case DEC -> sortArrayDec(array);
+            case NOT -> {}
+            case REV -> sortArrayRev(array);
+            default -> {}
+        }
+    }
+
+    /**
+     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
      * The {@code sortArray} method takes the {@code array} and the sorting {@code sequence} as parameters.
      * It then uses a switch statement to determine the value of sequence and perform the corresponding sorting operation.
      * @param       array to be arranged.
@@ -103,5 +141,43 @@ public interface Sort<T> {
      */
     default void sortArrayRev(T[] array) {
         Collections.reverse(Arrays.asList(array));
+    }
+
+    /**
+     * The {@code scanFunctionalComparableTo} method is a default implementation provided in the interface.
+     * It takes an instance of {@code SortFunctional} and performs comparisons using the {@code functionalCompareTo} method.
+     * <ul>
+     *     <li>Inside the method, two {@code Integer} variables {@code a} and {@code b} are declared
+     *     and assigned values of <i>1</i> and <i>2</i>, respectively.</li>
+     *     <li>The {@code functionalCompareTo} method is invoked three times with different arguments:
+     *     {@code f((T) a, (T) a,) g((T) a, (T) b,) h((T) b, (T) a)}.</li>
+     *     <li>The results of the comparisons are stored in boolean variables {@code f}, {@code g}, and {@code h}.</li>
+     *     <li>A series of if-else statements are used to determine the return value based on the combinations of the {@code boolean} variables.
+     *     The return values range from <i>0</i> to <i>5</i>, representing different scenarios of the comparison results.</li>
+     * </ul>
+     * {@code scanFunctionalComparableTo} method examines the lambda function and returns the result of what type of setting lambda is defined.
+     * @param       functional lambda expression for comparison.
+     * @return      the result of what type of setting lambda is defined.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Object, Object)
+     */
+    @SuppressWarnings("unchecked")
+    default int scanFunctionalComparableTo(SortFunctional<T> functional) {
+        Integer a = 1, b = 2;
+        boolean f = functional.functionalCompareTo((T) a, (T) a),
+                g = functional.functionalCompareTo((T) a, (T) b),
+                h = functional.functionalCompareTo((T) b, (T) a);
+        if (!f && !g && h) {
+            return 0;
+        } else if (f && !g && h) {
+            return 1;
+        } else if (!f && g && !h) {
+            return 2;
+        } else if (f && g && !h) {
+            return 3;
+        } else if (!f && g && h) {
+            return 4;
+        } else {
+            return 5;
+        }
     }
 }
