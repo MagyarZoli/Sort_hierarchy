@@ -124,6 +124,17 @@ public interface Sort<T extends Comparable> {
     }
 
     /**
+     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
+     * The {@code sortArray} method takes the {@code array} and the sorting {@code functional} as parameters.
+     * It then uses a switch statement to determine the value of functional and perform the corresponding sorting operation.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    default public void sortArray(T[] array, SortFunctional<T> functional) {
+        sortArrayFun(array, functional);
+    }
+
+    /**
      * Increasing method that the inherited classes have to create. its task is to arrange the elements of the array in ascending order.
      * @param       array to be arranged.
      */
@@ -141,6 +152,122 @@ public interface Sort<T extends Comparable> {
      */
     default void sortArrayRev(T[] array) {
         Collections.reverse(Arrays.asList(array));
+    }
+
+    /**
+     * A custom method that inherited classes must create. its task is to arrange
+     * the elements of the array in a custom order with the lambda function.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    void sortArrayFun(T[] array, SortFunctional<T> functional);
+
+    /**
+     * {@code functionalComparableToAddEquals} to the {@code SortFunctional} interface.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation
+     *     is used to suppress compiler warnings related to unchecked type casting in this method.</li>
+     *     <li>The {@code functionalComparableToAddEquals} method takes
+     *     an instance of {@code SortFunctional} as a parameter.</li>
+     *     <li>It declares a new {@code SortFunctional} variable called {@code newFunctional}
+     *     and initializes it with a value of {@code null}.</li>
+     *     <li>The method then uses a {@code switch} statement to determine
+     *     the value returned by the {@code scanFunctionalComparableTo} method</li>
+     *     <li>Depending on the return value of {@code scanFunctionalComparableTo},
+     *     different cases are evaluated.</li>
+     *     <li>Finally, the method returns the {@code newFunctional} variable.</li>
+     * </ul>
+     * {@code functionalComparableToAddEquals} this method to be to create a new {@code SortFunctional}
+     * instance that modifies the behavior of the original {@code functionalCompareTo} method based on
+     * the result of the {@code scanFunctionalComparableTo} method.
+     * @param       functional lambda expression for comparison.
+     * @return      creates a new lambda expression for the comparison that contains the equality.
+     * @see         mz.Sort.SortFunctional
+     * @see         mz.Sort#scanFunctionalComparableTo(SortFunctional)
+     */
+    @SuppressWarnings("unchecked")
+    default SortFunctional<T> functionalComparableToAddEquals (SortFunctional<T> functional) {
+        SortFunctional<T> newFunctional = null;
+        switch (scanFunctionalComparableTo(functional)) {
+            case 0 -> newFunctional = (a, b) -> a.compareTo(b) >= 0;
+            case 2 -> newFunctional = (a, b) -> a.compareTo(b) <= 0;
+            case 4 -> newFunctional = (a, b) -> a.compareTo(b) == 0;
+            case 1, 3, 5 -> newFunctional = functional;
+        }
+        return newFunctional;
+    }
+
+    /**
+     * {@code functionalComparableToRemoveEquals} to the {@code SortFunctional} interface.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation
+     *     is used to suppress compiler warnings related to unchecked type casting in this method.</li>
+     *     <li>The {@code functionalComparableToRemoveEquals} method takes
+     *     an instance of {@code SortFunctional} as a parameter.</li>
+     *     <li>It declares a new {@code SortFunctional} variable called {@code newFunctional}
+     *     and initializes it with a value of {@code null}.</li>
+     *     <li>The method then uses a {@code switch} statement to determine
+     *     the value returned by the {@code scanFunctionalComparableTo} method</li>
+     *     <li>Depending on the return value of {@code scanFunctionalComparableTo},
+     *     different cases are evaluated.</li>
+     *     <li>Finally, the method returns the {@code newFunctional} variable.</li>
+     * </ul>
+     * {@code functionalComparableToRemoveEquals} this method to be to create a new {@code SortFunctional}
+     * instance that modifies the behavior of the original {@code functionalCompareTo} method by removing
+     * the equality checks based on the result of the {@code scanFunctionalComparableTo} method.
+     * @param       functional lambda expression for comparison.
+     * @return      creates a new lambda expression for comparison that does not include equality.
+     * @see         mz.Sort.SortFunctional
+     * @see         mz.Sort#scanFunctionalComparableTo(SortFunctional)
+     */
+    @SuppressWarnings("unchecked")
+    default SortFunctional<T> functionalComparableToRemoveEquals (SortFunctional<T> functional) {
+        SortFunctional<T> newFunctional = null;
+        switch (scanFunctionalComparableTo(functional)) {
+            case 1 -> newFunctional = (a, b) -> a.compareTo(b) > 0;
+            case 3 -> newFunctional = (a, b) -> a.compareTo(b) < 0;
+            case 5 -> newFunctional = (a, b) -> a.compareTo(b) != 0;
+            case 0, 2, 4 -> newFunctional = functional;
+        }
+        return newFunctional;
+    }
+
+    /**
+     * {@code functionalComparableToReverse} to the {@code SortFunctional} interface.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation
+     *     is used to suppress compiler warnings related to unchecked type casting in this method.</li>
+     *     <li>The {@code functionalComparableToReverse} method takes
+     *     an instance of {@code SortFunctional} as a parameter.</li>
+     *     <li>It declares a new {@code SortFunctional} variable called {@code newFunctional}
+     *     and initializes it with a value of {@code null}.</li>
+     *     <li>The method then uses a {@code switch} statement to determine
+     *     the value returned by the {@code scanFunctionalComparableTo} method</li>
+     *     <li>Depending on the return value of {@code scanFunctionalComparableTo},
+     *     different cases are evaluated.</li>
+     *     <li>Finally, the method returns the {@code newFunctional} variable.</li>
+     * </ul>
+     * {@code functionalComparableToReverse} this method to be to create a new {@code SortFunctional}
+     * instance that reverses the behavior of the original {@code functionalCompareTo} method based on
+     * the result of the {@code scanFunctionalComparableTo} method.
+     * Each comparison case is reversed to its opposite result.
+     * @param       functional lambda expression for comparison.
+     * @return      creates a new lambda expression for comparison, the opposite of the preceding defined function.
+     * @see         mz.Sort.SortFunctional
+     * @see         mz.Sort#scanFunctionalComparableTo(SortFunctional)
+     */
+    @SuppressWarnings("unchecked")
+    default SortFunctional<T> functionalComparableToReverse (SortFunctional<T> functional) {
+        SortFunctional<T> newFunctional = null;
+        switch (scanFunctionalComparableTo(functional)) {
+            case 0 -> newFunctional = (a, b) -> a.compareTo(b) < 0;
+            case 1 -> newFunctional = (a, b) -> a.compareTo(b) <= 0;
+            case 2 -> newFunctional = (a, b) -> a.compareTo(b) > 0;
+            case 3 -> newFunctional = (a, b) -> a.compareTo(b) >= 0;
+            case 4 -> newFunctional = (a, b) -> a.compareTo(b) == 0;
+            case 5 -> newFunctional = (a, b) -> a.compareTo(b) != 0;
+        }
+        return newFunctional;
     }
 
     /**
