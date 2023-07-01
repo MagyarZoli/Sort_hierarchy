@@ -62,7 +62,7 @@ public interface Sort<T extends Comparable> {
         /**
          * It reverses the order of the elements, what was first becomes last.
          */
-        REVERSE_ORDER;
+        REVERSE_ORDER,
     }
 
     /**
@@ -73,7 +73,7 @@ public interface Sort<T extends Comparable> {
      * @param       <T> when entering it, you can set which class type the interface is used as.
      */
     @FunctionalInterface
-    interface SortFunctional<T> {
+    interface SortFunctional<T extends Comparable> {
 
         /**
          * Declares the abstract method {@code functionalCompareTo} within the interface.
@@ -285,7 +285,7 @@ public interface Sort<T extends Comparable> {
      * {@code scanFunctionalComparableTo} method examines the lambda function and returns the result of what type of setting lambda is defined.
      * @param       functional lambda expression for comparison.
      * @return      the result of what type of setting lambda is defined.
-     * @see         mz.Sort.SortFunctional#functionalCompareTo(Object, Object)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
     @SuppressWarnings("unchecked")
     default int scanFunctionalComparableTo(SortFunctional<T> functional) {
