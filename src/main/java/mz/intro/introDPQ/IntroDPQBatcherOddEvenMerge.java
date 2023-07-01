@@ -16,8 +16,8 @@ import mz.intro.IntroBatcherOddEvenMerge;
  */
 @SuppressWarnings("rawtypes")
 public class IntroDPQBatcherOddEvenMerge
-        extends IntroBatcherOddEvenMerge
-        implements IntroDPQ<Comparable>{
+extends IntroBatcherOddEvenMerge
+implements IntroDPQ<Comparable>{
 
     /**
      * <b>IntroDPQ (Dual Pivot Quick) Batcher's Odd-even Merge Sort:</b><br>

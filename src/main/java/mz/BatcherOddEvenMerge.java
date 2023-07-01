@@ -47,8 +47,6 @@ extends OddEvenMerge {
      * Average Case Complexity: <em>O(n log^2(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.intro.IntroBatcherOddEvenMerge#IntroBatcherOddEvenMerge() IntroBatcherOddEvenMerge
-     * @see         mz.intro.introDPQ.IntroDPQBatcherOddEvenMerge#IntroDPQBatcherOddEvenMerge() IntroDPQBatcherOddEvenMerge
      */
     public BatcherOddEvenMerge() {}
 
@@ -68,6 +66,16 @@ extends OddEvenMerge {
     @Override
     public void sortArrayDec(Comparable[] array) {
         batcherOddEvenMergeDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        batcherOddEvenMerge(array, functional);
     }
 
     /**
@@ -118,6 +126,34 @@ extends OddEvenMerge {
             return;
         }
         batcherOddEvenMergeDec(array, 0, n);
+    }
+
+    /**
+     * {@code batcherOddEvenMerge} that implements the odd-even merge sort algorithm using the batcher's merge algorithm.
+     * <ul>
+     *     <li>The {@code batcherOddEvenMerge} method takes an array {@code array} of type {@link java.lang.Comparable Comparable}
+     *     and an instance of {@code SortFunctional<Comparable>} as parameters.</li>
+     *     <li>It starts by assigning the length of the array {@code array.length} to the variable {@code n}.</li>
+     *     <li>If the length {@code n} of the array is less than or equal to <i>1</i>,
+     *     which means the array has <i>0</i> or <i>1</i> element,
+     *     the method returns early, as there is no need for further sorting.</li>
+     *     <li>If the length {@code n} of the array is greater than <i>1</i>,
+     *     the method calls another overloaded version of the {@code batcherOddEvenMerge} method,
+     *     passing the {@code array}, the starting index <i>0</i>, the length {@code n},
+     *     and the {@code functional} instance as parameters.</li>
+     * </ul>
+     * {@code batcherOddEvenMerge} this method is to initiate the batcher odd-even merge sorting algorithm.
+     * It checks if the array has more than one element and then proceeds to call the main sorting method, passing the necessary parameters.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.BatcherOddEvenMerge#batcherOddEvenMerge(Comparable[], int, int, SortFunctional)
+     */
+    protected void batcherOddEvenMerge(Comparable[] array, SortFunctional<Comparable> functional) {
+        int n = array.length;
+        if (n <= 1) {
+            return;
+        }
+        batcherOddEvenMerge(array, 0, n, functional);
     }
 
     /**
@@ -187,6 +223,45 @@ extends OddEvenMerge {
     }
 
     /**
+     * {@code batcherOddEvenMerge} method.
+     * This method performs the odd-even merge operation in the Batchers' odd-even merge sort algorithm.
+     * <ul>
+     *     <li>The method takes an array array of type {@code Comparable[]},
+     *     an integer {@code left} representing the left index, an integer {@code right} representing the right index,
+     *     and an instance of the {@code SortFunctional<Comparable>} interface as parameters.</li>
+     *     <li>It calculates the size of the range by subtracting the {@code left} index from the {@code right} index {@code n = (right - left)}.</li>
+     *     <li>If the size of the range is less than or equal to <i>1</i> (indicating that the range is already sorted or empty),
+     *     the method returns without performing any further operations.</li>
+     *     <li>If the size of the range is greater than <i>1</i>, the method proceeds with the odd-even merge operation.</li>
+     *     <li>It calculates the middle index of the range by adding
+     *     the {@code left} index to half of the size {@code mid = (left + (n / 2))}.</li>
+     *     <li>The method recursively calls itself to perform the odd-even merge operation on the left sub-range,
+     *     from {@code left} to {@code mid}.</li>
+     *     <li>The method recursively calls itself to perform the odd-even merge operation on the right sub-range,
+     *     from {@code mid} to {@code right}.</li>
+     *     <li>Finally, the method calls the {@code batcherMerging} method to merge the two sub-ranges together in an odd-even manner.</li>
+     * </ul>
+     * The {@code batcherOddEvenMerge} method essentially follows a divide-and-conquer approach.
+     * It divides the subarray into smaller subarrays, recursively sorts them using the same method,
+     * and then merges them together using the {@code batcherMerging} method.
+     * @param       array to be arranged.
+     * @param       left specific range of the array.
+     * @param       right specific range of the array.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.BatcherOddEvenMerge#batcherMerging(Comparable[], int, int, int, SortFunctional)
+     */
+    protected void batcherOddEvenMerge(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        int n = (right - left);
+        if (n <= 1) {
+            return;
+        }
+        int mid = (left + (n / 2));
+        batcherOddEvenMerge(array, left, mid, functional);
+        batcherOddEvenMerge(array, mid, right, functional);
+        batcherMerging(array, left, mid, right, functional);
+    }
+
+    /**
      * {@code batcherMergingInc} that performs merging and sorting operations on a subarray of a given
      * {@code array} using the batcher's merge algorithm.
      * <ul>
@@ -222,11 +297,10 @@ extends OddEvenMerge {
      */
     @SuppressWarnings("unchecked")
     protected void batcherMergingInc(Comparable[] array, int left, int mid, int right) {
-        int n = (right - left);
+        int n = (right - left), i = left, j = mid, k = 0;
         Comparable[] merged = new Comparable[n];
-        int i = left, j = mid, k = 0;
         while (i < mid && j < right) {
-            if (array[i].compareTo(array[j]) <= 0) {
+            if (array[j].compareTo(array[i]) >= 0) {
                 merged[k++] = array[i++];
             } else {
                 merged[k++] = array[j++];
@@ -284,11 +358,10 @@ extends OddEvenMerge {
      */
     @SuppressWarnings("unchecked")
     protected void batcherMergingDec(Comparable[] array, int left, int mid, int right) {
-        int n = (right - left);
+        int n = (right - left), i = left, j = mid, k = 0;
         Comparable[] merged = new Comparable[n];
-        int i = left, j = mid, k = 0;
         while (i < mid && j < right) {
-            if (array[i].compareTo(array[j]) >= 0) {
+            if (array[j].compareTo(array[i]) <= 0) {
                 merged[k++] = array[i++];
             } else {
                 merged[k++] = array[j++];
@@ -305,6 +378,81 @@ extends OddEvenMerge {
         }
         for (int m = (left + 1); m < (right - 1); m += 2) {
             if (array[m].compareTo(array[(m + 1)]) < 0) {
+                swap(array, m, (m + 1));
+            }
+        }
+    }
+
+    /**
+     * {@code batcherMerging} method takes an array {@code array} of type {@link java.lang.Comparable Comparable},
+     * three integer parameters {@code left}, {@code mid}, and {@code right},
+     * and an instance of {@code SortFunctional<Comparable>} as parameters.
+     * <ul>
+     *     <li>It starts by calculating the length {@code n} of the subarray to be merged, which is {@code (right - left)}.</li>
+     *     <li>It initializes three variables {@code i}, {@code j}, and {@code k} with the values of {@code left}, {@code mid}, and <i>0</i> respectively.
+     *     These variables will be used as indices for merging and populating the merged array.</li>
+     *     <li>It creates a new array {@code merged} of type {@code Comparable} with a length {@code n} to store the merged elements.</li>
+     *     <li>It creates a new instance of {@code SortFunctional<Comparable>} called {@code functionalAddEquals}
+     *     by calling the {@code functionalComparableToAddEquals} method, passing the {@code functional} instance as a parameter.</li>
+     *     <li>The method enters a {@code while} loop that continues as long as {@code i} is less than {@code mid} and {@code j} is less than {@code right}.
+     *     This loop performs the merging of elements from the two halves of the subarray based on
+     *     the comparison logic defined by the {@code functionalAddEquals} instance.</li>
+     *     <li>If the comparison between {@code array[j]} and {@code array[i]} using the {@code functionalAddEquals} instance returns {@code true},
+     *     indicating that {@code array[j]} is greater or equal to {@code array[i]},
+     *     the element {@code array[i]} is added to the {@code merged} array, and {@code i} and {@code k} are incremented.</li>
+     *     <li>If the comparison returns {@code false},
+     *     indicating that {@code array[i]} is greater than {@code array[j]},
+     *     the element {@code array[j]} is added to the {@code merged} array, and {@code j} and {@code k} are incremented.</li>
+     *     <li>After the first {@code while} loop, there may be remaining elements in either the left or right subarray.
+     *     Two additional {@code while} loops handle the remaining elements:</li>
+     *     <li>The first {@code while} loop runs while {@code i} is less than {@code mid},
+     *     indicating that there are still elements in the left subarray.
+     *     It adds these remaining elements to the {@code merged} array and increments {@code i} and {@code k}.</li>
+     *     <li>The second {@code while} loop runs while {@code j} is less than {@code right},
+     *     indicating that there are still elements in the {@code right} subarray.
+     *     It adds these remaining elements to the {@code merged} array and increments {@code j} and {@code k}.</li>
+     *     <li>Once all elements are merged and stored in the {@code merged} array,
+     *     the method updates the corresponding elements in the original {@code array} from indices {@code (left + m)}
+     *     with the values of {@code merged[m]} using a {@code for} loop.</li>
+     *     <li>The last {@code for} loop iterates through the odd indices from {@code (left + 1)} to {@code (right - 1)}
+     *     and checks if adjacent elements need to be swapped based on the comparison logic defined by the {@code functional} instance.
+     *     If the comparison returns {@code true}, the {@code swap} method</li>
+     * </ul>
+     * {@code batcherMerging} method performs the merging step of the Batcher's odd-even merge sorting algorithm.
+     * It merges two sorted halves of a subarray and updates the original array accordingly.
+     * It uses the {@code functionalAddEquals} instance to compare elements and the {@code functional} instance
+     * to check for swaps during the final step of the merging process.
+     * @param       array to be arranged.
+     * @param       left specific range of the array.
+     * @param       mid the middle value of the specified range of the array.
+     * @param       right specific range of the array.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort#functionalComparableToAddEquals(SortFunctional)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    protected void batcherMerging(Comparable[] array, int left, int mid, int right, SortFunctional<Comparable> functional) {
+        int n = (right - left), i = left, j = mid, k = 0;
+        Comparable[] merged = new Comparable[n];
+        SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
+        while (i < mid && j < right) {
+            if (functionalAddEquals.functionalCompareTo(array[j], array[i])) {
+                merged[k++] = array[i++];
+            } else {
+                merged[k++] = array[j++];
+            }
+        }
+        while (i < mid) {
+            merged[k++] = array[i++];
+        }
+        while (j < right) {
+            merged[k++] = array[j++];
+        }
+        for (int m = 0; m < n; m++) {
+            array[(left + m)] = merged[m];
+        }
+        for (int m = (left + 1); m < (right - 1); m += 2) {
+            if (functional.functionalCompareTo(array[m], array[(m + 1)])) {
                 swap(array, m, (m + 1));
             }
         }
