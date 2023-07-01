@@ -4,7 +4,7 @@ package mz;
  * Batcher's Odd-even Merge Sort is a parallel sorting algorithm that combines the odd-even transposition sort and
  * the batcher's merge algorithm to achieve efficient sorting.
  * It is designed to take advantage of parallel processing capabilities in order to speed up the sorting process.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
