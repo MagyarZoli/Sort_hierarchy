@@ -36,6 +36,7 @@ extends Selection {
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>Yes</b>
      * @see         mz.intro.IntroBubble#IntroBubble() IntroBubble
+     * @see         mz.Bogo#Bogo() Bogo
      * @see         mz.Cocktail#Cocktail() Cocktail
      * @see         mz.Gnome#Gnome() Gnome
      * @see         mz.OddEven#OddEven() OddEven
