@@ -3,7 +3,7 @@ package mz;
 /**
  * SelectionInterface, containing the methods of Selection Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -83,6 +83,45 @@ extends Sort<T>, SortSwap<T>, SortFind<T> {
     }
 
     /**
+     * {@code selection} method takes an array {@code array} of type {@code T} and an instance of {@code SortFunctional<T>} as parameters.
+     * <ul>
+     *     <li>It starts by assigning the length of the {@code array} to the variable {@code n}.</li>
+     *     <li>It initializes a {@code for} loop that iterates from {@code i = 0} to {@code (n - 1)}.
+     *     This loop represents the pass for selecting the minimum element in each iteration.</li>
+     *     <li>Within the outer loop, it declares a variable {@code index} and initializes it with the value of {@code i}.
+     *     This variable will keep track of the index of the minimum element found.</li>
+     *     <li>It enters an inner for loop that starts from {@code (i + 1)} and iterates until {@code (j < n)}.
+     *     This loop is responsible for finding the index of the minimum element starting from {@code j}.</li>
+     *     <li>Within the inner loop, it calls the {@code findValueIndex} method, passing the
+     *     {@code array}, {@code j}, {@code index}, and {@code functional} as parameters.
+     *     This method compares elements using the {@code functional} instance and returns the index of
+     *     the element that is considered greater according to the comparison logic.</li>
+     *     <li>The value of {@code index} is updated with the returned index from the {@code findValueIndex} method.</li>
+     *     <li>After the inner loop completes, it calls the {@code swap} method to swap the element at
+     *     the {@code index} index with the element at the index {@code i}.
+     *     This places the minimum element in its correct sorted position.</li>
+     *     <li>The outer loop continues until all elements have been sorted in ascending order.</li>
+     * </ul>
+     * {@code selection} this method is to perform selection sort on the {@code array} using the comparison logic defined by the {@code SortFunctional} instance.
+     * It iterates through the array and selects the minimum element in each iteration, swapping it with the current position.
+     * This process continues until the array is sorted in ascending order.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortFind#findValueIndex(Comparable[], int, int, SortFunctional)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    default void selection(T[] array, SortFunctional<T> functional) {
+        int n = array.length;
+        for (int i = 0; i < (n - 1); i++) {
+            int index = i;
+            for (int j = (i + 1) ; j < n; j++) {
+                index = findValueIndex(array, j, index, functional);
+            }
+            swap(array, index, i);
+        }
+    }
+
+    /**
      * {@code selectionInc} that performs the Selection Sort algorithm on an array of Comparable objects.
      * The sorting is done in ascending order.
      * <ul>
@@ -151,6 +190,48 @@ extends Sort<T>, SortSwap<T>, SortFind<T> {
             int index = i;
             for (int j = (i + 1) ; j < right; j++) {
                 index = findMaximumIndex(array, j, index);
+            }
+            swap(array, index, i);
+        }
+    }
+
+    /**
+     * {@code selection} method takes an array {@code array} of type {@code T}, two integer parameters {@code left} and {@code right},
+     * and an instance of {@code SortFunctional<T>} as parameters.
+     * <ul>
+     *     <li>It starts by initializing a {@code for} loop that iterates from {@code i = left} to {@code (right - 1)}.
+     *     This loop represents the pass for selecting the minimum element in each iteration within the specified range of indices.</li>
+     *     <li>Within the outer loop, it declares a variable {@code index} and initializes it with the value of {@code i}.
+     *     This variable will keep track of the index of the minimum element found within the specified range.</li>
+     *     <li>It enters an inner {@code for} loop that starts from {@code (i + 1)} and iterates until {@code (j < right)}.
+     *     This loop is responsible for finding the index of the minimum element within the specified range starting from {@code j}.</li>
+     *     <li>Within the inner loop, it calls the {@code findValueIndex} method,
+     *     passing the {@code array}, {@code j}, {@code index}, and {@code functional} as parameters.
+     *     This method compares elements using the {@code functional} instance and returns the index of
+     *     the element that is considered greater according to the comparison logic, within the specified range.</li>
+     *     <li>The value of {@code index} is updated with the returned index from the {@code findValueIndex} method.</li>
+     *     <li>After the inner loop completes, it calls the {@code swap} method to swap the element at
+     *     the index {@code index} with the element at the index {@code i} within the specified range.
+     *     This places the minimum element in its correct sorted position within the range.</li>
+     *     <li>The outer loop continues until all elements within the specified range have been sorted in ascending order.</li>
+     * </ul>
+     * {@code selection} this method is to perform selection sort on a specified range of
+     * the {@code array} using the comparison logic defined by the {@code SortFunctional} instance.
+     * It iterates through the specified range of the array and selects the minimum element in each iteration,
+     * swapping it with the current position within the range.
+     * This process continues until the elements within the range are sorted in ascending order.
+     * @param       array to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortFind#findValueIndex(Comparable[], int, int, SortFunctional)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    default void selection(T[] array, int left, int right, SortFunctional<T> functional) {
+        for (int i = left; i < (right - 1); i++) {
+            int index = i;
+            for (int j = (i + 1) ; j < right; j++) {
+                index = findValueIndex(array, j, index, functional);
             }
             swap(array, index, i);
         }
