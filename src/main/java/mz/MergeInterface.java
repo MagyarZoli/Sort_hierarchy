@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * MergeInterface, containing the methods of Merge Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -68,6 +68,35 @@ extends Sort<T> {
      */
     default void mergeDec(T[] array) {
         mergeDec(array, 0, (array.length / 2), (array.length - 1));
+    }
+
+    /**
+     * {@code merge} method merge takes an array {@code array},
+     * as the {@code SortFunctional} as parameters for custom sorting logic.
+     * <ul>
+     *     <li>The method begins with a base case check:
+     *     if <i>0</i> is less than {@code array.length}, the sorting operation continues.</li>
+     *     <li>Inside the base case, the {@code merge} method is recursively called three times:</li>
+     *     <li>The first recursive call is made with the indices <i>0</i>, {@code (array.length / 2)}
+     *     which splits the left half of the array recursively.</li>
+     *     <li>The second recursive call is made with the indices {@code ((array.length / 2) + 1)},
+     *     {@code ((((array.length / 2) + 1) + right) / 2)}, {@code array.length},
+     *     which splits the right half of the array recursively.</li>
+     *     <li>The third recursive call is made to the {@code merging} method with the original indices <i>0</i>, {@code (array.length / 2)}, and {@code array.length}.
+     *     This is the merge step where two sorted subarrays (from <i>0</i> to {@code (array.length / 2)}
+     *     and from {@code ((array.length / 2) + 1)} to {@code array.length})
+     *     are merged into a single sorted array using the provided sorting logic.</li>
+     *     <li>The recursion continues until the base case is reached, where <i>0</i> is no longer less than {@code array.length}.
+     *     At this point, the recursion unwinds,
+     *     and the merge operations are performed for each level of recursion until the original array is completely sorted.</li>
+     * </ul>
+     * merge two sorted subarrays into a single sorted array according to the intended sorting logic.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.MergeInterface#merge(Comparable[], int, int, int, SortFunctional)
+     */
+    default void merge(T[] array, SortFunctional<T> functional) {
+        merge(array, 0, (array.length / 2), (array.length - 1), functional);
     }
 
     /**
@@ -141,6 +170,41 @@ extends Sort<T> {
     }
 
     /**
+     * {@code merge} method merge takes an array {@code array},
+     * and the indices {@code left}, {@code mid}, {@code right},
+     * as well as the {@code SortFunctional} as parameters for custom sorting logic.
+     * <ul>
+     *     <li>The method begins with a base case check:
+     *     if {@code left} is less than {@code right}, the sorting operation continues.</li>
+     *     <li>Inside the base case, the {@code merge} method is recursively called three times:</li>
+     *     <li>The first recursive call is made with the indices {@code left}, {@code ((left + mid) / 2)}, {@code mid},
+     *     which splits the left half of the array recursively.</li>
+     *     <li>The second recursive call is made with the indices {@code (mid + 1)}, {@code (((mid + 1) + right) / 2)}, {@code right},
+     *     which splits the right half of the array recursively.</li>
+     *     <li>The third recursive call is made to the {@code merging} method with the original indices {@code left}, {@code mid}, and {@code right}.
+     *     This is the merge step where two sorted subarrays (from {@code left} to {@code mid} and from {@code (mid + 1)} to {@code right})
+     *     are merged into a single sorted array using the provided sorting logic.</li>
+     *     <li>The recursion continues until the base case is reached, where {@code left} is no longer less than {@code right}.
+     *     At this point, the recursion unwinds,
+     *     and the merge operations are performed for each level of recursion until the original array is completely sorted.</li>
+     * </ul>
+     * merge two sorted subarrays into a single sorted array according to the intended sorting logic.
+     * @param       array to be arranged.
+     * @param       left from the array, index value, must be smaller than the {@code mid} and {@code right} value.
+     * @param       mid from the array, index value, must be smaller than the {@code right} value, and must be greater than the {@code left}.
+     * @param       right from the array, index value, must be greater than the {@code left} and {@code mid} value.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.MergeInterface#merging(Comparable[], int, int, int, SortFunctional)
+     */
+    default void merge(T[] array, int left, int mid, int right, SortFunctional<T> functional) {
+        if (left < right) {
+            merge(array, left, ((left + mid) / 2), mid, functional);
+            merge(array, (mid + 1), (((mid + 1) + right) / 2), right, functional);
+            merging(array, left, mid, right, functional);
+        }
+    }
+
+    /**
      * {@code mergeInc} method for performing an iterative bottom-up merge sort on an array.
      * It divides the array into subarrays of increasing sizesand merges them together until the entire array is sorted.
      * <ul>
@@ -205,6 +269,45 @@ extends Sort<T> {
             for (int i = 0; i < right; i += (left * 2)) {
                 int mid = (i + left - 1), end = Math.min((i + (left * 2) - 1), (right - 1));
                 mergingDec(array, i, mid, end);
+            }
+            left *= 2;
+        }
+    }
+
+    /**
+     * {@code merge} method merge takes an array {@code array},
+     * indices {@code left} and {@code right}, and a {@code SortFunctional} as parameters that defines the sorting logic.
+     * <ul>
+     *     <li>The {@code while} loop continues until the {@code left} index is less than the {@code right} index.</li>
+     *     <li>Inside the {@code while} loop, there is a {@code for} loop that iterates over the array segments with a size of {@code (left * 2)}.
+     *     This means that in each iteration of the {@code for} loop,
+     *     the array is divided into segments of length {@code (left * 2)}.</li>
+     *     <li>Within the {@code for} loop,
+     *     the variables {@code mid} and {@code end} are calculated to determine the indices for the merging operation.</li>
+     *     <li>{@code mid} is set to {@code (i + left - 1)},
+     *     which is the index of the middle element of the current segment.</li>
+     *     <li>{@code end} is set to the minimum value between {@code (i + (left * 2) - 1)} and {@code (right - 1)}.
+     *     This ensures that end does not go beyond the right boundary of the array.</li>
+     *     <li>The {@code merging} method is called with the array,
+     *     the indices {@code i}, {@code mid}, {@code end}, and the {@code functional} as parameters.
+     *     The merging method performs the merge operation for the specified array segment using the provided sorting logic.</li>
+     *     <li>After the {@code for} loop completes, the {@code left} value is multiplied by 2 to double its value, preparing for the next iteration.
+     *     This step ensures that the array segments to be merged in the next iteration are twice as large as in the previous iteration.</li>
+     *     <li>The process continues until the {@code left} index is no longer less than the {@code right} index,
+     *     indicating that the entire array has been sorted.</li>
+     * </ul>
+     * For merging two sorted array segments according to the chosen sorting logic.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.MergeInterface#merging(Comparable[], int, int, int, SortFunctional)
+     */
+    default void merge(T[] array, int left, int right, SortFunctional<T> functional) {
+        while (left < right) {
+            for (int i = 0; i < right; i += (left * 2)) {
+                int mid = (i + left - 1), end = Math.min((i + (left * 2) - 1), (right - 1));
+                merging(array, i, mid, end, functional);
             }
             left *= 2;
         }
@@ -283,6 +386,50 @@ extends Sort<T> {
     }
 
     /**
+     * {@code merge} method for performing an iterative bottom-up merge sort on an array.
+     * It divides the array into subarrays of increasing sizesand merges them together until the entire array is sorted.
+     * <ul>
+     *     <li>The method takes in parameters {@code left} and {@code right},
+     *     which represent the boundaries of the subarray to be merged.
+     *     It also takes a {@code buffer} array to store the merged elements and
+     *     the {@code functional} instance for element comparison.</li>
+     *     <li>The method enters a {@code while} loop that continues as long as {@code left} is less than {@code right}.
+     *     This loop iterates over multiple merge passes, doubling the merge size {@code left} in each iteration.</li>
+     *     <li>Within the {@code while} loop, there is a {@code for} loop that iterates over subarrays of size {@code (left * 2)}.
+     *     The loop variable {@code i} represents the starting index of each subarray.</li>
+     *     <li>For each subarray, it calculates the {@code mid} index as {@code (i + left - 1)},
+     *     which represents the {@code end} of the first half of the subarray.
+     *     The end index is calculated as the minimum of {@code (i + (left * 2) - 1)} and {@code (right - 1)},
+     *     ensuring that it does not exceed the right boundary of the array.</li>
+     *     <li>It calls the {@code merging} method to merge the subarray,
+     *     passing the {@code array}, {@code i}, {@code mid}, {@code end}, {@code buffer},
+     *     and {@code functional} as parameters.</li>
+     *     <li>After merging a subarray, the {@code left} value is doubled {@code (left *= 2)}
+     *     to increase the merge size for the next iteration.</li>
+     *     <li>The process continues until {@code left} becomes greater than or equal to {@code right},
+     *     indicating that the entire array has been sorted.</li>
+     * </ul>
+     * {@code merge} method implements a bottom-up merge sort algorithm by repeatedly merging subarrays of increasing sizes.
+     * It uses the {@code merging} method to perform the merging operation.
+     * The method starts with a merge size of {@code left} and doubles it in each iteration until the entire array is sorted.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @param       buffer An auxiliary array used for merging.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.MergeInterface#merging(Comparable[], int, int, int, Comparable[], SortFunctional)
+     */
+    default void merge(T[] array, int left, int right, T[] buffer, SortFunctional<T> functional) {
+        while (left < right) {
+            for (int i = 0; i < right; i += (left * 2)) {
+                int mid = (i + left - 1), end = Math.min((i + (left * 2) - 1), (right - 1));
+                merging(array, i, mid, end, buffer, functional);
+            }
+            left *= 2;
+        }
+    }
+
+    /**
      * {@code mergeInc} method for merging three sorted subarrays into a single array. It takes the indices of the subarray boundaries
      * and uses four pointers {@code i, j, k, l} to iterate through the subarrays and merge them into a buffer array.
      * <ul>
@@ -333,14 +480,14 @@ extends Sort<T> {
     default void mergeInc(T[] array, int left, int mid1, int mid2, int right, T[] buffer) {
         int i = left, j = mid1, k = mid2, l = left;
         while ((i < mid1) && (j < mid2) && (k < right)) {
-            if (array[i].compareTo(array[j]) < 0) {
-                if (array[i].compareTo(array[k]) < 0) {
+            if (array[j].compareTo(array[i]) > 0) {
+                if (array[k].compareTo(array[i]) > 0) {
                     buffer[l++] = array[i++];
                 } else {
                     buffer[l++] = array[k++];
                 }
             } else {
-                if (array[j].compareTo(array[k]) < 0) {
+                if (array[k].compareTo(array[j]) > 0) {
                     buffer[l++] = array[j++];
                 } else {
                     buffer[l++] = array[k++];
@@ -348,21 +495,21 @@ extends Sort<T> {
             }
         }
         while ((i < mid1) && (j < mid2)) {
-            if (array[i].compareTo(array[j]) < 0) {
+            if (array[j].compareTo(array[i]) > 0) {
                 buffer[l++] = array[i++];
             } else {
                 buffer[l++] = array[j++];
             }
         }
         while ((j < mid2) && (k < right)) {
-            if (array[j].compareTo(array[k]) < 0) {
+            if (array[k].compareTo(array[j]) > 0) {
                 buffer[l++] = array[j++];
             } else {
                 buffer[l++] = array[k++];
             }
         }
         while ((i < mid1) && (k < right)) {
-            if (array[i].compareTo(array[k]) < 0) {
+            if (array[k].compareTo(array[i]) > 0) {
                 buffer[l++] = array[i++];
             } else {
                 buffer[l++] = array[k++];
@@ -430,14 +577,14 @@ extends Sort<T> {
     default void mergeDec(T[] array, int left, int mid1, int mid2, int right, T[] buffer) {
         int i = left, j = mid1, k = mid2, l = left;
         while ((i < mid1) && (j < mid2) && (k < right)) {
-            if (array[i].compareTo(array[j]) > 0) {
-                if (array[i].compareTo(array[k]) > 0) {
+            if (array[j].compareTo(array[i]) < 0) {
+                if (array[k].compareTo(array[i]) < 0) {
                     buffer[l++] = array[i++];
                 } else {
                     buffer[l++] = array[k++];
                 }
             } else {
-                if (array[j].compareTo(array[k]) > 0) {
+                if (array[k].compareTo(array[j]) < 0) {
                     buffer[l++] = array[j++];
                 } else {
                     buffer[l++] = array[k++];
@@ -445,21 +592,120 @@ extends Sort<T> {
             }
         }
         while ((i < mid1) && (j < mid2)) {
-            if (array[i].compareTo(array[j]) > 0) {
+            if (array[j].compareTo(array[i]) < 0) {
                 buffer[l++] = array[i++];
             } else {
                 buffer[l++] = array[j++];
             }
         }
         while ((j < mid2) && (k < right)) {
-            if (array[j].compareTo(array[k]) > 0) {
+            if (array[k].compareTo(array[j]) < 0) {
                 buffer[l++] = array[j++];
             } else {
                 buffer[l++] = array[k++];
             }
         }
         while ((i < mid1) && (k < right)) {
-            if (array[i].compareTo(array[k]) > 0) {
+            if (array[k].compareTo(array[i]) < 0) {
+                buffer[l++] = array[i++];
+            } else {
+                buffer[l++] = array[k++];
+            }
+        }
+        while (i < mid1) {
+            buffer[l++] = array[i++];
+        }
+        while (j < mid2) {
+            buffer[l++] = array[j++];
+        }
+        while (k < right) {
+            buffer[l++] = array[k++];
+        }
+    }
+
+    /**
+     * {@code mergeDec} method for merging three sorted subarrays into a single array. It takes the indices of the subarray boundaries
+     * and uses four pointers {@code i, j, k, l} and an instance of {@code SortFunctional<T>} as parameters,
+     * to iterate through the subarrays and merge them into a buffer array.
+     * <ul>
+     *     <li>The method takes in additional parameters {@code mid1} and {@code mid2},
+     *     which represent the boundaries of the two middle subarrays.</li>
+     *     <li>It initializes variables {@code i, j, k, l} to keep track of
+     *     the current indices in the three subarrays and the merged array ({@code buffer}), respectively.
+     *     The initial value of {@code l} is set to {@code left}.</li>
+     *     <li>It enters a {@code while} loop that continues as long as {@code i} is less than {@code mid1}, {@code j}
+     *     is less than {@code mid2}, and {@code k} is less than {@code right}.
+     *     Within the loop, it performs comparisons using the {@code functional} instance to determine the order of the elements.</li>
+     *     <li>If {@code array[j]} is smaller than {@code array[i]},
+     *     it further checks if {@code array[k]} is also smaller than {@code array[i]}.
+     *     If so, it assigns {@code array[i]} to {@code buffer[l++]} and increments {@code i}.
+     *     Otherwise, it assigns {@code array[k]} to {@code buffer[l++]} and increments {@code k}.</li>
+     *     <li>If {@code array[i]} is smaller than or equal to {@code array[j]},
+     *     it checks if {@code array[k]} is smaller than {@code array[j]}.
+     *     If so, it assigns {@code array[j]} to {@code buffer[l++]} and increments {@code j}.
+     *     Otherwise, it assigns {@code array[k]} to {@code buffer[l++]} and increments {@code k}.</li>
+     *     <li>After the {@code while} loop, there are three possible cases:</li>
+     *     <li>Elements remaining in both the first and second subarrays:
+     *     It compares {@code array[j]} and {@code array[i]} using
+     *     the {@code functional} instance and assigns the smaller element to {@code buffer[l++]}.
+     *     It then increments the corresponding counters {@code i} and {@code j}.</li>
+     *     <li>Elements remaining in the second and third subarrays:
+     *     It compares {@code array[k]} and {@code array[j]} using
+     *     the {@code functional} instance and assigns the smaller element to {@code buffer[l++]}.
+     *     It then increments the corresponding counters {@code j} and {@code k}.</li>
+     *     <li>Elements remaining in the first and third subarrays:
+     *     It compares {@code array[k]} and {@code array[i]} using
+     *     the {@code functional} instance and assigns the smaller element to {@code buffer[l++]}.
+     *     It then increments the corresponding counters {@code i} and {@code k}.</li>
+     *     <li>It handles the remaining elements in the first, second, and third subarrays
+     *     individually using separate {@code while} loops.
+     *     It assigns the remaining elements to {@code buffer[l++]} and increments the corresponding counters.</li>
+     * </ul>
+     * {@code merge} method performs a three-way merge of subarrays within the {@code array} by comparing elements using the {@code functional} instance.
+     * It maintains separate indices for each subarray and incrementally merges the elements into the {@code buffer} array.
+     * After merging all the elements, it copies the merged elements back to the original {@code array}.
+     * @param       array The array containing the subarrays to be merged.
+     * @param       left The starting index of the first subarray.
+     * @param       mid1 The ending index (exclusive) of the first subarray.
+     * @param       mid2 The ending index (exclusive) of the second subarray.
+     * @param       right The ending index (exclusive) of the third subarray.
+     * @param       buffer An auxiliary array used for merging.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    default void merge(T[] array, int left, int mid1, int mid2, int right, T[] buffer, SortFunctional<T> functional) {
+        int i = left, j = mid1, k = mid2, l = left;
+        while ((i < mid1) && (j < mid2) && (k < right)) {
+            if (functional.functionalCompareTo(array[j], array[i])) {
+                if (functional.functionalCompareTo(array[k], array[i])) {
+                    buffer[l++] = array[i++];
+                } else {
+                    buffer[l++] = array[k++];
+                }
+            } else {
+                if (functional.functionalCompareTo(array[k], array[j])) {
+                    buffer[l++] = array[j++];
+                } else {
+                    buffer[l++] = array[k++];
+                }
+            }
+        }
+        while ((i < mid1) && (j < mid2)) {
+            if (functional.functionalCompareTo(array[j], array[i])) {
+                buffer[l++] = array[i++];
+            } else {
+                buffer[l++] = array[j++];
+            }
+        }
+        while ((j < mid2) && (k < right)) {
+            if (functional.functionalCompareTo(array[k], array[j])) {
+                buffer[l++] = array[j++];
+            } else {
+                buffer[l++] = array[k++];
+            }
+        }
+        while ((i < mid1) && (k < right)) {
+            if (functional.functionalCompareTo(array[k], array[i])) {
                 buffer[l++] = array[i++];
             } else {
                 buffer[l++] = array[k++];
@@ -509,13 +755,13 @@ extends Sort<T> {
      */
     @SuppressWarnings("unchecked")
     default void mergingInc(T[] array, int left, int mid, int right) {
-        if (left > mid || (mid + 1) > right) {
+        if ((left > mid) || ((mid + 1) > right)) {
             return;
         }
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         T[] leftArray = Arrays.copyOfRange(array, left, (mid + 1)), rightArray = Arrays.copyOfRange(array, (mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (leftArray[i].compareTo(rightArray[j]) < 0) {
+            if (rightArray[j].compareTo(leftArray[i]) > 0) {
                 array[k] = leftArray[i++];
             } else {
                 array[k] = rightArray[j++];
@@ -563,13 +809,75 @@ extends Sort<T> {
      */
     @SuppressWarnings("unchecked")
     default void mergingDec(T[] array, int left, int mid, int right) {
-        if (left > mid || (mid + 1) > right) {
+        if ((left > mid) || ((mid + 1) > right)) {
             return;
         }
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         T[] leftArray = Arrays.copyOfRange(array, left, (mid + 1)), rightArray = Arrays.copyOfRange(array, (mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (leftArray[i].compareTo(rightArray[j]) > 0) {
+            if (rightArray[j].compareTo(leftArray[i]) < 0) {
+                array[k] = leftArray[i++];
+            } else {
+                array[k] = rightArray[j++];
+            }
+            k++;
+        }
+        while (i < n1) {
+            array[k++] = leftArray[i++];
+        }
+        while (j < n2) {
+            array[k++] = rightArray[j++];
+        }
+    }
+
+    /**
+     * {@code merging} that performs a merging operation for the purpose of merging two sorted portions of an array into a single sorted portion.
+     * The method assumes that the left portion of the array, from index {@code left} to {@code mid}, and the {@code right} portion,
+     * from index {@code (mid + 1)} to {@code right},
+     * and an instance of {@code SortFunctional<T>} as parameters,
+     * are already sorted in increasing order.
+     * <ul>
+     *     <li>{@code merging} method now includes an additional check at the beginning.
+     *     If the condition {@code (left > mid) || ((mid + 1) > right)} is satisfied,
+     *     it means that either the left subarray is empty or the right subarray is empty,
+     *     indicating that there is no need to perform the merging. In such cases, the method simply returns.</li>
+     *     <li>It initializes variables {@code n1} and {@code n2} to store the sizes of the left and right subarrays, respectively.
+     *     The values are calculated as {@code (mid - left + 1)} and {@code (right - mid)}.</li>
+     *     <li>It initializes counters {@code i}, {@code j}, and {@code k} to keep track of the current indices in the left array, right array,
+     *     and the merged array ({@code array}), respectively.
+     *     The initial value of {@code k} is set to {@code left}.</li>
+     *     <li>It creates two new arrays, {@code leftArray} and {@code rightArray},
+     *     using {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}.
+     *     These arrays store the respective subarrays extracted from {@code array}.</li>
+     *     <li>It enters a {@code while} loop that continues as long as both {@code i} and {@code j} are within their respective
+     *     subarray bounds ({@code (i < n1 && j < n2)}).
+     *     Within the loop, it performs the comparison using
+     *     the {@code functional} instance and assigns the smaller element to {@code array[k]}.
+     *     After assigning the element, it increments the corresponding counters ({@code i}, {@code j}, and {@code k}).</li>
+     *     <li>After exiting the {@code while} loop, it checks if there are any remaining elements in the left subarray {@code (i < n1)}.
+     *     If so, it copies the remaining elements to {@code array[k]} and increments both {@code i} and {@code k}.</li>
+     *     <li>Similarly, it checks if there are any remaining elements in the right subarray {@code (j < n2)}.
+     *     If so, it copies the remaining elements to {@code array[k]} and increments both {@code j} and {@code k}.</li>
+     * </ul>
+     * {@code merging} method merges two sorted subarrays ({@code leftArray} and {@code rightArray}) into a single sorted array ({@code array}).
+     * It compares elements using the {@code functional} instance and assigns the smaller element to {@code array[k]} at each step.
+     * The method handles cases where one of the subarrays is empty or when there are remaining elements in either
+     * the left or right subarray after the initial merging.
+     * @param       array to be arranged.
+     * @param       left from the array, index value, must be smaller than the {@code mid} and {@code right} value.
+     * @param       mid from the array, index value, must be smaller than the {@code right} value, and must be greater than the {@code left}.
+     * @param       right from the array, index value, must be greater than the {@code left} and {@code mid} value.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    default void merging(T[] array, int left, int mid, int right, SortFunctional<T> functional) {
+        if ((left > mid) || ((mid + 1) > right)) {
+            return;
+        }
+        int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
+        T[] leftArray = Arrays.copyOfRange(array, left, (mid + 1)), rightArray = Arrays.copyOfRange(array, (mid + 1), (right + 1));
+        while (i < n1 && j < n2) {
+            if (functional.functionalCompareTo(rightArray[j], leftArray[i])) {
                 array[k] = leftArray[i++];
             } else {
                 array[k] = rightArray[j++];
@@ -620,7 +928,7 @@ extends Sort<T> {
     default void mergingInc(T[] array, int left, int mid, int right, T[] buffer) {
         int n1 = left, n2 = (mid + 1);
         for (int i = left; i <= right; i++) {
-            if (n1 <= mid && (n2 > right || array[n1].compareTo(array[n2]) <= 0)) {
+            if ((n1 <= mid) && ((n2 > right) || (array[n2].compareTo(array[n1]) >= 0))) {
                 buffer[i] = array[n1++];
             } else {
                 buffer[i] = array[n2++];
@@ -665,7 +973,54 @@ extends Sort<T> {
     default void mergingDec(T[] array, int left, int mid, int right, T[] buffer) {
         int n1 = left, n2 = (mid + 1);
         for (int i = left; i <= right; i++) {
-            if (n1 <= mid && (n2 > right || array[n1].compareTo(array[n2]) >= 0)) {
+            if ((n1 <= mid) && ((n2 > right) || (array[n2].compareTo(array[n1]) <= 0))) {
+                buffer[i] = array[n1++];
+            } else {
+                buffer[i] = array[n2++];
+            }
+        }
+        System.arraycopy(buffer, left, array, left, (right - left + 1));
+    }
+
+    /**
+     * {@code merging} method now takes additional parameters compared to the previous version:
+     * {@code buffer}, an auxiliary array of type {@code T[]},
+     * and the indices {@code left}, {@code mid}, and {@code right} that define the range of elements to be merged.
+     * <ul>
+     *     <li>It initializes two variables: {@code n1} to track the index of the current element in the left subarray,
+     *     and {@code n2} to track the index of the current element in the right subarray.</li>
+     *     <li>It creates a {@code functionalAddEquals} instance using the {@code functionalComparableToAddEquals} method,
+     *     which is responsible for defining the comparison logic for determining element order.</li>
+     *     <li>It enters a {@code for} loop that iterates over the range from {@code left} to {@code right} (inclusive).
+     *     Within the loop, it checks two conditions:</li>
+     *     <li>If {@code n1} is within the range of the left subarray and either {@code n2} is out of the range of
+     *     the right subarray or the comparison between the elements at indices {@code n2} and {@code n1} indicates that
+     *     the element in the right subarray is greater or equal,
+     *     it assigns the element from the left subarray to {@code buffer[i]} and increments {@code n1}.</li>
+     *     <li>Otherwise, it assigns the element from the right subarray to {@code buffer[i]} and increments {@code n2}.</li>
+     *     <li>After the loop, it uses {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
+     *     to copy the elements from {@code buffer} back to the original {@code array},
+     *     starting from the {@code left} index and copying {@code (right - left + 1)} elements.</li>
+     * </ul>
+     * {@code merging} method merges two sorted subarrays, specified by the indices {@code left}, {@code mid}, and {@code right},
+     * into a single sorted array {@code array}.
+     * It utilizes an auxiliary {@code buffer} array to store the merged result temporarily.
+     * The comparison logic for element order is determined by the {@code functional} instance,
+     * specifically through the {@code functionalComparableToAddEquals} method.
+     * @param       array to be arranged.
+     * @param       left The index of the leftmost element of the subarray to be merged.
+     * @param       mid The index of the midpoint element in the subarray to be merged.
+     * @param       right The index of the rightmost element of the subarray to be merged.
+     * @param       buffer An auxiliary array used for storing the merged elements temporarily.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort#functionalComparableToAddEquals(SortFunctional)
+     *
+     */
+    default void merging(T[] array, int left, int mid, int right, T[] buffer, SortFunctional<T> functional) {
+        int n1 = left, n2 = (mid + 1);
+        SortFunctional<T> functionalAddEquals = functionalComparableToAddEquals(functional);
+        for (int i = left; i <= right; i++) {
+            if ((n1 <= mid) && ((n2 > right) || (functionalAddEquals.functionalCompareTo(array[n2], array[n1])))) {
                 buffer[i] = array[n1++];
             } else {
                 buffer[i] = array[n2++];
@@ -707,8 +1062,8 @@ extends Sort<T> {
     @SuppressWarnings("unchecked")
     default void mergingInc(T[] array, T[] leftArray, T[] rightArray) {
         int i = 0, j = 0, k = 0;
-        while (i < leftArray.length && j < rightArray.length) {
-            if (leftArray[i].compareTo(rightArray[j]) < 0) {
+        while ((i < leftArray.length) && (j < rightArray.length)) {
+            if (rightArray[j].compareTo(leftArray[i]) > 0) {
                 array[k++] = leftArray[i++];
             } else {
                 array[k++] = rightArray[j++];
@@ -755,8 +1110,54 @@ extends Sort<T> {
     @SuppressWarnings("unchecked")
     default void mergingDec(T[] array, T[] leftArray, T[] rightArray) {
         int i = 0, j = 0, k = 0;
-        while (i < leftArray.length && j < rightArray.length) {
-            if (leftArray[i].compareTo(rightArray[j]) > 0) {
+        while ((i < leftArray.length) && (j < rightArray.length)) {
+            if (rightArray[j].compareTo(leftArray[i]) < 0) {
+                array[k++] = leftArray[i++];
+            } else {
+                array[k++] = rightArray[j++];
+            }
+        }
+        while (i < leftArray.length) {
+            array[k++] = leftArray[i++];
+        }
+        while (j < rightArray.length) {
+            array[k++] = rightArray[j++];
+        }
+    }
+
+    /**
+     * {@code merging} method takes an array {@code array} of type {@code T},
+     * two subarrays {@code leftArray} and {@code rightArray} of type {@code T},
+     * and an instance of {@code SortFunctional<T>} as parameters.
+     * <ul>
+     *     <li>It initializes three variables:
+     *     {@code i} to track the index of the current element in {@code leftArray},
+     *     {@code j} to track the index of the current element in {@code rightArray}, and
+     *     {@code k} to track the index of the current element in {@code array}.</li>
+     *     <li>It enters a {@code while} loop that continues until either {@code i} reaches
+     *     the end of {@code leftArray} or {@code j} reaches the end of {@code rightArray}.
+     *     This loop merges the elements from {@code leftArray} and {@code rightArray}
+     *     into array based on the comparison logic defined by the {@code functional} instance.</li>
+     *     <li>Within the loop, it compares the current elements at indices i and j from leftArray and rightArray, respectively.
+     *     If the comparison indicates that the element in {@code rightArray} is considered greater than the element in {@code leftArray},
+     *     it assigns the element from {@code leftArray} to {@code array[k]} and increments {@code i} and {@code k}.
+     *     Otherwise, it assigns the element from {@code rightArray} to {@code array[k]} and increments {@code j} and {@code k}.</li>
+     *     <li>After the loop, it checks if there are any remaining elements in {@code leftArray} and {@code rightArray} that haven't been processed.
+     *     It uses separate {@code while} loops to copy any remaining elements into {@code array}.</li>
+     *     <li>Finally, the method completes, and the merged result is stored in {@code array}.</li>
+     * </ul>
+     * {@code merging} method merges two sorted subarrays, {@code leftArray} and {@code rightArray}, into a single sorted array {@code array}.
+     * It uses the comparison logic defined by the {@code SortFunctional} instance to determine the order of elements during the merging process.
+     * @param       array to be arranged.
+     * @param       leftArray The left subarray that is sorted in descending order.
+     * @param       rightArray The right subarray that is sorted in descending order.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    default void merging(T[] array, T[] leftArray, T[] rightArray, SortFunctional<T> functional) {
+        int i = 0, j = 0, k = 0;
+        while ((i < leftArray.length) && (j < rightArray.length)) {
+            if (functional.functionalCompareTo(rightArray[j], leftArray[i])) {
                 array[k++] = leftArray[i++];
             } else {
                 array[k++] = rightArray[j++];
