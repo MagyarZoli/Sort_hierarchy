@@ -4,7 +4,7 @@ package mz;
  * Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure to sort elements.
  * It works by constructing a heap from the input array and repeatedly extracting
  * the maximum (or minimum) element from the heap and placing it at the end of the sorted portion of the array.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -45,14 +45,7 @@ implements HeapInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQHeap#IntroDPQHeap() IntroDPQHeap
-     * @see         mz.intro.introDPQ.IntroDPQSmoothHeap#IntroDPQSmoothHeap() IntroDPQSmoothHeap
-     * @see         mz.intro.introDPQ.IntroDPQTernaryHeap#IntroDPQTernaryHeap() IntroDPQTernaryHeap
-     * @see         mz.intro.introDPQ.IntroDPQWeakHeap#IntroDPQWeakHeap() IntroDPQWeakHeap
      * @see         mz.intro.IntroHeap#IntroHeap() IntroHeap
-     * @see         mz.intro.IntroSmoothHeap#IntroSmoothHeap() IntroSmoothHeap
-     * @see         mz.intro.IntroTernaryHeap#IntroTernaryHeap() IntroTernaryHeap
-     * @see         mz.intro.IntroWeakHeap#IntroWeakHeap() IntroWeakHeap
      * @see         mz.SmoothHeap#SmoothHeap() SmoothHeap
      * @see         mz.TernaryHeap#TernaryHeap() TernaryHeap
      * @see         mz.WeakHeap#WeakHeap() WeakHeap
@@ -75,5 +68,15 @@ implements HeapInterface<Comparable> {
     @Override
     public void sortArrayDec(Comparable[] array) {
         heapDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        heap(array, functional);
     }
 }
