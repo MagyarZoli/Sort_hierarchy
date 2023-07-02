@@ -5,7 +5,7 @@ package mz;
  * a sorted portion and an unsorted portion. The algorithm repeatedly selects the smallest (or largest)
  * element from the unsorted portion and swaps it with the element at the beginning of the unsorted portion,
  * thereby expanding the sorted portion. This process continues until the entire array becomes sorted.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -38,32 +38,10 @@ implements SelectionInterface<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.BatcherOddEvenMerge#BatcherOddEvenMerge() BatcherOddEvenMerge
-     * @see         mz.Bubble#Bubble() Bubble
-     * @see         mz.Cocktail#Cocktail() Cocktail
-     * @see         mz.Comb#Comb() Comb
-     * @see         mz.DoubleSelection#DoubleSelection() DoubleSelection
-     * @see         mz.Gnome#Gnome() Gnome
-     * @see         mz.intro.IntroBatcherOddEvenMerge#IntroBatcherOddEvenMerge() IntroBatcherOddEvenMerge
-     * @see         mz.intro.IntroBubble#IntroBubble() IntroBubble
-     * @see         mz.intro.IntroCocktail#IntroCocktail() IntroCocktail
-     * @see         mz.intro.IntroComb#IntroComb() IntroComb
-     * @see         mz.intro.introDPQ.IntroDPQBatcherOddEvenMerge#IntroDPQBatcherOddEvenMerge() IntroDPQBatcherOddEvenMerge
-     * @see         mz.intro.introDPQ.IntroDPQBubble#IntroDPQBubble() IntroDPQBubble
-     * @see         mz.intro.introDPQ.IntroDPQCocktail#IntroDPQCocktail() IntroDPQCocktail
-     * @see         mz.intro.introDPQ.IntroDPQComb#IntroDPQComb() IntroDPQComb
-     * @see         mz.intro.introDPQ.IntroDPQDoubleSelection#IntroDPQDoubleSelection() IntroDPQDoubleSelection
-     * @see         mz.intro.introDPQ.IntroDPQGnome#IntroDPQGnome() IntroDPQGnome
-     * @see         mz.intro.introDPQ.IntroDPQOddEven#IntroDPQOddEven() IntroDPQOddEven
-     * @see         mz.intro.introDPQ.IntroDPQOddEvenMerge#IntroDPQOddEvenMerge() IntroDPQOddEvenMerge
-     * @see         mz.intro.introDPQ.IntroDPQSelection#IntroDPQSelection() IntroDPQSelection
-     * @see         mz.intro.IntroDoubleSelection#IntroDoubleSelection() IntroDoubleSelection
-     * @see         mz.intro.IntroGnome#IntroGnome() IntroGnome
-     * @see         mz.intro.IntroOddEven#IntroOddEven() IntroOddEven
-     * @see         mz.intro.IntroOddEvenMerge#IntroOddEvenMerge() IntroOddEvenMerge
      * @see         mz.intro.IntroSelection#IntroSelection() IntroSelection
-     * @see         mz.OddEven#OddEven() OddEven
-     * @see         mz.OddEvenMerge#OddEvenMerge() OddEvenMerge
+     * @see         mz.Bubble#Bubble() Bubble
+     * @see         mz.DoubleSelection#DoubleSelection() DoubleSelection
+     * @see         mz.Pancake#Pancake() Pancake
      */
     public Selection() {}
 
@@ -83,5 +61,15 @@ implements SelectionInterface<Comparable> {
     @Override
     public void sortArrayDec(Comparable[] array) {
         selectionDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        selection(array, functional);
     }
 }

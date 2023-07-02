@@ -1,32 +1,32 @@
 package mz.intro;
 
-import mz.Gnome;
+import mz.Pancake;
 
 /**
- * Intro Sort is a hybrid sorting algorithm that combines the strengths of Quick Sort and Insertion Sort.
+ * Intro Sort is a hybrid sorting algorithm that combines the strengths of Quick Sort and Pancake Sort.
  * It aims to provide fast average-case performance while maintaining worst-case guarantees.
  * The basic idea behind Intro Sort is to start with Quick Sort, which is known for its efficiency on average,
  * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.
  * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
- * Another Sort is Gnome Sort.
+ * Another Sort is Pancake Sort.
  * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
-public class IntroGnome
-extends Gnome
+public class IntroPancake
+extends Pancake
 implements Intro<Comparable> {
 
     /**
-     * <b>Intro Gnome Sort:</b><br>
-     * Is a hybrid sorting algorithm that combines the strengths of Quick Sort and Insertion Sort.
+     * <b>Intro Pancake Sort:</b><br>
+     * Is a hybrid sorting algorithm that combines the strengths of Quick Sort and Pancake Sort.
      * It aims to provide fast average-case performance while maintaining worst-case guarantees.
      * The basic idea behind Intro Sort is to start with Quick Sort, which is known for its efficiency on average,
      * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.<br><br>
      * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
      * If the depth exceeds a certain threshold, the algorithm switches to
-     * Another Sort is Gnome Sort.
+     * Another Sort is Pancake Sort.
      * Implements an adaptive sorting algorithm called Intro Sort Interface.<br><br>
      * <b>Example:</b>
      * <ol>
@@ -34,7 +34,7 @@ implements Intro<Comparable> {
      *     If true, the array is large enough to be sorted using QuickSort.</li>
      *     <li>This condition checks if the maximum depth has been reached.
      *     If true, the maximum depth has been exceeded,
-     *     and the sorting algorithm switches to another sorting method is Gnome Sort</li>
+     *     and the sorting algorithm switches to another sorting method is Pancake Sort</li>
      *     <li>If the maximum depth has been reached, the sort the subarray using a different sorting algorithm.</li>
      *     <li>If the maximum depth has not been reached,
      *     the to perform the partitioning step of QuickSort.
@@ -48,7 +48,7 @@ implements Intro<Comparable> {
      * </ol>
      * <b>Note:</b><br>
      * Implements an adaptive sorting algorithm called Intro Sort. It combines the Quick Sort
-     * algorithm with a switch to another sorting algorithm Gnome Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * algorithm with a switch to another sorting algorithm Pancake Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
      * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(n^2)</em><br>
@@ -56,9 +56,9 @@ implements Intro<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQGnome#IntroDPQGnome() IntroDPQGnome
+     * @see         mz.intro.introDPQ.IntroDPQPancake#IntroDPQPancake() IntroDPQPancake
      */
-    public IntroGnome() {}
+    public IntroPancake() {}
 
     /**
      * {@inheritDoc}
@@ -96,7 +96,7 @@ implements Intro<Comparable> {
      */
     @Override
     public void introSortClassInc(Comparable[] array, int left, int right) {
-        gnomeInc(array, left, right);
+        pancakeInc(array, left, right);
     }
 
     /**
@@ -107,18 +107,18 @@ implements Intro<Comparable> {
      */
     @Override
     public void introSortClassDec(Comparable[] array, int left, int right) {
-        gnomeDec(array, left, right);
+        pancakeDec(array, left, right);
     }
 
     /**
      * {@inheritDoc}
-     * @param array The array to be sorted.
-     * @param left The starting index of the subarray to be sorted.
-     * @param right The ending index (inclusive) of the subarray to be sorted.
-     * @param functional lambda expression for comparison.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
      */
     @Override
     public void introSortClass(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
-        gnome(array, left, right, functional);
+        pancake(array, left, right, functional);
     }
 }
