@@ -165,10 +165,12 @@ extends Heap {
      * {@code heapify} method is typically used as part of the heap sort algorithm to create a max heap or min heap.
      * It ensures that the subtree rooted at index i satisfies the heap property,
      * which is the parent node being larger (or smaller) than its child nodes.
-     * @param array to be arranged.
-     * @param n of the array.
-     * @param i the current element
-     * @param functional lambda expression for comparison.
+     * @param       array to be arranged.
+     * @param       n of the array.
+     * @param       i the current element
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @Override
     public void heapify(Comparable[] array, int n, int i, SortFunctional<Comparable> functional) {
