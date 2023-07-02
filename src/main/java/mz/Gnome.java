@@ -4,7 +4,7 @@ package mz;
  * Gnome Sort, also known as Stupid Sort, is a simple sorting algorithm that works
  * by repeatedly comparing adjacent elements and swapping them if they are in the wrong order.
  * It gets its name from the way it "stumbles" through the list, similar to a gnome moving around.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -41,7 +41,6 @@ extends Bubble {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQGnome#IntroDPQGnome() IntroDPQGnome
      * @see         mz.intro.IntroGnome#IntroGnome() IntroGnome
      */
     public Gnome() {}
@@ -62,6 +61,16 @@ extends Bubble {
     @Override
     public void sortArrayDec(Comparable[] array) {
         gnomeDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        gnome(array, functional);
     }
 
     /**
@@ -87,7 +96,7 @@ extends Bubble {
     protected void gnomeInc(Comparable[] array) {
         int n = array.length, pos = 0;
         while (pos < n) {
-            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) >= 0) {
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) >= 0)) {
                 pos++;
             } else {
                 swap(array, pos, (pos - 1));
@@ -119,7 +128,46 @@ extends Bubble {
     protected void gnomeDec(Comparable[] array) {
         int n = array.length, pos = 0;
         while (pos < n) {
-            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) <= 0) {
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) <= 0)) {
+                pos++;
+            } else {
+                swap(array, pos, (pos - 1));
+                pos--;
+            }
+        }
+    }
+
+    /**
+     * {@code gnome} method takes an array of {@code Comparable} objects,
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts by initializing a {@code pos} variable to {@code n},
+     *     representing the current position in the array.</li>
+     *     <li>Next, a {@code functionalAddEquals} object is created by calling the {@code functionalComparableToAddEquals} method,
+     *     which seems to convert the original comparison logic to a new logic where elements
+     *     that are equal are considered as "greater" for the purpose of the sorting algorithm.</li>
+     *     <li>The algorithm then enters a while loop that continues as long as {@code pos} is less than {@code n}.
+     *     Within the loop, there is an if-else condition:</li>
+     *     <li>If pos is equal to <i>0</i> or the comparison using the {@code functionalAddEquals} object indicates that
+     *     the current element is "greater" than the previous element,
+     *     the {@code pos} is incremented to move to the next position.</li>
+     *     <li>Otherwise, if the current element is "less" than the previous element,
+     *     the {@code swap} method is called to swap the elements,
+     *     and {@code pos} is decremented to move backward in the array.</li>
+     * </ul>
+     * {@code gnome} method implements the Gnome Sort algorithm to sort the given
+     * {@code array} of Comparable objects in function defined from order.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort#functionalComparableToAddEquals(SortFunctional)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    protected void gnome(Comparable[] array, SortFunctional<Comparable> functional) {
+        int n = array.length, pos = 0;
+        SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
+        while (pos < n) {
+            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(array[pos], array[(pos - 1)]))) {
                 pos++;
             } else {
                 swap(array, pos, (pos - 1));
@@ -153,7 +201,7 @@ extends Bubble {
     protected void gnomeInc(Comparable[] array, int left, int right) {
         int pos = left;
         while (pos < right) {
-            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) >= 0) {
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) >= 0)) {
                 pos++;
             } else {
                 swap(array, pos, (pos - 1));
@@ -187,7 +235,49 @@ extends Bubble {
     protected void gnomeDec(Comparable[] array, int left, int right) {
         int pos = left;
         while (pos < right) {
-            if (pos == 0 || array[pos].compareTo(array[(pos - 1)]) <= 0) {
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) <= 0)) {
+                pos++;
+            } else {
+                swap(array, pos, (pos - 1));
+                pos--;
+            }
+        }
+    }
+
+    /**
+     * {@code gnome} method takes an array of {@code Comparable} objects,
+     * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts by initializing a {@code pos} variable to {@code left},
+     *     representing the current position in the array.</li>
+     *     <li>Next, a {@code functionalAddEquals} object is created by calling the {@code functionalComparableToAddEquals} method,
+     *     which seems to convert the original comparison logic to a new logic where elements
+     *     that are equal are considered as "greater" for the purpose of the sorting algorithm.</li>
+     *     <li>The algorithm then enters a while loop that continues as long as {@code pos} is less than {@code right}.
+     *     Within the loop, there is an if-else condition:</li>
+     *     <li>If pos is equal to <i>0</i> or the comparison using the {@code functionalAddEquals} object indicates that
+     *     the current element is "greater" than the previous element,
+     *     the {@code pos} is incremented to move to the next position.</li>
+     *     <li>Otherwise, if the current element is "less" than the previous element,
+     *     the {@code swap} method is called to swap the elements,
+     *     and {@code pos} is decremented to move backward in the array.</li>
+     * </ul>
+     * {@code gnome} method implements the Gnome Sort algorithm to sort the given
+     * {@code array} of Comparable objects in function defined from order.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort#functionalComparableToAddEquals(SortFunctional)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    protected void gnome(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        int pos = left;
+        SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
+        while (pos < right) {
+            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(array[pos], array[(pos - 1)]))) {
                 pos++;
             } else {
                 swap(array, pos, (pos - 1));
