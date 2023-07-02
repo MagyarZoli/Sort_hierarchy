@@ -4,7 +4,7 @@ package mz;
  * Merge Sort is a comparison-based sorting algorithm that follows the divide-and-conquer approach.
  * It works by dividing the unsorted list into smaller sublists, sorting those sublists recursively,
  * and then merging them back together to obtain a sorted list.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -43,20 +43,7 @@ implements MergeInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.intro.introDPQ.IntroDPQMerge#IntroDPQMerge() IntroDPQMerge
-     * @see         mz.intro.introDPQ.IntroDPQMerge3#IntroDPQMerge3() IntroDPQMerge3
-     * @see         mz.intro.introDPQ.IntroDPQMergeInPlace#IntroDPQMergeInPlace() IntroDPQMergeInPlace
-     * @see         mz.intro.introDPQ.IntroDPQMergeInsertion#IntroDPQMergeInsertion() IntroDPQMergeInsertion
-     * @see         mz.intro.introDPQ.IntroDPQTim#IntroDPQTim() IntroDPQTim
-     * @see         mz.intro.introDPQ.IntroDPQWeaveMerge#IntroDPQWeaveMerge() IntroDPQWeaveMerge
-     * @see         mz.intro.introDPQ.IntroDPQWiki#IntroDPQWiki() IntroDPQWiki
      * @see         mz.intro.IntroMerge#IntroMerge() IntroMerge
-     * @see         mz.intro.IntroMerge3#IntroMerge3() IntroMerge3
-     * @see         mz.intro.IntroMergeInPlace#IntroMergeInPlace() IntroMergeInPlace
-     * @see         mz.intro.IntroMergeInsertion#IntroMergeInsertion() IntroMergeInsertion
-     * @see         mz.intro.IntroTim#IntroTim() IntroTim
-     * @see         mz.intro.IntroWeaveMerge#IntroWeaveMerge() IntroWeaveMerge
-     * @see         mz.intro.IntroWiki#IntroWiki() IntroWiki
      * @see         mz.Merge3#Merge3() Merge3
      * @see         mz.MergeInPlace#MergeInPlace() MergeInPlace
      * @see         mz.MergeInsertion#MergeInsertion() MergeInsertion
@@ -82,5 +69,15 @@ implements MergeInterface<Comparable> {
     @Override
     public void sortArrayDec(Comparable[] array) {
         mergeDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param array to be arranged.
+     * @param functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        merge(array, functional);
     }
 }
