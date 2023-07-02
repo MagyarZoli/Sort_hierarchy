@@ -47,6 +47,7 @@ extends Bubble {
      * Auxiliary Space:         <em>O(1)</em><br>
      * Stability:               <b>No</b>
      * @see         mz.intro.IntroBogo#IntroBogo() IntroBogo
+     * @see         mz.Bogo#Bogo() Bogo
      */
     public Bogo() {}
 
