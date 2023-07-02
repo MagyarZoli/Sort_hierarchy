@@ -3,7 +3,7 @@ package mz;
 /**
  * Smooth Heap Sort it is another version of heapsort that is designed to minimize the number of comparisons performed during the sort.
  * Like heapsort, smooth sort sorts an array by building a heap and repeatedly extracting the maximum element.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -44,7 +44,6 @@ extends Heap {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQSmoothHeap#IntroDPQSmoothHeap() IntroDPQSmoothHeap
      * @see         mz.intro.IntroSmoothHeap#IntroSmoothHeap() IntroSmoothHeap
      */
     public SmoothHeap() {}
@@ -65,6 +64,16 @@ extends Heap {
     @Override
     public void sortArrayDec(Comparable[] array) {
         smoothDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        smooth(array, functional);
     }
 
     /**
@@ -126,6 +135,42 @@ extends Heap {
         }
         for (int i = 0; i < n; i++) {
             array[i] = deleteMinDec();
+        }
+    }
+
+    /**
+     * {@code smooth} that takes an array of {@code Comparable} objects {@code array},
+     * and a {@code SortFunctional<Comparable>} object as parameters.
+     * This method performs a smooth sort on the specified portion of the array using
+     * the {@code insert} and {@code deleteMin} methods while maintaining the ordering based on the {@code SortFunctional} object.
+     * <ul>
+     *     <li>It iterates over the elements in the range from <i>0</i> to {@code array.length} (exclusive) of the {@code array}.</li>
+     *     <li>Inside the loop, it calls the {@code insert} method with the current element and the {@code functional} object as arguments.
+     *     This inserts the element into a buffer (presumably a binary heap) while maintaining
+     *     the ordering based on the {@code SortFunctional} object.</li>
+     *     <li>After the first loop, all elements in the specified range have been inserted into the buffer.</li>
+     *     <li>It iterates again over the same range of elements from <i>0</i> to {@code n}.</li>
+     *     <li>Inside this loop, it assigns the result of calling the {@code deleteMin} method with
+     *     the {@code functional} object to the corresponding element in the {@code array}.
+     *     This operation removes the minimum element from the buffer while maintaining the ordering based on
+     *     the {@code SortFunctional} object and assigns it to the current index in the {@code array}.</li>
+     *     <li>After the second loop, the elements in the specified range of the {@code array}
+     *     have been sorted in non-decreasing order based on the {@code functional} object.</li>
+     * </ul>
+     * {@code smooth} method uses the {@code insert} and {@code deleteMin} methods to perform a smooth sort on the given array,
+     * resulting in the elements being sorted.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SmoothHeap#insert(Comparable, SortFunctional)
+     * @see         mz.SmoothHeap#deleteMin(SortFunctional)
+     */
+    protected void smooth(Comparable[] array, SortFunctional<Comparable> functional) {
+        int n = array.length;
+        for (int i = 0; i < n; i++) {
+            insert(array[i], functional);
+        }
+        for (int i = 0; i < n; i++) {
+            array[i] = deleteMin(functional);
         }
     }
 
@@ -194,6 +239,43 @@ extends Heap {
     }
 
     /**
+     * {@code smooth} that takes an array of {@code Comparable} objects {@code array}, indices {@code left} and {@code right},
+     * and a {@code SortFunctional<Comparable>} object as parameters.
+     * This method performs a smooth sort on the specified portion of the array using
+     * the {@code insert} and {@code deleteMin} methods while maintaining the ordering based on the {@code SortFunctional} object.
+     * <ul>
+     *     <li>It iterates over the elements in the range from {@code left} to {@code right} (exclusive) of the {@code array}.</li>
+     *     <li>Inside the loop, it calls the {@code insert} method with the current element and the {@code functional} object as arguments.
+     *     This inserts the element into a buffer (presumably a binary heap) while maintaining
+     *     the ordering based on the {@code SortFunctional} object.</li>
+     *     <li>After the first loop, all elements in the specified range have been inserted into the buffer.</li>
+     *     <li>It iterates again over the same range of elements from {@code left} to {@code right}.</li>
+     *     <li>Inside this loop, it assigns the result of calling the {@code deleteMin} method with
+     *     the {@code functional} object to the corresponding element in the {@code array}.
+     *     This operation removes the minimum element from the buffer while maintaining the ordering based on
+     *     the {@code SortFunctional} object and assigns it to the current index in the {@code array}.</li>
+     *     <li>After the second loop, the elements in the specified range of the {@code array}
+     *     have been sorted in non-decreasing order based on the {@code functional} object.</li>
+     * </ul>
+     * {@code smooth} method uses the {@code insert} and {@code deleteMin} methods to perform a smooth sort on the given array,
+     * resulting in the elements being sorted.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SmoothHeap#insert(Comparable, SortFunctional)
+     * @see         mz.SmoothHeap#deleteMin(SortFunctional)
+     */
+    protected void smooth(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        for (int i = left; i < right; i++) {
+            insert(array[i], functional);
+        }
+        for (int i = left; i < right; i++) {
+            array[i] = deleteMin(functional);
+        }
+    }
+
+    /**
      * {@code insertInc} this method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to insert a new element into a heap structure stored in the buffer array.
      * The method takes a Comparable object called insert as a parameter.
@@ -233,7 +315,7 @@ extends Heap {
             int i = (size - 1);
             while (i != 0) {
                 int j = ((i - 1) / 2);
-                if (buffer[i].compareTo(buffer[j]) < 0) {
+                if (buffer[j].compareTo(buffer[i]) > 0) {
                     swap(buffer, i, j);
                     i = j;
                 } else {
@@ -284,7 +366,62 @@ extends Heap {
             int i = (size - 1);
             while (i != 0) {
                 int j = ((i - 1) / 2);
-                if (buffer[i].compareTo(buffer[j]) > 0) {
+                if (buffer[j].compareTo(buffer[i]) < 0) {
+                    swap(buffer, i, j);
+                    i = j;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code insert} that takes a {@code Comparable} object insert
+     * and a {@code SortFunctional<Comparable>} object as parameters.
+     * This method inserts an element into a buffer (presumably an array) while maintaining
+     * the ordering of elements based on the {@code SortFunctional} object.
+     * <ul>
+     *     <li>It adds the {@code insert} element to the {@code buffer} array at
+     *     the current {@code size} index and increments the {@code size} variable.</li>
+     *     <li>It checks if the {@code size} is greater than <i>1</i>,
+     *     indicating that there are already elements in the buffer.</li>
+     *     <li>If there are elements in the buffer, it initializes the index {@code i} as the current {@code (size - 1)},
+     *     representing the index of the newly inserted element.</li>
+     *     <li>It enters a while loop that continues until {@code i} is not equal to <i>0</i>,
+     *     indicating that the element has reached the root of the binary heap.</li>
+     *     <li>Inside the while loop, it calculates the parent index of
+     *     the current element using {@code ((i - 1) / 2)} and assigns it to the variable {@code j}.</li>
+     *     <li>It compares the element at index {@code j} with the element at index {@code i}
+     *     using {@code functional.functionalCompareTo(buffer[j], buffer[i])}.</li>
+     *     <li>If the comparison indicates that the element at index {@code j} is less than the element at index {@code i},
+     *     it means that the binary heap property is satisfied, and the {@code while} loop breaks.</li>
+     *     <li>If the comparison indicates that the element at index {@code j} is greater than the element at index {@code i},
+     *     it swaps the elements at indices {@code i} and {@code j} in the {@code buffer} array using the {@code swap} method.</li>
+     *     <li>After the swap, it updates the value of {@code i} to be {@code j},
+     *     indicating that the current element has moved up the binary heap.</li>
+     *     <li>Finally, the method finishes executing, and the new element is successfully inserted into
+     *     the buffer while maintaining the ordering based on the {@code SortFunctional} object.</li>
+     * </ul>
+     * {@code insert} method adds a new element to a heap structure stored in
+     * the {@code buffer} array and ensures that the heap property is maintained after the insertion.
+     * It achieves this by adding the element to the end of the heap, resizing the buffer if necessary,
+     * and iteratively comparing and swapping elements with their parents to restore the heap property.
+     * @param       insert starts by inserting the element.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SmoothHeap#resize(int)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     *
+     */
+    protected void insert(Comparable insert, SortFunctional<Comparable> functional) {
+        buffer[size++] = insert;
+        resize(buffer.length * 2);
+        if (size > 1) {
+            int i = (size - 1);
+            while (i != 0) {
+                int j = ((i - 1) / 2);
+                if (functional.functionalCompareTo(buffer[j], buffer[i])) {
                     swap(buffer, i, j);
                     i = j;
                 } else {
@@ -334,15 +471,14 @@ extends Heap {
     @SuppressWarnings("unchecked")
     protected Comparable deleteMinInc() {
         Comparable result = buffer[0];
-        size--;
-        swap(buffer, 0, size);
+        swap(buffer, 0, --size);
         int i = 0;
         while (((2 * i) + 1) < size) {
             int j = ((2 * i) + 1);
-            if ((j + 1) < size && buffer[j].compareTo(buffer[(j + 1)]) > 0) {
+            if (((j + 1) < size) && (buffer[j].compareTo(buffer[(j + 1)]) > 0)) {
                 j++;
             }
-            if (buffer[j].compareTo(buffer[i]) < 0) {
+            if (buffer[i].compareTo(buffer[j]) > 0) {
                 swap(buffer, j, i);
                 i = j;
             } else {
@@ -392,15 +528,75 @@ extends Heap {
     @SuppressWarnings("unchecked")
     protected Comparable deleteMinDec() {
         Comparable result = buffer[0];
-        size--;
-        swap(buffer, 0, size);
+        swap(buffer, 0, --size);
         int i = 0;
         while (((2 * i) + 1) < size) {
             int j = ((2 * i) + 1);
-            if ((j + 1) < size && buffer[j].compareTo(buffer[(j + 1)]) < 0) {
+            if (((j + 1) < size) && (buffer[j].compareTo(buffer[(j + 1)]) < 0)) {
                 j++;
             }
-            if (buffer[j].compareTo(buffer[i]) > 0) {
+            if (buffer[i].compareTo(buffer[j]) < 0) {
+                swap(buffer, j, i);
+                i = j;
+            } else {
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * {@code deleteMin} that takes a {@code SortFunctional<Comparable>} object as a parameter.
+     * This method performs the deletion of the minimum element
+     * from a buffer (presumably an array) and returns the deleted element.
+     * <ul>
+     *     <li>It stores the value of the element at index <i>0</i> in
+     *     the {@code buffer} array as the {@code result} variable.</li>
+     *     <li>It swaps the element at index <i>0</i> with the element at index {@code (size - 1)}
+     *     in the {@code buffer} array and decrements the {@code size} variable.</li>
+     *     <li>It initializes the index {@code i} as <i>0</i>,
+     *     representing the current node being examined in the binary heap.</li>
+     *     <li>It enters a {@code while} loop that continues as long as
+     *     the left child of the current node (represented by {@code ((2 * i) + 1)}) is less than the {@code size} variable,
+     *     which ensures that the current node has at least one child.</li>
+     *     <li>Inside the {@code while} loop, it initializes the index {@code j} as {@code ((2 * i) + 1)},
+     *     representing the left child of the current node.</li>
+     *     <li>It checks if the right child of the current node exists {@code ((j + 1) < size)} and if
+     *     the ordering of elements based on functional indicates that the right child is greater than
+     *     the left child {@code (functional.functionalCompareTo(buffer[j], buffer[j + 1]))}.</li>
+     *     <li>If the above condition is {@code true},
+     *     it increments {@code j} to represent the index of the right child,
+     *     indicating that the right child should be considered instead of the left child for further comparison.</li>
+     *     <li>It compares the element at index i with the element at index {@code j} using
+     *     {@code functional.functionalCompareTo(buffer[i], buffer[j])}.</li>
+     *     <li>If the comparison indicates that the element at index {@code i} is greater than the element at index {@code j},
+     *     it swaps the elements at indices {@code i} and {@code j} in the {@code buffer} array using the {@code swap} method.</li>
+     *     <li>After the swap, it updates the value of {@code i} to be {@code j},
+     *     indicating that the current node has moved down the binary heap.</li>
+     *     <li>If the element at index {@code i} is not greater than the element at index {@code j},
+     *     it means that the binary heap property is satisfied, and the {@code while} loop breaks.</li>
+     *     <li>Finally, it returns the {@code result},
+     *     which is the minimum element that was deleted from the buffer.</li>
+     * </ul>
+     * {@code deleteMin} method deletes the minimum element from a heap structure stored in the {@code buffer} array and ensures that
+     * the heap property is maintained after the deletion.
+     * It achieves this by swapping the minimum element with the last element, adjusting the size of the heap,
+     * and iteratively comparing and swapping elements to restore the heap property.
+     * @param       functional lambda expression for comparison.
+     * @return      the deleted minimum element stored in the {@code result} variable
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    protected Comparable deleteMin(SortFunctional<Comparable> functional) {
+        Comparable result = buffer[0];
+        swap(buffer, 0, --size);
+        int i = 0;
+        while (((2 * i) + 1) < size) {
+            int j = ((2 * i) + 1);
+            if (((j + 1) < size) && (functional.functionalCompareTo(buffer[j], buffer[(j + 1)]))) {
+                j++;
+            }
+            if (functional.functionalCompareTo(buffer[i], buffer[j])) {
                 swap(buffer, j, i);
                 i = j;
             } else {
