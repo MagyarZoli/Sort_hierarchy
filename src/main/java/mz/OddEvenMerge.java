@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Odd-even Merge Sort algorithm is a parallel sorting algorithm that is based on the concept of odd-even transposition sorting.
  * It works by repeatedly comparing and swapping adjacent elements in pairs until the entire array is sorted.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -46,14 +46,10 @@ implements MergeInterface<Comparable> {
      * Average Case Complexity: <em>O(n^2)</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.BatcherOddEvenMerge#BatcherOddEvenMerge() BatcherOddEvenMerge
-     * @see         mz.intro.IntroBatcherOddEvenMerge#IntroBatcherOddEvenMerge() IntroBatcherOddEvenMerge
-     * @see         mz.intro.introDPQ.IntroDPQBatcherOddEvenMerge#IntroDPQBatcherOddEvenMerge() IntroDPQBatcherOddEvenMerge
-     * @see         mz.intro.introDPQ.IntroDPQOddEvenMerge#IntroDPQOddEvenMerge() IntroDPQOddEvenMerge
      * @see         mz.intro.IntroOddEvenMerge#IntroOddEvenMerge() IntroOddEvenMerge
+     * @see         mz.BatcherOddEvenMerge#BatcherOddEvenMerge() BatcherOddEvenMerge
      */
     public OddEvenMerge() {}
-
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
@@ -70,6 +66,16 @@ implements MergeInterface<Comparable> {
     @Override
     public void sortArrayDec(Comparable[] array) {
         oddEvenMergeDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        oddEvenMerge(array, functional);
     }
 
     /**
@@ -171,6 +177,53 @@ implements MergeInterface<Comparable> {
     }
 
     /**
+     * {@code oddEvenMerge} method takes an array of {@code Comparable} objects.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a base case check: if the {@code n} index is less than or equal to <i>1</i>,
+     *     indicating that there are <i>0</i> or <i>1</i> elements in the range,
+     *     the method simply returns, as there is nothing to sort.</li>
+     *     <li>Next, the method calculates the {@code mid} index, which represents the midpoint of the range.
+     *     The array is then divided into two halves: {@code oddHalf} and {@code evenHalf}.
+     *     The {@link java.util.Arrays#copyOfRange(Object[], int, int) Arrays.copyOfRange} method
+     *     is used to create new arrays containing the elements from {@code array} within the specified ranges.</li>
+     *     <li>The {@code oddEvenMerge} method is then recursively called on {@code oddHalf} and {@code evenHalf},
+     *     applying the same sorting algorithm to each half.</li>
+     *     <li>After the recursive calls, a loop iterates from <i>0</i> to {@code mid},
+     *     comparing each element with its corresponding element in the second half {@code (i + mid)}.
+     *     If the comparison using the {@code functionalCompareTo} method indicates that
+     *     the current element is greater than its corresponding element,
+     *     the {@code swap} method is called to swap the elements.</li>
+     *     <li>Finally, the {@code merging} method is called to merge
+     *     the sorted {@code oddHalf} and {@code evenHalf} arrays back into the original {@code array}.</li>
+     * </ul>
+     * {@code oddEvenMerge} method combines the divide-and-conquer approach with the odd-even merge step to sort
+     * the elements in the specified range using the provided comparison logic.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     * @see         mz.MergeInterface#merging(Comparable[], Comparable[], Comparable[], SortFunctional)
+     */
+    protected void oddEvenMerge(Comparable[] array, SortFunctional<Comparable> functional) {
+        int n = array.length;
+        if (n <= 1) {
+            return;
+        }
+        int mid = (n / 2);
+        Comparable[] oddHalf = Arrays.copyOfRange(array, 0, mid);
+        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, n);
+        oddEvenMerge(oddHalf, functional);
+        oddEvenMerge(evenHalf, functional);
+        for (int i = 0; i < mid; i++) {
+            if (functional.functionalCompareTo(array[i], array[(i + mid)])) {
+                swap(array, i, mid);
+            }
+        }
+        merging(array, oddHalf, evenHalf, functional);
+    }
+
+    /**
      * {@code oddEvenMergeInc} takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the indices {@code left} and {@code right} indicating the range of elements to be sorted.
      * The Odd-even Merge Sort algorithm.
@@ -205,13 +258,12 @@ implements MergeInterface<Comparable> {
      */
     @SuppressWarnings("unchecked")
     protected void oddEvenMergeInc(Comparable[] array, int left, int right) {
-        int n = right;
-        if (n <= 1) {
+        if (right <= 1) {
             return;
         }
-        int mid = (n / 2);
+        int mid = (right / 2);
         Comparable[] oddHalf = Arrays.copyOfRange(array, 0, mid);
-        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, n);
+        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, right);
         oddEvenMergeInc(oddHalf);
         oddEvenMergeInc(evenHalf);
         for (int i = left; i < mid; i++) {
@@ -257,13 +309,12 @@ implements MergeInterface<Comparable> {
      */
     @SuppressWarnings("unchecked")
     protected void oddEvenMergeDec(Comparable[] array, int left, int right) {
-        int n = right;
-        if (n <= 1) {
+        if (right <= 1) {
             return;
         }
-        int mid = (n / 2);
+        int mid = (right / 2);
         Comparable[] oddHalf = Arrays.copyOfRange(array, 0, mid);
-        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, n);
+        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, right);
         oddEvenMergeDec(oddHalf);
         oddEvenMergeDec(evenHalf);
         for (int i = left; i < mid; i++) {
@@ -272,5 +323,54 @@ implements MergeInterface<Comparable> {
             }
         }
         mergingDec(array, oddHalf, evenHalf);
+    }
+
+    /**
+     * {@code oddEvenMerge} method takes an array of {@code Comparable} objects,
+     * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a base case check: if the {@code right} index is less than or equal to <i>1</i>,
+     *     indicating that there are <i>0</i> or <i>1</i> elements in the range,
+     *     the method simply returns, as there is nothing to sort.</li>
+     *     <li>Next, the method calculates the {@code mid} index, which represents the midpoint of the range.
+     *     The array is then divided into two halves: {@code oddHalf} and {@code evenHalf}.
+     *     The {@link java.util.Arrays#copyOfRange(Object[], int, int) Arrays.copyOfRange} method
+     *     is used to create new arrays containing the elements from {@code array} within the specified ranges.</li>
+     *     <li>The {@code oddEvenMerge} method is then recursively called on {@code oddHalf} and {@code evenHalf},
+     *     applying the same sorting algorithm to each half.</li>
+     *     <li>After the recursive calls, a loop iterates from {@code left} to {@code mid},
+     *     comparing each element with its corresponding element in the second half {@code (i + mid)}.
+     *     If the comparison using the {@code functionalCompareTo} method indicates that
+     *     the current element is greater than its corresponding element,
+     *     the {@code swap} method is called to swap the elements.</li>
+     *     <li>Finally, the {@code merging} method is called to merge
+     *     the sorted {@code oddHalf} and {@code evenHalf} arrays back into the original {@code array}.</li>
+     * </ul>
+     * {@code oddEvenMerge} method combines the divide-and-conquer approach with the odd-even merge step to sort
+     * the elements in the specified range using the provided comparison logic.
+     * @param       array to be arranged.
+     * @param       left specific range of the array.
+     * @param       right specific range of the array.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     * @see         mz.MergeInterface#merging(Comparable[], Comparable[], Comparable[], SortFunctional)
+     */
+    protected void oddEvenMerge(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        if (right <= 1) {
+            return;
+        }
+        int mid = (right / 2);
+        Comparable[] oddHalf = Arrays.copyOfRange(array, 0, mid);
+        Comparable[] evenHalf = Arrays.copyOfRange(array, mid, right);
+        oddEvenMerge(oddHalf, functional);
+        oddEvenMerge(evenHalf, functional);
+        for (int i = left; i < mid; i++) {
+            if (functional.functionalCompareTo(array[i], array[(i + mid)])) {
+                swap(array, i, mid);
+            }
+        }
+        merging(array, oddHalf, evenHalf, functional);
     }
 }
