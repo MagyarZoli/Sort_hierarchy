@@ -11,7 +11,7 @@ import mz.intro.IntroWeakHeap;
  * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, Intro switches to Weak Heap Sort, which has good performance for small input sizes.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
