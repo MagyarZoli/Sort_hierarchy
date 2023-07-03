@@ -177,7 +177,7 @@ implements MergeInterface<Comparable> {
     }
 
     /**
-     * {@code oddEvenMerge} method takes an array of {@code Comparable} objects.
+     * {@code oddEvenMerge} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
      * <ul>
      *     <li>The method starts with a base case check: if the {@code n} index is less than or equal to <i>1</i>,
@@ -326,7 +326,7 @@ implements MergeInterface<Comparable> {
     }
 
     /**
-     * {@code oddEvenMerge} method takes an array of {@code Comparable} objects,
+     * {@code oddEvenMerge} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
      * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
      * <ul>

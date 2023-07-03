@@ -53,7 +53,7 @@ extends Bogo {
     public Bozo() {}
 
     /**
-     * The {@code bogoInc} method takes an array of {@code Comparable} objects.
+     * The {@code bogoInc} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
      *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
@@ -75,7 +75,7 @@ extends Bogo {
     }
 
     /**
-     * The {@code bogoDec} method takes an array of {@code Comparable} objects.
+     * The {@code bogoDec} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
      *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
@@ -97,7 +97,7 @@ extends Bogo {
     }
 
     /**
-     * The {@code bogo} method takes an array of {@code Comparable} objects,
+     * The {@code bogo} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
      * <ul>
      *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
@@ -120,7 +120,7 @@ extends Bogo {
     }
 
     /**
-     * The {@code bogoInc} method takes an array of {@code Comparable} objects,
+     * The {@code bogoInc} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
@@ -145,7 +145,7 @@ extends Bogo {
     }
 
     /**
-     * The {@code bogoDec} method takes an array of {@code Comparable} objects,
+     * The {@code bogoDec} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
@@ -170,7 +170,7 @@ extends Bogo {
     }
 
     /**
-     * The {@code bogo} method takes an array of {@code Comparable} objects,
+     * The {@code bogo} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
      * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
      * <ul>

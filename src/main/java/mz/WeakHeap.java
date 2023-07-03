@@ -42,7 +42,8 @@ extends Heap {
     /**
      * {@code heapifyInc} method. This method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to maintain the max heap property within a heap structure.
-     * It takes an array of {@code Comparable} objects, the {@code length} of the heap (or array), and an index {@code i} as parameters.
+     * It takes an array of {@link java.lang.Comparable Comparable} objects,
+     * the {@code length} of the heap (or array), and an index {@code i} as parameters.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
@@ -91,7 +92,8 @@ extends Heap {
     /**
      * {@code heapifyDec} method. This method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to maintain the max heap property within a heap structure.
-     * It takes an array of {@code Comparable} objects, the {@code length} of the heap (or array), and an index {@code i} as parameters.
+     * It takes an array of {@link java.lang.Comparable Comparable} objects,
+     * the {@code length} of the heap (or array), and an index {@code i} as parameters.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.

@@ -77,7 +77,8 @@ extends Heap {
     }
 
     /**
-     * {@code smoothInc}. This method performs a Smooth Heap Sort on an array of {@code Comparable} objects in increasing order.
+     * {@code smoothInc}. This method performs a Smooth Heap Sort on an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * It utilizes the {@code insertInc} and {@code deleteMinInc} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
@@ -108,7 +109,8 @@ extends Heap {
     }
 
     /**
-     * {@code smoothDec}. This method performs a Smooth Heap Sort on an array of {@code Comparable} objects in increasing order.
+     * {@code smoothDec}. This method performs a Smooth Heap Sort on an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * It utilizes the {@code insertDec} and {@code deleteMinDec} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
@@ -139,7 +141,7 @@ extends Heap {
     }
 
     /**
-     * {@code smooth} that takes an array of {@code Comparable} objects {@code array},
+     * {@code smooth} that takes an array of {@link java.lang.Comparable Comparable} objects {@code array},
      * and a {@code SortFunctional<Comparable>} object as parameters.
      * This method performs a smooth sort on the specified portion of the array using
      * the {@code insert} and {@code deleteMin} methods while maintaining the ordering based on the {@code SortFunctional} object.
@@ -175,7 +177,8 @@ extends Heap {
     }
 
     /**
-     * {@code smoothInc}. This method performs a Smooth Heap Sort on an array of {@code Comparable} objects in increasing order.
+     * {@code smoothInc}. This method performs a Smooth Heap Sort on an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * It utilizes the {@code insertInc} and {@code deleteMinInc} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
@@ -207,7 +210,8 @@ extends Heap {
     }
 
     /**
-     * {@code smoothDec}. This method performs a Smooth Heap Sort on an array of {@code Comparable} objects in increasing order.
+     * {@code smoothDec}. This method performs a Smooth Heap Sort on an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * It utilizes the {@code insertDec} and {@code deleteMinDec} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
@@ -239,7 +243,8 @@ extends Heap {
     }
 
     /**
-     * {@code smooth} that takes an array of {@code Comparable} objects {@code array}, indices {@code left} and {@code right},
+     * {@code smooth} that takes an array of {@link java.lang.Comparable Comparable}
+     * objects {@code array}, indices {@code left} and {@code right},
      * and a {@code SortFunctional<Comparable>} object as parameters.
      * This method performs a smooth sort on the specified portion of the array using
      * the {@code insert} and {@code deleteMin} methods while maintaining the ordering based on the {@code SortFunctional} object.
@@ -278,7 +283,7 @@ extends Heap {
     /**
      * {@code insertInc} this method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to insert a new element into a heap structure stored in the buffer array.
-     * The method takes a Comparable object called insert as a parameter.
+     * The method takes a {@link java.lang.Comparable Comparable} object called insert as a parameter.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
@@ -329,7 +334,7 @@ extends Heap {
     /**
      * {@code insertDec} this method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to insert a new element into a heap structure stored in the buffer array.
-     * The method takes a Comparable object called insert as a parameter.
+     * The method takes a {@link java.lang.Comparable Comparable} object called insert as a parameter.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
@@ -377,7 +382,7 @@ extends Heap {
     }
 
     /**
-     * {@code insert} that takes a {@code Comparable} object insert
+     * {@code insert} that takes a {@link java.lang.Comparable Comparable} object insert
      * and a {@code SortFunctional<Comparable>} object as parameters.
      * This method inserts an element into a buffer (presumably an array) while maintaining
      * the ordering of elements based on the {@code SortFunctional} object.
@@ -435,7 +440,7 @@ extends Heap {
      * {@code deleteMinInc}. This method is likely a part of a heap-related algorithm or
      * data structure implementation and is used
      * to delete the minimum element from a heap structure that is stored in the {@code buffer} array.
-     * The method returns the deleted minimum element, which is of type {@code Comparable}.
+     * The method returns the deleted minimum element, which is of type {@link java.lang.Comparable Comparable}.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
@@ -492,7 +497,7 @@ extends Heap {
      * {@code deleteMinDec}. This method is likely a part of a heap-related algorithm or
      * data structure implementation and is used
      * to delete the minimum element from a heap structure that is stored in the {@code buffer} array.
-     * The method returns the deleted minimum element, which is of type {@code Comparable}.
+     * The method returns the deleted minimum element, which is of type {@link java.lang.Comparable Comparable}.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.

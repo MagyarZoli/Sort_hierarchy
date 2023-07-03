@@ -52,7 +52,7 @@ extends Heap {
     /**
      * {@code heapSplitInc}. This method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to find the index of the largest child element among the {@code left}, {@code mid}, and {@code right} children of
-     * the current element at index {@code i}. The method takes an array of Comparable objects,
+     * the current element at index {@code i}. The method takes an array of {@link java.lang.Comparable Comparable} objects,
      * the length of the array, and an index {@code i} as parameters.
      * <ul>
      *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right} child elements of the current element index {@code i}.
@@ -93,7 +93,7 @@ extends Heap {
     /**
      * {@code heapSplitDec}. This method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to find the index of the largest child element among the {@code left}, {@code mid}, and {@code right} children of
-     * the current element at index {@code i}. The method takes an array of Comparable objects,
+     * the current element at index {@code i}. The method takes an array of {@link java.lang.Comparable Comparable} objects,
      * the length of the array, and an index {@code i} as parameters.
      * <ul>
      *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right} child elements of the current element index {@code i}.

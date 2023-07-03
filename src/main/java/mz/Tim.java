@@ -84,7 +84,7 @@ implements InsertionInterface<Comparable> {
     }
 
     /**
-     * {@code timInc} that takes an array of {@code Comparable} objects.
+     * {@code timInc} that takes an array of {@link java.lang.Comparable Comparable} objects.
      * This method performs an incremental variant of the Tim Sort algorithm to sort the specified range of the array.
      * <ul>
      *     <li>The method starts by initializing the variables {@code n} and {@code minRun}.
@@ -128,7 +128,7 @@ implements InsertionInterface<Comparable> {
     }
 
     /**
-     * {@code timDec} that takes an array of {@code Comparable} objects.
+     * {@code timDec} that takes an array of {@link java.lang.Comparable Comparable} objects.
      * This method performs a decremental variant of the Tim Sort algorithm to sort the specified range of the array.
      * <ul>
      *     <li>The method starts by initializing the variables {@code n} and {@code minRun}.
@@ -172,7 +172,7 @@ implements InsertionInterface<Comparable> {
     }
 
     /**
-     * {@code tim} method takes an array of {@code Comparable} objects,
+     * {@code tim} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * It also takes a {@code SortFunctional<Comparable>} object representing
      * the custom comparison logic to be used for sorting.
      * <ul>
@@ -219,7 +219,8 @@ implements InsertionInterface<Comparable> {
     }
 
     /**
-     * {@code timInc} that takes an array of {@code Comparable} objects, an integer {@code left}, and an integer {@code right} as input.
+     * {@code timInc} that takes an array of {@link java.lang.Comparable Comparable} objects,
+     * an integer {@code left}, and an integer {@code right} as input.
      * This method performs an incremental variant of the Tim Sort algorithm to sort the specified range of the array.
      * <ul>
      *     <li>The method starts by initializing the variable {@code minRun}.
@@ -265,7 +266,8 @@ implements InsertionInterface<Comparable> {
     }
 
     /**
-     * {@code timDec} that takes an array of {@code Comparable} objects, an integer {@code left}, and an integer {@code right} as input.
+     * {@code timDec} that takes an array of {@link java.lang.Comparable Comparable} objects,
+     * an integer {@code left}, and an integer {@code right} as input.
      * This method performs a decremental variant of the Tim Sort algorithm to sort the specified range of the array.
      * <ul>
      *     <li>The method starts by initializing the variable {@code minRun}.
@@ -311,7 +313,7 @@ implements InsertionInterface<Comparable> {
     }
 
     /**
-     * {@code tim} method takes an array of {@code Comparable} objects,
+     * {@code tim} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the left and right indices specifying the range of elements to be sorted.
      * It also takes a {@code SortFunctional<Comparable>} object representing
      * the custom comparison logic to be used for sorting.

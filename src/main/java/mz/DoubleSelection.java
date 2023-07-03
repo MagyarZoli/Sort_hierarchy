@@ -74,7 +74,7 @@ extends Selection {
 
     /**
      * {@code doubleSelectionInc} that implements the Double Selection Sort algorithm to sort an array
-     * of Comparable objects in ascending order.
+     * of {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
      *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
@@ -110,7 +110,7 @@ extends Selection {
 
     /**
      * {@code doubleSelectionDec} that implements the Double Selection Sort algorithm to sort an array
-     * of Comparable objects in descending order.
+     * of {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
      *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
@@ -145,7 +145,7 @@ extends Selection {
     }
 
     /**
-     * {@code doubleSelection} method takes an array {@code array} of type {@code Comparable[]}
+     * {@code doubleSelection} method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]}
      * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
      * <ul>
      *     <li>It initializes an integer variable {@code n} with the length of the array,
@@ -205,7 +205,7 @@ extends Selection {
 
     /**
      * {@code doubleSelectionInc} that implements the Double Selection Sort algorithm to sort an array
-     * of Comparable objects in ascending order.
+     * of {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
      *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
@@ -242,7 +242,7 @@ extends Selection {
 
     /**
      * {@code doubleSelectionDec} that implements the Double Selection Sort algorithm to sort an array
-     * of Comparable objects in descending order.
+     * of {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
      *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
@@ -278,7 +278,7 @@ extends Selection {
     }
 
     /**
-     * {@code doubleSelection} method takes an array {@code array} of type {@code Comparable[]} and an instance of
+     * {@code doubleSelection} method takes an array {@code array} of type {@link java.lang.Comparable Comparable} and an instance of
      * the {@code SortFunctional<Comparable>} interface as parameters.
      * <ul>
      *     <li>It initializes two integer variables left and right with

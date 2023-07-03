@@ -5,7 +5,7 @@ package mz;
  * It works by selecting a pivot element from the array and partitioning the other elements into two sub-arrays,
  * according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted,
  * and the sorted sub-arrays are combined to produce the final sorted array.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -43,15 +43,8 @@ implements QuickInterface<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.DualPivotQuick#DualPivotQuick() DualPivotQuick
-     * @see         mz.intro.introDPQ.IntroDPQDualPivotQuick#IntroDPQDualPivotQuick() IntroDPQDualPivotQuick
-     * @see         mz.intro.introDPQ.IntroDPQQuick#IntroDPQQuick() IntroDPQQuick
-     * @see         mz.intro.introDPQ.IntroDPQQuick3#IntroDPQQuick3() IntroDPQQuick3
-     * @see         mz.intro.introDPQ.IntroDPQStableQuick#IntroDPQStableQuick() IntroDPQStableQuick
-     * @see         mz.intro.IntroDualPivotQuick#IntroDualPivotQuick() IntroDualPivotQuick
      * @see         mz.intro.IntroQuick#IntroQuick() IntroQuick
-     * @see         mz.intro.IntroQuick3#IntroQuick3() IntroQuick3
-     * @see         mz.intro.IntroStableQuick#IntroStableQuick() IntroStableQuick
+     * @see         mz.DualPivotQuick#DualPivotQuick() DualPivotQuick
      * @see         mz.Quick3#Quick3() Quick3
      * @see         mz.StableQuick#StableQuick() StableQuick
      */
@@ -73,5 +66,15 @@ implements QuickInterface<Comparable> {
     @Override
     public void sortArrayDec(Comparable[] array) {
         quickDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        quick(array, functional);
     }
 }

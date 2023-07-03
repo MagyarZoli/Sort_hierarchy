@@ -77,7 +77,8 @@ extends Cocktail {
     }
 
     /**
-     * {@code combInc} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in increasing order.
+     * {@code combInc} that implements the comb sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
      *     <li>The variable {@code n} is assigned the length of the array, representing the total number of elements in the array.</li>
@@ -114,7 +115,8 @@ extends Cocktail {
     }
 
     /**
-     * {@code combDec} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in decreasing order.
+     * {@code combDec} that implements the comb sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in decreasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
      *     <li>The variable {@code n} is assigned the length of the array, representing the total number of elements in the array.</li>
@@ -151,7 +153,7 @@ extends Cocktail {
     }
 
     /**
-     * comb method takes an array {@code array} of type {@code Comparable[]}
+     * comb method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]}
      * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
      * <ul>
      *     <li>It initializes an integer variable {@code n} with the length of the {@code array}.</li>
@@ -195,7 +197,8 @@ extends Cocktail {
     }
 
     /**
-     * {@code combInc} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in increasing order.
+     * {@code combInc} that implements the comb sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
      *     <li>The variable {@code right} is assigned the length of the array, representing the total number of elements in the array.</li>
@@ -234,7 +237,8 @@ extends Cocktail {
     }
 
     /**
-     * {@code combDec} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in decreasing order.
+     * {@code combDec} that implements the comb sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in decreasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
      *     <li>The variable {@code right} is assigned the length of the array, representing the total number of elements in the array.</li>
@@ -273,7 +277,7 @@ extends Cocktail {
     }
 
     /**
-     * {@code comb} method takes an array {@code array} of type {@code Comparable[]},
+     * {@code comb} method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
      * an integer {@code left} representing the left index, an integer {@code right} representing the right index,
      * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
      * <ul>

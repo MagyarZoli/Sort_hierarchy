@@ -226,7 +226,7 @@ extends OddEvenMerge {
      * {@code batcherOddEvenMerge} method.
      * This method performs the odd-even merge operation in the Batchers' odd-even merge sort algorithm.
      * <ul>
-     *     <li>The method takes an array array of type {@code Comparable[]},
+     *     <li>The method takes an array array of type {@link java.lang.Comparable Comparable[]},
      *     an integer {@code left} representing the left index, an integer {@code right} representing the right index,
      *     and an instance of the {@code SortFunctional<Comparable>} interface as parameters.</li>
      *     <li>It calculates the size of the range by subtracting the {@code left} index from the {@code right} index {@code n = (right - left)}.</li>

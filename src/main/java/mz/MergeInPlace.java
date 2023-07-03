@@ -73,7 +73,7 @@ extends Merge {
 
     /**
      * {@code mergingInc} is a Java implementation of the merging step in the merge sort algorithm.
-     * It takes an array of Comparable objects, along with the indices representing
+     * It takes an array of {@link java.lang.Comparable Comparable} objects, along with the indices representing
      * the left, middle, and right boundaries of the subarray being merged.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
@@ -134,7 +134,7 @@ extends Merge {
 
     /**
      * {@code mergingDec} is a Java implementation of the merging step in the merge sort algorithm.
-     * It takes an array of Comparable objects, along with the indices representing
+     * It takes an array of {@link java.lang.Comparable Comparable} objects, along with the indices representing
      * the left, middle, and right boundaries of the subarray being merged.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type

@@ -80,7 +80,7 @@ extends Bubble {
     }
 
     /**
-     * The {@code bogoInc} method takes an array of {@code Comparable} objects.
+     * The {@code bogoInc} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
      *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
@@ -101,7 +101,7 @@ extends Bubble {
     }
 
     /**
-     * The {@code bogoDec} method takes an array of {@code Comparable} objects.
+     * The {@code bogoDec} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
      *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,

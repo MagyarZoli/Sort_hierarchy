@@ -77,7 +77,8 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of Comparable objects in increasing order.
+     * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
@@ -131,7 +132,8 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktailDec} that implements the cocktail sort algorithm to sort an array of Comparable objects in decreasing order.
+     * {@code cocktailDec} that implements the cocktail sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in decreasing order.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
@@ -185,7 +187,7 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktail} method takes an array {@code array} of type {@code Comparable[]},
+     * {@code cocktail} method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
      * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
      * <ul>
      *     <li>It initializes a boolean variable {@code swapped} to {@code true} to indicate that a swap has occurred.</li>
@@ -240,7 +242,8 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of Comparable objects in increasing order.
+     * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the cocktail sort algorithm on it.</li>
      *     <li>The swapped variable is initially set to {@code true}, indicating that there may be swaps to perform in the array.</li>
@@ -293,7 +296,8 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktailDec} that implements the cocktail sort algorithm to sort an array of Comparable objects in decreasing order.
+     * {@code cocktailDec} that implements the cocktail sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in decreasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the cocktail sort algorithm on it.</li>
      *     <li>The swapped variable is initially set to {@code true}, indicating that there may be swaps to perform in the array.</li>
@@ -346,7 +350,7 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktail} method takes an array {@code array} of type {@code Comparable[]},
+     * {@code cocktail} method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
      * an integer {@code left} representing the left index, an integer {@code right} representing the right index,
      * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
      * <ul>

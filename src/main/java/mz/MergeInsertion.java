@@ -83,7 +83,7 @@ implements InsertionInterface<Comparable>{
 
     /**
      * {@code mergeInsertionInc} is a modified version of the Merge Sort algorithm that incorporates an insertion sort optimization.
-     * It sorts an array of Comparable objects by recursively dividing
+     * It sorts an array of {@link java.lang.Comparable Comparable} objects by recursively dividing
      * it into smaller subarrays and performing either an insertion sort or a merge sort, depending on the size of the subarray.
      * <ul>
      *     <li>it first checks if the left index is less than the right index.
@@ -110,7 +110,7 @@ implements InsertionInterface<Comparable>{
 
     /**
      * {@code mergeInsertionDec} is a modified version of the Merge Sort algorithm that incorporates an insertion sort optimization.
-     * It sorts an array of Comparable objects by recursively dividing
+     * It sorts an array of {@link java.lang.Comparable Comparable} objects by recursively dividing
      * it into smaller subarrays and performing either an insertion sort or a merge sort, depending on the size of the subarray.
      * <ul>
      *     <li>it first checks if the left index is less than the right index.
@@ -160,7 +160,7 @@ implements InsertionInterface<Comparable>{
 
     /**
      * {@code mergeInsertionInc} is a modified version of the Merge Sort algorithm that incorporates an insertion sort optimization.
-     * It sorts an array of Comparable objects by recursively dividing
+     * It sorts an array of {@link java.lang.Comparable Comparable} objects by recursively dividing
      * it into smaller subarrays and performing either an insertion sort or a merge sort, depending on the size of the subarray.
      * <ul>
      *     <li>it first checks if the left index is less than the right index.
@@ -199,7 +199,7 @@ implements InsertionInterface<Comparable>{
 
     /**
      * {@code mergeInsertionDec} is a modified version of the Merge Sort algorithm that incorporates an insertion sort optimization.
-     * It sorts an array of Comparable objects by recursively dividing
+     * It sorts an array of {@link java.lang.Comparable Comparable} objects by recursively dividing
      * it into smaller subarrays and performing either an insertion sort or a merge sort, depending on the size of the subarray.
      * <ul>
      *     <li>it first checks if the left index is less than the right index.
@@ -237,7 +237,7 @@ implements InsertionInterface<Comparable>{
     }
 
     /**
-     * {@code mergeInsertion} method takes an array of {@code Comparable} objects,
+     * {@code mergeInsertion} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
      * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
      * <ul>

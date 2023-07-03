@@ -72,7 +72,7 @@ extends Selection {
     }
 
     /**
-     * {@code bubbleInc} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * {@code bubbleInc} that performs the Bubble Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
@@ -106,7 +106,7 @@ extends Selection {
     }
 
     /**
-     * {@code bubbleDec} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * {@code bubbleDec} that performs the Bubble Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
@@ -141,7 +141,7 @@ extends Selection {
     /**
      * {@code bubble} this method performs the bubble sort algorithm on a specific range of an array.
      * <ul>
-     *     <li>The method takes an array {@code array} of type {@code Comparable[]}
+     *     <li>The method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]}
      *     and an instance of the {@code SortFunctional<Comparable>} interface as parameters.</li>
      *     <li>It determines the {@code length} of the array using the length property {@code n = array.length}.</li>
      *     <li>It uses two nested loops to iterate over the elements of the array.</li>
@@ -175,7 +175,7 @@ extends Selection {
     }
 
     /**
-     * {@code bubbleInc} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * {@code bubbleInc} that performs the Bubble Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
@@ -210,7 +210,7 @@ extends Selection {
     }
 
     /**
-     * {@code bubbleDec} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * {@code bubbleDec} that performs the Bubble Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
@@ -247,7 +247,7 @@ extends Selection {
     /**
      * {@code bubble} this method performs the bubble sort algorithm on a specific range of an array.
      * <ul>
-     *     <li>The method takes an array array of type {@code Comparable[]},
+     *     <li>The method takes an array array of type {@link java.lang.Comparable Comparable[]},
      *     an integer {@code left} representing the left index, an integer {@code right} representing the right index,
      *     and an instance of the {@code SortFunctional<Comparable>} interface as parameters.</li>
      *     <li>It uses two nested loops to iterate over the range of the array.</li>

@@ -76,7 +76,7 @@ extends Insertion {
     }
 
     /**
-     * {@code shellInc} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * {@code shellInc} that performs the Shell Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
@@ -103,7 +103,7 @@ extends Insertion {
     }
 
     /**
-     * {@code shellDec} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * {@code shellDec} that performs the Shell Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
@@ -130,7 +130,7 @@ extends Insertion {
     }
 
     /**
-     * {@code shell} method takes an array of {@code Comparable} objects,
+     * {@code shell} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the left and right indices specifying the range of elements to be sorted.
      * It also takes a {@code SortFunctional<Comparable>} object representing
      * the custom comparison logic to be used for sorting.
@@ -159,7 +159,7 @@ extends Insertion {
     }
 
     /**
-     * {@code shellInc} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * {@code shellInc} that performs the Shell Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
@@ -188,7 +188,7 @@ extends Insertion {
     }
 
     /**
-     * {@code shellDec} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * {@code shellDec} that performs the Shell Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
@@ -217,7 +217,7 @@ extends Insertion {
     }
 
     /**
-     * {@code shell} method takes an array of {@code Comparable} objects,
+     * {@code shell} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the left and right indices specifying the range of elements to be sorted.
      * It also takes a {@code SortFunctional<Comparable>} object representing
      * the custom comparison logic to be used for sorting.

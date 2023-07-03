@@ -141,7 +141,7 @@ extends Bubble {
     }
 
     /**
-     * {@code oddEven} method you provided takes an array {@code array} of type {@code Comparable[]},
+     * {@code oddEven} method you provided takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
      * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
      * It performs the odd-even sort algorithm on the elements within the specified range.
      * <ul>
@@ -262,7 +262,7 @@ extends Bubble {
     }
 
     /**
-     * {@code oddEven} method you provided takes an array {@code array} of type {@code Comparable[]},
+     * {@code oddEven} method you provided takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
      * an integer {@code left}, an integer {@code right},
      * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
      * It performs the odd-even sort algorithm on the elements within the specified range.
@@ -372,7 +372,7 @@ extends Bubble {
     }
 
     /**
-     * {@code indexedElement} method you provided takes an array {@code array} of type {@code Comparable[]},
+     * {@code indexedElement} method you provided takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
      * an integer {@code j}, an integer {@code n}, and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
      * <ul>
      *     <li>The method initializes a boolean variable {@code element} with the value {@code true}.

@@ -149,7 +149,7 @@ extends Selection {
     }
 
     /**
-     * {@code pancake} method takes an array of {@code Comparable} objects,
+     * {@code pancake} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * It also takes a {@code SortFunctional<Comparable>} object representing
      * the custom comparison logic to be used for sorting.
      * <ul>
@@ -273,7 +273,7 @@ extends Selection {
     }
 
     /**
-     * {@code pancake} method takes an array of {@code Comparable} objects,
+     * {@code pancake} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
      * It also takes a {@code SortFunctional<Comparable>} object representing
      * the custom comparison logic to be used for sorting.

@@ -81,7 +81,8 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a {@code Comparable} array in ascending order.
+     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a
+     * {@link java.lang.Comparable Comparable} array in ascending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting <i>0</i> from {@code array.length},
      *     storing the result in the variable {@code n}.</li>
@@ -121,7 +122,8 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a {@code Comparable} array in descending order.
+     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a
+     * {@link java.lang.Comparable Comparable} array in descending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting <i>0</i> from {@code array.length},
      *     storing the result in the variable {@code n}.</li>
@@ -205,7 +207,8 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a {@code Comparable} array in ascending order.
+     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a
+     * {@link java.lang.Comparable Comparable} array in ascending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting {@code left} from {@code right},
      *     storing the result in the variable {@code n}.</li>
@@ -247,7 +250,8 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a {@code Comparable} array in descending order.
+     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a
+     * {@link java.lang.Comparable Comparable} array in descending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting {@code left} from {@code right},
      *     storing the result in the variable {@code n}.</li>
