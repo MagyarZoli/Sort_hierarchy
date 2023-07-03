@@ -9,7 +9,7 @@ import java.util.List;
  * the relative order of elements with equal values during the sorting process.
  * In a standard QuickSort algorithm, the order of equal elements may change, making it an unstable sorting algorithm.
  * Stable QuickSort addresses this limitation by introducing additional steps to maintain stability.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -48,7 +48,6 @@ extends Quick {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>Yes</b>
-     * @see         mz.intro.introDPQ.IntroDPQStableQuick#IntroDPQStableQuick() IntroDPQStableQuick
      * @see         mz.intro.IntroStableQuick#IntroStableQuick() IntroStableQuick
      */
     public StableQuick() {}
@@ -72,11 +71,22 @@ extends Quick {
     }
 
     /**
-     * {@code stableQuickInc} that performs an in-place sorting of a Comparable array using a stable version of the QuickSort algorithm.
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        stableQuick(array, functional);
+    }
+
+    /**
+     * {@code stableQuickInc} that performs an in-place sorting of
+     * a {@link java.lang.Comparable Comparable} array using a stable version of the QuickSort algorithm.
      * <ul>
      *     <li>The original array is converted into an {@code ArrayList} by creating a {@code new ArrayList}
      *     and passing the array as an argument to the {@code ArrayList} constructor:
-     *     {@code new ArrayList<>(Arrays.asList(array))}.</li>
+     *     {@code new ArrayList<>}{@link java.util.Arrays#asList(Object[]) (Arrays.asList(array))}.</li>
      *     <li>The {@code ArrayList} is then passed as an argument to the {@code stableRecursiveInc} method,
      *     which performs a stable sorting of the {@code ArrayList} and returns a sorted {@code list}.</li>
      *     <li>The sorted list obtained from {@code stableRecursiveInc} is converted back into an array using
@@ -101,11 +111,12 @@ extends Quick {
     }
 
     /**
-     * {@code stableQuickDec} that performs an in-place sorting of a Comparable array using a stable version of the QuickSort algorithm.
+     * {@code stableQuickDec} that performs an in-place sorting of
+     * a {@link java.lang.Comparable Comparable} array using a stable version of the QuickSort algorithm.
      * <ul>
      *     <li>The original array is converted into an {@code ArrayList} by creating a {@code new ArrayList}
      *     and passing the array as an argument to the {@code ArrayList} constructor:
-     *     {@code new ArrayList<>(Arrays.asList(array))}.</li>
+     *     {@code new ArrayList<>}{@link java.util.Arrays#asList(Object[]) (Arrays.asList(array))}.</li>
      *     <li>The {@code ArrayList} is then passed as an argument to the {@code stableRecursiveInc} method,
      *     which performs a stable sorting of the {@code ArrayList} and returns a sorted {@code list}.</li>
      *     <li>The sorted list obtained from {@code stableRecursiveDec} is converted back into an array using
@@ -130,8 +141,42 @@ extends Quick {
     }
 
     /**
+     * {@code stableQuick} method, which performs a stable sorting of the entire {@code array} using a stable sorting algorithm.
+     * <ul>
+     *     <li>The method {@code stableQuick} takes two parameters:
+     *     {@code array} an array of {@link java.lang.Comparable Comparable} objects
+     *     and {@code functional} an instance of {@code SortFunctional}
+     *     representing a functional interface for comparison operations.</li>
+     *     <li>The first line of code creates a new {@code ArrayList<Comparable>} called {@code list} by converting
+     *     the {@code array} into a list using {@link java.util.Arrays#asList(Object[]) Arrays.asList(array)}.
+     *     This creates a dynamic list that can be resized.</li>
+     *     <li>The {@code stableRecursive} method is called, passing the {@code list} and {@code functional} as parameters.
+     *     This method applies a stable sorting algorithm to the {@code list} using the {@code functional} object.</li>
+     *     <li>The sorted {@code list} is then converted back to an array
+     *     using {@link java.util.List#toArray(Object[]) list.toArray}{@code (new Comparable[0])}.</li>
+     *     <li>Finally, the sorted elements from the {@code list} are copied back to the original {@code array}
+     *     using {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()}.
+     *     The elements are copied starting from index <i>0</i> of the sorted array,
+     *     and the destination in the original {@code array} starts at index <i>0</i>.
+     *     The number of elements copied is equal to the length of the original {@code array}.</li>
+     * </ul>
+     * {@code stableQuick} method performs a stable sorting of the entire {@code array} using
+     * a stable sorting algorithm based on the {@code functional} object.
+     * It converts the array to a dynamic list, applies stable sorting to the list,
+     * and then copies the sorted elements back to the original array.
+     * This method allows for stable sorting with the efficiency of the Quick Sort algorithm.
+     * @param       array The original array containing Comparable elements.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.StableQuick#stableRecursive(List, SortFunctional)
+     */
+    protected void stableQuick(Comparable[] array, SortFunctional<Comparable> functional) {
+        List<Comparable> list = stableRecursive(new ArrayList<>(Arrays.asList(array)), functional);
+        System.arraycopy(list.toArray(new Comparable[0]), 0, array, 0, array.length);
+    }
+
+    /**
      * {@code stableQuickInc} that performs an in-place sorting of a subarray within a
-     * Comparable array using a stable version of the QuickSort algorithm.
+     * {@link java.lang.Comparable Comparable} array using a stable version of the QuickSort algorithm.
      * <ul>
      *     <li>The method creates a new array called {@code newArray} with a size equal to the length of the subarray to be sorted {@code (right - left)}.
      *     This new array will be used to create a temporary {@code list} for sorting.</li>
@@ -165,7 +210,7 @@ extends Quick {
 
     /**
      * {@code stableQuickDec} that performs an in-place sorting of a subarray within a
-     * Comparable array using a stable version of the QuickSort algorithm.
+     * {@link java.lang.Comparable Comparable} array using a stable version of the QuickSort algorithm.
      * <ul>
      *     <li>The method creates a new array called {@code newArray} with a size equal to the length of the subarray to be sorted {@code (right - left)}.
      *     This new array will be used to create a temporary {@code list} for sorting.</li>
@@ -198,7 +243,51 @@ extends Quick {
     }
 
     /**
-     * {@code stableRecursiveInc} implements a recursive sorting algorithm called {@code stableRecursiveInc} that sorts a list of Comparable elements in ascending order.
+     * The method {@code stableQuick} takes four parameters:
+     * {@code array} an array of {@link java.lang.Comparable Comparable} objects,
+     * {@code left} the starting index of the partition, {@code right} the ending index of the partition,
+     * and {@code functional} an instance of SortFunctional representing a functional interface for comparison operations.
+     * <ul>
+     *     <li>The first line of code creates a new {@code Comparable}
+     *     array called {@code newArray} with a length equal to {@code (right - left)}.</li>
+     *     <li>The {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()}
+     *     method is used to copy elements from the original {@code array},
+     *     starting from index {@code left}, to the {@code newArray},
+     *     starting at index <i>0</i>, and copying {@code newArray.length} elements.
+     *     This effectively creates a new array containing the elements to be sorted.</li>
+     *     <li>The {@code newArray} is then converted
+     *     to a {@code List<Comparable>} using {@link java.util.Arrays#asList(Object[]) asList()}
+     *     and wrapped in a new {@code ArrayList<>} to allow dynamic resizing.</li>
+     *     <li>The {@code stableRecursive} method is called, passing the {@code list} and {@code functional} as parameters.
+     *     This method applies a stable sorting algorithm to the {@code list} using the {@code functional} object.</li>
+     *     <li>The sorted {@code list} is then converted back
+     *     to an array using {@link java.util.List#toArray(Object[]) list.toArray}{@code (new Comparable[0])}.</li>
+     *     <li>Finally, the sorted elements from the {@code list} are copied back to the original array using {@code System.arraycopy}.
+     *     The elements are copied starting from index <i>0</i> of the sorted {@code array},
+     *     and the destination in the original {@code array} starts at index {@code left}.
+     *     The number of elements copied is equal to {@code list.}{@link java.util.List#size() size()}.</li>
+     * </ul>
+     * {@code stableQuick} method performs a stable sorting of a specific partition of
+     * the {@code array} using a stable sorting algorithm based on the {@code functional} object.
+     * It creates a temporary array, copies the elements from the original array to the temporary array,
+     * applies stable sorting to the temporary array, and then copies the sorted elements back to the original array.
+     * This method allows for stable sorting with the efficiency of the Quick Sort algorithm.
+     * @param       array The original array containing {@code Comparable} elements.
+     * @param       left The index representing the left boundary of the subarray to be sorted.
+     * @param       right The index representing the right boundary of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.StableQuick#stableRecursive(List, SortFunctional)
+     */
+    protected void stableQuick(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        Comparable[] newArray = new Comparable[(right - left)];
+        System.arraycopy(array, left, newArray, 0, newArray.length);
+        List<Comparable> list = stableRecursive(new ArrayList<>(Arrays.asList(newArray)), functional);
+        System.arraycopy(list.toArray(new Comparable[0]), 0, array, left, list.size());
+    }
+
+    /**
+     * {@code stableRecursiveInc} implements a recursive sorting algorithm called {@code stableRecursiveInc}
+     * that sorts a list of {@link java.lang.Comparable Comparable} elements in ascending order.
      * The algorithm uses the concept of a pivot element and divides the list into two parts:
      * smaller elements and greater elements, relative to the pivot.
      * <ul>
@@ -237,9 +326,9 @@ extends Quick {
         for (int i = 0; i < n; i++) {
             Comparable value = list.get(i);
             if (i != mid) {
-                if (value.compareTo(pivot) < 0) {
+                if (pivot.compareTo(value) > 0) {
                     smaller.add(value);
-                } else if (value.compareTo(pivot) > 0) {
+                } else if (pivot.compareTo(value) < 0) {
                     greater.add(value);
                 } else {
                     if (i < mid) {
@@ -260,7 +349,8 @@ extends Quick {
     }
 
     /**
-     * {@code stableRecursiveDec} implements a recursive sorting algorithm called {@code stableRecursiveDec} that sorts a list of Comparable elements in descending order.
+     * {@code stableRecursiveDec} implements a recursive sorting algorithm called {@code stableRecursiveDec}
+     * that sorts a list of {@link java.lang.Comparable Comparable} elements in descending order.
      * The algorithm uses the concept of a pivot element and divides the list into two parts:
      * smaller elements and greater elements, relative to the pivot.
      * <ul>
@@ -299,12 +389,94 @@ extends Quick {
         for (int i = 0; i < n; i++) {
             Comparable value = list.get(i);
             if (i != mid) {
-                if (value.compareTo(pivot) > 0) {
+                if (pivot.compareTo(value) < 0) {
                     smaller.add(value);
-                } else if (value.compareTo(pivot) < 0) {
+                } else if (pivot.compareTo(value) > 0) {
                     greater.add(value);
                 } else {
-                    if (i > mid) {
+                    if (i < mid) {
+                        smaller.add(value);
+                    } else {
+                        greater.add(value);
+                    }
+                }
+            }
+        }
+        List<Comparable> ans = new ArrayList<>();
+        List<Comparable> sa1 = stableRecursiveDec(smaller);
+        List<Comparable> sa2 = stableRecursiveDec(greater);
+        ans.addAll(sa1);
+        ans.add(pivot);
+        ans.addAll(sa2);
+        return ans;
+    }
+
+    /**
+     * The method {@code stableRecursive} takes two parameters:
+     * {@code list} (a list of {@link java.lang.Comparable Comparable} objects)
+     * and {@code functional} (an instance of SortFunctional representing a functional interface for comparison operations).
+     * <ul>
+     *     <li>The first line of code checks if the size of the {@code list} is less than or equal to <i>1</i>.
+     *     If this condition is true, it means there is nothing to sort,
+     *     so the method returns the original list.</li>
+     *     <li>The code then initializes variables:
+     *     {@code n} to the size of the {@code list} and mid to the index of
+     *     the middle element (rounded down if {@code n} is odd).</li>
+     *     <li>It retrieves the pivot element from the {@code list} using {@code list.get(mid)}.</li>
+     *     <li>Two empty lists are created: {@code smaller} to store elements smaller than
+     *     the pivot and {@code greater} to store elements greater than the pivot.</li>
+     *     <li>The method defines a new {@code SortFunctional<Comparable>} called {@code functionalReverse}
+     *     by passing {@code functional} to a method {@code functionalComparableToReverse}.
+     *     This method returns a {@code SortFunctional} object that performs the reverse of
+     *     the comparison operation defined in the original {@code functional} object.</li>
+     *     <li>A loop iterates over the elements of the {@code list}.
+     *     For each element at index {@code i}, it compares the element to the pivot using
+     *     the {@code functional.functionalCompareTo} method.</li>
+     *     <li>If the result of the comparison is true (i.e., the pivot is greater than the element),
+     *     the element is added to the {@code smaller} list using {@code smaller.add(value)}.</li>
+     *     <li>If the result of the reverse comparison is true (i.e., the pivot is less than the element),
+     *     the element is added to the {@code greater} list using {@code greater.add(value)}.</li>
+     *     <li>If neither of the previous conditions is true, it means the element is equal to the pivot.
+     *     In this case, it checks the index {@code i} against {@code mid} to determine whether the element should be added
+     *     to the {@code smaller} or {@code greater} list.
+     *     Elements before the pivot index {@code (i < mid)} are added to the {@code smaller} list,
+     *     and elements after the pivot index {@code (i > mid)} are added to the {@code greater} list.</li>
+     *     <li>After the loop finishes, the method recursively calls itself twice to sort the {@code smaller} and {@code greater} lists.
+     *     It passes each list to the {@code stableRecursive} method and stores the results in {@code sa1} and {@code sa2} respectively.</li>
+     *     <li>A new empty list called {@code ans} is created.</li>
+     *     <li>The elements from {@code sa1} are added to {@code ans} using {@code ans.addAll(sa1)}.</li>
+     *     <li>The pivot element is added to {@code ans} using {@code ans.add(pivot)}.</li>
+     *     <li>The elements from {@code sa2} are added to {@code ans} using {@code ans.addAll(sa2)}.</li>
+     *     <li>Finally, the sorted list {@code ans} is returned.</li>
+     * </ul>
+     * {@code stableRecursive} method recursively applies a stable sorting algorithm to sort a list of {@code Comparable} objects.
+     * It partitions the list based on a pivot element, recursively sorts the smaller and greater partitions,
+     * and combines the results to produce a final sorted list.
+     * The specific comparison operations used for sorting are defined by the {@code functional} object passed as a parameter.
+     * @param       list sorts a list of Comparable elements in descending order.
+     * @param       functional lambda expression for comparison.
+     * @return      The sorted list, is returned.
+     * @see         mz.Sort#functionalComparableToReverse(SortFunctional)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    protected List<Comparable> stableRecursive(List<Comparable> list, SortFunctional<Comparable> functional) {
+        if (list.size() <= 1) {
+            return list;
+        }
+        int n = list.size(), mid = (n / 2);
+        Comparable pivot = list.get(mid);
+        List<Comparable> smaller = new ArrayList<>();
+        List<Comparable> greater = new ArrayList<>();
+        SortFunctional<Comparable> functionalReverse = functionalComparableToReverse(functional);
+        for (int i = 0; i < n; i++) {
+            Comparable value = list.get(i);
+            if (i != mid) {
+                if (functional.functionalCompareTo(pivot, value)) {
+                    smaller.add(value);
+                } else if (functionalReverse.functionalCompareTo(pivot, value)) {
+                    greater.add(value);
+                } else {
+                    if (i < mid) {
                         smaller.add(value);
                     } else {
                         greater.add(value);
