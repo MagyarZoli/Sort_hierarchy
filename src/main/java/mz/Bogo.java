@@ -4,7 +4,7 @@ package mz;
  * Bogo sort is a highly inefficient and random sorting algorithm.
  * It works by repeatedly shuffling the elements of the array randomly and checking if the array is sorted.
  * If it's not sorted, it repeats the process until the elements happen to end up in the correct order.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -70,7 +70,17 @@ extends Bubble {
     }
 
     /**
-     * The {@code bogoInc} method takes an array of {@code Comparable} objects.
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        bogo(array, functional);
+    }
+
+    /**
+     * The {@code bogoInc} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
      *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
@@ -91,7 +101,7 @@ extends Bubble {
     }
 
     /**
-     * The {@code bogoDec} method takes an array of {@code Comparable} objects.
+     * The {@code bogoDec} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
      *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
@@ -107,6 +117,28 @@ extends Bubble {
      */
     protected void bogoDec(Comparable[] array) {
         while (!isSortedDec(array)) {
+            shuffle(array);
+        }
+    }
+
+    /**
+     * The {@code bogo} method takes an array of {@code Comparable} objects,
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
+     *     indicating that the array is sorted.</li>
+     *     <li>Inside the loop, the {@code shuffle} method is called to randomly shuffle
+     *     the elements of the array within the specified range.</li>
+     * </ul>
+     * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * @param       array The array to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Bogo#isSorted(Comparable[], SortFunctional)
+     * @see         mz.Bogo#shuffle(Comparable[], int, int)
+     */
+    protected void bogo(Comparable[] array, SortFunctional<Comparable> functional) {
+        while (!isSorted(array, functional)) {
             shuffle(array);
         }
     }
@@ -155,6 +187,31 @@ extends Bubble {
      */
     protected void bogoDec(Comparable[] array, int left, int right) {
         while (!isSortedDec(array, left, right)) {
+            shuffle(array, left, right);
+        }
+    }
+
+    /**
+     * The {@code bogo} method takes an array of {@code Comparable} objects,
+     * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
+     *     indicating that the array is sorted.</li>
+     *     <li>Inside the loop, the {@code shuffle} method is called to randomly shuffle
+     *     the elements of the array within the specified range.</li>
+     * </ul>
+     * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Bogo#isSorted(Comparable[], int, int, SortFunctional)
+     * @see         mz.Bogo#shuffle(Comparable[], int, int)
+     */
+    protected void bogo(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        while (!isSorted(array, left, right, functional)) {
             shuffle(array, left, right);
         }
     }
@@ -213,6 +270,35 @@ extends Bubble {
     protected boolean isSortedDec(Comparable[] array) {
         for (int i = 1; i < array.length; i++) {
             if (array[(i - 1)].compareTo(array[i]) < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * {@code isSorted} method takes an array of {@code Comparable} objects,
+     * It also takes a {@code SortFunctional<Comparable>} object as a parameter,
+     * which represents the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>Within the {@code isSorted} method, a loop iterates over
+     *     the elements of the array starting from the <i>1</i> index.
+     *     For each element, it compares it with
+     *     the previous element using the {@code functionalCompareTo} method of the {@code SortFunctional} object. </li>
+     *     <li>If the comparison returns {@code true},
+     *     indicating that the current element is less than the previous element,
+     *     the method returns {@code false}, indicating that the array is not sorted.</li>
+     * </ul>
+     * If the loop completes without encountering any out-of-order elements,
+     * the method returns true, indicating that the array is sorted according to the provided comparison logic.
+     * @param       array The array to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @return      array order if it is ordered, {@code true} if not then {@code false}.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    protected boolean isSorted(Comparable[] array, SortFunctional<Comparable> functional) {
+        for (int i = 1; i < array.length; i++) {
+            if (functional.functionalCompareTo(array[(i - 1)], array[i])) {
                 return false;
             }
         }
@@ -279,6 +365,38 @@ extends Bubble {
     protected boolean isSortedDec(Comparable[] array, int left, int right) {
         for (int i = (left + 1); i < right; i++) {
             if (array[(i - 1)].compareTo(array[i]) < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * {@code isSorted} method takes an array of {@code Comparable} objects,
+     * along with the {@code left} and {@code right} indices indicating the range to be checked for sorted order.
+     * It also takes a {@code SortFunctional<Comparable>} object as a parameter,
+     * which represents the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>Within the {@code isSorted} method, a loop iterates over
+     *     the elements of the array starting from the {@code (left + 1)} index.
+     *     For each element, it compares it with
+     *     the previous element using the {@code functionalCompareTo} method of the {@code SortFunctional} object. </li>
+     *     <li>If the comparison returns {@code true},
+     *     indicating that the current element is less than the previous element,
+     *     the method returns {@code false}, indicating that the array is not sorted.</li>
+     * </ul>
+     * If the loop completes without encountering any out-of-order elements,
+     * the method returns true, indicating that the array is sorted according to the provided comparison logic.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @return      array order if it is ordered, {@code true} if not then {@code false}.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    protected boolean isSorted(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        for (int i = (left + 1); i < right; i++) {
+            if (functional.functionalCompareTo(array[(i - 1)], array[i])) {
                 return false;
             }
         }

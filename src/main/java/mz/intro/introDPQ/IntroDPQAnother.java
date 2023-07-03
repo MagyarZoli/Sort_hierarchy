@@ -11,7 +11,7 @@ import mz.intro.IntroAnother;
  * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, Another switches to Another Sort, which has good performance for small input sizes.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -74,9 +74,9 @@ implements IntroDPQ<Comparable> {
      *     it uses the {@code introSortClass2Inc} method instead of {@code insertionInc} to sort the sub-array.
      *     It seems like a different sorting algorithm is being used for smaller sub-arrays in this case.</li>
      * </ul>
-     {@code introRecursiveInc} method still recursively applies the intro sort algorithm to sort a given array.
-     The main difference is the use of different sorting algorithms
-     ({@code introSortClassInc} and {@code introSortClass2Inc}) depending on the size of the sub-array.
+     * {@code introRecursiveInc} method still recursively applies the intro sort algorithm to sort a given array.
+     * The main difference is the use of different sorting algorithms
+     * ({@code introSortClassInc} and {@code introSortClass2Inc}) depending on the size of the sub-array.
      * @param array The array to be sorted.
      * @param left The starting index of the subarray to be sorted.
      * @param right The ending index (inclusive) of the subarray to be sorted.
@@ -116,9 +116,9 @@ implements IntroDPQ<Comparable> {
      *     it uses the {@code introSortClass2Inc} method instead of {@code insertionInc} to sort the sub-array.
      *     It seems like a different sorting algorithm is being used for smaller sub-arrays in this case.</li>
      * </ul>
-     {@code introRecursiveInc} method still recursively applies the intro sort algorithm to sort a given array.
-     The main difference is the use of different sorting algorithms
-     ({@code introSortClassInc} and {@code introSortClass2Inc}) depending on the size of the sub-array.
+     * {@code introRecursiveDec} method still recursively applies the intro sort algorithm to sort a given array.
+     * The main difference is the use of different sorting algorithms
+     * ({@code introSortClassDec} and {@code introSortClass2Dec}) depending on the size of the sub-array.
      * @param array The array to be sorted.
      * @param left The starting index of the subarray to be sorted.
      * @param right The ending index (inclusive) of the subarray to be sorted.
@@ -141,6 +141,64 @@ implements IntroDPQ<Comparable> {
             }
         } else {
             introSortClass2Dec(array, left, right);
+        }
+    }
+
+    /**
+     * {@code introRecursive} method is assumed to be a member of a class that overrides the interface method.
+     * It takes a parameter array of type {@code Comparable[]},
+     * an integer {@code left} representing the left index, an integer {@code right} representing the right index,
+     * an integer {@code maxDepth} representing the maximum recursion depth,
+     * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * <ul>
+     *     <li>It checks if the size of the range {@code (right - left)}
+     *     is greater than a predefined constant value {@code INTRO_SIZE}.
+     *     If it is, it proceeds with the sorting algorithm.
+     *     Otherwise, it directly calls the {@code introSortClass2} method
+     *     to perform a specific sorting operation for the smaller range.</li>
+     *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is <i>0</i>
+     *     (indicating that the recursion depth has reached its maximum allowed value),
+     *     it calls the {@code introSortClass} method to perform a specific sorting operation for the remaining range.</li>
+     *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is not <i>0</i>,
+     *     it proceeds with the intro sort algorithm.</li>
+     *     <li>It calls the partitionDual method to select two pivot elements and partition the range into three sub-ranges.</li>
+     *     <li>It recursively calls the {@code introRecursive} method on the left sub-range,
+     *     from {@code left} to {@code (pivots[0] - 1)}, with the {@code maxDepth} reduced by <i>1</i>.</li>
+     *     <li>It recursively calls the {@code introRecursive} method on the middle sub-range,
+     *     from {@code (pivots[0] + 1)} to {@code (pivots[1] - 1)}, with the {@code maxDepth} reduced by <i>1</i>.</li>
+     *     <li>It recursively calls the {@code introRecursive} method on the right sub-range,
+     *     from {@code (pivots[1] + 1)} to {@code right}, with the {@code maxDepth} reduced by <i>1</i>.</li>
+     *     <li>The recursion continues until the range is small enough
+     *     to switch to a specific sorting operation ({@code introSortClass} or {@code introSortClass2}).</li>
+     *     <li>At that point, it calls the corresponding sorting method ({@code introSortClass} or {@code introSortClass2})
+     *     to perform the sorting operation on the remaining range.</li>
+     * </ul>
+     * {@code introRecursive} method still recursively applies the intro sort algorithm to sort a given array.
+     * The main difference is the use of different sorting algorithms
+     * ({@code introSortClass} and {@code introSortClass2I}) depending on the size of the sub-array.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       maxDepth The maximum depth or recursion level allowed before switching to another sorting algorithm.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.intro.Intro#INTRO_SIZE
+     * @see         mz.intro.Intro#introSortClass(Comparable[], int, int, SortFunctional)
+     * @see         mz.QuickInterface#partitionDual(Comparable[], int, int, SortFunctional)
+     * @see         mz.intro.IntroAnother#introSortClass2(Comparable[], int, int, SortFunctional)
+     */
+    @Override
+    public void introRecursive(Comparable[] array, int left, int right, int maxDepth, SortFunctional<Comparable> functional) {
+        if ((right - left) > INTRO_SIZE) {
+            if (maxDepth == 0) {
+                introSortClass(array, left, right, functional);
+            } else {
+                int[] pivots = partitionDual(array, left, right, functional);
+                introRecursive(array, left, (pivots[0] - 1), (maxDepth - 1), functional);
+                introRecursive(array, (pivots[0] + 1), (pivots[1] - 1), (maxDepth - 1), functional);
+                introRecursive(array, (pivots[1] + 1), right, (maxDepth - 1), functional);
+            }
+        } else {
+            introSortClass2(array, left, right, functional);
         }
     }
 }

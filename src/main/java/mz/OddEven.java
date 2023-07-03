@@ -3,7 +3,7 @@ package mz;
 /**
  * The Odd-even (Brick) Sort algorithm is a variation of the Bubble Sort algorithm that is specifically designed to sort arrays in parallel.
  * It works by comparing and swapping adjacent elements in pairs repeatedly until the array is sorted.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -60,6 +60,16 @@ extends Bubble {
     @Override
     public void sortArrayDec(Comparable[] array) {
         oddEvenDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        oddEven(array, functional);
     }
 
     /**
@@ -127,6 +137,47 @@ extends Bubble {
             isSorted = true;
             isSorted = indexedElementDec(array, 1, array.length);
             isSorted = indexedElementDec(array, 0, array.length);
+        }
+    }
+
+    /**
+     * {@code oddEven} method you provided takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
+     * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * It performs the odd-even sort algorithm on the elements within the specified range.
+     * <ul>
+     *     <li>The method initializes a boolean variable {@code isSorted} with the value {@code false}.
+     *     This variable will be used to determine if the array is fully sorted.</li>
+     *     <li>It enters a while loop that continues until the array is sorted ({@code isSorted} is {@code true}).</li>
+     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the array is sorted initially.</li>
+     *     <li>It then calls the {@code indexedElement} method twice:</li>
+     *     <li>The first call checks if the elements starting from <i>1</i> and progressing
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
+     *     This is done by passing <i>1</i> as the {@code j} parameter and {@code array.length} as the {@code n} parameter to the {@code indexedElement} method.
+     *     If any adjacent pair of elements is found to require swapping, {@code indexedElement} returns {@code false},
+     *     indicating that the array is not yet fully sorted.
+     *     In this case, the {@code isSorted} variable is set to {@code false}.</li>
+     *     <li>The second call checks if the elements starting from <i>0</i> and progressing
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
+     *     This is done by passing <i>0</i> as the {@code j} parameter and {@code array.length} as the {@code n} parameter to the {@code indexedElement} method.
+     *     Similarly, if any adjacent pair of elements requires swapping, {@code indexedElement} returns {@code false},
+     *     and the {@code isSorted} variable is set to {@code false}.</li>
+     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping, {@code isSorted} remains {@code true},
+     *     indicating that the array is fully sorted.</li>
+     *     <li>The while loop continues until {@code isSorted} is {@code true},
+     *     which means the array is sorted.</li>
+     * </ul>
+     * {@code oddEven} method sorts a specific range of the {@code array} using the odd-even sort algorithm
+     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range is completely sorted.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.OddEven#indexedElement(Comparable[], int, int, SortFunctional)
+     */
+    protected void oddEven(Comparable[] array, SortFunctional<Comparable> functional) {
+        boolean isSorted = false;
+        while (!isSorted) {
+            isSorted = true;
+            isSorted = indexedElement(array, 1, array.length, functional);
+            isSorted = indexedElement(array, 0, array.length, functional);
         }
     }
 
@@ -211,6 +262,50 @@ extends Bubble {
     }
 
     /**
+     * {@code oddEven} method you provided takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
+     * an integer {@code left}, an integer {@code right},
+     * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * It performs the odd-even sort algorithm on the elements within the specified range.
+     * <ul>
+     *     <li>The method initializes a boolean variable {@code isSorted} with the value {@code false}.
+     *     This variable will be used to determine if the array is fully sorted.</li>
+     *     <li>It enters a while loop that continues until the array is sorted ({@code isSorted} is {@code true}).</li>
+     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the array is sorted initially.</li>
+     *     <li>It then calls the {@code indexedElement} method twice:</li>
+     *     <li>The first call checks if the elements starting from {@code (left + 1)} and progressing
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
+     *     This is done by passing {@code (left + 1)} as the {@code j} parameter and {@code right} as the {@code n} parameter to the {@code indexedElement} method.
+     *     If any adjacent pair of elements is found to require swapping, {@code indexedElement} returns {@code false},
+     *     indicating that the array is not yet fully sorted.
+     *     In this case, the {@code isSorted} variable is set to {@code false}.</li>
+     *     <li>The second call checks if the elements starting from {@code left} and progressing
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
+     *     This is done by passing {@code left} as the {@code j} parameter and {@code right} as the {@code n} parameter to the {@code indexedElement} method.
+     *     Similarly, if any adjacent pair of elements requires swapping, {@code indexedElement} returns {@code false},
+     *     and the {@code isSorted} variable is set to {@code false}.</li>
+     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping, {@code isSorted} remains {@code true},
+     *     indicating that the array is fully sorted.</li>
+     *     <li>The while loop continues until {@code isSorted} is {@code true},
+     *     which means the array is sorted.</li>
+     * </ul>
+     * {@code oddEven} method sorts a specific range of the {@code array} using the odd-even sort algorithm
+     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range is completely sorted.
+     * @param       array to be arranged.
+     * @param       left specific range of the array.
+     * @param       right specific range of the array.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.OddEven#indexedElement(Comparable[], int, int, SortFunctional)
+     */
+    protected void oddEven(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        boolean isSorted = false;
+        while (!isSorted) {
+            isSorted = true;
+            isSorted = indexedElement(array, (left + 1), right, functional);
+            isSorted = indexedElement(array, left, right, functional);
+        }
+    }
+
+    /**
      * {@code indexedElementInc} that takes an array of
      * {@link java.lang.Comparable Comparable} objects, an integer {@code j}, and an integer {@code n} as parameters.
      * The method iterates through the array elements starting from index {@code j}
@@ -270,6 +365,44 @@ extends Bubble {
         boolean element = true;
         for (int i = j; i <= (n - 2); i += 2) {
             if (isSwapDec(array, i, 1)) {
+                element = false;
+            }
+        }
+        return element;
+    }
+
+    /**
+     * {@code indexedElement} method you provided takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
+     * an integer {@code j}, an integer {@code n}, and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * <ul>
+     *     <li>The method initializes a boolean variable {@code element} with the value {@code true}.
+     *     This variable will be used to keep track of whether the indexed element at position {@code j} satisfies the condition.</li>
+     *     <li>It enters a for loop that iterates from {@code j} to {@code (n - 2)} in steps of <i>1</i>.
+     *     This means it only considers elements at even indices within the specified range.</li>
+     *     <li>Inside the loop, it checks if the element at index {@code i} should be swapped with
+     *     the adjacent element at index {@code (i + 1)} based on the given {@code functional} interface.
+     *     The {@code isSwap} method is used to perform the comparison.</li>
+     *     <li>If the {@code isSwap} method returns {@code true} for any pair of adjacent elements,
+     *     it means the condition is not satisfied.
+     *     In this case, the element variable is set to {@code false} to indicate that
+     *     the indexed element at position {@code j} does not meet the condition.</li>
+     *     <li>After the loop completes, the method returns the value of the {@code element} variable.</li>
+     * </ul>
+     * {@code indexedElementDec} the method returns the value of the element variable,
+     * which would be {@code true} if no swaps were needed or
+     * {@code false} if at least one swap occurred.
+     * @param       array to be arranged.
+     * @param       j the array elements starting from index.
+     * @param       n the array elements ending from index.
+     * @param       functional lambda expression for comparison.
+     * @return      true if there was no exchange.<br>
+     *              false if there was at least <i>1</i> exchange.
+     * @see         mz.SortSwap#isSwap(Comparable[], int, int, SortFunctional)
+     */
+    protected boolean indexedElement(Comparable[] array, int j, int n, SortFunctional<Comparable> functional) {
+        boolean element = true;
+        for (int i = j; i <= (n - 2); i += 2) {
+            if (isSwap(array, i, 1, functional)) {
                 element = false;
             }
         }

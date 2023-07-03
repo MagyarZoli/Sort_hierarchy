@@ -4,7 +4,7 @@ package mz;
  * Shell Sort is an efficient sorting algorithm that is an extension of Insertion Sort.
  * It addresses one of the limitations of Insertion Sort,
  * which is the excessive shifting of elements when dealing with small elements towards the end of the array.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -66,7 +66,17 @@ extends Insertion {
     }
 
     /**
-     * {@code shellInc} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        shell(array, functional);
+    }
+
+    /**
+     * {@code shellInc} that performs the Shell Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
@@ -93,7 +103,7 @@ extends Insertion {
     }
 
     /**
-     * {@code shellDec} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * {@code shellDec} that performs the Shell Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
@@ -120,7 +130,36 @@ extends Insertion {
     }
 
     /**
-     * {@code shellInc} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * {@code shell} method takes an array of {@link java.lang.Comparable Comparable} objects,
+     * along with the left and right indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a for loop that initializes {@code i} to {@code (array.length / 2)} and iterates
+     *     as long as {@code i} is greater than <i>0</i>. The {@code i} value is then divided by <i>2</i> in each iteration,
+     *     effectively reducing the interval between elements to be compared and sorted.</li>
+     *     <li>Inside the loop, the {@code insertion} method is called, which likely implements
+     *     the insertion sort algorithm to sort the elements within the specified range, using the provided comparison logic.
+     *     The {@code insertion} method would perform the sorting operation on the subarray.</li>
+     *     <li>By calling the {@code insertion} method with the interval of {@code i} and the range from {@code i} to {@code array.length },
+     *     the algorithm performs an insertion sort on the elements at intervals of {@code i}.
+     *     As the loop iterates, the interval is gradually reduced until it reaches <i>0</i>,
+     *     resulting in a final insertion sort on the entire range of elements.</li>
+     * </ul>
+     * {@code shell} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the array with decreasing gaps {@code i} until the entire array is sorted.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.InsertionInterface#insertion(Comparable[], int, int, SortFunctional)
+     */
+    protected void shell(Comparable[] array, SortFunctional<Comparable> functional) {
+        for (int i = (array.length / 2); i > 0; i /= 2) {
+            insertion(array, (i - 1), (array.length - 1), functional);
+        }
+    }
+
+    /**
+     * {@code shellInc} that performs the Shell Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
@@ -149,7 +188,7 @@ extends Insertion {
     }
 
     /**
-     * {@code shellDec} that performs the Shell Sort algorithm on an array of Comparable objects.
+     * {@code shellDec} that performs the Shell Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and performs the Shell Sort algorithm on it.</li>
@@ -174,6 +213,37 @@ extends Insertion {
     protected void shellDec(Comparable[] array, int left, int right) {
         for (int i = (right / 2); i > left; i /= 2) {
             insertionDec(array, i, right);
+        }
+    }
+
+    /**
+     * {@code shell} method takes an array of {@link java.lang.Comparable Comparable} objects,
+     * along with the left and right indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a for loop that initializes {@code i} to {@code (right / 2)} and iterates
+     *     as long as {@code i} is greater than {@code left}. The {@code i} value is then divided by <i>2</i> in each iteration,
+     *     effectively reducing the interval between elements to be compared and sorted.</li>
+     *     <li>Inside the loop, the {@code insertion} method is called, which likely implements
+     *     the insertion sort algorithm to sort the elements within the specified range, using the provided comparison logic.
+     *     The {@code insertion} method would perform the sorting operation on the subarray.</li>
+     *     <li>By calling the {@code insertion} method with the interval of {@code i} and the range from {@code i} to {@code right},
+     *     the algorithm performs an insertion sort on the elements at intervals of {@code i}.
+     *     As the loop iterates, the interval is gradually reduced until it reaches {@code left},
+     *     resulting in a final insertion sort on the entire range of elements.</li>
+     * </ul>
+     * {@code shell} method implements the Shell Sort algorithm to sort the given array of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the array with decreasing gaps {@code i} until the entire array is sorted.
+     * @param       array to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.InsertionInterface#insertion(Comparable[], int, int, SortFunctional)
+     */
+    protected void shell(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        for (int i = (right / 2); i > left; i /= 2) {
+            insertion(array, i, right, functional);
         }
     }
 }

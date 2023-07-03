@@ -14,7 +14,7 @@ import mz.Sort;
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, IntroSort switches to Insertion Sort, which has good performance for small input sizes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -68,6 +68,33 @@ extends Sort<T>, InsertionInterface<T>, QuickInterface<T> {
      */
     default void introDec(T[] array) {
         introRecursiveDec(array, 0, (array.length - 1), (int) (2 * Math.floor(Math.log(array.length))));
+    }
+
+    /**
+     * {@code intro} within an interface.
+     * This method takes an array of type {@code T[]}
+     * and an instance of the {@code SortFunctional} interface as parameters.
+     * The method serves as an entry point to the intro sort algorithm for sorting the entire array.
+     * <ul>
+     *     <li>It calls the {@code introRecursive} method to sort the array, passing the following parameters:
+     *     {@code array} the array to be sorted. <i>0</i> the left index of the range, indicating the start of the array.
+     *     {@code (array.length - 1)} the right index of the range, indicating the end of the array.
+     *     The maximum recursion depth {@code (int) (2 * }{@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}{@code (array.length)))),}
+     *     which is calculated as twice the logarithm (base <i>2</i>) of the length of the array, rounded down to the nearest integer.
+     *     {@code functional} An instance of the SortFunctional interface used for comparison operations.</li>
+     *     <li>The {@code introRecursive} method will then perform the sorting process according to the intro sort algorithm,
+     *     which combines quicksort and insertion sort based on the specified recursion depth.</li>
+     * </ul>
+     * {@code intro} method is responsible for initiating the intro sort algorithm on the entire array,
+     * utilizing the {@code introRecursive} method to perform the sorting operation.
+     * It calculates the maximum recursion depth based on the length of
+     * the array and provides the necessary parameters for the recursive sorting process.
+     * @param       array The array to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         Intro#introRecursive(Comparable[], int, int, int, SortFunctional)
+     */
+    default void intro(T[] array, SortFunctional<T> functional) {
+        introRecursive(array, 0, (array.length - 1), (int) (2 * Math.floor(Math.log(array.length))), functional);
     }
 
     /**
@@ -163,6 +190,61 @@ extends Sort<T>, InsertionInterface<T>, QuickInterface<T> {
     }
 
     /**
+     * {@code introRecursive} within an interface.
+     * This method takes an array of type {@code T[]},
+     * an integer {@code left} representing the left index,
+     * an integer {@code right} representing the right index,
+     * an integer {@code maxDepth} representing the maximum recursion depth,
+     * and an instance of the {@code SortFunctional} interface as parameters.
+     * The method implements an intro sort algorithm,
+     * which is a hybrid sorting algorithm that combines quicksort and insertion sort.
+     * <ul>
+     *     <li>It first checks if the size of the range {@code (right - left)}
+     *     is greater than a predefined constant value {@code INTRO_SIZE}.
+     *     If it is, it proceeds with the sorting algorithm.
+     *     Otherwise, it directly calls the {@code insertion} method to sort the smaller range using insertion sort.</li>
+     *     <li>If the size of the range is larger than {@code INTRO_SIZE} and
+     *     the {@code maxDepth} is <i>0</i> (indicating that the recursion depth has reached its maximum allowed value),
+     *     it calls the {@code introSortClass} method to perform a full quicksort on the range.</li>
+     *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is not <i>0</i>,
+     *     it proceeds with the quicksort algorithm.</li>
+     *     <li>It calls the {@code partition} method
+     *     to select a pivot element and partition the range into two sub-ranges.</li>
+     *     <li>It recursively calls the {@code introRecursive} method on the left sub-range,
+     *     from {@code left} to {@code (pivot - 1)}, with the {@code maxDepth} reduced by <i>1</i>.</li>
+     *     <li>It recursively calls the {@code introRecursive} method on the right sub-range,
+     *     from {@code pivot + 1} to {@code right}, with the {@code maxDepth} reduced by <i>1</i>.</li>
+     *     <li>The recursion continues until the range is small enough to switch to insertion sort.</li>
+     *     <li>At that point, it calls the {@code insertion} method to sort the remaining range using insertion sort.</li>
+     * </ul>
+     * {@code introRecursive} method implements an intro sort algorithm to sort the array within a specified range ({@code left} to {@code right})
+     * in ascending order based on the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * It switches to insertion sort for small ranges and performs quicksort recursively for larger ranges,
+     * while keeping track of the maximum recursion depth.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       maxDepth The maximum depth or recursion level allowed before switching to another sorting algorithm.
+     * @param       functional lambda expression for comparison.
+     * @see         Intro#INTRO_SIZE
+     * @see         Intro#intro(Comparable[], SortFunctional)
+     * @see         Intro#introSortClass(Comparable[], int, int, SortFunctional)
+     * @see         mz.InsertionInterface#insertion(Comparable[], int, int, SortFunctional)
+     */
+    default void introRecursive(T[] array, int left, int right, int maxDepth, SortFunctional<T> functional) {
+        if ((right - left) > INTRO_SIZE) {
+            if (maxDepth == 0) {
+                introSortClass(array, left, right, functional);
+            }
+            int pivot = partition(array, left, right, functional);
+            introRecursive(array, left, (pivot - 1), (maxDepth - 1), functional);
+            introRecursive(array, (pivot + 1), right, (maxDepth - 1), functional);
+        } else {
+            insertion(array, left, right, functional);
+        }
+    }
+
+    /**
      * The other sorting algorithm can be added in this method.
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
@@ -179,4 +261,14 @@ extends Sort<T>, InsertionInterface<T>, QuickInterface<T> {
      * @see         Intro#introRecursiveDec(Comparable[], int, int, int)
      */
     void introSortClassDec(T[] array, int left, int right);
+
+    /**
+     * The other sorting algorithm can be added in this method.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         Intro#introRecursive(Comparable[], int, int, int, SortFunctional)
+     */
+    void introSortClass(T[] array, int left, int right, SortFunctional<T> functional);
 }

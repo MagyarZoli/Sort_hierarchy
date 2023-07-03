@@ -5,7 +5,7 @@ package mz;
  * two pivot values to partition the array instead of one.
  * This modification improves the efficiency of the sorting algorithm,
  * especially when dealing with arrays that contain many duplicate elements.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -73,6 +73,16 @@ extends Quick {
     }
 
     /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        dualPivotQuick(array, functional);
+    }
+
+    /**
      * {@code dualPivotQuickInc} is a recursive implementation of the dual-pivot quicksort algorithm.
      * This algorithm is used to efficiently sort an array of elements by recursively dividing
      * it into smaller subarrays and rearranging the elements based on pivot values.
@@ -124,6 +134,46 @@ extends Quick {
      */
     protected void dualPivotQuickDec(Comparable[] array) {
         dualPivotQuickDec(array, 0, (array.length - 1));
+    }
+
+    /**
+     * The method {@code dualPivotQuick} takes four parameters:
+     * {@code array} an array of {@link java.lang.Comparable Comparable} objects,
+     * and {@code functional} an instance of {@code SortFunctional}
+     * representing a functional interface for comparison operations.
+     * <ul>
+     *     <li>The first line of code checks if <i>0</i> is less than {@code (array.length - 1)},
+     *     which indicates that the partition has more than one element.
+     *     If this condition is false, it means there is nothing to sort, so the method returns.</li>
+     *     <li>The code then calls the {@code partitionDual} method,
+     *     passing {@code array}, {@code left}, {@code right}, and {@code functional} as parameters.
+     *     This method performs the dual-pivot partitioning and returns an array {@code pivot} containing two pivot indices.</li>
+     *     <li>After the partitioning is done, the array is divided into three parts: elements less than the smaller pivot,
+     *     elements between the two pivots (inclusive),
+     *     and elements greater than the larger pivot.</li>
+     *     <li>The method recursively calls itself three times to sort the three partitions.
+     *     The parameters for the recursive calls are as follows:</li>
+     *     <li>{@code dualPivotQuick(array, left, (pivot[0] - 1), functional)}
+     *     to sort the left partition (elements less than the smaller pivot).</li>
+     *     <li>{@code dualPivotQuick(array, (pivot[0] + 1), (pivot[1] - 1), functional)}
+     *     to sort the middle partition (elements between the two pivots).</li>
+     *     <li>{@code dualPivotQuick(array, (pivot[1] + 1), right, functional) }
+     *     to sort the right partition (elements greater than the larger pivot).</li>
+     *     <li>The recursive calls continue until all subpartitions have been sorted,
+     *     resulting in a fully sorted array.</li>
+     * </ul>
+     * the {@code dualPivotQuick} method implements the Dual Pivot Quick Sort algorithm,
+     * which is an optimized version of the Quick Sort algorithm.
+     * It recursively partitions the array into smaller subpartitions using two pivots,
+     * sorts them, and combines them to achieve a final sorted array.
+     * The specific comparison operation used for sorting is defined
+     * by the {@code functional} object passed as a parameter.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.DualPivotQuick#dualPivotQuick(Comparable[], int, int, SortFunctional)
+     */
+    protected void dualPivotQuick(Comparable[] array, SortFunctional<Comparable> functional) {
+        dualPivotQuick(array, 0, (array.length - 1), functional);
     }
 
     /**
@@ -191,6 +241,54 @@ extends Quick {
             dualPivotQuickDec(array, left, (pivot[0] - 1));
             dualPivotQuickDec(array, (pivot[0] + 1), (pivot[1] - 1));
             dualPivotQuickDec(array, (pivot[1] + 1), right);
+        }
+    }
+
+    /**
+     * The method {@code dualPivotQuick} takes four parameters:
+     * {@code array} an array of {@link java.lang.Comparable Comparable} objects,
+     * {@code left} the starting index of the partition, {@code right} the ending index of the partition,
+     * and {@code functional} an instance of {@code SortFunctional}
+     * representing a functional interface for comparison operations.
+     * <ul>
+     *     <li>The first line of code checks if {@code left} is less than {@code right},
+     *     which indicates that the partition has more than one element.
+     *     If this condition is false, it means there is nothing to sort, so the method returns.</li>
+     *     <li>The code then calls the {@code partitionDual} method,
+     *     passing {@code array}, {@code left}, {@code right}, and {@code functional} as parameters.
+     *     This method performs the dual-pivot partitioning and returns an array {@code pivot} containing two pivot indices.</li>
+     *     <li>After the partitioning is done, the array is divided into three parts: elements less than the smaller pivot,
+     *     elements between the two pivots (inclusive),
+     *     and elements greater than the larger pivot.</li>
+     *     <li>The method recursively calls itself three times to sort the three partitions.
+     *     The parameters for the recursive calls are as follows:</li>
+     *     <li>{@code dualPivotQuick(array, left, (pivot[0] - 1), functional)}
+     *     to sort the left partition (elements less than the smaller pivot).</li>
+     *     <li>{@code dualPivotQuick(array, (pivot[0] + 1), (pivot[1] - 1), functional)}
+     *     to sort the middle partition (elements between the two pivots).</li>
+     *     <li>{@code dualPivotQuick(array, (pivot[1] + 1), right, functional) }
+     *     to sort the right partition (elements greater than the larger pivot).</li>
+     *     <li>The recursive calls continue until all subpartitions have been sorted,
+     *     resulting in a fully sorted array.</li>
+     * </ul>
+     * the {@code dualPivotQuick} method implements the Dual Pivot Quick Sort algorithm,
+     * which is an optimized version of the Quick Sort algorithm.
+     * It recursively partitions the array into smaller subpartitions using two pivots,
+     * sorts them, and combines them to achieve a final sorted array.
+     * The specific comparison operation used for sorting is defined
+     * by the {@code functional} object passed as a parameter.
+     * @param       array to be arranged.
+     * @param       left index of the subarray to be sorted.
+     * @param       right index of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.QuickInterface#partitionDual(Comparable[], int, int, SortFunctional)
+     */
+    protected void dualPivotQuick(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        if(left < right) {
+            int[] pivot = partitionDual(array, left, right, functional);
+            dualPivotQuick(array, left, (pivot[0] - 1), functional);
+            dualPivotQuick(array, (pivot[0] + 1), (pivot[1] - 1), functional);
+            dualPivotQuick(array, (pivot[1] + 1), right, functional);
         }
     }
 }

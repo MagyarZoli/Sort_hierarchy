@@ -4,7 +4,7 @@ package mz;
  * Comb Sort is a comparison-based sorting algorithm that is an improvement over Bubble Sort.
  * It works by repeatedly comparing and swapping elements with a specific gap value, gradually reducing the gap until it reaches 1,
  * at which point the algorithm performs a final pass similar to Bubble Sort.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -67,7 +67,18 @@ extends Cocktail {
     }
 
     /**
-     * {@code combInc} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in increasing order.
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        comb(array, functional);
+    }
+
+    /**
+     * {@code combInc} that implements the comb sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
      *     <li>The variable {@code n} is assigned the length of the array, representing the total number of elements in the array.</li>
@@ -104,7 +115,8 @@ extends Cocktail {
     }
 
     /**
-     * {@code combDec} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in decreasing order.
+     * {@code combDec} that implements the comb sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in decreasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
      *     <li>The variable {@code n} is assigned the length of the array, representing the total number of elements in the array.</li>
@@ -141,7 +153,52 @@ extends Cocktail {
     }
 
     /**
-     * {@code combInc} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in increasing order.
+     * comb method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]}
+     * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * <ul>
+     *     <li>It initializes an integer variable {@code n} with the length of the {@code array}.</li>
+     *     <li>It initializes an integer variable {@code gap} with the value of {@code n}.</li>
+     *     <li>It initializes a boolean variable {@code swapped} to {@code true} to indicate that a swap has occurred.</li>
+     *     <li>The method enters a while loop that continues until {@code gap} is equal to <i>1</i> and no swaps are made.</li>
+     *     <li>Inside the loop, it updates the value of {@code gap} by calling the {@code getNextGap} method,
+     *     which determines the next gap size to be used in the comb sort algorithm.</li>
+     *     <li>It sets {@code swapped} to {@code false} before each pass.</li>
+     *     <li>It uses a for loop to iterate from <i>0</i> to {@code (n - gap)}.
+     *     Inside this loop, it calls the {@code isSwap} method to determine if a swap
+     *     is needed between the elements at indices {@code i} and {@code (i + gap)}.
+     *     If a swap is required, it sets {@code swapped} to {@code true}.</li>
+     *     <li>After the pass, it continues to the next iteration of
+     *     the while loop if either {@code gap} is not equal to <i>1</i> or a swap occurred during the pass.</li>
+     *     <li>The process continues until the array is fully sorted,
+     *     indicated by {@code gap} being equal to <i>1</i> and no swaps being made.</li>
+     * </ul>
+     * {@code comb} the Comb Sort algorithm is an improvement over the Bubble Sort algorithm.
+     * It starts with a large {@code gap} value and gradually reduces it in each iteration.
+     * The goal is to eliminate small values at the end of the array quickly.
+     * The algorithm continues until the gap becomes 1, which is equivalent to a regular Bubble Sort
+     * pass with adjacent element comparisons and swaps.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Comb#getNextGap(int)
+     * @see         mz.SortSwap#isSwap(Comparable[], int, int, SortFunctional)
+     */
+    protected void comb(Comparable[] array, SortFunctional<Comparable> functional) {
+        int n = array.length, gap = n;
+        boolean swapped = true;
+        while (gap != 1 || swapped) {
+            gap = getNextGap(gap);
+            swapped = false;
+            for (int i = 0; i < (n - gap); i++) {
+                if (isSwap(array, i, gap, functional)) {
+                    swapped = true;
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code combInc} that implements the comb sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
      *     <li>The variable {@code right} is assigned the length of the array, representing the total number of elements in the array.</li>
@@ -180,7 +237,8 @@ extends Cocktail {
     }
 
     /**
-     * {@code combDec} that implements the comb sort algorithm to sort an array of {@code Comparable} objects in decreasing order.
+     * {@code combDec} that implements the comb sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in decreasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the comb sort algorithm on it.</li>
      *     <li>The variable {@code right} is assigned the length of the array, representing the total number of elements in the array.</li>
@@ -212,6 +270,52 @@ extends Cocktail {
             swapped = false;
             for (int i = left; i < (right - gap); i++) {
                 if (isSwapDec(array, i, gap)) {
+                    swapped = true;
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code comb} method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
+     * an integer {@code left} representing the left index, an integer {@code right} representing the right index,
+     * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * <ul>
+     *     <li>It initializes an integer variable {@code gap} with the value of {@code right}.</li>
+     *     <li>It initializes a boolean variable {@code swapped} to {@code true} to indicate that a swap has occurred.</li>
+     *     <li>The method enters a while loop that continues until {@code gap} is equal to <i>1</i> and no swaps are made.</li>
+     *     <li>Inside the loop, it updates the value of {@code gap} by calling the {@code getNextGap} method.
+     *     This method determines the next gap size to be used in the comb sort algorithm.</li>
+     *     <li>It sets {@code swapped} to {@code false} before each pass.</li>
+     *     <li>It uses a for loop to iterate from {@code left} to {@code (right - gap)}.
+     *     Inside this loop, it calls the {@code isSwap} method to determine if
+     *     a swap is needed between the elements at indices {@code i} and {@code (i + gap)}.
+     *     If a swap is required, it sets {@code swapped} to {@code true}.</li>
+     *     <li>After the pass, it continues to the next iteration of
+     *     the while loop if either {@code gap} is not equal to <i>1</i> or a swap occurred during the pass.</li>
+     *     <li>The process continues until the array is fully sorted,
+     *     indicated by {@code gap} being equal to <i>1</i> and no swaps being made.</li>
+     * </ul>
+     * {@code comb} the Comb Sort algorithm is an improvement over the Bubble Sort algorithm.
+     * It starts with a large {@code gap} value and gradually reduces it in each iteration.
+     * The goal is to eliminate small values at the end of the array quickly.
+     * The algorithm continues until the gap becomes 1, which is equivalent to a regular Bubble Sort
+     * pass with adjacent element comparisons and swaps.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Comb#getNextGap(int)
+     * @see         mz.SortSwap#isSwap(Comparable[], int, int, SortFunctional)
+     */
+    protected void comb(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        int gap = right;
+        boolean swapped = true;
+        while (gap != 1 || swapped) {
+            gap = getNextGap(gap);
+            swapped = false;
+            for (int i = left; i < (right - gap); i++) {
+                if (isSwap(array, i, gap, functional)) {
                     swapped = true;
                 }
             }

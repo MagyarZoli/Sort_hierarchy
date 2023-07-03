@@ -4,7 +4,7 @@ package mz;
  * Cocktail Sort, also known as Cocktail Shaker Sort or Bidirectional Bubble Sort, is a variation of the Bubble Sort algorithm.
  * It works by repeatedly moving through the list in both directions, comparing adjacent elements and swapping them if they are in the wrong order.
  * This bidirectional movement helps to optimize the sorting process by sorting the largest and smallest elements simultaneously.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -67,7 +67,18 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of Comparable objects in increasing order.
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        cocktail(array, functional);
+    }
+
+    /**
+     * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
@@ -121,7 +132,8 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktailDec} that implements the cocktail sort algorithm to sort an array of Comparable objects in decreasing order.
+     * {@code cocktailDec} that implements the cocktail sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in decreasing order.
      * <ul>
      *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
      *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
@@ -175,7 +187,63 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of Comparable objects in increasing order.
+     * {@code cocktail} method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
+     * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * <ul>
+     *     <li>It initializes a boolean variable {@code swapped} to {@code true} to indicate that a swap has occurred.</li>
+     *     <li>It initializes two integer variables: {@code start} as the left index and <i>0</i> as {@code (array.length - 1)}.</li>
+     *     <li>The method enters a while loop that continues as long as {@code swapped} is {@code true}.
+     *     This loop performs one pass of the cocktail sort algorithm.</li>
+     *     <li>Inside the loop, it sets {@code swapped} to {@code false} before each pass.</li>
+     *     <li>It uses a for loop to iterate from start to end (left to right).
+     *     Inside this loop, it calls the {@code isSwap} method to determine
+     *     if a swap is needed between the elements at indices {@code i} and {@code (i + 1)}.
+     *     If a swap is required, it sets {@code swapped} to {@code true}.</li>
+     *     <li>After the forward pass, it checks if {@code swapped} is still {@code false}.
+     *     If so, it breaks out of the loop since no swaps were made, and the array is already sorted.</li>
+     *     <li>It sets {@code swapped} back to {@code false} before the backward pass.</li>
+     *     <li>It uses a for loop to iterate from {@code (end - 1)} to {@code start} (right to left).
+     *     Inside this loop, it again calls the {@code isSwap} method to determine
+     *     if a swap is needed between the elements at indices {@code i} and {@code (i + 1)}.
+     *     If a swap is required, it sets {@code swapped} to {@code true}.</li>
+     *     <li>After the backward pass, it increments {@code start} by <i>1</i>,
+     *     indicating that the elements at the left end are already sorted.</li>
+     *     <li>The process continues until no swaps are made in either the forward or backward pass,
+     *     indicating that the array is fully sorted.</li>
+     * </ul>
+     * {@code cocktail} method combines the concepts of bubble sort and selection sort by traversing the array bidirectionally,
+     * repeatedly swapping adjacent elements if they are out of order.
+     * This process continues until the array becomes fully sorted.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortSwap#isSwap(Comparable[], int, int, SortFunctional)
+     */
+    protected void cocktail(Comparable[] array, SortFunctional<Comparable> functional) {
+        boolean swapped = true;
+        int start = 0, end = (array.length - 1);
+        while (swapped) {
+            swapped = false;
+            for (int i = start; i < end; ++i) {
+                if (isSwap(array, i, 1, functional)) {
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+            swapped = false;
+            for (int i = (--end - 1); i >= start; i--) {
+                if (isSwap(array, i, 1, functional)) {
+                    swapped = true;
+                }
+            }
+            ++start;
+        }
+    }
+
+    /**
+     * {@code cocktailInc} that implements the cocktail sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the cocktail sort algorithm on it.</li>
      *     <li>The swapped variable is initially set to {@code true}, indicating that there may be swaps to perform in the array.</li>
@@ -228,7 +296,8 @@ extends Bubble {
     }
 
     /**
-     * {@code cocktailDec} that implements the cocktail sort algorithm to sort an array of Comparable objects in decreasing order.
+     * {@code cocktailDec} that implements the cocktail sort algorithm to sort an array of
+     * {@link java.lang.Comparable Comparable} objects in decreasing order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, and performs the cocktail sort algorithm on it.</li>
      *     <li>The swapped variable is initially set to {@code true}, indicating that there may be swaps to perform in the array.</li>
@@ -273,6 +342,64 @@ extends Bubble {
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
                 if (isSwapDec(array, i, 1)) {
+                    swapped = true;
+                }
+            }
+            ++start;
+        }
+    }
+
+    /**
+     * {@code cocktail} method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]},
+     * an integer {@code left} representing the left index, an integer {@code right} representing the right index,
+     * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * <ul>
+     *     <li>It initializes a boolean variable {@code swapped} to {@code true} to indicate that a swap has occurred.</li>
+     *     <li>It initializes two integer variables: {@code start} as the left index and {@code end} as {@code (right - 1)}.</li>
+     *     <li>The method enters a while loop that continues as long as {@code swapped} is {@code true}.
+     *     This loop performs one pass of the cocktail sort algorithm.</li>
+     *     <li>Inside the loop, it sets {@code swapped} to {@code false} before each pass.</li>
+     *     <li>It uses a for loop to iterate from start to end (left to right).
+     *     Inside this loop, it calls the {@code isSwap} method to determine
+     *     if a swap is needed between the elements at indices {@code i} and {@code (i + 1)}.
+     *     If a swap is required, it sets {@code swapped} to {@code true}.</li>
+     *     <li>After the forward pass, it checks if {@code swapped} is still {@code false}.
+     *     If so, it breaks out of the loop since no swaps were made, and the array is already sorted.</li>
+     *     <li>It sets {@code swapped} back to {@code false} before the backward pass.</li>
+     *     <li>It uses a for loop to iterate from {@code (end - 1)} to {@code start} (right to left).
+     *     Inside this loop, it again calls the {@code isSwap} method to determine
+     *     if a swap is needed between the elements at indices {@code i} and {@code (i + 1)}.
+     *     If a swap is required, it sets {@code swapped} to {@code true}.</li>
+     *     <li>After the backward pass, it increments {@code start} by <i>1</i>,
+     *     indicating that the elements at the left end are already sorted.</li>
+     *     <li>The process continues until no swaps are made in either the forward or backward pass,
+     *     indicating that the array is fully sorted.</li>
+     * </ul>
+     * {@code cocktail} method combines the concepts of bubble sort and selection sort by traversing the array bidirectionally,
+     * repeatedly swapping adjacent elements if they are out of order.
+     * This process continues until the array becomes fully sorted.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortSwap#isSwap(Comparable[], int, int, SortFunctional)
+     */
+    protected void cocktail(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        boolean swapped = true;
+        int start = left, end = (right - 1);
+        while (swapped) {
+            swapped = false;
+            for (int i = start; i < end; ++i) {
+                if (isSwap(array, i, 1, functional)) {
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+            swapped = false;
+            for (int i = (--end - 1); i >= start; i--) {
+                if (isSwap(array, i, 1, functional)) {
                     swapped = true;
                 }
             }

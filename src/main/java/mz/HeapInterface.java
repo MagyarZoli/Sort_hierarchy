@@ -3,7 +3,7 @@ package mz;
 /**
  * HeapInterface, containing the methods of Heap Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -81,6 +81,46 @@ extends Sort<T>, SortSwap<T> {
     }
 
     /**
+     * {@code heap} within an interface.
+     * This method takes an array of type {@code T[]},
+     * and an instance of the {@code SortFunctional} interface as parameters.
+     * <ul>
+     *     <li>The first for loop initializes a variable {@code i} to {@code ((array.length / 2) - 1)}</li>
+     *     <li>Within each iteration, it calls the {@code heapify} method to rearrange the elements in
+     *     the {@code array} and maintain the heap property starting from index {@code i}.</li>
+     *     <li>This first loop ensures that the entire array is transformed into a valid heap structure.</li>
+     *     <li>The second {@code for} loop initializes a variable {@code i} to {@code (n - 1)}
+     *     and iterates backwards from {@code i} to <i>0</i>.</li>
+     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices <i>0</i> and {@code i} in the array.
+     *     This places the largest element (root of the heap) at index <i>0</i> and
+     *     the next largest element at the end of the range.</li>
+     *     <li>After the swap, it calls the {@code heapify} method to maintain
+     *     the heap property within the reduced range <i>0</i> from to {@code i}.</li>
+     *     <li>The loop continues until the entire range is sorted.</li>
+     * </ul>
+     * {@code heap} method implements the heap sort algorithm to sort a portion of the array
+     * (from index <i>0</i> to index {@code array.length})
+     * in ascending order based on the comparison condition provided
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * It transforms the array into a heap structure, swaps the largest element to the beginning of the range,
+     * and recursively maintains the heap property while reducing the range until the entire range is sorted.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.HeapInterface#heapify(Comparable[], int, int, SortFunctional)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    default void heap(T[] array, SortFunctional<T> functional) {
+        int n = array.length;
+        for (int i = ((n / 2) - 1); i >= 0; i--) {
+            heapify(array, n, i, functional);
+        }
+        for (int i = (n - 1); i > 0; i--) {
+            swap(array, 0, i);
+            heapify(array, i, 0, functional);
+        }
+    }
+
+    /**
      * {@code heapInc}. This method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to sort an array in ascending order using a max heap.
      * <ul>
@@ -149,6 +189,49 @@ extends Sort<T>, SortSwap<T> {
         for (int i = (to - 1); i > from; i--) {
             swap(array, from, i);
             heapifyDec(array, i, from);
+        }
+    }
+
+    /**
+     * {@code heap} within an interface.
+     * This method takes an array of type {@code T[]},
+     * an integer {@code from} representing the starting index,
+     * an integer {@code to} representing the ending index,
+     * and an instance of the {@code SortFunctional} interface as parameters.
+     * <ul>
+     *     <li>The first for loop initializes a variable {@code i} to {@code ((to / 2) - 1)}
+     *     and iterates backwards from {@code i} to {@code from}.</li>
+     *     <li>Within each iteration, it calls the {@code heapify} method to rearrange the elements in
+     *     the {@code array} and maintain the heap property starting from index {@code i}.</li>
+     *     <li>This first loop ensures that the entire array is transformed into a valid heap structure.</li>
+     *     <li>The second {@code for} loop initializes a variable {@code i} to {@code (to - 1)}
+     *     and iterates backwards from {@code i} to {@code (from + 1)}.</li>
+     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices {@code from} and {@code i} in the array.
+     *     This places the largest element (root of the heap) at index {@code from} and
+     *     the next largest element at the end of the range.</li>
+     *     <li>After the swap, it calls the {@code heapify} method to maintain
+     *     the heap property within the reduced range {@code from} from to {@code i}.</li>
+     *     <li>The loop continues until the entire range is sorted.</li>
+     * </ul>
+     * {@code heap} method implements the heap sort algorithm to sort a portion of the array (from index {@code from} to index {@code to})
+     * in ascending order based on the comparison condition provided
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * It transforms the array into a heap structure, swaps the largest element to the beginning of the range,
+     * and recursively maintains the heap property while reducing the range until the entire range is sorted.
+     * @param       array to be arranged.
+     * @param       from the element from which to start the analysis.
+     * @param       to the element to be analyzed.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.HeapInterface#heapify(Comparable[], int, int, SortFunctional)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    default void heap(T[] array, int from, int to, SortFunctional<T> functional) {
+        for (int i = ((to / 2) - 1); i >= from; i--) {
+            heapify(array, to, i, functional);
+        }
+        for (int i = (to - 1); i > from; i--) {
+            swap(array, from, i);
+            heapify(array, i, from, functional);
         }
     }
 
@@ -223,6 +306,42 @@ extends Sort<T>, SortSwap<T> {
     }
 
     /**
+     * {@code heapify} within an interface.
+     * This method takes an array of type {@code T[]},
+     * an integer {@code n}, an integer {@code i},
+     * and an instance of the {@code SortFunctional} interface as parameters.
+     * <ul>
+     *     <li>It calls the {@code heapSplit} method to find the index of
+     *     the largest child node of the current parent node at index {@code i}.</li>
+     *     <li>If the {@code largest} index is not equal to {@code i}, it means that
+     *     the parent node is smaller than one of its child nodes and violates the heap property.</li>
+     *     <li>In this case, the method calls the {@code swap} method
+     *     to swap the elements at indices {@code i} and {@code largest} in the {@code array}.
+     *     This ensures that the largest child node becomes the new parent node.</li>
+     *     <li>After the swap, the method calls itself recursively on the new parent node index {@code largest}.
+     *     This is done to propagate the violation upwards and ensure that the heap property is maintained throughout the entire heap.</li>
+     *     <li>The recursive calls continue until the entire heap is rearranged correctly.</li>
+     * </ul>
+     * {@code heapify} method is responsible for rearranging elements in the {@code array}
+     * to maintain the heap property based on the comparison condition provided
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * It performs swaps and recursive calls to fix violations in the heap structure.
+     * @param       array to be arranged.
+     * @param       n of the array.
+     * @param       i the current element
+     * @param       functional lambda expression for comparison.
+     * @see         mz.HeapInterface#heapSplit(Comparable[], int, int, SortFunctional)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    default void heapify(T[] array, int n, int i, SortFunctional<T> functional) {
+        int largest = heapSplit(array, n, i, functional);
+        if (largest != i) {
+            swap(array, i, largest);
+            heapify(array, n, largest, functional);
+        }
+    }
+
+    /**
      * {@code heapSplitInc}. This method is likely a part of a heap-related algorithm or data structure implementation.
      * It takes an array of {@code Comparable} objects, the {@code n} of the array, and an index {@code i} as parameters.
      * The purpose of this method is to find the index of the largest child element among
@@ -291,6 +410,36 @@ extends Sort<T>, SortSwap<T> {
     }
 
     /**
+     * {@code heapSplit} within an interface.
+     * This method takes an array of type {@code T[]},
+     * an integer {@code n}, an integer {@code i}, and an instance of
+     * the {@code SortFunctional} interface as parameters. It returns an integer value.
+     * <ul>
+     *     <li>It calculates the indices of the left child node and
+     *     the right child node using the formula {@code ((2 * i) + 1)} and {@code ((2 * i) + 2)} respectively.</li>
+     *     <li>It calls the {@code heapChild} method twice to compare the left child and the right child with the current {@code i} index,
+     *     and it initializes the {@code largest} variable with the index of the child that is smaller based on
+     *     the comparison condition provided by the {@code functionalCompareTo} method.</li>
+     *     <li>Finally, it returns the value of {@code largest}, which represents the index of the largest child node.</li>
+     * </ul>
+     * {@code heapSplit} method is responsible for comparing two child nodes of a parent node in the {@code array} based on
+     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * It returns the index of the largest child node, which is useful for maintaining
+     * the heap property in heap-based algorithms or data structures.
+     * @param       array to be arranged.
+     * @param       n of the array.
+     * @param       i the current element
+     * @param       functional lambda expression for comparison.
+     * @return      the value of {@code largest}
+     * @see         mz.HeapInterface#heapChild(Comparable[], int, int, int, SortFunctional)
+     */
+    default int heapSplit(T[] array, int n, int i, SortFunctional<T> functional) {
+        int left = ((2 * i) + 1), right = ((2 * i) + 2), largest = heapChild(array, n, i, left, functional);
+        largest = heapChild(array, n, largest, right, functional);
+        return largest;
+    }
+
+    /**
      * {@code heapChildInc}, which takes an array of Comparable objects, the n of the array, a result value,
      * and a child index as parameters. The method compares the {@code child} element of the array with the element at the {@code result} index,
      * and if the {@code child} element is greater, it updates the {@code result} to the {@code child} index.
@@ -341,6 +490,38 @@ extends Sort<T>, SortSwap<T> {
     @SuppressWarnings("unchecked")
     default int heapChildDec(T[] array, int n, int result, int child) {
         if ((child < n) && (array[child].compareTo(array[result]) < 0)) {
+            result = child;
+        }
+        return result;
+    }
+
+    /**
+     * {@code heapChild} within an interface. This method takes an array of type {@code T[]},
+     * an integer {@code n}, an integer {@code result}, an integer {@code child},
+     * and an instance of the {@code SortFunctional} interface as parameters.
+     * It returns an integer value.
+     * <ul>
+     *     <li>It first checks if the {@code child} index is less than {@code n} (the size of the array)
+     *     and if the comparison condition in {@code functionalCompareTo}
+     *     is satisfied between {@code array[child]} and {@code array[result]}.</li>
+     *     <li>If the condition is {@code true},
+     *     it updates the result variable with the value of {@code child}.</li>
+     *     <li>Finally, it returns the value of {@code result}.</li>
+     * </ul>
+     * {@code heapChild} method is responsible for comparing two elements in the {@code array} based on
+     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * It returns the index of the smaller child node, which is useful for maintaining the heap property
+     * in heap-based algorithms such as heap sort or heap-based data structures.
+     * @param       array to be arranged.
+     * @param       n of the array.
+     * @param       result the current result value.
+     * @param       child the index of the child element to compare.
+     * @param       functional lambda expression for comparison.
+     * @return      the updated {@code result} value.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    default int heapChild(T[] array, int n, int result, int child, SortFunctional<T> functional) {
+        if ((child < n) && (functional.functionalCompareTo(array[child], array[result]))) {
             result = child;
         }
         return result;

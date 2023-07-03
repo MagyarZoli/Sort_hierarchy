@@ -3,7 +3,7 @@ package mz;
 /**
  * InsertionInterface, containing the methods of Insertion Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -97,6 +97,39 @@ extends Sort<T> {
     }
 
     /**
+     * {@code insertion} within an interface.
+     * This method takes an array of type {@code T[]} and an instance of the {@code SortFunctional} interface as parameters.
+     * <ul>
+     *     <li>The method iterates over the array from index <i>0</i> to the last index {@code (array.length - 1)}.</li>
+     *     <li>For each iteration, it selects an element {@code select} from the array at index {@code i}.</li>
+     *     <li>It initializes a variable {@code j} with the value of {@code i}.</li>
+     *     <li>It enters a {@code while} loop that continues as long as {@code j} is greater than or equal to <i>1</i> and
+     *     the comparison condition in {@code functionalCompareTo} is satisfied between {@code array[(j - 1)]} and {@code select}.</li>
+     *     <li>Inside the loop, it shifts elements towards the right
+     *     by assigning {@code array[(j - 1)]} to {@code array[j]} and decrements {@code j}.</li>
+     *     <li>After the loop ends, it assigns the {@code select} element to {@code array[j]},
+     *     placing it at the correct position in the sorted sequence.</li>
+     *     <li>The process continues until all elements in the array have been processed.</li>
+     * </ul>
+     * {@code insertion} method uses the insertion sort algorithm to sort the array in ascending order based on
+     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    default void insertion(T[] array, SortFunctional<T> functional) {
+        for (int i = 0; i < array.length; i++) {
+            T select = array[i];
+            int j = i;
+            while ((j >= 1) && (functional.functionalCompareTo(array[(j - 1)], select))) {
+                array[j] = array[(j - 1)];
+                j--;
+            }
+            array[j] = select;
+        }
+    }
+
+    /**
      * {@code insertionInc} that performs the Insertion Sort algorithm on a portion of an array of Comparable objects.
      * The sorting is done in ascending order.
      * <ul>
@@ -179,6 +212,47 @@ extends Sort<T> {
             T select = array[i];
             int j = i;
             while ((j > from) && (array[(j - 1)] != null && array[(j - 1)].compareTo(select) < 0)) {
+                array[j] = array[(j - 1)];
+                j--;
+            }
+            array[j] = select;
+        }
+    }
+
+    /**
+     * {@code insertion} within an interface. This method takes an array of type {@code T[]},
+     * an integer {@code from} representing the starting index,
+     * an integer {@code to} representing the ending index,
+     * and an instance of the {@code SortFunctional} interface as parameters.
+     * The method implements the insertion sort algorithm using
+     * the {@code functionalCompareTo} method provided by the {@code SortFunctional} interface.
+     * <ul>
+     *     <li>The method iterates over the array {@code from} the from index to the {@code to} index (inclusive).</li>
+     *     <li>For each iteration, it selects an element {@code select} from the array at index {@code i}.</li>
+     *     <li>It initializes a variable {@code j} with the value of {@code i}.</li>
+     *     <li>It enters a while loop that continues as long as {@code j} is greater than {@code from},
+     *     {@code array[(j - 1)]} is not null, and the comparison condition in {@code functionalCompareTo}
+     *     is satisfied between {@code array[(j - 1)]} and {@code select}.</li>
+     *     <li>Inside the loop, it shifts elements towards the right
+     *     by assigning {@code array[(j - 1)]} to {@code array[j]} and decrements {@code j}.</li>
+     *     <li>After the loop ends, it assigns the {@code select} element to {@code array[j]},
+     *     placing it at the correct position in the sorted sequence.</li>
+     *     <li>The process continues until all elements in the specified range have been processed.</li>
+     * </ul>
+     * {@code insertion} method uses the insertion sort algorithm
+     * to sort a portion of the array (from index {@code from} to index {@code to})
+     * in ascending order based on the comparison condition provided
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * @param       array to be arranged.
+     * @param       from the element from which to start the analysis.
+     * @param       to the element to be analyzed.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    default void insertion(T[] array, int from, int to, SortFunctional<T> functional) {
+        for (int i = from; i <= to; i++) {
+            T select = array[i];
+            int j = i;
+            while ((j > from) && ((array[(j - 1)] != null) && (functional.functionalCompareTo(array[(j - 1)], select)))) {
                 array[j] = array[(j - 1)];
                 j--;
             }

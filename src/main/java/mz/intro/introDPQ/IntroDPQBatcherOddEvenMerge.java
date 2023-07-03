@@ -11,13 +11,13 @@ import mz.intro.IntroBatcherOddEvenMerge;
  * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, Intro switches to Batcher's Odd-even Merge Sort, which has good performance for small input sizes.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public class IntroDPQBatcherOddEvenMerge
-        extends IntroBatcherOddEvenMerge
-        implements IntroDPQ<Comparable>{
+extends IntroBatcherOddEvenMerge
+implements IntroDPQ<Comparable>{
 
     /**
      * <b>IntroDPQ (Dual Pivot Quick) Batcher's Odd-even Merge Sort:</b><br>

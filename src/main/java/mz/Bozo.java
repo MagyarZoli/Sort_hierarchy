@@ -6,12 +6,12 @@ import java.util.Random;
  * Bozo sort is a highly inefficient and random sorting algorithm.
  * It works by repeatedly shuffling the elements of the array randomly and checking if the array is sorted.
  * If it's not sorted, it repeats the process until the elements happen to end up in the correct order.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public class Bozo
-        extends Bogo {
+extends Bogo {
 
     /**
      * <b>Bozo Sort:</b><br>
@@ -53,7 +53,7 @@ public class Bozo
     public Bozo() {}
 
     /**
-     * The {@code bogoInc} method takes an array of {@code Comparable} objects.
+     * The {@code bogoInc} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
      *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
@@ -75,7 +75,7 @@ public class Bozo
     }
 
     /**
-     * The {@code bogoDec} method takes an array of {@code Comparable} objects.
+     * The {@code bogoDec} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
      *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
@@ -97,7 +97,30 @@ public class Bozo
     }
 
     /**
-     * The {@code bogoInc} method takes an array of {@code Comparable} objects,
+     * The {@code bogo} method takes an array of {@link java.lang.Comparable Comparable} objects,
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
+     *     indicating that the array is sorted.</li>
+     *     <li>Inside the loop, the {@code shuffleIndex} method is called to randomly shuffle
+     *     the elements of the array within the specified range.</li>
+     * </ul>
+     * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * @param       array The array to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Bogo#isSorted(Comparable[], SortFunctional)
+     * @see         mz.Bozo#shuffleIndex(Comparable[])
+     */
+    @Override
+    protected void bogo(Comparable[] array, SortFunctional<Comparable> functional) {
+        while (!isSorted(array, functional)) {
+            shuffleIndex(array);
+        }
+    }
+
+    /**
+     * The {@code bogoInc} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
@@ -122,7 +145,7 @@ public class Bozo
     }
 
     /**
-     * The {@code bogoDec} method takes an array of {@code Comparable} objects,
+     * The {@code bogoDec} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
@@ -142,6 +165,32 @@ public class Bozo
     @Override
     protected void bogoDec(Comparable[] array, int left, int right) {
         while (!isSortedDec(array, left, right)) {
+            shuffleIndex(array, left, right);
+        }
+    }
+
+    /**
+     * The {@code bogo} method takes an array of {@link java.lang.Comparable Comparable} objects,
+     * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
+     *     indicating that the array is sorted.</li>
+     *     <li>Inside the loop, the {@code shuffleIndex} method is called to randomly shuffle
+     *     the elements of the array within the specified range.</li>
+     * </ul>
+     * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Bogo#isSorted(Comparable[], int, int, SortFunctional)
+     * @see         mz.Bozo#shuffleIndex(Comparable[], int, int)
+     */
+    @Override
+    protected void bogo(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        while (!isSorted(array, left, right, functional)) {
             shuffleIndex(array, left, right);
         }
     }

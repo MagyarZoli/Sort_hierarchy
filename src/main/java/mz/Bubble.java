@@ -3,7 +3,7 @@ package mz;
 /**
  * Bubble Sort is a simple sorting algorithm that repeatedly compares adjacent elements and swaps them if they are in the wrong order.
  * It works by repeatedly "bubbling" the largest (or smallest) element to its correct position in each iteration.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -62,7 +62,17 @@ extends Selection {
     }
 
     /**
-     * {@code bubbleInc} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        bubble(array, functional);
+    }
+
+    /**
+     * {@code bubbleInc} that performs the Bubble Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
@@ -96,7 +106,7 @@ extends Selection {
     }
 
     /**
-     * {@code bubbleDec} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * {@code bubbleDec} that performs the Bubble Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
@@ -129,7 +139,43 @@ extends Selection {
     }
 
     /**
-     * {@code bubbleInc} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * {@code bubble} this method performs the bubble sort algorithm on a specific range of an array.
+     * <ul>
+     *     <li>The method takes an array {@code array} of type {@link java.lang.Comparable Comparable[]}
+     *     and an instance of the {@code SortFunctional<Comparable>} interface as parameters.</li>
+     *     <li>It determines the {@code length} of the array using the length property {@code n = array.length}.</li>
+     *     <li>It uses two nested loops to iterate over the elements of the array.</li>
+     *     <li>The outer loop iterates from index <i>0</i> to the last index of the array {@code for (int i = 0; i < n; i++)}.</li>
+     *     <li>The inner loop iterates from index <i>1</i> to the difference between the length of the array and {@code i}
+     *     {@code for (int j = 1; j < (n - i); j++)}.</li>
+     *     <li>Inside the inner loop, it compares adjacent elements at indices {@code (j - 1)} and {@code j} using
+     *     the {@code functionalCompareTo} method from the {@code SortFunctional} interface.</li>
+     *     <li>If the comparison returns {@code true} (indicating that the elements are out of order),
+     *     it swaps the elements by calling the {@code swap} method
+     *     and passing the array and the indices {@code (j - 1)} and {@code j}.</li>
+     *     <li>The process continues until the outer loop completes,
+     *     resulting in the entire array being sorted in ascending order.</li>
+     * </ul>
+     * {@code bubble} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in descending order.
+     * It repeatedly compares adjacent elements and swaps them if necessary until the array is sorted.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    protected void bubble(Comparable[] array, SortFunctional<Comparable> functional) {
+        int n = array.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n - i); j++) {
+                if (functional.functionalCompareTo(array[(j - 1)], array[j])) {
+                    swap(array, (j - 1), j);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code bubbleInc} that performs the Bubble Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in ascending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
@@ -164,7 +210,7 @@ extends Selection {
     }
 
     /**
-     * {@code bubbleDec} that performs the Bubble Sort algorithm on an array of Comparable objects.
+     * {@code bubbleDec} that performs the Bubble Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in descending order.
      * <ul>
      *     <li>The method takes in an {@code array} of Comparable objects, array, and performs the Bubble Sort algorithm on it.</li>
@@ -192,6 +238,42 @@ extends Selection {
         for (int i = left; i < right; i++) {
             for (int j = 1; j < (right - i); j++) {
                 if (array[(j - 1)].compareTo(array[j]) < 0) {
+                    swap(array, (j - 1), j);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code bubble} this method performs the bubble sort algorithm on a specific range of an array.
+     * <ul>
+     *     <li>The method takes an array array of type {@link java.lang.Comparable Comparable[]},
+     *     an integer {@code left} representing the left index, an integer {@code right} representing the right index,
+     *     and an instance of the {@code SortFunctional<Comparable>} interface as parameters.</li>
+     *     <li>It uses two nested loops to iterate over the range of the array.</li>
+     *     <li>The outer loop iterates from the {@code left} index to the element before
+     *     the {@code right} index {@code for (int i = left; i < right; i++)}.</li>
+     *     <li>The inner loop iterates from index <i>1</i> to
+     *     the difference between {@code right} and {@code i} {@code for (int j = 1; j < (right - i); j++)}.</li>
+     *     <li>Inside the inner loop, it compares adjacent elements at indices {@code (j - 1)} and {@code j} using
+     *     the {@code functionalCompareTo} method from the {@code SortFunctional} interface.</li>
+     *     <li>If the comparison returns {@code true} (indicating that the elements are out of order),
+     *     it swaps the elements by calling the {@code swap} method and passing the array and the indices {@code (j - 1)} and {@code j}.</li>
+     *     <li>The process continues until the outer loop completes, resulting in the range being sorted in ascending order.</li>
+     * </ul>
+     * {@code bubble} method implements the Bubble Sort algorithm to sort the given array of Comparable objects in descending order.
+     * It repeatedly compares adjacent elements and swaps them if necessary until the array is sorted.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    protected void bubble(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        for (int i = left; i < right; i++) {
+            for (int j = 1; j < (right - i); j++) {
+                if (functional.functionalCompareTo(array[(j - 1)], array[j])) {
                     swap(array, (j - 1), j);
                 }
             }

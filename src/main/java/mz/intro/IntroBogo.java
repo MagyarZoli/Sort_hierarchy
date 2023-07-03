@@ -10,7 +10,7 @@ import mz.Bogo;
  * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
  * Another Sort is Bogo Sort.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -48,7 +48,7 @@ implements Intro<Comparable> {
      * </ol>
      * <b>Note:</b><br>
      * Implements an adaptive sorting algorithm called Intro Sort. It combines the Quick Sort
-     * algorithm with a switch to another sorting algorithm Bogo Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * algorithm with a switch to another sorting algorithm Odd-even Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
      * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(n^2)</em><br>
@@ -80,6 +80,16 @@ implements Intro<Comparable> {
 
     /**
      * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        intro(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
@@ -98,5 +108,17 @@ implements Intro<Comparable> {
     @Override
     public void introSortClassDec(Comparable[] array, int left, int right) {
         bogoDec(array, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void introSortClass(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        bogo(array, left, right, functional);
     }
 }

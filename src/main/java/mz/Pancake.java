@@ -3,7 +3,7 @@ package mz;
 /**
  * Pancake Sort is a sorting algorithm that aims to sort an array of elements in ascending or descending order.
  * It gets its name from the analogy of flipping pancakes with a spatula to sort them.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -68,6 +68,16 @@ extends Selection {
     @Override
     public void sortArrayDec(Comparable[] array) {
         pancakeDec(array);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        pancake(array, functional);
     }
 
     /**
@@ -136,6 +146,48 @@ extends Selection {
                 flip(array, (i - 1));
             }
         }
+    }
+
+    /**
+     * {@code pancake} method takes an array of {@link java.lang.Comparable Comparable} objects,
+     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a loop that iterates from {@code right} to <i>1</i> in a descending order.
+     *     This loop controls the number of pancake flips needed to sort the array.</li>
+     *     <li>Inside the loop, the {@code findIndex} method is called to find the index of
+     *     the maximum element within the current range (<i>0</i> to {@code i}) using the provided comparison logic.
+     *     The {@code findIndex} method likely searches for the index of
+     *     the maximum element based on the {@code SortFunctional} comparison logic.</li>
+     *     <li>If the found index {@code value} is not equal to {@code (i - 1)}, indicating that
+     *     the maximum element is not already at the correct position,
+     *     the flip method is called twice.
+     *     The first flip operation flips the subarray from {@code n} to {@code value},
+     *     bringing the maximum element to the beginning of the range.
+     *     The second flip operation then flips the entire subarray from {@code n} to {@code (i - 1)},
+     *     moving the maximum element to its correct position at the end of the range.</li>
+     *     <li>The loop continues until the entire range is sorted, with the largest element at the end.
+     *     At the end of the {@code pancake} method, the specified range of
+     *     the array is sorted according to the provided comparison logic.</li>
+     * </ul>
+     * {@code pancake} method performs a variation of the Pancake Sort algorithm on a specific subarray defined by
+     * the {@code left} and {@code right} indices.
+     * This allows for sorting different sections of the array independently, which can be useful in certain scenarios.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortFind#findIndex(Comparable[], int, SortFunctional)
+     * @see         mz.SortSwap#flip(Comparable[], int, int)
+     */
+    protected void pancake(Comparable[] array, SortFunctional<Comparable> functional) {
+        int n = array.length;
+        for (int i = n; i > 1; i--) {
+            int value = findIndex(array, i, functional);
+            if (value != (i - 1)) {
+                flip(array, value);
+                flip(array, (i - 1));
+            }
+        }
+
     }
 
     /**
@@ -215,6 +267,49 @@ extends Selection {
             int min = findMinIndex(array, left, i);
             if (min != (i - 1)) {
                 flip(array, left, min);
+                flip(array, left, (i - 1));
+            }
+        }
+    }
+
+    /**
+     * {@code pancake} method takes an array of {@link java.lang.Comparable Comparable} objects,
+     * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a loop that iterates from {@code right} to {@code (left + 1)} in a descending order.
+     *     This loop controls the number of pancake flips needed to sort the array.</li>
+     *     <li>Inside the loop, the {@code findIndex} method is called to find the index of
+     *     the maximum element within the current range ({@code left} to {@code i}) using the provided comparison logic.
+     *     The {@code findIndex} method likely searches for the index of
+     *     the maximum element based on the {@code SortFunctional} comparison logic.</li>
+     *     <li>If the found index {@code value} is not equal to {@code (i - 1)}, indicating that
+     *     the maximum element is not already at the correct position,
+     *     the flip method is called twice.
+     *     The first flip operation flips the subarray from {@code left} to {@code value},
+     *     bringing the maximum element to the beginning of the range.
+     *     The second flip operation then flips the entire subarray from {@code left} to {@code (i - 1)},
+     *     moving the maximum element to its correct position at the end of the range.</li>
+     *     <li>The loop continues until the entire range is sorted, with the largest element at the end.
+     *     At the end of the {@code pancake} method, the specified range of
+     *     the array is sorted according to the provided comparison logic.</li>
+     * </ul>
+     * {@code pancake} method performs a variation of the Pancake Sort algorithm on a specific subarray defined by
+     * the {@code left} and {@code right} indices.
+     * This allows for sorting different sections of the array independently, which can be useful in certain scenarios.
+     * @param       array to be arranged.
+     * @param       left specific range of the array.
+     * @param       right specific range of the array.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortFind#findIndex(Comparable[], int, int, SortFunctional)
+     * @see         mz.SortSwap#flip(Comparable[], int, int)
+     */
+    protected void pancake(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        for (int i = right; i > (left + 1); i--) {
+            int value = findIndex(array, left, i, functional);
+            if (value != (i - 1)) {
+                flip(array, left, value);
                 flip(array, left, (i - 1));
             }
         }

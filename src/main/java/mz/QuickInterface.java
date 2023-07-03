@@ -3,7 +3,7 @@ package mz;
 /**
  * QuickInterface, containing the methods of Quick Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -32,6 +32,30 @@ extends Sort<T>, SortSwap<T> {
      */
     default void quickDec(T[] array) {
         quickDec(array, 0, (array.length - 1));
+    }
+
+    /**
+     * {@code quick} method now takes an array {@code array} of type {@code T}
+     * and an instance of {@code SortFunctional<T>} as parameters.
+     * <ul>
+     *     <li>It calls the overloaded {@code quick} method with additional parameters:
+     *     {@code array}, <i>0</i> as the starting index ({@code left}),
+     *     {@code (array.length - 1)} as the ending index ({@code right}), and the {@code functional} instance.</li>
+     *     <li>The overloaded {@code quick} method is responsible for performing the actual sorting.
+     *     It partitions the array within the specified range
+     *     and recursively sorts the resulting subarrays using the {@code functional} instance.</li>
+     *     <li>By calling {@code quick(array, 0, (array.length - 1), functional)},
+     *     the {@code quick} method initiates the Quicksort algorithm on the entire array,
+     *     sorting it in ascending order according to the comparison logic defined by the {@code SortFunctional} instance.</li>
+     * </ul>
+     * {@code quick} method provides a convenient way to invoke the Quicksort algorithm on the entire array using
+     * the comparison logic defined by the {@code SortFunctional} instance.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.QuickInterface#quick(Comparable[], int, int, SortFunctional)
+     */
+    default void quick(T[] array, SortFunctional<T> functional) {
+        quick(array, 0, (array.length - 1), functional);
     }
 
     /**
@@ -95,6 +119,43 @@ extends Sort<T>, SortSwap<T> {
             int partitionIndex = partitionDec(array, left, right);
             quickDec(array, left, (partitionIndex - 1));
             quickDec(array, (partitionIndex +1), right);
+        }
+    }
+
+    /**
+     * {@code quick} method takes an array {@code array} of type {@code T}, two integer parameters {@code left} and {@code right},
+     * and an instance of {@code SortFunctional<T>} as parameters.
+     * <ul>
+     *     <li>It starts by checking if the value of {@code left} is less than the value of {@code right}.
+     *     This condition ensures that there are at least two elements in the current partition range,
+     *     making it necessary to perform a partitioning step.</li>
+     *     <li>If the condition is {@code true},
+     *     it proceeds to call the {@code partition} method to partition the array within
+     *     the specified range using the {@code functional} instance as the comparison logic.
+     *     The result of the partitioning step is stored in the {@code partitionIndex} variable.</li>
+     *     <li>After the partitioning step, it recursively calls the {@code quick} method to sort the left subarray,
+     *     from {@code left} to {@code (partitionIndex - 1)}, using the same {@code functional} instance.</li>
+     *     <li>It also recursively calls the {@code quick} method to sort the right subarray,
+     *     from {@code (partitionIndex + 1)} to {@code right}, using the same {@code functional} instance.</li>
+     *     <li>The recursive calls continue until the base case is reached,
+     *     where {@code left} becomes greater than or equal to {@code right}.
+     *     At that point, the method returns without performing any further sorting.</li>
+     * </ul>
+     * {@code quick} method implements the Quicksort algorithm using the partitioning logic defined
+     * by the {@code partition} method and the comparison logic defined by the {@code SortFunctional} instance.
+     * It recursively divides the array into smaller subarrays,
+     * partitions them based on the pivot element, and sorts them independently.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.QuickInterface#partition(Comparable[], int, int, SortFunctional)
+     */
+    default void quick(T[] array, int left, int right, SortFunctional<T> functional) {
+        if (left < right) {
+            int partitionIndex = partition(array, left, right, functional);
+            quick(array, left, (partitionIndex - 1), functional);
+            quick(array, (partitionIndex +1), right, functional);
         }
     }
 
@@ -173,6 +234,50 @@ extends Sort<T>, SortSwap<T> {
         int i = (left - 1);
         for (int j = left; j <= (right - 1); j++) {
             if (pivot.compareTo(array[j]) < 0) {
+                swap(array, ++i, j);
+            }
+        }
+        swap(array, (i + 1), right);
+        return (i + 1);
+    }
+
+    /**
+     * {@code partition} method takes an array {@code array} of type {@code T}, two integer parameters {@code left} and {@code right},
+     * and an instance of {@code SortFunctional<T>} as parameters.
+     * <ul>
+     *     <li>It starts by assigning the element at index {@code right} to the variable {@code pivot}.
+     *     This element will serve as the pivot for partitioning.</li>
+     *     <li>It initializes the variable {@code i} to {@code (left - 1)}.
+     *     This variable will keep track of the boundary between elements less than
+     *     the pivot and elements greater than or equal to the pivot.</li>
+     *     <li>It enters a {@code for} loop that iterates from {@code left} to {@code (right - 1)}.
+     *     This loop examines each element within the partition range.</li>
+     *     <li>Within the loop, it checks if the pivot element is considered greater than
+     *     the element at index {@code j} according to the comparison logic defined by the {@code functional} instance.
+     *     If so, it swaps the element at index {@code j} with the element at index {@code ++i}.
+     *     This ensures that elements less than the pivot are moved to the left side of the partition.</li>
+     *     <li>After the loop completes, it performs a final swap between
+     *     the pivot element at index {@code right} and the element at index {@code (i + 1)}.
+     *     This places the pivot element in its correct sorted position.</li>
+     *     <li>Finally, it returns the index {@code (i + 1)} which represents
+     *     the position of the pivot element in the sorted array.</li>
+     * </ul>
+     * {@code partition} this method is to partition the array within the specified range using a single pivot element ({@code pivot})
+     * and the comparison logic defined by the {@code SortFunctional} instance.
+     * It rearranges the elements within the partition range such that all elements less than
+     * the pivot are placed to the left and all elements greater than or equal to the pivot are placed to the right.
+     * The method returns the index of the pivot element in its final sorted position.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @return      the index of the pivot element.
+     */
+    default int partition(T[] array, int left, int right, SortFunctional<T> functional) {
+        T pivot = array[right];
+        int i = (left - 1);
+        for (int j = left; j <= (right - 1); j++) {
+            if (functional.functionalCompareTo(pivot, array[j])) {
                 swap(array, ++i, j);
             }
         }
@@ -288,6 +393,83 @@ extends Sort<T>, SortSwap<T> {
                 }
                 swap(array, selectIndex, newRight--);
                 if (pivot1.compareTo(array[selectIndex]) < 0) {
+                    swap(array, selectIndex, newLeft++);
+                }
+            }
+            selectIndex++;
+        }
+        swap(array, left, --newLeft);
+        swap(array, right, ++newRight);
+        return new int[] {newLeft, newRight};
+    }
+
+    /**
+     * {@code partitionDual} method takes an array {@code array} of type {@code T},
+     * two integer parameters {@code left} and {@code right},
+     * and an instance of {@code SortFunctional<T>} as parameters.
+     * <ul>
+     *     <li>It starts by checking if the element at index {@code left} is considered greater than
+     *     the element at index {@code right} according to the comparison logic defined by the {@code functional} instance.
+     *     If so, it swaps the elements at indices {@code left} and {@code right}.</li>
+     *     <li>It initializes the variables {@code newLeft} and {@code newRight} to {@code (left + 1)} and {@code (right - 1)} respectively.
+     *     These variables represent the boundaries of the partition.</li>
+     *     <li>It initializes the variable {@code selectIndex} to {@code (left + 1)},
+     *     which represents the current index being examined.</li>
+     *     <li>It assigns the elements at indices {@code left} and {@code right} to the variables {@code pivot1} and {@code pivot2} respectively.
+     *     These variables hold the pivot elements for partitioning.</li>
+     *     <li>It initializes a {@code functionalAddEquals} instance using the {@code functionalComparableToAddEquals} method,
+     *     passing the {@code functional} instance as a parameter.</li>
+     *     <li>It enters a {@code while} loop that continues as long as {@code selectIndex} is less than or equal to {@code newRight}.
+     *     This loop iterates over the array elements within the partition range.</li>
+     *     <li>Within the loop, it checks if the element at index {@code selectIndex} is considered greater
+     *     than {@code pivot1} according to the comparison logic defined by the {@code functional} instance.
+     *     If so, it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by <i>1</i>.</li>
+     *     <li>If the element at index {@code selectIndex} is considered equal to {@code pivot2} according to
+     *     the comparison logic defined by the {@code functionalAddEquals} instance, it enters an inner {@code while} loop.
+     *     This loop searches for the next element from the right that is not considered greater than {@code pivot2}.
+     *     It decrements {@code newRight} until it finds such an element or until {@code selectIndex} becomes greater than {@code newRight}.</li>
+     *     <li>Once the inner {@code while} loop exits,
+     *     it swaps the element at index {@code selectIndex} with the element at index {@code newRight} and decrements {@code newRight} by <i>1</i>.
+     *     After the swap, if the element at index {@code selectIndex} is considered greater than {@code pivot1} according to the {@code functional} instance,
+     *     it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by <i>1</i>.</li>
+     *     <li>After the necessary swaps and comparisons,
+     *     it increments {@code selectIndex} by <i>1</i> to move to the next element in the partition range.</li>
+     *     <li>Once the loop completes, it performs final swaps to place the pivot elements in their correct positions.
+     *     It swaps the element at index {@code left} with the element at index {@code (newLeft - 1)}
+     *     and the element at index {@code right} with the element at index {@code (newRight + 1)}.</li>
+     *     <li>Finally, it returns an integer array containing {@code newLeft} and {@code newRight}.</li>
+     * </ul>
+     * {@code partitionDual} this method is to partition the array within the specified range based on two pivot elements ({@code pivot1} and {@code pivot2})
+     * using the comparison logic defined by the {@code SortFunctional} instance.
+     * It employs a dual-pivot partitioning scheme similar to the one used in Dual-Pivot Quicksort.
+     * The elements are rearranged within the partition range such that all elements less than {@code pivot1} are placed to the left,
+     * elements equal to or between {@code pivot1} and {@code pivot2} are placed in the middle, and elements greater than {@code pivot2} are placed to the right.
+     * The method returns the indices marking the boundaries of the middle section.
+     * @param       array to be arranged.
+     * @param       left the value in the array must be smaller than a {@code right} parameter.
+     * @param       right the value in the array must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @return      the pivots in the partitioned array.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.Sort#functionalComparableToAddEquals(SortFunctional)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    default int[] partitionDual(T[] array, int left, int right, SortFunctional<T> functional) {
+        if (functional.functionalCompareTo(array[left], array[right])) {
+            swap(array, left, right);
+        }
+        int newLeft = (left + 1), newRight = (right - 1), selectIndex = (left + 1);
+        T pivot1 = array[left], pivot2 = array[right];
+        SortFunctional<T> functionalAddEquals = functionalComparableToAddEquals(functional);
+        while(selectIndex <= newRight) {
+            if(functional.functionalCompareTo(pivot1, array[selectIndex])) {
+                swap(array, selectIndex, newLeft++);
+            } else if (functionalAddEquals.functionalCompareTo(array[selectIndex], pivot2)) {
+                while ((functional.functionalCompareTo(array[newRight], pivot2)) && (selectIndex < newRight)) {
+                    newRight--;
+                }
+                swap(array, selectIndex, newRight--);
+                if (functional.functionalCompareTo(pivot1, array[selectIndex])) {
                     swap(array, selectIndex, newLeft++);
                 }
             }

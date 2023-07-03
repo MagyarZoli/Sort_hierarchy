@@ -3,7 +3,7 @@ package mz;
 /**
  * The inheritors of this interface arrange any data type that is T.
  * @param       <T> when entering it, you can set which class type the interface is used as.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -102,6 +102,32 @@ extends Sort<T> {
             swapped = true;
         }
         return swapped;
+    }
+
+    /**
+     * {@code isSwap} that takes an array {@code array}, two indices {@code i} and {@code j}, and a {@code CompareTo<T>} function as parameters.
+     * The method attempts to swap the elements at indices i and j in the array based on
+     * the result of the comparison performed by the {@code functionalCompareTo} method.
+     * <ul>
+     *     <li>Calls the {@code functionalCompareTo} method from the {@code CompareTo<T>} function object,
+     *     passing the elements at indices {@code i} and {@code (i + j)} of the array as arguments.
+     *     It compares the two elements and returns a boolean value indicating whether the elements should be swapped.</li>
+     *     <li>{@code if} This checks the result of the comparison.
+     *     If it returns true, indicating that the elements should be swapped, the code inside the {@code if} statement will be executed.</li>
+     *     <li>Calls a method swap to exchange the elements at indices {@code i} and {@code (i + j)} in the array.</li>
+     *     <li>After the swap is performed, the method returns {@code true} to indicate that the elements were successfully swapped.</li>
+     *     <li> If the comparison result is {@code false}, indicating that the elements should not be swapped, the method simply returns {@code false}.</li>
+     * </ul>
+     * {@code T} in {@code CompareTo<T>} represents a generic type, which means it can be replaced with any specific type when invoking the {@code isSwap} method.
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Object, Object)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    default boolean isSwap(T[] array, int i, int j, SortFunctional<T> function){
+        if (function.functionalCompareTo(array[i], array[(i + j)])) {
+            swap(array, i, (i + j));
+            return true;
+        }
+        return false;
     }
 
     /**

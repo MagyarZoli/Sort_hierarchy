@@ -10,7 +10,7 @@ import mz.BatcherOddEvenMerge;
  * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
  * Another Sort is Batcher's Odd-even Merge Sort.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -56,7 +56,6 @@ implements Intro<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
-     * @see         mz.intro.introDPQ.IntroDPQBatcherOddEvenMerge#IntroDPQBatcherOddEvenMerge() IntroDPQBatcherOddEvenMerge
      */
     public IntroBatcherOddEvenMerge() {}
 
@@ -80,6 +79,16 @@ implements Intro<Comparable> {
 
     /**
      * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        intro(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
@@ -98,5 +107,17 @@ implements Intro<Comparable> {
     @Override
     public void introSortClassDec(Comparable[] array, int left, int right) {
         batcherOddEvenMergeDec(array, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void introSortClass(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        batcherOddEvenMerge(array, left, right, functional);
     }
 }

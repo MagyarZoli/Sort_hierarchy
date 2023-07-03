@@ -7,7 +7,7 @@ import java.util.Arrays;
  * In Weave Merge Sort, instead of creating a new merged array, the merging process is performed directly on the original array.
  * This is achieved by using additional subarrays,
  * left array and right array, to store the elements from the original array temporarily.
- * @since       1.0
+ * @since       1.1
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -71,7 +71,18 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a {@code Comparable} array in ascending order.
+     * {@inheritDoc}
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
+        weaveMerge(array, functional);
+    }
+
+    /**
+     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a
+     * {@link java.lang.Comparable Comparable} array in ascending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting <i>0</i> from {@code array.length},
      *     storing the result in the variable {@code n}.</li>
@@ -111,7 +122,8 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a {@code Comparable} array in descending order.
+     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a
+     * {@link java.lang.Comparable Comparable} array in descending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting <i>0</i> from {@code array.length},
      *     storing the result in the variable {@code n}.</li>
@@ -151,7 +163,52 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a {@code Comparable} array in ascending order.
+     * {@code weaveMerge} method, which implements a merging algorithm to merge two sorted subarrays into a single sorted subarray.
+     * It uses a divide-and-conquer approach to recursively divide the array into smaller subarrays and then merges them back together.
+     * <ul>
+     *     <li>It calculates the size of the subarray as {@code n} by subtracting
+     *     the left index from the right index {@code (n = array.length)}.</li>
+     *     <li>If the size of the subarray is <i>1</i> or less {@code (n <= 1)},
+     *     there is nothing to merge, so the method returns.</li>
+     *     <li>It calculates the midpoint of the subarray as {@code mid} by adding
+     *     the left index to half of the subarray size {@code (mid = (n / 2))}.</li>
+     *     <li>It creates two new arrays, {@code leftArray} and {@code rightArray},
+     *     using {@link java.util.Arrays#copyOfRange(Object[], int, int) Arrays.copyOfRange}
+     *     to copy the elements from the original array.
+     *     {@code leftArray} contains the elements from the <i>0</i> index up to,
+     *     but not including, the midpoint {@code mid},
+     *     and {@code rightArray} contains the elements from the midpoint {@code mid} up to the right index {@code n}.</li>
+     *     <li>It recursively calls the {@code weaveMerge} method twice:
+     *     once to merge the left portion of the subarray (<i>0</i> to {@code mid}),
+     *     and another to merge the right portion of the subarray ({@code mid} to {@code n}).
+     *     This is done to recursively divide the subarrays into smaller subarrays and perform the merging operation.</li>
+     *     <li>Finally, it calls the {@code merging} method to merge
+     *     the {@code leftArray} and {@code rightArray} back into the original {@code array},
+     *     resulting in a sorted subarray from <i>0</i> to {@code n}.</li>
+     * </ul>
+     * {@code weaveMerge} method effectively divides the array into smaller subarrays,
+     * recursively merges the subarrays, and then merges the smaller merged subarrays back into the original array.
+     * This process continues until the entire array is sorted.
+     * @param       array to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.MergeInterface#merging(Comparable[], Comparable[], Comparable[], SortFunctional)
+     */
+    protected void weaveMerge(Comparable[] array, SortFunctional<Comparable> functional) {
+        int n = array.length;
+        if (n <= 1) {
+            return;
+        }
+        int mid = (n / 2);
+        Comparable[] leftArray = Arrays.copyOfRange(array, 0, mid);
+        Comparable[] rightArray = Arrays.copyOfRange(array, mid, n);
+        weaveMerge(leftArray, functional);
+        weaveMerge(rightArray, functional);
+        merging(array, leftArray, rightArray, functional);
+    }
+
+    /**
+     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a
+     * {@link java.lang.Comparable Comparable} array in ascending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting {@code left} from {@code right},
      *     storing the result in the variable {@code n}.</li>
@@ -193,7 +250,8 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a {@code Comparable} array in descending order.
+     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a
+     * {@link java.lang.Comparable Comparable} array in descending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting {@code left} from {@code right},
      *     storing the result in the variable {@code n}.</li>
@@ -232,5 +290,51 @@ extends Merge {
         weaveMergeDec(array, left, mid);
         weaveMergeDec(array, mid, right);
         mergingDec(array, leftArray, rightArray);
+    }
+
+    /**
+     * {@code weaveMerge} method, which implements a merging algorithm to merge two sorted subarrays into a single sorted subarray.
+     * It uses a divide-and-conquer approach to recursively divide the array into smaller subarrays and then merges them back together.
+     * <ul>
+     *     <li>It calculates the size of the subarray as {@code n} by subtracting
+     *     the left index from the right index {@code (n = right - left)}.</li>
+     *     <li>If the size of the subarray is <i>1</i> or less {@code (n <= 1)},
+     *     there is nothing to merge, so the method returns.</li>
+     *     <li>It calculates the midpoint of the subarray as {@code mid} by adding
+     *     the left index to half of the subarray size {@code (mid = left + (n / 2))}.</li>
+     *     <li>It creates two new arrays, {@code leftArray} and {@code rightArray},
+     *     using {@link java.util.Arrays#copyOfRange(Object[], int, int) Arrays.copyOfRange}
+     *     to copy the elements from the original array.
+     *     {@code leftArray} contains the elements from the {@code left} index up to,
+     *     but not including, the midpoint {@code mid},
+     *     and {@code rightArray} contains the elements from the midpoint {@code mid} up to the right index {@code right}.</li>
+     *     <li>It recursively calls the {@code weaveMerge} method twice:
+     *     once to merge the left portion of the subarray ({@code left} to {@code mid}),
+     *     and another to merge the right portion of the subarray ({@code mid} to {@code right}).
+     *     This is done to recursively divide the subarrays into smaller subarrays and perform the merging operation.</li>
+     *     <li>Finally, it calls the {@code merging} method to merge
+     *     the {@code leftArray} and {@code rightArray} back into the original {@code array},
+     *     resulting in a sorted subarray from {@code left} to {@code right}.</li>
+     * </ul>
+     * {@code weaveMerge} method effectively divides the array into smaller subarrays,
+     * recursively merges the subarrays, and then merges the smaller merged subarrays back into the original array.
+     * This process continues until the entire array is sorted.
+     * @param       array to be sorted.
+     * @param       left  index representing the start of the range to be sorted.
+     * @param       right index representing the end of the range to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.MergeInterface#merging(Comparable[], Comparable[], Comparable[], SortFunctional)
+     */
+    protected void weaveMerge(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+        int n = (right - left);
+        if (n <= 1) {
+            return;
+        }
+        int mid = (left + (n / 2));
+        Comparable[] leftArray = Arrays.copyOfRange(array, left, mid);
+        Comparable[] rightArray = Arrays.copyOfRange(array, mid, right);
+        weaveMerge(array, left, mid, functional);
+        weaveMerge(array, mid, right, functional);
+        merging(array, leftArray, rightArray, functional);
     }
 }
