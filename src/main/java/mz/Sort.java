@@ -34,57 +34,31 @@ public interface Sort<T extends Comparable> {
     int REV = 4;
 
     /**
-     * You can set the desired sort by specifying sort type.
-     * <ul>
-     *     <li><i>INCREASING</i> - Puts items in ascending order.</li>
-     *     <li><i>DECREASING</i> - Places the elements in descending order.</li>
-     *     <li><i>DO_NOT_CHANGE_IT</i> - Does not change the order of the elements!</li>
-     *     <li><i>REVERSE_ORDER</i> - It reverses the order of the elements, what was first becomes last.</li>
-     * </ul>
+     * Increasing method that the inherited classes have to create. its task is to arrange the elements of the array in ascending order.
+     * @param       array to be arranged.
      */
-    enum SortType {
-
-        /**
-         * Puts items in ascending order.
-         */
-        INCREASING,
-
-        /**
-         * Places the elements in descending order.
-         */
-        DECREASING,
-
-        /**
-         * Does not change the order of the elements!
-         */
-        DO_NOT_CHANGE_IT,
-
-        /**
-         * It reverses the order of the elements, what was first becomes last.
-         */
-        REVERSE_ORDER,
-    }
+    void sortArrayInc(T[] array);
 
     /**
-     * {@link java.lang.FunctionalInterface @FunctionalInterface}: This annotation indicates that the interface is a functional interface.
-     * A functional interface is an interface that has only one abstract method and is used for lambda expressions or method references.
-     * This line defines the interface CompareTo with a generic type parameter {@code T} that extends the {@link java.lang.Comparable Comparable} interface.
-     * The Comparable interface is a built-in interface in Java that represents objects that can be compared to each other.
-     * @param       <T> when entering it, you can set which class type the interface is used as.
+     * Decreasing method that inherited classes must create. its task is to arrange the elements of the array in decreasing order.
+     * @param       array to be arranged.
      */
-    @FunctionalInterface
-    interface SortFunctional<T extends Comparable> {
+    void sortArrayDec(T[] array);
 
-        /**
-         * Declares the abstract method {@code functionalCompareTo} within the interface.
-         * The method takes two parameters of type {@code T} (which extends {@link java.lang.Comparable Comparable})
-         * named {@code a} and {@code b} and returns a boolean value.
-         * This method is intended to compare two objects of type {@code T} and determine whether they satisfy a certain condition.
-         * @param       a first element to be examined.
-         * @param       b second element to be examined.
-         * @return      the returns a boolean value.
-         */
-        boolean functionalCompareTo(T a, T b);
+    /**
+     * A custom method that inherited classes must create. its task is to arrange
+     * the elements of the array in a custom order with the lambda function.
+     * @param       array to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    void sortArrayFun(T[] array, SortFunctional<T> functional);
+
+    /**
+     * Pre-prepared method, so that every inherited class does not have to prepare the method, it cannot be overridden. Its task is to reverse the order of the elements of the array.
+     * @param       array to be arranged.
+     */
+    default void sortArrayRev(T[] array) {
+        Collections.reverse(Arrays.asList(array));
     }
 
     /**
@@ -133,34 +107,6 @@ public interface Sort<T extends Comparable> {
     default public void sortArray(T[] array, SortFunctional<T> functional) {
         sortArrayFun(array, functional);
     }
-
-    /**
-     * Increasing method that the inherited classes have to create. its task is to arrange the elements of the array in ascending order.
-     * @param       array to be arranged.
-     */
-    void sortArrayInc(T[] array);
-
-    /**
-     * Decreasing method that inherited classes must create. its task is to arrange the elements of the array in decreasing order.
-     * @param       array to be arranged.
-     */
-    void sortArrayDec(T[] array);
-
-    /**
-     * Pre-prepared method, so that every inherited class does not have to prepare the method, it cannot be overridden. Its task is to reverse the order of the elements of the array.
-     * @param       array to be arranged.
-     */
-    default void sortArrayRev(T[] array) {
-        Collections.reverse(Arrays.asList(array));
-    }
-
-    /**
-     * A custom method that inherited classes must create. its task is to arrange
-     * the elements of the array in a custom order with the lambda function.
-     * @param       array to be arranged.
-     * @param       functional lambda expression for comparison.
-     */
-    void sortArrayFun(T[] array, SortFunctional<T> functional);
 
     /**
      * {@code functionalComparableToAddEquals} to the {@code SortFunctional} interface.
@@ -306,5 +252,115 @@ public interface Sort<T extends Comparable> {
         } else {
             return 5;
         }
+    }
+
+    /**
+     * {@link java.lang.FunctionalInterface @FunctionalInterface}: This annotation indicates that the interface is a functional interface.
+     * A functional interface is an interface that has only one abstract method and is used for lambda expressions or method references.
+     * This line defines the interface CompareTo with a generic type parameter {@code T} that extends the {@link java.lang.Comparable Comparable} interface.
+     * The Comparable interface is a built-in interface in Java that represents objects that can be compared to each other.
+     * @param       <T> when entering it, you can set which class type the interface is used as.
+     */
+    @FunctionalInterface
+    interface SortFunctional<T extends Comparable> {
+
+        /**
+         * Declares the abstract method {@code functionalCompareTo} within the interface.
+         * The method takes two parameters of type {@code T} (which extends {@link java.lang.Comparable Comparable})
+         * named {@code a} and {@code b} and returns a boolean value.
+         * This method is intended to compare two objects of type {@code T} and determine whether they satisfy a certain condition.
+         * @param       a first element to be examined.
+         * @param       b second element to be examined.
+         * @return      the returns a boolean value.
+         */
+        boolean functionalCompareTo(T a, T b);
+    }
+
+    /**
+     * Inner generic class {@code SortThread} that extends the {@link java.lang.Thread Thread} class.
+     * It has a type parameter {@code T} that extends the {@link java.lang.Comparable Comparable} interface,
+     * indicating that the elements in the array must be comparable to each other.
+     * @param       <T> when entering, we can set the class type to be used.
+     */
+    @SuppressWarnings("unchecked")
+    class SortThread<T extends Comparable>
+    extends Thread {
+
+        /**
+         * {@code Sort} is an inheriting class that can be achieved with polymorphism and its storage,
+         * which type of sorting should take place on the parallel threads.
+         */
+        private Sort sort = null;
+
+        /**
+         * array to be arranged.
+         */
+        private T[] array;
+
+        /**
+         * sorting is done according to 4 different integer type settings.
+         */
+        private int type;
+
+        /**
+         * These parameters are used to initialize the member variables of the class.
+         * The run method overrides the run method of the {@link java.lang.Thread Thread} class.
+         * Inside the {@link java.lang.Thread#run() run()} method,
+         * the {@code sortArray} method of the sort object is invoked,
+         * passing the array and type variables as arguments.
+         * This method is expected to perform the sorting operation on the array.
+         * @param       sort An instance of the {@code Sort} class,
+         *              which is used to perform the sorting operation.
+         * @param       array An array of type {@code T} that will be sorted.
+         * @param       type An integer value indicating the type of sorting to be performed.
+         * @see         mz.Sort#sortArray(Comparable[], int)
+         */
+        public SortThread(Sort sort, T[] array, int type) {
+            this.sort = sort;
+            this.array = array;
+            this.type = type;
+        }
+
+        /**
+         * {@inheritDoc}<br><br>
+         * After override, it sorts the specified array according to its type.
+         * @see     mz.Sort#sortArray(Comparable[], int)
+         */
+        @Override
+        public void run() {
+            sort.sortArray(array, type);
+        }
+    }
+
+    /**
+     * You can set the desired sort by specifying sort type.
+     * <ul>
+     *     <li><i>INCREASING</i> - Puts items in ascending order.</li>
+     *     <li><i>DECREASING</i> - Places the elements in descending order.</li>
+     *     <li><i>DO_NOT_CHANGE_IT</i> - Does not change the order of the elements!</li>
+     *     <li><i>REVERSE_ORDER</i> - It reverses the order of the elements, what was first becomes last.</li>
+     * </ul>
+     */
+    enum SortType {
+
+        /**
+         * Puts items in ascending order.
+         */
+        INCREASING,
+
+        /**
+         * Places the elements in descending order.
+         */
+        DECREASING,
+
+        /**
+         * Does not change the order of the elements!
+         */
+        DO_NOT_CHANGE_IT,
+
+        /**
+         * It reverses the order of the elements, what was first becomes last.
+         */
+        REVERSE_ORDER,
     }
 }
