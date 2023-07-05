@@ -4,7 +4,7 @@ package mz;
  * Weak Heap Sort construction uses a buffer that supports constant-time insertion.
  * A new element is inserted into the buffer as long as the buffer size is below a threshold.
  * Once the buffer is full, all the elements of the buffer are moved to the weak heap.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -38,6 +38,15 @@ extends Heap {
      * @see         mz.intro.IntroWeakHeap#IntroWeakHeap() IntroWeakHeap
      */
     public WeakHeap() {}
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new WeakHeap();
+    }
 
     /**
      * {@code heapifyInc} method. This method is likely a part of a heap-related algorithm or data structure implementation

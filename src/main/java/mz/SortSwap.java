@@ -3,7 +3,7 @@ package mz;
 /**
  * The inheritors of this interface arrange any data type that is T.
  * @param       <T> when entering it, you can set which class type the interface is used as.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")

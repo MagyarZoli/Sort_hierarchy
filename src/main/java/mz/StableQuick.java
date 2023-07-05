@@ -9,7 +9,7 @@ import java.util.List;
  * the relative order of elements with equal values during the sorting process.
  * In a standard QuickSort algorithm, the order of equal elements may change, making it an unstable sorting algorithm.
  * Stable QuickSort addresses this limitation by introducing additional steps to maintain stability.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -78,6 +78,15 @@ extends Quick {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         stableQuick(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new StableQuick();
     }
 
     /**

@@ -5,7 +5,7 @@ package mz;
  * It uses fewer comparisons in the worst case than the best previously known algorithms,
  * insertion sort and merge sort, it remains of theoretical interest in connection with
  * the problem of sorting with a minimum number of comparisons.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -79,6 +79,15 @@ implements InsertionInterface<Comparable>{
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         mergeInsertion(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new MergeInsertion();
     }
 
     /**

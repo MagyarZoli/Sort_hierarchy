@@ -4,7 +4,7 @@ package mz;
  * Comb Sort is a comparison-based sorting algorithm that is an improvement over Bubble Sort.
  * It works by repeatedly comparing and swapping elements with a specific gap value, gradually reducing the gap until it reaches 1,
  * at which point the algorithm performs a final pass similar to Bubble Sort.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -74,6 +74,15 @@ extends Cocktail {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         comb(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Comb();
     }
 
     /**

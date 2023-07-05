@@ -4,7 +4,7 @@ package mz;
  * Double Selection if an item is not a smallest item, it's possible to check to see if it's the largest item and if it is, move it to the end of the array.
  * This way we can achieve two goals at the same time and perform the job faster.
  * This kind of addition to the burst-selection sort makes it somewhat faster.
- * @since       1.0
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -70,6 +70,15 @@ extends Selection {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         doubleSelection(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new DoubleSelection();
     }
 
     /**

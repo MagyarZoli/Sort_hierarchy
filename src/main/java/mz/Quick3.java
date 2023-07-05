@@ -5,7 +5,7 @@ package mz;
  * partition the array around a pivot and recur for subarrays on the left and right of the pivot.
  * Simple Quick Sort, we fix only one 4 and recursively process remaining occurrences.
  * The idea of 3 way Quick Sort is to process all occurrences of the pivot
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -76,6 +76,15 @@ extends Quick {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         quick3(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Quick3();
     }
 
     /**

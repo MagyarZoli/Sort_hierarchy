@@ -4,7 +4,7 @@ package mz;
  * Cocktail Sort, also known as Cocktail Shaker Sort or Bidirectional Bubble Sort, is a variation of the Bubble Sort algorithm.
  * It works by repeatedly moving through the list in both directions, comparing adjacent elements and swapping them if they are in the wrong order.
  * This bidirectional movement helps to optimize the sorting process by sorting the largest and smallest elements simultaneously.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -74,6 +74,15 @@ extends Bubble {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         cocktail(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Cocktail();
     }
 
     /**

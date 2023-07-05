@@ -3,7 +3,7 @@ package mz;
 /**
  * Bubble Sort is a simple sorting algorithm that repeatedly compares adjacent elements and swaps them if they are in the wrong order.
  * It works by repeatedly "bubbling" the largest (or smallest) element to its correct position in each iteration.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -69,6 +69,15 @@ extends Selection {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         bubble(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Bubble();
     }
 
     /**

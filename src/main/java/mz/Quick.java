@@ -5,7 +5,7 @@ package mz;
  * It works by selecting a pivot element from the array and partitioning the other elements into two sub-arrays,
  * according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted,
  * and the sorted sub-arrays are combined to produce the final sorted array.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -76,5 +76,14 @@ implements QuickInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         quick(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Quick();
     }
 }

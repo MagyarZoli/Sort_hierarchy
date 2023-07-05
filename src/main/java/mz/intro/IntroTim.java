@@ -1,5 +1,6 @@
 package mz.intro;
 
+import mz.Sort;
 import mz.Tim;
 
 /**
@@ -10,7 +11,7 @@ import mz.Tim;
  * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
  * Another Sort is Tim Sort.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -86,6 +87,15 @@ implements Intro<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         intro(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new IntroTim();
     }
 
     /**

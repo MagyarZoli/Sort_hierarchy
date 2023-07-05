@@ -5,7 +5,7 @@ package mz;
  * two pivot values to partition the array instead of one.
  * This modification improves the efficiency of the sorting algorithm,
  * especially when dealing with arrays that contain many duplicate elements.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -80,6 +80,15 @@ extends Quick {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         dualPivotQuick(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new DualPivotQuick();
     }
 
     /**

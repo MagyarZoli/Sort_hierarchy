@@ -6,7 +6,7 @@ package mz;
  * Each step in the sift operation of a ternary heap requires three comparisons and one swap,
  * whereas in a binary heap two comparisons and one swap are required.
  * The ternary heap can do two steps in less time than the binary heap requires for three steps.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -48,6 +48,15 @@ extends Heap {
      * @see         mz.intro.IntroTernaryHeap#IntroTernaryHeap() IntroTernaryHeap
      */
     public TernaryHeap() {}
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new TernaryHeap();
+    }
 
     /**
      * {@code heapSplitInc}. This method is likely a part of a heap-related algorithm or data structure implementation
