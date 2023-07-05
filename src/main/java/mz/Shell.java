@@ -4,7 +4,7 @@ package mz;
  * Shell Sort is an efficient sorting algorithm that is an extension of Insertion Sort.
  * It addresses one of the limitations of Insertion Sort,
  * which is the excessive shifting of elements when dealing with small elements towards the end of the array.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -73,6 +73,15 @@ extends Insertion {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         shell(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Shell();
     }
 
     /**

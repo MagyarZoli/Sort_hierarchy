@@ -3,7 +3,7 @@ package mz;
 /**
  * Tim Sort is a hybrid sorting algorithm that combines the strengths of Merge Sort and Insertion Sort to achieve efficient and stable sorting.
  * The default sorting algorithm in Java's {@link java.util.Arrays#sort(Object[]) Arrays.sort()} method.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -81,6 +81,15 @@ implements InsertionInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         tim(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Tim();
     }
 
     /**

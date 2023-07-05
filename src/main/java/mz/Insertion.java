@@ -4,7 +4,7 @@ package mz;
  * Insertion Sort is a simple sorting algorithm that builds the final sorted array one element at a time.
  * It works by dividing the array into a sorted portion and an unsorted portion. The algorithm iterates through
  * the unsorted portion and "inserts" each element into its correct position in the sorted portion.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -69,5 +69,14 @@ implements InsertionInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         insertion(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Insertion();
     }
 }

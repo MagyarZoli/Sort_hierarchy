@@ -4,7 +4,7 @@ package mz;
  * Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure to sort elements.
  * It works by constructing a heap from the input array and repeatedly extracting
  * the maximum (or minimum) element from the heap and placing it at the end of the sorted portion of the array.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -78,5 +78,14 @@ implements HeapInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         heap(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Heap();
     }
 }

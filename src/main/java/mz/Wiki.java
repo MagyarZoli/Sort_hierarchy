@@ -4,7 +4,7 @@ package mz;
  * Wiki Sort, also known as Block Merge Sort, is an efficient comparison-based sorting algorithm designed to improve upon the performance.
  * Wiki Sort is a stable sorting algorithm, meaning that it preserves the relative order of elements with equal values.
  * It achieves a time complexity of <em>O(n log(n))</em> in the worst case.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -79,6 +79,15 @@ implements InsertionInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         wiki(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Wiki();
     }
 
     /**

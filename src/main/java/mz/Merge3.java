@@ -4,7 +4,7 @@ package mz;
  * Merge3 Sort the sorting process is divided into three parts and performed incrementally.
  * The idea behind this approach is to split the input array into three roughly equal parts and recursively sort each part separately.
  * Then, the sorted parts are merged together to obtain the final sorted array.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -64,6 +64,15 @@ extends Merge {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         merge3(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Merge3();
     }
 
     /**

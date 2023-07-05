@@ -4,7 +4,7 @@ package mz;
  * Merge In Place Sort is a variant of the merge sort algorithm that performs the sorting operation directly on the input array,
  * without using any additional arrays for merging.
  * It achieves this by carefully manipulating the elements within the original array during the merging process.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -69,6 +69,15 @@ extends Merge {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         merge(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new MergeInPlace();
     }
 
     /**

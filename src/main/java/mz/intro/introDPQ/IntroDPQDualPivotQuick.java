@@ -1,5 +1,6 @@
 package mz.intro.introDPQ;
 
+import mz.Sort;
 import mz.intro.IntroDualPivotQuick;
 
 /**
@@ -11,7 +12,7 @@ import mz.intro.IntroDualPivotQuick;
  * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, Intro switches to Dual Pivot Quick Sort, which has good performance for small input sizes.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -60,4 +61,13 @@ implements IntroDPQ<Comparable> {
      * Stability:               <b>No</b>
      */
     public IntroDPQDualPivotQuick() {}
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new IntroDPQDualPivotQuick();
+    }
 }

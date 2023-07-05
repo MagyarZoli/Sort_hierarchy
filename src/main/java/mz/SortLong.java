@@ -2,21 +2,11 @@ package mz;
 
 /**
  * The inheritors of this abstract class arrange any data type that is Long.
- * @since       1.0
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 public abstract class SortLong
 implements Sort<Long> {
-
-    /**
-     * SortLong abstract class modifies the input type.
-     * @param       array to be arranged.
-     * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types. Order can be specified here, which row arrangement you want to use.
-     */
-    @Override
-    public void sortArray(Long[] array, SortType sequence) {
-        Sort.super.sortArray(array, sequence);
-    }
 
     /**
      * Iterates through the array elements and selects the largest/last element.

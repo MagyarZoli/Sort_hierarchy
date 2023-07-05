@@ -4,7 +4,7 @@ package mz;
  * Bogo sort is a highly inefficient and random sorting algorithm.
  * It works by repeatedly shuffling the elements of the array randomly and checking if the array is sorted.
  * If it's not sorted, it repeats the process until the elements happen to end up in the correct order.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -77,6 +77,15 @@ extends Bubble {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         bogo(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Bogo();
     }
 
     /**

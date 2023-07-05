@@ -5,7 +5,7 @@ package mz;
  * a sorted portion and an unsorted portion. The algorithm repeatedly selects the smallest (or largest)
  * element from the unsorted portion and swaps it with the element at the beginning of the unsorted portion,
  * thereby expanding the sorted portion. This process continues until the entire array becomes sorted.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -71,5 +71,14 @@ implements SelectionInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         selection(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Selection();
     }
 }

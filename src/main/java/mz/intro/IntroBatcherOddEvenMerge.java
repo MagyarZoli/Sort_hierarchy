@@ -1,6 +1,7 @@
 package mz.intro;
 
 import mz.BatcherOddEvenMerge;
+import mz.Sort;
 
 /**
  * Intro Sort is a hybrid sorting algorithm that combines the strengths of Quick Sort and Batcher's Odd-even Merge Sort.
@@ -10,7 +11,7 @@ import mz.BatcherOddEvenMerge;
  * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
  * Another Sort is Batcher's Odd-even Merge Sort.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -85,6 +86,15 @@ implements Intro<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         intro(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new IntroBatcherOddEvenMerge();
     }
 
     /**

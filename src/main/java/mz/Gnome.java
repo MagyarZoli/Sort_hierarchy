@@ -4,7 +4,7 @@ package mz;
  * Gnome Sort, also known as Stupid Sort, is a simple sorting algorithm that works
  * by repeatedly comparing adjacent elements and swapping them if they are in the wrong order.
  * It gets its name from the way it "stumbles" through the list, similar to a gnome moving around.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -71,6 +71,15 @@ extends Bubble {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         gnome(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Gnome();
     }
 
     /**

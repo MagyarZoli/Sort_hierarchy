@@ -6,7 +6,7 @@ import java.util.Random;
  * Bozo sort is a highly inefficient and random sorting algorithm.
  * It works by repeatedly shuffling the elements of the array randomly and checking if the array is sorted.
  * If it's not sorted, it repeats the process until the elements happen to end up in the correct order.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -51,6 +51,15 @@ extends Bogo {
      * @see         mz.intro.IntroBozo#IntroBozo() IntroBozo
      */
     public Bozo() {}
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new Bozo();
+    }
 
     /**
      * The {@code bogoInc} method takes an array of {@link java.lang.Comparable Comparable} objects.

@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * MergeInterface, containing the methods of Merge Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")

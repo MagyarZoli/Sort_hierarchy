@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Odd-even Merge Sort algorithm is a parallel sorting algorithm that is based on the concept of odd-even transposition sorting.
  * It works by repeatedly comparing and swapping adjacent elements in pairs until the entire array is sorted.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -76,6 +76,15 @@ implements MergeInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         oddEvenMerge(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new OddEvenMerge();
     }
 
     /**

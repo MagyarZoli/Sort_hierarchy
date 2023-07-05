@@ -3,7 +3,7 @@ package mz;
 /**
  * Smooth Heap Sort it is another version of heapsort that is designed to minimize the number of comparisons performed during the sort.
  * Like heapsort, smooth sort sorts an array by building a heap and repeatedly extracting the maximum element.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -74,6 +74,15 @@ extends Heap {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         smooth(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new SmoothHeap();
     }
 
     /**

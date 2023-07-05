@@ -7,7 +7,7 @@ import java.util.Arrays;
  * In Weave Merge Sort, instead of creating a new merged array, the merging process is performed directly on the original array.
  * This is achieved by using additional subarrays,
  * left array and right array, to store the elements from the original array temporarily.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -78,6 +78,15 @@ extends Merge {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         weaveMerge(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return      selected {@code Sort} class initialized.
+     */
+    @Override
+    public Sort sortThreadClass() {
+        return new WeaveMerge();
     }
 
     /**

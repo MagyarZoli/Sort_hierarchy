@@ -12,7 +12,7 @@ import mz.intro.Intro;
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, IntroSort switches to Insertion Sort, which has good performance for small input sizes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.1
+ * @since       1.2
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
