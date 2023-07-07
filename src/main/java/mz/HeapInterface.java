@@ -3,12 +3,12 @@ package mz;
 /**
  * HeapInterface, containing the methods of Heap Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public interface HeapInterface<T extends Comparable>
-extends Sort<T>, SortSwap<T> {
+extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapInc}. This method is likely a part of a heap-related algorithm or data structure implementation

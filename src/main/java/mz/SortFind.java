@@ -4,12 +4,12 @@ package mz;
  * SortFind offered a pre-implemented methodology that can be added and modified outside the hierarchical system.
  * @param       <T> setting of a type based on which the elements can be sorted.
  *              It is not mandatory to specify, additional pre-written subclasses specify the type.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public interface SortFind<T extends Comparable>
-extends Sort<T> {
+extends Sorter<T> {
 
     /**
      * {@code findMax} is a generic method for finding the maximum element in an array of type {@code T}.

@@ -3,12 +3,12 @@ package mz;
 /**
  * SelectionInterface, containing the methods of Selection Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public interface SelectionInterface<T extends Comparable>
-extends Sort<T>, SortSwap<T>, SortFind<T> {
+extends Sorter<T>, SortSwap<T>, SortFind<T> {
 
     /**
      * {@code selectionInc} that performs the Selection Sort algorithm on an array of Comparable objects.

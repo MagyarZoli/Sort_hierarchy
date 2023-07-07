@@ -3,12 +3,12 @@ package mz;
 /**
  * InsertionInterface, containing the methods of Insertion Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public interface InsertionInterface<T extends Comparable>
-extends Sort<T> {
+extends Sorter<T> {
 
     /**
      * {@code insertionInc} that performs the Insertion Sort algorithm on a portion of an array of Comparable objects.

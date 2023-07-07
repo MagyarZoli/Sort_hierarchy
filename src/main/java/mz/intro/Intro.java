@@ -2,7 +2,7 @@ package mz.intro;
 
 import mz.InsertionInterface;
 import mz.QuickInterface;
-import mz.Sort;
+import mz.Sorter;
 
 /**
  * Intro Sort is a hybrid sorting algorithm that combines the strengths of Quick Sort and Insertion Sort.
@@ -14,12 +14,12 @@ import mz.Sort;
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, IntroSort switches to Insertion Sort, which has good performance for small input sizes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public interface Intro<T extends Comparable>
-extends Sort<T>, InsertionInterface<T>, QuickInterface<T> {
+extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
 
     /**
      * Size of each intro

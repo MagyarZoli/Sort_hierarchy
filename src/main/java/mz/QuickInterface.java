@@ -3,12 +3,12 @@ package mz;
 /**
  * QuickInterface, containing the methods of Quick Sort to implement other classes.
  * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public interface QuickInterface<T extends Comparable>
-extends Sort<T>, SortSwap<T> {
+extends Sorter<T>, SortSwap<T> {
 
     /**
      * Implementation of a quick sort algorithm for sorting the array of comparable objects in ascending order.
