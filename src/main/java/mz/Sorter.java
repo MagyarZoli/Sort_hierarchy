@@ -9,4 +9,4 @@ package mz;
  */
 @SuppressWarnings("rawtypes")
 public interface Sorter<T extends Comparable>
-extends SortArray<T> { }
+extends SortArray<T>, SortList<T> { }
