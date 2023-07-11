@@ -119,7 +119,7 @@ extends Sorter<T> {
      *     <li> If the comparison result is {@code false}, indicating that the elements should not be swapped, the method simply returns {@code false}.</li>
      * </ul>
      * {@code T} in {@code CompareTo<T>} represents a generic type, which means it can be replaced with any specific type when invoking the {@code isSwap} method.
-     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable) 
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     default boolean isSwap(T[] array, int i, int j, SortFunctional<T> function){
@@ -186,8 +186,8 @@ extends Sorter<T> {
      * Swaps two elements in the list.
      * When implemented in other classes, they do not have to create a predefined method, overwriting is possible.
      * <pre>
-     * default void swap(List<T> list, int a, int b) {
-     *     T select = list.get(a);
+     * default <L extends T> void swap(List<L> list, int a, int b) {
+     *     L select = list.get(a);
      *     list.set(a, list.get(b));
      *     list.set(b, select);
      * }
@@ -196,8 +196,8 @@ extends Sorter<T> {
      * @param       a element whose value will be changed to the value of element b.
      * @param       b element whose value will be changed to the value of element a.
      */
-    default void swap(List<T> list, int a, int b) {
-        T select = list.get(a);
+    default <L extends T> void swap(List<L> list, int a, int b) {
+        L select = list.get(a);
         list.set(a, list.get(b));
         list.set(b, select);
     }
@@ -230,7 +230,7 @@ extends Sorter<T> {
      * @see         mz.SortSwap#swap(List, int, int)
      */
     @SuppressWarnings("unchecked")
-    default boolean isSwapInc(List<T> list, int i, int j){
+    default <L extends T> boolean isSwapInc(List<L> list, int i, int j){
         if (list.get(i).compareTo(list.get(i + j)) > 0) {
             swap(list, i, (i + j));
             return true;
@@ -266,8 +266,7 @@ extends Sorter<T> {
      * @see         mz.SortSwap#swap(List, int, int)
      */
     @SuppressWarnings("unchecked")
-    default boolean isSwapDec(List<T> list, int i, int j){
-        boolean swapped = false;
+    default <L extends T> boolean isSwapDec(List<L> list, int i, int j){
         if (list.get(i).compareTo(list.get(i + j)) < 0) {
             swap(list, i, (i + j));
             return true;
@@ -293,7 +292,7 @@ extends Sorter<T> {
      * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
      * @see         mz.SortSwap#swap(List, int, int)
      */
-    default boolean isSwap(List<T> list, int i, int j, SortFunctional<T> function){
+    default <L extends T> boolean isSwap(List<L> list, int i, int j, SortFunctional<T> function){
         if (function.functionalCompareTo(list.get(i), list.get(i + j))) {
             swap(list, i, (i + j));
             return true;
@@ -318,9 +317,9 @@ extends Sorter<T> {
      * It does this by swapping elements from the beginning and end of the range, gradually moving towards the middle until the entire range is flipped.
      * @param       list in which the two selected index are flip.
      * @param       to is the index by which to finish the analyzed.
-     * @see         mz.SortSwap#swap(List, int, int)
+     * @see         mz.SortSwap#swap(List, int, int) 
      */
-    default void flip(List<T> list, int to) {
+    default <L extends T> void flip(List<L> list, int to) {
         int from = 0;
         while (from < to) {
             swap(list, from++, to--);
@@ -345,9 +344,9 @@ extends Sorter<T> {
      * @param       list in which the two selected index are flip.
      * @param       from is the index from which the analyzed should start.
      * @param       to is the index by which to finish the analyzed.
-     * @see         mz.SortSwap#swap(List, int, int)
+     * @see         mz.SortSwap#swap(List, int, int) 
      */
-    default void flip(List<T> list, int from, int to) {
+    default <L extends T> void flip(List<L> list, int from, int to) {
         while (from < to) {
             swap(list, from++, to--);
         }
