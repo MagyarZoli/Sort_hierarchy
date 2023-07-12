@@ -5,12 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * The part of the hierarchy that refers to Arrays, through which all other interfaces, abstracts, supers, subclasses are accessible with polymorphism.
- * @param       <T> setting of a type based on which the elements can be sorted.
- * @since       1.3
- * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
- */
 @SuppressWarnings("rawtypes")
 public interface SortArray<T extends Comparable>
 extends Sort<T> {
@@ -33,7 +27,7 @@ extends Sort<T> {
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
      */
-    void sortArrayFun(T[] array, SortFunctional<T> functional);
+    void sortArrayFun(T[] array, Sort.SortFunctional<T> functional);
 
     /**
      * Pre-prepared method, so that every inherited class does not have to prepare the method, it cannot be overridden.
@@ -68,7 +62,7 @@ extends Sort<T> {
      * @param       array to be arranged.
      * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types.
      *              Order can be specified here, which row arrangement you want to use.
-     * @see         mz.Sort.SortType
+     * @see         Sort.SortType
      */
     default void sortArray(T[] array, Sort.SortType sequence) {
         switch (sequence) {
@@ -86,9 +80,9 @@ extends Sort<T> {
      * It then uses a switch statement to determine the value of functional and perform the corresponding sorting operation.
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
-     * @see         mz.Sort.SortFunctional
+     * @see         Sort.SortFunctional
      */
-    default void sortArray(T[] array, SortFunctional<T> functional) {
+    default void sortArray(T[] array, Sort.SortFunctional<T> functional) {
         sortArrayFun(array, functional);
     }
 
@@ -117,7 +111,7 @@ extends Sort<T> {
      * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types.
      *              Order can be specified here, which row arrangement you want to use.
      * @param       thread on how many threads to run the queue arrangement.
-     * @see         mz.Sort.SortType
+     * @see         Sort.SortType
      */
     default void sortArray(T[] array, Sort.SortType sequence, int thread) {
         switch (sequence) {
@@ -135,9 +129,9 @@ extends Sort<T> {
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
      * @param       thread on how many threads to run the queue arrangement.
-     * @see         mz.Sort.SortFunctional
+     * @see         Sort.SortFunctional
      */
-    default void sortArray(T[] array, SortFunctional<T> functional, int thread) {
+    default void sortArray(T[] array, Sort.SortFunctional<T> functional, int thread) {
         threadArray(array, functional, thread);
     }
 
@@ -152,9 +146,6 @@ extends Sort<T> {
      *     The declaration and assignment are combined into one line.</li>
      *     <li>The {@code if} statement now checks if {@code i} is equal to {@code (thread - 1)}
      *     to handle the last portion of the array correctly.</li>
-     *     <li>The {@link java.lang.Runnable Runnable} interface is not implemented explicitly.
-     *     Instead, an anonymous inner class extending {@link java.lang.Thread Thread} is used to override the run method.
-     *     This allows the sorting operation to be performed within each thread.</li>
      *     <li>The {@code threadsStart} method is called to start the execution of the sorting threads.</li>
      *     <li>The {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
      *     method is used to copy the sorted portions of the array from the {@code newArray}
@@ -167,34 +158,25 @@ extends Sort<T> {
      * @param       array The array to be sorted.
      * @param       type An integer representing the type of sorting to be performed.
      * @param       thread on how many threads to run the queue arrangement.
-     * @see         mz.Sort#threadsStart(List)
-     * @see         mz.Sort#newArray(List, int, int, int)
+     * @see         Sort#threadsStart(List)
+     * @see         Sort#newArray(List, int, int, int)
      * @see         mz.SortArray#sortArray(Comparable[], int)
      */
     default void threadArray(T[] array, int type, int thread) {
-        int n = array.length,
-                length = (n / thread),
-                correction = (n - (length * thread));
+        int n = array.length;
+        int length = (n / thread);
+        int correction = (n % thread);
         List<T[]> listArray = new ArrayList<>();
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < thread; i++) {
-            T[] subArray = null;
-            if (i == (thread - 1)) {
-                subArray = Arrays.copyOfRange(array, (length * i), ((length * (i + 1)) + correction));
-            } else {
-                subArray = Arrays.copyOfRange(array, (length * i), (length * (i + 1)));
-            }
-            T[] finalSubArray = subArray;
-            listArray.add(finalSubArray);
-            threads.add(new Thread() {
-                @Override
-                public void run() {
-                    sortArray(finalSubArray, type);
-                }
-            });
+            int startIndex = length * i;
+            int endIndex = startIndex + length + (i == thread - 1 ? correction : 0);
+            T[] subArray = Arrays.copyOfRange(array, startIndex, endIndex);
+            listArray.add(subArray);
+            threads.add(new Thread(() -> sortArray(subArray, type)));
         }
         threadsStart(threads);
-        System.arraycopy(newArray(listArray, n, length, correction), 0, array, 0, array.length);
+        System.arraycopy(newArray(listArray, n, length, correction), 0, array, 0, n);
         sortArray(array, type);
     }
 
@@ -209,9 +191,6 @@ extends Sort<T> {
      *     The declaration and assignment are combined into one line.</li>
      *     <li>The {@code if} statement now checks if {@code i} is equal to {@code (thread - 1)}
      *     to handle the last portion of the array correctly.</li>
-     *     <li>The {@link java.lang.Runnable Runnable} interface is not implemented explicitly.
-     *     Instead, an anonymous inner class extending {@link java.lang.Thread Thread} is used to override the run method.
-     *     This allows the sorting operation to be performed within each thread.</li>
      *     <li>The {@code threadsStart} method is called to start the execution of the sorting threads.</li>
      *     <li>The {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
      *     method is used to copy the sorted portions of the array from the {@code newArray}
@@ -225,31 +204,22 @@ extends Sort<T> {
      * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types.
      *              Order can be specified here, which row arrangement you want to use.
      * @param       thread on how many threads to run the queue arrangement.
-     * @see         mz.Sort#threadsStart(List)
-     * @see         mz.Sort#newArray(List, int, int, int)
+     * @see         Sort#threadsStart(List)
+     * @see         Sort#newArray(List, int, int, int)
      * @see         mz.SortArray#sortArray(Comparable[], SortType)
      */
     default void threadArray(T[] array, SortType sequence, int thread) {
-        int n = array.length,
-                length = (n / thread),
-                correction = (n - (length * thread));
+        int n = array.length;
+        int length = (n / thread);
+        int correction = (n % thread);
         List<T[]> listArray = new ArrayList<>();
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < thread; i++) {
-            T[] subArray = null;
-            if (i == (thread - 1)) {
-                subArray = Arrays.copyOfRange(array, (length * i), ((length * (i + 1)) + correction));
-            } else {
-                subArray = Arrays.copyOfRange(array, (length * i), (length * (i + 1)));
-            }
-            T[] finalSubArray = subArray;
-            listArray.add(finalSubArray);
-            threads.add(new Thread() {
-                @Override
-                public void run() {
-                    sortArray(finalSubArray, sequence);
-                }
-            });
+            int startIndex = length * i;
+            int endIndex = startIndex + length + (i == thread - 1 ? correction : 0);
+            T[] subArray = Arrays.copyOfRange(array, startIndex, endIndex);
+            listArray.add(subArray);
+            threads.add(new Thread(() -> sortArray(subArray, sequence)));
         }
         threadsStart(threads);
         System.arraycopy(newArray(listArray, n, length, correction), 0, array, 0, array.length);
@@ -267,9 +237,6 @@ extends Sort<T> {
      *     The declaration and assignment are combined into one line.</li>
      *     <li>The {@code if} statement now checks if {@code i} is equal to {@code (thread - 1)}
      *     to handle the last portion of the array correctly.</li>
-     *     <li>The {@link java.lang.Runnable Runnable} interface is not implemented explicitly.
-     *     Instead, an anonymous inner class extending {@link java.lang.Thread Thread} is used to override the run method.
-     *     This allows the sorting operation to be performed within each thread.</li>
      *     <li>The {@code threadsStart} method is called to start the execution of the sorting threads.</li>
      *     <li>The {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
      *     method is used to copy the sorted portions of the array from the {@code newArray}
@@ -282,31 +249,22 @@ extends Sort<T> {
      * @param       array The array to be sorted.
      * @param       functional lambda expression for comparison.
      * @param       thread on how many threads to run the queue arrangement.
-     * @see         mz.Sort#threadsStart(List)
-     * @see         mz.Sort#newArray(List, int, int, int)
+     * @see         Sort#threadsStart(List)
+     * @see         Sort#newArray(List, int, int, int)
      * @see         mz.SortArray#sortArray(Comparable[], SortFunctional)
      */
     default void threadArray(T[] array, SortFunctional<T> functional, int thread) {
-        int n = array.length,
-                length = (n / thread),
-                correction = (n - (length * thread));
+        int n = array.length;
+        int length = (n / thread);
+        int correction = (n % thread);
         List<T[]> listArray = new ArrayList<>();
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < thread; i++) {
-            T[] subArray = null;
-            if (i == (thread - 1)) {
-                subArray = Arrays.copyOfRange(array, (length * i), ((length * (i + 1)) + correction));
-            } else {
-                subArray = Arrays.copyOfRange(array, (length * i), (length * (i + 1)));
-            }
-            T[] finalSubArray = subArray;
-            listArray.add(finalSubArray);
-            threads.add(new Thread() {
-                @Override
-                public void run() {
-                    sortArray(finalSubArray, functional);
-                }
-            });
+            int startIndex = length * i;
+            int endIndex = startIndex + length + (i == thread - 1 ? correction : 0);
+            T[] subArray = Arrays.copyOfRange(array, startIndex, endIndex);
+            listArray.add(subArray);
+            threads.add(new Thread(() -> sortArray(subArray, functional)));
         }
         threadsStart(threads);
         System.arraycopy(newArray(listArray, n, length, correction), 0, array, 0, array.length);
@@ -329,44 +287,115 @@ extends Sort<T> {
      *     The {@code subArray} is added to the {@code listArray},
      *     and a new {@code Thread} object is created with
      *     the {@code subArray} as a parameter and added to the {@code threads} list.</li>
-     *     <li>The {@link java.lang.Runnable Runnable} interface is not implemented explicitly.
-     *     Instead, an anonymous inner class extending {@link java.lang.Thread Thread} is used to override the run method.
-     *     This allows the sorting operation to be performed within each thread.</li>
      *     <li>After the loop, the {@code threadsStart} method is called to start
      *     the execution of the threads in the {@code threads} list.</li>
      *     <li>Finally, the {@code newArrayRev} method is called to create a reversed version of the {@code listArray},
      *     and the elements from the reversed {@code listArray} are copied back into the original {@code array} using
      *     {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}.</li>
      * </ul>
-     * {@code threadArrayRev} divides the array {@code array} in a specified way and based on the number of threads,
+     * {@code threadArray} divides the array {@code array} in a specified way and based on the number of threads,
      * then starting the threads simultaneously, the sub-arrays are arranged in reverse order
      * at the end, the subarrays are added, creating the ordered array.
      * @param       array The array to be reversed.
      * @param       thread on how many threads to run the queue arrangement.
      */
     default void threadArrayRev(T[] array, int thread) {
-        int n = array.length,
-                length = (n / thread),
-                correction = (n - (length * thread));
+        int n = array.length;
+        int length = (n / thread);
+        int correction = (n % thread);
         List<T[]> listArray = new ArrayList<>();
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < thread; i++) {
-            T[] subArray = null;
-            if (i == (thread - 1)) {
-                subArray = Arrays.copyOfRange(array, (length * i), ((length * (i + 1)) + correction));
-            } else {
-                subArray = Arrays.copyOfRange(array, (length * i), (length * (i + 1)));
-            }
-            T[] finalSubArray = subArray;
-            listArray.add(finalSubArray);
-            threads.add(new Thread() {
-                @Override
-                public void run() {
-                    sortArrayRev(finalSubArray);
-                }
-            });
+            int startIndex = length * i;
+            int endIndex = startIndex + length + (i == thread - 1 ? correction : 0);
+            T[] subArray = Arrays.copyOfRange(array, startIndex, endIndex);
+            listArray.add(subArray);
+            threads.add(new Thread(() -> sortArrayRev(subArray)));
         }
         threadsStart(threads);
         System.arraycopy(newArrayRev(listArray, n, length, correction), 0, array, 0, array.length);
+    }
+
+    /**
+     * {@code newArray} with a generic type parameter {@code T}.
+     * This method is part of an interface that implements the interface.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")}
+     *     annotation is used to suppress compiler warnings related to
+     *     the unchecked cast when converting {@link java.lang.Comparable Comparable[]} to {@code T[]}.
+     *     This is necessary because arrays of generic types cannot
+     *     be directly created or casted due to type erasure in Java.</li>
+     *     <li>Within the method, a variable {@code j} is initialized to <i>0</i>.
+     *     Then, a new array {@code newArray} of type {@code Comparable[]} is created with a length of {@code n}.
+     *     It's important to note that the use of {@code Comparable[]} instead of {@code T[]} indicates that
+     *     the code assumes that {@code T} is a type that extends the {@code Comparable} interface.</li>
+     *     <li>The method then iterates over the {@code comparables} arrays in the {@code list}.
+     *     For each {@code comparables} array, it checks if its length is equal to the expected length.
+     *     If they are not equal, the {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
+     *     method is used to copy the elements from the {@code comparables} array into the {@code newArray} at
+     *     the correct index determined by {@code ((comparables.length - correction) * j)}.
+     *     If they are equal, the elements are copied at the index {@code comparables.length * j}.</li>
+     *     <li>After the loop, the {@code newArray} is cast to type {@code T[]} and returned.</li>
+     * </ul>
+     * @param       list A {@link java.util.List List} of arrays of type T[].
+     * @param       n An integer representing the desired length of the new array.
+     * @param       length An integer representing the expected length of the arrays in the {@code list}.
+     * @param       correction An integer used to calculate the correct index when the length of an array in the {@code list}.
+     * @return      the {@code newArray} is cast to type {@code T[]}.
+     */
+    @SuppressWarnings("unchecked")
+    default T[] newArray(List<T[]> list, int n, int length, int correction) {
+        int j = 0;
+        Comparable[] newArray = new Comparable[n];
+        for (Comparable[] comparables : list) {
+            if (comparables.length != length) {
+                System.arraycopy(comparables, 0, newArray, ((comparables.length - correction) * j), comparables.length);
+            } else {
+                System.arraycopy(comparables, 0, newArray, (comparables.length * j), comparables.length);
+            }
+            j++;
+        }
+        return (T[]) newArray;
+    }
+
+    /**
+     * {@code newArrayRev} with a generic type parameter {@code T}.
+     * This method appears to be another version of the {@code newArray} method,
+     * but with the elements copied in reverse order.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")}
+     *     annotation is used to suppress compiler warnings related to
+     *     the unchecked cast when converting {@link java.lang.Comparable Comparable[]} to {@code T[]}.
+     *     This is necessary because arrays of generic types cannot
+     *     be directly created or casted due to type erasure in Java.</li>
+     *     <li>Within the method, a new array {@code newArray} of type {@code Comparable[]} is created with a length of {@code n}.</li>
+     *     <li>The method then enters a loop starting from {@code (n - 1)} and going down to <i>0</i>,
+     *     decrementing {@code j} by <i>1</i> in each iteration.
+     *     This loop is used to iterate through the {@code list} in reverse order.</li>
+     *     <li>For each iteration, it checks if the length of
+     *     the array at index {@code j} in the {@code list} is equal to the expected {@code length}.
+     *     If they are not equal, the {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
+     *     method is used to copy the elements from the array at index {@code j} into the {@code newArray} at
+     *     the correct index determined by {@code ((list.get(j).length - correction) * j)}.
+     *     If they are equal, the elements are copied at the index {@code (list.get(j).length * j)}.</li>
+     *     <li>After the loop, the {@code newArray} is cast to type {@code T[]} and returned.</li>
+     * </ul>
+     * @param       list A {@link java.util.List List} of arrays of type T[].
+     * @param       n An integer representing the desired length of the new array.
+     * @param       length An integer representing the expected length of the arrays in the {@code list}.
+     * @param       correction An integer used to calculate the correct index when the length of an array in the {@code list}.
+     * @return      the {@code newArray} is cast to type {@code T[]}.
+     */
+    @SuppressWarnings("unchecked")
+    default T[] newArrayRev(List<T[]> list, int n, int length, int correction) {
+        Comparable[] newArray = new Comparable[n];
+        for (int j = (n - 1); j >= 0; j--) {
+            if (list.get(j).length != length) {
+                System.arraycopy(list.get(j), 0, newArray, ((list.get(j).length - correction) * j), list.get(j).length);
+            } else {
+                System.arraycopy(list.get(j), 0, newArray, (list.get(j).length * j), list.get(j).length);
+            }
+        }
+        return (T[]) newArray;
     }
 }

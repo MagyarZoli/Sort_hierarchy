@@ -294,9 +294,9 @@ extends Sorter<T> {
      * @param       list to be arranged.
      */
     @SuppressWarnings("unchecked")
-    default void insertionInc(List<T> list) {
+    default <L extends T> void insertionInc(List<L> list) {
         for (int i = 0; i < list.size(); i++) {
-            T select = list.get(i);
+            L select = list.get(i);
             int j = i;
             while ((j >= 1) && (list.get(j - 1).compareTo(select) > 0)) {
                 list.set(j, list.get(j - 1));
@@ -338,9 +338,9 @@ extends Sorter<T> {
      * @param       list to be arranged.
      */
     @SuppressWarnings("unchecked")
-    default void insertionDec(List<T> list) {
+    default <L extends T> void insertionDec(List<L> list) {
         for (int i = 0; i < list.size(); i++) {
-            T select = list.get(i);
+            L select = list.get(i);
             int j = i;
             while ((j >= 1) && (list.get(j - 1).compareTo(select) < 0)) {
                 list.set(j, list.get(j - 1));
@@ -371,9 +371,9 @@ extends Sorter<T> {
      * @param       functional lambda expression for comparison.
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
-    default void insertion(List<T> list, SortFunctional<T> functional) {
+    default <L extends T> void insertion(List<L> list, SortFunctional<T> functional) {
         for (int i = 0; i < list.size(); i++) {
-            T select = list.get(i);
+            L select = list.get(i);
             int j = i;
             while ((j >= 1) && (functional.functionalCompareTo(list.get(j - 1), select))) {
                 list.set(j, list.get(j - 1));
@@ -417,9 +417,9 @@ extends Sorter<T> {
      * @param       to the element to be analyzed.
      */
     @SuppressWarnings("unchecked")
-    default void insertionInc(List<T> list, int from, int to) {
+    default <L extends T> void insertionInc(List<L> list, int from, int to) {
         for (int i = from; i <= to; i++) {
-            T select = list.get(i);
+            L select = list.get(i);
             int j = i;
             while ((j > from) && ((list.get(j - 1) != null) && (list.get(j - 1).compareTo(select) > 0))) {
                 list.set(j, list.get(j - 1));
@@ -463,9 +463,9 @@ extends Sorter<T> {
      * @param       to the element to be analyzed.
      */
     @SuppressWarnings("unchecked")
-    default void insertionDec(List<T> list, int from, int to) {
+    default <L extends T> void insertionDec(List<L> list, int from, int to) {
         for (int i = from; i <= to; i++) {
-            T select = list.get(i);
+            L select = list.get(i);
             int j = i;
             while ((j > from) && (list.get(j - 1) != null && list.get(j - 1).compareTo(select) < 0)) {
                 list.set(j, list.get(j - 1));
@@ -504,9 +504,9 @@ extends Sorter<T> {
      * @param       to the element to be analyzed.
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
-    default void insertion(List<T> list, int from, int to, SortFunctional<T> functional) {
+    default <L extends T> void insertion(List<L> list, int from, int to, SortFunctional<T> functional) {
         for (int i = from; i <= to; i++) {
-            T select = list.get(i);
+            L select = list.get(i);
             int j = i;
             while ((j > from) && ((list.get(j - 1) != null) && (functional.functionalCompareTo(list.get(j - 1), select)))) {
                 list.set(j, list.get(j - 1));
