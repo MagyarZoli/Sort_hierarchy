@@ -2,6 +2,8 @@ package mz.intro;
 
 import mz.SortComparable;
 
+import java.util.List;
+
 /**
  * Intro Another Sort is a hybrid sorting algorithm that combines the strengths of Quick Sort and any Another Sort.
  * It aims to provide fast average-case performance while maintaining worst-case guarantees.
@@ -11,7 +13,7 @@ import mz.SortComparable;
  * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, Another switches to Another Sort, which has good performance for small input sizes.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -62,6 +64,62 @@ implements Intro<Comparable> {
     public IntroAnother() {}
 
     /**
+     * The another sorting algorithm can be added in this method.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @see         Intro#introRecursiveInc(Comparable[], int, int, int)
+     */
+    protected abstract void introSortClass2Inc(Comparable[] array, int left, int right);
+
+    /**
+     * The another sorting algorithm can be added in this method.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @see         Intro#introRecursiveDec(Comparable[], int, int, int)
+     */
+    protected abstract void introSortClass2Dec(Comparable[] array, int left, int right);
+
+    /**
+     * The another sorting algorithm can be added in this method.
+     * @param       array The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         Intro#introRecursive(Comparable[], int, int, int, SortFunctional)
+     */
+    protected abstract void introSortClass2(Comparable[] array, int left, int right, SortFunctional<Comparable> functional);
+
+    /**
+     * The another sorting algorithm can be added in this method.
+     * @param       list The list to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @see         Intro#introRecursiveInc(List, int, int, int)
+     */
+    protected abstract <L extends Comparable> void introSortClass2Inc(List<L> list, int left, int right);
+
+    /**
+     * The another sorting algorithm can be added in this method.
+     * @param       list The list to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @see         Intro#introRecursiveDec(List, int, int, int)
+     */
+    protected abstract <L extends Comparable> void introSortClass2Dec(List<L> list, int left, int right);
+
+    /**
+     * The another sorting algorithm can be added in this method.
+     * @param       list The list to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         Intro#introRecursive(List, int, int, int, SortFunctional)
+     */
+    protected abstract <L extends Comparable> void introSortClass2(List<L> list, int left, int right, SortFunctional<Comparable> functional);
+
+    /**
      * {@inheritDoc}
      * @param       array to be arranged.
      */
@@ -87,6 +145,34 @@ implements Intro<Comparable> {
     @Override
     public void sortArray(Comparable[] array, SortFunctional<Comparable> functional){
         intro(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list){
+        introInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list){
+        introDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortList(List<? extends Comparable> list, SortFunctional<Comparable> functional){
+        intro(list, functional);
     }
 
     /**
@@ -188,7 +274,7 @@ implements Intro<Comparable> {
      * It takes a parameter array of type {@code Comparable[]},
      * an integer {@code left} representing the left index, an integer {@code right} representing the right index,
      * an integer {@code maxDepth} representing the maximum recursion depth,
-     * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * and an instance of the {@code mz.SortFunctional<Comparable>} interface as parameters.
      * <ul>
      *     <li>It checks if the size of the range {@code (right - left)} is greater than a predefined constant value {@code INTRO_SIZE}.
      *     If it is, it proceeds with the sorting algorithm.
@@ -234,30 +320,146 @@ implements Intro<Comparable> {
     }
 
     /**
-     * The another sorting algorithm can be added in this method.
-     * @param       array The array to be sorted.
+     * {@code introRecursiveInc} method implements an adaptive sorting algorithm called Intro Sort.
+     * <ul>
+     *     <li>This condition checks if the size of the subarray is greater than {@code INTRO_SIZE}.
+     *     If true, the list is large enough to be sorted using QuickSort.</li>
+     *     <li>This condition checks if the maximum depth has been reached.
+     *     If true, the maximum depth has been exceeded,
+     *     and the sorting algorithm switches to another sorting method.</li>
+     *     <li>{@code introSortClassInc(list, left, right)}:
+     *     If the maximum depth has been reached, the {@code introSortClassInc}
+     *     method is called to sort the subarray using a different sorting algorithm.</li>
+     *     <li>{@code partitionInc(list, left, right)}: If the maximum depth has not been reached,
+     *     the {@code partitionInc} method is called to perform the partitioning step of QuickSort.
+     *     It returns the index of the pivot element.</li>
+     *     <li>The {@code introRecursiveInc} method is recursively called on the left subarray (elements smaller than the pivot) to further sort it.</li>
+     *     <li>The {@code introRecursiveInc} method is recursively called on the right subarray (elements greater than the pivot) to further sort it.</li>
+     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the list is considered small, and the {@code introSortClass2Inc}
+     *     method is called to perform Another sort on the subarray.</li>
+     *     <li>This is a method declaration for {@code introSortClassInc}.
+     *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
+     * </ul>
+     * {@code introRecursiveInc} method implements an adaptive sorting algorithm called <b>Another Sort.</b> It combines the <b>Quick Sort</b>
+     * algorithm with a switch to another sorting algorithm <b>Another Sort</b> when the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.
+     * @param       list The list to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
-     * @see         Intro#introRecursiveInc(Comparable[], int, int, int)
+     * @param       maxDepth The maximum depth or recursion level allowed before switching to another sorting algorithm.
+     * @see         mz.intro.Intro#INTRO_SIZE
+     * @see         mz.intro.Intro#introSortClassInc(List, int, int)
+     * @see         mz.QuickInterface#partitionInc(List, int, int)
+     * @see         mz.intro.IntroAnother#introSortClass2Inc(List, int, int)
      */
-    protected abstract void introSortClass2Inc(Comparable[] array, int left, int right);
+    @Override
+    public <L extends Comparable> void introRecursiveInc(List<L> list, int left, int right, int maxDepth) {
+        if ((right - left) > INTRO_SIZE) {
+            if (maxDepth == 0) {
+                introSortClassInc(list, left, right);
+            }
+            int pivot = partitionInc(list, left, right);
+            introRecursiveInc(list, left, (pivot - 1), (maxDepth - 1));
+            introRecursiveInc(list, (pivot + 1), right, (maxDepth - 1));
+        } else {
+            introSortClass2Inc(list, left, right);
+        }
+    }
 
     /**
-     * The another sorting algorithm can be added in this method.
-     * @param       array The array to be sorted.
+     * {@code introRecursiveDec} method implements an adaptive sorting algorithm called Intro Sort.
+     * <ul>
+     *     <li>This condition checks if the size of the subarray is greater than {@code INTRO_SIZE}.
+     *     If true, the list is large enough to be sorted using QuickSort.</li>
+     *     <li>This condition checks if the maximum depth has been reached.
+     *     If true, the maximum depth has been exceeded,
+     *     and the sorting algorithm switches to another sorting method.</li>
+     *     <li>{@code introSortClassDec(list, left, right)}:
+     *     If the maximum depth has been reached, the {@code introSortClassDec}
+     *     method is called to sort the subarray using a different sorting algorithm.</li>
+     *     <li>{@code partitionDec(list, left, right)}: If the maximum depth has not been reached,
+     *     the {@code partitionDec} method is called to perform the partitioning step of QuickSort.
+     *     It returns the index of the pivot element.</li>
+     *     <li>The {@code introRecursiveDec} method is recursively called on the left subarray (elements smaller than the pivot) to further sort it.</li>
+     *     <li>The {@code introRecursiveDec} method is recursively called on the right subarray (elements greater than the pivot) to further sort it.</li>
+     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the list is considered small, and the {@code introSortClass2Inc}
+     *     method is called to perform insertion sort on the subarray.</li>
+     *     <li>This is a method declaration for {@code introSortClassDec}.
+     *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
+     * </ul>
+     * {@code introRecursiveDec} method implements an adaptive sorting algorithm called <b>Another Sort.</b> It combines the <b>Quick Sort</b>
+     * algorithm with a switch to another sorting algorithm <b>Another Sort</b> when the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.
+     * @param       list The list to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
-     * @see         Intro#introRecursiveDec(Comparable[], int, int, int)
+     * @param       maxDepth The maximum depth or recursion level allowed before switching to another sorting algorithm.
+     * @see         mz.intro.Intro#INTRO_SIZE
+     * @see         mz.intro.Intro#introSortClassDec(List, int, int)
+     * @see         mz.QuickInterface#partitionDec(List, int, int)
+     * @see         mz.intro.IntroAnother#introSortClass2Dec(List, int, int)
      */
-    protected abstract void introSortClass2Dec(Comparable[] array, int left, int right);
+    @Override
+    public <L extends Comparable> void introRecursiveDec(List<L> list, int left, int right, int maxDepth) {
+        if ((right - left) > INTRO_SIZE) {
+            if (maxDepth == 0) {
+                introSortClassDec(list, left, right);
+            }
+            int pivot = partitionDec(list, left, right);
+            introRecursiveDec(list, left, (pivot - 1), (maxDepth - 1));
+            introRecursiveDec(list, (pivot + 1), right, (maxDepth - 1));
+        } else {
+            introSortClass2Dec(list, left, right);
+        }
+    }
 
     /**
-     * The another sorting algorithm can be added in this method.
-     * @param       array The array to be sorted.
+     * {@code introRecursive} method is assumed to be a member of a class that overrides the interface method.
+     * It takes a parameter list of type {@code List<Comparable>},
+     * an integer {@code left} representing the left index, an integer {@code right} representing the right index,
+     * an integer {@code maxDepth} representing the maximum recursion depth,
+     * and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * <ul>
+     *     <li>It checks if the size of the range {@code (right - left)} is greater than a predefined constant value {@code INTRO_SIZE}.
+     *     If it is, it proceeds with the sorting algorithm.
+     *     Otherwise, it directly calls the {@code introSortClass2} method to perform a specific sorting operation for smaller ranges.</li>
+     *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is <i>0</i>
+     *     (indicating that the recursion depth has reached its maximum allowed value),
+     *     it calls the {@code introSortClass} method to perform a specific sorting operation for the remaining range.</li>
+     *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is not <i>0</i>,
+     *     it proceeds with the quicksort algorithm.</li>
+     *     <li>It calls the {@code partition} method to select a pivot element and partition the range into two sub-ranges.</li>
+     *     <li>It recursively calls the {@code introRecursive} method on the left sub-range,
+     *     from {@code left} to {@code (pivot - 1)}, with the {@code maxDepth} reduced by <i>1</i>.</li>
+     *     <li>It recursively calls the {@code introRecursive} method on the right sub-range,
+     *     from {@code (pivot + 1)} to {@code right}, with the {@code maxDepth} reduced by <i>1</i>.</li>
+     *     <li>The recursion continues until the range is small enough to switch to a different sorting operation.</li>
+     *     <li>At that point, it calls the {@code introSortClass2} method to perform a specific sorting operation for the remaining range.</li>
+     * </ul>
+     * {@code introRecursive} method implements an adaptive sorting algorithm called <b>Another Sort.</b> It combines the <b>Quick Sort</b>
+     * algorithm with a switch to another sorting algorithm <b>Another Sort</b> when the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.
+     * @param       list The list to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       maxDepth The maximum depth or recursion level allowed before switching to another sorting algorithm.
      * @param       functional lambda expression for comparison.
-     * @see         Intro#introRecursive(Comparable[], int, int, int, SortFunctional)
+     * @see         mz.intro.Intro#INTRO_SIZE
+     * @see         mz.intro.Intro#introSortClass(List, int, int, SortFunctional)
+     * @see         mz.QuickInterface#partition(List, int, int, SortFunctional)
+     * @see         mz.intro.IntroAnother#introSortClass2(List, int, int, SortFunctional)
      */
-    protected abstract void introSortClass2(Comparable[] array, int left, int right, SortFunctional<Comparable> functional);
+    @Override
+    public <L extends Comparable> void introRecursive(List<L> list, int left, int right, int maxDepth, SortFunctional<Comparable> functional) {
+        if ((right - left) > INTRO_SIZE) {
+            if (maxDepth == 0) {
+                introSortClass(list, left, right, functional);
+            }
+            int pivot = partition(list, left, right, functional);
+            introRecursive(list, left, (pivot - 1), (maxDepth - 1), functional);
+            introRecursive(list, (pivot + 1), right, (maxDepth - 1), functional);
+        } else {
+            introSortClass2(list, left, right, functional);
+        }
+    }
 }
