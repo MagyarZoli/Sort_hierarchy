@@ -1,10 +1,12 @@
 package mz;
 
+import java.util.List;
+
 /**
  * Shell Sort is an efficient sorting algorithm that is an extension of Insertion Sort.
  * It addresses one of the limitations of Insertion Sort,
  * which is the excessive shifting of elements when dealing with small elements towards the end of the array.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -76,6 +78,34 @@ extends Insertion {
     }
 
     /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        shellInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        shellDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        shell(list, functional);
+    }
+
+    /**
      * {@code shellInc} that performs the Shell Sort algorithm on an array of {@link java.lang.Comparable Comparable} objects.
      * The sorting is done in ascending order.
      * <ul>
@@ -132,7 +162,7 @@ extends Insertion {
     /**
      * {@code shell} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the left and right indices specifying the range of elements to be sorted.
-     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * It also takes a {@code mz.SortFunctional<Comparable>} object representing
      * the custom comparison logic to be used for sorting.
      * <ul>
      *     <li>The method starts with a for loop that initializes {@code i} to {@code (array.length / 2)} and iterates
@@ -219,7 +249,7 @@ extends Insertion {
     /**
      * {@code shell} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the left and right indices specifying the range of elements to be sorted.
-     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * It also takes a {@code mz.SortFunctional<Comparable>} object representing
      * the custom comparison logic to be used for sorting.
      * <ul>
      *     <li>The method starts with a for loop that initializes {@code i} to {@code (right / 2)} and iterates
@@ -244,6 +274,178 @@ extends Insertion {
     protected void shell(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         for (int i = (right / 2); i > left; i /= 2) {
             insertion(array, i, right, functional);
+        }
+    }
+
+    /**
+     * {@code shellInc} that performs the Shell Sort algorithm on a list of {@link java.lang.Comparable Comparable} objects.
+     * The sorting is done in ascending order.
+     * <ul>
+     *     <li>The method takes in an list of Comparable objects, {@code list}, and performs the Shell Sort algorithm on it.</li>
+     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
+     *     which represents the gap between elements to be compared and swapped.</li>
+     *     <li>The initial value of {@code i} is set to half the length of the {@code list}: {@code (list.size() / 2)}.</li>
+     *     <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *     <li>The loop continues as long as {@code i} is greater than 0.</li>
+     *     <li>Inside the loop, the {@code insertionInc} method is called with the current value
+     *     of {@code i} to perform an insertion sort on the list.</li>
+     *     <li>The {@code insertionInc} method sorts a portion of the list using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *     <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
+     *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the list is sorted.</li>
+     * </ul>
+     * {@code shellInc} method implements the Shell Sort algorithm to sort the given list of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the list with decreasing gaps {@code i} until the entire list is sorted.
+     * @param       list to be arranged.
+     * @see         mz.InsertionInterface#insertionInc(List, int, int)
+     */
+    protected <L extends Comparable> void shellInc(List<L> list) {
+        for (int i = (list.size() / 2) ; i > 0; i /= 2) {
+            insertionInc(list, (i - 1), (list.size() - 1));
+        }
+    }
+
+    /**
+     * {@code shellDec} that performs the Shell Sort algorithm on a list of {@link java.lang.Comparable Comparable} objects.
+     * The sorting is done in descending order.
+     * <ul>
+     *     <li>The method takes in an list of Comparable objects, {@code list}, and performs the Shell Sort algorithm on it.</li>
+     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
+     *     which represents the gap between elements to be compared and swapped.</li>
+     *     <li>The initial value of {@code i} is set to half the length of the {@code list}: {@code (list.size() / 2)}.</li>
+     *     <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *     <li>The loop continues as long as {@code i} is greater than 0.</li>
+     *     <li>Inside the loop, the {@code insertionDec} method is called with the current value
+     *     of {@code i} to perform an insertion sort on the list.</li>
+     *     <li>The {@code insertionDec} method sorts a portion of the list using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *     <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
+     *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the list is sorted.</li>
+     * </ul>
+     * {@code shellDec} method implements the Shell Sort algorithm to sort the given list of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the list with decreasing gaps {@code i} until the entire list is sorted.
+     * @param       list to be arranged.
+     * @see         mz.InsertionInterface#insertionDec(List, int, int)
+     */
+    protected <L extends Comparable> void shellDec(List<L> list) {
+        for (int i = (list.size() / 2); i > 0; i /= 2) {
+            insertionDec(list, (i - 1), (list.size() - 1));
+        }
+    }
+
+    /**
+     * {@code shell} method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * along with the left and right indices specifying the range of elements to be sorted.
+     * It also takes a {@code mz.SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a for loop that initializes {@code i} to {@code (list.size() / 2)} and iterates
+     *     as long as {@code i} is greater than <i>0</i>. The {@code i} value is then divided by <i>2</i> in each iteration,
+     *     effectively reducing the interval between elements to be compared and sorted.</li>
+     *     <li>Inside the loop, the {@code insertion} method is called, which likely implements
+     *     the insertion sort algorithm to sort the elements within the specified range, using the provided comparison logic.
+     *     The {@code insertion} method would perform the sorting operation on the subarray.</li>
+     *     <li>By calling the {@code insertion} method with the interval of {@code i} and the range from {@code i} to {@code list.size()},
+     *     the algorithm performs an insertion sort on the elements at intervals of {@code i}.
+     *     As the loop iterates, the interval is gradually reduced until it reaches <i>0</i>,
+     *     resulting in a final insertion sort on the entire range of elements.</li>
+     * </ul>
+     * {@code shell} method implements the Shell Sort algorithm to sort the given list of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the list with decreasing gaps {@code i} until the entire list is sorted.
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.InsertionInterface#insertion(List, int, int, SortFunctional)
+     */
+    protected <L extends Comparable> void shell(List<L> list, SortFunctional<Comparable> functional) {
+        for (int i = (list.size() / 2); i > 0; i /= 2) {
+            insertion(list, (i - 1), (list.size() - 1), functional);
+        }
+    }
+
+    /**
+     * {@code shellInc} that performs the Shell Sort algorithm on an list of {@link java.lang.Comparable Comparable} objects.
+     * The sorting is done in ascending order.
+     * <ul>
+     *     <li>The method takes in an list of Comparable objects, {@code list}, and performs the Shell Sort algorithm on it.</li>
+     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
+     *     which represents the gap between elements to be compared and swapped.</li>
+     *     <li>The initial value of {@code i} is set to half the length of the {@code list}: {@code (list.length / 2)}.</li>
+     *     <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *     <li>The loop continues as long as {@code i} is greater than 0.</li>
+     *     <li>Inside the loop, the {@code insertionInc} method is called with the current value
+     *     of {@code i} to perform an insertion sort on the list.</li>
+     *     <li>The {@code insertionInc} method sorts a portion of the list using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *     <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
+     *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the list is sorted.</li>
+     * </ul>
+     * {@code shellInc} method implements the Shell Sort algorithm to sort the given list of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the list with decreasing gaps {@code i} until the entire list is sorted.
+     * @param       list to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @see         mz.InsertionInterface#insertionInc(List, int, int)
+     */
+    protected <L extends Comparable> void shellInc(List<L> list, int left, int right) {
+        for (int i = (right / 2); i > left; i /= 2) {
+            insertionInc(list, left, right);
+        }
+    }
+
+    /**
+     * {@code shellDec} that performs the Shell Sort algorithm on a list of {@link java.lang.Comparable Comparable} objects.
+     * The sorting is done in descending order.
+     * <ul>
+     *     <li>The method takes in an list of Comparable objects, {@code list}, and performs the Shell Sort algorithm on it.</li>
+     *     <li>The method uses a {@code for} loop to iterate over a series of decreasing values of {@code i},
+     *     which represents the gap between elements to be compared and swapped.</li>
+     *     <li>The initial value of {@code i} is set to half the length of the {@code list}: {@code (list.length / 2)}.</li>
+     *     <li>In each iteration of the loop, the value of {@code i} is divided by 2: {@code i /= 2}.</li>
+     *     <li>The loop continues as long as {@code i} is greater than 0.</li>
+     *     <li>Inside the loop, the {@code insertionDec} method is called with the current value
+     *     of {@code i} to perform an insertion sort on the list.</li>
+     *     <li>The {@code insertionDec} method sorts a portion of the list using the Insertion Sort algorithm with the specified {@code i} value.</li>
+     *     <li>The insertion sort is performed on elements that are {@code i} positions apart.</li>
+     *     <li>The process continues with decreasing values of {@code i} until {@code i} becomes 0, at which point the list is sorted.</li>
+     * </ul>
+     * {@code shellDec} method implements the Shell Sort algorithm to sort the given list of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the list with decreasing gaps {@code i} until the entire list is sorted.
+     * @param       list to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @see         mz.InsertionInterface#insertionDec(List, int, int)
+     */
+    protected <L extends Comparable> void shellDec(List<L> list, int left, int right) {
+        for (int i = (right / 2); i > left; i /= 2) {
+            insertionDec(list, i, right);
+        }
+    }
+
+    /**
+     * {@code shell} method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * along with the left and right indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a for loop that initializes {@code i} to {@code (right / 2)} and iterates
+     *     as long as {@code i} is greater than {@code left}. The {@code i} value is then divided by <i>2</i> in each iteration,
+     *     effectively reducing the interval between elements to be compared and sorted.</li>
+     *     <li>Inside the loop, the {@code insertion} method is called, which likely implements
+     *     the insertion sort algorithm to sort the elements within the specified range, using the provided comparison logic.
+     *     The {@code insertion} method would perform the sorting operation on the subarray.</li>
+     *     <li>By calling the {@code insertion} method with the interval of {@code i} and the range from {@code i} to {@code right},
+     *     the algorithm performs an insertion sort on the elements at intervals of {@code i}.
+     *     As the loop iterates, the interval is gradually reduced until it reaches {@code left},
+     *     resulting in a final insertion sort on the entire range of elements.</li>
+     * </ul>
+     * {@code shell} method implements the Shell Sort algorithm to sort the given list of Comparable objects in ascending order.
+     * It performs insertion sort on different portions of the list with decreasing gaps {@code i} until the entire list is sorted.
+     * @param       list to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.InsertionInterface#insertion(List, int, int, SortFunctional)
+     */
+    protected <L extends Comparable> void shell(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        for (int i = (right / 2); i > left; i /= 2) {
+            insertion(list, i, right, functional);
         }
     }
 }
