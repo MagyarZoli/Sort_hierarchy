@@ -1,10 +1,12 @@
 package mz;
 
+import java.util.List;
+
 /**
  * Merge Sort is a comparison-based sorting algorithm that follows the divide-and-conquer approach.
  * It works by dividing the unsorted list into smaller sublists, sorting those sublists recursively,
  * and then merging them back together to obtain a sorted list.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -79,5 +81,33 @@ implements MergeInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         merge(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        mergeInc(list);
+    }
+
+    /**
+     *  {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        mergeDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        merge(list, functional);
     }
 }
