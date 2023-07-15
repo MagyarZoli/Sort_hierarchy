@@ -1,9 +1,11 @@
 package mz;
 
+import java.util.List;
+
 /**
  * Tim Sort is a hybrid sorting algorithm that combines the strengths of Merge Sort and Insertion Sort to achieve efficient and stable sorting.
  * The default sorting algorithm in Java's {@link java.util.Arrays#sort(Object[]) Arrays.sort()} method.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -81,6 +83,34 @@ implements InsertionInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         tim(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        timInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        timDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        tim(list, functional);
     }
 
     /**
@@ -357,6 +387,285 @@ implements InsertionInterface<Comparable> {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
                 if (mid < j) {
                     merge(array, i, mid, j, functional);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code timInc} that takes a list of {@link java.lang.Comparable Comparable} objects.
+     * This method performs an incremental variant of the Tim Sort algorithm to sort the specified range of the list.
+     * <ul>
+     *     <li>The method starts by initializing the variables {@code n} and {@code minRun}.
+     *     The {@code n} variable is assigned the value of the {@code list.length}, which represents the exclusive upper bound of the range to be sorted.
+     *     The {@code minRun} variable is assigned the result of the {@code minRunLength} method called with the {@code MIN_MERGE} constant.</li>
+     *     <li>The first {@code for} loop iterates over the range from <i>0</i> to {@code n} with a step size of {@code minRun}.
+     *     It calls the {@code insertionInc} method to perform an incremental insertion sort on the subarray from {@code i}
+     *     to ({@link java.lang.Math Math.min}{@code ((i + MIN_MERGE), n) - 1}).
+     *     This step is used to ensure that each small run within the list is sorted.</li>
+     *     <li>The second {@code for} loop performs the merging step of the Tim Sort algorithm.
+     *     It starts with a {@code size} value of {@code minRun} and doubles the value of {@code size} in each iteration.
+     *     It iterates over the range from <i>0</i> to {@code n} with a step size of {@code (2 * size)}.
+     *     Within each iteration, it determines the mid index {@code mid} and the upper bound index {@code j} of the current subarray.
+     *     If {@code mid} is less than {@code j}, it calls the {@code mergeInc} method to merge the subarrays
+     *     from {@code i} to mid and from {@code (mid + 1)} to {@code j}.
+     *     This step merges adjacent sorted subarrays together until the entire range is sorted.</li>
+     * </ul>
+     * {@code timInc} method uses incremental insertion sort to sort small runs within
+     * the list and then performs merging steps to combine adjacent sorted subarrays.
+     * This incremental variant of Tim Sort provides efficient sorting
+     * for arrays that may already have some degree of ordering or partial sorting.
+     * @param       list to be arranged.
+     * @see         mz.Tim#MIN_MERGE
+     * @see         mz.Tim#minRunLength(int)
+     * @see         mz.InsertionInterface#insertionInc(List, int, int)
+     * @see         mz.MergeInterface#mergeInc(List, int, int, int)
+     */
+    protected <L extends Comparable> void timInc(List<L> list) {
+        int n = list.size(), minRun = minRunLength(MIN_MERGE);
+        for (int i = 0; i < n; i += minRun) {
+            insertionInc(list, i, (Math.min((i + MIN_MERGE), n) - 1));
+        }
+        for (int size = minRun; size < n; size *= 2) {
+            for (int i = 0; i < n; i += (2 * size)) {
+                int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
+                if (mid < j) {
+                    mergeInc(list, i, mid, j);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code timDec} that takes a list of {@link java.lang.Comparable Comparable} objects.
+     * This method performs a decremental variant of the Tim Sort algorithm to sort the specified range of the list.
+     * <ul>
+     *     <li>The method starts by initializing the variables {@code n} and {@code minRun}.
+     *     The {@code n} variable is assigned the value of the {@code list.length}, which represents the exclusive upper bound of the range to be sorted.
+     *     The {@code minRun} variable is assigned the result of the {@code minRunLength} method called with the {@code MIN_MERGE} constant.</li>
+     *     <li>The first {@code for} loop iterates over the range from <i>0</i> to {@code n} with a step size of {@code minRun}.
+     *     It calls the {@code insertionDec} method to perform an incremental insertion sort on the subarray from {@code i}
+     *     to ({@link java.lang.Math Math.min}{@code ((i + MIN_MERGE), n) - 1}).
+     *     This step is used to ensure that each small run within the list is sorted.</li>
+     *     <li>The second {@code for} loop performs the merging step of the Tim Sort algorithm.
+     *     It starts with a {@code size} value of {@code minRun} and doubles the value of {@code size} in each iteration.
+     *     It iterates over the range from <i>0</i> to {@code n} with a step size of {@code (2 * size)}.
+     *     Within each iteration, it determines the mid index {@code mid} and the upper bound index {@code j} of the current subarray.
+     *     If {@code mid} is less than {@code j}, it calls the {@code mergeDec} method to merge the subarrays
+     *     from {@code i} to mid and from {@code (mid + 1)} to {@code j}.
+     *     This step merges adjacent sorted subarrays together until the entire range is sorted.</li>
+     * </ul>
+     * {@code timDec} method uses decremental insertion sort to sort small runs within
+     * the list and then performs merging steps to combine adjacent sorted subarrays.
+     * This decremental variant of Tim Sort provides efficient sorting
+     * for arrays that may already have some degree of ordering or partial sorting.
+     * @param       list to be arranged.
+     * @see         mz.Tim#MIN_MERGE
+     * @see         mz.Tim#minRunLength(int)
+     * @see         mz.InsertionInterface#insertionInc(List, int, int)
+     * @see         mz.MergeInterface#mergeInc(List, int, int, int)
+     */
+    protected <L extends Comparable> void timDec(List<L> list) {
+        int n = list.size(), minRun = minRunLength(MIN_MERGE);
+        for (int i = 0; i < n; i += minRun) {
+            insertionInc(list, i, (Math.min((i + MIN_MERGE), n) - 1));
+        }
+        for (int size = minRun; size < n; size *= 2) {
+            for (int i = 0; i < n; i += (2 * size)) {
+                int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
+                if (mid < j) {
+                    mergeDec(list, i, mid, j);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code tim} method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method begins by calculating the {@code minRun} length,
+     *     which determines the minimum size of a run in the Tim sort algorithm.
+     *     The {@code minRunLength} method calculates the minimum run length based
+     *     on a predefined constant ({@code MIN_MERGE}).</li>
+     *     <li>Next, the method enters a {@code for} loop that starts from {@code i = 0} and increments {@code i}
+     *     by minRun in each iteration. This loop is responsible for performing insertion sort on small subarrays called runs.
+     *     The {@code insertion} method implements the insertion sort algorithm to sort the elements within each run,
+     *     using the provided comparison logic.</li>
+     *     <li>After sorting each run, the method enters another {@code for} loop that iterates over different sizes of runs.
+     *     It starts from {@code size = minRun} and doubles the size in each iteration {@code size *= 2}.</li>
+     *     <li>Within this loop, there is another {@code for} loop that iterates over the elements in the list with an interval of {@code (2 * size)}.
+     *     This loop handles the merging step of the Tim sort algorithm.
+     *     It merges adjacent subarrays of size {@code size} by calling the {@code merge} method with the appropriate indices.
+     *     The {@code merge} method likely implements the merging logic of merge sort,
+     *     combining two sorted subarrays into a larger sorted subarray, using the provided comparison logic.</li>
+     * </ul>
+     * {@code tim} method insertion sort to sort small runs within
+     * the list and then performs merging steps to combine adjacent sorted subarrays.
+     * This decremental variant of Tim Sort provides efficient sorting
+     * for arrays that may already have some degree of ordering or partial sorting.
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Tim#MIN_MERGE
+     * @see         mz.Tim#minRunLength(int)
+     * @see         mz.InsertionInterface#insertion(List, int, int, SortFunctional)
+     * @see         mz.MergeInterface#merge(List, int, int, int, SortFunctional)
+     */
+    protected <L extends Comparable> void tim(List<L> list, SortFunctional<Comparable> functional) {
+        int n = list.size(), minRun = minRunLength(MIN_MERGE);
+        for (int i = 0; i < n; i += minRun) {
+            insertion(list, i, (Math.min((i + MIN_MERGE), n) - 1), functional);
+        }
+        for (int size = minRun; size < n; size *= 2) {
+            for (int i = 0; i < n; i += (2 * size)) {
+                int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
+                if (mid < j) {
+                    merge(list, i, mid, j, functional);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code timInc} that takes a list of {@link java.lang.Comparable Comparable} objects,
+     * an integer {@code left}, and an integer {@code right} as input.
+     * This method performs an incremental variant of the Tim Sort algorithm to sort the specified range of the list.
+     * <ul>
+     *     <li>The method starts by initializing the variable {@code minRun}.
+     *     The {@code right} parameter, which represents the exclusive upper bound of the range to be sorted.
+     *     The {@code minRun} variable is assigned the result of the {@code minRunLength} method called with the {@code MIN_MERGE} constant.</li>
+     *     <li>The first {@code for} loop iterates over the range from <i>0</i> to {@code right} with a step size of {@code minRun}.
+     *     It calls the {@code insertionInc} method to perform an incremental insertion sort on the subarray from {@code i}
+     *     to ({@link java.lang.Math Math.min}{@code ((i + MIN_MERGE), right) - 1}).
+     *     This step is used to ensure that each small run within the list is sorted.</li>
+     *     <li>The second {@code for} loop performs the merging step of the Tim Sort algorithm.
+     *     It starts with a {@code size} value of {@code minRun} and doubles the value of {@code size} in each iteration.
+     *     It iterates over the range from {@code left} to {@code right} with a step size of {@code (2 * size)}.
+     *     Within each iteration, it determines the mid index {@code mid} and the upper bound index {@code j} of the current subarray.
+     *     If {@code mid} is less than {@code j}, it calls the {@code mergeInc} method to merge the subarrays
+     *     from {@code i} to mid and from {@code (mid + 1)} to {@code j}.
+     *     This step merges adjacent sorted subarrays together until the entire range is sorted.</li>
+     * </ul>
+     * {@code timInc} method uses incremental insertion sort to sort small runs within
+     * the list and then performs merging steps to combine adjacent sorted subarrays.
+     * This incremental variant of Tim Sort provides efficient sorting
+     * for arrays that may already have some degree of ordering or partial sorting.
+     * @param       list to be arranged.
+     * @param       left the value in the list must be smaller than a {@code right} parameter.
+     * @param       right the value in the list must be greater than a {@code left} parameter.
+     * @see         mz.Tim#MIN_MERGE
+     * @see         mz.Tim#minRunLength(int)
+     * @see         mz.InsertionInterface#insertionInc(List, int, int)
+     * @see         mz.MergeInterface#mergeInc(List, int, int, int)
+     */
+    protected <L extends Comparable> void timInc(List<L> list, int left, int right) {
+        int minRun = minRunLength(MIN_MERGE);
+        for (int i = 0; i < right; i += minRun) {
+            insertionInc(list, i, (Math.min((i + MIN_MERGE), right) - 1));
+        }
+        for (int size = minRun; size < right; size *= 2) {
+            for (int i = left; i < right; i += (2 * size)) {
+                int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
+                if (mid < j) {
+                    mergeInc(list, i, mid, j);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code timDec} that takes a list of {@link java.lang.Comparable Comparable} objects,
+     * an integer {@code left}, and an integer {@code right} as input.
+     * This method performs a decremental variant of the Tim Sort algorithm to sort the specified range of the list.
+     * <ul>
+     *     <li>The method starts by initializing the variable {@code minRun}.
+     *     The {@code right} parameter, which represents the exclusive upper bound of the range to be sorted.
+     *     The {@code minRun} variable is assigned the result of the {@code minRunLength} method called with the {@code MIN_MERGE} constant.</li>
+     *     <li>The first {@code for} loop iterates over the range from <i>0</i> to {@code right} with a step size of {@code minRun}.
+     *     It calls the {@code insertionDec} method to perform an incremental insertion sort on the subarray from {@code i}
+     *     to ({@link java.lang.Math Math.min}{@code ((i + MIN_MERGE), right) - 1}).
+     *     This step is used to ensure that each small run within the list is sorted.</li>
+     *     <li>The second {@code for} loop performs the merging step of the Tim Sort algorithm.
+     *     It starts with a {@code size} value of {@code minRun} and doubles the value of {@code size} in each iteration.
+     *     It iterates over the range from {@code left} to {@code right} with a step size of {@code (2 * size)}.
+     *     Within each iteration, it determines the mid index {@code mid} and the upper bound index {@code j} of the current subarray.
+     *     If {@code mid} is less than {@code j}, it calls the {@code mergeDec} method to merge the subarrays
+     *     from {@code i} to mid and from {@code (mid + 1)} to {@code j}.
+     *     This step merges adjacent sorted subarrays together until the entire range is sorted.</li>
+     * </ul>
+     * {@code timDec} method uses decremental insertion sort to sort small runs within
+     * the list and then performs merging steps to combine adjacent sorted subarrays.
+     * This decremental variant of Tim Sort provides efficient sorting
+     * for arrays that may already have some degree of ordering or partial sorting.
+     * @param       list to be arranged.
+     * @param       left the value in the list must be smaller than a {@code right} parameter.
+     * @param       right the value in the list must be greater than a {@code left} parameter.
+     * @see         mz.Tim#MIN_MERGE
+     * @see         mz.Tim#minRunLength(int)
+     * @see         mz.InsertionInterface#insertionInc(List, int, int)
+     * @see         mz.MergeInterface#mergeInc(List, int, int, int)
+     */
+    protected <L extends Comparable> void timDec(List<L> list, int left, int right) {
+        int minRun = minRunLength(MIN_MERGE);
+        for (int i = 0; i < right; i += minRun) {
+            insertionInc(list, i, (Math.min((i + MIN_MERGE), right) - 1));
+        }
+        for (int size = minRun; size < right; size *= 2) {
+            for (int i = left; i < right; i += (2 * size)) {
+                int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
+                if (mid < j) {
+                    mergeDec(list, i, mid, j);
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code tim} method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * along with the left and right indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method begins by calculating the {@code minRun} length,
+     *     which determines the minimum size of a run in the Tim sort algorithm.
+     *     The {@code minRunLength} method calculates the minimum run length based
+     *     on a predefined constant ({@code MIN_MERGE}).</li>
+     *     <li>Next, the method enters a {@code for} loop that starts from {@code i = 0} and increments {@code i}
+     *     by minRun in each iteration. This loop is responsible for performing insertion sort on small subarrays called runs.
+     *     The {@code insertion} method implements the insertion sort algorithm to sort the elements within each run,
+     *     using the provided comparison logic.</li>
+     *     <li>After sorting each run, the method enters another {@code for} loop that iterates over different sizes of runs.
+     *     It starts from {@code size = minRun} and doubles the size in each iteration {@code size *= 2}.</li>
+     *     <li>Within this loop, there is another {@code for} loop that iterates over the elements in the list with an interval of {@code (2 * size)}.
+     *     This loop handles the merging step of the Tim sort algorithm.
+     *     It merges adjacent subarrays of size {@code size} by calling the {@code merge} method with the appropriate indices.
+     *     The {@code merge} method likely implements the merging logic of merge sort,
+     *     combining two sorted subarrays into a larger sorted subarray, using the provided comparison logic.</li>
+     * </ul>
+     * {@code tim} method insertion sort to sort small runs within
+     * the list and then performs merging steps to combine adjacent sorted subarrays.
+     * This decremental variant of Tim Sort provides efficient sorting
+     * for arrays that may already have some degree of ordering or partial sorting.
+     * @param       list to be arranged.
+     * @param       left the value in the list must be smaller than a {@code right} parameter.
+     * @param       right the value in the list must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Tim#MIN_MERGE
+     * @see         mz.Tim#minRunLength(int)
+     * @see         mz.InsertionInterface#insertion(List, int, int, SortFunctional)
+     * @see         mz.MergeInterface#merge(List, int, int, int, SortFunctional)
+     */
+    protected <L extends Comparable> void tim(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        int minRun = minRunLength(MIN_MERGE);
+        for (int i = 0; i < right; i += minRun) {
+            insertion(list, i, (Math.min((i + MIN_MERGE), right) - 1), functional);
+        }
+        for (int size = minRun; size < right; size *= 2) {
+            for (int i = left; i < right; i += (2 * size)) {
+                int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
+                if (mid < j) {
+                    merge(list, i, mid, j, functional);
                 }
             }
         }
