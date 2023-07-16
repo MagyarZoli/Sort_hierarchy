@@ -1,10 +1,13 @@
 package mz;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Wiki Sort, also known as Block Merge Sort, is an efficient comparison-based sorting algorithm designed to improve upon the performance.
  * Wiki Sort is a stable sorting algorithm, meaning that it preserves the relative order of elements with equal values.
  * It achieves a time complexity of <em>O(n log(n))</em> in the worst case.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -79,6 +82,34 @@ implements InsertionInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         wiki(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        wikiInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        wikiDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        wiki(list, functional);
     }
 
     /**
@@ -241,7 +272,7 @@ implements InsertionInterface<Comparable> {
     /**
      * {@code wiki} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the left and right indices specifying the range of elements to be sorted.
-     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * It also takes a {@code mz.SortFunctional<Comparable>} object representing
      * the custom comparison logic to be used for sorting.
      * <ul>
      *     <li>The method starts by creating a {@code buffer} array of {@code Comparable} objects with
@@ -275,5 +306,201 @@ implements InsertionInterface<Comparable> {
             insertion(array, i, (Math.min((i + WIKI_BLOCK), right) - 1), functional);
         }
         merge(array, WIKI_BLOCK, right, buffer, functional);
+    }
+
+    /**
+     * {@code wikiInc}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input list.
+     * <ul>
+     *     <li>It assigns the value of {@code list.size()} to the variable {@code n}.</li>
+     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>The subsequent for loop divides the portion of the list into blocks of size {@code WIKI_BLOCK}
+     *     and performs an incremental insertion sort on each block using the {@code insertionInc} method.
+     *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer list.
+     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
+     * </ul>
+     * {@code wikiInc} method is to sort a portion of the input list using incremental insertion sort for small blocks
+     * and then perform the merging step using the {@code mergeInc} method.
+     * This process is a part of the overall Wiki Sort algorithm, which involves dividing the list into blocks,
+     * sorting the blocks, and then merging them to obtain the final sorted list.
+     * @param       list to be arranged.
+     * @see         mz.Wiki#WIKI_BLOCK
+     * @see         mz.InsertionInterface#insertionInc(List, int, int)
+     * @see         mz.MergeInterface#mergeInc(List, int, int, int)
+     */
+    protected <L extends Comparable> void wikiInc(List<L> list) {
+        int n = list.size();
+        List<L> buffer = new ArrayList<>();
+        for (int i = 0; i < n; i += WIKI_BLOCK) {
+            insertionInc(list, i, (Math.min((i + WIKI_BLOCK), n) - 1));
+        }
+        mergeInc(list, WIKI_BLOCK, n, buffer);
+    }
+
+    /**
+     * {@code wikiDec}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input list.
+     * <ul>
+     *     <li>It assigns the value of {@code list.size()} to the variable {@code n}.</li>
+     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>The subsequent for loop divides the portion of the list into blocks of size {@code WIKI_BLOCK}
+     *     and performs an incremental insertion sort on each block using the {@code insertionDec} method.
+     *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer list.
+     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
+     * </ul>
+     * {@code wikiDec} method is to sort a portion of the input list using incremental insertion sort for small blocks
+     * and then perform the merging step using the {@code mergeDec} method.
+     * This process is a part of the overall Wiki Sort algorithm, which involves dividing the list into blocks,
+     * sorting the blocks, and then merging them to obtain the final sorted list.
+     * @param       list to be arranged.
+     * @see         mz.Wiki#WIKI_BLOCK
+     * @see         mz.InsertionInterface#insertionDec(List, int, int)
+     * @see         mz.MergeInterface#mergeDec(List, int, int, int)
+     */
+    protected <L extends Comparable> void wikiDec(List<L> list) {
+        int n = list.size();
+        List<L> buffer = new ArrayList<>();
+        for (int i = 0; i < n; i += WIKI_BLOCK) {
+            insertionDec(list, i, (Math.min((i + WIKI_BLOCK), n) - 1));
+        }
+        mergeDec(list, WIKI_BLOCK, n, buffer);
+    }
+
+    /**
+     * {@code wiki} method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * It also takes a {@code SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts by creating a {@code buffer} list of {@code Comparable} objects with
+     *     the same size as the original list {@code list}.
+     *     This buffer list will be used during the merging process.</li>
+     *     <li>Next, the method enters a {@code for} loop
+     *     that starts from {@code i = 0} and increments {@code i} by {@code WIKI_BLOCK} in each iteration.
+     *     This loop is responsible for performing insertion sort on small blocks of size {@code WIKI_BLOCK}.
+     *     The insertion method used to sort the elements within each block individually using the provided comparison logic.</li>
+     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back into the original list.
+     *     The {@code merge} method takes the original list, the block size {@code WIKI_BLOCK},
+     *     the right index, the buffer list, and the comparison logic.
+     *     The {@code merge} method implements the merging logic of merge sort,
+     *     combining sorted subarrays into a larger sorted subarray.</li>
+     * </ul>
+     * {@code wiki} method is to sort a portion of the input list using incremental insertion sort for small blocks
+     * and then perform the merging step using the {@code merge} method.
+     * This process is a part of the overall Wiki Sort algorithm, which involves dividing the list into blocks,
+     * sorting the blocks, and then merging them to obtain the final sorted list.
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Wiki#WIKI_BLOCK
+     * @see         mz.InsertionInterface#insertion(List, int, int, SortFunctional)
+     * @see         mz.MergeInterface#merge(List, int, int, List, SortFunctional)
+     */
+    protected <L extends Comparable> void wiki(List<L> list, SortFunctional<Comparable> functional) {
+        int n = list.size();
+        List<L> buffer = new ArrayList<>();
+        for (int i = 0; i < n; i += WIKI_BLOCK) {
+            insertion(list, i, (Math.min((i + WIKI_BLOCK), n) - 1), functional);
+        }
+        merge(list, WIKI_BLOCK, n, buffer, functional);
+    }
+
+    /**
+     * {@code wikiInc}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input list.
+     * <ul>
+     *     <li>It assigns the value of {@code right} (the index of the rightmost element in
+     *     the current portion of the list being sorted) to the variable {@code right}.</li>
+     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>The subsequent for loop divides the portion of the list into blocks of size {@code WIKI_BLOCK}
+     *     and performs an incremental insertion sort on each block using the {@code insertionInc} method.
+     *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer list.
+     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
+     * </ul>
+     * {@code wikiInc} method is to sort a portion of the input list using incremental insertion sort for small blocks
+     * and then perform the merging step using the {@code mergeInc} method.
+     * This process is a part of the overall Wiki Sort algorithm, which involves dividing the list into blocks,
+     * sorting the blocks, and then merging them to obtain the final sorted list.
+     * @param       list to be arranged.
+     * @param       left the value in the list must be smaller than a {@code right} parameter.
+     * @param       right the value in the list must be greater than a {@code left} parameter.
+     * @see         mz.Wiki#WIKI_BLOCK
+     * @see         mz.InsertionInterface#insertionInc(List, int, int)
+     * @see         mz.MergeInterface#mergeInc(List, int, int, int)
+     */
+    protected <L extends Comparable> void wikiInc(List<L> list, int left, int right) {
+        List<L> buffer = new ArrayList<>();
+        for (int i = left; i < right; i += WIKI_BLOCK) {
+            insertionInc(list, i, (Math.min((i + WIKI_BLOCK), right) - 1));
+        }
+        mergeInc(list, WIKI_BLOCK, right, buffer);
+    }
+
+    /**
+     * {@code wikiDec}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input list.
+     * <ul>
+     *     <li>It assigns the value of {@code right} (the index of the rightmost element in
+     *     the current portion of the list being sorted) to the variable {@code right}.</li>
+     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>The subsequent for loop divides the portion of the list into blocks of size {@code WIKI_BLOCK}
+     *     and performs an incremental insertion sort on each block using the {@code insertionDec} method.
+     *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer list.
+     *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
+     * </ul>
+     * {@code wikiDec} method is to sort a portion of the input list using incremental insertion sort for small blocks
+     * and then perform the merging step using the {@code mergeDec} method.
+     * This process is a part of the overall Wiki Sort algorithm, which involves dividing the list into blocks,
+     * sorting the blocks, and then merging them to obtain the final sorted list.
+     * @param       list to be arranged.
+     * @param       left the value in the list must be smaller than a {@code right} parameter.
+     * @param       right the value in the list must be greater than a {@code left} parameter.
+     * @see         mz.Wiki#WIKI_BLOCK
+     * @see         mz.InsertionInterface#insertionDec(List, int, int)
+     * @see         mz.MergeInterface#mergeDec(List, int, int, int)
+     */
+    protected <L extends Comparable> void wikiDec(List<L> list, int left, int right) {
+        List<L> buffer = new ArrayList<>();
+        for (int i = left; i < right; i += WIKI_BLOCK) {
+            insertionDec(list, i, (Math.min((i + WIKI_BLOCK), right) - 1));
+        }
+        mergeDec(list, WIKI_BLOCK, right, buffer);
+    }
+
+    /**
+     * {@code wiki} method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * along with the left and right indices specifying the range of elements to be sorted.
+     * It also takes a {@code mz.SortFunctional<Comparable>} object representing
+     * the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts by creating a {@code buffer} list of {@code List<Comparable>} objects with
+     *     the same size as the original list {@code list}.
+     *     This buffer list will be used during the merging process.</li>
+     *     <li>Next, the method enters a {@code for} loop
+     *     that starts from {@code i = left} and increments {@code i} by {@code WIKI_BLOCK} in each iteration.
+     *     This loop is responsible for performing insertion sort on small blocks of size {@code WIKI_BLOCK}.
+     *     The insertion method used to sort the elements within each block individually using the provided comparison logic.</li>
+     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back into the original list.
+     *     The {@code merge} method takes the original list, the block size {@code WIKI_BLOCK},
+     *     the right index, the buffer list, and the comparison logic.
+     *     The {@code merge} method implements the merging logic of merge sort,
+     *     combining sorted subarrays into a larger sorted subarray.</li>
+     * </ul>
+     * {@code wiki} method is to sort a portion of the input list using incremental insertion sort for small blocks
+     * and then perform the merging step using the {@code merge} method.
+     * This process is a part of the overall Wiki Sort algorithm, which involves dividing the list into blocks,
+     * sorting the blocks, and then merging them to obtain the final sorted list.
+     * @param       list to be arranged.
+     * @param       left the value in the list must be smaller than a {@code right} parameter.
+     * @param       right the value in the list must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.Wiki#WIKI_BLOCK
+     * @see         mz.InsertionInterface#insertion(List, int, int, SortFunctional)
+     * @see         mz.MergeInterface#merge(List, int, int, List, SortFunctional)
+     */
+    protected <L extends Comparable> void wiki(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        List<L> buffer = new ArrayList<>();
+        for (int i = left; i < right; i += WIKI_BLOCK) {
+            insertion(list, i, (Math.min((i + WIKI_BLOCK), right) - 1), functional);
+        }
+        merge(list, WIKI_BLOCK, right, buffer, functional);
     }
 }
