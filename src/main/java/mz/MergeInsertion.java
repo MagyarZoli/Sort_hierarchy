@@ -1,11 +1,13 @@
 package mz;
 
+import java.util.List;
+
 /**
  * Merge Insertion Sort or the Ford–Johnson algorithm is a comparison sorting algorithm.
  * It uses fewer comparisons in the worst case than the best previously known algorithms,
  * insertion sort and merge sort, it remains of theoretical interest in connection with
  * the problem of sorting with a minimum number of comparisons.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -79,6 +81,34 @@ implements InsertionInterface<Comparable>{
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         mergeInsertion(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        mergeInsertionInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        mergeInsertionDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        mergeInsertion(list, functional);
     }
 
     /**
@@ -276,6 +306,205 @@ implements InsertionInterface<Comparable>{
                 mergeInsertion(array, left, mid, functional);
                 mergeInsertion(array, (mid + 1), right, functional);
                 merging(array, left, mid, right, functional);
+            }
+        }
+    }
+
+    /**
+     * {@code mergeInsertionInc} is a modified version of the Merge Sort algorithm that incorporates an insertion sort optimization.
+     * It sorts a list of {@link java.lang.Comparable Comparable} objects by recursively dividing
+     * it into smaller subarrays and performing either an insertion sort or a merge sort, depending on the size of the subarray.
+     * <ul>
+     *     <li>it first checks if the left index is less than the right index.
+     *     If this condition is false, it means the subarray contains only one element or is empty,
+     *     so no sorting operation is needed.</li>
+     *     <li>If the condition in step 1 is true, it checks if the size of the subarray
+     *     {@code (right - left)} is less than or equal to the {@code MERGE_THRESHOLD} value.
+     *     If it is, it performs an insertion sort on that subarray by calling the {@code insertionInc} method.</li>
+     *     <li>If the size of the subarray is greater than the {@code MERGE_THRESHOLD}, it proceeds with the merge sort algorithm.
+     *     It calculates the mid index as {@code (left + (right - left) / 2)} and recursively calls {@code mergeInsertionInc}
+     *     on the left and right halves of the subarray.</li>
+     *     <li>Finally, it calls the {@code mergingInc} method to merge the two sorted halves of the subarray.</li>
+     * </ul>
+     * By using the insertion sort optimization for small subarrays, the algorithm aims to improve
+     * the performance of merge sort when dealing with smaller chunks of data.
+     * Insertion sort is generally more efficient than merge sort for small arrays,
+     * as it has a lower constant factor and performs fewer comparisons and swaps.
+     * @param       list to be arranged.
+     * @see         mz.MergeInsertion#mergeInsertionInc(Comparable[], int, int)
+     */
+    protected <L extends Comparable> void mergeInsertionInc(List<L> list) {
+        mergeInsertionInc(list, 0, (list.size() - 1));
+    }
+
+    /**
+     * {@code mergeInsertionDec} is a modified version of the Merge Sort algorithm that incorporates an insertion sort optimization.
+     * It sorts a list of {@link java.lang.Comparable Comparable} objects by recursively dividing
+     * it into smaller subarrays and performing either an insertion sort or a merge sort, depending on the size of the subarray.
+     * <ul>
+     *     <li>it first checks if the left index is less than the right index.
+     *     If this condition is false, it means the subarray contains only one element or is empty,
+     *     so no sorting operation is needed.</li>
+     *     <li>If the condition in step 1 is true, it checks if the size of the subarray
+     *     {@code (right - left)} is less than or equal to the {@code MERGE_THRESHOLD} value.
+     *     If it is, it performs an insertion sort on that subarray by calling the {@code insertionDec} method.</li>
+     *     <li>If the size of the subarray is greater than the {@code MERGE_THRESHOLD}, it proceeds with the merge sort algorithm.
+     *     It calculates the mid index as {@code (left + (right - left) / 2)} and recursively calls {@code mergeInsertionDec}
+     *     on the left and right halves of the subarray.</li>
+     *     <li>Finally, it calls the {@code mergingDec} method to merge the two sorted halves of the subarray.</li>
+     * </ul>
+     * By using the insertion sort optimization for small subarrays, the algorithm aims to improve
+     * the performance of merge sort when dealing with smaller chunks of data.
+     * Insertion sort is generally more efficient than merge sort for small arrays,
+     * as it has a lower constant factor and performs fewer comparisons and swaps.
+     * @param       list to be arranged.
+     * @see         mz.MergeInsertion#mergeInsertionDec(Comparable[], int, int)
+     */
+    protected <L extends Comparable> void mergeInsertionDec(List<L> list) {
+        mergeInsertionDec(list, 0, (list.size() - 1));
+    }
+
+    /**
+     * {@code mergeInsertion} method being called with the entire {@code list} and the appropriate range.
+     * <ul>
+     *     <li>The method {@code mergeInsertion} is called with {@code list} as the input list,
+     *     <i>0</i> as the left index, and {@code (list.length - 1)} as the right index.
+     *     This ensures that the entire list is sorted using the {@code mergeInsertion} algorithm.</li>
+     *     <li>By passing the complete list to {@code mergeInsertion},
+     *     the method will recursively divide the list into smaller subarrays until
+     *     the subarrays reach the {@code MERGE_THRESHOLD} size.
+     *     At that point, insertion sort will be used to sort the subarrays,
+     *     and then the sorted subarrays will be merged using the merging method.</li>
+     * </ul>
+     * {@code mergeInsertion} algorithm combines the benefits of merge sort and insertion sort to efficiently sort the list.
+     * The merge sort algorithm is used for larger subarrays, while insertion sort is used for smaller subarrays,
+     * resulting in an optimized sorting process.
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.MergeInsertion#mergeInsertion(Comparable[], int, int, SortFunctional)
+     */
+    protected <L extends Comparable> void mergeInsertion(List<L> list, SortFunctional<Comparable> functional) {
+        mergeInsertion(list, 0, (list.size() - 1), functional);
+    }
+
+    /**
+     * {@code mergeInsertionInc} is a modified version of the Merge Sort algorithm that incorporates an insertion sort optimization.
+     * It sorts a list of {@link java.lang.Comparable Comparable} objects by recursively dividing
+     * it into smaller subarrays and performing either an insertion sort or a merge sort, depending on the size of the subarray.
+     * <ul>
+     *     <li>it first checks if the left index is less than the right index.
+     *     If this condition is false, it means the subarray contains only one element or is empty,
+     *     so no sorting operation is needed.</li>
+     *     <li>If the condition in step 1 is true, it checks if the size of the subarray
+     *     {@code (right - left)} is less than or equal to the {@code MERGE_THRESHOLD} value.
+     *     If it is, it performs an insertion sort on that subarray by calling the {@code insertionInc} method.</li>
+     *     <li>If the size of the subarray is greater than the {@code MERGE_THRESHOLD}, it proceeds with the merge sort algorithm.
+     *     It calculates the mid index as {@code (left + (right - left) / 2)} and recursively calls {@code mergeInsertionInc}
+     *     on the left and right halves of the subarray.</li>
+     *     <li>Finally, it calls the {@code mergingInc} method to merge the two sorted halves of the subarray.</li>
+     * </ul>
+     * By using the insertion sort optimization for small subarrays, the algorithm aims to improve
+     * the performance of merge sort when dealing with smaller chunks of data.
+     * Insertion sort is generally more efficient than merge sort for small arrays,
+     * as it has a lower constant factor and performs fewer comparisons and swaps.
+     * @param       list to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @see         mz.InsertionInterface#insertionInc(Comparable[], int, int)
+     * @see         mz.Merge#mergingInc(Comparable[], int, int, int)
+     */
+    protected <L extends Comparable> void mergeInsertionInc(List<L> list, int left, int right) {
+        if (left < right) {
+            if ((right - left) <= MERGE_THRESHOLD) {
+                insertionInc(list, left, right);
+            } else {
+                int mid = (left + ((right - left) / 2));
+                mergeInsertionInc(list, left, mid);
+                mergeInsertionInc(list, (mid + 1), right);
+                mergingInc(list, left, mid, right);
+            }
+        }
+    }
+
+    /**
+     * {@code mergeInsertionDec} is a modified version of the Merge Sort algorithm that incorporates an insertion sort optimization.
+     * It sorts a list of {@link java.lang.Comparable Comparable} objects by recursively dividing
+     * it into smaller subarrays and performing either an insertion sort or a merge sort, depending on the size of the subarray.
+     * <ul>
+     *     <li>it first checks if the left index is less than the right index.
+     *     If this condition is false, it means the subarray contains only one element or is empty,
+     *     so no sorting operation is needed.</li>
+     *     <li>If the condition in step 1 is true, it checks if the size of the subarray
+     *     {@code (right - left)} is less than or equal to the {@code MERGE_THRESHOLD} value.
+     *     If it is, it performs an insertion sort on that subarray by calling the {@code insertionDec} method.</li>
+     *     <li>If the size of the subarray is greater than the {@code MERGE_THRESHOLD}, it proceeds with the merge sort algorithm.
+     *     It calculates the mid index as {@code (left + (right - left) / 2)} and recursively calls {@code mergeInsertionDec}
+     *     on the left and right halves of the subarray.</li>
+     *     <li>Finally, it calls the {@code mergingDec} method to merge the two sorted halves of the subarray.</li>
+     * </ul>
+     * By using the insertion sort optimization for small subarrays, the algorithm aims to improve
+     * the performance of merge sort when dealing with smaller chunks of data.
+     * Insertion sort is generally more efficient than merge sort for small arrays,
+     * as it has a lower constant factor and performs fewer comparisons and swaps.
+     * @param       list to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @see         mz.InsertionInterface#insertionInc(Comparable[], int, int)
+     * @see         mz.Merge#mergingInc(Comparable[], int, int, int)
+     */
+    protected <L extends Comparable> void mergeInsertionDec(List<L> list, int left, int right) {
+        if (left < right) {
+            if ((right - left) <= MERGE_THRESHOLD) {
+                insertionDec(list, left, right);
+            } else {
+                int mid = (left + ((right - left) / 2));
+                mergeInsertionDec(list, left, mid);
+                mergeInsertionDec(list, (mid + 1), right);
+                mergingDec(list, left, mid, right);
+            }
+        }
+    }
+
+    /**
+     * {@code mergeInsertion} method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with an {@code if} statement to check if the range of elements ({@code left} to {@code right})
+     *     is valid and contains at least one element {@code (left < right)}.</li>
+     *     <li>If the range is valid, the method then checks if the size of
+     *     the range is less than or equal to a predefined {@code MERGE_THRESHOLD} value.
+     *     If so, the range is considered small enough to be sorted using the insertion sort algorithm,
+     *     and the {@code insertion} method is called to sort the range.</li>
+     *     <li>If the size of the range exceeds the {@code MERGE_THRESHOLD}, the method proceeds with the merge sort algorithm.
+     *     It calculates the midpoint of the range using {@code (left + ((right - left) / 2))}.</li>
+     *     <li>The {@code mergeInsertion} method is then recursively called twice, dividing the range into two halves.
+     *     The first recursive call sorts the left half of the range ({@code left} to {@code mid}),
+     *     and the second recursive call sorts the right half of the range ({@code (mid + 1)} to {@code right}),
+     *     both using the same {@code mergeInsertion} method.</li>
+     *     <li>Finally, the merging method is called to {@code merge} the two sorted halves of
+     *     the range ({@code left} to {@code mid} and {@code (mid + 1)} to {@code right}) into a single sorted range.</li>
+     * </ul>
+     * By using the insertion sort optimization for small subarrays, the algorithm aims to improve
+     * the performance of merge sort when dealing with smaller chunks of data.
+     * Insertion sort is generally more efficient than merge sort for small arrays,
+     * as it has a lower constant factor and performs fewer comparisons and swaps.
+     * @param       list to be arranged.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.InsertionInterface#insertion(Comparable[], int, int, SortFunctional)
+     * @see         mz.Merge#merging(Comparable[], int, int, int, SortFunctional)
+     */
+    protected <L extends Comparable> void mergeInsertion(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        if (left < right) {
+            if ((right - left) <= MERGE_THRESHOLD) {
+                insertion(list, left, right, functional);
+            } else {
+                int mid = (left + ((right - left) / 2));
+                mergeInsertion(list, left, mid, functional);
+                mergeInsertion(list, (mid + 1), right, functional);
+                merging(list, left, mid, right, functional);
             }
         }
     }
