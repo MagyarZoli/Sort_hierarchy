@@ -13,7 +13,7 @@ import java.util.List;
 @SuppressWarnings("rawtypes")
 public class MergeInsertion
 extends Merge
-implements InsertionInterface<Comparable>{
+implements InsertionInterface<Comparable> {
 
     /**
      * The threshold value for when to switch from merge sort to insertion sort. This value determines
