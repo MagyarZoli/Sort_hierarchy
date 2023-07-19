@@ -1,13 +1,14 @@
 package mz;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Weave Merge Sort is a variation of the Merge Sort algorithm that aims to achieve better performance by reducing the number of array copies during the merging step.
  * In Weave Merge Sort, instead of creating a new merged array, the merging process is performed directly on the original array.
  * This is achieved by using additional subarrays,
  * left array and right array, to store the elements from the original array temporarily.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -81,8 +82,36 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a
-     * {@link java.lang.Comparable Comparable} array in ascending order.
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        weaveMergeInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        weaveMergeDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        weaveMerge(list, functional);
+    }
+
+    /**
+     * {@code weaveMergeInc} that performs a weave merge sort algorithm
+     * to sort a {@link java.lang.Comparable Comparable} array in ascending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting <i>0</i> from {@code array.length},
      *     storing the result in the variable {@code n}.</li>
@@ -122,8 +151,8 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a
-     * {@link java.lang.Comparable Comparable} array in descending order.
+     * {@code weaveMergeDec} that performs a weave merge sort algorithm
+     * to sort a {@link java.lang.Comparable Comparable} array in descending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting <i>0</i> from {@code array.length},
      *     storing the result in the variable {@code n}.</li>
@@ -207,8 +236,8 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a
-     * {@link java.lang.Comparable Comparable} array in ascending order.
+     * {@code weaveMergeInc} that performs a weave merge sort algorithm
+     * to sort a {@link java.lang.Comparable Comparable} array in ascending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting {@code left} from {@code right},
      *     storing the result in the variable {@code n}.</li>
@@ -232,7 +261,7 @@ extends Merge {
      * </ul>
      * {@code weaveMergeInc} method modifies the original array in place rather than returning a new sorted array.
      * @param       array to be sorted.
-     * @param       left  index representing the start of the range to be sorted.
+     * @param       left index representing the start of the range to be sorted.
      * @param       right index representing the end of the range to be sorted.
      * @see         mz.MergeInterface#mergingInc(Comparable[], Comparable[], Comparable[])
      */
@@ -250,8 +279,8 @@ extends Merge {
     }
 
     /**
-     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a
-     * {@link java.lang.Comparable Comparable} array in descending order.
+     * {@code weaveMergeDec} that performs a weave merge sort algorithm
+     * to sort a {@link java.lang.Comparable Comparable} array in descending order.
      * <ul>
      *     <li>It first calculates the size of the range to be sorted by subtracting {@code left} from {@code right},
      *     storing the result in the variable {@code n}.</li>
@@ -275,7 +304,7 @@ extends Merge {
      * </ul>
      * {@code weaveMergeDec} method modifies the original array in place rather than returning a new sorted array.
      * @param       array to be sorted.
-     * @param       left  index representing the start of the range to be sorted.
+     * @param       left index representing the start of the range to be sorted.
      * @param       right index representing the end of the range to be sorted.
      * @see         mz.MergeInterface#mergingDec(Comparable[], Comparable[], Comparable[])
      */
@@ -320,7 +349,7 @@ extends Merge {
      * recursively merges the subarrays, and then merges the smaller merged subarrays back into the original array.
      * This process continues until the entire array is sorted.
      * @param       array to be sorted.
-     * @param       left  index representing the start of the range to be sorted.
+     * @param       left index representing the start of the range to be sorted.
      * @param       right index representing the end of the range to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         mz.MergeInterface#merging(Comparable[], Comparable[], Comparable[], SortFunctional)
@@ -336,5 +365,249 @@ extends Merge {
         weaveMerge(array, left, mid, functional);
         weaveMerge(array, mid, right, functional);
         merging(array, leftArray, rightArray, functional);
+    }
+
+    /**
+     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a {@code List<Comparable>} list in ascending order.
+     * <ul>
+     *     <li>The new result to the variable {@code n} is equals {@code list.size()}.</li>
+     *     <li>It checks if the size of the sublist is less than or equal to <i>1</i>.
+     *     If so, it means the sublist is already sorted or empty,
+     *     and it returns without further processing.</li>
+     *     <li>It calculates the middle index of the sublist by adding <i>0</i> to half of the size {@code (n / 2)}
+     *     and assigns the result to the variable {@code mid}.</li>
+     *     <li>It creates two new sublists, {@code leftList} and {@code rightList},
+     *     by calling the {@code addBetween} method with different ranges.
+     *     {@code leftList} contains the elements from <i>0</i> to {@code mid}, and
+     *     {@code rightList} contains the elements from {@code mid} to {@code n}.</li>
+     *     <li>It recursively calls the {@code weaveMergeInc} method on the sublist from <i>0</i> to {@code mid} and
+     *     then on the sublist from {@code mid} to {@code n}.
+     *     These recursive calls will further divide and sort the sublists.</li>
+     *     <li>Finally, it calls the {@code mergingInc} method, passing
+     *     the original list {@code list}, {@code leftList}, and {@code rightList} as arguments.
+     *     This method merges the sorted {@code leftList} and {@code rightList} back into the original {@code list}.</li>
+     * </ul>
+     * {@code weaveMergeInc} method modifies the original list in place rather than returning a new sorted list.
+     * @param       list to be sorted.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.MergeInterface#mergingInc(List, List, List)
+     */
+    protected <L extends Comparable> void weaveMergeInc(List<L> list) {
+        int n = list.size();
+        if (n <= 1) {
+            return;
+        }
+        int mid = (n / 2);
+        List<L> leftList = addBetween(list, 0, mid);
+        List<L> rightList = addBetween(list, mid, n);
+        weaveMergeInc(leftList);
+        weaveMergeInc(rightList);
+        mergingInc(list, leftList, rightList);
+    }
+
+    /**
+     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a {@code List<Comparable>} list in ascending order.
+     * <ul>
+     *     <li>The new result to the variable {@code n} is equals {@code list.size()}.</li>
+     *     <li>It checks if the size of the sublist is less than or equal to <i>1</i>.
+     *     If so, it means the sublist is already sorted or empty,
+     *     and it returns without further processing.</li>
+     *     <li>It calculates the middle index of the sublist by adding <i>0</i> to half of the size {@code (n / 2)}
+     *     and assigns the result to the variable {@code mid}.</li>
+     *     <li>It creates two new sublists, {@code leftList} and {@code rightList},
+     *     by calling the {@code addBetween} method with different ranges.
+     *     {@code leftList} contains the elements from <i>0</i> to {@code mid}, and
+     *     {@code rightList} contains the elements from {@code mid} to {@code n}.</li>
+     *     <li>It recursively calls the {@code weaveMergeDec} method on the sublist from <i>0</i> to {@code mid} and
+     *     then on the sublist from {@code mid} to {@code n}.
+     *     These recursive calls will further divide and sort the sublists.</li>
+     *     <li>Finally, it calls the {@code mergingDec} method, passing
+     *     the original list {@code list}, {@code leftList}, and {@code rightList} as arguments.
+     *     This method merges the sorted {@code leftList} and {@code rightList} back into the original {@code list}.</li>
+     * </ul>
+     * {@code weaveMergeInc} method modifies the original list in place rather than returning a new sorted list.
+     * @param       list to be sorted.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.MergeInterface#mergingInc(List, List, List)
+     */
+    protected <L extends Comparable> void weaveMergeDec(List<L> list) {
+        int n = list.size();
+        if (n <= 1) {
+            return;
+        }
+        int mid = (n / 2);
+        List<L> leftList = addBetween(list, 0, mid);
+        List<L> rightList = addBetween(list, mid, n);
+        weaveMergeDec(leftList);
+        weaveMergeDec(rightList);
+        mergingDec(list, leftList, rightList);
+    }
+
+    /**
+     * {@code weaveMerge} that performs a weave merge sort algorithm to sort a {@code List<Comparable>} list in ascending order.
+     * <ul>
+     *     <li>The new result to the variable {@code n} is equals {@code list.size()}.</li>
+     *     <li>It checks if the size of the sublist is less than or equal to <i>1</i>.
+     *     If so, it means the sublist is already sorted or empty,
+     *     and it returns without further processing.</li>
+     *     <li>It calculates the middle index of the sublist by adding <i>0</i> to half of the size {@code (n / 2)}
+     *     and assigns the result to the variable {@code mid}.</li>
+     *     <li>It creates two new sublists, {@code leftList} and {@code rightList},
+     *     by calling the {@code addBetween} method with different ranges.
+     *     {@code leftList} contains the elements from <i>0</i> to {@code mid}, and
+     *     {@code rightList} contains the elements from {@code mid} to {@code n}.</li>
+     *     <li>It recursively calls the {@code weaveMerge} method on the sublist from <i>0</i> to {@code mid} and
+     *     then on the sublist from {@code mid} to {@code n}.
+     *     These recursive calls will further divide and sort the sublists.</li>
+     *     <li>Finally, it calls the {@code merging} method, passing
+     *     the original list {@code list}, {@code leftList}, and {@code rightList} as arguments.
+     *     This method merges the sorted {@code leftList} and {@code rightList} back into the original {@code list}.</li>
+     * </ul>
+     * {@code weaveMerge} method effectively divides the list into smaller subarrays,
+     * recursively merges the subarrays, and then merges the smaller merged subarrays back into the original list.
+     * This process continues until the entire list is sorted.
+     * @param       list to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.MergeInterface#merging(List, List, List, SortFunctional)
+     */
+    protected <L extends Comparable> void weaveMerge(List<L> list, SortFunctional<Comparable> functional) {
+        int n = list.size();
+        if (n <= 1) {
+            return;
+        }
+        int mid = (n / 2);
+        List<L> leftList = addBetween(list, 0, mid);
+        List<L> rightList = addBetween(list, mid, n);
+        weaveMerge(leftList, functional);
+        weaveMerge(rightList, functional);
+        merging(list, leftList, rightList, functional);
+    }
+
+    /**
+     * {@code weaveMergeInc} that performs a weave merge sort algorithm to sort a {@code List<Comparable>} list in ascending order.
+     * <ul>
+     *     <li>It calculates the size of the sublist by subtracting {@code left} from {@code right}
+     *     and assigns the result to the variable {@code n}.</li>
+     *     <li>It checks if the size of the sublist is less than or equal to <i>1</i>.
+     *     If so, it means the sublist is already sorted or empty,
+     *     and it returns without further processing.</li>
+     *     <li>It calculates the middle index of the sublist by adding {@code left} to half of the size {@code (n / 2)}
+     *     and assigns the result to the variable {@code mid}.</li>
+     *     <li>It creates two new sublists, {@code leftList} and {@code rightList},
+     *     by calling the {@code addBetween} method with different ranges.
+     *     {@code leftList} contains the elements from {@code left} to {@code mid}, and
+     *     {@code rightList} contains the elements from {@code mid} to {@code right}.</li>
+     *     <li>It recursively calls the {@code weaveMergeInc} method on the sublist from {@code left} to {@code mid} and
+     *     then on the sublist from {@code mid} to {@code right}.
+     *     These recursive calls will further divide and sort the sublists.</li>
+     *     <li>Finally, it calls the {@code mergingInc} method, passing
+     *     the original list {@code list}, {@code leftList}, and {@code rightList} as arguments.
+     *     This method merges the sorted {@code leftList} and {@code rightList} back into the original {@code list}.</li>
+     * </ul>
+     * {@code weaveMergeInc} method modifies the original list in place rather than returning a new sorted list.
+     * @param       list to be sorted.
+     * @param       left index representing the start of the range to be sorted.
+     * @param       right index representing the end of the range to be sorted.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.MergeInterface#mergingInc(List, List, List)
+     */
+    protected <L extends Comparable> void weaveMergeInc(List<L> list, int left, int right) {
+        int n = (right - left);
+        if (n <= 1) {
+            return;
+        }
+        int mid = (left + (n / 2));
+        List<L> leftList = addBetween(list, left, mid);
+        List<L> rightList = addBetween(list, mid, right);
+        weaveMergeInc(list, left, mid);
+        weaveMergeInc(list, mid, right);
+        mergingInc(list, leftList, rightList);
+    }
+
+    /**
+     * {@code weaveMergeDec} that performs a weave merge sort algorithm to sort a {@code List<Comparable>} list in descending order.
+     * <ul>
+     *     <li>It calculates the size of the sublist by subtracting {@code left} from {@code right}
+     *     and assigns the result to the variable {@code n}.</li>
+     *     <li>It checks if the size of the sublist is less than or equal to <i>1</i>.
+     *     If so, it means the sublist is already sorted or empty,
+     *     and it returns without further processing.</li>
+     *     <li>It calculates the middle index of the sublist by adding {@code left} to half of the size {@code (n / 2)}
+     *     and assigns the result to the variable {@code mid}.</li>
+     *     <li>It creates two new sublists, {@code leftList} and {@code rightList},
+     *     by calling the {@code addBetween} method with different ranges.
+     *     {@code leftList} contains the elements from {@code left} to {@code mid}, and
+     *     {@code rightList} contains the elements from {@code mid} to {@code right}.</li>
+     *     <li>It recursively calls the {@code weaveMergeDec} method on the sublist from {@code left} to {@code mid} and
+     *     then on the sublist from {@code mid} to {@code right}.
+     *     These recursive calls will further divide and sort the sublists.</li>
+     *     <li>Finally, it calls the {@code mergingDec} method, passing
+     *     the original list {@code list}, {@code leftList}, and {@code rightList} as arguments.
+     *     This method merges the sorted {@code leftList} and {@code rightList} back into the original {@code list}.</li>
+     * </ul>
+     * {@code weaveMergeDec} method modifies the original list in place rather than returning a new sorted list.
+     * @param       list to be sorted.
+     * @param       left index representing the start of the range to be sorted.
+     * @param       right index representing the end of the range to be sorted.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.MergeInterface#mergingDec(List, List, List)
+     */
+    protected <L extends Comparable> void weaveMergeDec(List<L> list, int left, int right) {
+        int n = (right - left);
+        if (n <= 1) {
+            return;
+        }
+        int mid = (left + (n / 2));
+        List<L> leftList = addBetween(list, left, mid);
+        List<L> rightList = addBetween(list, mid, right);
+        weaveMergeDec(list, left, mid);
+        weaveMergeDec(list, mid, right);
+        mergingDec(list, leftList, rightList);
+    }
+
+    /**
+     * {@code weaveMerge} that performs a weave merge sort algorithm to sort a {@code List<Comparable>} list
+     * in a way defined by {@code functional} order.
+     * <ul>
+     *     <li>It calculates the size of the sublist by subtracting {@code left} from {@code right}
+     *     and assigns the result to the variable {@code n}.</li>
+     *     <li>It checks if the size of the sublist is less than or equal to <i>1</i>.
+     *     If so, it means the sublist is already sorted or empty,
+     *     and it returns without further processing.</li>
+     *     <li>It calculates the middle index of the sublist by adding {@code left} to half of the size {@code (n / 2)}
+     *     and assigns the result to the variable {@code mid}.</li>
+     *     <li>It creates two new sublists, {@code leftList} and {@code rightList},
+     *     by calling the {@code addBetween} method with different ranges.
+     *     {@code leftList} contains the elements from {@code left} to {@code mid}, and
+     *     {@code rightList} contains the elements from {@code mid} to {@code right}.</li>
+     *     <li>It recursively calls the {@code weaveMerge} method on the sublist from {@code left} to {@code mid} and
+     *     then on the sublist from {@code mid} to {@code right}.
+     *     These recursive calls will further divide and sort the sublists.</li>
+     *     <li>Finally, it calls the {@code merging} method, passing
+     *     the original list {@code list}, {@code leftList}, and {@code rightList} as arguments.
+     *     This method merges the sorted {@code leftList} and {@code rightList} back into the original {@code list}.</li>
+     * </ul>
+     * {@code weaveMerge} method effectively divides the list into smaller subarrays,
+     * recursively merges the subarrays, and then merges the smaller merged subarrays back into the original list.
+     * This process continues until the entire list is sorted.
+     * @param       list to be sorted.
+     * @param       left index representing the start of the range to be sorted.
+     * @param       right index representing the end of the range to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.MergeInterface#merging(List, List, List, SortFunctional)
+     */
+    protected <L extends Comparable> void weaveMerge(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        int n = (right - left);
+        if (n <= 1) {
+            return;
+        }
+        int mid = (left + (n / 2));
+        List<L> leftList = addBetween(list, left, mid);
+        List<L> rightList = addBetween(list, mid, right);
+        weaveMerge(list, left, mid, functional);
+        weaveMerge(list, mid, right, functional);
+        merging(list, leftList, rightList, functional);
     }
 }
