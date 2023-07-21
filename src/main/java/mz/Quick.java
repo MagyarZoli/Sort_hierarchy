@@ -1,17 +1,19 @@
 package mz;
 
+import java.util.List;
+
 /**
  * Quick Sort is a widely used comparison-based sorting algorithm that follows a divide-and-conquer approach.
  * It works by selecting a pivot element from the array and partitioning the other elements into two sub-arrays,
  * according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted,
  * and the sorted sub-arrays are combined to produce the final sorted array.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public class Quick
 extends SortComparable
-implements QuickInterface<Comparable> {
+implements QuickInterface<Comparable>, SortFind<Comparable> {
 
     /**
      * <b>Quick Sort:</b><br>
@@ -76,5 +78,33 @@ implements QuickInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         quick(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        quickInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        quickDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        quick(list, functional);
     }
 }
