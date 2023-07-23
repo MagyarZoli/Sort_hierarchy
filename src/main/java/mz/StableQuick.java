@@ -2,6 +2,7 @@ package mz;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * the relative order of elements with equal values during the sorting process.
  * In a standard QuickSort algorithm, the order of equal elements may change, making it an unstable sorting algorithm.
  * Stable QuickSort addresses this limitation by introducing additional steps to maintain stability.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -81,6 +82,34 @@ extends Quick {
     }
 
     /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        stableQuickInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        stableQuickDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        stableQuick(list, functional);
+    }
+
+    /**
      * {@code stableQuickInc} that performs an in-place sorting of
      * a {@link java.lang.Comparable Comparable} array using a stable version of the QuickSort algorithm.
      * <ul>
@@ -88,26 +117,26 @@ extends Quick {
      *     and passing the array as an argument to the {@code ArrayList} constructor:
      *     {@code new ArrayList<>}{@link java.util.Arrays#asList(Object[]) (Arrays.asList(array))}.</li>
      *     <li>The {@code ArrayList} is then passed as an argument to the {@code stableRecursiveInc} method,
-     *     which performs a stable sorting of the {@code ArrayList} and returns a sorted {@code list}.</li>
-     *     <li>The sorted list obtained from {@code stableRecursiveInc} is converted back into an array using
+     *     which performs a stable sorting of the {@code ArrayList} and returns a sorted {@code stableList}.</li>
+     *     <li>The sorted stableList obtained from {@code stableRecursiveInc} is converted back into an array using
      *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array as the argument:
-     *     {@code list.toArray(new Comparable[0])}.</li>
-     *     <li>The sorted elements are copied from the sorted list back into
+     *     {@code stableList.toArray(new Comparable[0])}.</li>
+     *     <li>The sorted elements are copied from the sorted stableList back into
      *     the original array using {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()}.
      *     The elements are copied starting from the beginning of the original array index <i>0</i>, and
      *     the number of elements copied is equal to the length of the array: {@code array.length}.</li>
      * </ul>
      * {@code stableQuickInc} method uses the {@code stableRecursiveInc} method to sort
      * the original array in a stable manner by converting it into an {@code ArrayList}.
-     * After obtaining the sorted list, the sorted elements are copied back into the original array.
+     * After obtaining the sorted stableList, the sorted elements are copied back into the original array.
      * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveInc} method instead of
      * the standard partitioning logic in QuickSort.
      * @param       array The original array containing Comparable elements.
      * @see         mz.StableQuick#stableRecursiveInc(List)
      */
     protected void stableQuickInc(Comparable[] array) {
-        List<Comparable> list = stableRecursiveInc(new ArrayList<>(Arrays.asList(array)));
-        System.arraycopy(list.toArray(new Comparable[0]), 0, array, 0, array.length);
+        List<Comparable> stableList = stableRecursiveInc(new ArrayList<>(Arrays.asList(array)));
+        System.arraycopy(stableList.toArray(new Comparable[0]), 0, array, 0, array.length);
     }
 
     /**
@@ -118,26 +147,26 @@ extends Quick {
      *     and passing the array as an argument to the {@code ArrayList} constructor:
      *     {@code new ArrayList<>}{@link java.util.Arrays#asList(Object[]) (Arrays.asList(array))}.</li>
      *     <li>The {@code ArrayList} is then passed as an argument to the {@code stableRecursiveInc} method,
-     *     which performs a stable sorting of the {@code ArrayList} and returns a sorted {@code list}.</li>
-     *     <li>The sorted list obtained from {@code stableRecursiveDec} is converted back into an array using
+     *     which performs a stable sorting of the {@code ArrayList} and returns a sorted {@code stableList}.</li>
+     *     <li>The sorted stableList obtained from {@code stableRecursiveDec} is converted back into an array using
      *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array as the argument:
-     *     {@code list.toArray(new Comparable[0])}.</li>
-     *     <li>The sorted elements are copied from the sorted list back into
+     *     {@code stableList.toArray(new Comparable[0])}.</li>
+     *     <li>The sorted elements are copied from the sorted stableList back into
      *     the original array using {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()}.
      *     The elements are copied starting from the beginning of the original array index <i>0</i>, and
      *     the number of elements copied is equal to the length of the array: {@code array.length}.</li>
      * </ul>
      * {@code stableQuickDec} method uses the {@code stableRecursiveInc} method to sort
      * the original array in a stable manner by converting it into an {@code ArrayList}.
-     * After obtaining the sorted list, the sorted elements are copied back into the original array.
+     * After obtaining the sorted stableList, the sorted elements are copied back into the original array.
      * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveInc} method instead of
      * the standard partitioning logic in QuickSort.
      * @param       array The original array containing Comparable elements.
      * @see         mz.StableQuick#stableRecursiveDec(List)
      */
     protected void stableQuickDec(Comparable[] array) {
-        List<Comparable> list = stableRecursiveDec(new ArrayList<>(Arrays.asList(array)));
-        System.arraycopy(list.toArray(new Comparable[0]), 0, array, 0, array.length);
+        List<Comparable> stableList = stableRecursiveDec(new ArrayList<>(Arrays.asList(array)));
+        System.arraycopy(stableList.toArray(new Comparable[0]), 0, array, 0, array.length);
     }
 
     /**
@@ -145,16 +174,16 @@ extends Quick {
      * <ul>
      *     <li>The method {@code stableQuick} takes two parameters:
      *     {@code array} an array of {@link java.lang.Comparable Comparable} objects
-     *     and {@code functional} an instance of {@code SortFunctional}
+     *     and {@code functional} an instance of {@code mz.SortFunctional}
      *     representing a functional interface for comparison operations.</li>
-     *     <li>The first line of code creates a new {@code ArrayList<Comparable>} called {@code list} by converting
-     *     the {@code array} into a list using {@link java.util.Arrays#asList(Object[]) Arrays.asList(array)}.
-     *     This creates a dynamic list that can be resized.</li>
-     *     <li>The {@code stableRecursive} method is called, passing the {@code list} and {@code functional} as parameters.
-     *     This method applies a stable sorting algorithm to the {@code list} using the {@code functional} object.</li>
-     *     <li>The sorted {@code list} is then converted back to an array
-     *     using {@link java.util.List#toArray(Object[]) list.toArray}{@code (new Comparable[0])}.</li>
-     *     <li>Finally, the sorted elements from the {@code list} are copied back to the original {@code array}
+     *     <li>The first line of code creates a new {@code ArrayList<Comparable>} called {@code stableList} by converting
+     *     the {@code array} into a stableList using {@link java.util.Arrays#asList(Object[]) Arrays.asList(array)}.
+     *     This creates a dynamic stableList that can be resized.</li>
+     *     <li>The {@code stableRecursive} method is called, passing the {@code stableList} and {@code functional} as parameters.
+     *     This method applies a stable sorting algorithm to the {@code stableList} using the {@code functional} object.</li>
+     *     <li>The sorted {@code stableList} is then converted back to an array
+     *     using {@link java.util.List#toArray(Object[]) stableList.toArray}{@code (new Comparable[0])}.</li>
+     *     <li>Finally, the sorted elements from the {@code stableList} are copied back to the original {@code array}
      *     using {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()}.
      *     The elements are copied starting from index <i>0</i> of the sorted array,
      *     and the destination in the original {@code array} starts at index <i>0</i>.
@@ -162,7 +191,7 @@ extends Quick {
      * </ul>
      * {@code stableQuick} method performs a stable sorting of the entire {@code array} using
      * a stable sorting algorithm based on the {@code functional} object.
-     * It converts the array to a dynamic list, applies stable sorting to the list,
+     * It converts the array to a dynamic stableList, applies stable sorting to the stableList,
      * and then copies the sorted elements back to the original array.
      * This method allows for stable sorting with the efficiency of the Quick Sort algorithm.
      * @param       array The original array containing Comparable elements.
@@ -170,8 +199,8 @@ extends Quick {
      * @see         mz.StableQuick#stableRecursive(List, SortFunctional)
      */
     protected void stableQuick(Comparable[] array, SortFunctional<Comparable> functional) {
-        List<Comparable> list = stableRecursive(new ArrayList<>(Arrays.asList(array)), functional);
-        System.arraycopy(list.toArray(new Comparable[0]), 0, array, 0, array.length);
+        List<Comparable> stableList = stableRecursive(new ArrayList<>(Arrays.asList(array)), functional);
+        System.arraycopy(stableList.toArray(new Comparable[0]), 0, array, 0, array.length);
     }
 
     /**
@@ -179,21 +208,21 @@ extends Quick {
      * {@link java.lang.Comparable Comparable} array using a stable version of the QuickSort algorithm.
      * <ul>
      *     <li>The method creates a new array called {@code newArray} with a size equal to the length of the subarray to be sorted {@code (right - left)}.
-     *     This new array will be used to create a temporary {@code list} for sorting.</li>
+     *     This new array will be used to create a temporary {@code stableList} for sorting.</li>
      *     <li>The elements from the original array that correspond to the subarray to be sorted are copied into
      *     the {@code newArray} using the {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()} method.</li>
      *     <li>The "newArray" is converted into an ArrayList using {@link java.util.Arrays#asList(Object[]) Arrays.asList()}
      *     and then passed as an argument to the {@code stableRecursiveInc} method.
-     *     This method, as you previously provided, performs a stable sorting of the {@code ArrayList} and returns a sorted {@code list}.</li>
-     *     <li>The sorted list obtained from "{@code stableRecursiveInc}" is converted back into an array using
+     *     This method, as you previously provided, performs a stable sorting of the {@code ArrayList} and returns a sorted {@code stableList}.</li>
+     *     <li>The sorted stableList obtained from "{@code stableRecursiveInc}" is converted back into an array using
      *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array as the argument.</li>
-     *     <li>The sorted elements are copied from the sorted {@code list} back into the original array using {@code System.arraycopy()}.
+     *     <li>The sorted elements are copied from the sorted {@code stableList} back into the original array using {@code System.arraycopy()}.
      *     The elements are copied starting from the left index of the original array,
-     *     and the number of elements copied is equal to the size of the sorted list.</li>
+     *     and the number of elements copied is equal to the size of the sorted stableList.</li>
      * </ul>
      * {@code stableQuickInc} method uses the {@code stableRecursiveInc} method to sort a subarray of the original array in a stable manner
      * by creating a temporary array and converting it into an ArrayList.
-     * After obtaining the sorted list, the sorted elements are copied back into the original array.
+     * After obtaining the sorted stableList, the sorted elements are copied back into the original array.
      * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveInc} method instead of
      * the standard partitioning logic in QuickSort.
      * @param       array The original array containing Comparable elements.
@@ -204,8 +233,8 @@ extends Quick {
     protected void stableQuickInc(Comparable[] array, int left, int right) {
         Comparable[] newArray = new Comparable[(right - left)];
         System.arraycopy(array, left, newArray, 0, newArray.length);
-        List<Comparable> list = stableRecursiveInc(new ArrayList<>(Arrays.asList(newArray)));
-        System.arraycopy(list.toArray(new Comparable[0]), 0, array, left, list.size());
+        List<Comparable> stableList = stableRecursiveInc(new ArrayList<>(Arrays.asList(newArray)));
+        System.arraycopy(stableList.toArray(new Comparable[0]), 0, array, left, stableList.size());
     }
 
     /**
@@ -213,21 +242,21 @@ extends Quick {
      * {@link java.lang.Comparable Comparable} array using a stable version of the QuickSort algorithm.
      * <ul>
      *     <li>The method creates a new array called {@code newArray} with a size equal to the length of the subarray to be sorted {@code (right - left)}.
-     *     This new array will be used to create a temporary {@code list} for sorting.</li>
+     *     This new array will be used to create a temporary {@code stableList} for sorting.</li>
      *     <li>The elements from the original array that correspond to the subarray to be sorted are copied into
      *     the {@code newArray} using the {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()} method.</li>
      *     <li>The "newArray" is converted into an ArrayList using {@link java.util.Arrays#asList(Object[]) Arrays.asList()}
      *     and then passed as an argument to the {@code stableRecursiveDec} method.
-     *     This method, as you previously provided, performs a stable sorting of the {@code ArrayList} and returns a sorted {@code list}.</li>
-     *     <li>The sorted list obtained from "{@code stableRecursiveDec}" is converted back into an array using
+     *     This method, as you previously provided, performs a stable sorting of the {@code ArrayList} and returns a sorted {@code stableList}.</li>
+     *     <li>The sorted stableList obtained from "{@code stableRecursiveDec}" is converted back into an array using
      *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array as the argument.</li>
-     *     <li>The sorted elements are copied from the sorted {@code list} back into the original array using {@code System.arraycopy()}.
+     *     <li>The sorted elements are copied from the sorted {@code stableList} back into the original array using {@code System.arraycopy()}.
      *     The elements are copied starting from the left index of the original array,
-     *     and the number of elements copied is equal to the size of the sorted list.</li>
+     *     and the number of elements copied is equal to the size of the sorted stableList.</li>
      * </ul>
      * {@code stableQuickDec} method uses the {@code stableRecursiveDec} method to sort a subarray of the original array in a stable manner
      * by creating a temporary array and converting it into an ArrayList.
-     * After obtaining the sorted list, the sorted elements are copied back into the original array.
+     * After obtaining the sorted stableList, the sorted elements are copied back into the original array.
      * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveDec} method instead of
      * the standard partitioning logic in QuickSort.
      * @param       array The original array containing Comparable elements.
@@ -238,8 +267,8 @@ extends Quick {
     protected void stableQuickDec(Comparable[] array, int left, int right) {
         Comparable[] newArray = new Comparable[(right - left)];
         System.arraycopy(array, left, newArray, 0, newArray.length);
-        List<Comparable> list = stableRecursiveDec(new ArrayList<>(Arrays.asList(newArray)));
-        System.arraycopy(list.toArray(new Comparable[0]), 0, array, left, list.size());
+        List<Comparable> stableList = stableRecursiveDec(new ArrayList<>(Arrays.asList(newArray)));
+        System.arraycopy(stableList.toArray(new Comparable[0]), 0, array, left, stableList.size());
     }
 
     /**
@@ -258,14 +287,14 @@ extends Quick {
      *     <li>The {@code newArray} is then converted
      *     to a {@code List<Comparable>} using {@link java.util.Arrays#asList(Object[]) asList()}
      *     and wrapped in a new {@code ArrayList<>} to allow dynamic resizing.</li>
-     *     <li>The {@code stableRecursive} method is called, passing the {@code list} and {@code functional} as parameters.
-     *     This method applies a stable sorting algorithm to the {@code list} using the {@code functional} object.</li>
-     *     <li>The sorted {@code list} is then converted back
-     *     to an array using {@link java.util.List#toArray(Object[]) list.toArray}{@code (new Comparable[0])}.</li>
-     *     <li>Finally, the sorted elements from the {@code list} are copied back to the original array using {@code System.arraycopy}.
+     *     <li>The {@code stableRecursive} method is called, passing the {@code stableList} and {@code functional} as parameters.
+     *     This method applies a stable sorting algorithm to the {@code stableList} using the {@code functional} object.</li>
+     *     <li>The sorted {@code stableList} is then converted back
+     *     to an array using {@link java.util.List#toArray(Object[]) stableList.toArray}{@code (new Comparable[0])}.</li>
+     *     <li>Finally, the sorted elements from the {@code stableList} are copied back to the original array using {@code System.arraycopy}.
      *     The elements are copied starting from index <i>0</i> of the sorted {@code array},
      *     and the destination in the original {@code array} starts at index {@code left}.
-     *     The number of elements copied is equal to {@code list.}{@link java.util.List#size() size()}.</li>
+     *     The number of elements copied is equal to {@code stableList.}{@link java.util.List#size() size()}.</li>
      * </ul>
      * {@code stableQuick} method performs a stable sorting of a specific partition of
      * the {@code array} using a stable sorting algorithm based on the {@code functional} object.
@@ -281,8 +310,167 @@ extends Quick {
     protected void stableQuick(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         Comparable[] newArray = new Comparable[(right - left)];
         System.arraycopy(array, left, newArray, 0, newArray.length);
-        List<Comparable> list = stableRecursive(new ArrayList<>(Arrays.asList(newArray)), functional);
-        System.arraycopy(list.toArray(new Comparable[0]), 0, array, left, list.size());
+        List<Comparable> stableList = stableRecursive(new ArrayList<>(Arrays.asList(newArray)), functional);
+        System.arraycopy(stableList.toArray(new Comparable[0]), 0, array, left, stableList.size());
+    }
+
+    /**
+     * {@code tableQuickInc} that takes a {@code List<Comparable>} called {@code list}.
+     * This method appears to be an incremental version of the Quick Sort algorithm.
+     * <ul>
+     *     <li>It calls the {@code stableRecursiveInc} method, passing the {@code list} as an argument.
+     *     The {@code stableRecursiveInc} method performs an incremental Quick Sort operation on the {@code list}.</li>
+     * </ul>
+     * {@code tableQuickInc} simply acts as a wrapper for the {@code stableRecursiveInc} method,
+     * allowing you to call the incremental Quick Sort algorithm on the entire {@code list} by invoking {@code stableQuickInc(list)}.
+     * @param       list The original list containing Comparable elements.
+     * @see         mz.StableQuick#stableRecursiveInc(List)
+     */
+    protected <L extends Comparable> void stableQuickInc(List<L> list) {
+        stableRecursiveInc(list);
+    }
+
+    /**
+     * {@code tableQuickDec} that takes a {@code List<Comparable>} called {@code list}.
+     * This method appears to be a decremental version of the Quick Sort algorithm.
+     * <ul>
+     *     <li>It calls the {@code stableRecursiveDec} method, passing the {@code list} as an argument.
+     *     The {@code stableRecursiveDec} method performs an decremental Quick Sort operation on the {@code list}.</li>
+     * </ul>
+     * {@code tableQuickDec} simply acts as a wrapper for the {@code stableRecursiveInc} method,
+     * allowing you to call the decremental Quick Sort algorithm on the entire {@code list} by invoking {@code stableQuickDec(list)}.
+     * @param       list The original list containing Comparable elements.
+     * @see         mz.StableQuick#stableRecursiveDec(List)
+     */
+    protected <L extends Comparable> void stableQuickDec(List<L> list) {
+        stableRecursiveDec(list);
+    }
+
+    /**
+     * {@code stableQuick} that takes a {@code List<Comparable>} called {@code list}
+     * and a {@code SortFunctional} object called {@code functional}.
+     * This method appears to be a version of the Quick Sort algorithm that allows you to provide a
+     * custom sorting implementation through the {@code SortFunctional} interface.
+     * <ul>
+     *     <li>It calls the {@code stableRecursive} method, passing the {@code list} and {@code functional} as arguments.
+     *     The {@code stableRecursive} method performs a Quick Sort operation on the list using the provided {@code functional} for sorting.</li>
+     * </ul>
+     * {@code stableQuick} acts as a wrapper for the {@code stableRecursive} method,
+     * allowing you to perform Quick Sort on the entire {@code list} using a custom sorting implementation provided through the {@code functional} parameter.
+     * @param       list The original list containing Comparable elements.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.StableQuick#stableRecursive(List, SortFunctional)
+     */
+    protected <L extends Comparable> void stableQuick(List<L> list, SortFunctional<Comparable> functional) {
+        stableRecursive(list, functional);
+    }
+
+    /**
+     * {@code stableQuickInc} that takes a {@code List<Comparable>} called {@code list},
+     * as well as two indices {@code left} and {@code right}.
+     * This method performs an incremental version of the Quick Sort algorithm
+     * on a sublist of the {@code list} between the indices {@code left} and {right}.
+     * <ul>
+     *     <li>It creates a new {@code List<Comparable>} called {@code newList} and initializes it by calling the
+     *     {@code addBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
+     *     The {@code addBetween} method returns a sublist of {@code list} containing the elements between
+     *     the {@code left} and {@code right} indices.</li>
+     *     <li>It updates the list variable by calling the {@code removeBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
+     *     The {@code removeBetween} method removes the elements between the {@code left} and {@code right} indices from the original {@code list}.</li>
+     *     <li>It calls the {@code stableRecursiveInc} method with the {@code newList} as an argument.
+     *     The {@code stableRecursiveInc} method presumably performs some sort of recursive operation on
+     *     the {@code newList} and returns a modified version of it.</li>
+     * </ul>
+     * {@code stableQuickInc} performs an incremental QuickSort operation on the sublist of {@code list} between the indices {@code left} and {@code right}.
+     * It creates a new sublist called {@code newList} using the {@code addBetween} method,
+     * removes the elements of the sublist from the original {@code list} using
+     * the {@code removeBetween} method, and then adds the modified {@code newList} back to
+     * the original {@code list} using the {@link java.util.List#addAll(Collection) addAll} method.
+     * @param       list The original list containing Comparable elements.
+     * @param       left The index representing the left boundary of the subarray to be sorted.
+     * @param       right The index representing the right boundary of the subarray to be sorted.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.SortList#removeBetween(List, int, int)
+     * @see         mz.StableQuick#stableRecursiveInc(List)
+     */
+    protected <L extends Comparable> void stableQuickInc(List<L> list, int left, int right) {
+        List<L> newList = addBetween(list, left, right);
+        list = removeBetween(list, left, right);
+        list.addAll(stableRecursiveInc(newList));
+    }
+
+    /**
+     * {@code stableQuickDec} that takes a {@code List<Comparable>} called {@code list},
+     * as well as two indices {@code left} and {@code right}.
+     * This method performs a decremental version of the Quick Sort algorithm
+     * on a sublist of the {@code list} between the indices {@code left} and {right}.
+     * <ul>
+     *     <li>It creates a new {@code List<Comparable>} called {@code newList} and initializes it by calling the
+     *     {@code addBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
+     *     The {@code addBetween} method returns a sublist of {@code list} containing the elements between
+     *     the {@code left} and {@code right} indices.</li>
+     *     <li>It updates the list variable by calling the {@code removeBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
+     *     The {@code removeBetween} method removes the elements between the {@code left} and {@code right} indices from the original {@code list}.</li>
+     *     <li>It calls the {@code stableRecursiveDec} method with the {@code newList} as an argument.
+     *     The {@code stableRecursiveDec} method presumably performs some sort of recursive operation on
+     *     the {@code newList} and returns a modified version of it.</li>
+     * </ul>
+     * {@code stableQuickDec} performs an decremental QuickSort operation on the sublist of {@code list} between the indices {@code left} and {@code right}.
+     * It creates a new sublist called {@code newList} using the {@code addBetween} method,
+     * removes the elements of the sublist from the original {@code list} using
+     * the {@code removeBetween} method, and then adds the modified {@code newList} back to
+     * the original {@code list} using the {@link java.util.List#addAll(Collection) addAll} method.
+     * @param       list The original list containing Comparable elements.
+     * @param       left The index representing the left boundary of the subarray to be sorted.
+     * @param       right The index representing the right boundary of the subarray to be sorted.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.SortList#removeBetween(List, int, int)
+     * @see         mz.StableQuick#stableRecursiveDec(List)
+     */
+    protected <L extends Comparable> void stableQuickDec(List<L> list, int left, int right) {
+        List<L> newList = addBetween(list, left, right);
+        list = removeBetween(list, left, right);
+        list.addAll(stableRecursiveDec(newList));
+    }
+
+    /**
+     * {@code stableQuick} that takes a {@code List<Comparable>} called {@code list},
+     * as well as two indices {@code left} and {@code right},
+     * and a {@code SortFunctional} object called {@code functional}.
+     * This method performs a Quick Sort algorithm on a sublist of
+     * the {@code list} between the indices {@code left} and {@code right} using a provided {@code SortFunctional} implementation.
+     * <ul>
+     *     <li>It creates a new {@code List<Comparable>} called {@code newList} and initializes it by calling
+     *     the {@code addBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
+     *     The {@code addBetween} method returns a sublist of {@code list} containing
+     *     the elements between the {@code left} and {@code right} indices.</li>
+     *     <li>It updates the {@code list} variable by calling the {@code removeBetween} method with
+     *     the {@code list}, {@code left}, and {@code right} as arguments.
+     *     The {@code removeBetween} method removes the elements between
+     *     the {@code left} and {@code right} indices from the original {@code list}.</li>
+     *     <li>It calls the {@code stableRecursive} method with the {@code newList} and {@code functional} as arguments.
+     *     The {@code stableRecursive} method presumably performs some sort of recursive sorting operation on
+     *     the {@code newList} using the provided {@code SortFunctional} implementation and returns a modified version of it.</li>
+     * </ul>
+     * {@code stableQuick} performs a Quick Sort operation on
+     * the sublist of {@code list} between the indices {@code left} and {@code right} using a provided {@code SortFunctional} implementation.
+     * It creates a new sublist called {@code newList} using the {@code addBetween} method,
+     * removes the elements of the sublist from the original list using the {@code removeBetween} method,
+     * and then adds the modified {@code newList} back to the original list using the {@link java.util.List#addAll(Collection) addAll} method.
+     * The actual sorting operation is performed by the {@code stableRecursive} method,
+     * which utilizes the provided {@code SortFunctional} implementation.
+     * @param       list The original list containing {@code Comparable} elements.
+     * @param       left The index representing the left boundary of the subarray to be sorted.
+     * @param       right The index representing the right boundary of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.SortList#removeBetween(List, int, int)
+     * @see         mz.StableQuick#stableRecursive(List, SortFunctional)
+     */
+    protected <L extends Comparable> void stableQuick(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        List<L> newList = addBetween(list, left, right);
+        list = removeBetween(list, left, right);
+        list.addAll(stableRecursive(newList, functional));
     }
 
     /**
@@ -315,16 +503,16 @@ extends Quick {
      * @return      The sorted list, is returned.
      */
     @SuppressWarnings("unchecked")
-    protected List<Comparable> stableRecursiveInc(List<Comparable> list) {
+    protected <L extends Comparable> List<L> stableRecursiveInc(List<L> list) {
         if (list.size() <= 1) {
             return list;
         }
         int n = list.size(), mid = (n / 2);
-        Comparable pivot = list.get(mid);
-        List<Comparable> smaller = new ArrayList<>();
-        List<Comparable> greater = new ArrayList<>();
+        L pivot = list.get(mid);
+        List<L> smaller = new ArrayList<>();
+        List<L> greater = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            Comparable value = list.get(i);
+            L value = list.get(i);
             if (i != mid) {
                 if (pivot.compareTo(value) > 0) {
                     smaller.add(value);
@@ -339,9 +527,9 @@ extends Quick {
                 }
             }
         }
-        List<Comparable> ans = new ArrayList<>();
-        List<Comparable> sa1 = stableRecursiveInc(smaller);
-        List<Comparable> sa2 = stableRecursiveInc(greater);
+        List<L> ans = new ArrayList<>();
+        List<L> sa1 = stableRecursiveInc(smaller);
+        List<L> sa2 = stableRecursiveInc(greater);
         ans.addAll(sa1);
         ans.add(pivot);
         ans.addAll(sa2);
@@ -378,16 +566,16 @@ extends Quick {
      * @return      The sorted list, is returned.
      */
     @SuppressWarnings("unchecked")
-    protected List<Comparable> stableRecursiveDec(List<Comparable> list) {
+    protected <L extends Comparable> List<L> stableRecursiveDec(List<L> list) {
         if (list.size() <= 1) {
             return list;
         }
         int n = list.size(), mid = (n / 2);
-        Comparable pivot = list.get(mid);
-        List<Comparable> smaller = new ArrayList<>();
-        List<Comparable> greater = new ArrayList<>();
+        L pivot = list.get(mid);
+        List<L> smaller = new ArrayList<>();
+        List<L> greater = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            Comparable value = list.get(i);
+            L value = list.get(i);
             if (i != mid) {
                 if (pivot.compareTo(value) < 0) {
                     smaller.add(value);
@@ -402,9 +590,9 @@ extends Quick {
                 }
             }
         }
-        List<Comparable> ans = new ArrayList<>();
-        List<Comparable> sa1 = stableRecursiveDec(smaller);
-        List<Comparable> sa2 = stableRecursiveDec(greater);
+        List<L> ans = new ArrayList<>();
+        List<L> sa1 = stableRecursiveDec(smaller);
+        List<L> sa2 = stableRecursiveDec(greater);
         ans.addAll(sa1);
         ans.add(pivot);
         ans.addAll(sa2);
@@ -459,17 +647,17 @@ extends Quick {
      * @see         mz.Sort#functionalComparableToReverse(SortFunctional)
      * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
-    protected List<Comparable> stableRecursive(List<Comparable> list, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> List<L> stableRecursive(List<L> list, SortFunctional<Comparable> functional) {
         if (list.size() <= 1) {
             return list;
         }
         int n = list.size(), mid = (n / 2);
-        Comparable pivot = list.get(mid);
-        List<Comparable> smaller = new ArrayList<>();
-        List<Comparable> greater = new ArrayList<>();
+        L pivot = list.get(mid);
+        List<L> smaller = new ArrayList<>();
+        List<L> greater = new ArrayList<>();
         SortFunctional<Comparable> functionalReverse = functionalComparableToReverse(functional);
         for (int i = 0; i < n; i++) {
-            Comparable value = list.get(i);
+            L value = list.get(i);
             if (i != mid) {
                 if (functional.functionalCompareTo(pivot, value)) {
                     smaller.add(value);
@@ -484,9 +672,9 @@ extends Quick {
                 }
             }
         }
-        List<Comparable> ans = new ArrayList<>();
-        List<Comparable> sa1 = stableRecursiveDec(smaller);
-        List<Comparable> sa2 = stableRecursiveDec(greater);
+        List<L> ans = new ArrayList<>();
+        List<L> sa1 = stableRecursive(smaller, functional);
+        List<L> sa2 = stableRecursive(greater, functional);
         ans.addAll(sa1);
         ans.add(pivot);
         ans.addAll(sa2);
