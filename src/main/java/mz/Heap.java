@@ -1,10 +1,12 @@
 package mz;
 
+import java.util.List;
+
 /**
  * Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure to sort elements.
  * It works by constructing a heap from the input array and repeatedly extracting
  * the maximum (or minimum) element from the heap and placing it at the end of the sorted portion of the array.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -78,5 +80,33 @@ implements HeapInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         heap(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        heapInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        heapDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        heap(list, functional);
     }
 }
