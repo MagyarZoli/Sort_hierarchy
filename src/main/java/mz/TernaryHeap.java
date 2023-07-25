@@ -1,12 +1,14 @@
 package mz;
 
+import java.util.List;
+
 /**
  * Ternary Heap Sort which uses a ternary heap instead of a binary heap; that is, each element in the heap has three children.
  * Ternary Heap Sort is somewhat more complicated to program, but it is potentially faster.
  * Each step in the sift operation of a ternary heap requires three comparisons and one swap,
  * whereas in a binary heap two comparisons and one swap are required.
  * The ternary heap can do two steps in less time than the binary heap requires for three steps.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -78,7 +80,6 @@ extends Heap {
      * @param       n of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
-     * @see         mz.HeapInterface#heapSplitInc(Comparable[], int, int)
      * @see         mz.HeapInterface#heapChildInc(Comparable[], int, int, int)
      */
     @Override
@@ -119,7 +120,6 @@ extends Heap {
      * @param       n of the array.
      * @param       i the current element
      * @return      the value of {@code largest}
-     * @see         mz.HeapInterface#heapSplitInc(Comparable[], int, int)
      * @see         mz.HeapInterface#heapChildDec(Comparable[], int, int, int)
      */
     @Override
@@ -161,6 +161,7 @@ extends Heap {
      * @param       i the current element
      * @param       functional lambda expression for comparison.
      * @return      the value of {@code largest}
+     * @see         mz.HeapInterface#heapChild(Comparable[], int, int, int, mz.Sort.SortFunctional)
      */
     @Override
     public int heapSplit(Comparable[] array, int n, int i, SortFunctional<Comparable> functional) {
@@ -168,6 +169,127 @@ extends Heap {
         int largest = heapChild(array, n, i, left, functional);
         largest = heapChild(array, n, largest, mid, functional);
         largest = heapChild(array, n, largest, right, functional);
+        return largest;
+    }
+
+    /**
+     * {@code heapSplitInc}. This method is likely a part of a heap-related algorithm or data structure implementation
+     * and is used to find the index of the largest child element among the {@code left}, {@code mid}, and {@code right} children of
+     * the current element at index {@code i}. The method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * the length of the list, and an index {@code i} as parameters.
+     * <ul>
+     *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right} child elements of the current element index {@code i}.
+     *     The {@code left} child index is {@code (3 * i + 1)},
+     *     the {@code middle} child index is {@code (3 * i + 2)}, and
+     *     the {@code right} child index is {@code (3 * i + 3)}.</li>
+     *     <li>The method then calls the heapChildInc method three times.
+     *     The first call compares the current element with the {@code left} child,
+     *     the second call compares the current element with the {@code mid} child,
+     *     and the third call compares the current element with the {@code right} child.
+     *     The {@code heapChildInc} method compares the elements at the provided indices
+     *     and returns the index of the {@code larger} element.</li>
+     *     <li>The returned values from the {@code heapChildInc} method calls are assigned to the variable {@code largest}.
+     *     Since each call updates {@code largest} based on the comparison result,
+     *     the final value of largest represents the index of the {@code largest} child element among
+     *     the {@code left}, {@code mid}, and {@code right} children.</li>
+     *     <li>Finally, the method returns the value of {@code largest}, which is the index of the largest child element among
+     *     the three children of the element at index {@code i}.</li>
+     * </ul>
+     * {@code heapSplitInc} method is used to find the index of the largest child element among
+     * the {@code left}, {@code mid}, and {@code right} children of a given element in a heap structure.
+     * @param       list to be arranged.
+     * @param       n of the list.
+     * @param       i the current element
+     * @return      the value of {@code largest}
+     * @see         mz.HeapInterface#heapChildInc(List, int, int, int)
+     */
+    @Override
+    public <L extends Comparable> int heapSplitInc(List<L> list, int n, int i) {
+        int left = ((3 * i) + 1), mid = ((3 * i) + 2), right = ((3 * i) + 3);
+        int largest = heapChildInc(list, n, i, left);
+        largest = heapChildInc(list, n, largest, mid);
+        largest = heapChildInc(list, n, largest, right);
+        return largest;
+    }
+
+    /**
+     * {@code heapSplitDec}. This method is likely a part of a heap-related algorithm or data structure implementation
+     * and is used to find the index of the largest child element among the {@code left}, {@code mid}, and {@code right} children of
+     * the current element at index {@code i}. The method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * the length of the list, and an index {@code i} as parameters.
+     * <ul>
+     *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right} child elements of the current element index {@code i}.
+     *     The {@code left} child index is {@code (3 * i + 1)},
+     *     the {@code middle} child index is {@code (3 * i + 2)}, and
+     *     the {@code right} child index is {@code (3 * i + )}3.</li>
+     *     <li>The method then calls the heapChildInc method three times.
+     *     The first call compares the current element with the {@code left} child,
+     *     the second call compares the current element with the {@code mid} child,
+     *     and the third call compares the current element with the {@code right} child.
+     *     The {@code heapChildInc} method compares the elements at the provided indices
+     *     and returns the index of the {@code larger} element.</li>
+     *     <li>The returned values from the {@code heapChildDec} method calls are assigned to the variable {@code largest}.
+     *     Since each call updates {@code largest} based on the comparison result,
+     *     the final value of smallest represents the index of the {@code largest} child element among
+     *     the {@code left}, {@code mid}, and {@code right} children.</li>
+     *     <li>Finally, the method returns the value of {@code largest}, which is the index of the smallest child element among
+     *     the three children of the element at index {@code i}.</li>
+     * </ul>
+     * {@code heapSplitDec} method is used to find the index of the smallest child element among
+     * the {@code left}, {@code mid}, and {@code right} children of a given element in a heap structure.
+     * @param       list to be arranged.
+     * @param       n of the list.
+     * @param       i the current element
+     * @return      the value of {@code largest}
+     * @see         mz.HeapInterface#heapChildDec(List, int, int, int)
+     */
+    @Override
+    public <L extends Comparable> int heapSplitDec(List<L> list, int n, int i) {
+        int left = ((3 * i) + 1), mid = ((3 * i) + 2), right = ((3 * i) + 3);
+        int largest = heapChildDec(list, n, i, left);
+        largest = heapChildDec(list, n, largest, mid);
+        largest = heapChildDec(list, n, largest, right);
+        return largest;
+    }
+
+    /**
+     * {@code heapSplit} method being overridden.
+     * This method is responsible for finding the index of
+     * the largest element among a node and its three children within a list {@code list},
+     * given the total number of elements {@code n}.
+     * The {@code SortFunctional<Comparable>} object {@code functional} is used to determine the ordering of elements.
+     * <ul>
+     *     <li>It calculates the indices of the left child {@code left},
+     *     middle child {@code mid}, and right child {@code right} based on the current node index {@code i}.</li>
+     *     <li>It initializes largest with the result of calling the {@code heapChild} method for the left child,
+     *     passing in {@code list}, {@code n}, {@code i}, {@code left}, and {@code functional}.
+     *     This step compares the element at index {@code i} with the left child and determines
+     *     the index of the largest element among them.</li>
+     *     <li>It updates largest by calling the {@code heapChild} method for the middle child,
+     *     passing in {@code list}, {@code n}, {@code largest}, {@code mid}, and {@code functional}.
+     *     This step compares the current largest element with the middle child and determines
+     *     the index of the largest element among them.</li>
+     *     <li>It further updates largest by calling the heapChild method for
+     *     the right child, passing in {@code list}, {@code n}, {@code largest}, {@code right}, and {@code functional}.
+     *     This step compares the current largest element with the right child and determines
+     *     the index of the largest element among them.</li>
+     *     <li>Finally, it returns the index of the largest element among the node and its three children.</li>
+     * </ul>
+     * {@code heapSplit} method is typically used as part of the heap sort algorithm to identify
+     * the largest element among a node and its children during the process of building a max heap.
+     * @param       list to be arranged.
+     * @param       n of the list.
+     * @param       i the current element
+     * @param       functional lambda expression for comparison.
+     * @return      the value of {@code largest}
+     * @see         mz.HeapInterface#heapChild(List, int, int, int, mz.Sort.SortFunctional)
+     */
+    @Override
+    public <L extends Comparable> int heapSplit(List<L> list, int n, int i, SortFunctional<Comparable> functional) {
+        int left = ((3 * i) + 1), mid = ((3 * i) + 2), right = ((3 * i) + 3);
+        int largest = heapChild(list, n, i, left, functional);
+        largest = heapChild(list, n, largest, mid, functional);
+        largest = heapChild(list, n, largest, right, functional);
         return largest;
     }
 }
