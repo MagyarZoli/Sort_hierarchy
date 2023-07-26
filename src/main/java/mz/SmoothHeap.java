@@ -1,9 +1,12 @@
 package mz;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Smooth Heap Sort it is another version of heapsort that is designed to minimize the number of comparisons performed during the sort.
  * Like heapsort, smooth sort sorts an array by building a heap and repeatedly extracting the maximum element.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -13,7 +16,12 @@ extends Heap {
     /**
      * Which is an array of {@link java.lang.Comparable Comparable} objects with an initial size of 256,
      */
-    protected Comparable[] buffer = new Comparable[256];
+    protected Comparable[] bufferArray = new Comparable[256];
+
+    /**
+     * Which is a list of {@link java.lang.Comparable Comparable} objects with an initial new {@link java.util.ArrayList ArrayList},
+     */
+    protected List<Comparable> bufferList = new ArrayList<>();
 
     /**
      * Which represents the number of elements currently stored in the buffer.
@@ -77,66 +85,94 @@ extends Heap {
     }
 
     /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        smoothInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        smoothDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        smooth(list, functional);
+    }
+
+    /**
      * {@code smoothInc}. This method performs a Smooth Heap Sort on an array of
      * {@link java.lang.Comparable Comparable} objects in increasing order.
-     * It utilizes the {@code insertInc} and {@code deleteMinInc} methods to build a heap from the array elements and then extract
+     * It utilizes the {@code insertArrayInc} and {@code deleteArrayMinInc} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, as a parameter.</li>
      *     <li>The variable {@code n} is assigned the length of the {@code array}.</li>
-     *     <li>The first {@code for} loop iterates over the elements of the {@code array}. For each element, it calls the {@code insertInc} method
+     *     <li>The first {@code for} loop iterates over the elements of the {@code array}. For each element, it calls the {@code insertArrayInc} method
      *     to insert the element into the heap represented by the {@code buffer}.</li>
      *     <li>After the first loop completes, the {@code buffer} contains all the elements from the {@code array} in a heap structure.</li>
      *     <li>The second {@code for} loop iterates over the indices of the {@code array}. For each index {@code i}, it calls
-     *     the {@code deleteMinInc} method to extract the minimum element from the heap and assigns it back to the {@code array[i]}.
+     *     the {@code deleteArrayMinInc} method to extract the minimum element from the heap and assigns it back to the {@code array[i]}.
      *     This effectively sorts the elements of the {@code array} in increasing order.</li>
      *     <li>At the end of the method, the {@code array} will contain the elements sorted in increasing order.</li>
      * </ul>
-     * {@code smoothInc} method uses the {@code insertInc} and {@code deleteMinInc} methods to perform a smooth sort on the given array,
+     * {@code smoothInc} method uses the {@code insertArrayInc} and {@code deleteArrayMinInc} methods to perform a smooth sort on the given array,
      * resulting in the elements being sorted in increasing order.
      * @param       array to be arranged.
-     * @see         mz.SmoothHeap#insertInc(Comparable)
-     * @see         SmoothHeap#deleteMinInc()
+     * @see         mz.SmoothHeap#insertArrayInc(Comparable)
+     * @see         mz.SmoothHeap#deleteArrayMinInc()
      */
     protected void smoothInc(Comparable[] array) {
         int n = array.length;
         for (int i = 0; i < n; i++) {
-            insertInc(array[i]);
+            insertArrayInc(array[i]);
         }
         for (int i = 0; i < n; i++) {
-            array[i] = deleteMinInc();
+            array[i] = deleteArrayMinInc();
         }
     }
 
     /**
      * {@code smoothDec}. This method performs a Smooth Heap Sort on an array of
      * {@link java.lang.Comparable Comparable} objects in increasing order.
-     * It utilizes the {@code insertDec} and {@code deleteMinDec} methods to build a heap from the array elements and then extract
+     * It utilizes the {@code insertDec} and {@code deleteArrayMinDec} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, as a parameter.</li>
      *     <li>The variable {@code n} is assigned the length of the {@code array}.</li>
-     *     <li>The first {@code for} loop iterates over the elements of the {@code array}. For each element, it calls the {@code insertDec} method
+     *     <li>The first {@code for} loop iterates over the elements of the {@code array}. For each element, it calls the {@code insertArrayDec} method
      *     to insert the element into the heap represented by the {@code buffer}.</li>
      *     <li>After the first loop completes, the {@code buffer} contains all the elements from the {@code array} in a heap structure.</li>
      *     <li>The second {@code for} loop iterates over the indices of the {@code array}. For each index {@code i}, it calls
-     *     the {@code deleteMinDec} method to extract the minimum element from the heap and assigns it back to the {@code array[i]}.
+     *     the {@code deleteArrayMinDec} method to extract the minimum element from the heap and assigns it back to the {@code array[i]}.
      *     This effectively sorts the elements of the {@code array} in increasing order.</li>
      *     <li>At the end of the method, the {@code array} will contain the elements sorted in increasing order.</li>
      * </ul>
-     * {@code smoothDec} method uses the {@code insertDec} and {@code deleteMinDec} methods to perform a smooth sort on the given array,
+     * {@code smoothDec} method uses the {@code insertArrayDec} and {@code deleteArrayMinDec} methods to perform a smooth sort on the given array,
      * resulting in the elements being sorted in increasing order.
      * @param       array to be arranged.
-     * @see         mz.SmoothHeap#insertDec(Comparable)
-     * @see         SmoothHeap#deleteMinDec()
+     * @see         mz.SmoothHeap#insertArrayDec(Comparable)
+     * @see         mz.SmoothHeap#deleteArrayMinDec()
      */
     protected void smoothDec(Comparable[] array) {
         int n = array.length;
         for (int i = 0; i < n; i++) {
-            insertDec(array[i]);
+            insertArrayDec(array[i]);
         }
         for (int i = 0; i < n; i++) {
-            array[i] = deleteMinDec();
+            array[i] = deleteArrayMinDec();
         }
     }
 
@@ -144,144 +180,144 @@ extends Heap {
      * {@code smooth} that takes an array of {@link java.lang.Comparable Comparable} objects {@code array},
      * and a {@code SortFunctional<Comparable>} object as parameters.
      * This method performs a smooth sort on the specified portion of the array using
-     * the {@code insert} and {@code deleteMin} methods while maintaining the ordering based on the {@code SortFunctional} object.
+     * the {@code insertArray} and {@code deleteArrayMin} methods while maintaining the ordering based on the {@code SortFunctional} object.
      * <ul>
      *     <li>It iterates over the elements in the range from <i>0</i> to {@code array.length} (exclusive) of the {@code array}.</li>
-     *     <li>Inside the loop, it calls the {@code insert} method with the current element and the {@code functional} object as arguments.
+     *     <li>Inside the loop, it calls the {@code insertArray} method with the current element and the {@code functional} object as arguments.
      *     This inserts the element into a buffer (presumably a binary heap) while maintaining
      *     the ordering based on the {@code SortFunctional} object.</li>
      *     <li>After the first loop, all elements in the specified range have been inserted into the buffer.</li>
      *     <li>It iterates again over the same range of elements from <i>0</i> to {@code n}.</li>
-     *     <li>Inside this loop, it assigns the result of calling the {@code deleteMin} method with
+     *     <li>Inside this loop, it assigns the result of calling the {@code deleteArrayMin} method with
      *     the {@code functional} object to the corresponding element in the {@code array}.
      *     This operation removes the minimum element from the buffer while maintaining the ordering based on
      *     the {@code SortFunctional} object and assigns it to the current index in the {@code array}.</li>
      *     <li>After the second loop, the elements in the specified range of the {@code array}
      *     have been sorted in non-decreasing order based on the {@code functional} object.</li>
      * </ul>
-     * {@code smooth} method uses the {@code insert} and {@code deleteMin} methods to perform a smooth sort on the given array,
+     * {@code smooth} method uses the {@code insertArray} and {@code deleteArrayMin} methods to perform a smooth sort on the given array,
      * resulting in the elements being sorted.
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
-     * @see         mz.SmoothHeap#insert(Comparable, SortFunctional)
-     * @see         mz.SmoothHeap#deleteMin(SortFunctional)
+     * @see         mz.SmoothHeap#insertArray(Comparable, SortFunctional)
+     * @see         mz.SmoothHeap#deleteListMin(SortFunctional)
      */
     protected void smooth(Comparable[] array, SortFunctional<Comparable> functional) {
         int n = array.length;
         for (int i = 0; i < n; i++) {
-            insert(array[i], functional);
+            insertArray(array[i], functional);
         }
         for (int i = 0; i < n; i++) {
-            array[i] = deleteMin(functional);
+            array[i] = deleteArrayMin(functional);
         }
     }
 
     /**
      * {@code smoothInc}. This method performs a Smooth Heap Sort on an array of
      * {@link java.lang.Comparable Comparable} objects in increasing order.
-     * It utilizes the {@code insertInc} and {@code deleteMinInc} methods to build a heap from the array elements and then extract
+     * It utilizes the {@code insertArrayInc} and {@code deleteArrayMinInc} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, as a parameter.</li>
      *     <li>The variable {@code right} is assigned the length of the {@code array}.</li>
-     *     <li>The first {@code for} loop iterates over the elements of the {@code array}. For each element, it calls the {@code insertInc} method
+     *     <li>The first {@code for} loop iterates over the elements of the {@code array}. For each element, it calls the {@code insertArrayInc} method
      *     to insert the element into the heap represented by the {@code buffer}.</li>
      *     <li>After the first loop completes, the {@code buffer} contains all the elements from the {@code array} in a heap structure.</li>
      *     <li>The second {@code for} loop iterates over the indices of the {@code array}. For each index {@code i}, it calls
-     *     the {@code deleteMinInc} method to extract the minimum element from the heap and assigns it back to the {@code array[i]}.
+     *     the {@code deleteArrayMinInc} method to extract the minimum element from the heap and assigns it back to the {@code array[i]}.
      *     This effectively sorts the elements of the {@code array} in increasing order.</li>
      *     <li>At the end of the method, the {@code array} will contain the elements sorted in increasing order.</li>
      * </ul>
-     * {@code smoothInc} method uses the {@code insertInc} and {@code deleteMinInc} methods to perform a smooth sort on the given array,
+     * {@code smoothInc} method uses the {@code insertArrayInc} and {@code deleteArrayMinInc} methods to perform a smooth sort on the given array,
      * resulting in the elements being sorted in increasing order.
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
-     * @see         mz.SmoothHeap#insertInc(Comparable)
-     * @see         SmoothHeap#deleteMinInc()
+     * @see         mz.SmoothHeap#insertArrayInc(Comparable)
+     * @see         mz.SmoothHeap#deleteArrayMinInc()
      */
     protected void smoothInc(Comparable[] array, int left, int right) {
         for (int i = left; i < right; i++) {
-            insertInc(array[i]);
+            insertArrayInc(array[i]);
         }
         for (int i = left; i < right; i++) {
-            array[i] = deleteMinInc();
+            array[i] = deleteArrayMinInc();
         }
     }
 
     /**
      * {@code smoothDec}. This method performs a Smooth Heap Sort on an array of
      * {@link java.lang.Comparable Comparable} objects in increasing order.
-     * It utilizes the {@code insertDec} and {@code deleteMinDec} methods to build a heap from the array elements and then extract
+     * It utilizes the {@code insertArrayDec} and {@code deleteArrayMinDec} methods to build a heap from the array elements and then extract
      * the elements from the heap in sorted order.
      * <ul>
      *     <li>The method takes an array of {@code Comparable} objects, denoted by {@code array}, as a parameter.</li>
      *     <li>The variable {@code n} is assigned the length of the {@code array}.</li>
-     *     <li>The first {@code for} loop iterates over the elements of the {@code array}. For each element, it calls the {@code insertDec} method
+     *     <li>The first {@code for} loop iterates over the elements of the {@code array}. For each element, it calls the {@code insertArrayDec} method
      *     to insert the element into the heap represented by the {@code buffer}.</li>
      *     <li>After the first loop completes, the {@code buffer} contains all the elements from the {@code array} in a heap structure.</li>
      *     <li>The second {@code for} loop iterates over the indices of the {@code array}. For each index {@code i}, it calls
-     *     the {@code deleteMinDec} method to extract the minimum element from the heap and assigns it back to the {@code array[i]}.
+     *     the {@code deleteArrayMinDec} method to extract the minimum element from the heap and assigns it back to the {@code array[i]}.
      *     This effectively sorts the elements of the {@code array} in increasing order.</li>
      *     <li>At the end of the method, the {@code array} will contain the elements sorted in increasing order.</li>
      * </ul>
-     * {@code smoothDec} method uses the {@code insertDec} and {@code deleteMinDec} methods to perform a smooth sort on the given array,
+     * {@code smoothDec} method uses the {@code insertArrayDec} and {@code deleteArrayMinDec} methods to perform a smooth sort on the given array,
      * resulting in the elements being sorted in increasing order.
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
-     * @see         mz.SmoothHeap#insertDec(Comparable)
-     * @see         SmoothHeap#deleteMinDec()
+     * @see         mz.SmoothHeap#insertArrayDec(Comparable)
+     * @see         mz.SmoothHeap#deleteArrayMinDec()
      */
     protected void smoothDec(Comparable[] array, int left, int right) {
         for (int i = left; i < right; i++) {
-            insertDec(array[i]);
+            insertArrayDec(array[i]);
         }
         for (int i = left; i < right; i++) {
-            array[i] = deleteMinDec();
+            array[i] = deleteArrayMinDec();
         }
     }
 
     /**
-     * {@code smooth} that takes an array of {@link java.lang.Comparable Comparable}
-     * objects {@code array}, indices {@code left} and {@code right},
+     * {@code smooth} that takes an array of
+     * {@link java.lang.Comparable Comparable} objects {@code array}, indices {@code left} and {@code right},
      * and a {@code SortFunctional<Comparable>} object as parameters.
      * This method performs a smooth sort on the specified portion of the array using
-     * the {@code insert} and {@code deleteMin} methods while maintaining the ordering based on the {@code SortFunctional} object.
+     * the {@code insertArray} and {@code deleteArrayMin} methods while maintaining the ordering based on the {@code SortFunctional} object.
      * <ul>
      *     <li>It iterates over the elements in the range from {@code left} to {@code right} (exclusive) of the {@code array}.</li>
-     *     <li>Inside the loop, it calls the {@code insert} method with the current element and the {@code functional} object as arguments.
+     *     <li>Inside the loop, it calls the {@code insertArray} method with the current element and the {@code functional} object as arguments.
      *     This inserts the element into a buffer (presumably a binary heap) while maintaining
      *     the ordering based on the {@code SortFunctional} object.</li>
      *     <li>After the first loop, all elements in the specified range have been inserted into the buffer.</li>
      *     <li>It iterates again over the same range of elements from {@code left} to {@code right}.</li>
-     *     <li>Inside this loop, it assigns the result of calling the {@code deleteMin} method with
+     *     <li>Inside this loop, it assigns the result of calling the {@code deleteArrayMin} method with
      *     the {@code functional} object to the corresponding element in the {@code array}.
      *     This operation removes the minimum element from the buffer while maintaining the ordering based on
      *     the {@code SortFunctional} object and assigns it to the current index in the {@code array}.</li>
      *     <li>After the second loop, the elements in the specified range of the {@code array}
      *     have been sorted in non-decreasing order based on the {@code functional} object.</li>
      * </ul>
-     * {@code smooth} method uses the {@code insert} and {@code deleteMin} methods to perform a smooth sort on the given array,
+     * {@code smooth} method uses the {@code insertArray} and {@code deleteArrayMin} methods to perform a smooth sort on the given array,
      * resulting in the elements being sorted.
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
      * @param       functional lambda expression for comparison.
-     * @see         mz.SmoothHeap#insert(Comparable, SortFunctional)
-     * @see         mz.SmoothHeap#deleteMin(SortFunctional)
+     * @see         mz.SmoothHeap#insertArray(Comparable, SortFunctional)
+     * @see         mz.SmoothHeap#deleteListMin(SortFunctional)
      */
     protected void smooth(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         for (int i = left; i < right; i++) {
-            insert(array[i], functional);
+            insertArray(array[i], functional);
         }
         for (int i = left; i < right; i++) {
-            array[i] = deleteMin(functional);
+            array[i] = deleteArrayMin(functional);
         }
     }
 
     /**
-     * {@code insertInc} this method is likely a part of a heap-related algorithm or data structure implementation
+     * {@code insertArrayInc} this method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to insert a new element into a heap structure stored in the buffer array.
      * The method takes a {@link java.lang.Comparable Comparable} object called insert as a parameter.
      * <ul>
@@ -304,24 +340,24 @@ extends Heap {
      *     <li>If the current element is not smaller than its parent, the {@code else} block is executed, and the loop is terminated using {@code break},
      *     as the heap property is already satisfied.</li>
      * </ul>
-     * {@code insertInc} method adds a new element to a heap structure stored in
+     * {@code insertArrayInc} method adds a new element to a heap structure stored in
      * the {@code buffer} array and ensures that the heap property is maintained after the insertion.
      * It achieves this by adding the element to the end of the heap, resizing the buffer if necessary,
      * and iteratively comparing and swapping elements with their parents to restore the heap property.
      * @param       insert starts by inserting the element.
-     * @see         mz.SmoothHeap#resize(int)
+     * @see         mz.SmoothHeap#resizeArray(int)
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
-    protected void insertInc(Comparable insert) {
-        buffer[size++] = insert;
-        resize(buffer.length * 2);
+    protected void insertArrayInc(Comparable insert) {
+        bufferArray[size++] = insert;
+        resizeArray(bufferArray.length * 2);
         if (size > 1) {
             int i = (size - 1);
             while (i != 0) {
                 int j = ((i - 1) / 2);
-                if (buffer[j].compareTo(buffer[i]) > 0) {
-                    swap(buffer, i, j);
+                if (bufferArray[j].compareTo(bufferArray[i]) > 0) {
+                    swap(bufferArray, i, j);
                     i = j;
                 } else {
                     break;
@@ -332,7 +368,7 @@ extends Heap {
 
 
     /**
-     * {@code insertDec} this method is likely a part of a heap-related algorithm or data structure implementation
+     * {@code insertArrayDec} this method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to insert a new element into a heap structure stored in the buffer array.
      * The method takes a {@link java.lang.Comparable Comparable} object called insert as a parameter.
      * <ul>
@@ -355,24 +391,24 @@ extends Heap {
      *     <li>If the current element is not greater than its parent, the {@code else} block is executed, and the loop is terminated using {@code break},
      *     as the heap property is already satisfied.</li>
      * </ul>
-     * {@code insertDec} method adds a new element to a heap structure stored in
+     * {@code insertArrayDec} method adds a new element to a heap structure stored in
      * the {@code buffer} array and ensures that the heap property is maintained after the insertion.
      * It achieves this by adding the element to the end of the heap, resizing the buffer if necessary,
      * and iteratively comparing and swapping elements with their parents to restore the heap property.
      * @param       insert starts by inserting the element.
-     * @see         mz.SmoothHeap#resize(int)
+     * @see         mz.SmoothHeap#resizeArray(int)
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
-    protected void insertDec(Comparable insert) {
-        buffer[size++] = insert;
-        resize(buffer.length * 2);
+    protected void insertArrayDec(Comparable insert) {
+        bufferArray[size++] = insert;
+        resizeArray(bufferArray.length * 2);
         if (size > 1) {
             int i = (size - 1);
             while (i != 0) {
                 int j = ((i - 1) / 2);
-                if (buffer[j].compareTo(buffer[i]) < 0) {
-                    swap(buffer, i, j);
+                if (bufferArray[j].compareTo(bufferArray[i]) < 0) {
+                    swap(bufferArray, i, j);
                     i = j;
                 } else {
                     break;
@@ -382,7 +418,7 @@ extends Heap {
     }
 
     /**
-     * {@code insert} that takes a {@link java.lang.Comparable Comparable} object insert
+     * {@code insertArray} that takes a {@link java.lang.Comparable Comparable} object insert
      * and a {@code SortFunctional<Comparable>} object as parameters.
      * This method inserts an element into a buffer (presumably an array) while maintaining
      * the ordering of elements based on the {@code SortFunctional} object.
@@ -406,28 +442,28 @@ extends Heap {
      *     <li>After the swap, it updates the value of {@code i} to be {@code j},
      *     indicating that the current element has moved up the binary heap.</li>
      *     <li>Finally, the method finishes executing, and the new element is successfully inserted into
-     *     the buffer while maintaining the ordering based on the {@code SortFunctional} object.</li>
+     *     the buffer while maintaining the ordering based on the {@code mz.SortFunctional} object.</li>
      * </ul>
-     * {@code insert} method adds a new element to a heap structure stored in
+     * {@code insertArray} method adds a new element to a heap structure stored in
      * the {@code buffer} array and ensures that the heap property is maintained after the insertion.
      * It achieves this by adding the element to the end of the heap, resizing the buffer if necessary,
      * and iteratively comparing and swapping elements with their parents to restore the heap property.
      * @param       insert starts by inserting the element.
      * @param       functional lambda expression for comparison.
-     * @see         mz.SmoothHeap#resize(int)
+     * @see         mz.SmoothHeap#resizeArray(int)
      * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      *
      */
-    protected void insert(Comparable insert, SortFunctional<Comparable> functional) {
-        buffer[size++] = insert;
-        resize(buffer.length * 2);
+    protected void insertArray(Comparable insert, SortFunctional<Comparable> functional) {
+        bufferArray[size++] = insert;
+        resizeArray(bufferArray.length * 2);
         if (size > 1) {
             int i = (size - 1);
             while (i != 0) {
                 int j = ((i - 1) / 2);
-                if (functional.functionalCompareTo(buffer[j], buffer[i])) {
-                    swap(buffer, i, j);
+                if (functional.functionalCompareTo(bufferArray[j], bufferArray[i])) {
+                    swap(bufferArray, i, j);
                     i = j;
                 } else {
                     break;
@@ -437,7 +473,7 @@ extends Heap {
     }
 
     /**
-     * {@code deleteMinInc}. This method is likely a part of a heap-related algorithm or
+     * {@code deleteArrayMinInc}. This method is likely a part of a heap-related algorithm or
      * data structure implementation and is used
      * to delete the minimum element from a heap structure that is stored in the {@code buffer} array.
      * The method returns the deleted minimum element, which is of type {@link java.lang.Comparable Comparable}.
@@ -466,7 +502,7 @@ extends Heap {
      *     as the heap property is already satisfied.</li>
      *     <li>Finally, the method returns the deleted minimum element stored in the {@code result} variable.</li>
      * </ul>
-     * {@code deleteMinInc} method deletes the minimum element from a heap structure stored in the {@code buffer} array and ensures that
+     * {@code deleteArrayMinInc} method deletes the minimum element from a heap structure stored in the {@code buffer} array and ensures that
      * the heap property is maintained after the deletion.
      * It achieves this by swapping the minimum element with the last element, adjusting the size of the heap,
      * and iteratively comparing and swapping elements to restore the heap property.
@@ -474,17 +510,17 @@ extends Heap {
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
-    protected Comparable deleteMinInc() {
-        Comparable result = buffer[0];
-        swap(buffer, 0, --size);
+    protected Comparable deleteArrayMinInc() {
+        Comparable result = bufferArray[0];
+        swap(bufferArray, 0, --size);
         int i = 0;
         while (((2 * i) + 1) < size) {
             int j = ((2 * i) + 1);
-            if (((j + 1) < size) && (buffer[j].compareTo(buffer[(j + 1)]) > 0)) {
+            if (((j + 1) < size) && (bufferArray[j].compareTo(bufferArray[(j + 1)]) > 0)) {
                 j++;
             }
-            if (buffer[i].compareTo(buffer[j]) > 0) {
-                swap(buffer, j, i);
+            if (bufferArray[i].compareTo(bufferArray[j]) > 0) {
+                swap(bufferArray, j, i);
                 i = j;
             } else {
                 break;
@@ -494,7 +530,7 @@ extends Heap {
     }
 
     /**
-     * {@code deleteMinDec}. This method is likely a part of a heap-related algorithm or
+     * {@code deleteArrayMinDec}. This method is likely a part of a heap-related algorithm or
      * data structure implementation and is used
      * to delete the minimum element from a heap structure that is stored in the {@code buffer} array.
      * The method returns the deleted minimum element, which is of type {@link java.lang.Comparable Comparable}.
@@ -523,7 +559,7 @@ extends Heap {
      *     as the heap property is already satisfied.</li>
      *     <li>Finally, the method returns the deleted minimum element stored in the {@code result} variable.</li>
      * </ul>
-     * {@code deleteMinDec} method deletes the minimum element from a heap structure stored in the {@code buffer} array and ensures that
+     * {@code deleteArrayMinDec} method deletes the minimum element from a heap structure stored in the {@code buffer} array and ensures that
      * the heap property is maintained after the deletion.
      * It achieves this by swapping the minimum element with the last element, adjusting the size of the heap,
      * and iteratively comparing and swapping elements to restore the heap property.
@@ -531,17 +567,17 @@ extends Heap {
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      */
     @SuppressWarnings("unchecked")
-    protected Comparable deleteMinDec() {
-        Comparable result = buffer[0];
-        swap(buffer, 0, --size);
+    protected Comparable deleteArrayMinDec() {
+        Comparable result = bufferArray[0];
+        swap(bufferArray, 0, --size);
         int i = 0;
         while (((2 * i) + 1) < size) {
             int j = ((2 * i) + 1);
-            if (((j + 1) < size) && (buffer[j].compareTo(buffer[(j + 1)]) < 0)) {
+            if (((j + 1) < size) && (bufferArray[j].compareTo(bufferArray[(j + 1)]) < 0)) {
                 j++;
             }
-            if (buffer[i].compareTo(buffer[j]) < 0) {
-                swap(buffer, j, i);
+            if (bufferArray[i].compareTo(bufferArray[j]) < 0) {
+                swap(bufferArray, j, i);
                 i = j;
             } else {
                 break;
@@ -551,7 +587,7 @@ extends Heap {
     }
 
     /**
-     * {@code deleteMin} that takes a {@code SortFunctional<Comparable>} object as a parameter.
+     * {@code deleteArrayMin} that takes a {@code SortFunctional<Comparable>} object as a parameter.
      * This method performs the deletion of the minimum element
      * from a buffer (presumably an array) and returns the deleted element.
      * <ul>
@@ -583,7 +619,7 @@ extends Heap {
      *     <li>Finally, it returns the {@code result},
      *     which is the minimum element that was deleted from the buffer.</li>
      * </ul>
-     * {@code deleteMin} method deletes the minimum element from a heap structure stored in the {@code buffer} array and ensures that
+     * {@code deleteArrayMin} method deletes the minimum element from a heap structure stored in the {@code buffer} array and ensures that
      * the heap property is maintained after the deletion.
      * It achieves this by swapping the minimum element with the last element, adjusting the size of the heap,
      * and iteratively comparing and swapping elements to restore the heap property.
@@ -592,17 +628,17 @@ extends Heap {
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
-    protected Comparable deleteMin(SortFunctional<Comparable> functional) {
-        Comparable result = buffer[0];
-        swap(buffer, 0, --size);
+    protected Comparable deleteArrayMin(SortFunctional<Comparable> functional) {
+        Comparable result = bufferArray[0];
+        swap(bufferArray, 0, --size);
         int i = 0;
         while (((2 * i) + 1) < size) {
             int j = ((2 * i) + 1);
-            if (((j + 1) < size) && (functional.functionalCompareTo(buffer[j], buffer[(j + 1)]))) {
+            if (((j + 1) < size) && (functional.functionalCompareTo(bufferArray[j], bufferArray[(j + 1)]))) {
                 j++;
             }
-            if (functional.functionalCompareTo(buffer[i], buffer[j])) {
-                swap(buffer, j, i);
+            if (functional.functionalCompareTo(bufferArray[i], bufferArray[j])) {
+                swap(bufferArray, j, i);
                 i = j;
             } else {
                 break;
@@ -612,13 +648,14 @@ extends Heap {
     }
 
     /**
-     * {@code resize} this method is used to resize the internal buffer of an object or class that contains an array of {@code Comparable} objects.
+     * {@code resizeArray} this method is used to resize the internal buffer of an object or
+     * class that contains an array of {@link java.lang.Comparable Comparable} objects.
      * The method takes a capacity parameter to specify the new capacity of the buffer.
      * <ul>
      *     <li>The code snippet includes two private variables:
      *     {@code buffer}, which is an array of {@code Comparable} objects with an initial size of 256,
      *     and {@code size}, which represents the number of elements currently stored in the buffer.</li>
-     *     <li>The {@code resize} method is used to adjust the capacity of the buffer based on the provided {@code capacity} parameter.
+     *     <li>The {@code resizeArray} method is used to adjust the capacity of the buffer based on the provided {@code capacity} parameter.
      *     It checks if the current {@code size} of the buffer is half of the desired {@code capacity}.</li>
      *     <li>If the condition is met, indicating that the current buffer is utilizing half or more of its capacity,
      *     the method creates a new buffer with the specified {@code capacity} using the {@code Comparable} array type.</li>
@@ -627,15 +664,544 @@ extends Heap {
      *     <li>Finally, the reference to the new buffer is assigned to the {@code buffer} variable,
      *     effectively resizing the buffer to the specified capacity.</li>
      * </ul>
-     * {@code resize} method ensures that the buffer is resized when the number of elements stored in it reaches half of its capacity.
+     * {@code resizeArray} method ensures that the buffer is resized when the number of elements stored in it reaches half of its capacity.
      * It creates a new buffer with the desired capacity and copies the existing elements from the old buffer to the new buffer.
      * @param       capacity the new capacity of the buffer
      */
-    protected void resize(int capacity) {
+    protected void resizeArray(int capacity) {
         if (size == (capacity / 2)) {
             Comparable[] newBuffer = new Comparable[capacity];
-            System.arraycopy(buffer, 0, newBuffer, 0, size);
-            buffer = newBuffer;
+            System.arraycopy(bufferArray, 0, newBuffer, 0, size);
+            bufferArray = newBuffer;
+        }
+    }
+
+    /**
+     * {@code smoothInc}. This method performs a Smooth Heap Sort on a list of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
+     * It utilizes the {@code insertListInc} and {@code deleteListMinInc} methods to build a heap from the list elements and then extract
+     * the elements from the heap in sorted order.
+     * <ul>
+     *     <li>The method takes an list of {@code Comparable} objects, denoted by {@code list}, as a parameter.</li>
+     *     <li>The variable {@code n} is assigned the length of the {@code list}.</li>
+     *     <li>The first {@code for} loop iterates over the elements of the {@code list}. For each element, it calls the {@code insertListInc} method
+     *     to insert the element into the heap represented by the {@code buffer}.</li>
+     *     <li>After the first loop completes, the {@code buffer} contains all the elements from the {@code list} in a heap structure.</li>
+     *     <li>The second {@code for} loop iterates over the indices of the {@code list}. For each index {@code i}, it calls
+     *     the {@code deleteListMinInc} method to extract the minimum element from the heap and assigns it back to the {@code list[i]}.
+     *     This effectively sorts the elements of the {@code list} in increasing order.</li>
+     *     <li>At the end of the method, the {@code list} will contain the elements sorted in increasing order.</li>
+     * </ul>
+     * {@code smoothInc} method uses the {@code insertListInc} and {@code deleteListMinInc} methods to perform a smooth sort on the given list,
+     * resulting in the elements being sorted in increasing order.
+     * @param       list to be arranged.
+     * @see         mz.SmoothHeap#insertListInc(Comparable)
+     * @see         mz.SmoothHeap#deleteListMinInc()
+     */
+    protected <L extends Comparable> void smoothInc(List<L> list) {
+        int n = list.size();
+        for (int i = 0; i < n; i++) {
+            insertListInc(list.get(i));
+        }
+        for (int i = 0; i < n; i++) {
+            list.set(i, deleteListMinInc());
+        }
+    }
+
+    /**
+     * {@code smoothDec}. This method performs a Smooth Heap Sort on a list of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
+     * It utilizes the {@code insertListDec} and {@code deleteListMinDec} methods to build a heap from the list elements and then extract
+     * the elements from the heap in sorted order.
+     * <ul>
+     *     <li>The method takes an list of {@code Comparable} objects, denoted by {@code list}, as a parameter.</li>
+     *     <li>The variable {@code n} is assigned the length of the {@code list}.</li>
+     *     <li>The first {@code for} loop iterates over the elements of the {@code list}. For each element, it calls the {@code insertListDec} method
+     *     to insert the element into the heap represented by the {@code buffer}.</li>
+     *     <li>After the first loop completes, the {@code buffer} contains all the elements from the {@code list} in a heap structure.</li>
+     *     <li>The second {@code for} loop iterates over the indices of the {@code list}. For each index {@code i}, it calls
+     *     the {@code deleteListMinDec} method to extract the minimum element from the heap and assigns it back to the {@code list.get(i)}.
+     *     This effectively sorts the elements of the {@code list} in increasing order.</li>
+     *     <li>At the end of the method, the {@code list} will contain the elements sorted in increasing order.</li>
+     * </ul>
+     * {@code smoothDec} method uses the {@code insertListDec} and {@code deleteListMinDec} methods to perform a smooth sort on the given list,
+     * resulting in the elements being sorted in increasing order.
+     * @param       list to be arranged.
+     * @see         mz.SmoothHeap#insertListDec(Comparable)
+     * @see         mz.SmoothHeap#deleteListMinDec()
+     */
+    protected <L extends Comparable> void smoothDec(List<L> list) {
+        int n = list.size();
+        for (int i = 0; i < n; i++) {
+            insertListDec(list.get(i));
+        }
+        for (int i = 0; i < n; i++) {
+            list.set(i, deleteListMinDec());
+        }
+    }
+
+    /**
+     * {@code smooth} that takes a list of {@link java.lang.Comparable Comparable} objects {@code list},
+     * and a {@code SortFunctional<Comparable>} object as parameters.
+     * This method performs a smooth sort on the specified portion of the list using
+     * the {@code insertList} and {@code deleteListMin} methods while maintaining the ordering based on the {@code mz.SortFunctional} object.
+     * <ul>
+     *     <li>It iterates over the elements in the range from <i>0</i> to {@code list.size()} (exclusive) of the {@code list}.</li>
+     *     <li>Inside the loop, it calls the {@code insertList} method with the current element and the {@code functional} object as arguments.
+     *     This inserts the element into a buffer (presumably a binary heap) while maintaining
+     *     the ordering based on the {@code SortFunctional} object.</li>
+     *     <li>After the first loop, all elements in the specified range have been inserted into the buffer.</li>
+     *     <li>It iterates again over the same range of elements from <i>0</i> to {@code n}.</li>
+     *     <li>Inside this loop, it assigns the result of calling the {@code deleteListMin} method with
+     *     the {@code functional} object to the corresponding element in the {@code list}.
+     *     This operation removes the minimum element from the buffer while maintaining the ordering based on
+     *     the {@code SortFunctional} object and assigns it to the current index in the {@code list}.</li>
+     *     <li>After the second loop, the elements in the specified range of the {@code list}
+     *     have been sorted in non-decreasing order based on the {@code functional} object.</li>
+     * </ul>
+     * {@code smooth} method uses the {@code insertList} and {@code deleteListMin} methods to perform a smooth sort on the given list,
+     * resulting in the elements being sorted.
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SmoothHeap#insertList(Comparable, SortFunctional)
+     * @see         mz.SmoothHeap#deleteListMin(SortFunctional)
+     */
+    protected <L extends Comparable> void smooth(List<L> list, SortFunctional<Comparable> functional) {
+        int n = list.size();
+        for (int i = 0; i < n; i++) {
+            insertList(list.get(i), functional);
+        }
+        for (int i = 0; i < n; i++) {
+            list.set(i, deleteListMin(functional));
+        }
+    }
+
+    /**
+     * {@code smoothInc}. This method performs a Smooth Heap Sort on a list of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
+     * It utilizes the {@code insertListInc} and {@code deleteListMinInc} methods to build a heap from the list elements and then extract
+     * the elements from the heap in sorted order.
+     * <ul>
+     *     <li>The method takes an list of {@code Comparable} objects, denoted by {@code list}, as a parameter.</li>
+     *     <li>The variable {@code right} is assigned the length of the {@code list}.</li>
+     *     <li>The first {@code for} loop iterates over the elements of the {@code list}. For each element, it calls the {@code insertListInc} method
+     *     to insert the element into the heap represented by the {@code buffer}.</li>
+     *     <li>After the first loop completes, the {@code buffer} contains all the elements from the {@code list} in a heap structure.</li>
+     *     <li>The second {@code for} loop iterates over the indices of the {@code list}. For each index {@code i}, it calls
+     *     the {@code deleteListMinInc} method to extract the minimum element from the heap and assigns it back to the {@code list.get(i)}.
+     *     This effectively sorts the elements of the {@code list} in increasing order.</li>
+     *     <li>At the end of the method, the {@code list} will contain the elements sorted in increasing order.</li>
+     * </ul>
+     * {@code smoothInc} method uses the {@code insertListInc} and {@code deleteListMinInc} methods to perform a smooth sort on the given list,
+     * resulting in the elements being sorted in increasing order.
+     * @param       list to be arranged.
+     * @param       left the value in the list must be smaller than a {@code right} parameter.
+     * @param       right the value in the list must be greater than a {@code left} parameter.
+     * @see         mz.SmoothHeap#insertListInc(Comparable)
+     * @see         mz.SmoothHeap#deleteListMinInc()
+     */
+    protected <L extends Comparable> void smoothInc(List<L> list, int left, int right) {
+        for (int i = left; i < right; i++) {
+            insertListInc(list.get(i));
+        }
+        for (int i = left; i < right; i++) {
+            list.set(i, deleteListMinInc());
+        }
+    }
+
+    /**
+     * {@code smoothDec}. This method performs a Smooth Heap Sort on a list of
+     * {@link java.lang.Comparable Comparable} objects in increasing order.
+     * It utilizes the {@code insertListDec} and {@code deleteListMinDec} methods to build a heap from the list elements and then extract
+     * the elements from the heap in sorted order.
+     * <ul>
+     *     <li>The method takes an list of {@code Comparable} objects, denoted by {@code list}, as a parameter.</li>
+     *     <li>The variable {@code n} is assigned the length of the {@code list}.</li>
+     *     <li>The first {@code for} loop iterates over the elements of the {@code list}. For each element, it calls the {@code insertListDec} method
+     *     to insert the element into the heap represented by the {@code buffer}.</li>
+     *     <li>After the first loop completes, the {@code buffer} contains all the elements from the {@code list} in a heap structure.</li>
+     *     <li>The second {@code for} loop iterates over the indices of the {@code list}. For each index {@code i}, it calls
+     *     the {@code deleteListMinDec} method to extract the minimum element from the heap and assigns it back to the {@code list.get(i)}.
+     *     This effectively sorts the elements of the {@code list} in increasing order.</li>
+     *     <li>At the end of the method, the {@code list} will contain the elements sorted in increasing order.</li>
+     * </ul>
+     * {@code smoothDec} method uses the {@code insertListDec} and {@code deleteListMinDec} methods to perform a smooth sort on the given list,
+     * resulting in the elements being sorted in increasing order.
+     * @param       list to be arranged.
+     * @param       left the value in the list must be smaller than a {@code right} parameter.
+     * @param       right the value in the list must be greater than a {@code left} parameter.
+     * @see         mz.SmoothHeap#insertListDec(Comparable)
+     * @see         mz.SmoothHeap#deleteListMinDec()
+     */
+    protected <L extends Comparable> void smoothDec(List<L> list, int left, int right) {
+        for (int i = left; i < right; i++) {
+            insertListDec(list.get(i));
+        }
+        for (int i = left; i < right; i++) {
+            list.set(i, deleteListMinDec());
+        }
+    }
+
+    /**
+     * {@code smooth} that takes a list of
+     * {@link java.lang.Comparable Comparable} objects {@code list}, indices {@code left} and {@code right},
+     * and a {@code SortFunctional<Comparable>} object as parameters.
+     * This method performs a smooth sort on the specified portion of the list using
+     * the {@code insert} and {@code deleteMin} methods while maintaining the ordering based on the {@code mz.SortFunctional} object.
+     * <ul>
+     *     <li>It iterates over the elements in the range from {@code left} to {@code right} (exclusive) of the {@code list}.</li>
+     *     <li>Inside the loop, it calls the {@code insert} method with the current element and the {@code functional} object as arguments.
+     *     This inserts the element into a buffer (presumably a binary heap) while maintaining
+     *     the ordering based on the {@code SortFunctional} object.</li>
+     *     <li>After the first loop, all elements in the specified range have been inserted into the buffer.</li>
+     *     <li>It iterates again over the same range of elements from {@code left} to {@code right}.</li>
+     *     <li>Inside this loop, it assigns the result of calling the {@code deleteListMin} method with
+     *     the {@code functional} object to the corresponding element in the {@code list}.
+     *     This operation removes the minimum element from the buffer while maintaining the ordering based on
+     *     the {@code SortFunctional} object and assigns it to the current index in the {@code list}.</li>
+     *     <li>After the second loop, the elements in the specified range of the {@code list}
+     *     have been sorted in non-decreasing order based on the {@code functional} object.</li>
+     * </ul>
+     * {@code smooth} method uses the {@code insert} and {@code deleteListMin} methods to perform a smooth sort on the given list,
+     * resulting in the elements being sorted.
+     * @param       list to be arranged.
+     * @param       left the value in the list must be smaller than a {@code right} parameter.
+     * @param       right the value in the list must be greater than a {@code left} parameter.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SmoothHeap#insertList(Comparable, SortFunctional)
+     * @see         mz.SmoothHeap#deleteListMin(SortFunctional)
+     */
+    protected <L extends Comparable> void smooth(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        for (int i = left; i < right; i++) {
+            insertList(list.get(i), functional);
+        }
+        for (int i = left; i < right; i++) {
+            list.set(i, deleteListMin(functional));
+        }
+    }
+
+    /**
+     * {@code insertListInc} that takes a {@link java.lang.Comparable Comparable} object called {@code insert}.
+     * This method inserts the {@code insert} element into a buffer list named {@code bufferList} in an incremental manner,
+     * maintaining the heap property.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>It sets the {@code insert} element at index {@code size} in the {@code bufferList} and increments {@code size} afterwards.
+     *     This effectively inserts the element at the end of the buffer list.</li>
+     *     <li>It calls a method named {resizeList} with an argument of {@code (bufferList.size() * 2)}.</li>
+     *     <li>It checks if the current size of the buffer list {@code size} is greater than <i>1</i>.
+     *     If {@code true}, it enters a while loop that continues as long as the index {@code i} is not equal to <i>0</i>.</li>
+     *     <li>Inside the loop, it calculates the index of the parent of the current index {@code (j = (i - 1) / 2)}.</li>
+     *     <li>It performs a comparison between the element at index {@code j} and the element at index {@code i} in the buffer list.
+     *     If the element at index {@code j} is greater,
+     *     it swaps them and updates the value of {@code i} to {@code j}.</li>
+     *     <li>If the comparison indicates that the element at index {@code j} is not greater than the element at index {@code i},
+     *     it breaks out of the loop.</li>
+     * </ul>
+     * {@code insertListInc} performs the incremental insertion of an element into a buffer list.
+     * It sets the element at the end of the buffer list, resizes the buffer list if necessary,
+     * and maintains the heap property by comparing and swapping elements in an upward direction.
+     * @param       insert starts by inserting the element.
+     * @see         mz.SmoothHeap#resizeList(int)
+     * @see         mz.SortSwap#swap(Comparable[], int, int)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> void insertListInc(L insert) {
+        bufferList.add(size++, insert);
+        resizeList(bufferList.size() * 2);
+        if (size > 1) {
+            int i = (size - 1);
+            while (i != 0) {
+                int j = ((i - 1) / 2);
+                if (bufferList.get(j).compareTo(bufferList.get(i)) > 0) {
+                    swap(bufferList, i, j);
+                    i = j;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+
+    /**
+     * {@code insertListDec} that takes a {@link java.lang.Comparable Comparable} object called {@code insert}.
+     * This method inserts the {@code insert} element into a buffer list named {@code bufferList} in a decremental manner,
+     * maintaining the heap property.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>It sets the {@code insert} element at index {@code size} in the {@code bufferList} and decrements {@code size} afterwards.
+     *     This effectively inserts the element at the end of the buffer list.</li>
+     *     <li>It calls a method named {resizeList} with an argument of {@code (bufferList.size() * 2)}.</li>
+     *     <li>It checks if the current size of the buffer list {@code size} is greater than <i>1</i>.
+     *     If {@code true}, it enters a while loop that continues as long as the index {@code i} is not equal to <i>0</i>.</li>
+     *     <li>Inside the loop, it calculates the index of the parent of the current index {@code (j = (i - 1) / 2)}.</li>
+     *     <li>It performs a comparison between the element at index {@code j} and the element at index {@code i} in the buffer list.
+     *     If the element at index {@code j} is smaller,
+     *     it swaps them and updates the value of {@code i} to {@code j}.</li>
+     *     <li>If the comparison indicates that the element at index {@code j} is not smaller than the element at index {@code i},
+     *     it breaks out of the loop.</li>
+     * </ul>
+     * {@code insertListDec} performs the decremental insertion of an element into a buffer list.
+     * It sets the element at the end of the buffer list, resizes the buffer list if necessary,
+     * and maintains the heap property by comparing and swapping elements in an upward direction.
+     * @param       insert starts by inserting the element.
+     * @see         mz.SmoothHeap#resizeList(int)
+     * @see         mz.SortSwap#swap(List, int, int)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> void insertListDec(L insert) {
+        bufferList.add(size++, insert);
+        resizeList(bufferList.size() * 2);
+        if (size > 1) {
+            int i = (size - 1);
+            while (i != 0) {
+                int j = ((i - 1) / 2);
+                if (bufferList.get(j).compareTo(bufferList.get(i)) < 0) {
+                    swap(bufferList, i, j);
+                    i = j;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code insertList} method that includes a {@code SortFunctional} object called {@code functional}.
+     * This object is used for comparing elements in the buffer list during the insertion process.
+     * <ul>
+     *     <li>It starts similarly to the previous version by setting the
+     *     {@code insert} element at index {@code size} in the {@code bufferList} and incrementing {@code size}.</li>
+     *     <li>It calls a method named {@code resizeList} with an argument of {@code (bufferList.size() * 2)}.
+     *     This method is used to resize the buffer list based on the specified capacity.</li>
+     *     <li>It checks if the current size of the buffer list {@code size} is greater than <i>1</i>.
+     *     If {@code true}, it enters a {@code while} loop that continues as long as the index {@code i} is not equal to <i>0</i>,
+     *     similar to the previous version.</li>
+     *     <li>Inside the loop, it calculates the index of the parent of the current index {@code (j = (i - 1) / 2)},
+     *     similar to the previous version.</li>
+     *     <li>It performs a comparison between the element at index {@code j} and
+     *     the element at index {@code i} in the buffer list using the {@code functional} object.
+     *     If the comparison indicates that the element at index {@code j} is greater,
+     *     it swaps them and updates the value of {@code i} to {@code j}.</li>
+     *     <li>If the comparison indicates that the element at index {@code j} is not greater than the element at index {@code i},
+     *     it breaks out of the loop.</li>
+     * </ul>
+     * {@code insertList} performs the insertion of an element into a buffer list using a
+     * custom sorting implementation provided through the {@code SortFunctional} object.
+     * It sets the element at the end of the buffer list, resizes the buffer list if necessary,
+     * and maintains the heap property by comparing and swapping elements
+     * in an upward direction using the functional object for comparisons.
+     * @param       insert starts by inserting the element.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SmoothHeap#resizeList(int)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(List, int, int)
+     */
+    protected <L extends Comparable> void insertList(L insert, SortFunctional<Comparable> functional) {
+        bufferList.add(size++, insert);
+        resizeList(bufferList.size() * 2);
+        if (size > 1) {
+            int i = (size - 1);
+            while (i != 0) {
+                int j = ((i - 1) / 2);
+                if (functional.functionalCompareTo(bufferList.get(j), bufferList.get(i))) {
+                    swap(bufferList, i, j);
+                    i = j;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * {@code deleteListMinInc} that performs an incremental deletion of the minimum element from a buffer list named {@code bufferList}.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>It retrieves the minimum element from the buffer list by accessing
+     *     the element at index <i>0</i> and assigns it to the {@code result} variable.</li>
+     *     <li>It swaps the minimum element with the element at the end of the buffer list.
+     *     This is done by calling a {@code swap} method and passing the {@code bufferList}, index <i>0</i>, and the decremented {@code size} as arguments.
+     *     The {@code size} variable represents the number of elements in the buffer list before the deletion,
+     *     and decrementing it effectively removes the last element from consideration.</li>
+     *     <li>It initializes a variable {@code i} with a value of <i>0</i>,
+     *     which represents the current index of the element being compared and potentially swapped.</li>
+     *     <li>It enters a while loop that continues as long as the left child of the current index {@code ((2 * i) + 1)}
+     *     is within the valid range {@code size}.</li>
+     *     <li>Inside the loop, it calculates the index of the left child {@code (j = (2 * i) + 1)}.
+     *     If the right child is also within the valid range {@code ((j + 1) < size)}
+     *     and the right child is smaller than the left child, it increments {@code j} to point to the right child.</li>
+     *     <li>It compares the element at index {@code i} with the element at index {@code j}.
+     *     If the element at {@code i} is greater than the element at {@code j},
+     *     it swaps them and updates the value of {@code i} to {@code j}.</li>
+     *     <li>If the element at {@code i} is not greater than the element at {@code j},
+     *     it breaks out of the loop.</li>
+     *     <li>After the loop completes, it returns the minimum element that was initially stored in the {@code result} variable.</li>
+     * </ul>
+     * {@code deleteListMinInc} performs an incremental deletion of the minimum element from a buffer list.
+     * It swaps the minimum element with the last element, maintains
+     * the heap property by comparing and swapping elements in a downward direction, and returns the minimum element.
+     * @return      the deleted minimum element stored in the {@code result} variable
+     * @see         mz.SortSwap#swap(List, int, int)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> L deleteListMinInc() {
+        L result = (L) bufferList.get(0);
+        swap(bufferList, 0, --size);
+        int i = 0;
+        while (((2 * i) + 1) < size) {
+            int j = ((2 * i) + 1);
+            if (((j + 1) < size) && (bufferList.get(j).compareTo(bufferList.get(j + 1)) > 0)) {
+                j++;
+            }
+            if (bufferList.get(i).compareTo(bufferList.get(j)) > 0) {
+                swap(bufferList, j, i);
+                i = j;
+            } else {
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * {@code deleteListMinDec} that performs a decremental deletion of the minimum element from a buffer list named {@code bufferList}.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>It retrieves the minimum element from the buffer list by accessing
+     *     the element at index <i>0</i> and assigns it to the {@code result} variable.</li>
+     *     <li>It swaps the minimum element with the element at the end of the buffer list.
+     *     This is done by calling a {@code swap} method and passing the {@code bufferList}, index <i>0</i>, and the decremented {@code size} as arguments.
+     *     The {@code size} variable represents the number of elements in the buffer list before the deletion,
+     *     and decrementing it effectively removes the last element from consideration.</li>
+     *     <li>It initializes a variable {@code i} with a value of <i>0</i>,
+     *     which represents the current index of the element being compared and potentially swapped.</li>
+     *     <li>It enters a while loop that continues as long as the left child of the current index {@code ((2 * i) + 1)}
+     *     is within the valid range {@code size}.</li>
+     *     <li>Inside the loop, it calculates the index of the left child {@code (j = (2 * i) + 1)}.
+     *     If the right child is also within the valid range {@code ((j + 1) < size)}
+     *     and the right child is smaller than the left child, it increments {@code j} to point to the right child.</li>
+     *     <li>It compares the element at index {@code i} with the element at index {@code j}.
+     *     If the element at {@code i} is smaller than the element at {@code j},
+     *     it swaps them and updates the value of {@code i} to {@code j}.</li>
+     *     <li>If the element at {@code i} is not smaller than the element at {@code j},
+     *     it breaks out of the loop.</li>
+     *     <li>After the loop completes, it returns the minimum element that was initially stored in the {@code result} variable.</li>
+     * </ul>
+     * {@code deleteListMinDec} performs a decremental deletion of the minimum element from a buffer list.
+     * It swaps the minimum element with the last element, maintains
+     * the heap property by comparing and swapping elements in a downward direction, and returns the minimum element.
+     * @return      the deleted minimum element stored in the {@code result} variable
+     * @see         mz.SortSwap#swap(List, int, int)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> L deleteListMinDec() {
+        L result = (L) bufferList.get(0);
+        swap(bufferList, 0, --size);
+        int i = 0;
+        while (((2 * i) + 1) < size) {
+            int j = ((2 * i) + 1);
+            if (((j + 1) < size) && (bufferList.get(j).compareTo(bufferList.get(j + 1)) < 0)) {
+                j++;
+            }
+            if (bufferList.get(i).compareTo(bufferList.get(j)) < 0) {
+                swap(bufferList, j, i);
+                i = j;
+            } else {
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * {@code deleteListMin} method that includes a {@code SortFunctional} object called {@code functional}.
+     * This object is used for comparing elements in the buffer list during the deletion process.
+     * <ul>
+     *     <li>It starts similarly to the previous version by retrieving the minimum element from the buffer list
+     *     at index <i>0</i> and assigning it to the {@code result} variable.</li>
+     *     <li>It swaps the minimum element with the last element in the buffer list, similar to the previous version.</li>
+     *     <li>It initializes the variable {@code i} to <i>0</i>, representing the current index of the element being compared.</li>
+     *     <li>It enters a while loop that continues as long as the left child of
+     *     the current index {@code ((2 * i) + 1)} is within the valid range {@code  size},
+     *     similar to the previous version.</li>
+     *     <li>Inside the loop, it calculates the index of the left child {@code (j = (2 * i) + 1)}.
+     *     If the right child is also within the valid range {@code ((j + 1) < size)} and
+     *     the comparison using the {@code functional} object indicates that the right child is smaller,
+     *     it increments {@code j} to point to the right child.</li>
+     *     <li>It performs the comparison between the element at index {@code i} and the element at index {@code j} using the {@code functional} object.
+     *     If the comparison indicates that the element at {@code i} is greater,
+     *     it swaps them and updates the value of {@code i} to {@code j}.</li>
+     *     <li>If the comparison indicates that the element at {@code i} is not greater than the element at {@code j},
+     *     it breaks out of the loop.</li>
+     *     <li>After the loop completes, it returns the minimum element that was initially stored in the {@code result} variable.</li>
+     * </ul>
+     * {@code deleteListMin} performs the deletion of the minimum element from a buffer list using a
+     * custom sorting implementation provided through the {@code SortFunctional} object.
+     * It swaps the minimum element with the last element, maintains the heap property by comparing
+     * and swapping elements in a downward direction using the functional object for comparisons,
+     * and returns the minimum element.
+     * @param       functional lambda expression for comparison.
+     * @return      the deleted minimum element stored in the {@code result} variable
+     * @see         mz.SortSwap#swap(List, int, int)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> L deleteListMin(SortFunctional<Comparable> functional) {
+        L result = (L) bufferList.get(0);
+        swap(bufferList, 0, --size);
+        int i = 0;
+        while (((2 * i) + 1) < size) {
+            int j = ((2 * i) + 1);
+            if (((j + 1) < size) && (functional.functionalCompareTo(bufferList.get(j), bufferList.get(j + 1)))) {
+                j++;
+            }
+            if (functional.functionalCompareTo(bufferList.get(i), bufferList.get(j))) {
+                swap(bufferList, j, i);
+                i = j;
+            } else {
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * {@code resizeList} that takes an integer parameter called {@code capacity}.
+     * This method is used to resize a buffer list named {@code bufferList} based on a specified capacity.
+     * <ul>
+     *     <li>It checks if the current size of the buffer list {@code size} is equal to half of the specified capacity {@code (capacity / 2)}.</li>
+     *     <li>If the condition is {@code true}, it means that the buffer list is half full.
+     *     In this case, it creates a new temporary buffer list named {@code newBuffer} and initializes it by calling the
+     *     {@code addBetween} method with the {@code bufferList}, <i>0</i>, and {@code size} as arguments.
+     *     This creates a sublist containing the elements from index <i>0</i> to the current size of the buffer list.</li>
+     *     <li>It clears the original {@code bufferList} using the {@link java.util.List#clear() clear()}
+     *     method to remove all elements.</li>
+     *     <li>Finally, it adds all the elements from the temporary buffer list {@code newBuffer} back to
+     *     the original {@code bufferList} using the {@link java.util.List#add(Object) addAll()} method.
+     *     This effectively resizes the buffer list to match the current size.</li>
+     * </ul>
+     * {@code resizeList} checks if the buffer list is half full {@code (size == capacity / 2)} and,
+     * if so, resizes the buffer list by creating a temporary buffer, clearing the original buffer,
+     * and adding the elements back from the temporary buffer.
+     * @param       capacity the new capacity of the buffer
+     * @see         mz.SortList#addBetween(List, int, int)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> void resizeList(int capacity) {
+        if (size == (capacity / 2)) {
+            List<L> newBuffer = (List<L>) addBetween(bufferList, 0, size);
+            bufferList.clear();
+            bufferList.addAll(newBuffer);
         }
     }
 }
