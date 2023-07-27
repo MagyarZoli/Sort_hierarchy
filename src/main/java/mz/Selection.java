@@ -1,11 +1,13 @@
 package mz;
 
+import java.util.List;
+
 /**
  * Selection Sort is a simple sorting algorithm that works by dividing an array into two parts:
  * a sorted portion and an unsorted portion. The algorithm repeatedly selects the smallest (or largest)
  * element from the unsorted portion and swaps it with the element at the beginning of the unsorted portion,
  * thereby expanding the sorted portion. This process continues until the entire array becomes sorted.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -71,5 +73,33 @@ implements SelectionInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         selection(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        selectionInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        selectionDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        selection(list, functional);
     }
 }
