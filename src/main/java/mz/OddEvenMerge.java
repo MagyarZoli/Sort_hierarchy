@@ -1,11 +1,12 @@
 package mz;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Odd-even Merge Sort algorithm is a parallel sorting algorithm that is based on the concept of odd-even transposition sorting.
  * It works by repeatedly comparing and swapping adjacent elements in pairs until the entire array is sorted.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -50,6 +51,7 @@ implements MergeInterface<Comparable> {
      * @see         mz.BatcherOddEvenMerge#BatcherOddEvenMerge() BatcherOddEvenMerge
      */
     public OddEvenMerge() {}
+
     /**
      * {@inheritDoc}
      * @param       array to be arranged.
@@ -76,6 +78,34 @@ implements MergeInterface<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         oddEvenMerge(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        oddEvenMergeInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        oddEvenMergeDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        oddEvenMerge(list, functional);
     }
 
     /**
@@ -201,7 +231,7 @@ implements MergeInterface<Comparable> {
      * the elements in the specified range using the provided comparison logic.
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
-     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      * @see         mz.MergeInterface#merging(Comparable[], Comparable[], Comparable[], SortFunctional)
      */
@@ -252,7 +282,7 @@ implements MergeInterface<Comparable> {
      * @param       array to be arranged.
      * @param       left specific range of the array.
      * @param       right specific range of the array.
-     * @see         mz.OddEvenMerge#oddEvenInc(Comparable[])
+     * @see         mz.OddEvenMerge#oddEvenMergeInc(Comparable[])
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      * @see         mz.MergeInterface#mergingInc(Comparable[], Comparable[], Comparable[])
      */
@@ -303,7 +333,7 @@ implements MergeInterface<Comparable> {
      * @param       array to be arranged.
      * @param       left specific range of the array.
      * @param       right specific range of the array.
-     * @see         mz.OddEvenMerge#oddEvenDec(Comparable[])
+     * @see         mz.OddEvenMerge#oddEvenMergeDec(Comparable[])
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      * @see         mz.MergeInterface#mergingDec(Comparable[], Comparable[], Comparable[])
      */
@@ -353,6 +383,7 @@ implements MergeInterface<Comparable> {
      * @param       left specific range of the array.
      * @param       right specific range of the array.
      * @param       functional lambda expression for comparison.
+     * @see         mz.OddEvenMerge#oddEvenMerge(Comparable[], SortFunctional)
      * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
      * @see         mz.SortSwap#swap(Comparable[], int, int)
      * @see         mz.MergeInterface#merging(Comparable[], Comparable[], Comparable[], SortFunctional)
@@ -372,5 +403,306 @@ implements MergeInterface<Comparable> {
             }
         }
         merging(array, oddHalf, evenHalf, functional);
+    }
+
+    /**
+     * {@code oddEvenMergeInc} takes a list of {@link java.lang.Comparable Comparable} objects,
+     * along with the indices <i>0</i> and {@code list.size()} indicating the range of elements to be sorted.
+     * The Odd-even Merge Sort algorithm.
+     * This algorithm is a parallel sorting algorithm that works by dividing the list into two halves, sorting them recursively,
+     * and then merging them back together.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>The variable {@code n} is initialized with the value of {@code list.length},
+     *     representing the number of elements to be sorted in the current recursion.
+     *     If {@code n} is less than or equal to <i>1</i>,
+     *     the method returns, as there is no need to sort an list with <i>0</i> or <i>1</i> element.</li>
+     *     <li>The variable {@code mid} is set to {@code (n / 2)}, representing the midpoint of the current range.</li>
+     *     <li>It creates two new sublists, {@code oddHalf} and {@code evenHalf}, by calling the {@code addBetween} method with different ranges.
+     *     {@code oddHalf} contains the elements from index <i>0</i> to {@code mid}, and
+     *     {@code evenHalf} contains the elements from {@code mid} to {@code right}.</li>
+     *     <li>The {@code oddEvenMergeInc} method is recursively called on both {@code oddHalf} and {@code evenHalf} to sort them.</li>
+     *     <li>A loop iterates from <i>0</i> to {@code (mid - 1)}.
+     *     For iteration, it compares the element at index {@code i} with the element at index {@code (i + mid)} in the original list.
+     *     If the element at index {@code i} is greater than the element at index {@code (i + mid)},
+     *     a {@code swap} method is called to swap the two elements.</li>
+     * </ul>
+     * Finally, the {@code mergingInc} method is called with the original list, {@code oddHalf},
+     * and {@code evenHalf} as arguments to merge the two sorted halves back into the original list.
+     * @param       list to be arranged.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.SortSwap#swap(List, int, int)
+     * @see         mz.MergeInterface#mergingInc(List, List, List)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> void oddEvenMergeInc(List<L> list) {
+        int n = list.size();
+        if (n <= 1) {
+            return;
+        }
+        int mid = (n / 2);
+        List<L> oddHalf = addBetween(list, 0, mid);
+        List<L> evenHalf = addBetween(list, mid, n);
+        oddEvenMergeInc(oddHalf);
+        oddEvenMergeInc(evenHalf);
+        for (int i = 0; i < mid; i++) {
+            if (list.get(i).compareTo(list.get(i + mid)) > 0) {
+                swap(list, i, mid);
+            }
+        }
+        mergingInc(list, oddHalf, evenHalf);
+    }
+
+    /**
+     * {@code oddEvenMergeDec} takes a list of {@link java.lang.Comparable Comparable} objects,
+     * along with the indices <i>0</i> and {@code list.size()} indicating the range of elements to be sorted.
+     * The Odd-even Merge Sort algorithm.
+     * This algorithm is a parallel sorting algorithm that works by dividing the list into two halves, sorting them recursively,
+     * and then merging them back together.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>The variable {@code n} is initialized with the value of {@code list.length},
+     *     representing the number of elements to be sorted in the current recursion.
+     *     If {@code n} is less than or equal to <i>1</i>,
+     *     the method returns, as there is no need to sort an list with <i>0</i> or <i>1</i> element.</li>
+     *     <li>The variable {@code mid} is set to {@code (n / 2)}, representing the midpoint of the current range.</li>
+     *     <li>It creates two new sublists, {@code oddHalf} and {@code evenHalf}, by calling the {@code addBetween} method with different ranges.
+     *     {@code oddHalf} contains the elements from index <i>0</i> to {@code mid}, and
+     *     {@code evenHalf} contains the elements from {@code mid} to {@code right}.</li>
+     *     <li>The {@code oddEvenMergeDec} method is recursively called on both {@code oddHalf} and {@code evenHalf} to sort them.</li>
+     *     <li>A loop iterates from <i>0</i> to {@code (mid - 1)}.
+     *     For iteration, it compares the element at index {@code i} with the element at index {@code (i + mid)} in the original list.
+     *     If the element at index {@code i} is smaller than the element at index {@code (i + mid)},
+     *     a {@code swap} method is called to swap the two elements.</li>
+     * </ul>
+     * Finally, the {@code mergingDec} method is called with the original list, {@code oddHalf},
+     * and {@code evenHalf} as arguments to merge the two sorted halves back into the original list.
+     * @param       list to be arranged.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.SortSwap#swap(List, int, int)
+     * @see         mz.MergeInterface#mergingDec(List, List, List)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> void oddEvenMergeDec(List<L> list) {
+        int n = list.size();
+        if (n <= 1) {
+            return;
+        }
+        int mid = (n / 2);
+        List<L> oddHalf = addBetween(list, 0, mid);
+        List<L> evenHalf = addBetween(list, mid, n);
+        oddEvenMergeDec(oddHalf);
+        oddEvenMergeDec(evenHalf);
+        for (int i = 0; i < mid; i++) {
+            if (list.get(i).compareTo(list.get(i + mid)) < 0) {
+                swap(list, i, mid);
+            }
+        }
+        mergingDec(list, oddHalf, evenHalf);
+    }
+
+    /**
+     * {@code oddEvenMerge} method takes a list of {@link java.lang.Comparable Comparable} objects.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a base case check: if the {@code n} index is less than or equal to <i>1</i>,
+     *     indicating that there are <i>0</i> or <i>1</i> elements in the range,
+     *     the method simply returns, as there is nothing to sort.</li>
+     *     <li>It creates two new sublists, {@code oddHalf} and {@code evenHalf}, by calling the {@code addBetween} method with different ranges.
+     *     {@code oddHalf} contains the elements from index <i>0</i> to {@code mid}, and
+     *     {@code evenHalf} contains the elements from {@code mid} to {@code right}.</li>
+     *     <li>The {@code oddEvenMerge} method is then recursively called on {@code oddHalf} and {@code evenHalf},
+     *     applying the same sorting algorithm to each half.</li>
+     *     <li>After the recursive calls, a loop iterates from <i>0</i> to {@code mid},
+     *     comparing each element with its corresponding element in the second half {@code (i + mid)}.
+     *     If the comparison using the {@code functionalCompareTo} method indicates that
+     *     the current element is greater than its corresponding element,
+     *     the {@code swap} method is called to swap the elements.</li>
+     *     <li>Finally, the {@code merging} method is called to merge
+     *     the sorted {@code oddHalf} and {@code evenHalf} arrays back into the original {@code list}.</li>
+     * </ul>
+     * {@code oddEvenMerge} method combines the divide-and-conquer approach with the odd-even merge step to sort
+     * the elements in the specified range using the provided comparison logic.
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(List, int, int)
+     * @see         mz.MergeInterface#merging(List, List, List, SortFunctional)
+     */
+    protected <L extends Comparable> void oddEvenMerge(List<L> list, SortFunctional<Comparable> functional) {
+        int n = list.size();
+        if (n <= 1) {
+            return;
+        }
+        int mid = (n / 2);
+        List<L> oddHalf = addBetween(list, 0, mid);
+        List<L> evenHalf = addBetween(list, mid, n);
+        oddEvenMerge(oddHalf, functional);
+        oddEvenMerge(evenHalf, functional);
+        for (int i = 0; i < mid; i++) {
+            if (functional.functionalCompareTo(list.get(i), list.get(i + mid))) {
+                swap(list, i, mid);
+            }
+        }
+        merging(list, oddHalf, evenHalf, functional);
+    }
+
+    /**
+     * {@code oddEvenMergeInc} takes an list of {@link java.lang.Comparable Comparable} objects,
+     * along with the indices {@code left} and {@code right} indicating the range of elements to be sorted.
+     * The Odd-even Merge Sort algorithm.
+     * This algorithm is a parallel sorting algorithm that works by dividing the list into two halves, sorting them recursively,
+     * and then merging them back together.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>The variable {@code n} is initialized with the value of {@code right},
+     *     representing the number of elements to be sorted in the current recursion.
+     *     If {@code n} is less than or equal to <i>1</i>,
+     *     the method returns, as there is no need to sort an list with <i>0</i> or <i>1</i> element.</li>
+     *     <li>The variable {@code mid} is set to {@code (n / 2)}, representing the midpoint of the current range.</li>
+     *     <li>It creates two new sublists, {@code oddHalf} and {@code evenHalf}, by calling the {@code addBetween} method with different ranges.
+     *     {@code oddHalf} contains the elements from index <i>0</i> to {@code mid}, and
+     *     {@code evenHalf} contains the elements from {@code mid} to {@code right}.</li>
+     *     <li>The {@code oddEvenMergeInc} method is recursively called on both {@code oddHalf} and {@code evenHalf} to sort them.</li>
+     *     <li>A loop iterates from {@code left} to {@code (mid - 1)}.
+     *     For iteration, it compares the element at index {@code i} with the element at index {@code (i + mid)} in the original list.
+     *     If the element at index {@code i} is greater than the element at index {@code (i + mid)},
+     *     a {@code swap} method is called to swap the two elements.</li>
+     * </ul>
+     * Finally, the {@code mergingInc} method is called with the original list, {@code oddHalf},
+     * and {@code evenHalf} as arguments to merge the two sorted halves back into the original list.
+     * @param       list to be arranged.
+     * @param       left specific range of the list.
+     * @param       right specific range of the list.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.OddEvenMerge#oddEvenMergeInc(List)
+     * @see         mz.SortSwap#swap(List, int, int)
+     * @see         mz.MergeInterface#mergingInc(List, List, List)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> void oddEvenMergeInc(List<L> list, int left, int right) {
+        if (right <= 1) {
+            return;
+        }
+        int mid = (right / 2);
+        List<L> oddHalf = addBetween(list, 0, mid);
+        List<L> evenHalf = addBetween(list, mid, right);
+        oddEvenMergeInc(oddHalf);
+        oddEvenMergeInc(evenHalf);
+        for (int i = left; i < mid; i++) {
+            if (list.get(i).compareTo(list.get(i + mid)) > 0) {
+                swap(list, i, mid);
+            }
+        }
+        mergingInc(list, oddHalf, evenHalf);
+    }
+
+    /**
+     * {@code oddEvenMergeDec} takes a list of {@link java.lang.Comparable Comparable} objects,
+     * along with the indices {@code left} and {@code right} indicating the range of elements to be sorted.
+     * The Odd-even Merge Sort algorithm.
+     * This algorithm is a parallel sorting algorithm that works by dividing the list into two halves, sorting them recursively,
+     * and then merging them back together.
+     * <ul>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>The variable {@code n} is initialized with the value of {@code right},
+     *     representing the number of elements to be sorted in the current recursion.
+     *     If {@code n} is less than or equal to <i>1</i>,
+     *     the method returns, as there is no need to sort an list with <i>0</i> or <i>1</i> element.</li>
+     *     <li>The variable {@code mid} is set to {@code (n / 2)}, representing the midpoint of the current range.</li>
+     *      <li>It creates two new sublists, {@code oddHalf} and {@code evenHalf}, by calling the {@code addBetween} method with different ranges.
+     *     {@code oddHalf} contains the elements from index <i>0</i> to {@code mid}, and
+     *     {@code evenHalf} contains the elements from {@code mid} to {@code right}.</li>
+     *     <li>The {@code oddEvenMergeDec} method is recursively called on both {@code oddHalf} and {@code evenHalf} to sort them.</li>
+     *     <li>A loop iterates from {@code left} to {@code (mid - 1)}.
+     *     For iteration, it compares the element at index {@code i} with the element at index {@code (i + mid)} in the original list.
+     *     If the element at index {@code i} is smaller than the element at index {@code (i + mid)},
+     *     a {@code swap} method is called to swap the two elements.</li>
+     * </ul>
+     * Finally, the {@code mergingDec} method is called with the original list, {@code oddHalf},
+     * and {@code evenHalf} as arguments to merge the two sorted halves back into the original list.
+     * @param       list to be arranged.
+     * @param       left specific range of the list.
+     * @param       right specific range of the list.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.OddEvenMerge#oddEvenMergeDec(List)
+     * @see         mz.SortSwap#swap(List, int, int)
+     * @see         mz.MergeInterface#mergingDec(List, List, List)
+     */
+    @SuppressWarnings("unchecked")
+    protected <L extends Comparable> void oddEvenMergeDec(List<L> list, int left, int right) {
+        if (right <= 1) {
+            return;
+        }
+        int mid = (right / 2);
+        List<L> oddHalf = addBetween(list, 0, mid);
+        List<L> evenHalf = addBetween(list, mid, right);
+        oddEvenMergeDec(oddHalf);
+        oddEvenMergeDec(evenHalf);
+        for (int i = left; i < mid; i++) {
+            if (list.get(i).compareTo(list.get(i + mid)) < 0) {
+                swap(list, i, mid);
+            }
+        }
+        mergingDec(list, oddHalf, evenHalf);
+    }
+
+    /**
+     * {@code oddEvenMerge} method takes an list of {@link java.lang.Comparable Comparable} objects,
+     * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * <ul>
+     *     <li>The method starts with a base case check: if the {@code right} index is less than or equal to <i>1</i>,
+     *     indicating that there are <i>0</i> or <i>1</i> elements in the range,
+     *     the method simply returns, as there is nothing to sort.</li>
+     *     <li>It creates two new sublists, {@code oddHalf} and {@code evenHalf}, by calling the {@code addBetween} method with different ranges.
+     *     {@code oddHalf} contains the elements from index <i>0</i> to {@code mid}, and
+     *     {@code evenHalf} contains the elements from {@code mid} to {@code right}.</li>
+     *     <li>The {@code oddEvenMerge} method is then recursively called on {@code oddHalf} and {@code evenHalf},
+     *     applying the same sorting algorithm to each half.</li>
+     *     <li>After the recursive calls, a loop iterates from {@code left} to {@code mid},
+     *     comparing each element with its corresponding element in the second half {@code (i + mid)}.
+     *     If the comparison using the {@code functionalCompareTo} method indicates that
+     *     the current element is greater than its corresponding element,
+     *     the {@code swap} method is called to swap the elements.</li>
+     *     <li>Finally, the {@code merging} method is called to merge
+     *     the sorted {@code oddHalf} and {@code evenHalf} arrays back into the original {@code list}.</li>
+     * </ul>
+     * {@code oddEvenMerge} method combines the divide-and-conquer approach with the odd-even merge step to sort
+     * the elements in the specified range using the provided comparison logic.
+     * @param       list to be arranged.
+     * @param       left specific range of the list.
+     * @param       right specific range of the list.
+     * @param       functional lambda expression for comparison.
+     * @see         mz.SortList#addBetween(List, int, int)
+     * @see         mz.OddEvenMerge#oddEvenMerge(List, SortFunctional)
+     * @see         mz.Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         mz.SortSwap#swap(List, int, int)
+     * @see         mz.MergeInterface#merging(List, List, List, SortFunctional)
+     */
+    protected <L extends Comparable> void oddEvenMerge(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        if (right <= 1) {
+            return;
+        }
+        int mid = (right / 2);
+        List<L> oddHalf = addBetween(list, 0, mid);
+        List<L> evenHalf = addBetween(list, mid, right);
+        oddEvenMerge(oddHalf, functional);
+        oddEvenMerge(evenHalf, functional);
+        for (int i = left; i < mid; i++) {
+            if (functional.functionalCompareTo(list.get(i), list.get(i + mid))) {
+                swap(list, i, mid);
+            }
+        }
+        merging(list, oddHalf, evenHalf, functional);
     }
 }
