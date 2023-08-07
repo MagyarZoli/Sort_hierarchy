@@ -49,6 +49,7 @@ implements QuickInterface<Comparable>, SortFind<Comparable> {
      * @see         mz.DualPivotQuick#DualPivotQuick() DualPivotQuick
      * @see         mz.Quick3#Quick3() Quick3
      * @see         mz.StableQuick#StableQuick() StableQuick
+     * @see         mz.Slow#Slow() Slow
      */
     public Quick() {}
 
