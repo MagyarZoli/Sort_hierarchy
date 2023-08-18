@@ -2,6 +2,8 @@ package mz.intro;
 
 import mz.Shell;
 
+import java.util.List;
+
 /**
  * Intro Sort is a hybrid sorting algorithm that combines the strengths of Quick Sort and Insertion Sort.
  * It aims to provide fast average-case performance while maintaining worst-case guarantees.
@@ -10,7 +12,7 @@ import mz.Shell;
  * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
  * Another Sort is Shell Sort.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -90,6 +92,34 @@ implements Intro<Comparable> {
 
     /**
      * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        introInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        introDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        intro(list, functional);
+    }
+
+    /**
+     * {@inheritDoc}
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
@@ -120,5 +150,39 @@ implements Intro<Comparable> {
     @Override
     public void introSortClass(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         shell(array, left, right, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
+     */
+    @Override
+    public <L extends Comparable> void introSortClassInc(List<L> list, int left, int right) {
+        shellInc(list, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
+     */
+    @Override
+    public <L extends Comparable> void introSortClassDec(List<L> list, int left, int right) {
+        shellDec(list, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public <L extends Comparable> void introSortClass(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        shell(list, left, right, functional);
     }
 }
