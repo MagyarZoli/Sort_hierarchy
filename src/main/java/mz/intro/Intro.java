@@ -59,8 +59,8 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
     /**
      * The other sorting algorithm can be added in this method.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @see         Intro#introRecursiveInc(Comparable[], int, int, int)
      */
     <L extends T> void introSortClassInc(List<L> list, int left, int right);
@@ -68,8 +68,8 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
     /**
      * The other sorting algorithm can be added in this method.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @see         Intro#introRecursiveDec(Comparable[], int, int, int)
      */
     <L extends T> void introSortClassDec(List<L> list, int left, int right);
@@ -77,8 +77,8 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
     /**
      * The other sorting algorithm can be added in this method.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         Intro#introRecursive(Comparable[], int, int, int, SortFunctional)
      */
@@ -284,7 +284,7 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * @param       right The ending index (inclusive) of the subarray to be sorted.
      * @param       maxDepth The maximum depth or recursion level allowed before switching to another sorting algorithm.
      * @param       functional lambda expression for comparison.
-     * @see         Intro#INTRO_SIZE 
+     * @see         Intro#INTRO_SIZE
      * @see         Intro#intro(Comparable[], SortFunctional)
      * @see         Intro#introSortClass(Comparable[], int, int, SortFunctional)
      * @see         mz.InsertionInterface#insertion(Comparable[], int, int, SortFunctional)
@@ -376,21 +376,21 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
     /**
      * {@code introRecursiveInc} method implements an adaptive sorting algorithm called Intro Sort.
      * <ul>
-     *     <li>This condition checks if the size of the subarray is greater than {@code INTRO_SIZE}.
+     *     <li>This condition checks if the size of the sublist is greater than {@code INTRO_SIZE}.
      *     If true, the list is large enough to be sorted using QuickSort.</li>
      *     <li>This condition checks if the maximum depth has been reached.
      *     If true, the maximum depth has been exceeded,
      *     and the sorting algorithm switches to another sorting method.</li>
      *     <li>{@code introSortClassInc(list, left, right)}:
      *     If the maximum depth has been reached, the {@code introSortClassInc}
-     *     method is called to sort the subarray using a different sorting algorithm.</li>
+     *     method is called to sort the sublist using a different sorting algorithm.</li>
      *     <li>{@code partitionInc(list, left, right)}: If the maximum depth has not been reached,
      *     the {@code partitionInc} method is called to perform the partitioning step of QuickSort.
      *     It returns the index of the pivot element.</li>
-     *     <li>The {@code introRecursiveInc} method is recursively called on the left subarray (elements smaller than the pivot) to further sort it.</li>
-     *     <li>The {@code introRecursiveInc} method is recursively called on the right subarray (elements greater than the pivot) to further sort it.</li>
-     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the list is considered small, and the {@code insertionInc}
-     *     method is called to perform insertion sort on the subarray.</li>
+     *     <li>The {@code introRecursiveInc} method is recursively called on the left sublist (elements smaller than the pivot) to further sort it.</li>
+     *     <li>The {@code introRecursiveInc} method is recursively called on the right sublist (elements greater than the pivot) to further sort it.</li>
+     *     <li>Else the size of the sublist is not greater than {@code INTRO_SIZE}, the list is considered small, and the {@code insertionInc}
+     *     method is called to perform insertion sort on the sublist.</li>
      *     <li>This is a method declaration for {@code introSortClassInc}.
      *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
      * </ul>
@@ -398,8 +398,8 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b> when the recursion depth exceeds a specified threshold {@code maxDepth}.
      * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @param       maxDepth The maximum depth or recursion level allowed before switching to another sorting algorithm.
      * @see         Intro#INTRO_SIZE
      * @see         Intro#introInc(List)
@@ -422,21 +422,21 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
     /**
      * {@code introRecursiveDec} method implements an adaptive sorting algorithm called Intro Sort.
      * <ul>
-     *     <li>This condition checks if the size of the subarray is greater than {@code INTRO_SIZE}.
+     *     <li>This condition checks if the size of the sublist is greater than {@code INTRO_SIZE}.
      *     If true, the list is large enough to be sorted using QuickSort.</li>
      *     <li>This condition checks if the maximum depth has been reached.
      *     If true, the maximum depth has been exceeded,
      *     and the sorting algorithm switches to another sorting method.</li>
      *     <li>{@code introSortClassDec(list, left, right)}:
      *     If the maximum depth has been reached, the {@code introSortClassDec}
-     *     method is called to sort the subarray using a different sorting algorithm.</li>
+     *     method is called to sort the sublist using a different sorting algorithm.</li>
      *     <li>{@code partitionDec(list, left, right)}: If the maximum depth has not been reached,
      *     the {@code partitionDec} method is called to perform the partitioning step of QuickSort.
      *     It returns the index of the pivot element.</li>
-     *     <li>The {@code introRecursiveDec} method is recursively called on the left subarray (elements smaller than the pivot) to further sort it.</li>
-     *     <li>The {@code introRecursiveDec} method is recursively called on the right subarray (elements greater than the pivot) to further sort it.</li>
-     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the list is considered small, and the {@code insertionInc}
-     *     method is called to perform insertion sort on the subarray.</li>
+     *     <li>The {@code introRecursiveDec} method is recursively called on the left sublist (elements smaller than the pivot) to further sort it.</li>
+     *     <li>The {@code introRecursiveDec} method is recursively called on the right sublist (elements greater than the pivot) to further sort it.</li>
+     *     <li>Else the size of the sublist is not greater than {@code INTRO_SIZE}, the list is considered small, and the {@code insertionInc}
+     *     method is called to perform insertion sort on the sublist.</li>
      *     <li>This is a method declaration for {@code introSortClassDec}.
      *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
      * </ul>
@@ -444,8 +444,8 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b> when the recursion depth exceeds a specified threshold {@code maxDepth}.
      * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @param       maxDepth The maximum depth or recursion level allowed before switching to another sorting algorithm.
      * @see         Intro#INTRO_SIZE
      * @see         Intro#introDec(List)
@@ -498,8 +498,8 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * It switches to insertion sort for small ranges and performs quicksort recursively for larger ranges,
      * while keeping track of the maximum recursion depth.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @param       maxDepth The maximum depth or recursion level allowed before switching to another sorting algorithm.
      * @param       functional lambda expression for comparison.
      * @see         Intro#INTRO_SIZE
