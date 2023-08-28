@@ -17,8 +17,8 @@ import mz.Merge3;
  */
 @SuppressWarnings("rawtypes")
 public class IntroMerge3
-        extends Merge3
-        implements Intro<Comparable> {
+extends Merge3
+implements Intro<Comparable> {
 
     /**
      * <b>Intro Merge3 Sort:</b><br>
