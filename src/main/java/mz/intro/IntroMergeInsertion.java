@@ -154,8 +154,8 @@ implements Intro<Comparable> {
     /**
      * {@inheritDoc}
      * @param       list The array to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      */
     @Override
     public <L extends Comparable> void introSortClassInc(List<L> list, int left, int right) {
@@ -165,8 +165,8 @@ implements Intro<Comparable> {
     /**
      * {@inheritDoc}
      * @param       list The array to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      */
     @Override
     public <L extends Comparable> void introSortClassDec(List<L> list, int left, int right) {
@@ -176,8 +176,8 @@ implements Intro<Comparable> {
     /**
      * {@inheritDoc}
      * @param       list The array to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @param       functional lambda expression for comparison.
      */
     @Override
