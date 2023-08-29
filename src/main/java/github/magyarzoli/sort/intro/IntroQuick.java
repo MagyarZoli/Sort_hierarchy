@@ -1,6 +1,7 @@
 package github.magyarzoli.sort.intro;
 
-import github.magyarzoli.sort.intro.introDPQ.IntroDPQQuick;
+import java.util.List;
+
 import github.magyarzoli.sort.Quick;
 
 /**
@@ -11,7 +12,7 @@ import github.magyarzoli.sort.Quick;
  * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
  * Another Sort is Quick Sort.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -57,7 +58,6 @@ implements Intro<Comparable> {
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
-     * @see         IntroDPQQuick#IntroDPQQuick() IntroDPQQuick
      */
     public IntroQuick() {}
 
@@ -87,6 +87,34 @@ implements Intro<Comparable> {
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         intro(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        introInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        introDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        intro(list, functional);
     }
 
     /**
@@ -121,5 +149,39 @@ implements Intro<Comparable> {
     @Override
     public void introSortClass(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         quick(array, left, (right - 1), functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     */
+    @Override
+    public <L extends Comparable> void introSortClassInc(List<L> list, int left, int right) {
+        quickInc(list, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     */
+    @Override
+    public <L extends Comparable> void introSortClassDec(List<L> list, int left, int right) {
+        quickDec(list, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the subarray to be sorted.
+     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public <L extends Comparable> void introSortClass(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        quick(list, left, right, functional);
     }
 }
