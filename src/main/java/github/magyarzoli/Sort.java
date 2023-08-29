@@ -58,10 +58,20 @@ public interface Sort<T extends Comparable> {
     default SortFunctional<T> functionalComparableToAddEquals (SortFunctional<T> functional) {
         SortFunctional<T> newFunctional = null;
         switch (scanFunctionalComparableTo(functional)) {
-            case 0 -> newFunctional = (a, b) -> a.compareTo(b) >= 0;
-            case 2 -> newFunctional = (a, b) -> a.compareTo(b) <= 0;
-            case 4 -> newFunctional = (a, b) -> a.compareTo(b) == 0;
-            case 1, 3, 5 -> newFunctional = functional;
+            case 0:
+                newFunctional = (a, b) -> a.compareTo(b) >= 0;
+                break;
+            case 2:
+                newFunctional = (a, b) -> a.compareTo(b) <= 0;
+                break;
+            case 4:
+                newFunctional = (a, b) -> a.compareTo(b) == 0;
+                break;
+            case 1:
+            case 3:
+            case 5:
+                newFunctional = functional;
+                break;
         }
         return newFunctional;
     }
@@ -89,13 +99,22 @@ public interface Sort<T extends Comparable> {
      * @see         SortFunctional
      * @see         Sort#scanFunctionalComparableTo(SortFunctional)
      */
-    default SortFunctional<T> functionalComparableToRemoveEquals (SortFunctional<T> functional) {
+    default SortFunctional<T> functionalComparableToRemoveEquals(SortFunctional<T> functional) {
         SortFunctional<T> newFunctional = null;
         switch (scanFunctionalComparableTo(functional)) {
-            case 1 -> newFunctional = (a, b) -> a.compareTo(b) > 0;
-            case 3 -> newFunctional = (a, b) -> a.compareTo(b) < 0;
-            case 5 -> newFunctional = (a, b) -> a.compareTo(b) != 0;
-            case 0, 2, 4 -> newFunctional = functional;
+            case 1:
+                newFunctional = (a, b) -> a.compareTo(b) > 0;
+                break;
+            case 3:
+                newFunctional = (a, b) -> a.compareTo(b) < 0;
+                break;
+            case 5:
+                newFunctional = (a, b) -> a.compareTo(b) != 0;
+                break;
+            case 0:
+            case 2:
+            case 4:
+                newFunctional = functional;
         }
         return newFunctional;
     }
@@ -124,15 +143,27 @@ public interface Sort<T extends Comparable> {
      * @see         SortFunctional
      * @see         Sort#scanFunctionalComparableTo(SortFunctional)
      */
-    default SortFunctional<T> functionalComparableToReverse (SortFunctional<T> functional) {
+    default SortFunctional<T> functionalComparableToReverse(SortFunctional<T> functional) {
         SortFunctional<T> newFunctional = null;
         switch (scanFunctionalComparableTo(functional)) {
-            case 0 -> newFunctional = (a, b) -> a.compareTo(b) < 0;
-            case 1 -> newFunctional = (a, b) -> a.compareTo(b) <= 0;
-            case 2 -> newFunctional = (a, b) -> a.compareTo(b) > 0;
-            case 3 -> newFunctional = (a, b) -> a.compareTo(b) >= 0;
-            case 4 -> newFunctional = (a, b) -> a.compareTo(b) == 0;
-            case 5 -> newFunctional = (a, b) -> a.compareTo(b) != 0;
+            case 0:
+                newFunctional = (a, b) -> a.compareTo(b) < 0;
+                break;
+            case 1:
+                newFunctional = (a, b) -> a.compareTo(b) <= 0;
+                break;
+            case 2:
+                newFunctional = (a, b) -> a.compareTo(b) > 0;
+                break;
+            case 3:
+                newFunctional = (a, b) -> a.compareTo(b) >= 0;
+                break;
+            case 4:
+                newFunctional = (a, b) -> a.compareTo(b) == 0;
+                break;
+            case 5:
+                newFunctional = (a, b) -> a.compareTo(b) != 0;
+                break;
         }
         return newFunctional;
     }
@@ -189,8 +220,8 @@ public interface Sort<T extends Comparable> {
      *     <li>This line waits for each thread to finish execution by
      *     calling the {@link java.lang.Thread#join() join()} method on the {@code threadObj}.
      *     The {@code join()} method causes the calling thread to wait until the thread represented by {@code threadObj} terminates.</li>
-     *     <li>If any thread is interrupted while waiting (e.g., if another thread calls {@link java.lang.Thread#interrupt() interrupt()} on it), 
-     *     it will throw an {@link java.lang.InterruptedException InterruptedException}. 
+     *     <li>If any thread is interrupted while waiting (e.g., if another thread calls {@link java.lang.Thread#interrupt() interrupt()} on it),
+     *     it will throw an {@link java.lang.InterruptedException InterruptedException}.
      *     In that case, the catch block will be executed,
      *     and it will print the stack trace of the exception using {@code e.printStackTrace()}.</li>
      * </ul>

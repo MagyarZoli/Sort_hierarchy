@@ -25,7 +25,7 @@ extends Sort<T> {
      * Decreasing method that inherited classes must create. its task is to arrange the elements of the list in decreasing order.
      * @param       list to be arranged.
      */
-     void sortListDec(List<? extends T> list);
+    void sortListDec(List<? extends T> list);
 
     /**
      * A custom method that inherited classes must create. its task is to arrange
@@ -53,11 +53,19 @@ extends Sort<T> {
      */
     default void sortList(List<? extends T> list, int type) {
         switch (type) {
-            case INC -> sortListInc(list);
-            case DEC -> sortListDec(list);
-            case NOT -> {}
-            case REV -> sortListRev(list);
-            default -> {}
+            case INC:
+                sortListInc(list);
+                break;
+            case DEC:
+                sortListDec(list);
+                break;
+            case NOT:
+                break;
+            case REV:
+                sortListRev(list);
+                break;
+            default:
+                break;
         }
     }
 
@@ -72,11 +80,17 @@ extends Sort<T> {
      */
     default void sortList(List<? extends T> list, Sort.SortType sequence) {
         switch (sequence) {
-            case INCREASING -> sortListInc(list);
-            case DECREASING -> sortListDec(list);
-            case DO_NOT_CHANGE_IT -> {}
-            case REVERSE_ORDER -> sortListRev(list);
-            default -> {}
+            case INCREASING:
+                sortListInc(list);
+                break;
+            case DECREASING:
+                sortListDec(list);
+                break;
+            case DO_NOT_CHANGE_IT:
+                break;
+            case REVERSE_ORDER:
+                sortListRev(list);
+                break;
         }
     }
 
@@ -102,10 +116,17 @@ extends Sort<T> {
      */
     default void sortList(List<? extends T> list, int type, int thread) {
         switch (type) {
-            case INC, DEC -> threadList(list, type, thread);
-            case NOT -> {}
-            case REV -> threadListRev(list, thread);
-            default -> {}
+            case INC:
+            case DEC:
+                threadList(list, type, thread);
+                break;
+            case NOT:
+                break;
+            case REV:
+                threadListRev(list, thread);
+                break;
+            default:
+                break;
         }
     }
 
@@ -121,10 +142,15 @@ extends Sort<T> {
      */
     default void sortList(List<? extends T> list, Sort.SortType sequence, int thread) {
         switch (sequence) {
-            case INCREASING, DECREASING -> threadList(list, sequence, thread);
-            case DO_NOT_CHANGE_IT -> {}
-            case REVERSE_ORDER -> threadListRev(list, thread);
-            default -> {}
+            case INCREASING:
+            case DECREASING:
+                threadList(list, sequence, thread);
+                break;
+            case DO_NOT_CHANGE_IT:
+                break;
+            case REVERSE_ORDER:
+                threadListRev(list, thread);
+                break;
         }
     }
 
@@ -187,7 +213,7 @@ extends Sort<T> {
         }
         threadsStart(threads);
         for (List<L> subList : listList) {
-            mergedList.addAll(subList); 
+            mergedList.addAll(subList);
         }
         list.clear();
         list.addAll(mergedList);
@@ -241,7 +267,7 @@ extends Sort<T> {
         }
         threadsStart(threads);
         for (List<L> subList : listList) {
-            mergedList.addAll(subList); 
+            mergedList.addAll(subList);
         }
         list.clear();
         list.addAll(mergedList);
@@ -294,7 +320,7 @@ extends Sort<T> {
         }
         threadsStart(threads);
         for (List<L> subList : listList) {
-            mergedList.addAll(subList); 
+            mergedList.addAll(subList);
         }
         list.clear();
         list.addAll(mergedList);
@@ -351,7 +377,7 @@ extends Sort<T> {
         }
         threadsStart(threads);
         for (List<L> subList : listList) {
-            mergedList.addAll(subList); 
+            mergedList.addAll(subList);
         }
         list.clear();
         list.addAll(mergedList);

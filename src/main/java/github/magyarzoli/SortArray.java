@@ -47,11 +47,19 @@ extends Sort<T> {
      */
     default void sortArray(T[] array, int type) {
         switch (type) {
-            case INC -> sortArrayInc(array);
-            case DEC -> sortArrayDec(array);
-            case NOT -> {}
-            case REV -> sortArrayRev(array);
-            default -> {}
+            case INC:
+                sortArrayInc(array);
+                break;
+            case DEC:
+                sortArrayDec(array);
+                break;
+            case NOT:
+                break;
+            case REV:
+                sortArrayRev(array);
+                break;
+            default:
+                break;
         }
     }
 
@@ -66,11 +74,17 @@ extends Sort<T> {
      */
     default void sortArray(T[] array, Sort.SortType sequence) {
         switch (sequence) {
-            case INCREASING -> sortArrayInc(array);
-            case DECREASING -> sortArrayDec(array);
-            case DO_NOT_CHANGE_IT -> {}
-            case REVERSE_ORDER -> sortArrayRev(array);
-            default -> {}
+            case INCREASING:
+                sortArrayInc(array);
+                break;
+            case DECREASING:
+                sortArrayDec(array);
+                break;
+            case DO_NOT_CHANGE_IT:
+                break;
+            case REVERSE_ORDER:
+                sortArrayRev(array);
+                break;
         }
     }
 
@@ -96,10 +110,17 @@ extends Sort<T> {
      */
     default void sortArray(T[] array, int type, int thread) {
         switch (type) {
-            case INC, DEC -> threadArray(array, type, thread);
-            case NOT -> {}
-            case REV -> threadArrayRev(array, thread);
-            default -> {}
+            case INC:
+            case DEC:
+                threadArray(array, type, thread);
+                break;
+            case NOT:
+                break;
+            case REV:
+                threadArrayRev(array, thread);
+                break;
+            default:
+                break;
         }
     }
 
@@ -115,10 +136,14 @@ extends Sort<T> {
      */
     default void sortArray(T[] array, Sort.SortType sequence, int thread) {
         switch (sequence) {
-            case INCREASING, DECREASING -> threadArray(array, sequence, thread);
-            case DO_NOT_CHANGE_IT -> {}
-            case REVERSE_ORDER -> threadArrayRev(array, thread);
-            default -> {}
+            case INCREASING:
+            case DECREASING:
+                threadArray(array, sequence, thread);
+            case DO_NOT_CHANGE_IT:
+                break;
+            case REVERSE_ORDER:
+                threadArrayRev(array, thread);
+                break;
         }
     }
 
@@ -159,7 +184,6 @@ extends Sort<T> {
      * @param       type An integer representing the type of sorting to be performed.
      * @param       thread on how many threads to run the queue arrangement.
      * @see         Sort#threadsStart(List)
-     * @see         Sort#newArray(List, int, int, int)
      * @see         SortArray#sortArray(Comparable[], int)
      */
     default void threadArray(T[] array, int type, int thread) {
@@ -205,7 +229,6 @@ extends Sort<T> {
      *              Order can be specified here, which row arrangement you want to use.
      * @param       thread on how many threads to run the queue arrangement.
      * @see         Sort#threadsStart(List)
-     * @see         Sort#newArray(List, int, int, int)
      * @see         SortArray#sortArray(Comparable[], SortType)
      */
     default void threadArray(T[] array, SortType sequence, int thread) {
@@ -250,7 +273,6 @@ extends Sort<T> {
      * @param       functional lambda expression for comparison.
      * @param       thread on how many threads to run the queue arrangement.
      * @see         Sort#threadsStart(List)
-     * @see         Sort#newArray(List, int, int, int)
      * @see         SortArray#sortArray(Comparable[], SortFunctional)
      */
     default void threadArray(T[] array, SortFunctional<T> functional, int thread) {
