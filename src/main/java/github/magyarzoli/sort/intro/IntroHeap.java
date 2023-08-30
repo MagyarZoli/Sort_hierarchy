@@ -17,8 +17,8 @@ import github.magyarzoli.sort.Heap;
  */
 @SuppressWarnings("rawtypes")
 public class IntroHeap
-        extends Heap
-        implements Intro<Comparable> {
+extends Heap
+implements Intro<Comparable> {
 
     /**
      * <b>Intro Heap Sort:</b><br>
