@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Merge;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.Merge;
  */
 @SuppressWarnings("rawtypes")
 public class IntroMerge
-extends Merge
-implements Intro<Comparable> {
+        extends Merge
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Merge Sort:</b><br>

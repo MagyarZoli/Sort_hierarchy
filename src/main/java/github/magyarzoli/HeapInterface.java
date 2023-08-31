@@ -10,27 +10,30 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public interface HeapInterface<T extends Comparable>
-extends Sorter<T>, SortSwap<T> {
+        extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapInc}. This method is likely a part of a heap-related algorithm or data structure implementation
      * and is used to sort an array in ascending order using a max heap.
      * <ul>
      *     <li>The method starts by calculating the length of the array and assigning it to the variable {@code n}.</li>
-     *     <li>The first {@code for} loop iterates over the indices of the elements in the array from {@code (n / 2 - 1)} down to 0.
+     *     <li>The first {@code for} loop iterates over the indices of the elements in the array from
+     *     {@code (n / 2 - 1)} down to 0.
      *     This loop is used to build the initial max heap structure in the array.
      *     It calls a method named {@code heapifyInc} with the array, length {@code n}, and the current index {@code i}.
      *     The purpose of this call is to perform the heapification process, ensuring that
      *     the subtree rooted at index {@code i} satisfies the max heap property.</li>
      *     <li>After the first {@code for} loop, the array is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
-     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the end of the array.
+     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted
+     *     position at the end of the array.
      *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyInc} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the array is sorted in ascending order.</li>
      * </ul>
-     * {@code heapInc} method implements the Heap Sort algorithm to sort the given array in ascending order by transforming
+     * {@code heapInc} method implements the Heap Sort algorithm to sort the given array in ascending order by
+     * transforming
      * it into a max heap and repeatedly extracting the maximum element from the heap.
      * @param       array to be arranged.
      * @see         HeapInterface#heapifyInc(Comparable[], int, int)
@@ -52,20 +55,23 @@ extends Sorter<T>, SortSwap<T> {
      * and is used to sort an array in descending order using a max heap.
      * <ul>
      *     <li>The method starts by calculating the length of the array and assigning it to the variable {@code n}.</li>
-     *     <li>The first {@code for} loop iterates over the indices of the elements in the array from {@code (n / 2 - 1)} down to 0.
+     *     <li>The first {@code for} loop iterates over the indices of the elements in the array from
+     *     {@code (n / 2 - 1)} down to 0.
      *     This loop is used to build the initial max heap structure in the array.
      *     It calls a method named {@code heapifyDec} with the array, length {@code n}, and the current index {@code i}.
      *     The purpose of this call is to perform the heapification process, ensuring that
      *     the subtree rooted at index {@code i} satisfies the max heap property.</li>
      *     <li>After the first {@code for} loop, the array is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
-     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the end of the array.
+     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted
+     *     position at the end of the array.
      *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyDec} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the array is sorted in ascending order.</li>
      * </ul>
-     * {@code heapDec} method implements the Heap Sort algorithm to sort the given array in descending order by transforming
+     * {@code heapDec} method implements the Heap Sort algorithm to sort the given array in descending order by
+     * transforming
      * it into a max heap and repeatedly extracting the maximum element from the heap.
      * @param       array to be arranged.
      * @see         HeapInterface#heapifyDec(Comparable[], int, int)
@@ -85,7 +91,7 @@ extends Sorter<T>, SortSwap<T> {
     /**
      * {@code heap} within an interface.
      * This method takes an array of type {@code T[]},
-     * and an instance of the {@code mz.SortFunctional} interface as parameters.
+     * and an instance of the {@code SortFunctional} interface as parameters.
      * <ul>
      *     <li>The first for loop initializes a variable {@code i} to {@code ((array.length / 2) - 1)}</li>
      *     <li>Within each iteration, it calls the {@code heapify} method to rearrange the elements in
@@ -93,7 +99,8 @@ extends Sorter<T>, SortSwap<T> {
      *     <li>This first loop ensures that the entire array is transformed into a valid heap structure.</li>
      *     <li>The second {@code for} loop initializes a variable {@code i} to {@code (n - 1)}
      *     and iterates backwards from {@code i} to <i>0</i>.</li>
-     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices <i>0</i> and {@code i} in the array.
+     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices <i>0</i> and
+     *     {@code i} in the array.
      *     This places the largest element (root of the heap) at index <i>0</i> and
      *     the next largest element at the end of the range.</li>
      *     <li>After the swap, it calls the {@code heapify} method to maintain
@@ -103,7 +110,7 @@ extends Sorter<T>, SortSwap<T> {
      * {@code heap} method implements the heap sort algorithm to sort a portion of the array
      * (from index <i>0</i> to index {@code array.length})
      * in ascending order based on the comparison condition provided
-     * by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
      * It transforms the array into a heap structure, swaps the largest element to the beginning of the range,
      * and recursively maintains the heap property while reducing the range until the entire range is sorted.
      * @param       array to be arranged.
@@ -127,20 +134,23 @@ extends Sorter<T>, SortSwap<T> {
      * and is used to sort an array in ascending order using a max heap.
      * <ul>
      *     <li>The method starts by calculating the length of the array and assigning it to the variable {@code n}.</li>
-     *     <li>The first {@code for} loop iterates over the indices of the elements in the array from {@code (n / 2 - 1)} down to 0.
+     *     <li>The first {@code for} loop iterates over the indices of the elements in the array from
+     *     {@code (n / 2 - 1)} down to 0.
      *     This loop is used to build the initial max heap structure in the array.
      *     It calls a method named {@code heapifyInc} with the array, length {@code n}, and the current index {@code i}.
      *     The purpose of this call is to perform the heapification process, ensuring that
      *     the subtree rooted at index {@code i} satisfies the max heap property.</li>
      *     <li>After the first {@code for} loop, the array is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
-     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the to of the array.
+     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted
+     *     position at the to of the array.
      *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyInc} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the array is sorted in ascending order.</li>
      * </ul>
-     * {@code heapInc} method implements the Heap Sort algorithm to sort the given array in ascending order by transforming
+     * {@code heapInc} method implements the Heap Sort algorithm to sort the given array in ascending order by
+     * transforming
      * it into a max heap and repeatedly extracting the maximum element from the heap.
      * @param       array to be arranged.
      * @param       from the element from which to start the analysis.
@@ -163,20 +173,23 @@ extends Sorter<T>, SortSwap<T> {
      * and is used to sort an array in descending order using a max heap.
      * <ul>
      *     <li>The method starts by calculating the length of the array and assigning it to the variable {@code n}.</li>
-     *     <li>The first {@code for} loop iterates over the indices of the elements in the array from {@code (n / 2 - 1)} down to 0.
+     *     <li>The first {@code for} loop iterates over the indices of the elements in the array from
+     *     {@code (n / 2 - 1)} down to 0.
      *     This loop is used to build the initial max heap structure in the array.
      *     It calls a method named {@code heapifyDec} with the array, length {@code n}, and the current index {@code i}.
      *     The purpose of this call is to perform the heapification process, ensuring that
      *     the subtree rooted at index {@code i} satisfies the max heap property.</li>
      *     <li>After the first {@code for} loop, the array is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
-     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the end of the array.
+     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted
+     *     position at the end of the array.
      *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyDec} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the array is sorted in ascending order.</li>
      * </ul>
-     * {@code heapDec} method implements the Heap Sort algorithm to sort the given array in descending order by transforming
+     * {@code heapDec} method implements the Heap Sort algorithm to sort the given array in descending order by
+     * transforming
      * it into a max heap and repeatedly extracting the maximum element from the heap.
      * @param       array to be arranged.
      * @param       from the element from which to start the analysis.
@@ -199,7 +212,7 @@ extends Sorter<T>, SortSwap<T> {
      * This method takes an array of type {@code T[]},
      * an integer {@code from} representing the starting index,
      * an integer {@code to} representing the ending index,
-     * and an instance of the {@code mz.SortFunctional} interface as parameters.
+     * and an instance of the {@code SortFunctional} interface as parameters.
      * <ul>
      *     <li>The first for loop initializes a variable {@code i} to {@code ((to / 2) - 1)}
      *     and iterates backwards from {@code i} to {@code from}.</li>
@@ -208,16 +221,18 @@ extends Sorter<T>, SortSwap<T> {
      *     <li>This first loop ensures that the entire array is transformed into a valid heap structure.</li>
      *     <li>The second {@code for} loop initializes a variable {@code i} to {@code (to - 1)}
      *     and iterates backwards from {@code i} to {@code (from + 1)}.</li>
-     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices {@code from} and {@code i} in the array.
+     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices {@code from} and
+     *     {@code i} in the array.
      *     This places the largest element (root of the heap) at index {@code from} and
      *     the next largest element at the end of the range.</li>
      *     <li>After the swap, it calls the {@code heapify} method to maintain
      *     the heap property within the reduced range {@code from} from to {@code i}.</li>
      *     <li>The loop continues until the entire range is sorted.</li>
      * </ul>
-     * {@code heap} method implements the heap sort algorithm to sort a portion of the array (from index {@code from} to index {@code to})
+     * {@code heap} method implements the heap sort algorithm to sort a portion of the array (from index {@code from} to
+     * index {@code to})
      * in ascending order based on the comparison condition provided
-     * by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
      * It transforms the array into a heap structure, swaps the largest element to the beginning of the range,
      * and recursively maintains the heap property while reducing the range until the entire range is sorted.
      * @param       array to be arranged.
@@ -239,14 +254,18 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapifyInc}. This method is likely a part of a heap-related algorithm or data structure implementation.
-     * It takes an {@code array} of {@link java.lang.Comparable Comparable} objects, the {@code n} of the array, and an index {@code i} as parameters.
-     * The purpose of this method is to rearrange the elements in the array in a way that satisfies the properties of a max heap,
+     * It takes an {@code array} of {@link java.lang.Comparable Comparable} objects, the {@code n} of the array, and an
+     * index {@code i} as parameters.
+     * The purpose of this method is to rearrange the elements in the array in a way that satisfies the properties of a
+     * max heap,
      * with the largest element at the root.
      * <ul>
-     *     <li>The method starts by calling a method named {@code heapSplitInc} with the array, n, and index {@code i} as parameters.
+     *     <li>The method starts by calling a method named {@code heapSplitInc} with the array, n, and index {@code i}
+     *     as parameters.
      *     but it likely performs a split or comparison operation within the heap structure and returns
      *     the index of the largest element among the current element {@code i} and its child elements.</li>
-     *     <li>If the {@code largest} value returned from {@code heapSplitInc} is different from the original index {@code i},
+     *     <li>If the {@code largest} value returned from {@code heapSplitInc} is different from the original index
+     *     {@code i},
      *     it means that the element at index {@code i} is not the largest among its child elements.
      *     In this case, the method proceeds to swap the element at index {@code i} with
      *     the element at index {@code largest} using a {@code swap} method.</li>
@@ -274,14 +293,18 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapifyDec}. This method is likely a part of a heap-related algorithm or data structure implementation.
-     * It takes an {@code array} of {@link java.lang.Comparable Comparable} objects, the {@code n} of the array, and an index {@code i} as parameters.
-     * The purpose of this method is to rearrange the elements in the array in a way that satisfies the properties of a max heap,
+     * It takes an {@code array} of {@link java.lang.Comparable Comparable} objects, the {@code n} of the array, and an
+     * index {@code i} as parameters.
+     * The purpose of this method is to rearrange the elements in the array in a way that satisfies the properties of a
+     * max heap,
      * with the largest element at the root.
      * <ul>
-     *     <li>The method starts by calling a method named {@code heapSplitDec} with the array, n, and index {@code i} as parameters.
+     *     <li>The method starts by calling a method named {@code heapSplitDec} with the array, n, and index {@code i}
+     *     as parameters.
      *     but it likely performs a split or comparison operation within the heap structure and returns
      *     the index of the largest element among the current element {@code i} and its child elements.</li>
-     *     <li>If the {@code largest} value returned from {@code heapSplitDec} is different from the original index {@code i},
+     *     <li>If the {@code largest} value returned from {@code heapSplitDec} is different from the original index
+     *     {@code i},
      *     it means that the element at index {@code i} is not the largest among its child elements.
      *     In this case, the method proceeds to swap the element at index {@code i} with
      *     the element at index {@code largest} using a {@code swap} method.</li>
@@ -311,7 +334,7 @@ extends Sorter<T>, SortSwap<T> {
      * {@code heapify} within an interface.
      * This method takes an array of type {@code T[]},
      * an integer {@code n}, an integer {@code i},
-     * and an instance of the {@code mz.SortFunctional} interface as parameters.
+     * and an instance of the {@code SortFunctional} interface as parameters.
      * <ul>
      *     <li>It calls the {@code heapSplit} method to find the index of
      *     the largest child node of the current parent node at index {@code i}.</li>
@@ -321,12 +344,13 @@ extends Sorter<T>, SortSwap<T> {
      *     to swap the elements at indices {@code i} and {@code largest} in the {@code array}.
      *     This ensures that the largest child node becomes the new parent node.</li>
      *     <li>After the swap, the method calls itself recursively on the new parent node index {@code largest}.
-     *     This is done to propagate the violation upwards and ensure that the heap property is maintained throughout the entire heap.</li>
+     *     This is done to propagate the violation upwards and ensure that the heap property is maintained throughout
+     *     the entire heap.</li>
      *     <li>The recursive calls continue until the entire heap is rearranged correctly.</li>
      * </ul>
      * {@code heapify} method is responsible for rearranging elements in the {@code array} 
      * to maintain the heap property based on the comparison condition provided 
-     * by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
      * It performs swaps and recursive calls to fix violations in the heap structure.
      * @param       array to be arranged.
      * @param       n of the array.
@@ -345,18 +369,23 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapSplitInc}. This method is likely a part of a heap-related algorithm or data structure implementation.
-     * It takes an array of {@link java.lang.Comparable Comparable} objects, the {@code n} of the array, and an index {@code i} as parameters.
+     * It takes an array of {@link java.lang.Comparable Comparable} objects, the {@code n} of the array, and an index
+     * {@code i} as parameters.
      * The purpose of this method is to find the index of the largest child element among
      * the {@code left} child at index {@code (2 * i + 1)} and
      * the {@code right} child at index {@code (2 * i + 2)} of the current element at index {@code i}.
      * <ul>
-     *     <li>The method starts by calculating the indices of the {@code left} and {@code right} child elements of the current element at index {@code i}.
-     *     The {@code left} child index is {@code (2 * i + 1)}, and the {@code right} child index is {@code (2 * i + 2)}.</li>
+     *     <li>The method starts by calculating the indices of the {@code left} and {@code right} child elements of the
+     *     current element at index {@code i}.
+     *     The {@code left} child index is {@code (2 * i + 1)}, and the {@code right} child index is
+     *     {@code (2 * i + 2)}.</li>
      *     <li>The method then calls a method named {@code heapChildInc} twice. The first call is with
      *     the parameters {@code array}, {@code n}, {@code i}, and {@code left}, and the second call is with
      *     the parameters {@code array}, {@code n}, {@code largest}, and {@code right}.
-     *     The purpose of the {@code heapChildInc} method, compares the elements at the provided indices and returns the index of the larger element.</li>
-     *     <li>The returned values from the {@code heapChildInc} method calls are assigned to the variable {@code largest}.
+     *     The purpose of the {@code heapChildInc} method, compares the elements at the provided indices and returns the
+     *     index of the larger element.</li>
+     *     <li>The returned values from the {@code heapChildInc} method calls are assigned to the variable
+     *     {@code largest}.
      *     Since the second call to {@code heapChildInc} is performed using the updated value of {@code largest},
      *     it means that the method is finding the largest among the three elements:
      *     the element at index {@code i}, the {@code left} child element, and the {@code right} child element.</li>
@@ -379,18 +408,23 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapSplitDec}. This method is likely a part of a heap-related algorithm or data structure implementation.
-     * It takes an array of {@link java.lang.Comparable Comparable} objects, the {@code n} of the array, and an index {@code i} as parameters.
+     * It takes an array of {@link java.lang.Comparable Comparable} objects, the {@code n} of the array, and an index
+     * {@code i} as parameters.
      * The purpose of this method is to find the index of the largest child element among
      * the {@code left} child at index {@code (2 * i + 1)} and
      * the {@code right} child at index {@code (2 * i + 2)} of the current element at index {@code i}.
      * <ul>
-     *     <li>The method starts by calculating the indices of the {@code left} and {@code right} child elements of the current element at index {@code i}.
-     *     The {@code left} child index is {@code (2 * i + 1)}, and the {@code right} child index is {@code (2 * i + 2)}.</li>
+     *     <li>The method starts by calculating the indices of the {@code left} and {@code right} child elements of the
+     *     current element at index {@code i}.
+     *     The {@code left} child index is {@code (2 * i + 1)}, and the {@code right} child index is
+     *     {@code (2 * i + 2)}.</li>
      *     <li>The method then calls a method named {@code heapChildDec} twice. The first call is with
      *     the parameters {@code array}, {@code n}, {@code i}, and {@code left}, and the second call is with
      *     the parameters {@code array}, {@code n}, {@code largest}, and {@code right}.
-     *     The purpose of the {@code heapChildDec} method, compares the elements at the provided indices and returns the index of the larger element.</li>
-     *     <li>The returned values from the {@code heapChildDec} method calls are assigned to the variable {@code largest}.
+     *     The purpose of the {@code heapChildDec} method, compares the elements at the provided indices and returns the
+     *     index of the larger element.</li>
+     *     <li>The returned values from the {@code heapChildDec} method calls are assigned to the variable
+     *     {@code largest}.
      *     Since the second call to {@code heapChildDec} is performed using the updated value of {@code largest},
      *     it means that the method is finding the largest among the three elements:
      *     the element at index {@code i}, the {@code left} child element, and the {@code right} child element.</li>
@@ -415,17 +449,21 @@ extends Sorter<T>, SortSwap<T> {
      * {@code heapSplit} within an interface.
      * This method takes an array of type {@code T[]},
      * an integer {@code n}, an integer {@code i}, and an instance of
-     * the {@code mz.SortFunctional} interface as parameters. It returns an integer value.
+     * the {@code SortFunctional} interface as parameters. It returns an integer value.
      * <ul>
      *     <li>It calculates the indices of the left child node and
      *     the right child node using the formula {@code ((2 * i) + 1)} and {@code ((2 * i) + 2)} respectively.</li>
-     *     <li>It calls the {@code heapChild} method twice to compare the left child and the right child with the current {@code i} index,
+     *     <li>It calls the {@code heapChild} method twice to compare the left child and the right child with the
+     *     current {@code i} index,
      *     and it initializes the {@code largest} variable with the index of the child that is smaller based on
      *     the comparison condition provided by the {@code functionalCompareTo} method.</li>
-     *     <li>Finally, it returns the value of {@code largest}, which represents the index of the largest child node.</li>
+     *     <li>Finally, it returns the value of {@code largest}, which represents the index of the largest child
+     *     node.</li>
      * </ul>
-     * {@code heapSplit} method is responsible for comparing two child nodes of a parent node in the {@code array} based on 
-     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * {@code heapSplit} method is responsible for comparing two child nodes of a parent node in the {@code array}
+     * based on
+     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional}
+     * interface.
      * It returns the index of the largest child node, which is useful for maintaining 
      * the heap property in heap-based algorithms or data structures.
      * @param       array to be arranged.
@@ -442,19 +480,27 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code heapChildInc}, which takes an array of {@link java.lang.Comparable Comparable} objects, the n of the array, a result value,
-     * and a child index as parameters. The method compares the {@code child} element of the array with the element at the {@code result} index,
+     * {@code heapChildInc}, which takes an array of {@link java.lang.Comparable Comparable} objects, the n of the
+     * array, a result value,
+     * and a child index as parameters. The method compares the {@code child} element of the array with the element at
+     * the {@code result} index,
      * and if the {@code child} element is greater, it updates the {@code result} to the {@code child} index.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The {@code if} condition checks if the {@code child} index is within the valid range (less than {@code n})
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the
+     *     {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
+     *     <li>The {@code if} condition checks if the {@code child} index is within the valid range
+     *     (less than {@code n})
      *     and if the {@code child} element is greater than the element at the {@code result} index.
-     *     If the condition is true, it means the {@code child} element is larger, so the {@code result} is updated to the {@code child} index.</li>
+     *     If the condition is true, it means the {@code child} element is larger, so the {@code result} is updated to
+     *     the {@code child} index.</li>
      *     <li>The method returns the updated {@code result} value.</li>
      * </ul>
-     * {@code heapChildInc} it compares child elements with the result element and updates the result if a larger child is found.
+     * {@code heapChildInc} it compares child elements with the result element and updates the result if a larger child
+     * is found.
      * @param       array to be arranged.
      * @param       n of the array.
      * @param       result the current result value.
@@ -470,19 +516,27 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code heapChildDec}, which takes an array of {@link java.lang.Comparable Comparable} objects, the n of the array, a result value,
-     * and a child index as parameters. The method compares the {@code child} element of the array with the element at the {@code result} index,
+     * {@code heapChildDec}, which takes an array of {@link java.lang.Comparable Comparable} objects, the n of the
+     * array, a result value,
+     * and a child index as parameters. The method compares the {@code child} element of the array with the element at
+     * the {@code result} index,
      * and if the {@code child} element is smaller, it updates the {@code result} to the {@code child} index.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The {@code if} condition checks if the {@code child} index is within the valid range (less than {@code n})
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the
+     *     {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
+     *     <li>The {@code if} condition checks if the {@code child} index is within the valid range
+     *     (less than {@code n})
      *     and if the {@code child} element is smaller than the element at the {@code result} index.
-     *     If the condition is true, it means the {@code child} element is small, so the {@code result} is updated to the {@code child} index.</li>
+     *     If the condition is true, it means the {@code child} element is small, so the {@code result} is updated to
+     *     the {@code child} index.</li>
      *     <li>The method returns the updated {@code result} value.</li>
      * </ul>
-     * {@code heapChildDec} it compares child elements with the result element and updates the result if a small child is found.
+     * {@code heapChildDec} it compares child elements with the result element and updates the result if a small child
+     * is found.
      * @param       array to be arranged.
      * @param       n of the array.
      * @param       result the current result value.
@@ -500,7 +554,7 @@ extends Sorter<T>, SortSwap<T> {
     /**
      * {@code heapChild} within an interface. This method takes an array of type {@code T[]},
      * an integer {@code n}, an integer {@code result}, an integer {@code child},
-     * and an instance of the {@code mz.SortFunctional} interface as parameters.
+     * and an instance of the {@code SortFunctional} interface as parameters.
      * It returns an integer value.
      * <ul>
      *     <li>It first checks if the {@code child} index is less than {@code n} (the size of the array)
@@ -511,7 +565,8 @@ extends Sorter<T>, SortSwap<T> {
      *     <li>Finally, it returns the value of {@code result}.</li>
      * </ul>
      * {@code heapChild} method is responsible for comparing two elements in the {@code array} based on 
-     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional}
+     * interface.
      * It returns the index of the smaller child node, which is useful for maintaining the heap property 
      * in heap-based algorithms such as heap sort or heap-based data structures.
      * @param       array to be arranged.
@@ -534,20 +589,23 @@ extends Sorter<T>, SortSwap<T> {
      * and is used to sort a list in ascending order using a max heap.
      * <ul>
      *     <li>The method starts by calculating the length of the list and assigning it to the variable {@code n}.</li>
-     *     <li>The first {@code for} loop iterates over the indices of the elements in the list from {@code (n / 2 - 1)} down to 0.
+     *     <li>The first {@code for} loop iterates over the indices of the elements in the list from {@code (n / 2 - 1)}
+     *     down to 0.
      *     This loop is used to build the initial max heap structure in the list.
      *     It calls a method named {@code heapifyInc} with the list, length {@code n}, and the current index {@code i}.
      *     The purpose of this call is to perform the heapification process, ensuring that
      *     the subtree rooted at index {@code i} satisfies the max heap property.</li>
      *     <li>After the first {@code for} loop, the list is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
-     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the end of the list.
+     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted
+     *     position at the end of the list.
      *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyInc} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the list is sorted in ascending order.</li>
      * </ul>
-     * {@code heapInc} method implements the Heap Sort algorithm to sort the given list in ascending order by transforming
+     * {@code heapInc} method implements the Heap Sort algorithm to sort the given list in ascending order by
+     * transforming
      * it into a max heap and repeatedly extracting the maximum element from the heap.
      * @param       list to be arranged.
      * @see         HeapInterface#heapifyInc(List, int, int)
@@ -569,20 +627,23 @@ extends Sorter<T>, SortSwap<T> {
      * and is used to sort an list in descending order using a max heap.
      * <ul>
      *     <li>The method starts by calculating the length of the list and assigning it to the variable {@code n}.</li>
-     *     <li>The first {@code for} loop iterates over the indices of the elements in the list from {@code (n / 2 - 1)} down to 0.
+     *     <li>The first {@code for} loop iterates over the indices of the elements in the list from {@code (n / 2 - 1)}
+     *     down to 0.
      *     This loop is used to build the initial max heap structure in the list.
      *     It calls a method named {@code heapifyDec} with the list, length {@code n}, and the current index {@code i}.
      *     The purpose of this call is to perform the heapification process, ensuring that
      *     the subtree rooted at index {@code i} satisfies the max heap property.</li>
      *     <li>After the first {@code for} loop, the list is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
-     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the end of the list.
+     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted
+     *     position at the end of the list.
      *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyDec} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the list is sorted in ascending order.</li>
      * </ul>
-     * {@code heapDec} method implements the Heap Sort algorithm to sort the given list in descending order by transforming
+     * {@code heapDec} method implements the Heap Sort algorithm to sort the given list in descending order by
+     * transforming
      * it into a max heap and repeatedly extracting the maximum element from the heap.
      * @param       list to be arranged.
      * @see         HeapInterface#heapifyDec(List, int, int)
@@ -602,7 +663,7 @@ extends Sorter<T>, SortSwap<T> {
     /**
      * {@code heap} within an interface.
      * This method takes a list of type {@code T[]},
-     * and an instance of the {@code mz.SortFunctional} interface as parameters.
+     * and an instance of the {@code SortFunctional} interface as parameters.
      * <ul>
      *     <li>The first for loop initializes a variable {@code i} to {@code ((list.length / 2) - 1)}</li>
      *     <li>Within each iteration, it calls the {@code heapify} method to rearrange the elements in
@@ -610,7 +671,8 @@ extends Sorter<T>, SortSwap<T> {
      *     <li>This first loop ensures that the entire list is transformed into a valid heap structure.</li>
      *     <li>The second {@code for} loop initializes a variable {@code i} to {@code (n - 1)}
      *     and iterates backwards from {@code i} to <i>0</i>.</li>
-     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices <i>0</i> and {@code i} in the list.
+     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices <i>0</i> and
+     *     {@code i} in the list.
      *     This places the largest element (root of the heap) at index <i>0</i> and
      *     the next largest element at the end of the range.</li>
      *     <li>After the swap, it calls the {@code heapify} method to maintain
@@ -620,7 +682,7 @@ extends Sorter<T>, SortSwap<T> {
      * {@code heap} method implements the heap sort algorithm to sort a portion of the list
      * (from index <i>0</i> to index {@code list.length})
      * in ascending order based on the comparison condition provided
-     * by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
      * It transforms the list into a heap structure, swaps the largest element to the beginning of the range,
      * and recursively maintains the heap property while reducing the range until the entire range is sorted.
      * @param       list to be arranged.
@@ -644,20 +706,23 @@ extends Sorter<T>, SortSwap<T> {
      * and is used to sort a list in ascending order using a max heap.
      * <ul>
      *     <li>The method starts by calculating the length of the list and assigning it to the variable {@code n}.</li>
-     *     <li>The first {@code for} loop iterates over the indices of the elements in the list from {@code (n / 2 - 1)} down to 0.
+     *     <li>The first {@code for} loop iterates over the indices of the elements in the list from {@code (n / 2 - 1)}
+     *     down to 0.
      *     This loop is used to build the initial max heap structure in the list.
      *     It calls a method named {@code heapifyInc} with the list, length {@code n}, and the current index {@code i}.
      *     The purpose of this call is to perform the heapification process, ensuring that
      *     the subtree rooted at index {@code i} satisfies the max heap property.</li>
      *     <li>After the first {@code for} loop, the list is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
-     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the to of the list.
+     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted
+     *     position at the to of the list.
      *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyInc} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the list is sorted in ascending order.</li>
      * </ul>
-     * {@code heapInc} method implements the Heap Sort algorithm to sort the given list in ascending order by transforming
+     * {@code heapInc} method implements the Heap Sort algorithm to sort the given list in ascending order by
+     * transforming
      * it into a max heap and repeatedly extracting the maximum element from the heap.
      * @param       list to be arranged.
      * @param       from the element from which to start the analysis.
@@ -680,20 +745,23 @@ extends Sorter<T>, SortSwap<T> {
      * and is used to sort a list in descending order using a max heap.
      * <ul>
      *     <li>The method starts by calculating the length of the list and assigning it to the variable {@code n}.</li>
-     *     <li>The first {@code for} loop iterates over the indices of the elements in the list from {@code (n / 2 - 1)} down to 0.
+     *     <li>The first {@code for} loop iterates over the indices of the elements in the list from {@code (n / 2 - 1)}
+     *     down to 0.
      *     This loop is used to build the initial max heap structure in the list.
      *     It calls a method named {@code heapifyDec} with the list, length {@code n}, and the current index {@code i}.
      *     The purpose of this call is to perform the heapification process, ensuring that
      *     the subtree rooted at index {@code i} satisfies the max heap property.</li>
      *     <li>After the first {@code for} loop, the list is transformed into a max heap structure.</li>
      *     <li>The second {@code for} loop starts from {@code (n - 1)} and iterates down to 1.
-     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted position at the end of the list.
+     *     This loop is used to extract elements from the max heap one by one and place them in their correct sorted
+     *     position at the end of the list.
      *     In each iteration, it swaps the element at index 0 (the root of the max heap) with the element at index i.
      *     It then calls {@code heapifyDec} on the reduced heap (with length {@code i}) and index 0 to restore
      *     the max heap property on the remaining elements.</li>
      *     <li>After both loops complete, the list is sorted in ascending order.</li>
      * </ul>
-     * {@code heapDec} method implements the Heap Sort algorithm to sort the given list in descending order by transforming
+     * {@code heapDec} method implements the Heap Sort algorithm to sort the given list in descending order by
+     * transforming
      * it into a max heap and repeatedly extracting the maximum element from the heap.
      * @param       list to be arranged.
      * @param       from the element from which to start the analysis.
@@ -716,7 +784,7 @@ extends Sorter<T>, SortSwap<T> {
      * This method takes a list of type {@code T[]},
      * an integer {@code from} representing the starting index,
      * an integer {@code to} representing the ending index,
-     * and an instance of the {@code mz.SortFunctional} interface as parameters.
+     * and an instance of the {@code SortFunctional} interface as parameters.
      * <ul>
      *     <li>The first for loop initializes a variable {@code i} to {@code ((to / 2) - 1)}
      *     and iterates backwards from {@code i} to {@code from}.</li>
@@ -725,16 +793,18 @@ extends Sorter<T>, SortSwap<T> {
      *     <li>This first loop ensures that the entire list is transformed into a valid heap structure.</li>
      *     <li>The second {@code for} loop initializes a variable {@code i} to {@code (to - 1)}
      *     and iterates backwards from {@code i} to {@code (from + 1)}.</li>
-     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices {@code from} and {@code i} in the list.
+     *     <li>Within each iteration, it calls the {@code swap} method to swap the elements at indices {@code from} and
+     *     {@code i} in the list.
      *     This places the largest element (root of the heap) at index {@code from} and
      *     the next largest element at the end of the range.</li>
      *     <li>After the swap, it calls the {@code heapify} method to maintain
      *     the heap property within the reduced range {@code from} from to {@code i}.</li>
      *     <li>The loop continues until the entire range is sorted.</li>
      * </ul>
-     * {@code heap} method implements the heap sort algorithm to sort a portion of the list (from index {@code from} to index {@code to})
+     * {@code heap} method implements the heap sort algorithm to sort a portion of the list (from index {@code from} to
+     * index {@code to})
      * in ascending order based on the comparison condition provided
-     * by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
      * It transforms the list into a heap structure, swaps the largest element to the beginning of the range,
      * and recursively maintains the heap property while reducing the range until the entire range is sorted.
      * @param       list to be arranged.
@@ -756,14 +826,18 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapifyInc}. This method is likely a part of a heap-related algorithm or data structure implementation.
-     * It takes an {@code list} of {@link java.lang.Comparable Comparable} objects, the {@code n} of the list, and an index {@code i} as parameters.
-     * The purpose of this method is to rearrange the elements in the list in a way that satisfies the properties of a max heap,
+     * It takes an {@code list} of {@link java.lang.Comparable Comparable} objects, the {@code n} of the list, and an
+     * index {@code i} as parameters.
+     * The purpose of this method is to rearrange the elements in the list in a way that satisfies the properties of a
+     * max heap,
      * with the largest element at the root.
      * <ul>
-     *     <li>The method starts by calling a method named {@code heapSplitInc} with the list, n, and index {@code i} as parameters.
+     *     <li>The method starts by calling a method named {@code heapSplitInc} with the list, n, and index {@code i}
+     *     as parameters.
      *     but it likely performs a split or comparison operation within the heap structure and returns
      *     the index of the largest element among the current element {@code i} and its child elements.</li>
-     *     <li>If the {@code largest} value returned from {@code heapSplitInc} is different from the original index {@code i},
+     *     <li>If the {@code largest} value returned from {@code heapSplitInc} is different from the original index
+     *     {@code i},
      *     it means that the element at index {@code i} is not the largest among its child elements.
      *     In this case, the method proceeds to swap the element at index {@code i} with
      *     the element at index {@code largest} using a {@code swap} method.</li>
@@ -791,14 +865,18 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapifyDec}. This method is likely a part of a heap-related algorithm or data structure implementation.
-     * It takes an {@code list} of {@link java.lang.Comparable Comparable} objects, the {@code n} of the list, and an index {@code i} as parameters.
-     * The purpose of this method is to rearrange the elements in the list in a way that satisfies the properties of a max heap,
+     * It takes an {@code list} of {@link java.lang.Comparable Comparable} objects, the {@code n} of the list, and an
+     * index {@code i} as parameters.
+     * The purpose of this method is to rearrange the elements in the list in a way that satisfies the properties of a
+     * max heap,
      * with the largest element at the root.
      * <ul>
-     *     <li>The method starts by calling a method named {@code heapSplitDec} with the list, n, and index {@code i} as parameters.
+     *     <li>The method starts by calling a method named {@code heapSplitDec} with the list, n, and index {@code i}
+     *     as parameters.
      *     but it likely performs a split or comparison operation within the heap structure and returns
      *     the index of the largest element among the current element {@code i} and its child elements.</li>
-     *     <li>If the {@code largest} value returned from {@code heapSplitDec} is different from the original index {@code i},
+     *     <li>If the {@code largest} value returned from {@code heapSplitDec} is different from the original index
+     *     {@code i},
      *     it means that the element at index {@code i} is not the largest among its child elements.
      *     In this case, the method proceeds to swap the element at index {@code i} with
      *     the element at index {@code largest} using a {@code swap} method.</li>
@@ -828,7 +906,7 @@ extends Sorter<T>, SortSwap<T> {
      * {@code heapify} within an interface.
      * This method takes a list of type {@code T[]},
      * an integer {@code n}, an integer {@code i},
-     * and an instance of the {@code mz.SortFunctional} interface as parameters.
+     * and an instance of the {@code SortFunctional} interface as parameters.
      * <ul>
      *     <li>It calls the {@code heapSplit} method to find the index of
      *     the largest child node of the current parent node at index {@code i}.</li>
@@ -838,12 +916,13 @@ extends Sorter<T>, SortSwap<T> {
      *     to swap the elements at indices {@code i} and {@code largest} in the {@code list}.
      *     This ensures that the largest child node becomes the new parent node.</li>
      *     <li>After the swap, the method calls itself recursively on the new parent node index {@code largest}.
-     *     This is done to propagate the violation upwards and ensure that the heap property is maintained throughout the entire heap.</li>
+     *     This is done to propagate the violation upwards and ensure that the heap property is maintained throughout
+     *     the entire heap.</li>
      *     <li>The recursive calls continue until the entire heap is rearranged correctly.</li>
      * </ul>
      * {@code heapify} method is responsible for rearranging elements in the {@code list}
      * to maintain the heap property based on the comparison condition provided
-     * by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
      * It performs swaps and recursive calls to fix violations in the heap structure.
      * @param       list to be arranged.
      * @param       n of the list.
@@ -862,18 +941,23 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapSplitInc}. This method is likely a part of a heap-related algorithm or data structure implementation.
-     * It takes a list of {@link java.lang.Comparable Comparable} objects, the {@code n} of the list, and an index {@code i} as parameters.
+     * It takes a list of {@link java.lang.Comparable Comparable} objects, the {@code n} of the list, and an index
+     * {@code i} as parameters.
      * The purpose of this method is to find the index of the largest child element among
      * the {@code left} child at index {@code (2 * i + 1)} and
      * the {@code right} child at index {@code (2 * i + 2)} of the current element at index {@code i}.
      * <ul>
-     *     <li>The method starts by calculating the indices of the {@code left} and {@code right} child elements of the current element at index {@code i}.
-     *     The {@code left} child index is {@code (2 * i + 1)}, and the {@code right} child index is {@code (2 * i + 2)}.</li>
+     *     <li>The method starts by calculating the indices of the {@code left} and {@code right} child elements of
+     *     the current element at index {@code i}.
+     *     The {@code left} child index is {@code (2 * i + 1)}, and the {@code right} child index is
+     *     {@code (2 * i + 2)}.</li>
      *     <li>The method then calls a method named {@code heapChildInc} twice. The first call is with
      *     the parameters {@code list}, {@code n}, {@code i}, and {@code left}, and the second call is with
      *     the parameters {@code list}, {@code n}, {@code largest}, and {@code right}.
-     *     The purpose of the {@code heapChildInc} method, compares the elements at the provided indices and returns the index of the larger element.</li>
-     *     <li>The returned values from the {@code heapChildInc} method calls are assigned to the variable {@code largest}.
+     *     The purpose of the {@code heapChildInc} method, compares the elements at the provided indices and returns
+     *     the index of the larger element.</li>
+     *     <li>The returned values from the {@code heapChildInc} method calls are assigned to the variable
+     *     {@code largest}.
      *     Since the second call to {@code heapChildInc} is performed using the updated value of {@code largest},
      *     it means that the method is finding the largest among the three elements:
      *     the element at index {@code i}, the {@code left} child element, and the {@code right} child element.</li>
@@ -896,18 +980,23 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code heapSplitDec}. This method is likely a part of a heap-related algorithm or data structure implementation.
-     * It takes a list of {@link java.lang.Comparable Comparable} objects, the {@code n} of the list, and an index {@code i} as parameters.
+     * It takes a list of {@link java.lang.Comparable Comparable} objects, the {@code n} of the list, and an index
+     * {@code i} as parameters.
      * The purpose of this method is to find the index of the largest child element among
      * the {@code left} child at index {@code (2 * i + 1)} and
      * the {@code right} child at index {@code (2 * i + 2)} of the current element at index {@code i}.
      * <ul>
-     *     <li>The method starts by calculating the indices of the {@code left} and {@code right} child elements of the current element at index {@code i}.
-     *     The {@code left} child index is {@code (2 * i + 1)}, and the {@code right} child index is {@code (2 * i + 2)}.</li>
+     *     <li>The method starts by calculating the indices of the {@code left} and {@code right} child elements of the
+     *     current element at index {@code i}.
+     *     The {@code left} child index is {@code (2 * i + 1)}, and the {@code right} child index is
+     *     {@code (2 * i + 2)}.</li>
      *     <li>The method then calls a method named {@code heapChildDec} twice. The first call is with
      *     the parameters {@code list}, {@code n}, {@code i}, and {@code left}, and the second call is with
      *     the parameters {@code list}, {@code n}, {@code largest}, and {@code right}.
-     *     The purpose of the {@code heapChildDec} method, compares the elements at the provided indices and returns the index of the larger element.</li>
-     *     <li>The returned values from the {@code heapChildDec} method calls are assigned to the variable {@code largest}.
+     *     The purpose of the {@code heapChildDec} method, compares the elements at the provided indices and returns
+     *     the index of the larger element.</li>
+     *     <li>The returned values from the {@code heapChildDec} method calls are assigned to the variable
+     *     {@code largest}.
      *     Since the second call to {@code heapChildDec} is performed using the updated value of {@code largest},
      *     it means that the method is finding the largest among the three elements:
      *     the element at index {@code i}, the {@code left} child element, and the {@code right} child element.</li>
@@ -932,17 +1021,21 @@ extends Sorter<T>, SortSwap<T> {
      * {@code heapSplit} within an interface.
      * This method takes a list of type {@code T[]},
      * an integer {@code n}, an integer {@code i}, and an instance of
-     * the {@code mz.SortFunctional} interface as parameters. It returns an integer value.
+     * the {@code SortFunctional} interface as parameters. It returns an integer value.
      * <ul>
      *     <li>It calculates the indices of the left child node and
      *     the right child node using the formula {@code ((2 * i) + 1)} and {@code ((2 * i) + 2)} respectively.</li>
-     *     <li>It calls the {@code heapChild} method twice to compare the left child and the right child with the current {@code i} index,
+     *     <li>It calls the {@code heapChild} method twice to compare the left child and the right child with the
+     *     current {@code i} index,
      *     and it initializes the {@code largest} variable with the index of the child that is smaller based on
      *     the comparison condition provided by the {@code functionalCompareTo} method.</li>
-     *     <li>Finally, it returns the value of {@code largest}, which represents the index of the largest child node.</li>
+     *     <li>Finally, it returns the value of {@code largest}, which represents the index of the largest child
+     *     node.</li>
      * </ul>
-     * {@code heapSplit} method is responsible for comparing two child nodes of a parent node in the {@code list} based on
-     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * {@code heapSplit} method is responsible for comparing two child nodes of a parent node in the {@code list}
+     * based on
+     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional}
+     * interface.
      * It returns the index of the largest child node, which is useful for maintaining
      * the heap property in heap-based algorithms or data structures.
      * @param       list to be arranged.
@@ -959,19 +1052,27 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code heapChildInc}, which takes a list of {@link java.lang.Comparable Comparable} objects, the n of the list, a result value,
-     * and a child index as parameters. The method compares the {@code child} element of the list with the element at the {@code result} index,
+     * {@code heapChildInc}, which takes a list of {@link java.lang.Comparable Comparable} objects, the n of the list,
+     * a result value,
+     * and a child index as parameters. The method compares the {@code child} element of the list with the element at
+     * the {@code result} index,
      * and if the {@code child} element is greater, it updates the {@code result} to the {@code child} index.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The {@code if} condition checks if the {@code child} index is within the valid range (less than {@code n})
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the
+     *     {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
+     *     <li>The {@code if} condition checks if the {@code child} index is within the valid range
+     *     (less than {@code n})
      *     and if the {@code child} element is greater than the element at the {@code result} index.
-     *     If the condition is true, it means the {@code child} element is larger, so the {@code result} is updated to the {@code child} index.</li>
+     *     If the condition is true, it means the {@code child} element is larger, so the {@code result} is updated
+     *     to the {@code child} index.</li>
      *     <li>The method returns the updated {@code result} value.</li>
      * </ul>
-     * {@code heapChildInc} it compares child elements with the result element and updates the result if a larger child is found.
+     * {@code heapChildInc} it compares child elements with the result element and updates the result if a larger
+     * child is found.
      * @param       list to be arranged.
      * @param       n of the list.
      * @param       result the current result value.
@@ -987,19 +1088,28 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code heapChildDec}, which takes a list of {@link java.lang.Comparable Comparable} objects, the n of the list, a result value,
-     * and a child index as parameters. The method compares the {@code child} element of the list with the element at the {@code result} index,
+     * {@code heapChildDec}, which takes a list of {@link java.lang.Comparable Comparable} objects, the n of the list,
+     * a result value,
+     * and a child index as parameters. The method compares the {@code child} element of the list with the element at
+     * the {@code result} index,
      * and if the {@code child} element is smaller, it updates the {@code result} to the {@code child} index.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The {@code if} condition checks if the {@code child} index is within the valid range (less than {@code n})
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the
+     *     {@link java.lang.Comparable#compareTo(Object) compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
+     *     <li>The {@code if} condition checks if the {@code child} index is within the valid range
+     *     (less than {@code n})
      *     and if the {@code child} element is smaller than the element at the {@code result} index.
-     *     If the condition is true, it means the {@code child} element is small, so the {@code result} is updated to the {@code child} index.</li>
+     *     If the condition is true, it means the {@code child} element is small, so the {@code result}
+     *     is updated to
+     *     the {@code child} index.</li>
      *     <li>The method returns the updated {@code result} value.</li>
      * </ul>
-     * {@code heapChildDec} it compares child elements with the result element and updates the result if a small child is found.
+     * {@code heapChildDec} it compares child elements with the result element and updates the result if a small child
+     * is found.
      * @param       list to be arranged.
      * @param       n of the list.
      * @param       result the current result value.
@@ -1017,7 +1127,7 @@ extends Sorter<T>, SortSwap<T> {
     /**
      * {@code heapChild} within an interface. This method takes a list of type {@code T[]},
      * an integer {@code n}, an integer {@code result}, an integer {@code child},
-     * and an instance of the {@code mz.SortFunctional} interface as parameters.
+     * and an instance of the {@code SortFunctional} interface as parameters.
      * It returns an integer value.
      * <ul>
      *     <li>It first checks if the {@code child} index is less than {@code n} (the size of the list)
@@ -1028,7 +1138,8 @@ extends Sorter<T>, SortSwap<T> {
      *     <li>Finally, it returns the value of {@code result}.</li>
      * </ul>
      * {@code heapChild} method is responsible for comparing two elements in the {@code list} based on
-     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional}
+     * interface.
      * It returns the index of the smaller child node, which is useful for maintaining the heap property
      * in heap-based algorithms such as heap sort or heap-based data structures.
      * @param       list to be arranged.

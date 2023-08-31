@@ -2,6 +2,7 @@ package github.magyarzoli.sort;
 
 import github.magyarzoli.SelectionInterface;
 import github.magyarzoli.SortComparable;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.IntroSelection;
 
 import java.util.List;
@@ -16,8 +17,8 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class Selection
-extends SortComparable
-implements SelectionInterface<Comparable> {
+        extends SortComparable
+        implements SelectionInterface<Comparable> {
 
     /**
      * <b>Selection Sort:</b><br>
@@ -36,7 +37,8 @@ implements SelectionInterface<Comparable> {
      * <b>Note:</b><br>
      * Selection Sort is called "selection" because it repeatedly selects the smallest (or largest) element and places
      * it in its correct position. The algorithm requires n-1 passes for an array of size n to sort it completely.
-     * Selection Sort has a time complexity of <em>O(n^2)</em> in the average and worst cases, making it inefficient for large datasets.
+     * Selection Sort has a time complexity of <em>O(n^2)</em> in the average and worst cases, making it inefficient
+     * for large datasets.
      * However, it has the advantage of simplicity and requires only a constant amount of additional space.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(n^2)</em><br>

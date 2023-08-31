@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.introDPQ.IntroDPQStooge;
 import github.magyarzoli.sort.Stooge;
 
@@ -18,8 +19,8 @@ import github.magyarzoli.sort.Stooge;
  */
 @SuppressWarnings("rawtypes")
 public class IntroStooge
-extends Stooge
-implements Intro<Comparable> {
+        extends Stooge
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Slow Sort:</b><br>

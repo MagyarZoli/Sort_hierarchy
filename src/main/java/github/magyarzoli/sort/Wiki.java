@@ -2,13 +2,15 @@ package github.magyarzoli.sort;
 
 import github.magyarzoli.InsertionInterface;
 import github.magyarzoli.MergeInterface;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.IntroWiki;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Wiki Sort, also known as Block Merge Sort, is an efficient comparison-based sorting algorithm designed to improve upon the performance.
+ * Wiki Sort, also known as Block Merge Sort, is an efficient comparison-based sorting algorithm designed to improve
+ * upon the performance.
  * Wiki Sort is a stable sorting algorithm, meaning that it preserves the relative order of elements with equal values.
  * It achieves a time complexity of <em>O(n log(n))</em> in the worst case.
  * @since       1.3
@@ -16,8 +18,8 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class Wiki
-extends Merge
-implements InsertionInterface<Comparable> {
+        extends Merge
+        implements InsertionInterface<Comparable> {
 
     /**
      * Block merge size storage.
@@ -26,16 +28,20 @@ implements InsertionInterface<Comparable> {
 
     /**
      * <b>Wiki Sort:</b><br>
-     * Also known as Block Merge Sort, is an efficient comparison-based sorting algorithm designed to improve upon the performance.
-     * Wiki Sort is a stable sorting algorithm, meaning that it preserves the relative order of elements with equal values.
+     * Also known as Block Merge Sort, is an efficient comparison-based sorting algorithm designed to improve upon
+     * the performance.
+     * Wiki Sort is a stable sorting algorithm, meaning that it preserves the relative order of elements with
+     * equal values.
      * It achieves a time complexity of <em>O(n log(n))</em> in the worst case.<br><br>
      * The key idea behind Wiki Sort is to use a divide-and-conquer approach to sort the array.
      * It divides the array into blocks of elements and sorts each block independently.
      * Then it repeatedly merges the blocks together until the entire array is sorted.<br><br>
      * <b>Example:</b>
      * <ol>
-     *     <li>Divide the input array into blocks of a fixed size (often chosen based on the cache size or other hardware considerations).</li>
-     *     <li>Sort each block individually using an efficient sorting algorithm, such as Insertion Sort or another divide-and-conquer algorithm.</li>
+     *     <li>Divide the input array into blocks of a fixed size (often chosen based on the cache size or other
+     *     hardware considerations).</li>
+     *     <li>Sort each block individually using an efficient sorting algorithm, such as Insertion Sort or
+     *     another divide-and-conquer algorithm.</li>
      *     <li>Merge adjacent pairs of blocks together, repeatedly merging until only one block remains.</li>
      *     <li>Perform a final merge pass to merge the remaining blocks until the entire array is sorted.</li>
      * </ol>
@@ -44,10 +50,12 @@ implements InsertionInterface<Comparable> {
      * It uses a clever technique called to efficiently merge the blocks together.
      * Instead of comparing and merging individual elements, it works with entire blocks,
      * reducing the number of comparisons and improving cache efficiency.<br><br>
-     * Wiki Sort's performance benefits come from its ability to exploit the data locality of modern computer architectures.
+     * Wiki Sort's performance benefits come from its ability to exploit the data locality of modern computer
+     * architectures.
      * By dividing the array into blocks and sorting them independently,
      * it minimizes data movement between levels of the memory hierarchy and takes advantage of cache locality.<br><br>
-     * Wiki Sort is a highly efficient and practical sorting algorithm that offers better performance than some traditional sorting algorithms.
+     * Wiki Sort is a highly efficient and practical sorting algorithm that offers better performance than some
+     * traditional sorting algorithms.
      * Its design incorporates techniques to optimize cache usage and minimize the number of comparisons,
      * making it particularly useful for sorting large arrays or datasets with repeated elements.<br><br>
      * <b>Property:</b><br>
@@ -120,11 +128,13 @@ implements InsertionInterface<Comparable> {
      * {@code wikiInc}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input array.
      * <ul>
      *     <li>It assigns the value of {@code array.length} to the variable {@code n}.</li>
-     *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks
+     *     during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionInc} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer array.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge
+     *     the blocks together using the temporary buffer array.
      *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiInc} method is to sort a portion of the input array using incremental insertion sort for small blocks
@@ -149,11 +159,13 @@ implements InsertionInterface<Comparable> {
      * {@code wikiDec}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input array.
      * <ul>
      *     <li>It assigns the value of {@code array.length} to the variable {@code n}.</li>
-     *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks
+     *     during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionDec} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer array.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge
+     *     the blocks together using the temporary buffer array.
      *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiDec} method is to sort a portion of the input array using incremental insertion sort for small blocks
@@ -185,8 +197,10 @@ implements InsertionInterface<Comparable> {
      *     <li>Next, the method enters a {@code for} loop
      *     that starts from {@code i = 0} and increments {@code i} by {@code WIKI_BLOCK} in each iteration.
      *     This loop is responsible for performing insertion sort on small blocks of size {@code WIKI_BLOCK}.
-     *     The insertion method used to sort the elements within each block individually using the provided comparison logic.</li>
-     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back into the original array.
+     *     The insertion method used to sort the elements within each block individually using the provided
+     *     comparison logic.</li>
+     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back
+     *     into the original array.
      *     The {@code merge} method takes the original array, the block size {@code WIKI_BLOCK},
      *     the right index, the buffer array, and the comparison logic.
      *     The {@code merge} method implements the merging logic of merge sort,
@@ -216,11 +230,13 @@ implements InsertionInterface<Comparable> {
      * <ul>
      *     <li>It assigns the value of {@code right} (the index of the rightmost element in
      *     the current portion of the array being sorted) to the variable {@code right}.</li>
-     *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks
+     *     during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionInc} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer array.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge
+     *     the blocks together using the temporary buffer array.
      *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiInc} method is to sort a portion of the input array using incremental insertion sort for small blocks
@@ -247,11 +263,13 @@ implements InsertionInterface<Comparable> {
      * <ul>
      *     <li>It assigns the value of {@code right} (the index of the rightmost element in
      *     the current portion of the array being sorted) to the variable {@code right}.</li>
-     *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>It creates a new temporary array called {@code buffer} of size {@code n} to store the merged blocks
+     *     during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the array into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionDec} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer array.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge
+     *     the blocks together using the temporary buffer array.
      *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiDec} method is to sort a portion of the input array using incremental insertion sort for small blocks
@@ -285,8 +303,10 @@ implements InsertionInterface<Comparable> {
      *     <li>Next, the method enters a {@code for} loop
      *     that starts from {@code i = left} and increments {@code i} by {@code WIKI_BLOCK} in each iteration.
      *     This loop is responsible for performing insertion sort on small blocks of size {@code WIKI_BLOCK}.
-     *     The insertion method used to sort the elements within each block individually using the provided comparison logic.</li>
-     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back into the original array.
+     *     The insertion method used to sort the elements within each block individually using the provided
+     *     comparison logic.</li>
+     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back
+     *     into the original array.
      *     The {@code merge} method takes the original array, the block size {@code WIKI_BLOCK},
      *     the right index, the buffer array, and the comparison logic.
      *     The {@code merge} method implements the merging logic of merge sort,
@@ -316,11 +336,13 @@ implements InsertionInterface<Comparable> {
      * {@code wikiInc}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input list.
      * <ul>
      *     <li>It assigns the value of {@code list.size()} to the variable {@code n}.</li>
-     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks
+     *     during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the list into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionInc} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer list.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge
+     *     the blocks together using the temporary buffer list.
      *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiInc} method is to sort a portion of the input list using incremental insertion sort for small blocks
@@ -345,11 +367,13 @@ implements InsertionInterface<Comparable> {
      * {@code wikiDec}, is a helper function used in the Wiki Sort algorithm to sort a portion of the input list.
      * <ul>
      *     <li>It assigns the value of {@code list.size()} to the variable {@code n}.</li>
-     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks
+     *     during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the list into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionDec} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer list.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge
+     *     the blocks together using the temporary buffer list.
      *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiDec} method is to sort a portion of the input list using incremental insertion sort for small blocks
@@ -381,12 +405,14 @@ implements InsertionInterface<Comparable> {
      *     <li>Next, the method enters a {@code for} loop
      *     that starts from {@code i = 0} and increments {@code i} by {@code WIKI_BLOCK} in each iteration.
      *     This loop is responsible for performing insertion sort on small blocks of size {@code WIKI_BLOCK}.
-     *     The insertion method used to sort the elements within each block individually using the provided comparison logic.</li>
-     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back into the original list.
+     *     The insertion method used to sort the elements within each block individually using the provided
+     *     comparison logic.</li>
+     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back
+     *     into the original list.
      *     The {@code merge} method takes the original list, the block size {@code WIKI_BLOCK},
      *     the right index, the buffer list, and the comparison logic.
      *     The {@code merge} method implements the merging logic of merge sort,
-     *     combining sorted subarrays into a larger sorted subarray.</li>
+     *     combining sorted sublists into a larger sorted sublists.</li>
      * </ul>
      * {@code wiki} method is to sort a portion of the input list using incremental insertion sort for small blocks
      * and then perform the merging step using the {@code merge} method.
@@ -412,11 +438,13 @@ implements InsertionInterface<Comparable> {
      * <ul>
      *     <li>It assigns the value of {@code right} (the index of the rightmost element in
      *     the current portion of the list being sorted) to the variable {@code right}.</li>
-     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks
+     *     during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the list into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionInc} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge the blocks together using the temporary buffer list.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeInc} method is called to merge
+     *     the blocks together using the temporary buffer list.
      *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiInc} method is to sort a portion of the input list using incremental insertion sort for small blocks
@@ -443,11 +471,13 @@ implements InsertionInterface<Comparable> {
      * <ul>
      *     <li>It assigns the value of {@code right} (the index of the rightmost element in
      *     the current portion of the list being sorted) to the variable {@code right}.</li>
-     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks during the merge operation.</li>
+     *     <li>It creates a new temporary list called {@code buffer} of size {@code n} to store the merged blocks
+     *     during the merge operation.</li>
      *     <li>The subsequent for loop divides the portion of the list into blocks of size {@code WIKI_BLOCK}
      *     and performs an incremental insertion sort on each block using the {@code insertionDec} method.
      *     The loop increments i by {@code WIKI_BLOCK} in each iteration to move to the next block.</li>
-     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge the blocks together using the temporary buffer list.
+     *     <li>Once all the blocks have been individually sorted, the {@code mergeDec} method is called to merge
+     *     the blocks together using the temporary buffer list.
      *     The block size is specified as {@code WIKI_BLOCK}, and the range is from {@code left} to {@code right}.</li>
      * </ul>
      * {@code wikiDec} method is to sort a portion of the input list using incremental insertion sort for small blocks
@@ -481,12 +511,14 @@ implements InsertionInterface<Comparable> {
      *     <li>Next, the method enters a {@code for} loop
      *     that starts from {@code i = left} and increments {@code i} by {@code WIKI_BLOCK} in each iteration.
      *     This loop is responsible for performing insertion sort on small blocks of size {@code WIKI_BLOCK}.
-     *     The insertion method used to sort the elements within each block individually using the provided comparison logic.</li>
-     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back into the original list.
+     *     The insertion method used to sort the elements within each block individually using the provided
+     *     comparison logic.</li>
+     *     <li>After sorting each block, the {@code merge} method is called to merge the sorted blocks back
+     *     into the original list.
      *     The {@code merge} method takes the original list, the block size {@code WIKI_BLOCK},
      *     the right index, the buffer list, and the comparison logic.
      *     The {@code merge} method implements the merging logic of merge sort,
-     *     combining sorted subarrays into a larger sorted subarray.</li>
+     *     combining sorted sublists into a larger sorted sublists.</li>
      * </ul>
      * {@code wiki} method is to sort a portion of the input list using incremental insertion sort for small blocks
      * and then perform the merging step using the {@code merge} method.
@@ -500,7 +532,8 @@ implements InsertionInterface<Comparable> {
      * @see         InsertionInterface#insertion(List, int, int, SortFunctional)
      * @see         MergeInterface#merge(List, int, int, List, SortFunctional)
      */
-    protected <L extends Comparable> void wiki(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void wiki(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         List<L> buffer = new ArrayList<>();
         for (int i = left; i < right; i += WIKI_BLOCK) {
             insertion(list, i, (Math.min((i + WIKI_BLOCK), right) - 1), functional);

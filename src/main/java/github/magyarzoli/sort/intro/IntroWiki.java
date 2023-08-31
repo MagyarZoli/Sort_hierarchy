@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Wiki;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.Wiki;
  */
 @SuppressWarnings("rawtypes")
 public class IntroWiki
-extends Wiki
-implements Intro<Comparable> {
+        extends Wiki
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Wiki (Block Merge) Sort:</b><br>

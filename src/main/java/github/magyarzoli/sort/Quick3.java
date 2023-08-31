@@ -1,6 +1,7 @@
 package github.magyarzoli.sort;
 
 import github.magyarzoli.Sort;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.SortSwap;
 import github.magyarzoli.sort.intro.IntroQuick3;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class Quick3
-extends Quick {
+        extends Quick {
 
     /**
      * Storing {@code i} and {@code j} in the variable field.
@@ -117,23 +118,29 @@ extends Quick {
      * {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
      *     <li>The method takes in an array of {@code Comparable} objects, {@code array},
-     *     and the left is <i>0</i> and right is {@code (array.length - 1)} indices specifying the portion of the array to be sorted.</li>
+     *     and the left is <i>0</i> and right is {@code (array.length - 1)} indices specifying the portion of the
+     *     array to be sorted.</li>
      *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
      *     it means the portion of the array is empty or contains only one element, and no further sorting is required.
      *     In such cases, the method returns.</li>
      *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
      *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
      *     representing the boundaries of the partition.</li>
-     *     <li>The {@code partition3Inc} method is called to partition the array into three parts using the three-way partitioning technique.</li>
+     *     <li>The {@code partition3Inc} method is called to partition the array into three parts using the three-way
+     *     partitioning technique.</li>
      *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <li>The first recursive call, {@code quickInc(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *     <li>The second recursive call, {@code quickInc(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     <li>The first recursive call, {@code quickInc(array, left, i)}, sorts the left partition from {@code left}
+     *     to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickInc(array, j, right)}, sorts the right partition from {@code j}
+     *     to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire array is sorted.</li>
      * </ul>
-     * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in ascending order.
-     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array is sorted.
+     * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable
+     * objects in ascending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array
+     * is sorted.
      * @param       array to be arranged.
      * @see         Quick3#quick3Inc(Comparable[], int, int)
      */
@@ -146,23 +153,29 @@ extends Quick {
      * {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
      *     <li>The method takes in an array of {@code Comparable} objects, {@code array},
-     *     and the left is <i>0</i> and right is {@code (array.length - 1)} indices specifying the portion of the array to be sorted.</li>
+     *     and the left is <i>0</i> and right is {@code (array.length - 1)} indices specifying the portion of the array
+     *     to be sorted.</li>
      *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
      *     it means the portion of the array is empty or contains only one element, and no further sorting is required.
      *     In such cases, the method returns.</li>
      *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
      *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
      *     representing the boundaries of the partition.</li>
-     *     <li>The {@code partition3Dec} method is called to partition the array into three parts using the three-way partitioning technique.</li>
+     *     <li>The {@code partition3Dec} method is called to partition the array into three parts using the three-way
+     *     partitioning technique.</li>
      *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <li>The first recursive call, {@code quickDec(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *     <li>The second recursive call, {@code quickDec(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     <li>The first recursive call, {@code quickDec(array, left, i)}, sorts the left partition from {@code left}
+     *     to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickDec(array, j, right)}, sorts the right partition from {@code j}
+     *     to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire array is sorted.</li>
      * </ul>
-     * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in descending order.
-     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array is sorted.
+     * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable
+     * objects in descending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array
+     * is sorted.
      * @param       array to be arranged.
      * @see         Quick3#quick3Dec(Comparable[], int, int)
      */
@@ -173,14 +186,16 @@ extends Quick {
     /**
      * The method {@code quick3} takes four parameters:
      * {@code array} an array of {@link java.lang.Comparable Comparable} objects,
-     * and {@code functional} an instance of {@code SortFunctional} representing a functional interface for comparison operations.
+     * and {@code functional} an instance of {@code SortFunctional} representing a functional interface for comparison
+     * operations.
      * <ul>
      *     <li>The first line of code checks if <i>0</i> is greater than or equal to {@code (array.length - 1)},
      *     which indicates that the partition has one or zero elements.
      *     In such cases, there is nothing to sort, so the method returns.</li>
      *     <li>The code then sets the variables {@code i} to {@code left} and {@code j} to {@code right}.
      *     These variables are used to keep track of the current partition boundaries.</li>
-     *     <li>The {@code partition3} method is called with the {@code array}, {@code left}, {@code right}, and {@code functional} parameters.
+     *     <li>The {@code partition3} method is called with the {@code array}, {@code left}, {@code right}, and
+     *     {@code functional} parameters.
      *     This method performs the three-way partitioning of the array.</li>
      *     <li>After the partitioning is done, the array is divided into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements greater than the pivot.</li>
@@ -191,8 +206,10 @@ extends Quick {
      *     resulting in a fully sorted array.</li>
      * </ul>
      * {@code quick3} method implements the Quick Sort algorithm using a three-way partitioning scheme.
-     * It recursively partitions the array into smaller subpartitions, sorts them, and combines them to achieve a final sorted array.
-     * The specific comparison operation used for sorting is defined by the {@code functional} object passed as a parameter.
+     * It recursively partitions the array into smaller subpartitions, sorts them, and combines them to achieve a final
+     * sorted array.
+     * The specific comparison operation used for sorting is defined by the {@code functional} object passed as a
+     * parameter.
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
      * @see         Quick3#quick3(Comparable[], int, int, SortFunctional)
@@ -213,16 +230,21 @@ extends Quick {
      *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
      *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
      *     representing the boundaries of the partition.</li>
-     *     <li>The {@code partition3Inc} method is called to partition the array into three parts using the three-way partitioning technique.</li>
+     *     <li>The {@code partition3Inc} method is called to partition the array into three parts using the three-way
+     *     partitioning technique.</li>
      *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <li>The first recursive call, {@code quickInc(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *     <li>The second recursive call, {@code quickInc(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     <li>The first recursive call, {@code quickInc(array, left, i)}, sorts the left partition from {@code left}
+     *     to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickInc(array, j, right)}, sorts the right partition from {@code j}
+     *     to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire array is sorted.</li>
      * </ul>
-     * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in ascending order.
-     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array is sorted.
+     * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable
+     * objects in ascending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array
+     * is sorted.
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
@@ -251,16 +273,21 @@ extends Quick {
      *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
      *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
      *     representing the boundaries of the partition.</li>
-     *     <li>The {@code partition3Dec} method is called to partition the array into three parts using the three-way partitioning technique.</li>
+     *     <li>The {@code partition3Dec} method is called to partition the array into three parts using the three-way
+     *     partitioning technique.</li>
      *     <li>After the partitioning, the array is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <li>The first recursive call, {@code quickDec(array, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *     <li>The second recursive call, {@code quickDec(array, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     <li>The first recursive call, {@code quickDec(array, left, i)}, sorts the left partition from {@code left}
+     *     to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickDec(array, j, right)}, sorts the right partition from {@code j}
+     *     to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire array is sorted.</li>
      * </ul>
-     * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable objects in descending order.
-     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array is sorted.
+     * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code array} of Comparable
+     * objects in descending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire array
+     * is sorted.
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
@@ -281,14 +308,16 @@ extends Quick {
      * The method {@code quick3} takes four parameters:
      * {@code array} an array of {@link java.lang.Comparable Comparable} objects,
      * {@code left} the starting index of the partition, {@code right} the ending index of the partition,
-     * and {@code functional} an instance of {@code SortFunctional} representing a functional interface for comparison operations.
+     * and {@code functional} an instance of {@code SortFunctional} representing a functional interface for comparison
+     * operations.
      * <ul>
      *     <li>The first line of code checks if {@code left} is greater than or equal to {@code right},
      *     which indicates that the partition has one or zero elements.
      *     In such cases, there is nothing to sort, so the method returns.</li>
      *     <li>The code then sets the variables {@code i} to {@code left} and {@code j} to {@code right}.
      *     These variables are used to keep track of the current partition boundaries.</li>
-     *     <li>The {@code partition3} method is called with the {@code array}, {@code left}, {@code right}, and {@code functional} parameters.
+     *     <li>The {@code partition3} method is called with the {@code array}, {@code left}, {@code right}, and
+     *     {@code functional} parameters.
      *     This method performs the three-way partitioning of the array.</li>
      *     <li>After the partitioning is done, the array is divided into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements greater than the pivot.</li>
@@ -299,8 +328,10 @@ extends Quick {
      *     resulting in a fully sorted array.</li>
      * </ul>
      * {@code quick3} method implements the Quick Sort algorithm using a three-way partitioning scheme.
-     * It recursively partitions the array into smaller subpartitions, sorts them, and combines them to achieve a final sorted array.
-     * The specific comparison operation used for sorting is defined by the {@code functional} object passed as a parameter.
+     * It recursively partitions the array into smaller subpartitions, sorts them, and combines them to achieve a final
+     * sorted array.
+     * The specific comparison operation used for sorting is defined by the {@code functional} object passed as a
+     * parameter.
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
@@ -326,27 +357,35 @@ extends Quick {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left and right indices specifying the portion of the array to be partitioned.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
      *     <li>The method first checks if the portion of the array to be partitioned has one or zero elements.
      *     If so, it performs a simple check to ensure that the elements are in the correct order,
      *     swaps them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
-     *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition using the pivot element.</li>
+     *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition using
+     *     the pivot element.</li>
      *     <li>The {@code mid} variable is initialized with the value of {@code left}.
      *     This variable represents the current index being considered during the partitioning process.</li>
      *     <li>The pivot element is chosen as the element at index {@code right}.</li>
      *     <li>A {@code while} loop is used to iterate from {@code left} to {@code right},
-     *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way partition.</li>
-     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at index {@code left}.
+     *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way
+     *     partition.</li>
+     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at
+     *     index {@code left}.
      *     {@code left} and {@code mid} are then incremented to move to the next elements.</li>
      *     <li>If the element at index {@code mid} is equal to the pivot,
      *     {@code mid} is incremented to move to the next element without performing any swaps.</li>
-     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at index {@code right}.
+     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at
+     *     index {@code right}.
      *     {@code right} is decremented to move to the next element.</li>
      *     <li>After the {@code while} loop completes, the array is partitioned into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements greater than the pivot.</li>
-     *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element in the left partition.</li>
-     *     <li>The variable {@code j} is set to {@code mid} to represent the index where the middle partition begins.</li>
+     *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element in the
+     *     left partition.</li>
+     *     <li>The variable {@code j} is set to {@code mid} to represent the index where the middle partition
+     *     begins.</li>
      * </ul>
      * {@code partition3Inc} method partitions the given {@code array} of
      * {@link java.lang.Comparable Comparable} objects into three parts:
@@ -391,27 +430,35 @@ extends Quick {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array},
      *     and the left and right indices specifying the portion of the array to be partitioned.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used
+     *     to suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
      *     <li>The method first checks if the portion of the array to be partitioned has one or zero elements.
      *     If so, it performs a simple check to ensure that the elements are in the correct order,
      *     swaps them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
-     *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition using the pivot element.</li>
+     *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition
+     *     using the pivot element.</li>
      *     <li>The {@code mid} variable is initialized with the value of {@code left}.
      *     This variable represents the current index being considered during the partitioning process.</li>
      *     <li>The pivot element is chosen as the element at index {@code right}.</li>
      *     <li>A {@code while} loop is used to iterate from {@code left} to {@code right},
-     *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way partition.</li>
-     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at index {@code left}.
+     *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way
+     *     partition.</li>
+     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at
+     *     index {@code left}.
      *     {@code left} and {@code mid} are then incremented to move to the next elements.</li>
      *     <li>If the element at index {@code mid} is equal to the pivot,
      *     {@code mid} is incremented to move to the next element without performing any swaps.</li>
-     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at index {@code right}.
+     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at
+     *     index {@code right}.
      *     {@code right} is decremented to move to the next element.</li>
      *     <li>After the {@code while} loop completes, the array is partitioned into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements smaller than the pivot.</li>
-     *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element in the left partition.</li>
-     *     <li>The variable {@code j} is set to {@code mid} to represent the index where the middle partition begins.</li>
+     *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element in
+     *     the left partition.</li>
+     *     <li>The variable {@code j} is set to {@code mid} to represent the index where the middle partition
+     *     begins.</li>
      * </ul>
      * {@code partition3Dec} method partitions the given {@code array} of Comparable objects into three parts:
      * elements less than the pivot, elements equal to the pivot, and elements smaller than the pivot.
@@ -448,16 +495,21 @@ extends Quick {
     }
 
     /**
-     * The method {@code partition3} takes four parameters: {@code array} an array of {@link java.lang.Comparable Comparable} objects,
+     * The method {@code partition3} takes four parameters: {@code array} an array of {@link java.lang.Comparable
+     * Comparable} objects,
      * {@code left} the starting index of the partition, {@code right} the ending index of the partition,
-     * and {@code functional} an instance of SortFunctional representing a functional interface for comparison operations.
+     * and {@code functional} an instance of SortFunctional representing a functional interface for comparison
+     * operations.
      * <ul>
      *     <li>The condition {@code ((right + 1) - left) <= 1} checks if the partition has at most one element.
-     *     If this condition is {@code true}, it swaps the elements at indices {@code left} and {@code right} if necessary
+     *     If this condition is {@code true}, it swaps the elements at indices {@code left} and {@code right}
+     *     if necessary
      *     to ensure that the left element is smaller than or equal to the right element.
      *     Then it sets {@code i} to {@code left} and {@code j} to {@code right} and returns.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is
+     *     used to suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.</li>
      *     <li>If the partition has more than one element,
      *     the code initializes {@code mid} to {@code left} and selects the pivot element as {@code array[right]}.</li>
      *     <li>It defines a new {@code SortFunctional<Comparable>} called {@code functionalReverse}
@@ -467,7 +519,8 @@ extends Quick {
      *     <li>The code enters a loop that iterates while {@code mid} is less than or equal to {@code right}.
      *     Inside the loop, it compares the element at {@code array[mid]} to
      *     the pivot using the {@code functional.functionalCompareTo} method.</li>
-     *     <li>If the result of the comparison is {@code true} (i.e., the element at {@code array[mid]} is less than the pivot),
+     *     <li>If the result of the comparison is {@code true} (i.e., the element at {@code array[mid]} is
+     *     less than the pivot),
      *     it swaps the elements at {@code left} and {@code mid},
      *     increments both {@code left} and {@code mid} by <i>1</i>, and continues to the next iteration.</li>
      *     <li>If the element at {@code array[mid]} is equal to the pivot,
@@ -490,7 +543,7 @@ extends Quick {
      * @param       functional lambda expression for comparison.
      * @see         SortSwap#swap(Comparable[], int, int)
      * @see         Sort#functionalComparableToReverse(SortFunctional)
-     * @see         Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
     @SuppressWarnings("unchecked")
     protected void partition3(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
@@ -523,23 +576,29 @@ extends Quick {
      * {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
      *     <li>The method takes in an list of {@code Comparable} objects, {@code list},
-     *     and the left is <i>0</i> and right is {@code (list.length - 1)} indices specifying the portion of the list to be sorted.</li>
+     *     and the left is <i>0</i> and right is {@code (list.length - 1)} indices specifying the portion of the
+     *     list to be sorted.</li>
      *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
      *     it means the portion of the list is empty or contains only one element, and no further sorting is required.
      *     In such cases, the method returns.</li>
      *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
      *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
      *     representing the boundaries of the partition.</li>
-     *     <li>The {@code partition3Inc} method is called to partition the list into three parts using the three-way partitioning technique.</li>
+     *     <li>The {@code partition3Inc} method is called to partition the list into three parts using the
+     *     three-way partitioning technique.</li>
      *     <li>After the partitioning, the list is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <li>The first recursive call, {@code quickInc(list, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *     <li>The second recursive call, {@code quickInc(list, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     <li>The first recursive call, {@code quickInc(list, left, i)}, sorts the left partition from {@code left}
+     *     to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickInc(list, j, right)}, sorts the right partition from {@code j}
+     *     to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire list is sorted.</li>
      * </ul>
-     * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code list} of Comparable objects in ascending order.
-     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire list is sorted.
+     * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code list} of Comparable
+     * objects in ascending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire
+     * list is sorted.
      * @param       list to be arranged.
      * @see         Quick3#quick3Inc(List, int, int)
      */
@@ -552,23 +611,29 @@ extends Quick {
      * {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
      *     <li>The method takes in an list of {@code Comparable} objects, {@code list},
-     *     and the left is <i>0</i> and right is {@code (list.length - 1)} indices specifying the portion of the list to be sorted.</li>
+     *     and the left is <i>0</i> and right is {@code (list.length - 1)} indices specifying the portion of the
+     *     list to be sorted.</li>
      *     <li>The method first checks if the left index is greater than or equal to the right index. If so,
      *     it means the portion of the list is empty or contains only one element, and no further sorting is required.
      *     In such cases, the method returns.</li>
      *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
      *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
      *     representing the boundaries of the partition.</li>
-     *     <li>The {@code partition3Dec} method is called to partition the list into three parts using the three-way partitioning technique.</li>
+     *     <li>The {@code partition3Dec} method is called to partition the list into three parts using the
+     *     three-way partitioning technique.</li>
      *     <li>After the partitioning, the list is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <li>The first recursive call, {@code quickDec(list, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *     <li>The second recursive call, {@code quickDec(list, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     <li>The first recursive call, {@code quickDec(list, left, i)}, sorts the left partition from {@code left}
+     *     to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickDec(list, j, right)}, sorts the right partition from {@code j}
+     *     to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire list is sorted.</li>
      * </ul>
-     * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code list} of Comparable objects in descending order.
-     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire list is sorted.
+     * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code list} of Comparable
+     * objects in descending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire
+     * list is sorted.
      * @param       list to be arranged.
      * @see         Quick3#quick3Dec(List, int, int)
      */
@@ -579,14 +644,16 @@ extends Quick {
     /**
      * The method {@code quick3} takes four parameters:
      * {@code list} an list of {@link java.lang.Comparable Comparable} objects,
-     * and {@code functional} an instance of {@code mz.SortFunctional} representing a functional interface for comparison operations.
+     * and {@code functional} an instance of {@code mz.SortFunctional} representing a functional interface for
+     * comparison operations.
      * <ul>
      *     <li>The first line of code checks if <i>0</i> is greater than or equal to {@code (list.length - 1)},
      *     which indicates that the partition has one or zero elements.
      *     In such cases, there is nothing to sort, so the method returns.</li>
      *     <li>The code then sets the variables {@code i} to {@code left} and {@code j} to {@code right}.
      *     These variables are used to keep track of the current partition boundaries.</li>
-     *     <li>The {@code partition3} method is called with the {@code list}, {@code left}, {@code right}, and {@code functional} parameters.
+     *     <li>The {@code partition3} method is called with the {@code list}, {@code left}, {@code right}, and
+     *     {@code functional} parameters.
      *     This method performs the three-way partitioning of the list.</li>
      *     <li>After the partitioning is done, the list is divided into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements greater than the pivot.</li>
@@ -597,8 +664,10 @@ extends Quick {
      *     resulting in a fully sorted list.</li>
      * </ul>
      * {@code quick3} method implements the Quick Sort algorithm using a three-way partitioning scheme.
-     * It recursively partitions the list into smaller subpartitions, sorts them, and combines them to achieve a final sorted list.
-     * The specific comparison operation used for sorting is defined by the {@code functional} object passed as a parameter.
+     * It recursively partitions the list into smaller subpartitions, sorts them, and combines them to achieve
+     * a final sorted list.
+     * The specific comparison operation used for sorting is defined by the {@code functional} object passed
+     * as a parameter.
      * @param       list to be arranged.
      * @param       functional lambda expression for comparison.
      * @see         Quick3#quick3(List, int, int, SortFunctional)
@@ -619,16 +688,21 @@ extends Quick {
      *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
      *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
      *     representing the boundaries of the partition.</li>
-     *     <li>The {@code partition3Inc} method is called to partition the list into three parts using the three-way partitioning technique.</li>
+     *     <li>The {@code partition3Inc} method is called to partition the list into three parts using the
+     *     three-way partitioning technique.</li>
      *     <li>After the partitioning, the list is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <li>The first recursive call, {@code quickInc(list, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *     <li>The second recursive call, {@code quickInc(list, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     <li>The first recursive call, {@code quickInc(list, left, i)}, sorts the left partition from {@code left}
+     *     to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickInc(list, j, right)}, sorts the right partition from {@code j}
+     *     to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire list is sorted.</li>
      * </ul>
-     * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code list} of Comparable objects in ascending order.
-     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire list is sorted.
+     * {@code quick3Inc} method implements the Quick Sort algorithm to sort the given {@code list} of Comparable
+     * objects in ascending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire
+     * list is sorted.
      * @param       list to be arranged.
      * @param       left the value in the list must be smaller than a {@code right} parameter.
      * @param       right the value in the list must be greater than a {@code left} parameter.
@@ -657,16 +731,21 @@ extends Quick {
      *     <li>If there are more than one elements in the portion, the method proceeds with the sorting process.</li>
      *     <li>The variables {@code i} and {@code j} are set to {@code left} and {@code right}, respectively,
      *     representing the boundaries of the partition.</li>
-     *     <li>The {@code partition3Dec} method is called to partition the list into three parts using the three-way partitioning technique.</li>
+     *     <li>The {@code partition3Dec} method is called to partition the list into three parts using the three-way
+     *     partitioning technique.</li>
      *     <li>After the partitioning, the list is divided into three parts: elements less than the pivot,
      *     elements equal to the pivot, and elements greater than the pivot.</li>
      *     <li>The method recursively calls itself to sort the left and right partitions separately.</li>
-     *     <li>The first recursive call, {@code quickDec(list, left, i)}, sorts the left partition from {@code left} to {@code i}.</li>
-     *     <li>The second recursive call, {@code quickDec(list, j, right)}, sorts the right partition from {@code j} to {@code right}.</li>
+     *     <li>The first recursive call, {@code quickDec(list, left, i)}, sorts the left partition from {@code left}
+     *     to {@code i}.</li>
+     *     <li>The second recursive call, {@code quickDec(list, j, right)}, sorts the right partition from {@code j}
+     *     to {@code right}.</li>
      *     <li>The sorting process continues recursively until the entire list is sorted.</li>
      * </ul>
-     * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code list} of Comparable objects in descending order.
-     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire list is sorted.
+     * {@code quick3Dec} method implements the Quick Sort algorithm to sort the given {@code list} of Comparable
+     * objects in descending order.
+     * It performs a three-way partitioning and recursively sorts the left and right partitions until the entire
+     * list is sorted.
      * @param       list to be arranged.
      * @param       left the value in the list must be smaller than a {@code right} parameter.
      * @param       right the value in the list must be greater than a {@code left} parameter.
@@ -687,14 +766,16 @@ extends Quick {
      * The method {@code quick3} takes four parameters:
      * {@code list} an list of {@link java.lang.Comparable Comparable} objects,
      * {@code left} the starting index of the partition, {@code right} the ending index of the partition,
-     * and {@code functional} an instance of {@code mz.SortFunctional} representing a functional interface for comparison operations.
+     * and {@code functional} an instance of {@code mz.SortFunctional} representing a functional interface for
+     * comparison operations.
      * <ul>
      *     <li>The first line of code checks if {@code left} is greater than or equal to {@code right},
      *     which indicates that the partition has one or zero elements.
      *     In such cases, there is nothing to sort, so the method returns.</li>
      *     <li>The code then sets the variables {@code i} to {@code left} and {@code j} to {@code right}.
      *     These variables are used to keep track of the current partition boundaries.</li>
-     *     <li>The {@code partition3} method is called with the {@code list}, {@code left}, {@code right}, and {@code functional} parameters.
+     *     <li>The {@code partition3} method is called with the {@code list}, {@code left}, {@code right}, and
+     *     {@code functional} parameters.
      *     This method performs the three-way partitioning of the list.</li>
      *     <li>After the partitioning is done, the list is divided into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements greater than the pivot.</li>
@@ -705,15 +786,18 @@ extends Quick {
      *     resulting in a fully sorted list.</li>
      * </ul>
      * {@code quick3} method implements the Quick Sort algorithm using a three-way partitioning scheme.
-     * It recursively partitions the list into smaller subpartitions, sorts them, and combines them to achieve a final sorted list.
-     * The specific comparison operation used for sorting is defined by the {@code functional} object passed as a parameter.
+     * It recursively partitions the list into smaller subpartitions, sorts them, and combines them to achieve a
+     * final sorted list.
+     * The specific comparison operation used for sorting is defined by the {@code functional} object passed as
+     * a parameter.
      * @param       list to be arranged.
      * @param       left the value in the list must be smaller than a {@code right} parameter.
      * @param       right the value in the list must be greater than a {@code left} parameter.
      * @param       functional lambda expression for comparison.
      * @see         Quick3#partition(List, int, int, SortFunctional)
      */
-    protected <L extends Comparable> void quick3(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void quick3(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         if (left >= right) {
             return;
         }
@@ -732,27 +816,35 @@ extends Quick {
      * <ul>
      *     <li>The method takes in an list of Comparable objects, {@code list},
      *     and the left and right indices specifying the portion of the list to be partitioned.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
      *     <li>The method first checks if the portion of the list to be partitioned has one or zero elements.
      *     If so, it performs a simple check to ensure that the elements are in the correct order,
      *     swaps them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
-     *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition using the pivot element.</li>
+     *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition
+     *     using the pivot element.</li>
      *     <li>The {@code mid} variable is initialized with the value of {@code left}.
      *     This variable represents the current index being considered during the partitioning process.</li>
      *     <li>The pivot element is chosen as the element at index {@code right}.</li>
      *     <li>A {@code while} loop is used to iterate from {@code left} to {@code right},
-     *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way partition.</li>
-     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at index {@code left}.
+     *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way
+     *     partition.</li>
+     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at
+     *     index {@code left}.
      *     {@code left} and {@code mid} are then incremented to move to the next elements.</li>
      *     <li>If the element at index {@code mid} is equal to the pivot,
      *     {@code mid} is incremented to move to the next element without performing any swaps.</li>
-     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at index {@code right}.
+     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element
+     *     at index {@code right}.
      *     {@code right} is decremented to move to the next element.</li>
      *     <li>After the {@code while} loop completes, the list is partitioned into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements greater than the pivot.</li>
-     *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element in the left partition.</li>
-     *     <li>The variable {@code j} is set to {@code mid} to represent the index where the middle partition begins.</li>
+     *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element
+     *     in the left partition.</li>
+     *     <li>The variable {@code j} is set to {@code mid} to represent the index where the middle partition
+     *     begins.</li>
      * </ul>
      * {@code partition3Inc} method partitions the given {@code list} of
      * {@link java.lang.Comparable Comparable} objects into three parts:
@@ -797,27 +889,35 @@ extends Quick {
      * <ul>
      *     <li>The method takes in an list of Comparable objects, {@code list},
      *     and the left and right indices specifying the portion of the list to be partitioned.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used
+     *     to suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
      *     <li>The method first checks if the portion of the list to be partitioned has one or zero elements.
      *     If so, it performs a simple check to ensure that the elements are in the correct order,
      *     swaps them if necessary, and sets {@code i} to {@code left} and {@code j} to {@code right}.</li>
-     *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition using the pivot element.</li>
+     *     <li>If the portion has more than one element, the method proceeds to perform a three-way partition
+     *     using the pivot element.</li>
      *     <li>The {@code mid} variable is initialized with the value of {@code left}.
      *     This variable represents the current index being considered during the partitioning process.</li>
      *     <li>The pivot element is chosen as the element at index {@code right}.</li>
      *     <li>A {@code while} loop is used to iterate from {@code left} to {@code right},
-     *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way partition.</li>
-     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element at index {@code left}.
+     *     comparing each element with the pivot and performing the necessary swaps to achieve the three-way
+     *     partition.</li>
+     *     <li>If the element at index {@code mid} is greater than the pivot, it is swapped with the element
+     *     at index {@code left}.
      *     {@code left} and {@code mid} are then incremented to move to the next elements.</li>
      *     <li>If the element at index {@code mid} is equal to the pivot,
      *     {@code mid} is incremented to move to the next element without performing any swaps.</li>
-     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at index {@code right}.
+     *     <li>If the element at index {@code mid} is less than the pivot, it is swapped with the element at
+     *     index {@code right}.
      *     {@code right} is decremented to move to the next element.</li>
      *     <li>After the {@code while} loop completes, the list is partitioned into three parts:
      *     elements less than the pivot, elements equal to the pivot, and elements smaller than the pivot.</li>
-     *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element in the left partition.</li>
-     *     <li>The variable {@code j} is set to {@code mid} to represent the index where the middle partition begins.</li>
+     *     <li>The variable {@code i} is set to {@code (left - 1)} to represent the index of the last element in
+     *     the left partition.</li>
+     *     <li>The variable {@code j} is set to {@code mid} to represent the index where the middle partition
+     *     begins.</li>
      * </ul>
      * {@code partition3Dec} method partitions the given {@code list} of Comparable objects into three parts:
      * elements less than the pivot, elements equal to the pivot, and elements smaller than the pivot.
@@ -854,18 +954,24 @@ extends Quick {
     }
 
     /**
-     * The method {@code partition3} takes four parameters: {@code list} an list of {@link java.lang.Comparable Comparable} objects,
+     * The method {@code partition3} takes four parameters: {@code list} an list of {@link java.lang.Comparable
+     * Comparable} objects,
      * {@code left} the starting index of the partition, {@code right} the ending index of the partition,
-     * and {@code functional} an instance of mz.SortFunctional representing a functional interface for comparison operations.
+     * and {@code functional} an instance of mz.SortFunctional representing a functional interface for comparison
+     * operations.
      * <ul>
      *     <li>The condition {@code ((right + 1) - left) <= 1} checks if the partition has at most one element.
-     *     If this condition is {@code true}, it swaps the elements at indices {@code left} and {@code right} if necessary
+     *     If this condition is {@code true}, it swaps the elements at indices {@code left} and {@code right}
+     *     if necessary
      *     to ensure that the left element is smaller than or equal to the right element.
      *     Then it sets {@code i} to {@code left} and {@code j} to {@code right} and returns.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is
+     *     used to suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.</li>
      *     <li>If the partition has more than one element,
-     *     the code initializes {@code mid} to {@code left} and selects the pivot element as {@code list.get(right)}.</li>
+     *     the code initializes {@code mid} to {@code left} and selects the pivot element as
+     *     {@code list.get(right)}.</li>
      *     <li>It defines a new {@code SortFunctional<Comparable>} called {@code functionalReverse}
      *     by passing {@code functional} to a method {@code functionalComparableToReverse}.
      *     This method returns a {@code mz.SortFunctional} object that performs the reverse of
@@ -873,7 +979,8 @@ extends Quick {
      *     <li>The code enters a loop that iterates while {@code mid} is less than or equal to {@code right}.
      *     Inside the loop, it compares the element at {@code list.get(mid)} to
      *     the pivot using the {@code functional.functionalCompareTo} method.</li>
-     *     <li>If the result of the comparison is {@code true} (i.e., the element at {@code list.get(mid)} is less than the pivot),
+     *     <li>If the result of the comparison is {@code true} (i.e., the element at {@code list.get(mid)}
+     *     is less than the pivot),
      *     it swaps the elements at {@code left} and {@code mid},
      *     increments both {@code left} and {@code mid} by <i>1</i>, and continues to the next iteration.</li>
      *     <li>If the element at {@code list.get(mid)} is equal to the pivot,
@@ -899,7 +1006,8 @@ extends Quick {
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
     @SuppressWarnings("unchecked")
-    protected <L extends Comparable> void partition3(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void partition3(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         if (((right + 1) - left) <= 1) {
             if (list.get(right).compareTo(list.get(left)) < 0) {
                 swap(list, right, left);

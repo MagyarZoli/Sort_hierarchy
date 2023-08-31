@@ -1,6 +1,7 @@
 package github.magyarzoli.sort;
 
 import github.magyarzoli.QuickInterface;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.IntroDualPivotQuick;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class DualPivotQuick
-extends Quick {
+        extends Quick {
 
     /**
      * <b>Dual Pivot Quick Sort:</b><br>
@@ -27,7 +28,8 @@ extends Quick {
      * <ol>
      *     <li>the traditional Quick Sort, a single pivot element is selected, usually from the middle of the array.
      *     In Dual Pivot Quick Sort, two pivot elements, called pivot1 and pivot2, are chosen.
-     *     These pivot values are typically selected from different parts of the array, such as the first and last elements.</li>
+     *     These pivot values are typically selected from different parts of the array, such as the first and last
+     *     elements.</li>
      *     <li>The array is divided into three sections based on the pivot values.
      *     All elements less than pivot1 are placed to the left,
      *     all elements greater than pivot2 are placed to the right,
@@ -120,21 +122,28 @@ extends Quick {
      * This algorithm is used to efficiently sort an array of elements by recursively dividing
      * it into smaller subarrays and rearranging the elements based on pivot values.
      * <ul>
-     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
+     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray
+     *     to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
      *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
      *     <li>If the condition {@code (left < right)} is satisfied,
-     *     the method proceeds to call the {@code partitionDualInc} method to partition the subarray into three sections based on two pivot values.
-     *     The {@code partitionDualInc} method would update the {@code array} such that elements smaller than the first pivot value are placed to the left,
-     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
+     *     the method proceeds to call the {@code partitionDualInc} method to partition the subarray into three sections
+     *     based on two pivot values.
+     *     The {@code partitionDualInc} method would update the {@code array} such that elements smaller than the first
+     *     pivot value are placed to the left,
+     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot
+     *     value are placed to the right.
      *     The pivot array returned by {@code partitionDualInc} contains the indices of the two pivot values.</li>
      *     <li>After partitioning the subarray,
-     *     the method makes three recursive calls to {@code dualPivotQuickInc} to sort the three sections formed by the pivot values.
-     *     The first recursive call sorts the left section of the subarray from the {@code left} index to {@code (pivot[0] - 1)}.
+     *     the method makes three recursive calls to {@code dualPivotQuickInc} to sort the three sections formed by the
+     *     pivot values.
+     *     The first recursive call sorts the left section of the subarray from the {@code left} index to
+     *     {@code (pivot[0] - 1)}.
      *     The second recursive call sorts the middle section from {@code (pivot[0] + 1)} to {@code (pivot[1] - 1)}.
      *     The third recursive call sorts the right section from {@code (pivot[1] + 1)} to the {@code right} index.</li>
      * </ul>
-     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickInc} method eventually sorts the entire array.
+     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickInc} method eventually sorts the
+     * entire array.
      * @param       array to be arranged.
      * @see         DualPivotQuick#dualPivotQuickInc(Comparable[], int, int)
      */
@@ -147,21 +156,28 @@ extends Quick {
      * This algorithm is used to efficiently sort an array of elements by recursively dividing
      * it into smaller subarrays and rearranging the elements based on pivot values.
      * <ul>
-     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
+     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to
+     *     be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
      *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
      *     <li>If the condition {@code (left < right)} is satisfied,
-     *     the method proceeds to call the {@code partitionDualDec} method to partition the subarray into three sections based on two pivot values.
-     *     The {@code partitionDualDec} method would update the {@code array} such that elements smaller than the first pivot value are placed to the left,
-     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
+     *     the method proceeds to call the {@code partitionDualDec} method to partition the subarray into three sections
+     *     based on two pivot values.
+     *     The {@code partitionDualDec} method would update the {@code array} such that elements smaller than the first
+     *     pivot value are placed to the left,
+     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot
+     *     value are placed to the right.
      *     The pivot array returned by {@code partitionDualDec} contains the indices of the two pivot values.</li>
      *     <li>After partitioning the subarray,
-     *     the method makes three recursive calls to {@code dualPivotQuickDec} to sort the three sections formed by the pivot values.
-     *     The first recursive call sorts the left section of the subarray from the {@code left} index to {@code (pivot[0] - 1)}.
+     *     the method makes three recursive calls to {@code dualPivotQuickDec} to sort the three sections formed by the
+     *     pivot values.
+     *     The first recursive call sorts the left section of the subarray from the {@code left} index to
+     *     {@code (pivot[0] - 1)}.
      *     The second recursive call sorts the middle section from {@code (pivot[0] + 1)} to {@code (pivot[1] - 1)}.
      *     The third recursive call sorts the right section from {@code (pivot[1] + 1)} to the {@code right} index.</li>
      * </ul>
-     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickDec} method eventually sorts the entire array.
+     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickDec} method eventually sorts the
+     * entire array.
      * @param       array to be arranged.
      * @see         DualPivotQuick#dualPivotQuickDec(Comparable[], int, int)
      */
@@ -180,8 +196,10 @@ extends Quick {
      *     If this condition is false, it means there is nothing to sort, so the method returns.</li>
      *     <li>The code then calls the {@code partitionDual} method,
      *     passing {@code array}, {@code left}, {@code right}, and {@code functional} as parameters.
-     *     This method performs the dual-pivot partitioning and returns an array {@code pivot} containing two pivot indices.</li>
-     *     <li>After the partitioning is done, the array is divided into three parts: elements less than the smaller pivot,
+     *     This method performs the dual-pivot partitioning and returns an array {@code pivot} containing two pivot
+     *     indices.</li>
+     *     <li>After the partitioning is done, the array is divided into three parts: elements less than the
+     *     smaller pivot,
      *     elements between the two pivots (inclusive),
      *     and elements greater than the larger pivot.</li>
      *     <li>The method recursively calls itself three times to sort the three partitions.
@@ -214,21 +232,28 @@ extends Quick {
      * This algorithm is used to efficiently sort an array of elements by recursively dividing
      * it into smaller subarrays and rearranging the elements based on pivot values.
      * <ul>
-     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
+     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray
+     *     to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
      *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
      *     <li>If the condition {@code (left < right)} is satisfied,
-     *     the method proceeds to call the {@code partitionDualInc} method to partition the subarray into three sections based on two pivot values.
-     *     The {@code partitionDualInc} method would update the {@code array} such that elements smaller than the first pivot value are placed to the left,
-     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
+     *     the method proceeds to call the {@code partitionDualInc} method to partition the subarray into three sections
+     *     based on two pivot values.
+     *     The {@code partitionDualInc} method would update the {@code array} such that elements smaller than the first
+     *     pivot value are placed to the left,
+     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot
+     *     value are placed to the right.
      *     The pivot array returned by {@code partitionDualInc} contains the indices of the two pivot values.</li>
      *     <li>After partitioning the subarray,
-     *     the method makes three recursive calls to {@code dualPivotQuickInc} to sort the three sections formed by the pivot values.
-     *     The first recursive call sorts the left section of the subarray from the {@code left} index to {@code (pivot[0] - 1)}.
+     *     the method makes three recursive calls to {@code dualPivotQuickInc} to sort the three sections formed by the
+     *     pivot values.
+     *     The first recursive call sorts the left section of the subarray from the {@code left} index to
+     *     {@code (pivot[0] - 1)}.
      *     The second recursive call sorts the middle section from {@code (pivot[0] + 1)} to {@code (pivot[1] - 1)}.
      *     The third recursive call sorts the right section from {@code (pivot[1] + 1)} to the {@code right} index.</li>
      * </ul>
-     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickInc} method eventually sorts the entire array.
+     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickInc} method eventually sorts the
+     * entire array.
      * @param       array to be arranged.
      * @param       left index of the subarray to be sorted.
      * @param       right index of the subarray to be sorted.
@@ -248,21 +273,28 @@ extends Quick {
      * This algorithm is used to efficiently sort an array of elements by recursively dividing
      * it into smaller subarrays and rearranging the elements based on pivot values.
      * <ul>
-     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
+     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray
+     *     to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
      *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
      *     <li>If the condition {@code (left < right)} is satisfied,
-     *     the method proceeds to call the {@code partitionDualDec} method to partition the subarray into three sections based on two pivot values.
-     *     The {@code partitionDualDec} method would update the {@code array} such that elements smaller than the first pivot value are placed to the left,
-     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
+     *     the method proceeds to call the {@code partitionDualDec} method to partition the subarray into three sections
+     *     based on two pivot values.
+     *     The {@code partitionDualDec} method would update the {@code array} such that elements smaller than the first
+     *     pivot value are placed to the left,
+     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot
+     *     value are placed to the right.
      *     The pivot array returned by {@code partitionDualDec} contains the indices of the two pivot values.</li>
      *     <li>After partitioning the subarray,
-     *     the method makes three recursive calls to {@code dualPivotQuickDec} to sort the three sections formed by the pivot values.
-     *     The first recursive call sorts the left section of the subarray from the {@code left} index to {@code (pivot[0] - 1)}.
+     *     the method makes three recursive calls to {@code dualPivotQuickDec} to sort the three sections formed by
+     *     the pivot values.
+     *     The first recursive call sorts the left section of the subarray from the {@code left} index to
+     *     {@code (pivot[0] - 1)}.
      *     The second recursive call sorts the middle section from {@code (pivot[0] + 1)} to {@code (pivot[1] - 1)}.
      *     The third recursive call sorts the right section from {@code (pivot[1] + 1)} to the {@code right} index.</li>
      * </ul>
-     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickDec} method eventually sorts the entire array.
+     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickDec} method eventually sorts the
+     * entire array.
      * @param       array to be arranged.
      * @param       left index of the subarray to be sorted.
      * @param       right index of the subarray to be sorted.
@@ -289,8 +321,10 @@ extends Quick {
      *     If this condition is false, it means there is nothing to sort, so the method returns.</li>
      *     <li>The code then calls the {@code partitionDual} method,
      *     passing {@code array}, {@code left}, {@code right}, and {@code functional} as parameters.
-     *     This method performs the dual-pivot partitioning and returns an array {@code pivot} containing two pivot indices.</li>
-     *     <li>After the partitioning is done, the array is divided into three parts: elements less than the smaller pivot,
+     *     This method performs the dual-pivot partitioning and returns an array {@code pivot} containing two pivot
+     *     indices.</li>
+     *     <li>After the partitioning is done, the array is divided into three parts: elements less than the
+     *     smaller pivot,
      *     elements between the two pivots (inclusive),
      *     and elements greater than the larger pivot.</li>
      *     <li>The method recursively calls itself three times to sort the three partitions.
@@ -328,23 +362,30 @@ extends Quick {
     /**
      * {@code dualPivotQuickInc} is a recursive implementation of the dual-pivot quicksort algorithm.
      * This algorithm is used to efficiently sort a list of elements by recursively dividing
-     * it into smaller subarrays and rearranging the elements based on pivot values.
+     * it into smaller sublists and rearranging the elements based on pivot values.
      * <ul>
-     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
+     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the sublist
+     *     to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
-     *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
+     *     then the sublist is already sorted, and the method returns without performing any further actions.</li>
      *     <li>If the condition {@code (left < right)} is satisfied,
-     *     the method proceeds to call the {@code partitionDualInc} method to partition the subarray into three sections based on two pivot values.
-     *     The {@code partitionDualInc} method would update the {@code list} such that elements smaller than the first pivot value are placed to the left,
-     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
+     *     the method proceeds to call the {@code partitionDualInc} method to partition the sublist into three sections
+     *     based on two pivot values.
+     *     The {@code partitionDualInc} method would update the {@code list} such that elements smaller than the first
+     *     pivot value are placed to the left,
+     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot
+     *     value are placed to the right.
      *     The pivot list returned by {@code partitionDualInc} contains the indices of the two pivot values.</li>
-     *     <li>After partitioning the subarray,
-     *     the method makes three recursive calls to {@code dualPivotQuickInc} to sort the three sections formed by the pivot values.
-     *     The first recursive call sorts the left section of the subarray from the {@code left} index to {@code (pivot[0] - 1)}.
+     *     <li>After partitioning the sublist,
+     *     the method makes three recursive calls to {@code dualPivotQuickInc} to sort the three sections formed by the
+     *     pivot values.
+     *     The first recursive call sorts the left section of the sublist from the {@code left} index to
+     *     {@code (pivot[0] - 1)}.
      *     The second recursive call sorts the middle section from {@code (pivot[0] + 1)} to {@code (pivot[1] - 1)}.
      *     The third recursive call sorts the right section from {@code (pivot[1] + 1)} to the {@code right} index.</li>
      * </ul>
-     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickInc} method eventually sorts the entire list.
+     * By recursively partitioning and sorting the sublists, the {@code dualPivotQuickInc} method eventually sorts the
+     * entire list.
      * @param       list to be arranged.
      * @see         DualPivotQuick#dualPivotQuickInc(Comparable[], int, int)
      */
@@ -355,23 +396,30 @@ extends Quick {
     /**
      * {@code dualPivotQuickDec} is a recursive implementation of the dual-pivot quicksort algorithm.
      * This algorithm is used to efficiently sort a list of elements by recursively dividing
-     * it into smaller subarrays and rearranging the elements based on pivot values.
+     * it into smaller sublists and rearranging the elements based on pivot values.
      * <ul>
-     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
+     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the sublist to
+     *     be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
-     *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
+     *     then the sublist is already sorted, and the method returns without performing any further actions.</li>
      *     <li>If the condition {@code (left < right)} is satisfied,
-     *     the method proceeds to call the {@code partitionDualDec} method to partition the subarray into three sections based on two pivot values.
-     *     The {@code partitionDualDec} method would update the {@code list} such that elements smaller than the first pivot value are placed to the left,
-     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
+     *     the method proceeds to call the {@code partitionDualDec} method to partition the sublist into three sections
+     *     based on two pivot values.
+     *     The {@code partitionDualDec} method would update the {@code list} such that elements smaller than the first
+     *     pivot value are placed to the left,
+     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot
+     *     value are placed to the right.
      *     The pivot list returned by {@code partitionDualDec} contains the indices of the two pivot values.</li>
-     *     <li>After partitioning the subarray,
-     *     the method makes three recursive calls to {@code dualPivotQuickDec} to sort the three sections formed by the pivot values.
-     *     The first recursive call sorts the left section of the subarray from the {@code left} index to {@code (pivot[0] - 1)}.
+     *     <li>After partitioning the sublist,
+     *     the method makes three recursive calls to {@code dualPivotQuickDec} to sort the three sections formed by the
+     *     pivot values.
+     *     The first recursive call sorts the left section of the sublist from the {@code left} index to
+     *     {@code (pivot[0] - 1)}.
      *     The second recursive call sorts the middle section from {@code (pivot[0] + 1)} to {@code (pivot[1] - 1)}.
      *     The third recursive call sorts the right section from {@code (pivot[1] + 1)} to the {@code right} index.</li>
      * </ul>
-     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickDec} method eventually sorts the entire list.
+     * By recursively partitioning and sorting the sublists, the {@code dualPivotQuickDec} method eventually sorts the
+     * entire list.
      * @param       list to be arranged.
      * @see         DualPivotQuick#dualPivotQuickDec(Comparable[], int, int)
      */
@@ -390,8 +438,10 @@ extends Quick {
      *     If this condition is false, it means there is nothing to sort, so the method returns.</li>
      *     <li>The code then calls the {@code partitionDual} method,
      *     passing {@code list}, {@code left}, {@code right}, and {@code functional} as parameters.
-     *     This method performs the dual-pivot partitioning and returns an list {@code pivot} containing two pivot indices.</li>
-     *     <li>After the partitioning is done, the list is divided into three parts: elements less than the smaller pivot,
+     *     This method performs the dual-pivot partitioning and returns an list {@code pivot} containing two pivot
+     *     indices.</li>
+     *     <li>After the partitioning is done, the list is divided into three parts: elements less than the
+     *     smaller pivot,
      *     elements between the two pivots (inclusive),
      *     and elements greater than the larger pivot.</li>
      *     <li>The method recursively calls itself three times to sort the three partitions.
@@ -422,26 +472,33 @@ extends Quick {
     /**
      * {@code dualPivotQuickInc} is a recursive implementation of the dual-pivot quicksort algorithm.
      * This algorithm is used to efficiently sort a list of elements by recursively dividing
-     * it into smaller subarrays and rearranging the elements based on pivot values.
+     * it into smaller sublists and rearranging the elements based on pivot values.
      * <ul>
-     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
+     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the sublist
+     *     to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
-     *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
+     *     then the sublist is already sorted, and the method returns without performing any further actions.</li>
      *     <li>If the condition {@code (left < right)} is satisfied,
-     *     the method proceeds to call the {@code partitionDualInc} method to partition the subarray into three sections based on two pivot values.
-     *     The {@code partitionDualInc} method would update the {@code list} such that elements smaller than the first pivot value are placed to the left,
-     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
+     *     the method proceeds to call the {@code partitionDualInc} method to partition the sublist into three sections
+     *     based on two pivot values.
+     *     The {@code partitionDualInc} method would update the {@code list} such that elements smaller than the first
+     *     pivot value are placed to the left,
+     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot
+     *     value are placed to the right.
      *     The pivot list returned by {@code partitionDualInc} contains the indices of the two pivot values.</li>
-     *     <li>After partitioning the subarray,
-     *     the method makes three recursive calls to {@code dualPivotQuickInc} to sort the three sections formed by the pivot values.
-     *     The first recursive call sorts the left section of the subarray from the {@code left} index to {@code (pivot[0] - 1)}.
+     *     <li>After partitioning the sublist,
+     *     the method makes three recursive calls to {@code dualPivotQuickInc} to sort the three sections formed by the
+     *     pivot values.
+     *     The first recursive call sorts the left section of the sublist from the {@code left} index to
+     *     {@code (pivot[0] - 1)}.
      *     The second recursive call sorts the middle section from {@code (pivot[0] + 1)} to {@code (pivot[1] - 1)}.
      *     The third recursive call sorts the right section from {@code (pivot[1] + 1)} to the {@code right} index.</li>
      * </ul>
-     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickInc} method eventually sorts the entire list.
+     * By recursively partitioning and sorting the sublists, the {@code dualPivotQuickInc} method eventually sorts the
+     * entire list.
      * @param       list to be arranged.
-     * @param       left index of the subarray to be sorted.
-     * @param       right index of the subarray to be sorted.
+     * @param       left index of the sublist to be sorted.
+     * @param       right index of the sublist to be sorted.
      * @see         QuickInterface#partitionDualInc(Comparable[], int, int)
      */
     protected <L extends Comparable> void dualPivotQuickInc(List<L> list, int left, int right) {
@@ -456,26 +513,33 @@ extends Quick {
     /**
      * {@code dualPivotQuickDec} is a recursive implementation of the dual-pivot quicksort algorithm.
      * This algorithm is used to efficiently sort a list of elements by recursively dividing
-     * it into smaller subarrays and rearranging the elements based on pivot values.
+     * it into smaller sublists and rearranging the elements based on pivot values.
      * <ul>
-     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the subarray to be sorted.
+     *     <li>The first check {@code if (left < right)} ensures that there are at least two elements in the sublist
+     *     to be sorted.
      *     If there's only one element or if the left index is greater than or equal to the right index,
-     *     then the subarray is already sorted, and the method returns without performing any further actions.</li>
+     *     then the sublist is already sorted, and the method returns without performing any further actions.</li>
      *     <li>If the condition {@code (left < right)} is satisfied,
-     *     the method proceeds to call the {@code partitionDualDec} method to partition the subarray into three sections based on two pivot values.
-     *     The {@code partitionDualDec} method would update the {@code list} such that elements smaller than the first pivot value are placed to the left,
-     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot value are placed to the right.
+     *     the method proceeds to call the {@code partitionDualDec} method to partition the sublist into three sections
+     *     based on two pivot values.
+     *     The {@code partitionDualDec} method would update the {@code list} such that elements smaller than the first
+     *     pivot value are placed to the left,
+     *     elements between the two pivot values are placed in the middle, and elements larger than the second pivot
+     *     value are placed to the right.
      *     The pivot list returned by {@code partitionDualDec} contains the indices of the two pivot values.</li>
-     *     <li>After partitioning the subarray,
-     *     the method makes three recursive calls to {@code dualPivotQuickDec} to sort the three sections formed by the pivot values.
-     *     The first recursive call sorts the left section of the subarray from the {@code left} index to {@code (pivot[0] - 1)}.
+     *     <li>After partitioning the sublist,
+     *     the method makes three recursive calls to {@code dualPivotQuickDec} to sort the three sections formed by the
+     *     pivot values.
+     *     The first recursive call sorts the left section of the sublist from the {@code left} index to
+     *     {@code (pivot[0] - 1)}.
      *     The second recursive call sorts the middle section from {@code (pivot[0] + 1)} to {@code (pivot[1] - 1)}.
      *     The third recursive call sorts the right section from {@code (pivot[1] + 1)} to the {@code right} index.</li>
      * </ul>
-     * By recursively partitioning and sorting the subarrays, the {@code dualPivotQuickDec} method eventually sorts the entire list.
+     * By recursively partitioning and sorting the sublist, the {@code dualPivotQuickDec} method eventually sorts the
+     * entire list.
      * @param       list to be arranged.
-     * @param       left index of the subarray to be sorted.
-     * @param       right index of the subarray to be sorted.
+     * @param       left index of the sublist to be sorted.
+     * @param       right index of the sublist to be sorted.
      * @see         QuickInterface#partitionDualInc(Comparable[], int, int)
      */
     protected <L extends Comparable> void dualPivotQuickDec(List<L> list, int left, int right) {
@@ -499,8 +563,10 @@ extends Quick {
      *     If this condition is false, it means there is nothing to sort, so the method returns.</li>
      *     <li>The code then calls the {@code partitionDual} method,
      *     passing {@code list}, {@code left}, {@code right}, and {@code functional} as parameters.
-     *     This method performs the dual-pivot partitioning and returns an list {@code pivot} containing two pivot indices.</li>
-     *     <li>After the partitioning is done, the list is divided into three parts: elements less than the smaller pivot,
+     *     This method performs the dual-pivot partitioning and returns an list {@code pivot} containing two pivot
+     *     indices.</li>
+     *     <li>After the partitioning is done, the list is divided into three parts: elements less than the
+     *     smaller pivot,
      *     elements between the two pivots (inclusive),
      *     and elements greater than the larger pivot.</li>
      *     <li>The method recursively calls itself three times to sort the three partitions.
@@ -521,12 +587,13 @@ extends Quick {
      * The specific comparison operation used for sorting is defined
      * by the {@code functional} object passed as a parameter.
      * @param       list to be arranged.
-     * @param       left index of the subarray to be sorted.
-     * @param       right index of the subarray to be sorted.
+     * @param       left index of the sublist to be sorted.
+     * @param       right index of the sublist to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         QuickInterface#partitionDual(Comparable[], int, int, SortFunctional)
      */
-    protected <L extends Comparable> void dualPivotQuick(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void dualPivotQuick(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         if(left < right) {
             int[] pivot = partitionDual(list, left, right, functional);
             dualPivotQuick(list, left, (pivot[0] - 1), functional);

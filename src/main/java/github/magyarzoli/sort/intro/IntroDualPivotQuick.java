@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.DualPivotQuick;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.DualPivotQuick;
  */
 @SuppressWarnings("rawtypes")
 public class IntroDualPivotQuick
-extends DualPivotQuick
-implements Intro<Comparable> {
+        extends DualPivotQuick
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Dual Pivot Quick Sort:</b><br>

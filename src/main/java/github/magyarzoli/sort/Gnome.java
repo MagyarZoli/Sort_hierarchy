@@ -1,6 +1,7 @@
 package github.magyarzoli.sort;
 
 import github.magyarzoli.Sort;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.SortSwap;
 import github.magyarzoli.sort.Bubble;
 import github.magyarzoli.sort.intro.IntroGnome;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class Gnome
-extends Bubble {
+        extends Bubble {
 
     /**
      * <b>Gnome Sort:</b><br>
@@ -39,7 +40,8 @@ extends Bubble {
      * Gnome Sort iteratively moves through the array, comparing adjacent elements and swapping them if necessary.
      * If a swap occurs, it moves one position back to recheck the element with the previous one.
      * This process continues until the entire array is sorted.<br><br>
-     * Gnome Sort has a time complexity of <em>O(n^2)</em> in the average and worst cases, where <em>n</em> is the number of elements in the array.
+     * Gnome Sort has a time complexity of <em>O(n^2)</em> in the average and worst cases, where <em>n</em> is the
+     * number of elements in the array.
      * It is not considered an efficient sorting algorithm for large datasets due to its quadratic time complexity.
      * However, it is relatively easy to understand and implement.<br><br>
      * <b>Property:</b><br>
@@ -112,7 +114,8 @@ extends Bubble {
      * {@code gnomeInc} that implements the Gnome Sort algorithm to sort an array of
      * {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
@@ -144,7 +147,8 @@ extends Bubble {
      * {@code gnomeDec} that implements the Gnome Sort algorithm to sort an array of
      * {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
@@ -174,11 +178,13 @@ extends Bubble {
 
     /**
      * {@code gnome} method takes an array of {@link java.lang.Comparable Comparable} objects,
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used
+     * for sorting.
      * <ul>
      *     <li>The method starts by initializing a {@code pos} variable to {@code n},
      *     representing the current position in the array.</li>
-     *     <li>Next, a {@code functionalAddEquals} object is created by calling the {@code functionalComparableToAddEquals} method,
+     *     <li>Next, a {@code functionalAddEquals} object is created by calling the
+     *     {@code functionalComparableToAddEquals} method,
      *     which seems to convert the original comparison logic to a new logic where elements
      *     that are equal are considered as "greater" for the purpose of the sorting algorithm.</li>
      *     <li>The algorithm then enters a while loop that continues as long as {@code pos} is less than {@code n}.
@@ -214,7 +220,8 @@ extends Bubble {
      * {@code gnomeInc} that implements the Gnome Sort algorithm to sort an array of
      * {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
@@ -248,7 +255,8 @@ extends Bubble {
      * {@code gnomeDec} that implements the Gnome Sort algorithm to sort an array of
      * {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted array of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
@@ -281,11 +289,13 @@ extends Bubble {
     /**
      * {@code gnome} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used
+     * for sorting.
      * <ul>
      *     <li>The method starts by initializing a {@code pos} variable to {@code left},
      *     representing the current position in the array.</li>
-     *     <li>Next, a {@code functionalAddEquals} object is created by calling the {@code functionalComparableToAddEquals} method,
+     *     <li>Next, a {@code functionalAddEquals} object is created by calling the
+     *     {@code functionalComparableToAddEquals} method,
      *     which seems to convert the original comparison logic to a new logic where elements
      *     that are equal are considered as "greater" for the purpose of the sorting algorithm.</li>
      *     <li>The algorithm then enters a while loop that continues as long as {@code pos} is less than {@code right}.
@@ -323,7 +333,8 @@ extends Bubble {
      * {@code gnomeInc} that implements the Gnome Sort algorithm to sort an list of
      * {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted list of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
@@ -355,7 +366,8 @@ extends Bubble {
      * {@code gnomeDec} that implements the Gnome Sort algorithm to sort a list of
      * {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted list of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
@@ -385,11 +397,13 @@ extends Bubble {
 
     /**
      * {@code gnome} method takes a list of {@link java.lang.Comparable Comparable} objects,
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used
+     * for sorting.
      * <ul>
      *     <li>The method starts by initializing a {@code pos} variable to {@code n},
      *     representing the current position in the list.</li>
-     *     <li>Next, a {@code functionalAddEquals} object is created by calling the {@code functionalComparableToAddEquals} method,
+     *     <li>Next, a {@code functionalAddEquals} object is created by calling the
+     *     {@code functionalComparableToAddEquals} method,
      *     which seems to convert the original comparison logic to a new logic where elements
      *     that are equal are considered as "greater" for the purpose of the sorting algorithm.</li>
      *     <li>The algorithm then enters a while loop that continues as long as {@code pos} is less than {@code n}.
@@ -425,7 +439,8 @@ extends Bubble {
      * {@code gnomeInc} that implements the Gnome Sort algorithm to sort an list of
      * {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted list of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
@@ -459,7 +474,8 @@ extends Bubble {
      * {@code gnomeDec} that implements the Gnome Sort algorithm to sort a list of
      * {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
      *     <li>Start with an unsorted list of elements.</li>
      *     <li>Set the current position {@code (pos)} to 0.</li>
@@ -492,11 +508,13 @@ extends Bubble {
     /**
      * {@code gnome} method takes a list of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used
+     * for sorting.
      * <ul>
      *     <li>The method starts by initializing a {@code pos} variable to {@code left},
      *     representing the current position in the list.</li>
-     *     <li>Next, a {@code functionalAddEquals} object is created by calling the {@code functionalComparableToAddEquals} method,
+     *     <li>Next, a {@code functionalAddEquals} object is created by calling the
+     *     {@code functionalComparableToAddEquals} method,
      *     which seems to convert the original comparison logic to a new logic where elements
      *     that are equal are considered as "greater" for the purpose of the sorting algorithm.</li>
      *     <li>The algorithm then enters a while loop that continues as long as {@code pos} is less than {@code right}.
@@ -518,7 +536,8 @@ extends Bubble {
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      * @see         SortSwap#swap(List, int, int)
      */
-    protected <L extends Comparable> void gnome(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void gnome(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         int pos = left;
         SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
         while (pos < right) {

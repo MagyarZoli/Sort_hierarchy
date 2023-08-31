@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.introDPQ.IntroDPQSlow;
 import github.magyarzoli.sort.Slow;
 
@@ -18,8 +19,8 @@ import github.magyarzoli.sort.Slow;
  */
 @SuppressWarnings("rawtypes")
 public class IntroSlow
-extends Slow
-implements Intro<Comparable> {
+        extends Slow
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Slow Sort:</b><br>

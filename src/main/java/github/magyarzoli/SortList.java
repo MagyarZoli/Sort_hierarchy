@@ -36,7 +36,7 @@ public interface SortList<T extends Comparable>
      * @param       list to be arranged.
      * @param       functional lambda expression for comparison.
      */
-    void sortListFun(List<? extends T> list, Sort.SortFunctional<T> functional);
+    void sortListFun(List<? extends T> list, SortFunctional<T> functional);
 
     /**
      * Pre-prepared method, so that every inherited class does not have to prepare the method, it cannot be overridden.
@@ -81,9 +81,9 @@ public interface SortList<T extends Comparable>
      * @param       list to be arranged.
      * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types.
      *              Order can be specified here, which row arrangement you want to use.
-     * @see         Sort.SortType
+     * @see         SortType
      */
-    default void sortList(List<? extends T> list, Sort.SortType sequence) {
+    default void sortList(List<? extends T> list, SortType sequence) {
         switch (sequence) {
             case INCREASING:
                 sortListInc(list);
@@ -106,9 +106,9 @@ public interface SortList<T extends Comparable>
      * It then uses a switch statement to determine the value of functional and perform the corresponding sorting operation.
      * @param       list to be arranged.
      * @param       functional lambda expression for comparison.
-     * @see         Sort.SortFunctional
+     * @see         SortFunctional
      */
-    default void sortList(List<? extends T> list, Sort.SortFunctional<T> functional) {
+    default void sortList(List<? extends T> list, SortFunctional<T> functional) {
         sortListFun(list, functional);
     }
 
@@ -147,9 +147,9 @@ public interface SortList<T extends Comparable>
      * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types.
      *              Order can be specified here, which row arrangement you want to use.
      * @param       thread on how many threads to run the queue arrangement.
-     * @see         Sort.SortType
+     * @see         SortType
      */
-    default void sortList(List<? extends T> list, Sort.SortType sequence, int thread) {
+    default void sortList(List<? extends T> list, SortType sequence, int thread) {
         switch (sequence) {
             case INCREASING:
             case DECREASING:
@@ -172,9 +172,9 @@ public interface SortList<T extends Comparable>
      * @param       list to be arranged.
      * @param       functional lambda expression for comparison.
      * @param       thread on how many threads to run the queue arrangement.
-     * @see         Sort.SortFunctional
+     * @see         SortFunctional
      */
-    default void sortList(List<? extends T> list, Sort.SortFunctional<T> functional, int thread) {
+    default void sortList(List<? extends T> list, SortFunctional<T> functional, int thread) {
         threadList(list, functional, thread);
     }
 

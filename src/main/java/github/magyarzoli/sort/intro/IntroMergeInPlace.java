@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.MergeInPlace;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.MergeInPlace;
  */
 @SuppressWarnings("rawtypes")
 public class IntroMergeInPlace
-extends MergeInPlace
-implements Intro<Comparable> {
+        extends MergeInPlace
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Merge In Place Sort:</b><br>

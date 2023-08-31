@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.introDPQ.IntroDPQBogo;
 import github.magyarzoli.sort.Bogo;
 
@@ -16,8 +17,8 @@ import github.magyarzoli.sort.Bogo;
  */
 @SuppressWarnings("rawtypes")
 public class IntroBogo
-extends Bogo
-implements Intro<Comparable> {
+        extends Bogo
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Bogo Sort:</b><br>

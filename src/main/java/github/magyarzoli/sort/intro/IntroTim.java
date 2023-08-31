@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Tim;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.Tim;
  */
 @SuppressWarnings("rawtypes")
 public class IntroTim
-extends Tim
-implements Intro<Comparable> {
+        extends Tim
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Tim Sort:</b><br>

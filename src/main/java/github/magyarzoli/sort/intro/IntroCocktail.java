@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Cocktail;
 
 /**
@@ -15,8 +16,8 @@ import github.magyarzoli.sort.Cocktail;
  */
 @SuppressWarnings("rawtypes")
 public class IntroCocktail
-extends Cocktail
-implements Intro<Comparable> {
+        extends Cocktail
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Cocktail Sort:</b><br>

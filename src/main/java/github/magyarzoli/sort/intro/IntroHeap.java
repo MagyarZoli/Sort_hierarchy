@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Heap;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.Heap;
  */
 @SuppressWarnings("rawtypes")
 public class IntroHeap
-extends Heap
-implements Intro<Comparable> {
+        extends Heap
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Heap Sort:</b><br>

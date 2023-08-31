@@ -1,15 +1,19 @@
 package github.magyarzoli.sort.intro.introDPQ;
 
 import github.magyarzoli.QuickInterface;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.Intro;
 import github.magyarzoli.sort.intro.IntroAnother;
 
 /**
- * IntroDPQ (Dual Pivot Quick) Another Sort is a hybrid sorting algorithm that combines the strengths of Dual Pivot Quick Sort and any Another Sort.
+ * IntroDPQ (Dual Pivot Quick) Another Sort is a hybrid sorting algorithm that combines the strengths of
+ * Dual Pivot Quick Sort and any Another Sort.
  * It aims to provide fast average-case performance while maintaining worst-case guarantees.
- * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort, which is known for its efficiency on average,
+ * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort, which is
+ * known for its efficiency on average,
  * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.
- * To mitigate the risk of Dual Pivot Quick Sort's worst-case behavior, any Another Sort monitors the recursion depth during the sorting process.
+ * To mitigate the risk of Dual Pivot Quick Sort's worst-case behavior, any
+ * Another Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, Another switches to Another Sort, which has good performance for small input sizes.
@@ -18,16 +22,18 @@ import github.magyarzoli.sort.intro.IntroAnother;
  */
 @SuppressWarnings("rawtypes")
 public abstract class IntroDPQAnother
-extends IntroAnother
-implements IntroDPQ<Comparable> {
+        extends IntroAnother
+        implements IntroDPQ<Comparable> {
 
     /**
      * <b>IntroDPQ (Dual Pivot Quick) Another Sort:</b><br>
      * Is a hybrid sorting algorithm that combines the strengths of Dual Pivot Quick Sort and any Another Sort.
      * It aims to provide fast average-case performance while maintaining worst-case guarantees.
-     * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort, which is known for its efficiency on average,
+     * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort,
+     * which is known for its efficiency on average,
      * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.<br><br>
-     * To mitigate the risk of Quick Sort's worst-case behavior, Another Sort monitors the recursion depth during the sorting process.
+     * To mitigate the risk of Quick Sort's worst-case behavior,
+     * Another Sort monitors the recursion depth during the sorting process.
      * If the depth exceeds a certain threshold, the algorithm switches to
      * Another Sort.
      * Implements an adaptive sorting algorithm called Intro Sort Interface.<br><br>
@@ -44,15 +50,18 @@ implements IntroDPQ<Comparable> {
      *     It returns the index of the pivot element.</li>
      *     <li>The recursively called on the left subarray (elements smaller than the pivot) to further sort it.</li>
      *     <li>The recursively called on the right subarray (elements greater than the pivot) to further sort it.</li>
-     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the array is considered small, and the
+     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE},
+     *     the array is considered small, and the
      *     perform insertion sort on the subarray.</li>
      *     <li>This is a abstract method declaration.
      *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
      * </ol>
      * <b>Note:</b><br>
      * Implements an adaptive sorting algorithm called Intro Sort. It combines the Dual Pivot Quick Sort
-     * algorithm with a switch to another sorting algorithm Another Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
-     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.<br><br>
+     * algorithm with a switch to another sorting algorithm Another Sort when
+     * the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by
+     * leveraging the strengths of different sorting algorithms depending on the input size.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(?)</em><br>
      * Best Case Complexity:    <em>O(?)</em><br>
@@ -65,7 +74,8 @@ implements IntroDPQ<Comparable> {
     /**
      * {@code introRecursiveInc} method implements an adaptive sorting algorithm called Intro Sort.
      * <ul>
-     *     <li>The condition to check if the size of the sub-array is larger than {@code INTRO_SIZE} remains the same.</li>
+     *     <li>The condition to check if the size of the sub-array is larger
+     *     than {@code INTRO_SIZE} remains the same.</li>
      *     <li>If the maximum recursion depth {@code maxDepth} is <i>0</i>,
      *     it directly uses the {@code introSortClassInc} method to sort the sub-array.</li>
      *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not 0,
@@ -107,7 +117,8 @@ implements IntroDPQ<Comparable> {
     /**
      * {@code introRecursiveInc} method implements an adaptive sorting algorithm called Intro Sort.
      * <ul>
-     *     <li>The condition to check if the size of the sub-array is larger than {@code INTRO_SIZE} remains the same.</li>
+     *     <li>The condition to check if the size of the sub-array is larger
+     *     than {@code INTRO_SIZE} remains the same.</li>
      *     <li>If the maximum recursion depth {@code maxDepth} is <i>0</i>,
      *     it directly uses the {@code introSortClassInc} method to sort the sub-array.</li>
      *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not 0,
@@ -160,10 +171,12 @@ implements IntroDPQ<Comparable> {
      *     to perform a specific sorting operation for the smaller range.</li>
      *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is <i>0</i>
      *     (indicating that the recursion depth has reached its maximum allowed value),
-     *     it calls the {@code introSortClass} method to perform a specific sorting operation for the remaining range.</li>
+     *     it calls the {@code introSortClass} method to perform a specific
+     *     sorting operation for the remaining range.</li>
      *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is not <i>0</i>,
      *     it proceeds with the intro sort algorithm.</li>
-     *     <li>It calls the partitionDual method to select two pivot elements and partition the range into three sub-ranges.</li>
+     *     <li>It calls the partitionDual method to select two pivot
+     *     elements and partition the range into three sub-ranges.</li>
      *     <li>It recursively calls the {@code introRecursive} method on the left sub-range,
      *     from {@code left} to {@code (pivots[0] - 1)}, with the {@code maxDepth} reduced by <i>1</i>.</li>
      *     <li>It recursively calls the {@code introRecursive} method on the middle sub-range,
@@ -172,7 +185,8 @@ implements IntroDPQ<Comparable> {
      *     from {@code (pivots[1] + 1)} to {@code right}, with the {@code maxDepth} reduced by <i>1</i>.</li>
      *     <li>The recursion continues until the range is small enough
      *     to switch to a specific sorting operation ({@code introSortClass} or {@code introSortClass2}).</li>
-     *     <li>At that point, it calls the corresponding sorting method ({@code introSortClass} or {@code introSortClass2})
+     *     <li>At that point, it calls the corresponding sorting method
+     *     ({@code introSortClass} or {@code introSortClass2})
      *     to perform the sorting operation on the remaining range.</li>
      * </ul>
      * {@code introRecursive} method still recursively applies the intro sort algorithm to sort a given array.
@@ -189,7 +203,8 @@ implements IntroDPQ<Comparable> {
      * @see         IntroAnother#introSortClass2(Comparable[], int, int, SortFunctional)
      */
     @Override
-    public void introRecursive(Comparable[] array, int left, int right, int maxDepth, SortFunctional<Comparable> functional) {
+    public void introRecursive(
+            Comparable[] array, int left, int right, int maxDepth, SortFunctional<Comparable> functional) {
         if ((right - left) > INTRO_SIZE) {
             if (maxDepth == 0) {
                 introSortClass(array, left, right, functional);

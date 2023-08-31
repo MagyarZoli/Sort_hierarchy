@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.StableQuick;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.StableQuick;
  */
 @SuppressWarnings("rawtypes")
 public class IntroStableQuick
-extends StableQuick
-implements Intro<Comparable> {
+        extends StableQuick
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Stable Quick Sort:</b><br>

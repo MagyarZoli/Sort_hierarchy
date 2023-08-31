@@ -2,6 +2,7 @@ package github.magyarzoli.sort;
 
 import github.magyarzoli.InsertionInterface;
 import github.magyarzoli.SortComparable;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.IntroInsertion;
 
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class Insertion
-extends SortComparable
-implements InsertionInterface<Comparable> {
+        extends SortComparable
+        implements InsertionInterface<Comparable> {
 
     /**
      * <b>Insertion Sort:</b><br>
@@ -33,7 +34,8 @@ implements InsertionInterface<Comparable> {
      *     <li>Repeat steps 2-5 until all elements in the unsorted portion have been processed.</li>
      * </ol>
      * <b>Note:</b><br>
-     * Insertion Sort is called "insertion" because it inserts each element into its appropriate position in the sorted portion.
+     * Insertion Sort is called "insertion" because it inserts each element into its appropriate position in the
+     * sorted portion.
      * The algorithm effectively builds the sorted array by repeatedly inserting elements in the correct order.
      * It has a time complexity of O(n^2) in the average and worst cases, making it inefficient for large datasets.
      * However, it performs well for small or partially sorted arrays and has the advantage of simplicity

@@ -2,26 +2,32 @@ package github.magyarzoli.sort.intro;
 
 import github.magyarzoli.InsertionInterface;
 import github.magyarzoli.QuickInterface;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.Sorter;
 
 import java.util.List;
+
+import static java.lang.Math.floor;
+import static java.lang.Math.log;
 
 /**
  * Intro Sort is a hybrid sorting algorithm that combines the strengths of Quick Sort and Insertion Sort.
  * It aims to provide fast average-case performance while maintaining worst-case guarantees.
  * The basic idea behind Intro Sort is to start with Quick Sort, which is known for its efficiency on average,
  * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.
- * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
+ * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the
+ * sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
- * Additionally, for small subarrays, IntroSort switches to Insertion Sort, which has good performance for small input sizes.
+ * Additionally, for small subarrays, IntroSort switches to Insertion Sort, which has good performance for small
+ * input sizes.
  * @param       <T> setting of a type based on which the elements can be sorted.
  * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public interface Intro<T extends Comparable>
-extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
+        extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
 
     /**
      * Size of each intro
@@ -88,44 +94,52 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * {@code introInc} that serves as the entry point for performing an <b>Intro Sort</b> on the given array.<br>
      * <b>An Override call is required to use the Interface method.</b>
      * <ul>
-     *     <li> This line calls the introRecursiveInc method to perform the IntroSort on the array. The parameters passed are:</li>
+     *     <li> This line calls the introRecursiveInc method to perform the IntroSort on the array. The parameters
+     *     passed are:</li>
      *     <li><i>0</i> The starting index of the array.</li>
      *     <li>The ending index (inclusive) of the array.</li>
      *     <li>The maximum depth or recursion level allowed for <b>Quick Sort</b>.
-     *     It is calculated as twice the logarithm (base 2) of the length of the array, rounded down to the nearest integer.
+     *     It is calculated as twice the logarithm (base 2) of the length of the array,
+     *     rounded down to the nearest integer.
      *     This value determines when the algorithm switches to a different sorting method.</li>
      *     <li>default void introInc(T[] array),
-     *     call introRecursiveInc(array, 0, (array.length - 1), (int) (2 * {@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}(array.length))));</li>
+     *     call introRecursiveInc(array, 0, (array.length - 1), (int) (2 * {@link java.lang.Math#floor(double)
+     *     Math.floor}({@link java.lang.Math#log(double) Math.log}(array.length))));</li>
      * </ul>
      * {@code introInc} method provides a convenient entry point for sorting an array using the IntroSort algorithm.
-     * It calculates the maximum depth based on the array length and then calls the introRecursiveInc method to perform the sorting.
+     * It calculates the maximum depth based on the array length and then calls the introRecursiveInc method to
+     * perform the sorting.
      * @param       array The array to be sorted.
      * @see         Intro#introRecursiveInc(Comparable[], int, int, int)
      */
     default void introInc(T[] array) {
-        introRecursiveInc(array, 0, (array.length - 1), (int) (2 * Math.floor(Math.log(array.length))));
+        introRecursiveInc(array, 0, (array.length - 1), (int) (2 * floor(log(array.length))));
     }
 
     /**
      * {@code introDec} that serves as the entry point for performing an <b>Intro Sort</b> on the given array.<br>
      * <b>An Override call is required to use the Interface method.</b>
      * <ul>
-     *     <li> This line calls the introRecursiveInc method to perform the IntroSort on the array. The parameters passed are:</li>
+     *     <li> This line calls the introRecursiveInc method to perform the IntroSort on the array. The
+     *     parameters passed are:</li>
      *     <li><i>0</i> The starting index of the array.</li>
      *     <li>The ending index (inclusive) of the array.</li>
      *     <li>The maximum depth or recursion level allowed for <b>Quick Sort</b>.
-     *     It is calculated as twice the logarithm (base 2) of the length of the array, rounded down to the nearest integer.
+     *     It is calculated as twice the logarithm (base 2) of the length of the array, rounded down to
+     *     the nearest integer.
      *     This value determines when the algorithm switches to a different sorting method.</li>
      *     <li>default void introDec(T[] array),
-     *     call introRecursiveDec(array, 0, (array.length - 1), (int) (2 * {@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}(array.length))));</li>
+     *     call introRecursiveDec(array, 0, (array.length - 1), (int) (2 * {@link java.lang.Math#floor(double)
+     *     Math.floor}({@link java.lang.Math#log(double) Math.log}(array.length))));</li>
      * </ul>
      * {@code introInc} method provides a convenient entry point for sorting an array using the IntroSort algorithm.
-     * It calculates the maximum depth based on the array length and then calls the introRecursiveInc method to perform the sorting.
+     * It calculates the maximum depth based on the array length and then calls the introRecursiveInc
+     * method to perform the sorting.
      * @param       array The array to be sorted.
      * @see         Intro#introRecursiveDec(Comparable[], int, int, int)
      */
     default void introDec(T[] array) {
-        introRecursiveDec(array, 0, (array.length - 1), (int) (2 * Math.floor(Math.log(array.length))));
+        introRecursiveDec(array, 0, (array.length - 1), (int) (2 * floor(log(array.length))));
     }
 
     /**
@@ -135,12 +149,16 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * The method serves as an entry point to the intro sort algorithm for sorting the entire array.
      * <ul>
      *     <li>It calls the {@code introRecursive} method to sort the array, passing the following parameters:
-     *     {@code array} the array to be sorted. <i>0</i> the left index of the range, indicating the start of the array.
+     *     {@code array} the array to be sorted. <i>0</i> the left index of the range, indicating
+     *     the start of the array.
      *     {@code (array.length - 1)} the right index of the range, indicating the end of the array.
-     *     The maximum recursion depth {@code (int) (2 * }{@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}{@code (array.length)))),}
-     *     which is calculated as twice the logarithm (base <i>2</i>) of the length of the array, rounded down to the nearest integer.
+     *     The maximum recursion depth {@code (int) (2 * }{@link java.lang.Math#floor(double)
+     *     Math.floor}({@link java.lang.Math#log(double) Math.log}{@code (array.length)))),}
+     *     which is calculated as twice the logarithm (base <i>2</i>) of the length of the array
+     *     , rounded down to the nearest integer.
      *     {@code functional} An instance of the mz.SortFunctional interface used for comparison operations.</li>
-     *     <li>The {@code introRecursive} method will then perform the sorting process according to the intro sort algorithm,
+     *     <li>The {@code introRecursive} method will then perform the sorting process according
+     *     to the intro sort algorithm,
      *     which combines quicksort and insertion sort based on the specified recursion depth.</li>
      * </ul>
      * {@code intro} method is responsible for initiating the intro sort algorithm on the entire array,
@@ -152,7 +170,7 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * @see         Intro#introRecursive(Comparable[], int, int, int, SortFunctional)
      */
     default void intro(T[] array, SortFunctional<T> functional) {
-        introRecursive(array, 0, (array.length - 1), (int) (2 * Math.floor(Math.log(array.length))), functional);
+        introRecursive(array, 0, (array.length - 1), (int) (2 * floor(log(array.length))), functional);
     }
 
     /**
@@ -169,16 +187,22 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>{@code partitionInc(array, left, right)}: If the maximum depth has not been reached,
      *     the {@code partitionInc} method is called to perform the partitioning step of QuickSort.
      *     It returns the index of the pivot element.</li>
-     *     <li>The {@code introRecursiveInc} method is recursively called on the left subarray (elements smaller than the pivot) to further sort it.</li>
-     *     <li>The {@code introRecursiveInc} method is recursively called on the right subarray (elements greater than the pivot) to further sort it.</li>
-     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the array is considered small, and the {@code insertionInc}
+     *     <li>The {@code introRecursiveInc} method is recursively called on the left subarray
+     *     (elements smaller than the pivot) to further sort it.</li>
+     *     <li>The {@code introRecursiveInc} method is recursively called on the right subarray
+     *     (elements greater than the pivot) to further sort it.</li>
+     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the array
+     *     is considered small, and the {@code insertionInc}
      *     method is called to perform insertion sort on the subarray.</li>
      *     <li>This is a method declaration for {@code introSortClassInc}.
      *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
      * </ul>
-     * {@code introRecursiveInc} method implements an adaptive sorting algorithm called <b>Intro Sort.</b> It combines the <b>Quick Sort</b>
-     * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b> when the recursion depth exceeds a specified threshold {@code maxDepth}.
-     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.
+     * {@code introRecursiveInc} method implements an adaptive sorting algorithm called
+     * <b>Intro Sort.</b> It combines the <b>Quick Sort</b>
+     * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b> when
+     * the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by leveraging
+     * the strengths of different sorting algorithms depending on the input size.
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
@@ -215,16 +239,22 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>{@code partitionDec(array, left, right)}: If the maximum depth has not been reached,
      *     the {@code partitionDec} method is called to perform the partitioning step of QuickSort.
      *     It returns the index of the pivot element.</li>
-     *     <li>The {@code introRecursiveDec} method is recursively called on the left subarray (elements smaller than the pivot) to further sort it.</li>
-     *     <li>The {@code introRecursiveDec} method is recursively called on the right subarray (elements greater than the pivot) to further sort it.</li>
-     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the array is considered small, and the {@code insertionInc}
+     *     <li>The {@code introRecursiveDec} method is recursively called on the left subarray
+     *     (elements smaller than the pivot) to further sort it.</li>
+     *     <li>The {@code introRecursiveDec} method is recursively called on the right subarray
+     *     (elements greater than the pivot) to further sort it.</li>
+     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the array
+     *     is considered small, and the {@code insertionInc}
      *     method is called to perform insertion sort on the subarray.</li>
      *     <li>This is a method declaration for {@code introSortClassDec}.
      *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
      * </ul>
-     * {@code introRecursiveDec} method implements an adaptive sorting algorithm called <b>Intro Sort.</b> It combines the <b>Quick Sort</b>
-     * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b> when the recursion depth exceeds a specified threshold {@code maxDepth}.
-     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.
+     * {@code introRecursiveDec} method implements an adaptive sorting algorithm called
+     * <b>Intro Sort.</b> It combines the <b>Quick Sort</b>
+     * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b> when
+     * the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by leveraging
+     * the strengths of different sorting algorithms depending on the input size.
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
@@ -260,7 +290,8 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>It first checks if the size of the range {@code (right - left)}
      *     is greater than a predefined constant value {@code INTRO_SIZE}.
      *     If it is, it proceeds with the sorting algorithm.
-     *     Otherwise, it directly calls the {@code insertion} method to sort the smaller range using insertion sort.</li>
+     *     Otherwise, it directly calls the {@code insertion} method to sort the
+     *     smaller range using insertion sort.</li>
      *     <li>If the size of the range is larger than {@code INTRO_SIZE} and
      *     the {@code maxDepth} is <i>0</i> (indicating that the recursion depth has reached its maximum allowed value),
      *     it calls the {@code introSortClass} method to perform a full quicksort on the range.</li>
@@ -273,11 +304,15 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>It recursively calls the {@code introRecursive} method on the right sub-range,
      *     from {@code pivot + 1} to {@code right}, with the {@code maxDepth} reduced by <i>1</i>.</li>
      *     <li>The recursion continues until the range is small enough to switch to insertion sort.</li>
-     *     <li>At that point, it calls the {@code insertion} method to sort the remaining range using insertion sort.</li>
+     *     <li>At that point, it calls the {@code insertion} method to sort the
+     *     remaining range using insertion sort.</li>
      * </ul>
-     * {@code introRecursive} method implements an intro sort algorithm to sort the array within a specified range ({@code left} to {@code right})
-     * in ascending order based on the comparison condition provided by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
-     * It switches to insertion sort for small ranges and performs quicksort recursively for larger ranges,
+     * {@code introRecursive} method implements an intro sort algorithm to sort the
+     * array within a specified range ({@code left} to {@code right})
+     * in ascending order based on the comparison condition provided by the
+     * {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * It switches to insertion sort for small ranges and performs quicksort
+     * recursively for larger ranges,
      * while keeping track of the maximum recursion depth.
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
@@ -306,44 +341,52 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * {@code introInc} that serves as the entry point for performing an <b>Intro Sort</b> on the given list.<br>
      * <b>An Override call is required to use the Interface method.</b>
      * <ul>
-     *     <li> This line calls the introRecursiveInc method to perform the IntroSort on the list. The parameters passed are:</li>
+     *     <li> This line calls the introRecursiveInc method to perform the
+     *     IntroSort on the list. The parameters passed are:</li>
      *     <li><i>0</i> The starting index of the list.</li>
      *     <li>The ending index (inclusive) of the list.</li>
      *     <li>The maximum depth or recursion level allowed for <b>Quick Sort</b>.
-     *     It is calculated as twice the logarithm (base 2) of the length of the list, rounded down to the nearest integer.
+     *     It is calculated as twice the logarithm (base 2) of the length of the
+     *     list, rounded down to the nearest integer.
      *     This value determines when the algorithm switches to a different sorting method.</li>
      *     <li>default void introInc(List<T> list),
-     *     call introRecursiveInc(list, 0, (list.size() - 1), (int) (2 * {@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}(list.size()))));</li>
+     *     call introRecursiveInc(list, 0, (list.size() - 1), (int) (2 * {@link java.lang.Math#floor(double)
+     *     Math.floor}({@link java.lang.Math#log(double) Math.log}(list.size()))));</li>
      * </ul>
      * {@code introInc} method provides a convenient entry point for sorting a list using the IntroSort algorithm.
-     * It calculates the maximum depth based on the list length and then calls the introRecursiveInc method to perform the sorting.
+     * It calculates the maximum depth based on the list length and then calls the
+     * introRecursiveInc method to perform the sorting.
      * @param       list The list to be sorted.
      * @see         Intro#introRecursiveInc(List, int, int, int)
      */
     default <L extends T> void introInc(List<L> list) {
-        introRecursiveInc(list, 0, (list.size() - 1), (int) (2 * Math.floor(Math.log(list.size()))));
+        introRecursiveInc(list, 0, (list.size() - 1), (int) (2 * floor(log(list.size()))));
     }
 
     /**
      * {@code introDec} that serves as the entry point for performing an <b>Intro Sort</b> on the given list.<br>
      * <b>An Override call is required to use the Interface method.</b>
      * <ul>
-     *     <li> This line calls the introRecursiveInc method to perform the IntroSort on the list. The parameters passed are:</li>
+     *     <li> This line calls the introRecursiveInc method to perform the IntroSort
+     *     on the list. The parameters passed are:</li>
      *     <li><i>0</i> The starting index of the list.</li>
      *     <li>The ending index (inclusive) of the list.</li>
      *     <li>The maximum depth or recursion level allowed for <b>Quick Sort</b>.
-     *     It is calculated as twice the logarithm (base 2) of the length of the list, rounded down to the nearest integer.
+     *     It is calculated as twice the logarithm (base 2) of the length of the list,
+     *     rounded down to the nearest integer.
      *     This value determines when the algorithm switches to a different sorting method.</li>
      *     <li>default void introDec(List<T> list),
-     *     call introRecursiveDec(list, 0, (list.size() - 1), (int) (2 * {@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}(list.size()))));</li>
+     *     call introRecursiveDec(list, 0, (list.size() - 1), (int) (2 * {@link java.lang.Math#floor(double)
+     *     Math.floor}({@link java.lang.Math#log(double) Math.log}(list.size()))));</li>
      * </ul>
      * {@code introInc} method provides a convenient entry point for sorting a list using the IntroSort algorithm.
-     * It calculates the maximum depth based on the list length and then calls the introRecursiveInc method to perform the sorting.
+     * It calculates the maximum depth based on the list length and then calls the
+     * introRecursiveInc method to perform the sorting.
      * @param       list The list to be sorted.
      * @see         Intro#introRecursiveDec(List, int, int, int)
      */
     default <L extends T> void introDec(List<L> list) {
-        introRecursiveDec(list, 0, (list.size() - 1), (int) (2 * Math.floor(Math.log(list.size()))));
+        introRecursiveDec(list, 0, (list.size() - 1), (int) (2 * floor(log(list.size()))));
     }
 
     /**
@@ -355,10 +398,13 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>It calls the {@code introRecursive} method to sort the list, passing the following parameters:
      *     {@code list} the list to be sorted. <i>0</i> the left index of the range, indicating the start of the list.
      *     {@code (list.size() - 1)} the right index of the range, indicating the end of the list.
-     *     The maximum recursion depth {@code (int) (2 * }{@link java.lang.Math#floor(double) Math.floor}({@link java.lang.Math#log(double) Math.log}{@code (list.size())))),}
-     *     which is calculated as twice the logarithm (base <i>2</i>) of the length of the list, rounded down to the nearest integer.
+     *     The maximum recursion depth {@code (int) (2 * }{@link java.lang.Math#floor(double)
+     *     Math.floor}({@link java.lang.Math#log(double) Math.log}{@code (list.size())))),}
+     *     which is calculated as twice the logarithm (base <i>2</i>) of the length of
+     *     the list, rounded down to the nearest integer.
      *     {@code functional} An instance of the mz.SortFunctional interface used for comparison operations.</li>
-     *     <li>The {@code introRecursive} method will then perform the sorting process according to the intro sort algorithm,
+     *     <li>The {@code introRecursive} method will then perform the sorting process
+     *     according to the intro sort algorithm,
      *     which combines quicksort and insertion sort based on the specified recursion depth.</li>
      * </ul>
      * {@code intro} method is responsible for initiating the intro sort algorithm on the entire list,
@@ -370,7 +416,7 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * @see         Intro#introRecursive(List, int, int, int, SortFunctional)
      */
     default <L extends T> void intro(List<L> list, SortFunctional<T> functional) {
-        introRecursive(list, 0, (list.size() - 1), (int) (2 * Math.floor(Math.log(list.size()))), functional);
+        introRecursive(list, 0, (list.size() - 1), (int) (2 * floor(log(list.size()))), functional);
     }
 
     /**
@@ -387,16 +433,22 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>{@code partitionInc(list, left, right)}: If the maximum depth has not been reached,
      *     the {@code partitionInc} method is called to perform the partitioning step of QuickSort.
      *     It returns the index of the pivot element.</li>
-     *     <li>The {@code introRecursiveInc} method is recursively called on the left sublist (elements smaller than the pivot) to further sort it.</li>
-     *     <li>The {@code introRecursiveInc} method is recursively called on the right sublist (elements greater than the pivot) to further sort it.</li>
-     *     <li>Else the size of the sublist is not greater than {@code INTRO_SIZE}, the list is considered small, and the {@code insertionInc}
+     *     <li>The {@code introRecursiveInc} method is recursively called on the left sublist
+     *     (elements smaller than the pivot) to further sort it.</li>
+     *     <li>The {@code introRecursiveInc} method is recursively called on the right sublis
+     *     (elements greater than the pivot) to further sort it.</li>
+     *     <li>Else the size of the sublist is not greater than {@code INTRO_SIZE}, the list
+     *     is considered small, and the {@code insertionInc}
      *     method is called to perform insertion sort on the sublist.</li>
      *     <li>This is a method declaration for {@code introSortClassInc}.
      *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
      * </ul>
-     * {@code introRecursiveInc} method implements an adaptive sorting algorithm called <b>Intro Sort.</b> It combines the <b>Quick Sort</b>
-     * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b> when the recursion depth exceeds a specified threshold {@code maxDepth}.
-     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.
+     * {@code introRecursiveInc} method implements an adaptive sorting algorithm called
+     * <b>Intro Sort.</b> It combines the <b>Quick Sort</b>
+     * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b> when
+     * the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by leveraging
+     * the strengths of different sorting algorithms depending on the input size.
      * @param       list The list to be sorted.
      * @param       left The starting index of the sublist to be sorted.
      * @param       right The ending index (inclusive) of the sublist to be sorted.
@@ -433,16 +485,22 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>{@code partitionDec(list, left, right)}: If the maximum depth has not been reached,
      *     the {@code partitionDec} method is called to perform the partitioning step of QuickSort.
      *     It returns the index of the pivot element.</li>
-     *     <li>The {@code introRecursiveDec} method is recursively called on the left sublist (elements smaller than the pivot) to further sort it.</li>
-     *     <li>The {@code introRecursiveDec} method is recursively called on the right sublist (elements greater than the pivot) to further sort it.</li>
-     *     <li>Else the size of the sublist is not greater than {@code INTRO_SIZE}, the list is considered small, and the {@code insertionInc}
+     *     <li>The {@code introRecursiveDec} method is recursively called on the left sublist
+     *     (elements smaller than the pivot) to further sort it.</li>
+     *     <li>The {@code introRecursiveDec} method is recursively called on the right sublist
+     *     (elements greater than the pivot) to further sort it.</li>
+     *     <li>Else the size of the sublist is not greater than {@code INTRO_SIZE}, the
+     *     list is considered small, and the {@code insertionInc}
      *     method is called to perform insertion sort on the sublist.</li>
      *     <li>This is a method declaration for {@code introSortClassDec}.
      *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
      * </ul>
-     * {@code introRecursiveDec} method implements an adaptive sorting algorithm called <b>Intro Sort.</b> It combines the <b>Quick Sort</b>
-     * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b> when the recursion depth exceeds a specified threshold {@code maxDepth}.
-     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.
+     * {@code introRecursiveDec} method implements an adaptive sorting algorithm
+     * called <b>Intro Sort.</b> It combines the <b>Quick Sort</b>
+     * algorithm with a switch to another sorting algorithm <b>Insertion Sort</b>
+     * when the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by
+     * leveraging the strengths of different sorting algorithms depending on the input size.
      * @param       list The list to be sorted.
      * @param       left The starting index of the sublist to be sorted.
      * @param       right The ending index (inclusive) of the sublist to be sorted.
@@ -478,7 +536,8 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>It first checks if the size of the range {@code (right - left)}
      *     is greater than a predefined constant value {@code INTRO_SIZE}.
      *     If it is, it proceeds with the sorting algorithm.
-     *     Otherwise, it directly calls the {@code insertion} method to sort the smaller range using insertion sort.</li>
+     *     Otherwise, it directly calls the {@code insertion} method to sort the
+     *     smaller range using insertion sort.</li>
      *     <li>If the size of the range is larger than {@code INTRO_SIZE} and
      *     the {@code maxDepth} is <i>0</i> (indicating that the recursion depth has reached its maximum allowed value),
      *     it calls the {@code introSortClass} method to perform a full quicksort on the range.</li>
@@ -491,11 +550,15 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      *     <li>It recursively calls the {@code introRecursive} method on the right sub-range,
      *     from {@code pivot + 1} to {@code right}, with the {@code maxDepth} reduced by <i>1</i>.</li>
      *     <li>The recursion continues until the range is small enough to switch to insertion sort.</li>
-     *     <li>At that point, it calls the {@code insertion} method to sort the remaining range using insertion sort.</li>
+     *     <li>At that point, it calls the {@code insertion} method to sort the
+     *     remaining range using insertion sort.</li>
      * </ul>
-     * {@code introRecursive} method implements an intro sort algorithm to sort the list within a specified range ({@code left} to {@code right})
-     * in ascending order based on the comparison condition provided by the {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
-     * It switches to insertion sort for small ranges and performs quicksort recursively for larger ranges,
+     * {@code introRecursive} method implements an intro sort algorithm to sort
+     * the list within a specified range ({@code left} to {@code right})
+     * in ascending order based on the comparison condition provided by the
+     * {@code functionalCompareTo} method of the {@code mz.SortFunctional} interface.
+     * It switches to insertion sort for small ranges and performs quicksort
+     * recursively for larger ranges,
      * while keeping track of the maximum recursion depth.
      * @param       list The list to be sorted.
      * @param       left The starting index of the sublist to be sorted.
@@ -507,7 +570,8 @@ extends Sorter<T>, InsertionInterface<T>, QuickInterface<T> {
      * @see         Intro#introSortClass(List, int, int, SortFunctional)
      * @see         InsertionInterface#insertion(List, int, int, SortFunctional)
      */
-    default <L extends T> void introRecursive(List<L> list, int left, int right, int maxDepth, SortFunctional<T> functional) {
+    default <L extends T> void introRecursive(
+            List<L> list, int left, int right, int maxDepth, SortFunctional<T> functional) {
         if ((right - left) > INTRO_SIZE) {
             if (maxDepth == 0) {
                 introSortClass(list, left, right, functional);

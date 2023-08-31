@@ -10,7 +10,7 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public interface InsertionInterface<T extends Comparable>
-extends Sorter<T> {
+        extends Sorter<T> {
 
     /**
      * {@code insertionInc} that performs the Insertion Sort algorithm on a portion of an array of Comparable objects.
@@ -18,10 +18,14 @@ extends Sorter<T> {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
+     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end
+     *     of the {@code array}.</li>
+     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select}
+     *     variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the array.</li>
@@ -29,14 +33,17 @@ extends Sorter<T> {
      *     is within the specified portion of the array.</li>
      *     <li>The condition {@code array[(j - index)].compareTo(select) > 0}
      *     compares the element at index {@code (j - index)} with the {@code select} element.
-     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be shifted to the right.</li>
-     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be
+     *     shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index
+     *     {@code (j - index)},
      *     effectively shifting the element to the right.</li>
      *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
      *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
-     * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.
+     * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code array} of
+     * Comparable objects.
      * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
      * and places the selected element at its correct position within the portion of the array.
      * The sorting is done in ascending order.
@@ -61,10 +68,14 @@ extends Sorter<T> {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
+     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end
+     *     of the {@code array}.</li>
+     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select}
+     *     variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the array.</li>
@@ -72,14 +83,17 @@ extends Sorter<T> {
      *     is within the specified portion of the array.</li>
      *     <li>The condition {@code array[(j - index)].compareTo(select) < 0}
      *     compares the element at index {@code (j - index)} with the {@code select} element.
-     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be shifted to the right.</li>
-     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be
+     *     shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index
+     *     {@code (j - index)},
      *     effectively shifting the element to the right.</li>
      *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
      *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
-     * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.
+     * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code array} of
+     * Comparable objects.
      * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
      * and places the selected element at its correct position within the portion of the array.
      * The sorting is done in descending order.
@@ -100,13 +114,16 @@ extends Sorter<T> {
 
     /**
      * {@code insertion} within an interface.
-     * This method takes an array of type {@code T[]} and an instance of the {@code SortFunctional} interface as parameters.
+     * This method takes an array of type {@code T[]} and an instance of the {@code SortFunctional} interface as
+     * parameters.
      * <ul>
      *     <li>The method iterates over the array from index <i>0</i> to the last index {@code (array.length - 1)}.</li>
      *     <li>For each iteration, it selects an element {@code select} from the array at index {@code i}.</li>
      *     <li>It initializes a variable {@code j} with the value of {@code i}.</li>
-     *     <li>It enters a {@code while} loop that continues as long as {@code j} is greater than or equal to <i>1</i> and
-     *     the comparison condition in {@code functionalCompareTo} is satisfied between {@code array[(j - 1)]} and {@code select}.</li>
+     *     <li>It enters a {@code while} loop that continues as long as {@code j} is greater than or equal to
+     *     <i>1</i> and
+     *     the comparison condition in {@code functionalCompareTo} is satisfied between {@code array[(j - 1)]} and
+     *     {@code select}.</li>
      *     <li>Inside the loop, it shifts elements towards the right
      *     by assigning {@code array[(j - 1)]} to {@code array[j]} and decrements {@code j}.</li>
      *     <li>After the loop ends, it assigns the {@code select} element to {@code array[j]},
@@ -114,7 +131,8 @@ extends Sorter<T> {
      *     <li>The process continues until all elements in the array have been processed.</li>
      * </ul>
      * {@code insertion} method uses the insertion sort algorithm to sort the array in ascending order based on
-     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional}
+     * interface.
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
@@ -137,10 +155,14 @@ extends Sorter<T> {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
+     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end
+     *     of the {@code array}.</li>
+     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select}
+     *     variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the array.</li>
@@ -148,14 +170,17 @@ extends Sorter<T> {
      *     is within the specified portion of the array.</li>
      *     <li>The condition {@code array[(j - index)].compareTo(select) > 0}
      *     compares the element at index {@code (j - index)} with the {@code select} element.
-     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be shifted to the right.</li>
-     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be
+     *     shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index
+     *     {@code (j - index)},
      *     effectively shifting the element to the right.</li>
      *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
      *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
-     * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.
+     * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code array} of
+     * Comparable objects.
      * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
      * and places the selected element at its correct position within the portion of the array.
      * The sorting is done in ascending order.
@@ -182,10 +207,14 @@ extends Sorter<T> {
      * <ul>
      *     <li>The method takes in an array of Comparable objects, {@code array}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code array}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
+     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end
+     *     of the {@code array}.</li>
+     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select}
+     *     variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the array.</li>
@@ -193,14 +222,17 @@ extends Sorter<T> {
      *     is within the specified portion of the array.</li>
      *     <li>The condition {@code array[(j - index)].compareTo(select) < 0}
      *     compares the element at index {@code (j - index)} with the {@code select} element.
-     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be shifted to the right.</li>
-     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be
+     *     shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index
+     *     {@code (j - index)},
      *     effectively shifting the element to the right.</li>
      *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
      *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
-     * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code array} of Comparable objects.
+     * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code array} of
+     * Comparable objects.
      * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
      * and places the selected element at its correct position within the portion of the array.
      * The sorting is done in descending order.
@@ -254,7 +286,8 @@ extends Sorter<T> {
         for (int i = from; i <= to; i++) {
             T select = array[i];
             int j = i;
-            while ((j > from) && ((array[(j - 1)] != null) && (functional.functionalCompareTo(array[(j - 1)], select)))) {
+            while ((j > from) && ((array[(j - 1)] != null)
+                    && (functional.functionalCompareTo(array[(j - 1)], select)))) {
                 array[j] = array[(j - 1)];
                 j--;
             }
@@ -269,10 +302,14 @@ extends Sorter<T> {
      * <ul>
      *     <li>The method takes in an list of {@code Comparable} objects, {@code list}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code list}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
+     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end
+     *     of the {@code list}.</li>
+     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select}
+     *     variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the list.</li>
@@ -280,14 +317,17 @@ extends Sorter<T> {
      *     is within the specified portion of the list.</li>
      *     <li>The condition {@code list.get(j - index).compareTo(select) > 0}
      *     compares the element at index {@code (j - index)} with the {@code select} element.
-     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be shifted to the right.</li>
-     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be
+     *     shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index
+     *     {@code (j - index)},
      *     effectively shifting the element to the right.</li>
      *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
      *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
-     * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code list} of Comparable objects.
+     * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code list} of
+     * Comparable objects.
      * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
      * and places the selected element at its correct position within the portion of the list.
      * The sorting is done in ascending order.
@@ -313,10 +353,14 @@ extends Sorter<T> {
      * <ul>
      *     <li>The method takes in an list of {@code Comparable} objects, {@code list}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code list}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
+     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end
+     *     of the {@code list}.</li>
+     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select}
+     *     variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the list.</li>
@@ -324,14 +368,17 @@ extends Sorter<T> {
      *     is within the specified portion of the list.</li>
      *     <li>The condition {@code list.get(j - index).compareTo(select) < 0}
      *     compares the element at index {@code (j - index)} with the {@code select} element.
-     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be shifted to the right.</li>
-     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be
+     *     shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index
+     *     {@code (j - index)},
      *     effectively shifting the element to the right.</li>
      *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
      *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
-     * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code list} of Comparable objects.
+     * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code list} of
+     * Comparable objects.
      * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
      * and places the selected element at its correct position within the portion of the list.
      * The sorting is done in descending order.
@@ -352,13 +399,16 @@ extends Sorter<T> {
 
     /**
      * {@code insertion} within an interface.
-     * This method takes a list of type {@code List<T>} and an instance of the {@code SortFunctional} interface as parameters.
+     * This method takes a list of type {@code List<T>} and an instance of the {@code SortFunctional} interface as
+     * parameters.
      * <ul>
      *     <li>The method iterates over the list from index <i>0</i> to the last index {@code (list.size() - 1)}.</li>
      *     <li>For each iteration, it selects an element {@code select} from the list at index {@code i}.</li>
      *     <li>It initializes a variable {@code j} with the value of {@code i}.</li>
-     *     <li>It enters a {@code while} loop that continues as long as {@code j} is greater than or equal to <i>1</i> and
-     *     the comparison condition in {@code functionalCompareTo} is satisfied between {@code list.get(j - 1)} and {@code select}.</li>
+     *     <li>It enters a {@code while} loop that continues as long as {@code j} is greater than or equal to
+     *     <i>1</i> and
+     *     the comparison condition in {@code functionalCompareTo} is satisfied between {@code list.get(j - 1)}
+     *     and {@code select}.</li>
      *     <li>Inside the loop, it shifts elements towards the right
      *     by assigning {@code list.get(j - 1)} to {@code list.get(j)} and decrements {@code j}.</li>
      *     <li>After the loop ends, it assigns the {@code select} element to {@code list.get(j)},
@@ -366,7 +416,8 @@ extends Sorter<T> {
      *     <li>The process continues until all elements in the list have been processed.</li>
      * </ul>
      * {@code insertion} method uses the insertion sort algorithm to sort the list in ascending order based on
-     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional} interface.
+     * the comparison condition provided by the {@code functionalCompareTo} method of the {@code SortFunctional}
+     * interface.
      * @param       list to be arranged.
      * @param       functional lambda expression for comparison.
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
@@ -390,10 +441,14 @@ extends Sorter<T> {
      * <ul>
      *     <li>The method takes in an list of {@code Comparable} objects, {@code list}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code list}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
+     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the
+     *     end of the {@code list}.</li>
+     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select}
+     *     variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the list.</li>
@@ -401,14 +456,17 @@ extends Sorter<T> {
      *     is within the specified portion of the list.</li>
      *     <li>The condition {@code list.get(j - index).compareTo(select) > 0}
      *     compares the element at index {@code (j - index)} with the {@code select} element.
-     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be shifted to the right.</li>
-     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     If the element at index {@code (j - index)} is greater than the {@code select} element, it needs to be
+     *     shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index
+     *     {@code (j - index)},
      *     effectively shifting the element to the right.</li>
      *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
      *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
-     * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code list} of Comparable objects.
+     * {@code insertionInc} method implements the Insertion Sort algorithm on a portion of the given {@code list} of
+     * Comparable objects.
      * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
      * and places the selected element at its correct position within the portion of the list.
      * The sorting is done in ascending order.
@@ -436,10 +494,14 @@ extends Sorter<T> {
      * <ul>
      *     <li>The method takes in an list of {@code Comparable} objects, {@code list}, and an integer index specifying
      *     the starting index of the portion to be sorted.</li>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end of the {@code list}.</li>
-     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select} variable.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to type safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo}
+     *     method.</li>
+     *     <li>The method uses a {@code for} loop that starts from the given {@code index} and iterates up to the end
+     *     of the {@code list}.</li>
+     *     <li>Inside the loop, the element at index {@code i} is selected and stored in the {@code select}
+     *     variable.</li>
      *     <li>An integer variable {@code j} is initialized with the value of {@code i}.</li>
      *     <li>A {@code while} loop is used to shift elements to the right and find the correct position for
      *     the {@code select} element within the portion of the list.</li>
@@ -447,14 +509,17 @@ extends Sorter<T> {
      *     is within the specified portion of the list.</li>
      *     <li>The condition {@code list.get(j - index)].compareTo(select) < 0}
      *     compares the element at index {@code (j - index)} with the {@code select} element.
-     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be shifted to the right.</li>
-     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index {@code (j - index)},
+     *     If the element at index {@code (j - index)} is smaller than the {@code select} element, it needs to be
+     *     shifted to the right.</li>
+     *     <li>Inside the {@code while} loop, the element at index {@code j} is replaced with the element at index
+     *     {@code (j - index)},
      *     effectively shifting the element to the right.</li>
      *     <li>The index {@code j} is decremented by {@code index} to continue comparing and shifting elements until
      *     the correct position for the {@code select} element is found.</li>
      *     <li>Once the correct position is determined, the {@code select} element is placed at index {@code j}.</li>
      * </ul>
-     * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code list} of Comparable objects.
+     * {@code insertionDec} method implements the Insertion Sort algorithm on a portion of the given {@code list} of
+     * Comparable objects.
      * It iterates over the elements starting from the specified index, compares and shifts elements to the right,
      * and places the selected element at its correct position within the portion of the list.
      * The sorting is done in descending order.
@@ -508,7 +573,8 @@ extends Sorter<T> {
         for (int i = from; i <= to; i++) {
             L select = list.get(i);
             int j = i;
-            while ((j > from) && ((list.get(j - 1) != null) && (functional.functionalCompareTo(list.get(j - 1), select)))) {
+            while ((j > from) && ((list.get(j - 1) != null)
+                    && (functional.functionalCompareTo(list.get(j - 1), select)))) {
                 list.set(j, list.get(j - 1));
                 j--;
             }

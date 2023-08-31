@@ -3,11 +3,14 @@ package github.magyarzoli.sort.intro.introDPQ;
 import github.magyarzoli.sort.intro.IntroPancake;
 
 /**
- * IntroDPQ (Dual Pivot Quick) Pancake Sort is a hybrid sorting algorithm that combines the strengths of Dual Pivot Quick Sort and Pancake Sort.
+ * IntroDPQ (Dual Pivot Quick) Pancake Sort is a hybrid sorting algorithm that combines the strengths of
+ * Dual Pivot Quick Sort and Pancake Sort.
  * It aims to provide fast average-case performance while maintaining worst-case guarantees.
- * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort, which is known for its efficiency on average,
+ * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort, which is known for its
+ * efficiency on average,
  * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.
- * To mitigate the risk of Dual Pivot Quick Sort's worst-case behavior, Pancake Sort monitors the recursion depth during the sorting process.
+ * To mitigate the risk of Dual Pivot Quick Sort's worst-case behavior, Pancake Sort monitors the
+ * recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
  * Additionally, for small subarrays, Intro switches to Pancake Sort, which has good performance for small input sizes.
@@ -16,19 +19,22 @@ import github.magyarzoli.sort.intro.IntroPancake;
  */
 @SuppressWarnings("rawtypes")
 public class IntroDPQPancake
-extends IntroPancake
-implements IntroDPQ<Comparable> {
+        extends IntroPancake
+        implements IntroDPQ<Comparable> {
 
     /**
      * <b>IntroDPQ (Dual Pivot Quick) Pancake Sort:</b><br>
      * Is a hybrid sorting algorithm that combines the strengths of Dual Pivot Quick Sort and Pancake Sort.
      * It aims to provide fast average-case performance while maintaining worst-case guarantees.
-     * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort, which is known for its efficiency on average,
+     * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort, which is known for its
+     * efficiency on average,
      * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.<br><br>
-     * To mitigate the risk of Dual Pivot Quick Sort's worst-case behavior, Pancake Sort monitors the recursion depth during the sorting process.
+     * To mitigate the risk of Dual Pivot Quick Sort's worst-case behavior, Pancake Sort monitors the recursion
+     * depth during the sorting process.
      * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
      * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
-     * Additionally, for small subarrays, Intro switches to Pancake Sort, which has good performance for small input sizes.<br><br>
+     * Additionally, for small subarrays, Intro switches to Pancake Sort, which has good performance for
+     * small input sizes.<br><br>
      * <b>Example:</b>
      * <ol>
      *     <li>It checks if the size of the sub-array length is larger than {@code INTRO_SIZE}.
@@ -37,17 +43,14 @@ implements IntroDPQ<Comparable> {
      *     <li>If the maximum recursion depth is <i>0</i>,
      *     it directly to sort the sub-array using a Intro Pancake sorting algorithm.
      *     This is a base case to prevent excessive recursion.</li>
-     *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>, it performs the following steps:</li>
-     *     <ul>
-     *         <li>Partition the sub-array and obtain the pivot indices.</li>
-     *         <li>Recursively on the three sub-arrays:</li>
-     *         <ul>
-     *             <li>From left to elements smaller than the first pivot</li>
-     *             <li>From elements between the two pivots</li>
-     *             <li>From elements greater than the second pivot</li>
-     *         </ul>
-     *         <li>The recursion depth is decremented by <i>1</i> in each recursive call.</li>
-     *     </ul>
+     *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>,
+     *     it performs the following steps:</li>
+     *     <li>Partition the sub-array and obtain the pivot indices.</li>
+     *     <li>Recursively on the three sub-arrays:</li>
+     *     <li>From left to elements smaller than the first pivot</li>
+     *     <li>From elements between the two pivots</li>
+     *     <li>From elements greater than the second pivot</li>
+     *     <li>The recursion depth is decremented by <i>1</i> in each recursive call.</li>
      *     <li>If the sub-array size is smaller or equal to {@code INTRO_SIZE},
      *     perform insertion sort on the sub-array.</li>
      * </ol>

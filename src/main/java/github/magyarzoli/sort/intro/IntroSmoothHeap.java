@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.SmoothHeap;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.SmoothHeap;
  */
 @SuppressWarnings("rawtypes")
 public class IntroSmoothHeap
-extends SmoothHeap
-implements Intro<Comparable> {
+        extends SmoothHeap
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Smooth Heap Sort:</b><br>

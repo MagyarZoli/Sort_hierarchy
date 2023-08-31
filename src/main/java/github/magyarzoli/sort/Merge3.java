@@ -1,6 +1,7 @@
 package github.magyarzoli.sort;
 
 import github.magyarzoli.MergeInterface;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.IntroMerge3;
 
 import java.util.ArrayList;
@@ -9,26 +10,29 @@ import java.util.List;
 
 /**
  * Merge3 Sort the sorting process is divided into three parts and performed incrementally.
- * The idea behind this approach is to split the input array into three roughly equal parts and recursively sort each part separately.
+ * The idea behind this approach is to split the input array into three roughly equal parts and recursively sort each
+ * part separately.
  * Then, the sorted parts are merged together to obtain the final sorted array.
  * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public class Merge3
-extends Merge {
+        extends Merge {
 
     /**
      * <b>Merge3 Sort:</b><br>
      * The sorting process is divided into three parts and performed incrementally.
-     * The idea behind this approach is to split the input array into three roughly equal parts and recursively sort each part separately.
+     * The idea behind this approach is to split the input array into three roughly equal parts and recursively sort
+     * each part separately.
      * Then, the sorted parts are merged together to obtain the final sorted array.<br><br>
      * <b>Example:</b>
      * <ol>
      *     <li>Divide the input range into three parts by calculating two midpoints.
      *     These midpoints split the range into three roughly equal parts.</li>
      *     <li>Recursively sort each part using.
-     *     This method is called four times to sort the left, middle, and right parts of the range, as well as to merge the sorted parts together.</li>
+     *     This method is called four times to sort the left, middle, and right parts of the range, as well as to merge
+     *     the sorted parts together.</li>
      *     <li>The performs the actual sorting and merging operations.
      *     completes, the sorted elements are stored in a temporary buffer array.
      *     Finally, the sorted elements are copied back from the buffer array to the original array.</li>
@@ -103,10 +107,13 @@ extends Merge {
 
     /**
      * {@code mergeInc} method for performing an iterative bottom-up merge sort on an array.
-     * It divides the array into subarrays of increasing sizes and merges them together until the entire array is sorted.
+     * It divides the array into subarrays of increasing sizes and merges them together until the entire array is
+     * sorted.
      * <ul>
-     *     <li>first conditional statement {@code (right - left) < 2} checks if the current range has less than two elements.
-     *     If true, it means the range is already sorted, so the method returns without performing any further operations.</li>
+     *     <li>first conditional statement {@code (right - left) < 2} checks if the current range has less than two
+     *     elements.
+     *     If true, it means the range is already sorted, so the method returns without performing any further
+     *     operations.</li>
      *     <li>Next, the method calculates two midpoints: {@code mid1} and {@code mid2}.
      *     These midpoints divide the current range into three roughly equal parts.</li>
      *     <li>It recursively sorts the {@code left / mid / right} part of the range from
@@ -115,7 +122,8 @@ extends Merge {
      *     It takes the indices of the subarray boundaries and uses four pointers left, mid1, mid2, right,
      *     to iterate through the subarrays and merge them into a buffer array.</li>
      * </ul>
-     * {@code mergeInc} The recursive calls ensure that the algorithm recursively divides the input array into smaller parts until each part has less than two elements,
+     * {@code mergeInc} The recursive calls ensure that the algorithm recursively divides the input array into smaller
+     * parts until each part has less than two elements,
      * and then merges the sorted parts together to obtain the final sorted array.
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
@@ -124,7 +132,7 @@ extends Merge {
      * @see         MergeInterface#mergeInc(Comparable[], int, int, int, int, Comparable[])
      */
     @Override
-    public void mergeInc(Comparable[] array, int left, int right, Comparable[] buffer){
+    public void mergeInc(Comparable[] array, int left, int right, Comparable[] buffer) {
         if ((right - left) < 2) {
             return;
         }
@@ -137,10 +145,13 @@ extends Merge {
 
     /**
      * {@code mergeDec} method for performing an iterative bottom-up merge sort on an array.
-     * It divides the array into subarrays of decreasing sizes and merges them together until the entire array is sorted.
+     * It divides the array into subarrays of decreasing sizes and merges them together until the entire array is
+     * sorted.
      * <ul>
-     *     <li>first conditional statement {@code (right - left) < 2} checks if the current range has less than two elements.
-     *     If true, it means the range is already sorted, so the method returns without performing any further operations.</li>
+     *     <li>first conditional statement {@code (right - left) < 2} checks if the current range has less than two
+     *     elements.
+     *     If true, it means the range is already sorted, so the method returns without performing any further
+     *     operations.</li>
      *     <li>Next, the method calculates two midpoints: {@code mid1} and {@code mid2}.
      *     These midpoints divide the current range into three roughly equal parts.</li>
      *     <li>It recursively sorts the {@code left / mid / right} part of the range from
@@ -149,7 +160,8 @@ extends Merge {
      *     It takes the indices of the subarray boundaries and uses four pointers left, mid1, mid2, right,
      *     to iterate through the subarrays and merge them into a buffer array.</li>
      * </ul>
-     * {@code mergeDec} The recursive calls ensure that the algorithm recursively divides the input array into smaller parts until each part has less than two elements,
+     * {@code mergeDec} The recursive calls ensure that the algorithm recursively divides the input array into smaller
+     * parts until each part has less than two elements,
      * and then merges the sorted parts together to obtain the final sorted array.
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
@@ -158,7 +170,7 @@ extends Merge {
      * @see         MergeInterface#mergeDec(Comparable[], int, int, int, int, Comparable[])
      */
     @Override
-    public void mergeDec(Comparable[] array, int left, int right, Comparable[] buffer){
+    public void mergeDec(Comparable[] array, int left, int right, Comparable[] buffer) {
         if ((right - left) < 2) {
             return;
         }
@@ -180,7 +192,8 @@ extends Merge {
      *     If so, the range contains <i>1</i> or <i>0</i> elements,
      *     which means it is already sorted, and the method returns.</li>
      *     <li>Next, the method calculates two midpoints: {@code mid1} and {@code mid2}.
-     *     The division of the range into three parts indicates that the merge operation will be performed on three sorted subarrays.
+     *     The division of the range into three parts indicates that the merge operation will be performed on three
+     *     sorted subarrays.
      *     The {@code mid1} is calculated as {@code (left + ((right - left) / 3))},
      *     and {@code mid2} is calculated as {@code (left + (2 * ((right - left) / 3)) + 1)}.</li>
      *     <li>The {@code merge} method is then recursively called four times:</li>
@@ -193,7 +206,8 @@ extends Merge {
      *     <li>Fourth performs the final merge operation
      *     by merging the three sorted subarrays in the {@code buffer} array back into the original {@code array},
      *     resulting in a sorted range from {@code left} to {@code right}.</li>
-     *     <li>The last recursive call to {@code merge} with five parameters indicates that this method performs the actual merging of the subarrays.
+     *     <li>The last recursive call to {@code merge} with five parameters indicates that this method performs the
+     *     actual merging of the subarrays.
      *     The sorted subarrays from the {@code buffer} array are merged back into
      *     the original {@code array} using the specified range and comparison logic.</li>
      * </ul>
@@ -208,7 +222,8 @@ extends Merge {
      * @see         MergeInterface#merge(Comparable[], int, int, int, int, Comparable[], SortFunctional)
      */
     @Override
-    public void merge(Comparable[] array, int left, int right, Comparable[] buffer, SortFunctional<Comparable> functional){
+    public void merge(
+            Comparable[] array, int left, int right, Comparable[] buffer, SortFunctional<Comparable> functional) {
         if ((right - left) < 2) {
             return;
         }
@@ -221,28 +236,31 @@ extends Merge {
 
     /**
      * {@code mergeInc} method for performing an iterative bottom-up merge sort on a list.
-     * It divides the list into subarrays of increasing sizes and merges them together until the entire list is sorted.
+     * It divides the list into sublists of increasing sizes and merges them together until the entire list is sorted.
      * <ul>
-     *     <li>first conditional statement {@code (right - left) < 2} checks if the current range has less than two elements.
-     *     If true, it means the range is already sorted, so the method returns without performing any further operations.</li>
+     *     <li>first conditional statement {@code (right - left) < 2} checks if the current range has less than two
+     *     elements.
+     *     If true, it means the range is already sorted, so the method returns without performing any further
+     *     operations.</li>
      *     <li>Next, the method calculates two midpoints: {@code mid1} and {@code mid2}.
      *     These midpoints divide the current range into three roughly equal parts.</li>
      *     <li>It recursively sorts the {@code left / mid / right} part of the range from
      *     {@code left to mid1 /mid1 to mid2 / mid2 to right} using the buffer list as the temporary storage.</li>
-     *     <li>Call method {@code mergeInc}. mergeInc method for merging three sorted subarrays into a single list.
-     *     It takes the indices of the subarray boundaries and uses four pointers left, mid1, mid2, right,
-     *     to iterate through the subarrays and merge them into a buffer list.</li>
+     *     <li>Call method {@code mergeInc}. mergeInc method for merging three sorted sublists into a single list.
+     *     It takes the indices of the sublist boundaries and uses four pointers left, mid1, mid2, right,
+     *     to iterate through the sublists and merge them into a buffer list.</li>
      * </ul>
-     * {@code mergeInc} The recursive calls ensure that the algorithm recursively divides the input list into smaller parts until each part has less than two elements,
+     * {@code mergeInc} The recursive calls ensure that the algorithm recursively divides the input list into smaller
+     * parts until each part has less than two elements,
      * and then merges the sorted parts together to obtain the final sorted list.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (exclusive) of the sublist to be sorted.
      * @param       buffer An auxiliary list used for merging.
      * @see         MergeInterface#mergeInc(List, int, int, int, int, List)
      */
     @Override
-    public <L extends Comparable> void mergeInc(List<L> list, int left, int right, List<L> buffer){
+    public <L extends Comparable> void mergeInc(List<L> list, int left, int right, List<L> buffer) {
         if ((right - left) < 2) {
             return;
         }
@@ -255,28 +273,31 @@ extends Merge {
 
     /**
      * {@code mergeDec} method for performing an iterative bottom-up merge sort on a list.
-     * It divides the list into subarrays of decreasing sizes and merges them together until the entire list is sorted.
+     * It divides the list into sublists of decreasing sizes and merges them together until the entire list is sorted.
      * <ul>
-     *     <li>first conditional statement {@code (right - left) < 2} checks if the current range has less than two elements.
-     *     If true, it means the range is already sorted, so the method returns without performing any further operations.</li>
+     *     <li>first conditional statement {@code (right - left) < 2} checks if the current range has less than two
+     *     elements.
+     *     If true, it means the range is already sorted, so the method returns without performing any further
+     *     operations.</li>
      *     <li>Next, the method calculates two midpoints: {@code mid1} and {@code mid2}.
      *     These midpoints divide the current range into three roughly equal parts.</li>
      *     <li>It recursively sorts the {@code left / mid / right} part of the range from
      *     {@code left to mid1 /mid1 to mid2 / mid2 to right} using the buffer list as the temporary storage.</li>
-     *     <li>Call method {@code mergeInc}. mergeInc method for merging three sorted subarrays into a single list.
-     *     It takes the indices of the subarray boundaries and uses four pointers left, mid1, mid2, right,
-     *     to iterate through the subarrays and merge them into a buffer list.</li>
+     *     <li>Call method {@code mergeInc}. mergeInc method for merging three sorted sublists into a single list.
+     *     It takes the indices of the sublist boundaries and uses four pointers left, mid1, mid2, right,
+     *     to iterate through the sublists and merge them into a buffer list.</li>
      * </ul>
-     * {@code mergeDec} The recursive calls ensure that the algorithm recursively divides the input list into smaller parts until each part has less than two elements,
+     * {@code mergeDec} The recursive calls ensure that the algorithm recursively divides the input list into smaller
+     * parts until each part has less than two elements,
      * and then merges the sorted parts together to obtain the final sorted list.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (exclusive) of the sublist to be sorted.
      * @param       buffer An auxiliary list used for merging.
      * @see         MergeInterface#mergeDec(List, int, int, int, int, List)
      */
     @Override
-    public <L extends Comparable> void mergeDec(List<L> list, int left, int right, List<L> buffer){
+    public <L extends Comparable> void mergeDec(List<L> list, int left, int right, List<L> buffer) {
         if ((right - left) < 2) {
             return;
         }
@@ -298,7 +319,8 @@ extends Merge {
      *     If so, the range contains <i>1</i> or <i>0</i> elements,
      *     which means it is already sorted, and the method returns.</li>
      *     <li>Next, the method calculates two midpoints: {@code mid1} and {@code mid2}.
-     *     The division of the range into three parts indicates that the merge operation will be performed on three sorted subarrays.
+     *     The division of the range into three parts indicates that the merge operation will be performed on three
+     *     sorted sublist.
      *     The {@code mid1} is calculated as {@code (left + ((right - left) / 3))},
      *     and {@code mid2} is calculated as {@code (left + (2 * ((right - left) / 3)) + 1)}.</li>
      *     <li>The {@code merge} method is then recursively called four times:</li>
@@ -309,24 +331,26 @@ extends Merge {
      *     <li>Third recursively merges the right portion of
      *     the range from {@code mid2} to {@code right} into the {@code buffer} list.</li>
      *     <li>Fourth performs the final merge operation
-     *     by merging the three sorted subarrays in the {@code buffer} list back into the original {@code list},
+     *     by merging the three sorted sublist in the {@code buffer} list back into the original {@code list},
      *     resulting in a sorted range from {@code left} to {@code right}.</li>
-     *     <li>The last recursive call to {@code merge} with five parameters indicates that this method performs the actual merging of the subarrays.
-     *     The sorted subarrays from the {@code buffer} list are merged back into
+     *     <li>The last recursive call to {@code merge} with five parameters indicates that this method performs the
+     *     actual merging of the sublist.
+     *     The sorted sublist from the {@code buffer} list are merged back into
      *     the original {@code list} using the specified range and comparison logic.</li>
      * </ul>
      * {@code merge} The recursive calls ensure that the algorithm recursively divides
      * the input list into smaller parts until each part has less than two elements,
      * and then merges the sorted parts together to obtain the final sorted list.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (exclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (exclusive) of the sublist to be sorted.
      * @param       buffer An auxiliary list used for merging.
      * @param       functional lambda expression for comparison.
      * @see         MergeInterface#merge(List, int, int, int, int, List, SortFunctional)
      */
     @Override
-    public <L extends Comparable> void merge(List<L> list, int left, int right, List<L> buffer, SortFunctional<Comparable> functional){
+    public <L extends Comparable> void merge(
+            List<L> list, int left, int right, List<L> buffer, SortFunctional<Comparable> functional) {
         if ((right - left) < 2) {
             return;
         }
@@ -338,14 +362,17 @@ extends Merge {
     }
 
     /**
-     * {@code merge3Inc} the method, a new temporary array called {@code buffer} is created with the same length as the input array.
+     * {@code merge3Inc} the method, a new temporary array called {@code buffer} is created with the same length as
+     * the input array.
      * The {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
      * method is used to copy the elements from the input array into the buffer array.
      * <ul>
      *     <li>Is called with the {@code buffer} array as the temporary storage.
-     *     This method will recursively sort the specified range (<i>0</i> to {@code array.length}) using the {@code buffer} array.</li>
+     *     This method will recursively sort the specified range (<i>0</i> to {@code array.length}) using the
+     *     {@code buffer} array.</li>
      *     <li>After the {@code mergeInc} method completes, the sorted elements are stored in the buffer array.
-     *     Finally, the sorted elements are copied back from the buffer array to the original array using another {@code System.arraycopy} call.</li>
+     *     Finally, the sorted elements are copied back from the buffer array to the original array using another
+     *     {@code System.arraycopy} call.</li>
      * </ul>
      * {@code merge3Inc} method serves as a wrapper for the {@code mergeInc} method,
      * providing the necessary setup and cleanup steps for the incremental merge sort algorithm.
@@ -360,14 +387,17 @@ extends Merge {
     }
 
     /**
-     * {@code merge3Dec} the method, a new temporary array called {@code buffer} is created with the same length as the input array.
+     * {@code merge3Dec} the method, a new temporary array called {@code buffer} is created with the same length as
+     * the input array.
      * The {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
      * method is used to copy the elements from the input array into the buffer array.
      * <ul>
      *     <li>Is called with the {@code buffer} array as the temporary storage.
-     *     This method will recursively sort the specified range (<i>0</i> to {@code array.length}) using the {@code buffer} array.</li>
+     *     This method will recursively sort the specified range (<i>0</i> to {@code array.length}) using the
+     *     {@code buffer} array.</li>
      *     <li>After the {@code mergeDec} method completes, the sorted elements are stored in the buffer array.
-     *     Finally, the sorted elements are copied back from the buffer array to the original array using another {@code System.arraycopy} call.</li>
+     *     Finally, the sorted elements are copied back from the buffer array to the original array using another
+     *     {@code System.arraycopy} call.</li>
      * </ul>
      * {@code merge3Dec} method serves as a wrapper for the {@code mergeDec} method,
      * providing the necessary setup and cleanup steps for the decremental merge sort algorithm.
@@ -384,7 +414,7 @@ extends Merge {
     /**
      * {@code merge3} method, which is responsible for performing a merge operation on
      * the entire {@code array} using a temporary {@code buffer} array.
-     * This method utilizes the {@code merge} method to merge the sorted subarrays.
+     * This method utilizes the {@code merge} method to merge the sorted sublist.
      * <ul>
      *     <li>It creates a new {@code buffer} array of the same length as
      *     the original {@code array} using new {@code Comparable[array.length]}.</li>
@@ -398,7 +428,7 @@ extends Merge {
      *     <li>After the merge operation is completed,
      *     it uses {@code System.arraycopy()} to copy the merged elements from
      *     the {@code buffer} array back to the original {@code array}.
-     *     This step updates the original array with the merged sorted subarrays.</li>
+     *     This step updates the original array with the merged sorted sublists.</li>
      * </ul>
      * {@code merge3} method essentially creates a temporary copy of the original array,
      * performs the merge operation on the copy, and then copies the merged elements back to the original array.
@@ -415,14 +445,17 @@ extends Merge {
     }
 
     /**
-     * {@code merge3Inc} the method, a new temporary array called {@code buffer} is created with the same length as the input array.
+     * {@code merge3Inc} the method, a new temporary array called {@code buffer} is created with the same length as
+     * the input array.
      * The {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
      * method is used to copy the elements from the input array into the buffer array.
      * <ul>
      *     <li>Is called with the {@code buffer} array as the temporary storage.
-     *     This method will recursively sort the specified range ({@code left} to {@code right}) using the {@code buffer} array.</li>
+     *     This method will recursively sort the specified range ({@code left} to {@code right}) using the
+     *     {@code buffer} array.</li>
      *     <li>After the {@code mergeInc} method completes, the sorted elements are stored in the buffer array.
-     *     Finally, the sorted elements are copied back from the buffer array to the original array using another {@code System.arraycopy} call.</li>
+     *     Finally, the sorted elements are copied back from the buffer array to the original array using another
+     *     {@code System.arraycopy} call.</li>
      * </ul>
      * {@code merge3Inc} method serves as a wrapper for the {@code mergeInc} method,
      * providing the necessary setup and cleanup steps for the incremental merge sort algorithm.
@@ -439,14 +472,17 @@ extends Merge {
     }
 
     /**
-     * {@code merge3Dec} the method, a new temporary array called {@code buffer} is created with the same length as the input array.
+     * {@code merge3Dec} the method, a new temporary array called {@code buffer} is created with the same length as
+     * the input array.
      * The {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy}
      * method is used to copy the elements from the input array into the buffer array.
      * <ul>
      *     <li>Is called with the {@code buffer} array as the temporary storage.
-     *     This method will recursively sort the specified range ({@code left} to {@code right}) using the {@code buffer} array.</li>
+     *     This method will recursively sort the specified range ({@code left} to {@code right}) using the
+     *     {@code buffer} array.</li>
      *     <li>After the {@code mergeDec} method completes, the sorted elements are stored in the buffer array.
-     *     Finally, the sorted elements are copied back from the buffer array to the original array using another {@code System.arraycopy} call.</li>
+     *     Finally, the sorted elements are copied back from the buffer array to the original array using another
+     *     {@code System.arraycopy} call.</li>
      * </ul>
      * {@code merge3Dec} method serves as a wrapper for the {@code mergeDec} method,
      * providing the necessary setup and cleanup steps for the decremental merge sort algorithm.
@@ -465,7 +501,7 @@ extends Merge {
     /**
      * {@code merge3} method, which is responsible for performing a merge operation on
      * the entire {@code array} using a temporary {@code buffer} array.
-     * This method utilizes the {@code merge} method to merge the sorted subarrays.
+     * This method utilizes the {@code merge} method to merge the sorted sublists.
      * <ul>
      *     <li>It creates a new {@code buffer} array of the same length as
      *     the original {@code array} using new {@code Comparable[array.length]}.</li>
@@ -479,7 +515,7 @@ extends Merge {
      *     <li>After the merge operation is completed,
      *     it uses {@code System.arraycopy()} to copy the merged elements from
      *     the {@code buffer} array back to the original {@code array}.
-     *     This step updates the original array with the merged sorted subarrays.</li>
+     *     This step updates the original array with the merged sorted sublists.</li>
      * </ul>
      * {@code merge3} method essentially creates a temporary copy of the original array,
      * performs the merge operation on the copy, and then copies the merged elements back to the original array.
@@ -503,9 +539,12 @@ extends Merge {
      * the indices <i>0</i> and {@code list.size()}.
      * <ul>
      *     <li>It creates a new {@link java.util.ArrayList ArrayList} called buffer and initializes it with
-     *     the contents of the original {@code list} by passing it as an argument to the {@code  ArrayList} constructor.</li>
-     *     <li>It calls another method named {@code mergeInc} with the {@code buffer}, <i>0</i>, {@code list.size()}, and the original {@code list} as arguments.
-     *     This method performs the incremental merge sort operation on the {@code buffer} list, updating it in place.</li>
+     *     the contents of the original {@code list} by passing it as an argument to the {@code ArrayList}
+     *     constructor.</li>
+     *     <li>It calls another method named {@code mergeInc} with the {@code buffer}, <i>0</i>, {@code list.size()},
+     *     and the original {@code list} as arguments.
+     *     This method performs the incremental merge sort operation on the {@code buffer} list, updating it
+     *     in place.</li>
      *     <li>It clears the original list using the {@link java.util.List#clear() clear()} method.</li>
      *     <li>It adds all the elements from the {@code buffer} list back to the original {@code list} using
      *     the {@link java.util.List#addAll(Collection) addAll()} method.</li>
@@ -528,9 +567,12 @@ extends Merge {
      * the indices <i>0</i> and {@code list.size()}.
      * <ul>
      *     <li>It creates a new {@link java.util.ArrayList ArrayList} called buffer and initializes it with
-     *     the contents of the original {@code list} by passing it as an argument to the {@code  ArrayList} constructor.</li>
-     *     <li>It calls another method named {@code mergeInc} with the {@code buffer}, <i>0</i>, {@code list.size()}, and the original {@code list} as arguments.
-     *     This method performs the decremental merge sort operation on the {@code buffer} list, updating it in place.</li>
+     *     the contents of the original {@code list} by passing it as an argument to the {@code ArrayList}
+     *     constructor.</li>
+     *     <li>It calls another method named {@code mergeInc} with the {@code buffer}, <i>0</i>, {@code list.size()},
+     *     and the original {@code list} as arguments.
+     *     This method performs the decremental merge sort operation on the {@code buffer} list, updating it in
+     *     place.</li>
      *     <li>It clears the original list using the {@link java.util.List#clear() clear()} method.</li>
      *     <li>It adds all the elements from the {@code buffer} list back to the original {@code list} using
      *     the {@link java.util.List#addAll(Collection) addAll()} method.</li>
@@ -550,10 +592,11 @@ extends Merge {
     /**
      * {@code merge3} method, which is responsible for performing a merge operation on
      * the entire {@code list} using a temporary {@code buffer} list.
-     * This method utilizes the {@code merge} method to merge the sorted subarrays.
+     * This method utilizes the {@code merge} method to merge the sorted sublists.
      * <ul>
      *     <li>It creates a new {@link java.util.ArrayList ArrayList} called buffer and initializes it with
-     *     the contents of the original {@code list} by passing it as an argument to the {@code  ArrayList} constructor.</li>
+     *     the contents of the original {@code list} by passing it as an argument to the {@code ArrayList}
+     *     constructor.</li>
      *     <li>It calls another method named {@code mergeInc} with
      *     the {@code buffer}, <i>0</i>, {@code list.size()}, and the original {@code list} as arguments.
      *     This method performs a merge sort operation on the wash specified by
@@ -579,12 +622,16 @@ extends Merge {
     /**
      * {@code merge3Inc} that takes a {@code List<Comparable>} called {@code list},
      * as well as two indices {@code left} and {@code right}.
-     * This method performs an incremental merge sort operation on a sublist of the {@code list} between the indices {@code left} and {@code right}.
+     * This method performs an incremental merge sort operation on a sublist of the {@code list} between the indices
+     * {@code left} and {@code right}.
      * <ul>
      *     <li>It creates a new {@link java.util.ArrayList ArrayList} called buffer and initializes it with
-     *     the contents of the original {@code list} by passing it as an argument to the {@code  ArrayList} constructor.</li>
-     *     <li>It calls another method named {@code mergeInc} with the {@code buffer}, {@code left}, {@code right}, and the original {@code list} as arguments.
-     *     This method performs the incremental merge sort operation on the {@code buffer} list, updating it in place.</li>
+     *     the contents of the original {@code list} by passing it as an argument to the {@code ArrayList}
+     *     constructor.</li>
+     *     <li>It calls another method named {@code mergeInc} with the {@code buffer}, {@code left}, {@code right},
+     *     and the original {@code list} as arguments.
+     *     This method performs the incremental merge sort operation on the {@code buffer} list, updating it
+     *     in place.</li>
      *     <li>It clears the original list using the {@link java.util.List#clear() clear()} method.</li>
      *     <li>It adds all the elements from the {@code buffer} list back to the original {@code list} using
      *     the {@link java.util.List#addAll(Collection) addAll()} method.</li>
@@ -606,12 +653,16 @@ extends Merge {
     /**
      * {@code merge3Dec} that takes a {@code List<Comparable>} called {@code list},
      * as well as two indices {@code left} and {@code right}.
-     * This method performs a decremental merge sort operation on a sublist of the {@code list} between the indices {@code left} and {@code right}.
+     * This method performs a decremental merge sort operation on a sublist of the {@code list} between the indices
+     * {@code left} and {@code right}.
      * <ul>
      *     <li>It creates a new {@link java.util.ArrayList ArrayList} called buffer and initializes it with
-     *     the contents of the original {@code list} by passing it as an argument to the {@code  ArrayList} constructor.</li>
-     *     <li>It calls another method named {@code mergeInc} with the {@code buffer}, {@code left}, {@code right}, and the original {@code list} as arguments.
-     *     This method performs the decremental merge sort operation on the {@code buffer} list, updating it in place.</li>
+     *     the contents of the original {@code list} by passing it as an argument to the {@code ArrayList}
+     *     constructor.</li>
+     *     <li>It calls another method named {@code mergeInc} with the {@code buffer}, {@code left}, {@code right},
+     *     and the original {@code list} as arguments.
+     *     This method performs the decremental merge sort operation on the {@code buffer} list, updating it
+     *     in place.</li>
      *     <li>It clears the original list using the {@link java.util.List#clear() clear()} method.</li>
      *     <li>It adds all the elements from the {@code buffer} list back to the original {@code list} using
      *     the {@link java.util.List#addAll(Collection) addAll()} method.</li>
@@ -636,7 +687,8 @@ extends Merge {
      * This method utilizes the {@code merge} method to merge the sorted subarrays.
      * <ul>
      *     <li>It creates a new {@link java.util.ArrayList ArrayList} called buffer and initializes it with
-     *     the contents of the original {@code list} by passing it as an argument to the {@code  ArrayList} constructor.</li>
+     *     the contents of the original {@code list} by passing it as an argument to the {@code ArrayList}
+     *     constructor.</li>
      *     <li>It calls another method named {@code mergeInc} with
      *     the {@code buffer}, {@code left}, {@code right}, and the original {@code list} as arguments.
      *     This method performs a merge sort operation on the wash specified by
@@ -654,7 +706,8 @@ extends Merge {
      * @param       functional lambda expression for comparison.
      * @see         Merge3#merge(List, int, int, List, SortFunctional)
      */
-    protected <L extends Comparable> void merge3(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void merge3(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         List<L> buffer = new ArrayList<>(list);
         merge(buffer, left, right, list, functional);
         list.clear();

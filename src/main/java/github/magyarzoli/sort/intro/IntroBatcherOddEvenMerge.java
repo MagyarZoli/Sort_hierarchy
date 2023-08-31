@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.BatcherOddEvenMerge;
 
 /**
@@ -15,8 +16,8 @@ import github.magyarzoli.sort.BatcherOddEvenMerge;
  */
 @SuppressWarnings("rawtypes")
 public class IntroBatcherOddEvenMerge
-extends BatcherOddEvenMerge
-implements Intro<Comparable> {
+        extends BatcherOddEvenMerge
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Batcher's Odd-even Merge Sort:</b><br>

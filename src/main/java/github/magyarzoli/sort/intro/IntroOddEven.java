@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.OddEven;
 
 /**
@@ -15,8 +16,8 @@ import github.magyarzoli.sort.OddEven;
  */
 @SuppressWarnings("rawtypes")
 public class IntroOddEven
-extends OddEven
-implements Intro<Comparable> {
+        extends OddEven
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Odd-even (Brick) Sort:</b><br>

@@ -1,5 +1,6 @@
 package github.magyarzoli.sort;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.SortSwap;
 
 import java.util.ArrayList;
@@ -15,12 +16,13 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class Permutation
-extends Bogo {
+        extends Bogo {
 
     /**
      * <b>Permutation Sort:</b><br>
      * Is a simple but inefficient sorting algorithm that works by generating all possible permutations
-     * of an array and selecting the one that is in sorted order. While conceptually straightforward, this approach leads
+     * of an array and selecting the one that is in sorted order. While conceptually straightforward, this approach
+     * leads
      * to a high time complexity and is not practical for sorting large arrays.<br><br>
      * <b>Example:</b>
      * <ol>
@@ -453,7 +455,8 @@ extends Bogo {
      *     <li>If no permutation satisfying the sorting condition is found, the method returns the original
      *     {@code array} unchanged.</li>
      * </ul>
-     * {@code permuteComparable} that functional class named {@code SortFunctional} that defines a sorting condition or rule. The {@code isSorted}
+     * {@code permuteComparable} that functional class named {@code SortFunctional} that defines a sorting condition or
+     * rule. The {@code isSorted}
      * method a part of this functional interface or class, and it's used to determine if a permutation meets the
      * sorting condition defined by the {@code functional} object.
      * @param       array to be arranged.
@@ -464,7 +467,8 @@ extends Bogo {
      * @see         Permutation#permute(Comparable[], int, int, List)
      * @see         Bogo#isSorted(Comparable[], SortFunctional)
      */
-    protected Comparable[] permuteComparable(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
+    protected Comparable[] permuteComparable(
+            Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         List<Comparable[]> permutations = new ArrayList<>();
         permute(array, left, right, permutations);
         for (Comparable[] comparable : permutations) {
@@ -708,7 +712,8 @@ extends Bogo {
      * @param       functional lambda expression for comparison.
      * @see         Permutation#permuteComparable(List, int, int, SortFunctional)
      */
-    protected <L extends Comparable> void permutation(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void permutation(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         List<L> subList = permuteComparable(list.subList(left, (right + 1)), functional);
         for (int i = left; i <= right; i++) {
             list.set(i, subList.get(i - left));
@@ -922,7 +927,8 @@ extends Bogo {
      *     <li>If no permutation satisfying the sorting condition is found, the method returns the original
      *     {@code list} unchanged.</li>
      * </ul>
-     * {@code permuteComparable} that functional class named {@code SortFunctional} that defines a sorting condition or rule. The {@code isSorted}
+     * {@code permuteComparable} that functional class named {@code SortFunctional} that defines a sorting condition or
+     * rule. The {@code isSorted}
      * method a part of this functional interface or class, and it's used to determine if a permutation meets the
      * sorting condition defined by the {@code functional} object.
      * @param       list to be arranged.
@@ -933,7 +939,8 @@ extends Bogo {
      * @see         Permutation#permute(List, int, int, List)
      * @see         Bogo#isSorted(List, SortFunctional)
      */
-    protected <L extends Comparable> List<L> permuteComparable(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> List<L> permuteComparable(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         List<List<L>> permutations = new ArrayList<>();
         permute(list, left, right, permutations);
         for (List<L> comparable : permutations) {

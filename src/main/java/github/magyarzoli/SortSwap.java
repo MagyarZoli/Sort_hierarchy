@@ -125,7 +125,7 @@ public interface SortSwap<T extends Comparable>
      * </ul>
      * {@code T} in {@code CompareTo<T>} represents a generic type, which means it can be replaced with any specific
      * type when invoking the {@code isSwap} method.
-     * @see         Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      * @see         SortSwap#swap(Comparable[], int, int)
      */
     default boolean isSwap(T[] array, int i, int j, SortFunctional<T> function){
@@ -305,7 +305,7 @@ public interface SortSwap<T extends Comparable>
      * </ul>
      * {@code T} in {@code CompareTo<T>} represents a generic type, which means it can be replaced with any specific
      * type when invoking the {@code isSwap} method.
-     * @see         Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      * @see         SortSwap#swap(List, int, int)
      */
     default <L extends T> boolean isSwap(List<L> list, int i, int j, SortFunctional<T> function){

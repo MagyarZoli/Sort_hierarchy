@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.TernaryHeap;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.TernaryHeap;
  */
 @SuppressWarnings("rawtypes")
 public class IntroTernaryHeap
-extends TernaryHeap
-implements Intro<Comparable> {
+        extends TernaryHeap
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Ternary Heap Sort:</b><br>

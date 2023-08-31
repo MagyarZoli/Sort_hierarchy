@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.introDPQ.IntroDPQInsertion;
 import github.magyarzoli.sort.Insertion;
 
@@ -18,8 +19,8 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class IntroInsertion
-extends Insertion
-implements Intro<Comparable> {
+        extends Insertion
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Insertion Sort:</b><br>

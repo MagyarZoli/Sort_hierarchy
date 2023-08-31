@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Shell;
 import github.magyarzoli.sort.intro.introDPQ.IntroDPQShell;
 
@@ -18,8 +19,8 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class IntroShell
-extends Shell
-implements Intro<Comparable> {
+        extends Shell
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Insertion Sort:</b><br>

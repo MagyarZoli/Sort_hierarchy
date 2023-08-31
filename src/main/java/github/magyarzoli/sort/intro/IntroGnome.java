@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.introDPQ.IntroDPQGnome;
 import github.magyarzoli.sort.Gnome;
 
@@ -16,8 +17,8 @@ import github.magyarzoli.sort.Gnome;
  */
 @SuppressWarnings("rawtypes")
 public class IntroGnome
-extends Gnome
-implements Intro<Comparable> {
+        extends Gnome
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Gnome Sort:</b><br>

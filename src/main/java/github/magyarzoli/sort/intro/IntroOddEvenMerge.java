@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.introDPQ.IntroDPQOddEvenMerge;
 import github.magyarzoli.sort.OddEvenMerge;
 
@@ -16,8 +17,8 @@ import github.magyarzoli.sort.OddEvenMerge;
  */
 @SuppressWarnings("rawtypes")
 public class IntroOddEvenMerge
-extends OddEvenMerge
-implements Intro<Comparable> {
+        extends OddEvenMerge
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Odd-even Merge Sort:</b><br>

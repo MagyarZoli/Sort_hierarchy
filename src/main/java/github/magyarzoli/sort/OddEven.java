@@ -1,23 +1,26 @@
 package github.magyarzoli.sort;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.SortSwap;
 import github.magyarzoli.sort.intro.IntroOddEven;
 
 import java.util.List;
 
 /**
- * The Odd-even (Brick) Sort algorithm is a variation of the Bubble Sort algorithm that is specifically designed to sort arrays in parallel.
+ * The Odd-even (Brick) Sort algorithm is a variation of the Bubble Sort algorithm that is specifically designed to
+ * sort arrays in parallel.
  * It works by comparing and swapping adjacent elements in pairs repeatedly until the array is sorted.
  * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
 public class OddEven
-extends Bubble {
+        extends Bubble {
 
     /**
      * <b>Odd-even (Brick) Sort:</b><br>
-     * The Odd-even Sort algorithm is a variation of the Bubble Sort algorithm that is specifically designed to sort arrays in parallel.
+     * The Odd-even Sort algorithm is a variation of the Bubble Sort algorithm that is specifically designed to sort
+     * arrays in parallel.
      * It works by comparing and swapping adjacent elements in pairs repeatedly until the array is sorted.<br><br>
      * <b>Example:</b>
      * <ol>
@@ -25,15 +28,18 @@ extends Bubble {
      *     <li>Repeat the following steps until the array is sorted:</li>
      *     <li>Compare and swap adjacent elements in pairs, starting from the first and second elements.</li>
      *     <li>Compare and swap adjacent elements in pairs, starting from the second and third elements.</li>
-     *     <li>Continue alternating between odd and even adjacent element comparisons and swaps until the last pair of elements.</li>
-     *     <li>After each iteration, the largest element in the unsorted portion of the array will move to its correct position at the end.</li>
+     *     <li>Continue alternating between odd and even adjacent element comparisons and swaps until the last pair of
+     *     elements.</li>
+     *     <li>After each iteration, the largest element in the unsorted portion of the array will move to its correct
+     *     position at the end.</li>
      *     <li>Repeat the above steps until the entire array is sorted.</li>
      * </ol>
      * <b>Note:</b><br>
      * The odd-even sort algorithm works well for parallel computing because
      * the comparisons and swaps can be performed independently on different pairs of elements.
      * However, it is not as efficient as some other sorting algorithms,
-     * and it has a worst-case time complexity of <em>O(n^2)</em>, where n is the number of elements to be sorted.<br><br>
+     * and it has a worst-case time complexity of <em>O(n^2)</em>, where n is the number of elements to be
+     * sorted.<br><br>
      * Transposition sort is a stable sorting algorithm.
      * This means that it maintains the relative order of elements with equal values during the sorting process.
      * If two elements have the same value,
@@ -112,20 +118,25 @@ extends Bubble {
      *     <li>The method begins by initializing a boolean variable named {@code isSorted} to false.
      *     This variable will serve as a flag to indicate whether the array is sorted or not.</li>
      *     <li>There is a {@code while} loop that continues until {@code isSorted} is {@code true}.
-     *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the array is already sorted.</li>
+     *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the array is already
+     *     sorted.</li>
      *     <li>The {@code indexedElementInc} method is then called twice within the loop.
      *     <li>The first call passes the array, index <i>1</i>, and the length of the {@code array} as parameters.</li>
      *     <li>The second call passes the array, index <i>0</i>, and the length of the {@code array} as parameters.</li>
-     *     <li>The purpose of these calls is to check if the indexed elements of the array are sorted in incremental order.
+     *     <li>The purpose of these calls is to check if the indexed elements of the array are sorted in incremental
+     *     order.
      *     The {@code indexedElementInc} method, returns {@code true}
      *     if the elements at the specified indices do not require any swaps to achieve incremental order,
      *     and {@code false} otherwise.</li>
-     *     <li>If any of the {@code indexedElementInc} calls return {@code false}, it means that at least one swap was performed to achieve the desired order.
-     *     In such cases, the isSorted variable is set to {@code false}, indicating that the array is not completely sorted.</li>
+     *     <li>If any of the {@code indexedElementInc} calls return {@code false}, it means that at least one swap was
+     *     performed to achieve the desired order.
+     *     In such cases, the isSorted variable is set to {@code false}, indicating that the array is not completely
+     *     sorted.</li>
      *     <li>The {@code while} loop continues until both {@code indexedElementInc} calls return {@code true},
      *     indicating that the entire array is sorted in incremental order.</li>
      * </ul>
-     * {@code oddEvenInc} method repeatedly calls the {@code indexedElementInc} method on alternating indices to sort the array using
+     * {@code oddEvenInc} method repeatedly calls the {@code indexedElementInc} method on alternating indices to sort
+     * the array using
      * the odd-even sort algorithm until the entire array is sorted in incremental order.
      * @param       array to be arranged.
      * @see         OddEven#indexedElementInc(Comparable[], int, int)
@@ -146,20 +157,25 @@ extends Bubble {
      *     <li>The method begins by initializing a boolean variable named {@code isSorted} to false.
      *     This variable will serve as a flag to indicate whether the array is sorted or not.</li>
      *     <li>There is a {@code while} loop that continues until {@code isSorted} is {@code true}.
-     *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the array is already sorted.</li>
+     *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the array is already
+     *     sorted.</li>
      *     <li>The {@code indexedElementDec} method is then called twice within the loop.</li>
      *     <li>The first call passes the array, index <i>1</i>, and the length of the {@code array} as parameters.</li>
      *     <li>The second call passes the array, index <i>0</i>, and the length of the {@code array} as parameters.</li>
-     *     <li>The purpose of these calls is to check if the indexed elements of the array are sorted in decremental order.
+     *     <li>The purpose of these calls is to check if the indexed elements of the array are sorted in decremental
+     *     order.
      *     The {@code indexedElementDec} method, returns {@code true}
      *     if the elements at the specified indices do not require any swaps to achieve decremental order,
      *     and {@code false} otherwise.</li>
-     *     <li>If any of the {@code indexedElementDec} calls return {@code false}, it means that at least one swap was performed to achieve the desired order.
-     *     In such cases, the isSorted variable is set to {@code false}, indicating that the array is not completely sorted.</li>
+     *     <li>If any of the {@code indexedElementDec} calls return {@code false}, it means that at least one swap was
+     *     performed to achieve the desired order.
+     *     In such cases, the isSorted variable is set to {@code false}, indicating that the array is not completely
+     *     sorted.</li>
      *     <li>The {@code while} loop continues until both {@code indexedElementDec} calls return {@code true},
      *     indicating that the entire array is sorted in decremental order.</li>
      * </ul>
-     * {@code oddEvenInc} method repeatedly calls the {@code indexedElementDec} method on alternating indices to sort the array using
+     * {@code oddEvenInc} method repeatedly calls the {@code indexedElementDec} method on alternating indices to sort
+     * the array using
      * the odd-even sort algorithm until the entire array is sorted in decremental order.
      * @param       array to be arranged.
      * @see         OddEven#indexedElementDec(Comparable[], int, int)
@@ -181,26 +197,33 @@ extends Bubble {
      *     <li>The method initializes a boolean variable {@code isSorted} with the value {@code false}.
      *     This variable will be used to determine if the array is fully sorted.</li>
      *     <li>It enters a while loop that continues until the array is sorted ({@code isSorted} is {@code true}).</li>
-     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the array is sorted initially.</li>
+     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the array is sorted
+     *     initially.</li>
      *     <li>It then calls the {@code indexedElement} method twice:</li>
      *     <li>The first call checks if the elements starting from <i>1</i> and progressing
-     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
-     *     This is done by passing <i>1</i> as the {@code j} parameter and {@code array.length} as the {@code n} parameter to the {@code indexedElement} method.
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional}
+     *     interface.
+     *     This is done by passing <i>1</i> as the {@code j} parameter and {@code array.length} as the {@code n}
+     *     parameter to the {@code indexedElement} method.
      *     If any adjacent pair of elements is found to require swapping, {@code indexedElement} returns {@code false},
      *     indicating that the array is not yet fully sorted.
      *     In this case, the {@code isSorted} variable is set to {@code false}.</li>
      *     <li>The second call checks if the elements starting from <i>0</i> and progressing
-     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
-     *     This is done by passing <i>0</i> as the {@code j} parameter and {@code array.length} as the {@code n} parameter to the {@code indexedElement} method.
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional}
+     *     interface.
+     *     This is done by passing <i>0</i> as the {@code j} parameter and {@code array.length} as the {@code n}
+     *     parameter to the {@code indexedElement} method.
      *     Similarly, if any adjacent pair of elements requires swapping, {@code indexedElement} returns {@code false},
      *     and the {@code isSorted} variable is set to {@code false}.</li>
-     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping, {@code isSorted} remains {@code true},
+     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping,
+     *     {@code isSorted} remains {@code true},
      *     indicating that the array is fully sorted.</li>
      *     <li>The while loop continues until {@code isSorted} is {@code true},
      *     which means the array is sorted.</li>
      * </ul>
      * {@code oddEven} method sorts a specific range of the {@code array} using the odd-even sort algorithm
-     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range is completely sorted.
+     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range
+     * is completely sorted.
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
      * @see         OddEven#indexedElement(Comparable[], int, int, SortFunctional)
@@ -227,9 +250,11 @@ extends Bubble {
      *     <li>The {@code indexedElementInc} method is called twice within the loop.</li>
      *     <li>The first call passes the array, {@code (left + 1)}, and {@code right} as parameters.</li>
      *     <li>The second call passes the array, {@code left}, and {@code right} as parameters.</li>
-     *     <li>The purpose of these calls is to check if the indexed elements of the array range are sorted in incremental order.
+     *     <li>The purpose of these calls is to check if the indexed elements of the array range are sorted in
+     *     incremental order.
      *     The {@code indexedElementInc} method, as previously discussed,
-     *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to achieve incremental order,
+     *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to
+     *     achieve incremental order,
      *     and {@code false} otherwise.</li>
      *     <li>If any of the {@code indexedElementInc} calls return {@code false},
      *     indicating that at least one swap was performed within the range,
@@ -239,7 +264,8 @@ extends Bubble {
      *     indicating that the specified array range is sorted in incremental order.</li>
      * </ul>
      * {@code oddEvenInc} method sorts a specific range of the {@code array} using the odd-even sort algorithm
-     * by repeatedly calling the {@code indexedElementInc} method on alternating indices within the range until the range is completely sorted.
+     * by repeatedly calling the {@code indexedElementInc} method on alternating indices within the range until the
+     * range is completely sorted.
      * @param       array to be arranged.
      * @param       left specific range of the array.
      * @param       right specific range of the array.
@@ -267,9 +293,11 @@ extends Bubble {
      *     <li>The {@code indexedElementDec} method is called twice within the loop.</li>
      *     <li>The first call passes the array, {@code (left + 1)}, and {@code right} as parameters.</li>
      *     <li>The second call passes the array, {@code left}, and {@code right} as parameters.</li>
-     *     <li>The purpose of these calls is to check if the indexed elements of the array range are sorted in decremental order.
+     *     <li>The purpose of these calls is to check if the indexed elements of the array range are sorted in
+     *     decremental order.
      *     The {@code indexedElementDec} method, as previously discussed,
-     *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to achieve decremental order,
+     *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to
+     *     achieve decremental order,
      *     and {@code false} otherwise.</li>
      *     <li>If any of the {@code indexedElementDec} calls return {@code false},
      *     indicating that at least one swap was performed within the range,
@@ -279,7 +307,8 @@ extends Bubble {
      *     indicating that the specified array range is sorted in decremental order.</li>
      * </ul>
      * {@code oddEvenDec} method sorts a specific range of the {@code array} using the odd-even sort algorithm
-     * by repeatedly calling the {@code indexedElementDec} method on alternating indices within the range until the range is completely sorted.
+     * by repeatedly calling the {@code indexedElementDec} method on alternating indices within the range until the
+     * range is completely sorted.
      * @param       array to be arranged.
      * @param       left specific range of the array.
      * @param       right specific range of the array.
@@ -303,26 +332,33 @@ extends Bubble {
      *     <li>The method initializes a boolean variable {@code isSorted} with the value {@code false}.
      *     This variable will be used to determine if the array is fully sorted.</li>
      *     <li>It enters a while loop that continues until the array is sorted ({@code isSorted} is {@code true}).</li>
-     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the array is sorted initially.</li>
+     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the array is sorted
+     *     initially.</li>
      *     <li>It then calls the {@code indexedElement} method twice:</li>
      *     <li>The first call checks if the elements starting from {@code (left + 1)} and progressing
-     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
-     *     This is done by passing {@code (left + 1)} as the {@code j} parameter and {@code right} as the {@code n} parameter to the {@code indexedElement} method.
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional}
+     *     interface.
+     *     This is done by passing {@code (left + 1)} as the {@code j} parameter and {@code right} as the {@code n}
+     *     parameter to the {@code indexedElement} method.
      *     If any adjacent pair of elements is found to require swapping, {@code indexedElement} returns {@code false},
      *     indicating that the array is not yet fully sorted.
      *     In this case, the {@code isSorted} variable is set to {@code false}.</li>
      *     <li>The second call checks if the elements starting from {@code left} and progressing
-     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
-     *     This is done by passing {@code left} as the {@code j} parameter and {@code right} as the {@code n} parameter to the {@code indexedElement} method.
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional}
+     *     interface.
+     *     This is done by passing {@code left} as the {@code j} parameter and {@code right} as the {@code n} parameter
+     *     to the {@code indexedElement} method.
      *     Similarly, if any adjacent pair of elements requires swapping, {@code indexedElement} returns {@code false},
      *     and the {@code isSorted} variable is set to {@code false}.</li>
-     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping, {@code isSorted} remains {@code true},
+     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping,
+     *     {@code isSorted} remains {@code true},
      *     indicating that the array is fully sorted.</li>
      *     <li>The while loop continues until {@code isSorted} is {@code true},
      *     which means the array is sorted.</li>
      * </ul>
      * {@code oddEven} method sorts a specific range of the {@code array} using the odd-even sort algorithm
-     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range is completely sorted.
+     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range
+     * is completely sorted.
      * @param       array to be arranged.
      * @param       left specific range of the array.
      * @param       right specific range of the array.
@@ -344,8 +380,8 @@ extends Bubble {
      * The method iterates through the array elements starting from index {@code j}
      * and incrementing the index by <i>2</i> in each iteration until reaching {@code (n - 2)}.
      * <ul>
-     *     <li>Within the {@code for} loop, the method calls another method named {@code isSwapInc} and passes the array,
-     *     the current index {@code i}, and the value <i>1</i> as parameters.</li>
+     *     <li>Within the {@code for} loop, the method calls another method named {@code isSwapInc} and passes the
+     *     array, the current index {@code i}, and the value <i>1</i> as parameters.</li>
      *     <li>If the {@code isSwapInc} method returns {@code true},
      *     indicating that swapping the elements would result in an incremental order,
      *     the element variable is set to {@code false},
@@ -377,8 +413,8 @@ extends Bubble {
      * The method iterates through the array elements starting from index {@code j}
      * and incrementing the index by <i>2</i> in each iteration until reaching {@code (n - 2)}.
      * <ul>
-     *     <li>Within the {@code for} loop, the method calls another method named {@code isSwapDec} and passes the array,
-     *     the current index {@code i}, and the value <i>1</i> as parameters.</li>
+     *     <li>Within the {@code for} loop, the method calls another method named {@code isSwapDec} and passes the
+     *     array, the current index {@code i}, and the value <i>1</i> as parameters.</li>
      *     <li>If the {@code isSwapDec} method returns {@code true},
      *     indicating that swapping the elements would result in and decremental order,
      *     the element variable is set to {@code false},
@@ -405,11 +441,14 @@ extends Bubble {
     }
 
     /**
-     * {@code indexedElement} method you provided takes an array {@code array} of type {@link java.lang.Comparable Comparable},
-     * an integer {@code j}, an integer {@code n}, and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * {@code indexedElement} method you provided takes an array {@code array} of type {@link java.lang.Comparable
+     * Comparable},
+     * an integer {@code j}, an integer {@code n}, and an instance of the {@code SortFunctional<Comparable>} interface
+     * as parameters.
      * <ul>
      *     <li>The method initializes a boolean variable {@code element} with the value {@code true}.
-     *     This variable will be used to keep track of whether the indexed element at position {@code j} satisfies the condition.</li>
+     *     This variable will be used to keep track of whether the indexed element at position {@code j} satisfies the
+     *     condition.</li>
      *     <li>It enters a for loop that iterates from {@code j} to {@code (n - 2)} in steps of <i>1</i>.
      *     This means it only considers elements at even indices within the specified range.</li>
      *     <li>Inside the loop, it checks if the element at index {@code i} should be swapped with
@@ -449,15 +488,17 @@ extends Bubble {
      *     <li>The method begins by initializing a boolean variable named {@code isSorted} to false.
      *     This variable will serve as a flag to indicate whether the list is sorted or not.</li>
      *     <li>There is a {@code while} loop that continues until {@code isSorted} is {@code true}.
-     *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the list is already sorted.</li>
+     *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the list is already
+     *     sorted.</li>
      *     <li>The {@code indexedElementInc} method is then called twice within the loop.
      *     <li>The first call passes the list, index <i>1</i>, and the length of the {@code list} as parameters.</li>
      *     <li>The second call passes the list, index <i>0</i>, and the length of the {@code list} as parameters.</li>
-     *     <li>The purpose of these calls is to check if the indexed elements of the list are sorted in incremental order.
-     *     The {@code indexedElementInc} method, returns {@code true}
+     *     <li>The purpose of these calls is to check if the indexed elements of the list are sorted in incremental
+     *     order. The {@code indexedElementInc} method, returns {@code true}
      *     if the elements at the specified indices do not require any swaps to achieve incremental order,
      *     and {@code false} otherwise.</li>
-     *     <li>If any of the {@code indexedElementInc} calls return {@code false}, it means that at least one swap was performed to achieve the desired order.
+     *     <li>If any of the {@code indexedElementInc} calls return {@code false}, it means that at least one swap was
+     *     performed to achieve the desired order.
      *     In such cases, the isSorted variable is set to {@code false}, indicating that the list is not completely sorted.</li>
      *     <li>The {@code while} loop continues until both {@code indexedElementInc} calls return {@code true},
      *     indicating that the entire list is sorted in incremental order.</li>
@@ -483,20 +524,24 @@ extends Bubble {
      *     <li>The method begins by initializing a boolean variable named {@code isSorted} to false.
      *     This variable will serve as a flag to indicate whether the list is sorted or not.</li>
      *     <li>There is a {@code while} loop that continues until {@code isSorted} is {@code true}.
-     *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the list is already sorted.</li>
+     *     Within the loop, the value of {@code isSorted} is set to {@code true} to assume that the list is already
+     *     sorted.</li>
      *     <li>The {@code indexedElementDec} method is then called twice within the loop.</li>
      *     <li>The first call passes the list, index <i>1</i>, and the length of the {@code list} as parameters.</li>
      *     <li>The second call passes the list, index <i>0</i>, and the length of the {@code list} as parameters.</li>
-     *     <li>The purpose of these calls is to check if the indexed elements of the list are sorted in decremental order.
-     *     The {@code indexedElementDec} method, returns {@code true}
+     *     <li>The purpose of these calls is to check if the indexed elements of the list are sorted in decremental
+     *     order. The {@code indexedElementDec} method, returns {@code true}
      *     if the elements at the specified indices do not require any swaps to achieve decremental order,
      *     and {@code false} otherwise.</li>
-     *     <li>If any of the {@code indexedElementDec} calls return {@code false}, it means that at least one swap was performed to achieve the desired order.
-     *     In such cases, the isSorted variable is set to {@code false}, indicating that the list is not completely sorted.</li>
+     *     <li>If any of the {@code indexedElementDec} calls return {@code false}, it means that at least one swap was
+     *     performed to achieve the desired order.
+     *     In such cases, the isSorted variable is set to {@code false}, indicating that the list is not completely
+     *     sorted.</li>
      *     <li>The {@code while} loop continues until both {@code indexedElementDec} calls return {@code true},
      *     indicating that the entire list is sorted in decremental order.</li>
      * </ul>
-     * {@code oddEvenInc} method repeatedly calls the {@code indexedElementDec} method on alternating indices to sort the list using
+     * {@code oddEvenInc} method repeatedly calls the {@code indexedElementDec} method on alternating indices to sort
+     * the list using
      * the odd-even sort algorithm until the entire list is sorted in decremental order.
      * @param       list to be arranged.
      * @see         OddEven#indexedElementDec(List, int, int)
@@ -518,26 +563,33 @@ extends Bubble {
      *     <li>The method initializes a boolean variable {@code isSorted} with the value {@code false}.
      *     This variable will be used to determine if the list is fully sorted.</li>
      *     <li>It enters a while loop that continues until the list is sorted ({@code isSorted} is {@code true}).</li>
-     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the list is sorted initially.</li>
+     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the list is sorted
+     *     initially.</li>
      *     <li>It then calls the {@code indexedElement} method twice:</li>
      *     <li>The first call checks if the elements starting from <i>1</i> and progressing
-     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
-     *     This is done by passing <i>1</i> as the {@code j} parameter and {@code list.length} as the {@code n} parameter to the {@code indexedElement} method.
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional}
+     *     interface.
+     *     This is done by passing <i>1</i> as the {@code j} parameter and {@code list.length} as the {@code n}
+     *     parameter to the {@code indexedElement} method.
      *     If any adjacent pair of elements is found to require swapping, {@code indexedElement} returns {@code false},
      *     indicating that the list is not yet fully sorted.
      *     In this case, the {@code isSorted} variable is set to {@code false}.</li>
      *     <li>The second call checks if the elements starting from <i>0</i> and progressing
-     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
-     *     This is done by passing <i>0</i> as the {@code j} parameter and {@code list.length} as the {@code n} parameter to the {@code indexedElement} method.
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional}
+     *     interface.
+     *     This is done by passing <i>0</i> as the {@code j} parameter and {@code list.length} as the {@code n}
+     *     parameter to the {@code indexedElement} method.
      *     Similarly, if any adjacent pair of elements requires swapping, {@code indexedElement} returns {@code false},
      *     and the {@code isSorted} variable is set to {@code false}.</li>
-     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping, {@code isSorted} remains {@code true},
+     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping,
+     *     {@code isSorted} remains {@code true},
      *     indicating that the list is fully sorted.</li>
      *     <li>The while loop continues until {@code isSorted} is {@code true},
      *     which means the list is sorted.</li>
      * </ul>
      * {@code oddEven} method sorts a specific range of the {@code list} using the odd-even sort algorithm
-     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range is completely sorted.
+     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range
+     * is completely sorted.
      * @param       list to be arranged.
      * @param       functional lambda expression for comparison.
      * @see         OddEven#indexedElement(List, int, int, SortFunctional)
@@ -564,9 +616,11 @@ extends Bubble {
      *     <li>The {@code indexedElementInc} method is called twice within the loop.</li>
      *     <li>The first call passes the list, {@code (left + 1)}, and {@code right} as parameters.</li>
      *     <li>The second call passes the list, {@code left}, and {@code right} as parameters.</li>
-     *     <li>The purpose of these calls is to check if the indexed elements of the list range are sorted in incremental order.
+     *     <li>The purpose of these calls is to check if the indexed elements of the list range are sorted in
+     *     incremental order.
      *     The {@code indexedElementInc} method, as previously discussed,
-     *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to achieve incremental order,
+     *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to
+     *     achieve incremental order,
      *     and {@code false} otherwise.</li>
      *     <li>If any of the {@code indexedElementInc} calls return {@code false},
      *     indicating that at least one swap was performed within the range,
@@ -576,7 +630,8 @@ extends Bubble {
      *     indicating that the specified list range is sorted in incremental order.</li>
      * </ul>
      * {@code oddEvenInc} method sorts a specific range of the {@code list} using the odd-even sort algorithm
-     * by repeatedly calling the {@code indexedElementInc} method on alternating indices within the range until the range is completely sorted.
+     * by repeatedly calling the {@code indexedElementInc} method on alternating indices within the range until the
+     * range is completely sorted.
      * @param       list to be arranged.
      * @param       left specific range of the list.
      * @param       right specific range of the list.
@@ -604,9 +659,11 @@ extends Bubble {
      *     <li>The {@code indexedElementDec} method is called twice within the loop.</li>
      *     <li>The first call passes the list, {@code (left + 1)}, and {@code right} as parameters.</li>
      *     <li>The second call passes the list, {@code left}, and {@code right} as parameters.</li>
-     *     <li>The purpose of these calls is to check if the indexed elements of the list range are sorted in decremental order.
+     *     <li>The purpose of these calls is to check if the indexed elements of the list range are sorted in
+     *     decremental order.
      *     The {@code indexedElementDec} method, as previously discussed,
-     *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to achieve decremental order,
+     *     returns {@code true} if the elements at the specified indices within the range do not require any swaps to
+     *     achieve decremental order,
      *     and {@code false} otherwise.</li>
      *     <li>If any of the {@code indexedElementDec} calls return {@code false},
      *     indicating that at least one swap was performed within the range,
@@ -616,7 +673,8 @@ extends Bubble {
      *     indicating that the specified list range is sorted in decremental order.</li>
      * </ul>
      * {@code oddEvenDec} method sorts a specific range of the {@code list} using the odd-even sort algorithm
-     * by repeatedly calling the {@code indexedElementDec} method on alternating indices within the range until the range is completely sorted.
+     * by repeatedly calling the {@code indexedElementDec} method on alternating indices within the range until the
+     * range is completely sorted.
      * @param       list to be arranged.
      * @param       left specific range of the list.
      * @param       right specific range of the list.
@@ -640,33 +698,41 @@ extends Bubble {
      *     <li>The method initializes a boolean variable {@code isSorted} with the value {@code false}.
      *     This variable will be used to determine if the list is fully sorted.</li>
      *     <li>It enters a while loop that continues until the list is sorted ({@code isSorted} is {@code true}).</li>
-     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the list is sorted initially.</li>
+     *     <li>Inside the while loop, it sets {@code isSorted} to {@code true} to assume that the list is sorted
+     *     initially.</li>
      *     <li>It then calls the {@code indexedElement} method twice:</li>
      *     <li>The first call checks if the elements starting from {@code (left + 1)} and progressing
-     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
-     *     This is done by passing {@code (left + 1)} as the {@code j} parameter and {@code right} as the {@code n} parameter to the {@code indexedElement} method.
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional}
+     *     interface.
+     *     This is done by passing {@code (left + 1)} as the {@code j} parameter and {@code right} as the {@code n}
+     *     parameter to the {@code indexedElement} method.
      *     If any adjacent pair of elements is found to require swapping, {@code indexedElement} returns {@code false},
      *     indicating that the list is not yet fully sorted.
      *     In this case, the {@code isSorted} variable is set to {@code false}.</li>
      *     <li>The second call checks if the elements starting from {@code left} and progressing
-     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional} interface.
-     *     This is done by passing {@code left} as the {@code j} parameter and {@code right} as the {@code n} parameter to the {@code indexedElement} method.
+     *     by steps of <i>2</i> {@code (i += 2)} are in the correct order according to the given {@code functional}
+     *     interface.
+     *     This is done by passing {@code left} as the {@code j} parameter and {@code right} as the {@code n} parameter
+     *     to the {@code indexedElement} method.
      *     Similarly, if any adjacent pair of elements requires swapping, {@code indexedElement} returns {@code false},
      *     and the {@code isSorted} variable is set to {@code false}.</li>
-     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping, {@code isSorted} remains {@code true},
+     *     <li>After both calls to {@code indexedElement}, if no adjacent pair of elements required swapping,
+     *     {@code isSorted} remains {@code true},
      *     indicating that the list is fully sorted.</li>
      *     <li>The while loop continues until {@code isSorted} is {@code true},
      *     which means the list is sorted.</li>
      * </ul>
      * {@code oddEven} method sorts a specific range of the {@code list} using the odd-even sort algorithm
-     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range is completely sorted.
+     * by repeatedly calling the {@code indexedElement} method on alternating indices within the range until the range
+     * is completely sorted.
      * @param       list to be arranged.
      * @param       left specific range of the list.
      * @param       right specific range of the list.
      * @param       functional lambda expression for comparison.
      * @see         OddEven#indexedElement(List, int, int, SortFunctional)
      */
-    protected <L extends Comparable> void oddEven(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void oddEven(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         boolean isSorted = false;
         while (!isSorted) {
             isSorted = true;
@@ -742,11 +808,14 @@ extends Bubble {
     }
 
     /**
-     * {@code indexedElement} method you provided takes a list {@code list} of type {@link java.lang.Comparable Comparable},
-     * an integer {@code j}, an integer {@code n}, and an instance of the {@code SortFunctional<Comparable>} interface as parameters.
+     * {@code indexedElement} method you provided takes a list {@code list} of type {@link java.lang.Comparable
+     * Comparable},
+     * an integer {@code j}, an integer {@code n}, and an instance of the {@code SortFunctional<Comparable>} interface
+     * as parameters.
      * <ul>
      *     <li>The method initializes a boolean variable {@code element} with the value {@code true}.
-     *     This variable will be used to keep track of whether the indexed element at position {@code j} satisfies the condition.</li>
+     *     This variable will be used to keep track of whether the indexed element at position {@code j} satisfies the
+     *     condition.</li>
      *     <li>It enters a for loop that iterates from {@code j} to {@code (n - 2)} in steps of <i>1</i>.
      *     This means it only considers elements at even indices within the specified range.</li>
      *     <li>Inside the loop, it checks if the element at index {@code i} should be swapped with
@@ -769,7 +838,8 @@ extends Bubble {
      *              false if there was at least <i>1</i> exchange.
      * @see         SortSwap#isSwap(List, int, int, SortFunctional)
      */
-    protected <L extends Comparable> boolean indexedElement(List<L> list, int j, int n, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> boolean indexedElement(
+            List<L> list, int j, int n, SortFunctional<Comparable> functional) {
         boolean element = true;
         for (int i = j; i <= (n - 2); i += 2) {
             if (isSwap(list, i, 1, functional)) {

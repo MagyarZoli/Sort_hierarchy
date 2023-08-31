@@ -1,6 +1,7 @@
 package github.magyarzoli.sort;
 
 import github.magyarzoli.Sort;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.SortList;
 import github.magyarzoli.sort.intro.IntroStableQuick;
 
@@ -19,13 +20,14 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class StableQuick
-extends Quick {
+        extends Quick {
 
     /**
      * <b>Stable Quick Sort:</b><br>
      * Is an extension of the QuickSort algorithm that aims to preserve
      * the relative order of elements with equal values during the sorting process.
-     * In a standard QuickSort algorithm, the order of equal elements may change, making it an unstable sorting algorithm.
+     * In a standard QuickSort algorithm, the order of equal elements may change, making it an unstable
+     * sorting algorithm.
      * Stable QuickSort addresses this limitation by introducing additional steps to maintain stability.<br><br>
      * <b>Example:</b>
      * <ol>
@@ -38,7 +40,8 @@ extends Quick {
      *     <li>Recursion: Recursively apply Stable QuickSort to the two subarrays created in the previous step.
      *     This step involves selecting a new pivot element for each subarray and performing partitioning until
      *     the subarrays reach a size of <i>1</i> or <i>0</i>, as these subarrays are considered already sorted.</li>
-     *     <li>Concatenation: Once the recursion is complete, the sorted subarrays are concatenated to obtain the final sorted array.
+     *     <li>Concatenation: Once the recursion is complete, the sorted subarrays are concatenated to obtain
+     *     the final sorted array.
      *     The order of concatenation is crucial to maintaining stability.
      *     The elements from the left subarray, which are smaller or equal to the pivot,
      *     should appear before the elements from the right subarray, which are greater than the pivot.</li>
@@ -126,14 +129,16 @@ extends Quick {
      *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array as the argument:
      *     {@code stableList.toArray(new Comparable[0])}.</li>
      *     <li>The sorted elements are copied from the sorted stableList back into
-     *     the original array using {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()}.
+     *     the original array using {@link java.lang.System#arraycopy(Object, int, Object, int, int)
+     *     System.arraycopy()}.
      *     The elements are copied starting from the beginning of the original array index <i>0</i>, and
      *     the number of elements copied is equal to the length of the array: {@code array.length}.</li>
      * </ul>
      * {@code stableQuickInc} method uses the {@code stableRecursiveInc} method to sort
      * the original array in a stable manner by converting it into an {@code ArrayList}.
      * After obtaining the sorted stableList, the sorted elements are copied back into the original array.
-     * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveInc} method instead of
+     * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveInc}
+     * method instead of
      * the standard partitioning logic in QuickSort.
      * @param       array The original array containing Comparable elements.
      * @see         StableQuick#stableRecursiveInc(List)
@@ -156,14 +161,16 @@ extends Quick {
      *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array as the argument:
      *     {@code stableList.toArray(new Comparable[0])}.</li>
      *     <li>The sorted elements are copied from the sorted stableList back into
-     *     the original array using {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()}.
+     *     the original array using {@link java.lang.System#arraycopy(Object, int, Object, int, int)
+     *     System.arraycopy()}.
      *     The elements are copied starting from the beginning of the original array index <i>0</i>, and
      *     the number of elements copied is equal to the length of the array: {@code array.length}.</li>
      * </ul>
      * {@code stableQuickDec} method uses the {@code stableRecursiveInc} method to sort
      * the original array in a stable manner by converting it into an {@code ArrayList}.
      * After obtaining the sorted stableList, the sorted elements are copied back into the original array.
-     * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveInc} method instead of
+     * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveInc}
+     * method instead of
      * the standard partitioning logic in QuickSort.
      * @param       array The original array containing Comparable elements.
      * @see         StableQuick#stableRecursiveDec(List)
@@ -174,17 +181,21 @@ extends Quick {
     }
 
     /**
-     * {@code stableQuick} method, which performs a stable sorting of the entire {@code array} using a stable sorting algorithm.
+     * {@code stableQuick} method, which performs a stable sorting of the entire {@code array} using
+     * a stable sorting algorithm.
      * <ul>
      *     <li>The method {@code stableQuick} takes two parameters:
      *     {@code array} an array of {@link java.lang.Comparable Comparable} objects
      *     and {@code functional} an instance of {@code mz.SortFunctional}
      *     representing a functional interface for comparison operations.</li>
-     *     <li>The first line of code creates a new {@code ArrayList<Comparable>} called {@code stableList} by converting
+     *     <li>The first line of code creates a new {@code ArrayList<Comparable>} called
+     *     {@code stableList} by converting
      *     the {@code array} into a stableList using {@link java.util.Arrays#asList(Object[]) Arrays.asList(array)}.
      *     This creates a dynamic stableList that can be resized.</li>
-     *     <li>The {@code stableRecursive} method is called, passing the {@code stableList} and {@code functional} as parameters.
-     *     This method applies a stable sorting algorithm to the {@code stableList} using the {@code functional} object.</li>
+     *     <li>The {@code stableRecursive} method is called, passing the {@code stableList} and
+     *     {@code functional} as parameters.
+     *     This method applies a stable sorting algorithm to the {@code stableList} using the
+     *     {@code functional} object.</li>
      *     <li>The sorted {@code stableList} is then converted back to an array
      *     using {@link java.util.List#toArray(Object[]) stableList.toArray}{@code (new Comparable[0])}.</li>
      *     <li>Finally, the sorted elements from the {@code stableList} are copied back to the original {@code array}
@@ -211,23 +222,32 @@ extends Quick {
      * {@code stableQuickInc} that performs an in-place sorting of a subarray within a
      * {@link java.lang.Comparable Comparable} array using a stable version of the QuickSort algorithm.
      * <ul>
-     *     <li>The method creates a new array called {@code newArray} with a size equal to the length of the subarray to be sorted {@code (right - left)}.
+     *     <li>The method creates a new array called {@code newArray} with a size equal to the length of the
+     *     subarray to be sorted {@code (right - left)}.
      *     This new array will be used to create a temporary {@code stableList} for sorting.</li>
      *     <li>The elements from the original array that correspond to the subarray to be sorted are copied into
-     *     the {@code newArray} using the {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()} method.</li>
-     *     <li>The "newArray" is converted into an ArrayList using {@link java.util.Arrays#asList(Object[]) Arrays.asList()}
+     *     the {@code newArray} using the {@link java.lang.System#arraycopy(Object, int, Object, int, int)
+     *     System.arraycopy()} method.</li>
+     *     <li>The "newArray" is converted into an ArrayList using {@link java.util.Arrays#asList(Object[])
+     *     Arrays.asList()}
      *     and then passed as an argument to the {@code stableRecursiveInc} method.
-     *     This method, as you previously provided, performs a stable sorting of the {@code ArrayList} and returns a sorted {@code stableList}.</li>
-     *     <li>The sorted stableList obtained from "{@code stableRecursiveInc}" is converted back into an array using
-     *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array as the argument.</li>
-     *     <li>The sorted elements are copied from the sorted {@code stableList} back into the original array using {@code System.arraycopy()}.
+     *     This method, as you previously provided, performs a stable sorting of the {@code ArrayList} and
+     *     returns a sorted {@code stableList}.</li>
+     *     <li>The sorted stableList obtained from "{@code stableRecursiveInc}" is converted back into
+     *     an array using
+     *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array
+     *     as the argument.</li>
+     *     <li>The sorted elements are copied from the sorted {@code stableList} back into the original
+     *     array using {@code System.arraycopy()}.
      *     The elements are copied starting from the left index of the original array,
      *     and the number of elements copied is equal to the size of the sorted stableList.</li>
      * </ul>
-     * {@code stableQuickInc} method uses the {@code stableRecursiveInc} method to sort a subarray of the original array in a stable manner
+     * {@code stableQuickInc} method uses the {@code stableRecursiveInc} method to sort a subarray of
+     * the original array in a stable manner
      * by creating a temporary array and converting it into an ArrayList.
      * After obtaining the sorted stableList, the sorted elements are copied back into the original array.
-     * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveInc} method instead of
+     * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveInc}
+     * method instead of
      * the standard partitioning logic in QuickSort.
      * @param       array The original array containing Comparable elements.
      * @param       left The index representing the left boundary of the subarray to be sorted.
@@ -245,23 +265,32 @@ extends Quick {
      * {@code stableQuickDec} that performs an in-place sorting of a subarray within a
      * {@link java.lang.Comparable Comparable} array using a stable version of the QuickSort algorithm.
      * <ul>
-     *     <li>The method creates a new array called {@code newArray} with a size equal to the length of the subarray to be sorted {@code (right - left)}.
+     *     <li>The method creates a new array called {@code newArray} with a size equal to the length of
+     *     the subarray to be sorted {@code (right - left)}.
      *     This new array will be used to create a temporary {@code stableList} for sorting.</li>
      *     <li>The elements from the original array that correspond to the subarray to be sorted are copied into
-     *     the {@code newArray} using the {@link java.lang.System#arraycopy(Object, int, Object, int, int) System.arraycopy()} method.</li>
-     *     <li>The "newArray" is converted into an ArrayList using {@link java.util.Arrays#asList(Object[]) Arrays.asList()}
+     *     the {@code newArray} using the {@link java.lang.System#arraycopy(Object, int, Object, int, int)
+     *     System.arraycopy()} method.</li>
+     *     <li>The "newArray" is converted into an ArrayList using {@link java.util.Arrays#asList(Object[])
+     *     Arrays.asList()}
      *     and then passed as an argument to the {@code stableRecursiveDec} method.
-     *     This method, as you previously provided, performs a stable sorting of the {@code ArrayList} and returns a sorted {@code stableList}.</li>
-     *     <li>The sorted stableList obtained from "{@code stableRecursiveDec}" is converted back into an array using
-     *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array as the argument.</li>
-     *     <li>The sorted elements are copied from the sorted {@code stableList} back into the original array using {@code System.arraycopy()}.
+     *     This method, as you previously provided, performs a stable sorting of the {@code ArrayList} and
+     *     returns a sorted {@code stableList}.</li>
+     *     <li>The sorted stableList obtained from "{@code stableRecursiveDec}" is converted back into
+     *     an array using
+     *     the {@link java.util.List#toArray(Object[]) toArray()} method with an empty Comparable array
+     *     as the argument.</li>
+     *     <li>The sorted elements are copied from the sorted {@code stableList} back into the original
+     *     array using {@code System.arraycopy()}.
      *     The elements are copied starting from the left index of the original array,
      *     and the number of elements copied is equal to the size of the sorted stableList.</li>
      * </ul>
-     * {@code stableQuickDec} method uses the {@code stableRecursiveDec} method to sort a subarray of the original array in a stable manner
+     * {@code stableQuickDec} method uses the {@code stableRecursiveDec} method to sort a subarray of
+     * the original array in a stable manner
      * by creating a temporary array and converting it into an ArrayList.
      * After obtaining the sorted stableList, the sorted elements are copied back into the original array.
-     * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveDec} method instead of
+     * This allows the QuickSort algorithm to maintain stability by using the {@code stableRecursiveDec}
+     * method instead of
      * the standard partitioning logic in QuickSort.
      * @param       array The original array containing Comparable elements.
      * @param       left The index representing the left boundary of the subarray to be sorted.
@@ -279,7 +308,8 @@ extends Quick {
      * The method {@code stableQuick} takes four parameters:
      * {@code array} an array of {@link java.lang.Comparable Comparable} objects,
      * {@code left} the starting index of the partition, {@code right} the ending index of the partition,
-     * and {@code functional} an instance of SortFunctional representing a functional interface for comparison operations.
+     * and {@code functional} an instance of SortFunctional representing a functional interface for
+     * comparison operations.
      * <ul>
      *     <li>The first line of code creates a new {@code Comparable}
      *     array called {@code newArray} with a length equal to {@code (right - left)}.</li>
@@ -291,11 +321,15 @@ extends Quick {
      *     <li>The {@code newArray} is then converted
      *     to a {@code List<Comparable>} using {@link java.util.Arrays#asList(Object[]) asList()}
      *     and wrapped in a new {@code ArrayList<>} to allow dynamic resizing.</li>
-     *     <li>The {@code stableRecursive} method is called, passing the {@code stableList} and {@code functional} as parameters.
-     *     This method applies a stable sorting algorithm to the {@code stableList} using the {@code functional} object.</li>
+     *     <li>The {@code stableRecursive} method is called, passing the {@code stableList} and
+     *     {@code functional} as parameters.
+     *     This method applies a stable sorting algorithm to the {@code stableList} using the
+     *     {@code functional} object.</li>
      *     <li>The sorted {@code stableList} is then converted back
-     *     to an array using {@link java.util.List#toArray(Object[]) stableList.toArray}{@code (new Comparable[0])}.</li>
-     *     <li>Finally, the sorted elements from the {@code stableList} are copied back to the original array using {@code System.arraycopy}.
+     *     to an array using {@link java.util.List#toArray(Object[]) stableList.toArray}
+     *     {@code (new Comparable[0])}.</li>
+     *     <li>Finally, the sorted elements from the {@code stableList} are copied back to the
+     *     original array using {@code System.arraycopy}.
      *     The elements are copied starting from index <i>0</i> of the sorted {@code array},
      *     and the destination in the original {@code array} starts at index {@code left}.
      *     The number of elements copied is equal to {@code stableList.}{@link java.util.List#size() size()}.</li>
@@ -326,7 +360,8 @@ extends Quick {
      *     The {@code stableRecursiveInc} method performs an incremental Quick Sort operation on the {@code list}.</li>
      * </ul>
      * {@code tableQuickInc} simply acts as a wrapper for the {@code stableRecursiveInc} method,
-     * allowing you to call the incremental Quick Sort algorithm on the entire {@code list} by invoking {@code stableQuickInc(list)}.
+     * allowing you to call the incremental Quick Sort algorithm on the entire {@code list} by invoking
+     * {@code stableQuickInc(list)}.
      * @param       list The original list containing Comparable elements.
      * @see         StableQuick#stableRecursiveInc(List)
      */
@@ -342,7 +377,8 @@ extends Quick {
      *     The {@code stableRecursiveDec} method performs an decremental Quick Sort operation on the {@code list}.</li>
      * </ul>
      * {@code tableQuickDec} simply acts as a wrapper for the {@code stableRecursiveInc} method,
-     * allowing you to call the decremental Quick Sort algorithm on the entire {@code list} by invoking {@code stableQuickDec(list)}.
+     * allowing you to call the decremental Quick Sort algorithm on the entire {@code list} by invoking
+     * {@code stableQuickDec(list)}.
      * @param       list The original list containing Comparable elements.
      * @see         StableQuick#stableRecursiveDec(List)
      */
@@ -356,11 +392,14 @@ extends Quick {
      * This method appears to be a version of the Quick Sort algorithm that allows you to provide a
      * custom sorting implementation through the {@code SortFunctional} interface.
      * <ul>
-     *     <li>It calls the {@code stableRecursive} method, passing the {@code list} and {@code functional} as arguments.
-     *     The {@code stableRecursive} method performs a Quick Sort operation on the list using the provided {@code functional} for sorting.</li>
+     *     <li>It calls the {@code stableRecursive} method, passing the {@code list} and {@code functional}
+     *     as arguments.
+     *     The {@code stableRecursive} method performs a Quick Sort operation on the list using the
+     *     provided {@code functional} for sorting.</li>
      * </ul>
      * {@code stableQuick} acts as a wrapper for the {@code stableRecursive} method,
-     * allowing you to perform Quick Sort on the entire {@code list} using a custom sorting implementation provided through the {@code functional} parameter.
+     * allowing you to perform Quick Sort on the entire {@code list} using a custom sorting implementation
+     * provided through the {@code functional} parameter.
      * @param       list The original list containing Comparable elements.
      * @param       functional lambda expression for comparison.
      * @see         StableQuick#stableRecursive(List, SortFunctional)
@@ -379,20 +418,23 @@ extends Quick {
      *     {@code addBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
      *     The {@code addBetween} method returns a sublist of {@code list} containing the elements between
      *     the {@code left} and {@code right} indices.</li>
-     *     <li>It updates the list variable by calling the {@code removeBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
-     *     The {@code removeBetween} method removes the elements between the {@code left} and {@code right} indices from the original {@code list}.</li>
+     *     <li>It updates the list variable by calling the {@code removeBetween} method with the {@code list},
+     *     {@code left}, and {@code right} as arguments.
+     *     The {@code removeBetween} method removes the elements between the {@code left} and {@code right}
+     *     indices from the original {@code list}.</li>
      *     <li>It calls the {@code stableRecursiveInc} method with the {@code newList} as an argument.
      *     The {@code stableRecursiveInc} method presumably performs some sort of recursive operation on
      *     the {@code newList} and returns a modified version of it.</li>
      * </ul>
-     * {@code stableQuickInc} performs an incremental QuickSort operation on the sublist of {@code list} between the indices {@code left} and {@code right}.
+     * {@code stableQuickInc} performs an incremental QuickSort operation on the sublist of {@code list}
+     * between the indices {@code left} and {@code right}.
      * It creates a new sublist called {@code newList} using the {@code addBetween} method,
      * removes the elements of the sublist from the original {@code list} using
      * the {@code removeBetween} method, and then adds the modified {@code newList} back to
      * the original {@code list} using the {@link java.util.List#addAll(Collection) addAll} method.
      * @param       list The original list containing Comparable elements.
-     * @param       left The index representing the left boundary of the subarray to be sorted.
-     * @param       right The index representing the right boundary of the subarray to be sorted.
+     * @param       left The index representing the left boundary of the sublist to be sorted.
+     * @param       right The index representing the right boundary of the sublist to be sorted.
      * @see         SortList#addBetween(List, int, int)
      * @see         SortList#removeBetween(List, int, int)
      * @see         StableQuick#stableRecursiveInc(List)
@@ -413,20 +455,23 @@ extends Quick {
      *     {@code addBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
      *     The {@code addBetween} method returns a sublist of {@code list} containing the elements between
      *     the {@code left} and {@code right} indices.</li>
-     *     <li>It updates the list variable by calling the {@code removeBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
-     *     The {@code removeBetween} method removes the elements between the {@code left} and {@code right} indices from the original {@code list}.</li>
+     *     <li>It updates the list variable by calling the {@code removeBetween} method with the {@code list},
+     *     {@code left}, and {@code right} as arguments.
+     *     The {@code removeBetween} method removes the elements between the {@code left} and {@code right}
+     *     indices from the original {@code list}.</li>
      *     <li>It calls the {@code stableRecursiveDec} method with the {@code newList} as an argument.
      *     The {@code stableRecursiveDec} method presumably performs some sort of recursive operation on
      *     the {@code newList} and returns a modified version of it.</li>
      * </ul>
-     * {@code stableQuickDec} performs an decremental QuickSort operation on the sublist of {@code list} between the indices {@code left} and {@code right}.
+     * {@code stableQuickDec} performs an decremental QuickSort operation on the sublist of {@code list} between
+     * the indices {@code left} and {@code right}.
      * It creates a new sublist called {@code newList} using the {@code addBetween} method,
      * removes the elements of the sublist from the original {@code list} using
      * the {@code removeBetween} method, and then adds the modified {@code newList} back to
      * the original {@code list} using the {@link java.util.List#addAll(Collection) addAll} method.
      * @param       list The original list containing Comparable elements.
-     * @param       left The index representing the left boundary of the subarray to be sorted.
-     * @param       right The index representing the right boundary of the subarray to be sorted.
+     * @param       left The index representing the left boundary of the sublist to be sorted.
+     * @param       right The index representing the right boundary of the sublist to be sorted.
      * @see         SortList#addBetween(List, int, int)
      * @see         SortList#removeBetween(List, int, int)
      * @see         StableQuick#stableRecursiveDec(List)
@@ -442,7 +487,8 @@ extends Quick {
      * as well as two indices {@code left} and {@code right},
      * and a {@code SortFunctional} object called {@code functional}.
      * This method performs a Quick Sort algorithm on a sublist of
-     * the {@code list} between the indices {@code left} and {@code right} using a provided {@code SortFunctional} implementation.
+     * the {@code list} between the indices {@code left} and {@code right} using a provided
+     * {@code SortFunctional} implementation.
      * <ul>
      *     <li>It creates a new {@code List<Comparable>} called {@code newList} and initializes it by calling
      *     the {@code addBetween} method with the {@code list}, {@code left}, and {@code right} as arguments.
@@ -454,24 +500,28 @@ extends Quick {
      *     the {@code left} and {@code right} indices from the original {@code list}.</li>
      *     <li>It calls the {@code stableRecursive} method with the {@code newList} and {@code functional} as arguments.
      *     The {@code stableRecursive} method presumably performs some sort of recursive sorting operation on
-     *     the {@code newList} using the provided {@code SortFunctional} implementation and returns a modified version of it.</li>
+     *     the {@code newList} using the provided {@code SortFunctional} implementation and returns a
+     *     modified version of it.</li>
      * </ul>
      * {@code stableQuick} performs a Quick Sort operation on
-     * the sublist of {@code list} between the indices {@code left} and {@code right} using a provided {@code SortFunctional} implementation.
+     * the sublist of {@code list} between the indices {@code left} and {@code right} using a provided
+     * {@code SortFunctional} implementation.
      * It creates a new sublist called {@code newList} using the {@code addBetween} method,
      * removes the elements of the sublist from the original list using the {@code removeBetween} method,
-     * and then adds the modified {@code newList} back to the original list using the {@link java.util.List#addAll(Collection) addAll} method.
+     * and then adds the modified {@code newList} back to the original list using the
+     * {@link java.util.List#addAll(Collection) addAll} method.
      * The actual sorting operation is performed by the {@code stableRecursive} method,
      * which utilizes the provided {@code SortFunctional} implementation.
      * @param       list The original list containing {@code Comparable} elements.
-     * @param       left The index representing the left boundary of the subarray to be sorted.
-     * @param       right The index representing the right boundary of the subarray to be sorted.
+     * @param       left The index representing the left boundary of the sublist to be sorted.
+     * @param       right The index representing the right boundary of the sublist to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         SortList#addBetween(List, int, int)
      * @see         SortList#removeBetween(List, int, int)
      * @see         StableQuick#stableRecursive(List, SortFunctional)
      */
-    protected <L extends Comparable> void stableQuick(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void stableQuick(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         List<L> newList = addBetween(list, left, right);
         list = removeBetween(list, left, right);
         list.addAll(stableRecursive(newList, functional));
@@ -483,9 +533,11 @@ extends Quick {
      * The algorithm uses the concept of a pivot element and divides the list into two parts:
      * smaller elements and greater elements, relative to the pivot.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used
+     *     to suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method takes a {@code list} as input and checks if the size of the {@code list} is less than or equal to <i>1</i>.
+     *     <li>The method takes a {@code list} as input and checks if the size of the {@code list} is less than
+     *     or equal to <i>1</i>.
      *     If so, it returns the {@code list} as it is already sorted (base case of the recursion).</li>
      *     <li>If the {@code list} has more than one element, it proceeds to find the {@code pivot} element.
      *     The {@code pivot} is the element at the middle index of the {@code list}.</li>
@@ -496,13 +548,17 @@ extends Quick {
      *     <li>If the element is greater than the {@code pivot}, it adds it to the {@code greater} list.</li>
      *     <li>If the element is equal to the {@code pivot}, it determines its relative position to the pivot index
      *     and adds it to either the {@code smaller} or {@code greater} list accordingly.</li>
-     *     <li>After the iteration, the algorithm recursively calls itself with the {@code smaller} list and the {@code greater} list, separately.</li>
+     *     <li>After the iteration, the algorithm recursively calls itself with the {@code smaller} list and
+     *     the {@code greater} list, separately.</li>
      *     <li>The results of the recursive calls are stored in two lists, {@code sa1} and {@code sa2}.</li>
-     *     <li>The algorithm creates a new list, "{@code ans}", and populates it by adding all the elements from {@code sa1},
+     *     <li>The algorithm creates a new list, "{@code ans}", and populates it by adding all the elements
+     *     from {@code sa1},
      *     followed by the {@code pivot} element, and finally, all the elements from {@code sa2}.</li>
      * </ul>
-     * {@code stableRecursiveInc} the algorithm uses the divide-and-conquer approach by recursively sorting smaller sublists and combining them to produce the final sorted list.
-     * The use of the pivot element helps in dividing the list into smaller parts, which allows the algorithm to achieve an efficient sorting result.
+     * {@code stableRecursiveInc} the algorithm uses the divide-and-conquer approach by recursively sorting
+     * smaller sublists and combining them to produce the final sorted list.
+     * The use of the pivot element helps in dividing the list into smaller parts, which allows the algorithm
+     * to achieve an efficient sorting result.
      * @param       list sorts a list of Comparable elements in ascending order.
      * @return      The sorted list, is returned.
      */
@@ -546,9 +602,11 @@ extends Quick {
      * The algorithm uses the concept of a pivot element and divides the list into two parts:
      * smaller elements and greater elements, relative to the pivot.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler warnings related to type
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is
+     *     used to suppress compiler warnings related to type
      *     safety when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.</li>
-     *     <li>The method takes a {@code list} as input and checks if the size of the {@code list} is less than or equal to <i>1</i>.
+     *     <li>The method takes a {@code list} as input and checks if the size of the {@code list} is less
+     *     than or equal to <i>1</i>.
      *     If so, it returns the {@code list} as it is already sorted (base case of the recursion).</li>
      *     <li>If the {@code list} has more than one element, it proceeds to find the {@code pivot} element.
      *     The {@code pivot} is the element at the middle index of the {@code list}.</li>
@@ -559,13 +617,17 @@ extends Quick {
      *     <li>If the element is smaller than the {@code pivot}, it adds it to the {@code greater} list.</li>
      *     <li>If the element is equal to the {@code pivot}, it determines its relative position to the pivot index
      *     and adds it to either the {@code smaller} or {@code greater} list accordingly.</li>
-     *     <li>After the iteration, the algorithm recursively calls itself with the {@code smaller} list and the {@code greater} list, separately.</li>
+     *     <li>After the iteration, the algorithm recursively calls itself with the {@code smaller} list and
+     *     the {@code greater} list, separately.</li>
      *     <li>The results of the recursive calls are stored in two lists, {@code sa1} and {@code sa2}.</li>
-     *     <li>The algorithm creates a new list, "{@code ans}", and populates it by adding all the elements from {@code sa1},
+     *     <li>The algorithm creates a new list, "{@code ans}", and populates it by adding all the elements
+     *     from {@code sa1},
      *     followed by the {@code pivot} element, and finally, all the elements from {@code sa2}.</li>
      * </ul>
-     * {@code stableRecursiveDec} the algorithm uses the divide-and-conquer approach by recursively sorting smaller sublists and combining them to produce the final sorted list.
-     * The use of the pivot element helps in dividing the list into smaller parts, which allows the algorithm to achieve an efficient sorting result.
+     * {@code stableRecursiveDec} the algorithm uses the divide-and-conquer approach by recursively sorting
+     * smaller sublists and combining them to produce the final sorted list.
+     * The use of the pivot element helps in dividing the list into smaller parts, which allows the algorithm
+     * to achieve an efficient sorting result.
      * @param       list sorts a list of Comparable elements in descending order.
      * @return      The sorted list, is returned.
      */
@@ -606,7 +668,8 @@ extends Quick {
     /**
      * The method {@code stableRecursive} takes two parameters:
      * {@code list} (a list of {@link java.lang.Comparable Comparable} objects)
-     * and {@code functional} (an instance of SortFunctional representing a functional interface for comparison operations).
+     * and {@code functional} (an instance of SortFunctional representing a functional interface for
+     * comparison operations).
      * <ul>
      *     <li>The first line of code checks if the size of the {@code list} is less than or equal to <i>1</i>.
      *     If this condition is true, it means there is nothing to sort,
@@ -629,27 +692,32 @@ extends Quick {
      *     <li>If the result of the reverse comparison is true (i.e., the pivot is less than the element),
      *     the element is added to the {@code greater} list using {@code greater.add(value)}.</li>
      *     <li>If neither of the previous conditions is true, it means the element is equal to the pivot.
-     *     In this case, it checks the index {@code i} against {@code mid} to determine whether the element should be added
+     *     In this case, it checks the index {@code i} against {@code mid} to determine whether the element
+     *     should be added
      *     to the {@code smaller} or {@code greater} list.
      *     Elements before the pivot index {@code (i < mid)} are added to the {@code smaller} list,
      *     and elements after the pivot index {@code (i > mid)} are added to the {@code greater} list.</li>
-     *     <li>After the loop finishes, the method recursively calls itself twice to sort the {@code smaller} and {@code greater} lists.
-     *     It passes each list to the {@code stableRecursive} method and stores the results in {@code sa1} and {@code sa2} respectively.</li>
+     *     <li>After the loop finishes, the method recursively calls itself twice to sort the {@code smaller}
+     *     and {@code greater} lists.
+     *     It passes each list to the {@code stableRecursive} method and stores the results in {@code sa1}
+     *     and {@code sa2} respectively.</li>
      *     <li>A new empty list called {@code ans} is created.</li>
      *     <li>The elements from {@code sa1} are added to {@code ans} using {@code ans.addAll(sa1)}.</li>
      *     <li>The pivot element is added to {@code ans} using {@code ans.add(pivot)}.</li>
      *     <li>The elements from {@code sa2} are added to {@code ans} using {@code ans.addAll(sa2)}.</li>
      *     <li>Finally, the sorted list {@code ans} is returned.</li>
      * </ul>
-     * {@code stableRecursive} method recursively applies a stable sorting algorithm to sort a list of {@code Comparable} objects.
+     * {@code stableRecursive} method recursively applies a stable sorting algorithm to sort a list of
+     * {@code Comparable} objects.
      * It partitions the list based on a pivot element, recursively sorts the smaller and greater partitions,
      * and combines the results to produce a final sorted list.
-     * The specific comparison operations used for sorting are defined by the {@code functional} object passed as a parameter.
+     * The specific comparison operations used for sorting are defined by the {@code functional} object
+     * passed as a parameter.
      * @param       list sorts a list of Comparable elements in descending order.
      * @param       functional lambda expression for comparison.
      * @return      The sorted list, is returned.
      * @see         Sort#functionalComparableToReverse(SortFunctional)
-     * @see         Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
     protected <L extends Comparable> List<L> stableRecursive(List<L> list, SortFunctional<Comparable> functional) {
         if (list.size() <= 1) {

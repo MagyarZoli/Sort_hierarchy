@@ -2,13 +2,15 @@ package github.magyarzoli.sort;
 
 import github.magyarzoli.Sort;
 import github.magyarzoli.SortFind;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.SortSwap;
 import github.magyarzoli.sort.intro.IntroDoubleSelection;
 
 import java.util.List;
 
 /**
- * Double Selection if an item is not the smallest item, it's possible to check to see if it's the largest item and if it is, move it to the end of the array.
+ * Double Selection if an item is not the smallest item, it's possible to check to see if it's the largest item and if
+ * it is, move it to the end of the array.
  * This way we can achieve two goals at the same time and perform the job faster.
  * This kind of addition to the burst-selection sort makes it somewhat faster.
  * @since       1.3
@@ -16,27 +18,32 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class DoubleSelection
-extends Selection {
+        extends Selection {
 
     /**
      * <b>Double Selection Sort:</b><br>
-     * If an item is not a smallest item, it's possible to check to see if it's the largest item and if it is, move it to the end of the array.
+     * If an item is not a smallest item, it's possible to check to see if it's the largest item and if it is, move it
+     * to the end of the array.
      * This way we can achieve two goals at the same time and perform the job faster.
      * This kind of addition to the burst-selection sort makes it somewhat faster.<br><br>
      * <b>Example:</b>
      * <ol>
-     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to
+     *     the last item in the array.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
-     *     <li>The {@code while} loop can now be performed from {@code maxIndex} to {@code minIndex} or ({@code minIndex} to {@code maxIndex}).</li>
+     *     <li>The {@code while} loop can now be performed from {@code maxIndex} to {@code minIndex} or
+     *     ({@code minIndex} to {@code maxIndex}).</li>
      *     <li>One important thing to take into account is that the inner loop should not go to the next item if
-     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its
+     *     next loop
      *     (that is, it should not increase the loop index variable).</li>
      *     <li>At the end of the outer loop, assign {@code maxIndex} to {@code minIndex}.</li>
      * </ol>
      * <b>Note:</b><br>
      * This addition makes the algorithm a bit more complex because swapping the current item with the item at
      * the current end of the array may actually bring a smallest item at the current place which means
-     * we can't move to the next item in the array just yet (if we did, the algorithm would malfunction in some cases).<br><br>
+     * we can't move to the next item in the array just yet (if we did, the algorithm would malfunction in some
+     * cases).<br><br>
      * Also, if a new minimum item is found (and is swapped to the start of the current array section),
      * the value swapped to the current item place may be a largest item, which also means that
      * we can't move to the next item yet. Otherwise the addition can be done basically by replicating
@@ -111,11 +118,13 @@ extends Selection {
      * {@code doubleSelectionInc} that implements the Double Selection Sort algorithm to sort an array
      * of {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
-     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point
+     *     to the last item in the array.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
      *     <li>The {@code while} loop can now be performed from {@code maxIndex} to {@code minIndex}.</li>
      *     <li>One important thing to take into account is that the inner loop should not go to the next item if
-     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its
+     *     next loop
      *     (that is, it should not increase the loop index variable).</li>
      *     <li>At the end of the outer loop, assign {@code maxIndex} to {@code minIndex}.</li>
      * </ul>
@@ -147,11 +156,13 @@ extends Selection {
      * {@code doubleSelectionDec} that implements the Double Selection Sort algorithm to sort an array
      * of {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
-     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point
+     *     to the last item in the array.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
      *     <li>The {@code while} loop can now be performed from {@code minIndex} to {@code maxIndex}.</li>
      *     <li>One important thing to take into account is that the inner loop should not go to the next item if
-     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its
+     *     next loop
      *     (that is, it should not increase the loop index variable).</li>
      *     <li>At the end of the outer loop, assign {@code minIndex} to {@code maxIndex}.</li>
      * </ul>
@@ -186,7 +197,8 @@ extends Selection {
      *     <li>It initializes an integer variable {@code n} with the length of the array,
      *     and sets {@code left} and {@code right} to the initial indices of
      *     the subarray to be sorted (<i>0</i> and {@code (n - 1)}, respectively).</li>
-     *     <li>It creates a new instance of the {@code SortFunctional<Comparable>} interface called {@code functionalReverse}
+     *     <li>It creates a new instance of the {@code SortFunctional<Comparable>} interface called
+     *     {@code functionalReverse}
      *     by calling the {@code functionalComparableToReverse} method.</li>
      *     <li>The method enters a {@code while} loop that continues until {@code left} is less than {@code right},
      *     indicating that there are still elements to be sorted.</li>
@@ -197,7 +209,8 @@ extends Selection {
      *     <li>It uses a for loop to iterate from {@code left} to {@code right}.
      *     Inside this loop, it calls the {@code findValueIndex} method to find
      *     the index of the smallest value and the largest value in the subarray from index {@code j} to {@code right}.
-     *     The {@code findValueIndex} method uses the given {@code functional} or {@code functionalReverse} interface to compare
+     *     The {@code findValueIndex} method uses the given {@code functional} or {@code functionalReverse}
+     *     interface to compare
      *     the elements and determine the index of the desired value.</li>
      *     <li>After finding the smallest and largest values,
      *     it swaps the element at the {@code valueReverseIndex} with the element at index {@code left},
@@ -242,11 +255,13 @@ extends Selection {
      * {@code doubleSelectionInc} that implements the Double Selection Sort algorithm to sort an array
      * of {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
-     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point
+     *     to the last item in the array.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
      *     <li>The {@code while} loop can now be performed from {@code maxIndex} to {@code minIndex}.</li>
      *     <li>One important thing to take into account is that the inner loop should not go to the next item if
-     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its
+     *     next loop
      *     (that is, it should not increase the loop index variable).</li>
      *     <li>At the end of the outer loop, assign {@code maxIndex} to {@code minIndex}.</li>
      * </ul>
@@ -279,11 +294,13 @@ extends Selection {
      * {@code doubleSelectionDec} that implements the Double Selection Sort algorithm to sort an array
      * of {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
-     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the array.</li>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to
+     *     the last item in the array.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
      *     <li>The {@code while} loop can now be performed from {@code minIndex} to {@code maxIndex}.</li>
      *     <li>One important thing to take into account is that the inner loop should not go to the next item if
-     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its
+     *     next loop
      *     (that is, it should not increase the loop index variable).</li>
      *     <li>At the end of the outer loop, assign {@code minIndex} to {@code maxIndex}.</li>
      * </ul>
@@ -313,18 +330,20 @@ extends Selection {
     }
 
     /**
-     * {@code doubleSelection} method takes an array {@code array} of type {@link java.lang.Comparable Comparable} and an instance of
+     * {@code doubleSelection} method takes an array {@code array} of type {@link java.lang.Comparable Comparable} and
+     * an instance of
      * the {@code SortFunctional<Comparable>} interface as parameters.
      * <ul>
      *     <li>It initializes two integer variables left and right with
      *     the given {@code left} and {@code right} indices of the subarray to be sorted.</li>
      *     <li>The method enters a while loop that continues until {@code left} is less than {@code right},
      *     indicating that there are still elements to be sorted.</li>
-     *     <li>Inside the loop, it initializes two integer variables {@code valueIndex} and {@code valueReverseIndex} with
-     *     the initial values of {@code left} and {@code right}, respectively.
+     *     <li>Inside the loop, it initializes two integer variables {@code valueIndex} and {@code valueReverseIndex}
+     *     with the initial values of {@code left} and {@code right}, respectively.
      *     These variables will keep track of the indices of
      *     the smallest and largest values found during each iteration.</li>
-     *     <li>It creates a new instance of the {@code SortFunctional<Comparable>} interface called {@code functionalReverse}
+     *     <li>It creates a new instance of the {@code SortFunctional<Comparable>} interface called
+     *     {@code functionalReverse}
      *     by calling the {@code functionalComparableToReverse} method.
      *     This method is assumed to return a functional interface that compares elements
      *     in reverse order compared to the given {@code functional} interface.</li>
@@ -342,7 +361,8 @@ extends Selection {
      *     indicating that the smallest value was originally at the {@code valueReverseIndex}.</li>
      *     <li>It swaps the element at the {@code valueIndex} with the element at index {@code right},
      *     bringing the smallest value to the beginning of the subarray.</li>
-     *     <li>It increments {@code left} and decrements {@code right} to narrow down the subarray to be sorted in the next iteration.</li>
+     *     <li>It increments {@code left} and decrements {@code right} to narrow down the subarray to be sorted in the
+     *     next iteration.</li>
      *     <li>The process continues until {@code left} is no longer less than {@code right},
      *     indicating that the entire array has been sorted.</li>
      * </ul>
@@ -377,12 +397,13 @@ extends Selection {
      * {@code doubleSelectionInc} that implements the Double Selection Sort algorithm to sort a list
      * of {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
-     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the list.</li>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to
+     *     the last item in the list.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
      *     <li>The {@code while} loop can now be performed from {@code maxIndex} to {@code minIndex}.</li>
      *     <li>One important thing to take into account is that the inner loop should not go to the next item if
-     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
-     *     (that is, it should not increase the loop index variable).</li>
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its
+     *     next loop (that is, it should not increase the loop index variable).</li>
      *     <li>At the end of the outer loop, assign {@code maxIndex} to {@code minIndex}.</li>
      * </ul>
      * {@code doubleSelectionInc} method implements the Double Selection Sort algorithm to sort the given
@@ -413,12 +434,13 @@ extends Selection {
      * {@code doubleSelectionDec} that implements the Double Selection Sort algorithm to sort a list
      * of {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
-     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the list.</li>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to
+     *     the last item in the list.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
      *     <li>The {@code while} loop can now be performed from {@code minIndex} to {@code maxIndex}.</li>
      *     <li>One important thing to take into account is that the inner loop should not go to the next item if
-     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
-     *     (that is, it should not increase the loop index variable).</li>
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its
+     *     next loop (that is, it should not increase the loop index variable).</li>
      *     <li>At the end of the outer loop, assign {@code minIndex} to {@code maxIndex}.</li>
      * </ul>
      * {@code doubleSelectionDec} method implements the Double Selection Sort algorithm to sort the given
@@ -452,7 +474,8 @@ extends Selection {
      *     <li>It initializes an integer variable {@code n} with the length of the list,
      *     and sets {@code left} and {@code right} to the initial indices of
      *     the subarray to be sorted (<i>0</i> and {@code (n - 1)}, respectively).</li>
-     *     <li>It creates a new instance of the {@code SortFunctional<Comparable>} interface called {@code functionalReverse}
+     *     <li>It creates a new instance of the {@code SortFunctional<Comparable>} interface called
+     *     {@code functionalReverse}
      *     by calling the {@code functionalComparableToReverse} method.</li>
      *     <li>The method enters a {@code while} loop that continues until {@code left} is less than {@code right},
      *     indicating that there are still elements to be sorted.</li>
@@ -463,8 +486,8 @@ extends Selection {
      *     <li>It uses a for loop to iterate from {@code left} to {@code right}.
      *     Inside this loop, it calls the {@code findValueIndex} method to find
      *     the index of the smallest value and the largest value in the subarray from index {@code j} to {@code right}.
-     *     The {@code findValueIndex} method uses the given {@code functional} or {@code functionalReverse} interface to compare
-     *     the elements and determine the index of the desired value.</li>
+     *     The {@code findValueIndex} method uses the given {@code functional} or {@code functionalReverse} interface
+     *     to compare the elements and determine the index of the desired value.</li>
      *     <li>After finding the smallest and largest values,
      *     it swaps the element at the {@code valueReverseIndex} with the element at index {@code left},
      *     bringing the largest value to the end of the subarray.</li>
@@ -508,12 +531,13 @@ extends Selection {
      * {@code doubleSelectionInc} that implements the Double Selection Sort algorithm to sort a list
      * of {@link java.lang.Comparable Comparable} objects in ascending order.
      * <ul>
-     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the list.</li>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to
+     *     the last item in the list.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
      *     <li>The {@code while} loop can now be performed from {@code maxIndex} to {@code minIndex}.</li>
      *     <li>One important thing to take into account is that the inner loop should not go to the next item if
-     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
-     *     (that is, it should not increase the loop index variable).</li>
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its
+     *     next loop (that is, it should not increase the loop index variable).</li>
      *     <li>At the end of the outer loop, assign {@code maxIndex} to {@code minIndex}.</li>
      * </ul>
      * {@code doubleSelectionInc} method implements the Double Selection Sort algorithm to sort the given
@@ -545,12 +569,13 @@ extends Selection {
      * {@code doubleSelectionDec} that implements the Double Selection Sort algorithm to sort a list
      * of {@link java.lang.Comparable Comparable} objects in descending order.
      * <ul>
-     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to the last item in the list.</li>
+     *     <li>Besides having a {@code minIndex}, create also a {@code maxIndex} index variable initialized to point to
+     *     the last item in the list.</li>
      *     <li>Besides having a min variable, initialize also a max variable with the item at {@code maxIndex}.</li>
      *     <li>The {@code while} loop can now be performed from {@code minIndex} to {@code maxIndex}.</li>
      *     <li>One important thing to take into account is that the inner loop should not go to the next item if
-     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its next loop
-     *     (that is, it should not increase the loop index variable).</li>
+     *     the current item was less than min or greater or equal to max, but it should stay at the same item in its
+     *     next loop (that is, it should not increase the loop index variable).</li>
      *     <li>At the end of the outer loop, assign {@code minIndex} to {@code maxIndex}.</li>
      * </ul>
      * {@code doubleSelectionDec} method implements the Double Selection Sort algorithm to sort the given
@@ -579,18 +604,21 @@ extends Selection {
     }
 
     /**
-     * {@code doubleSelection} method takes a list {@code list} of type {@link java.lang.Comparable Comparable} and an instance of
+     * {@code doubleSelection} method takes a list {@code list} of type {@link java.lang.Comparable Comparable} and an
+     * instance of
      * the {@code SortFunctional<Comparable>} interface as parameters.
      * <ul>
      *     <li>It initializes two integer variables left and right with
      *     the given {@code left} and {@code right} indices of the subarray to be sorted.</li>
      *     <li>The method enters a while loop that continues until {@code left} is less than {@code right},
      *     indicating that there are still elements to be sorted.</li>
-     *     <li>Inside the loop, it initializes two integer variables {@code valueIndex} and {@code valueReverseIndex} with
+     *     <li>Inside the loop, it initializes two integer variables {@code valueIndex} and {@code valueReverseIndex}
+     *     with
      *     the initial values of {@code left} and {@code right}, respectively.
      *     These variables will keep track of the indices of
      *     the smallest and largest values found during each iteration.</li>
-     *     <li>It creates a new instance of the {@code SortFunctional<Comparable>} interface called {@code functionalReverse}
+     *     <li>It creates a new instance of the {@code SortFunctional<Comparable>} interface called
+     *     {@code functionalReverse}
      *     by calling the {@code functionalComparableToReverse} method.
      *     This method is assumed to return a functional interface that compares elements
      *     in reverse order compared to the given {@code functional} interface.</li>
@@ -608,7 +636,8 @@ extends Selection {
      *     indicating that the smallest value was originally at the {@code valueReverseIndex}.</li>
      *     <li>It swaps the element at the {@code valueIndex} with the element at index {@code right},
      *     bringing the smallest value to the beginning of the subarray.</li>
-     *     <li>It increments {@code left} and decrements {@code right} to narrow down the subarray to be sorted in the next iteration.</li>
+     *     <li>It increments {@code left} and decrements {@code right} to narrow down the subarray to be sorted in
+     *     the next iteration.</li>
      *     <li>The process continues until {@code left} is no longer less than {@code right},
      *     indicating that the entire list has been sorted.</li>
      * </ul>
@@ -622,7 +651,8 @@ extends Selection {
      * @see         SortFind#findValueIndex(List, int, int, SortFunctional)
      * @see         SortSwap#swap(List, int, int)
      */
-    protected <L extends Comparable> void doubleSelection(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void doubleSelection(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         while (left < right) {
             int valueIndex = left, valueReverseIndex = right;
             SortFunctional<Comparable> functionalReverse = functionalComparableToReverse(functional);

@@ -1,14 +1,15 @@
 package github.magyarzoli.sort;
 
 import github.magyarzoli.HeapInterface;
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Heap;
 import github.magyarzoli.sort.intro.IntroTernaryHeap;
 
 import java.util.List;
 
 /**
- * Ternary Heap Sort which uses a ternary heap instead of a binary heap; that is, each element in the heap has three children.
- * Ternary Heap Sort is somewhat more complicated to program, but it is potentially faster.
+ * Ternary Heap Sort which uses a ternary heap instead of a binary heap; that is, each element in the heap has
+ * three children. Ternary Heap Sort is somewhat more complicated to program, but it is potentially faster.
  * Each step in the sift operation of a ternary heap requires three comparisons and one swap,
  * whereas in a binary heap two comparisons and one swap are required.
  * The ternary heap can do two steps in less time than the binary heap requires for three steps.
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class TernaryHeap
-extends Heap {
+        extends Heap {
 
     /**
      * <b>Ternary Heap Sort:</b><br>
@@ -30,20 +31,25 @@ extends Heap {
      * <ol>
      *     <li>Build a binary heap from the input array. This is done by starting with the last parent node in the array
      *     and repeatedly {@code heapify} the array to satisfy the heap property.</li>
-     *     <li>{@code heapify} is a process where the element at index i is compared with its children, and if necessary,
+     *     <li>{@code heapify} is a process where the element at index i is compared with its children,
+     *     and if necessary,
      *     swapped to maintain the heap property (max-heap or min-heap).</li>
      *     <li>This process is performed for all parent nodes, starting from the last parent down to the root.</li>
      *     <li>Once the binary heap is constructed, repeatedly extract the maximum (or minimum)
      *     element from the heap and place it at the end of the array.</li>
-     *     <li>Swap the root element (which is the maximum or minimum element depending on whether it's a max-heap or min-heap)
+     *     <li>Swap the root element (which is the maximum or minimum element depending on whether
+     *     it's a max-heap or min-heap)
      *     with the last element of the heap.</li>
      *     <li>Reduce the size of the heap by one.</li>
      *     <li>Perform {@code heapify} on the root to restore the heap property.</li>
-     *     <li>Repeat step 2 until all elements have been extracted from the heap. The extracted elements will be in the reverse order for
-     *     a max-heap (sorted in ascending order) or in the correct order for a min-heap (sorted in descending order).</li>
+     *     <li>Repeat step 2 until all elements have been extracted from the heap. The extracted
+     *     elements will be in the reverse order for
+     *     a max-heap (sorted in ascending order) or in the correct order for a min-heap
+     *     (sorted in descending order).</li>
      * </ol>
      * <b>Note:</b><br>
-     * Thus, because of the <em>O(n log(n))</em> upper bound on heapsort's running time and constant upper bound on its auxiliary storage,
+     * Thus, because of the <em>O(n log(n))</em> upper bound on heapsort's running time
+     * and constant upper bound on its auxiliary storage,
      * embedded systems with real-time constraints or systems concerned with security often use heapsort.
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(n log(n))</em><br>
@@ -57,11 +63,14 @@ extends Heap {
 
     /**
      * {@code heapSplitInc}. This method is likely a part of a heap-related algorithm or data structure implementation
-     * and is used to find the index of the largest child element among the {@code left}, {@code mid}, and {@code right} children of
-     * the current element at index {@code i}. The method takes an array of {@link java.lang.Comparable Comparable} objects,
+     * and is used to find the index of the largest child element among the {@code left}, {@code mid},
+     * and {@code right} children of
+     * the current element at index {@code i}. The method takes an array of {@link java.lang.Comparable
+     * Comparable} objects,
      * the length of the array, and an index {@code i} as parameters.
      * <ul>
-     *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right} child elements of the current element index {@code i}.
+     *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right}
+     *     child elements of the current element index {@code i}.
      *     The {@code left} child index is {@code (3 * i + 1)},
      *     the {@code middle} child index is {@code (3 * i + 2)}, and
      *     the {@code right} child index is {@code (3 * i + 3)}.</li>
@@ -71,11 +80,13 @@ extends Heap {
      *     and the third call compares the current element with the {@code right} child.
      *     The {@code heapChildInc} method compares the elements at the provided indices
      *     and returns the index of the {@code larger} element.</li>
-     *     <li>The returned values from the {@code heapChildInc} method calls are assigned to the variable {@code largest}.
+     *     <li>The returned values from the {@code heapChildInc} method calls are assigned to the variable
+     *     {@code largest}.
      *     Since each call updates {@code largest} based on the comparison result,
      *     the final value of largest represents the index of the {@code largest} child element among
      *     the {@code left}, {@code mid}, and {@code right} children.</li>
-     *     <li>Finally, the method returns the value of {@code largest}, which is the index of the largest child element among
+     *     <li>Finally, the method returns the value of {@code largest}, which is the index of the largest
+     *     child element among
      *     the three children of the element at index {@code i}.</li>
      * </ul>
      * {@code heapSplitInc} method is used to find the index of the largest child element among
@@ -97,11 +108,14 @@ extends Heap {
 
     /**
      * {@code heapSplitDec}. This method is likely a part of a heap-related algorithm or data structure implementation
-     * and is used to find the index of the largest child element among the {@code left}, {@code mid}, and {@code right} children of
-     * the current element at index {@code i}. The method takes an array of {@link java.lang.Comparable Comparable} objects,
+     * and is used to find the index of the largest child element among the {@code left}, {@code mid},
+     * and {@code right} children of
+     * the current element at index {@code i}. The method takes an array of {@link java.lang.Comparable
+     * Comparable} objects,
      * the length of the array, and an index {@code i} as parameters.
      * <ul>
-     *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right} child elements of the current element index {@code i}.
+     *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right}
+     *     child elements of the current element index {@code i}.
      *     The {@code left} child index is {@code (3 * i + 1)},
      *     the {@code middle} child index is {@code (3 * i + 2)}, and
      *     the {@code right} child index is {@code (3 * i + )}3.</li>
@@ -111,11 +125,13 @@ extends Heap {
      *     and the third call compares the current element with the {@code right} child.
      *     The {@code heapChildInc} method compares the elements at the provided indices
      *     and returns the index of the {@code larger} element.</li>
-     *     <li>The returned values from the {@code heapChildDec} method calls are assigned to the variable {@code largest}.
+     *     <li>The returned values from the {@code heapChildDec} method calls are assigned to the
+     *     variable {@code largest}.
      *     Since each call updates {@code largest} based on the comparison result,
      *     the final value of smallest represents the index of the {@code largest} child element among
      *     the {@code left}, {@code mid}, and {@code right} children.</li>
-     *     <li>Finally, the method returns the value of {@code largest}, which is the index of the smallest child element among
+     *     <li>Finally, the method returns the value of {@code largest}, which is the index of the
+     *     smallest child element among
      *     the three children of the element at index {@code i}.</li>
      * </ul>
      * {@code heapSplitDec} method is used to find the index of the smallest child element among
@@ -178,11 +194,14 @@ extends Heap {
 
     /**
      * {@code heapSplitInc}. This method is likely a part of a heap-related algorithm or data structure implementation
-     * and is used to find the index of the largest child element among the {@code left}, {@code mid}, and {@code right} children of
-     * the current element at index {@code i}. The method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * and is used to find the index of the largest child element among the {@code left}, {@code mid}, and
+     * {@code right} children of
+     * the current element at index {@code i}. The method takes a list of {@link java.lang.Comparable
+     * Comparable} objects,
      * the length of the list, and an index {@code i} as parameters.
      * <ul>
-     *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right} child elements of the current element index {@code i}.
+     *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right} child
+     *     elements of the current element index {@code i}.
      *     The {@code left} child index is {@code (3 * i + 1)},
      *     the {@code middle} child index is {@code (3 * i + 2)}, and
      *     the {@code right} child index is {@code (3 * i + 3)}.</li>
@@ -192,11 +211,13 @@ extends Heap {
      *     and the third call compares the current element with the {@code right} child.
      *     The {@code heapChildInc} method compares the elements at the provided indices
      *     and returns the index of the {@code larger} element.</li>
-     *     <li>The returned values from the {@code heapChildInc} method calls are assigned to the variable {@code largest}.
+     *     <li>The returned values from the {@code heapChildInc} method calls are assigned
+     *     to the variable {@code largest}.
      *     Since each call updates {@code largest} based on the comparison result,
      *     the final value of largest represents the index of the {@code largest} child element among
      *     the {@code left}, {@code mid}, and {@code right} children.</li>
-     *     <li>Finally, the method returns the value of {@code largest}, which is the index of the largest child element among
+     *     <li>Finally, the method returns the value of {@code largest}, which is the index
+     *     of the largest child element among
      *     the three children of the element at index {@code i}.</li>
      * </ul>
      * {@code heapSplitInc} method is used to find the index of the largest child element among
@@ -217,12 +238,16 @@ extends Heap {
     }
 
     /**
-     * {@code heapSplitDec}. This method is likely a part of a heap-related algorithm or data structure implementation
-     * and is used to find the index of the largest child element among the {@code left}, {@code mid}, and {@code right} children of
-     * the current element at index {@code i}. The method takes a list of {@link java.lang.Comparable Comparable} objects,
+     * {@code heapSplitDec}. This method is likely a part of a heap-related algorithm or
+     * data structure implementation
+     * and is used to find the index of the largest child element among the {@code left},
+     * {@code mid}, and {@code right} children of
+     * the current element at index {@code i}. The method takes a list of
+     * {@link java.lang.Comparable Comparable} objects,
      * the length of the list, and an index {@code i} as parameters.
      * <ul>
-     *     <li>The method calculates the indices of the {@code left}, {@code mid}, and {@code right} child elements of the current element index {@code i}.
+     *     <li>The method calculates the indices of the {@code left}, {@code mid},
+     *     and {@code right} child elements of the current element index {@code i}.
      *     The {@code left} child index is {@code (3 * i + 1)},
      *     the {@code middle} child index is {@code (3 * i + 2)}, and
      *     the {@code right} child index is {@code (3 * i + )}3.</li>
@@ -232,11 +257,13 @@ extends Heap {
      *     and the third call compares the current element with the {@code right} child.
      *     The {@code heapChildInc} method compares the elements at the provided indices
      *     and returns the index of the {@code larger} element.</li>
-     *     <li>The returned values from the {@code heapChildDec} method calls are assigned to the variable {@code largest}.
+     *     <li>The returned values from the {@code heapChildDec} method calls are
+     *     assigned to the variable {@code largest}.
      *     Since each call updates {@code largest} based on the comparison result,
      *     the final value of smallest represents the index of the {@code largest} child element among
      *     the {@code left}, {@code mid}, and {@code right} children.</li>
-     *     <li>Finally, the method returns the value of {@code largest}, which is the index of the smallest child element among
+     *     <li>Finally, the method returns the value of {@code largest}, which
+     *     is the index of the smallest child element among
      *     the three children of the element at index {@code i}.</li>
      * </ul>
      * {@code heapSplitDec} method is used to find the index of the smallest child element among

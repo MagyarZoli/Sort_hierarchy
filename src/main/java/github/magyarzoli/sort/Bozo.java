@@ -1,5 +1,6 @@
 package github.magyarzoli.sort;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.SortSwap;
 import github.magyarzoli.sort.intro.IntroBozo;
 
@@ -15,7 +16,7 @@ import java.util.Random;
  */
 @SuppressWarnings("rawtypes")
 public class Bozo
-extends Bogo {
+        extends Bogo {
 
     /**
      * <b>Bozo Sort:</b><br>
@@ -31,21 +32,26 @@ extends Bogo {
      * </ol>
      * <b>Note:</b><br>
      * The key idea behind Bozo Sort is that it relies on randomness to eventually generate the correct order.
-     * In each iteration, the algorithm randomly permutes the elements of the array, essentially creating a random permutation.
+     * In each iteration, the algorithm randomly permutes the elements of the array, essentially creating a random
+     * permutation.
      * It then checks if this permutation is sorted.
      * If it is not, the algorithm repeats the process, shuffling the elements randomly again.<br><br>
      * Bozo Sort has a worst-case and average-case time complexity of <em>O((n + 1)!)</em>,
      * where <em>n</em> is the number of elements in the array.
      * This means the time it takes to sort the array grows factorially with the number of elements.
      * As a result, Bozo Sort is highly inefficient and impractical for sorting large arrays.<br><br>
-     * There is no fixed upper bound on the worst-case complexity of Bogo sort because it operates based on random shuffling.
+     * There is no fixed upper bound on the worst-case complexity of Bogo sort because it operates based on random
+     * shuffling.
      * In the worst case, the algorithm may keep shuffling indefinitely, resulting in an infinite time complexity.
-     * However, on average, the number of iterations required to sort the array grows factorially with the number of elements.<br><br>
+     * However, on average, the number of iterations required to sort the array grows factorially with the number of
+     * elements.<br><br>
      * Bozo sort is not a stable sorting algorithm.
      * Stability refers to the preservation of the relative order of elements with equal values.
-     * Since Bozo sort randomly shuffles the elements, it does not guarantee the preservation of the original order of equal elements.<br><br>
+     * Since Bozo sort randomly shuffles the elements, it does not guarantee the preservation of the original order of
+     * equal elements.<br><br>
      * Due to its poor performance, Bozo Sort is mainly used as an educational example to illustrate
-     * the concept of sorting algorithms and to highlight the importance of efficiency in real-world applications.<br><br>
+     * the concept of sorting algorithms and to highlight the importance of efficiency in real-world
+     * applications.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(∞)</em><br>
      * Best Case Complexity:    <em>O((n + 1)!)</em><br>
@@ -60,12 +66,15 @@ extends Bogo {
      * The {@code bogoInc} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
-     *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration
+     *     of the loop,
      *     it calls the {@code isSortedInc} method to check if the array is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the
+     *     specified range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       array The array to be sorted.
      * @see         Bogo#isSortedInc(Comparable[], int, int)
@@ -82,12 +91,15 @@ extends Bogo {
      * The {@code bogoDec} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
-     *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration
+     *     of the loop,
      *     it calls the {@code isSortedInc} method to check if the array is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the
+     *     specified range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       array The array to be sorted.
      * @see         Bogo#isSortedDec(Comparable[], int, int)
@@ -102,7 +114,8 @@ extends Bogo {
 
     /**
      * The {@code bogo} method takes an array of {@link java.lang.Comparable Comparable} objects,
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for
+     * sorting.
      * <ul>
      *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
      *     indicating that the array is sorted.</li>
@@ -110,7 +123,8 @@ extends Bogo {
      *     the elements of the array within the specified range.</li>
      * </ul>
      * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * @param       array The array to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         Bogo#isSorted(Comparable[], SortFunctional)
@@ -128,12 +142,15 @@ extends Bogo {
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
-     *     the array specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the array specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration
+     *     of the loop,
      *     it calls the {@code isSortedInc} method to check if the array is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the
+     *     specified range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
@@ -153,12 +170,15 @@ extends Bogo {
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
-     *     the array specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the array specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration o
+     *     f the loop,
      *     it calls the {@code isSortedInc} method to check if the array is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the
+     *     specified range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
@@ -176,7 +196,8 @@ extends Bogo {
     /**
      * The {@code bogo} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used
+     * for sorting.
      * <ul>
      *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
      *     indicating that the array is sorted.</li>
@@ -184,7 +205,8 @@ extends Bogo {
      *     the elements of the array within the specified range.</li>
      * </ul>
      * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
@@ -203,12 +225,15 @@ extends Bogo {
      * The {@code bogoInc} method takes a list of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
-     *     the list specified by <i>1</i> and {@code list.size()} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the list specified by <i>1</i> and {@code list.size()} is sorted in non-decreasing order. In each iteration
+     *     of the loop,
      *     it calls the {@code isSortedInc} method to check if the list is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the
+     *     specified range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       list The list to be sorted.
      * @see         Bogo#isSortedInc(List, int, int)
@@ -225,12 +250,15 @@ extends Bogo {
      * The {@code bogoDec} method takes a list of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
-     *     the list specified by <i>1</i> and {@code list.size()} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the list specified by <i>1</i> and {@code list.size()} is sorted in non-decreasing order. In each iteration
+     *     of the loop,
      *     it calls the {@code isSortedInc} method to check if the list is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the
+     *     specified range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       list The list to be sorted.
      * @see         Bogo#isSortedDec(List, int, int)
@@ -245,7 +273,8 @@ extends Bogo {
 
     /**
      * The {@code bogo} method takes a list of {@link java.lang.Comparable Comparable} objects,
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used
+     * for sorting.
      * <ul>
      *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
      *     indicating that the list is sorted.</li>
@@ -253,7 +282,8 @@ extends Bogo {
      *     the elements of the list within the specified range.</li>
      * </ul>
      * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * @param       list The list to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         Bogo#isSorted(List, SortFunctional)
@@ -271,16 +301,19 @@ extends Bogo {
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
-     *     the list specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the list specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of
+     *     the loop,
      *     it calls the {@code isSortedInc} method to check if the list is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the
+     *     specified range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @see         Bogo#isSortedInc(List, int, int)
      * @see         Bozo#shuffleIndex(List, int, int)
      */
@@ -296,16 +329,19 @@ extends Bogo {
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
-     *     the list specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the list specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of
+     *     the loop,
      *     it calls the {@code isSortedInc} method to check if the list is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffleIndex} method to randomize the elements within the
+     *     specified range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @see         Bogo#isSortedDec(List, int, int)
      * @see         Bozo#shuffleIndex(List, int, int)
      */
@@ -319,7 +355,8 @@ extends Bogo {
     /**
      * The {@code bogo} method takes a list of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for
+     * sorting.
      * <ul>
      *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
      *     indicating that the list is sorted.</li>
@@ -327,16 +364,18 @@ extends Bogo {
      *     the elements of the list within the specified range.</li>
      * </ul>
      * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         Bogo#isSorted(List, int, int, SortFunctional)
      * @see         Bozo#shuffleIndex(List, int, int)
      */
     @Override
-    protected <L extends Comparable> void bogo(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void bogo(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         while (!isSorted(list, left, right, functional)) {
             shuffleIndex(list, left, right);
         }
@@ -386,8 +425,8 @@ extends Bogo {
      * the specified range and then swaps the corresponding elements in the array.
      * This operation effectively shuffles the elements between left and right (exclusive).
      * @param       array The array to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @see         SortSwap#swap(Comparable[], int, int)
      */
     protected void shuffleIndex(Comparable[] array, int left, int right) {
@@ -441,8 +480,8 @@ extends Bogo {
      * the specified range and then swaps the corresponding elements in the list.
      * This operation effectively shuffles the elements between left and right (exclusive).
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @see         SortSwap#swap(List, int, int)
      */
     protected <L extends Comparable> void shuffleIndex(List<L> list, int left, int right) {

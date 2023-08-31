@@ -3,7 +3,8 @@ package github.magyarzoli;
 import java.util.List;
 
 /**
- * The topmost interface of the hierarchy, through which all other interface, abstract, super, sub, classes are available with polymorphism.
+ * The topmost interface of the hierarchy, through which all other interface, abstract, super, sub, classes are
+ * available with polymorphism.
  * @param       <T> setting of a type based on which the elements can be sorted.
  *              It is not mandatory to specify, additional pre-written subclasses specify the type.
  * @since       1.3
@@ -170,17 +171,21 @@ public interface Sort<T extends Comparable> {
 
     /**
      * The {@code scanFunctionalComparableTo} method is a default implementation provided in the interface.
-     * It takes an instance of {@code SortFunctional} and performs comparisons using the {@code functionalCompareTo} method.
+     * It takes an instance of {@code SortFunctional} and performs comparisons using the {@code functionalCompareTo}
+     * method.
      * <ul>
      *     <li>Inside the method, two {@code Integer} variables {@code a} and {@code b} are declared
      *     and assigned values of <i>1</i> and <i>2</i>, respectively.</li>
      *     <li>The {@code functionalCompareTo} method is invoked three times with different arguments:
      *     {@code f((T) a, (T) a,) g((T) a, (T) b,) h((T) b, (T) a)}.</li>
      *     <li>The results of the comparisons are stored in boolean variables {@code f}, {@code g}, and {@code h}.</li>
-     *     <li>A series of if-else statements are used to determine the return value based on the combinations of the {@code boolean} variables.
-     *     The return values range from <i>0</i> to <i>5</i>, representing different scenarios of the comparison results.</li>
+     *     <li>A series of if-else statements are used to determine the return value based on the combinations of the
+     *     {@code boolean} variables.
+     *     The return values range from <i>0</i> to <i>5</i>, representing different scenarios of the comparison
+     *     results.</li>
      * </ul>
-     * {@code scanFunctionalComparableTo} method examines the lambda function and returns the result of what type of setting lambda is defined.
+     * {@code scanFunctionalComparableTo} method examines the lambda function and returns the result of what type of
+     * setting lambda is defined.
      * @param       functional lambda expression for comparison.
      * @return      the result of what type of setting lambda is defined.
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
@@ -219,8 +224,10 @@ public interface Sort<T extends Comparable> {
      *     The {@code run()} method typically contains the logic that needs to be executed in a separate thread.</li>
      *     <li>This line waits for each thread to finish execution by
      *     calling the {@link java.lang.Thread#join() join()} method on the {@code threadObj}.
-     *     The {@code join()} method causes the calling thread to wait until the thread represented by {@code threadObj} terminates.</li>
-     *     <li>If any thread is interrupted while waiting (e.g., if another thread calls {@link java.lang.Thread#interrupt() interrupt()} on it),
+     *     The {@code join()} method causes the calling thread to wait until the thread represented by {@code threadObj}
+     *     terminates.</li>
+     *     <li>If any thread is interrupted while waiting (e.g., if another thread calls
+     *     {@link java.lang.Thread#interrupt() interrupt()} on it),
      *     it will throw an {@link java.lang.InterruptedException InterruptedException}.
      *     In that case, the catch block will be executed,
      *     and it will print the stack trace of the exception using {@code e.printStackTrace()}.</li>
@@ -242,59 +249,5 @@ public interface Sort<T extends Comparable> {
                 e.printStackTrace();
             }
         }
-    }
-
-    /**
-     * {@link java.lang.FunctionalInterface @FunctionalInterface}: This annotation indicates that the interface is a functional interface.
-     * A functional interface is an interface that has only one abstract method and is used for lambda expressions or method references.
-     * This line defines the interface CompareTo with a generic type parameter {@code T} that extends the {@link java.lang.Comparable Comparable} interface.
-     * The Comparable interface is a built-in interface in Java that represents objects that can be compared to each other.
-     * @param       <T> when entering it, you can set which class type the interface is used as.
-     */
-    @FunctionalInterface
-    interface SortFunctional<T extends Comparable> {
-
-        /**
-         * Declares the abstract method {@code functionalCompareTo} within the interface.
-         * The method takes two parameters of type {@code T} (which extends {@link java.lang.Comparable Comparable})
-         * named {@code a} and {@code b} and returns a boolean value.
-         * This method is intended to compare two objects of type {@code T} and determine whether they satisfy a certain condition.
-         * @param       a first element to be examined.
-         * @param       b second element to be examined.
-         * @return      the returns a boolean value.
-         */
-        boolean functionalCompareTo(T a, T b);
-    }
-
-    /**
-     * You can set the desired sort by specifying sort type.
-     * <ul>
-     *     <li><i>INCREASING</i> - Puts items in ascending order.</li>
-     *     <li><i>DECREASING</i> - Places the elements in descending order.</li>
-     *     <li><i>DO_NOT_CHANGE_IT</i> - Does not change the order of the elements!</li>
-     *     <li><i>REVERSE_ORDER</i> - It reverses the order of the elements, what was first becomes last.</li>
-     * </ul>
-     */
-    enum SortType {
-
-        /**
-         * Puts items in ascending order.
-         */
-        INCREASING,
-
-        /**
-         * Places the elements in descending order.
-         */
-        DECREASING,
-
-        /**
-         * Does not change the order of the elements!
-         */
-        DO_NOT_CHANGE_IT,
-
-        /**
-         * It reverses the order of the elements, what was first becomes last.
-         */
-        REVERSE_ORDER,
     }
 }

@@ -36,7 +36,7 @@ public interface SortArray<T extends Comparable>
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
      */
-    void sortArrayFun(T[] array, Sort.SortFunctional<T> functional);
+    void sortArrayFun(T[] array, SortFunctional<T> functional);
 
     /**
      * Pre-prepared method, so that every inherited class does not have to prepare the method, it cannot be overridden.
@@ -82,9 +82,9 @@ public interface SortArray<T extends Comparable>
      * @param       array to be arranged.
      * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types.
      *              Order can be specified here, which row arrangement you want to use.
-     * @see         Sort.SortType
+     * @see         SortType
      */
-    default void sortArray(T[] array, Sort.SortType sequence) {
+    default void sortArray(T[] array, SortType sequence) {
         switch (sequence) {
             case INCREASING:
                 sortArrayInc(array);
@@ -108,9 +108,9 @@ public interface SortArray<T extends Comparable>
      * operation.
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
-     * @see         Sort.SortFunctional
+     * @see         SortFunctional
      */
-    default void sortArray(T[] array, Sort.SortFunctional<T> functional) {
+    default void sortArray(T[] array, SortFunctional<T> functional) {
         sortArrayFun(array, functional);
     }
 
@@ -149,9 +149,9 @@ public interface SortArray<T extends Comparable>
      * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types.
      *              Order can be specified here, which row arrangement you want to use.
      * @param       thread on how many threads to run the queue arrangement.
-     * @see         Sort.SortType
+     * @see         SortType
      */
-    default void sortArray(T[] array, Sort.SortType sequence, int thread) {
+    default void sortArray(T[] array, SortType sequence, int thread) {
         switch (sequence) {
             case INCREASING:
             case DECREASING:
@@ -173,9 +173,9 @@ public interface SortArray<T extends Comparable>
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
      * @param       thread on how many threads to run the queue arrangement.
-     * @see         Sort.SortFunctional
+     * @see         SortFunctional
      */
-    default void sortArray(T[] array, Sort.SortFunctional<T> functional, int thread) {
+    default void sortArray(T[] array, SortFunctional<T> functional, int thread) {
         threadArray(array, functional, thread);
     }
 

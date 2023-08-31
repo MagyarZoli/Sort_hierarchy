@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.WeaveMerge;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.WeaveMerge;
  */
 @SuppressWarnings("rawtypes")
 public class IntroWeaveMerge
-extends WeaveMerge
-implements Intro<Comparable> {
+        extends WeaveMerge
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Weave Merge Sort:</b><br>

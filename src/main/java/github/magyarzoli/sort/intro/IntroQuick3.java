@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Quick3;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.Quick3;
  */
 @SuppressWarnings("rawtypes")
 public class IntroQuick3
-extends Quick3
-implements Intro<Comparable> {
+        extends Quick3
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Quick3 Sort:</b><br>

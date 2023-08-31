@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Bubble;
 
 /**
@@ -15,8 +16,8 @@ import github.magyarzoli.sort.Bubble;
  */
 @SuppressWarnings("rawtypes")
 public class IntroBubble
-extends Bubble
-implements Intro<Comparable> {
+        extends Bubble
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Bubble Sort:</b><br>

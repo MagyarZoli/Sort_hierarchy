@@ -2,6 +2,7 @@ package github.magyarzoli.sort.intro;
 
 import java.util.List;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.WeakHeap;
 
 /**
@@ -17,8 +18,8 @@ import github.magyarzoli.sort.WeakHeap;
  */
 @SuppressWarnings("rawtypes")
 public class IntroWeakHeap
-extends WeakHeap
-implements Intro<Comparable> {
+        extends WeakHeap
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Weak Heap Sort:</b><br>

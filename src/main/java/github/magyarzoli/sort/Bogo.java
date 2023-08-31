@@ -1,5 +1,6 @@
 package github.magyarzoli.sort;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.SortSwap;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public class Bogo
-extends Bubble {
+        extends Bubble {
 
     /**
      * <b>Bogo Sort:</b><br>
@@ -29,21 +30,26 @@ extends Bubble {
      * </ol>
      * <b>Note:</b><br>
      * The key idea behind Bogo Sort is that it relies on randomness to eventually generate the correct order.
-     * In each iteration, the algorithm randomly permutes the elements of the array, essentially creating a random permutation.
+     * In each iteration, the algorithm randomly permutes the elements of the array, essentially creating a random
+     * permutation.
      * It then checks if this permutation is sorted.
      * If it is not, the algorithm repeats the process, shuffling the elements randomly again.<br><br>
      * Bogo Sort has a worst-case and average-case time complexity of <em>O((n + 1)!)</em>,
      * where <em>n</em> is the number of elements in the array.
      * This means the time it takes to sort the array grows factorially with the number of elements.
      * As a result, Bogo Sort is highly inefficient and impractical for sorting large arrays.<br><br>
-     * There is no fixed upper bound on the worst-case complexity of Bogo sort because it operates based on random shuffling.
+     * There is no fixed upper bound on the worst-case complexity of Bogo sort because it operates based on random
+     * shuffling.
      * In the worst case, the algorithm may keep shuffling indefinitely, resulting in an infinite time complexity.
-     * However, on average, the number of iterations required to sort the array grows factorially with the number of elements.<br><br>
+     * However, on average, the number of iterations required to sort the array grows factorially with the number of
+     * elements.<br><br>
      * Bogo sort is not a stable sorting algorithm.
      * Stability refers to the preservation of the relative order of elements with equal values.
-     * Since Bogo sort randomly shuffles the elements, it does not guarantee the preservation of the original order of equal elements.<br><br>
+     * Since Bogo sort randomly shuffles the elements, it does not guarantee the preservation of the original order of
+     * equal elements.<br><br>
      * Due to its poor performance, Bogo Sort is mainly used as an educational example to illustrate
-     * the concept of sorting algorithms and to highlight the importance of efficiency in real-world applications.<br><br>
+     * the concept of sorting algorithms and to highlight the importance of efficiency in real-world
+     * applications.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(∞)</em><br>
      * Best Case Complexity:    <em>O((n + 1)!)</em><br>
@@ -113,12 +119,15 @@ extends Bubble {
      * The {@code bogoInc} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
-     *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration
+     *     of the loop,
      *     it calls the {@code isSortedInc} method to check if the array is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified
+     *     range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       array The array to be sorted.
      * @see         Bogo#isSortedInc(Comparable[], int, int)
@@ -134,12 +143,15 @@ extends Bubble {
      * The {@code bogoDec} method takes an array of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
-     *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the array specified by <i>1</i> and {@code array.length} is sorted in non-decreasing order. In each iteration
+     *     of the loop,
      *     it calls the {@code isSortedInc} method to check if the array is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified
+     *     range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       array The array to be sorted.
      * @see         Bogo#isSortedDec(Comparable[], int, int)
@@ -153,7 +165,8 @@ extends Bubble {
 
     /**
      * The {@code bogo} method takes an array of {@link java.lang.Comparable Comparable} objects,
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for
+     * sorting.
      * <ul>
      *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
      *     indicating that the array is sorted.</li>
@@ -161,7 +174,8 @@ extends Bubble {
      *     the elements of the array within the specified range.</li>
      * </ul>
      * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * @param       array The array to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         Bogo#isSorted(Comparable[], SortFunctional)
@@ -178,12 +192,15 @@ extends Bubble {
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
-     *     the array specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the array specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of
+     *     the loop,
      *     it calls the {@code isSortedInc} method to check if the array is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified
+     *     range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
@@ -202,12 +219,15 @@ extends Bubble {
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
-     *     the array specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the array specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of
+     *     the loop,
      *     it calls the {@code isSortedInc} method to check if the array is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified
+     *     range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
@@ -224,7 +244,8 @@ extends Bubble {
     /**
      * The {@code bogo} method takes an array of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for
+     * sorting.
      * <ul>
      *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
      *     indicating that the array is sorted.</li>
@@ -232,7 +253,8 @@ extends Bubble {
      *     the elements of the array within the specified range.</li>
      * </ul>
      * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
@@ -256,7 +278,8 @@ extends Bubble {
      *     in Java without specifying their concrete type.
      *     This annotation tells the compiler to ignore these warnings.</li>
      *     <li>The {@code isSortedInc} method starts iterating from index <i>1</i> up to {@code (array.length)}.
-     *     Within each iteration, it compares the current element {@code array[i]} with the previous element {@code array[(i - 1)]}.</li>
+     *     Within each iteration, it compares the current element {@code array[i]} with the previous element
+     *     {@code array[(i - 1)]}.</li>
      *     <li>the comparison shows that the current element is smaller than the previous one
      *     (as determined by the {@link java.lang.Comparable#compareTo(Object) compareTo} method),
      *     it means the array is not sorted in non-decreasing order, and the method returns {@code false}.
@@ -286,7 +309,8 @@ extends Bubble {
      *     in Java without specifying their concrete type.
      *     This annotation tells the compiler to ignore these warnings.</li>
      *     <li>The {@code isSortedInc} method starts iterating from index <i>1</i> up to {@code (array.length)}.
-     *     Within each iteration, it compares the current element {@code array[i]} with the previous element {@code array[(i - 1)]}.</li>
+     *     Within each iteration, it compares the current element {@code array[i]} with the previous element
+     *     {@code array[(i - 1)]}.</li>
      *     <li>the comparison shows that the current element is greater than the previous one
      *     (as determined by the {@link java.lang.Comparable#compareTo(Object) compareTo} method),
      *     it means the array is not sorted in non-decreasing order, and the method returns {@code false}.
@@ -314,7 +338,7 @@ extends Bubble {
      *     <li>Within the {@code isSorted} method, a loop iterates over
      *     the elements of the array starting from the <i>1</i> index.
      *     For each element, it compares it with
-     *     the previous element using the {@code functionalCompareTo} method of the {@code SortFunctional} object. </li>
+     *     the previous element using the {@code functionalCompareTo} method of the {@code SortFunctional} object.</li>
      *     <li>If the comparison returns {@code true},
      *     indicating that the current element is less than the previous element,
      *     the method returns {@code false}, indicating that the array is not sorted.</li>
@@ -346,7 +370,8 @@ extends Bubble {
      *     in Java without specifying their concrete type.
      *     This annotation tells the compiler to ignore these warnings.</li>
      *     <li>The {@code isSortedInc} method starts iterating from index {@code (left + 1)} up to {@code (right - 1)}.
-     *     Within each iteration, it compares the current element {@code array[i]} with the previous element {@code array[(i - 1)]}.</li>
+     *     Within each iteration, it compares the current element {@code array[i]} with the previous element
+     *     {@code array[(i - 1)]}.</li>
      *     <li>the comparison shows that the current element is smaller than the previous one
      *     (as determined by the {@link java.lang.Comparable#compareTo(Object) compareTo} method),
      *     it means the array is not sorted in non-decreasing order, and the method returns {@code false}.
@@ -379,7 +404,8 @@ extends Bubble {
      *     in Java without specifying their concrete type.
      *     This annotation tells the compiler to ignore these warnings.</li>
      *     <li>The {@code isSortedInc} method starts iterating from index {@code (left + 1)} up to {@code (right - 1)}.
-     *     Within each iteration, it compares the current element {@code array[i]} with the previous element {@code array[(i - 1)]}.</li>
+     *     Within each iteration, it compares the current element {@code array[i]} with the previous element
+     *     {@code array[(i - 1)]}.</li>
      *     <li>the comparison shows that the current element is greater than the previous one
      *     (as determined by the {@link java.lang.Comparable#compareTo(Object) compareTo} method),
      *     it means the array is not sorted in non-decreasing order, and the method returns {@code false}.
@@ -410,7 +436,7 @@ extends Bubble {
      *     <li>Within the {@code isSorted} method, a loop iterates over
      *     the elements of the array starting from the {@code (left + 1)} index.
      *     For each element, it compares it with
-     *     the previous element using the {@code functionalCompareTo} method of the {@code SortFunctional} object. </li>
+     *     the previous element using the {@code functionalCompareTo} method of the {@code SortFunctional} object.</li>
      *     <li>If the comparison returns {@code true},
      *     indicating that the current element is less than the previous element,
      *     the method returns {@code false}, indicating that the array is not sorted.</li>
@@ -441,11 +467,13 @@ extends Bubble {
      * <ul>
      *     <li>{@code for (int i = 1; i < array.length; i++)}
      *     in the for loop, the {@code swap} method is called,
-     *     which swaps the {@code i} index of the array array and the ({@link java.lang.Math#random() Math.random()}  {@code * i}) index.</li>
+     *     which swaps the {@code i} index of the array array and the ({@link java.lang.Math#random() Math.random()}
+     *     {@code * i}) index.</li>
      * </ul>
      * {@code shuffle} method shuffles the elements in a random order by repeatedly selecting a random index within
      * the range (<i>1</i>, {@code i}) and swapping it with the element at index {@code i}.
-     * This algorithm ensures that each element in the range has an equal probability of ending up at any position within the range.
+     * This algorithm ensures that each element in the range has an equal probability of ending up at any position
+     * within the range.
      * @param       array The array to be sorted.
      * @see         SortSwap#swap(Comparable[], int, int)
      */
@@ -463,11 +491,13 @@ extends Bubble {
      * <ul>
      *     <li>{@code for (int i = (left + 1); i < right; i++)}
      *     in the for loop, the {@code swap} method is called,
-     *     which swaps the {@code i} index of the array array and the ({@link java.lang.Math#random() Math.random()}  {@code * i}) index.</li>
+     *     which swaps the {@code i} index of the array array and the ({@link java.lang.Math#random() Math.random()}
+     *     {@code * i}) index.</li>
      * </ul>
      * {@code shuffle} method shuffles the elements in a random order by repeatedly selecting a random index within
      * the range ({@code left}, {@code i}) and swapping it with the element at index {@code i}.
-     * This algorithm ensures that each element in the range has an equal probability of ending up at any position within the range.
+     * This algorithm ensures that each element in the range has an equal probability of ending up at any position
+     * within the range.
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
@@ -480,15 +510,18 @@ extends Bubble {
     }
 
     /**
-     * The {@code bogoInc} method takes an list of {@link java.lang.Comparable Comparable} objects.
+     * The {@code bogoInc} method takes a list of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
-     *     the list specified by <i>1</i> and {@code list.size()} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the list specified by <i>1</i> and {@code list.size()} is sorted in non-decreasing order. In each iteration
+     *     of the loop,
      *     it calls the {@code isSortedInc} method to check if the list is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified
+     *     range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       list The list to be sorted.
      * @see         Bogo#isSortedInc(List, int, int)
@@ -504,12 +537,15 @@ extends Bubble {
      * The {@code bogoDec} method takes a list of {@link java.lang.Comparable Comparable} objects.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
-     *     the list specified by <i>1</i> and {@code list.size()} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the list specified by <i>1</i> and {@code list.size()} is sorted in non-decreasing order. In each iteration
+     *     of the loop,
      *     it calls the {@code isSortedInc} method to check if the list is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified
+     *     range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       list The list to be sorted.
      * @see         Bogo#isSortedDec(List, int, int)
@@ -523,7 +559,8 @@ extends Bubble {
 
     /**
      * The {@code bogo} method takes a list of {@link java.lang.Comparable Comparable} objects,
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for
+     * sorting.
      * <ul>
      *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
      *     indicating that the list is sorted.</li>
@@ -531,7 +568,8 @@ extends Bubble {
      *     the elements of the list within the specified range.</li>
      * </ul>
      * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * @param       list The list to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         Bogo#isSorted(List, SortFunctional)
@@ -548,16 +586,19 @@ extends Bubble {
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoInc} method uses a while loop that continues until the portion of
-     *     the list specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the list specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of
+     *     the loop,
      *     it calls the {@code isSortedInc} method to check if the list is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified
+     *     range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @see         Bogo#isSortedInc(List, int, int)
      * @see         Bogo#shuffle(List, int, int)
      */
@@ -572,16 +613,19 @@ extends Bubble {
      * as well as the indices {@code left} and {@code right} that specify the range to sort.
      * <ul>
      *     <li>The {@code bogoDec} method uses a while loop that continues until the portion of
-     *     the list specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of the loop,
+     *     the list specified by {@code left} and {@code right} is sorted in non-decreasing order. In each iteration of
+     *     the loop,
      *     it calls the {@code isSortedInc} method to check if the list is sorted</li>
-     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified range.</li>
+     *     <li> If it's not sorted, it calls the {@code shuffle} method to randomize the elements within the specified
+     *     range.</li>
      * </ul>
      * The {@code bogoInc} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * <b>It is not recommended for practical use, as it has a very high average and worst-case time complexity.</b>
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @see         Bogo#isSortedDec(List, int, int)
      * @see         Bogo#shuffle(List, int, int)
      */
@@ -594,7 +638,8 @@ extends Bubble {
     /**
      * The {@code bogo} method takes an list of {@link java.lang.Comparable Comparable} objects,
      * along with the {@code left} and {@code right} indices specifying the range of elements to be sorted.
-     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for sorting.
+     * It also takes a {@code SortFunctional<Comparable>} object representing the custom comparison logic to be used for
+     * sorting.
      * <ul>
      *     <li>The method enters a while loop that continues until the {@code isSorted} method returns {@code true},
      *     indicating that the list is sorted.</li>
@@ -602,15 +647,17 @@ extends Bubble {
      *     the elements of the list within the specified range.</li>
      * </ul>
      * The {@code bogo} algorithm is not an efficient sorting algorithm and has a high time complexity.
-     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the correct order.<br>
+     * It repeatedly shuffles the elements randomly and checks if they are sorted until they eventually end up in the
+     * correct order.<br>
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @param       functional lambda expression for comparison.
      * @see         Bogo#isSorted(List, int, int, SortFunctional)
      * @see         Bogo#shuffle(List, int, int)
      */
-    protected <L extends Comparable> void bogo(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> void bogo(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         while (!isSorted(list, left, right, functional)) {
             shuffle(list, left, right);
         }
@@ -626,7 +673,8 @@ extends Bubble {
      *     in Java without specifying their concrete type.
      *     This annotation tells the compiler to ignore these warnings.</li>
      *     <li>The {@code isSortedInc} method starts iterating from index <i>1</i> up to {@code (list.size())}.
-     *     Within each iteration, it compares the current element {@code list.get(i)} with the previous element {@code list.get(i - 1)}.</li>
+     *     Within each iteration, it compares the current element {@code list.get(i)} with the previous element
+     *     {@code list.get(i - 1)}.</li>
      *     <li>the comparison shows that the current element is smaller than the previous one
      *     (as determined by the {@link java.lang.Comparable#compareTo(Object) compareTo} method),
      *     it means the list is not sorted in non-decreasing order, and the method returns {@code false}.
@@ -656,7 +704,8 @@ extends Bubble {
      *     in Java without specifying their concrete type.
      *     This annotation tells the compiler to ignore these warnings.</li>
      *     <li>The {@code isSortedInc} method starts iterating from index <i>1</i> up to {@code (list.size())}.
-     *     Within each iteration, it compares the current element {@code list.get(i)} with the previous element {@code list.get(i - 1)}.</li>
+     *     Within each iteration, it compares the current element {@code list.get(i)} with the previous element
+     *     {@code list.get(i - 1)}.</li>
      *     <li>the comparison shows that the current element is greater than the previous one
      *     (as determined by the {@link java.lang.Comparable#compareTo(Object) compareTo} method),
      *     it means the list is not sorted in non-decreasing order, and the method returns {@code false}.
@@ -684,7 +733,7 @@ extends Bubble {
      *     <li>Within the {@code isSorted} method, a loop iterates over
      *     the elements of the list starting from the <i>1</i> index.
      *     For each element, it compares it with
-     *     the previous element using the {@code functionalCompareTo} method of the {@code SortFunctional} object. </li>
+     *     the previous element using the {@code functionalCompareTo} method of the {@code SortFunctional} object.</li>
      *     <li>If the comparison returns {@code true},
      *     indicating that the current element is less than the previous element,
      *     the method returns {@code false}, indicating that the list is not sorted.</li>
@@ -706,7 +755,7 @@ extends Bubble {
     }
 
     /**
-     * {@code isSortedInc} that checks if a portion of an list is sorted in non-decreasing order.
+     * {@code isSortedInc} that checks if a portion of a list is sorted in non-decreasing order.
      * The method takes an list of {@code Comparable} objects, as well as
      * the indices {@code left} and {@code right} that specify the range to check.
      * <ul>
@@ -716,7 +765,8 @@ extends Bubble {
      *     in Java without specifying their concrete type.
      *     This annotation tells the compiler to ignore these warnings.</li>
      *     <li>The {@code isSortedInc} method starts iterating from index {@code (left + 1)} up to {@code (right - 1)}.
-     *     Within each iteration, it compares the current element {@code list.get(i)} with the previous element {@code list.get(i - 1)}.</li>
+     *     Within each iteration, it compares the current element {@code list.get(i)} with the previous element
+     *     {@code list.get(i - 1)}.</li>
      *     <li>the comparison shows that the current element is smaller than the previous one
      *     (as determined by the {@link java.lang.Comparable#compareTo(Object) compareTo} method),
      *     it means the list is not sorted in non-decreasing order, and the method returns {@code false}.
@@ -749,7 +799,8 @@ extends Bubble {
      *     in Java without specifying their concrete type.
      *     This annotation tells the compiler to ignore these warnings.</li>
      *     <li>The {@code isSortedInc} method starts iterating from index {@code (left + 1)} up to {@code (right - 1)}.
-     *     Within each iteration, it compares the current element {@code list.get(i)} with the previous element {@code list.get(i - 1)}.</li>
+     *     Within each iteration, it compares the current element {@code list.get(i)} with the previous element
+     *     {@code list.get(i - 1)}.</li>
      *     <li>the comparison shows that the current element is greater than the previous one
      *     (as determined by the {@link java.lang.Comparable#compareTo(Object) compareTo} method),
      *     it means the list is not sorted in non-decreasing order, and the method returns {@code false}.
@@ -757,8 +808,8 @@ extends Bubble {
      *     it means the list is sorted, and the method returns {@code true}.</li>
      * </ul>
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @return      list order if it is ordered, {@code true} if not then {@code false}.
      */
     @SuppressWarnings("unchecked")
@@ -780,7 +831,8 @@ extends Bubble {
      *     <li>Within the {@code isSorted} method, a loop iterates over
      *     the elements of the list starting from the {@code (left + 1)} index.
      *     For each element, it compares it with
-     *     the previous element using the {@code functionalCompareTo} method of the {@code mz.SortFunctional} object. </li>
+     *     the previous element using the {@code functionalCompareTo} method of the {@code SortFunctional}
+     *     object.</li>
      *     <li>If the comparison returns {@code true},
      *     indicating that the current element is less than the previous element,
      *     the method returns {@code false}, indicating that the list is not sorted.</li>
@@ -788,13 +840,14 @@ extends Bubble {
      * If the loop completes without encountering any out-of-order elements,
      * the method returns true, indicating that the list is sorted according to the provided comparison logic.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @param       functional lambda expression for comparison.
      * @return      list order if it is ordered, {@code true} if not then {@code false}.
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
-    protected <L extends Comparable> boolean isSorted(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    protected <L extends Comparable> boolean isSorted(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         for (int i = (left + 1); i < right; i++) {
             if (functional.functionalCompareTo(list.get(i - 1), list.get(i))) {
                 return false;
@@ -811,11 +864,13 @@ extends Bubble {
      * <ul>
      *     <li>{@code for (int i = 1; i < list.length; i++)}
      *     in the for loop, the {@code swap} method is called,
-     *     which swaps the {@code i} index of the list list and the ({@link java.lang.Math#random() Math.random()}  {@code * i}) index.</li>
+     *     which swaps the {@code i} index of the list list and the ({@link java.lang.Math#random() Math.random()}
+     *     {@code * i}) index.</li>
      * </ul>
      * {@code shuffle} method shuffles the elements in a random order by repeatedly selecting a random index within
      * the range (<i>1</i>, {@code i}) and swapping it with the element at index {@code i}.
-     * This algorithm ensures that each element in the range has an equal probability of ending up at any position within the range.
+     * This algorithm ensures that each element in the range has an equal probability of ending up at any position
+     * within the range.
      * @param       list The list to be sorted.
      * @see         SortSwap#swap(List, int, int)
      */
@@ -833,14 +888,16 @@ extends Bubble {
      * <ul>
      *     <li>{@code for (int i = (left + 1); i < right; i++)}
      *     in the for loop, the {@code swap} method is called,
-     *     which swaps the {@code i} index of the list list and the ({@link java.lang.Math#random() Math.random()}  {@code * i}) index.</li>
+     *     which swaps the {@code i} index of the list list and the ({@link java.lang.Math#random() Math.random()}
+     *     {@code * i}) index.</li>
      * </ul>
      * {@code shuffle} method shuffles the elements in a random order by repeatedly selecting a random index within
      * the range ({@code left}, {@code i}) and swapping it with the element at index {@code i}.
-     * This algorithm ensures that each element in the range has an equal probability of ending up at any position within the range.
+     * This algorithm ensures that each element in the range has an equal probability of ending up at any position
+     * within the range.
      * @param       list The list to be sorted.
-     * @param       left The starting index of the subarray to be sorted.
-     * @param       right The ending index (inclusive) of the subarray to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
      * @see         SortSwap#swap(List, int, int)
      */
     protected <L extends Comparable> void shuffle(List<L> list, int left, int right) {

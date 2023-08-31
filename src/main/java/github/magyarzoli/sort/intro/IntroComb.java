@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.Comb;
 
 /**
@@ -15,8 +16,8 @@ import github.magyarzoli.sort.Comb;
  */
 @SuppressWarnings("rawtypes")
 public class IntroComb
-extends Comb
-implements Intro<Comparable> {
+        extends Comb
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Comb Sort:</b><br>

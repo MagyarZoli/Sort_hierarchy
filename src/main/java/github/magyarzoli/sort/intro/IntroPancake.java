@@ -1,5 +1,6 @@
 package github.magyarzoli.sort.intro;
 
+import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.intro.introDPQ.IntroDPQPancake;
 import github.magyarzoli.sort.Pancake;
 
@@ -16,8 +17,8 @@ import github.magyarzoli.sort.Pancake;
  */
 @SuppressWarnings("rawtypes")
 public class IntroPancake
-extends Pancake
-implements Intro<Comparable> {
+        extends Pancake
+        implements Intro<Comparable> {
 
     /**
      * <b>Intro Pancake Sort:</b><br>
