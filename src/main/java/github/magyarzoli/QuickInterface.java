@@ -10,13 +10,15 @@ import java.util.List;
  */
 @SuppressWarnings("rawtypes")
 public interface QuickInterface<T extends Comparable>
-extends Sorter<T>, SortSwap<T> {
+        extends Sorter<T>, SortSwap<T> {
 
     /**
-     * Implementation of a quick sort algorithm for sorting the array of {@link java.lang.Comparable Comparable} objects in ascending order.
+     * Implementation of a quick sort algorithm for sorting the array of {@link java.lang.Comparable Comparable}
+     * objects in ascending order.
      * The {@code quickInc} method follows the divide-and-conquer strategy of quicksort,
      * recursively partitioning the array into smaller subarrays and sorting them individually.
-     * The base case of the recursion is when the subarray has only one element, in which case it is considered already sorted.
+     * The base case of the recursion is when the subarray has only one element, in which case it is considered already
+     * sorted.
      * @param       array to be arranged.
      * @see         QuickInterface#quickInc(Comparable[], int, int)
      */
@@ -25,10 +27,12 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * Implementation of a quick sort algorithm for sorting the array of {@link java.lang.Comparable Comparable} objects in ascending order.
+     * Implementation of a quick sort algorithm for sorting the array of {@link java.lang.Comparable Comparable} objects
+     * in ascending order.
      * The {@code quickDec} method follows the divide-and-conquer strategy of quicksort,
      * recursively partitioning the array into smaller subarrays and sorting them individually.
-     * The base case of the recursion is when the subarray has only one element, in which case it is considered already sorted.
+     * The base case of the recursion is when the subarray has only one element, in which case it is considered already
+     * sorted.
      * @param       array to be arranged.
      * @see         QuickInterface#quickDec(Comparable[], int, int)
      */
@@ -48,7 +52,8 @@ extends Sorter<T>, SortSwap<T> {
      *     and recursively sorts the resulting subarrays using the {@code functional} instance.</li>
      *     <li>By calling {@code quick(array, 0, (array.length - 1), functional)},
      *     the {@code quick} method initiates the Quicksort algorithm on the entire array,
-     *     sorting it in ascending order according to the comparison logic defined by the {@code mz.SortFunctional} instance.</li>
+     *     sorting it in ascending order according to the comparison logic defined by the {@code mz.SortFunctional}
+     *     instance.</li>
      * </ul>
      * {@code quick} method provides a convenient way to invoke the Quicksort algorithm on the entire array using
      * the comparison logic defined by the {@code mz.SortFunctional} instance.
@@ -61,16 +66,20 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * Implementation of a quick sort algorithm for sorting the array of {@link java.lang.Comparable Comparable} objects in ascending order.
+     * Implementation of a quick sort algorithm for sorting the array of {@link java.lang.Comparable Comparable} objects
+     * in ascending order.
      * The {@code quickInc} method follows the divide-and-conquer strategy of quicksort,
      * recursively partitioning the array into smaller subarrays and sorting them individually.
-     * The base case of the recursion is when the subarray has only one element, in which case it is considered already sorted.
+     * The base case of the recursion is when the subarray has only one element, in which case it is considered already
+     * sorted.
      * <ul>
      *     <li>The method {@code quickInc} takes an array of {@code Comparable} objects,
-     *     along with the indices {@code left} and {@code right} that define the range of the subarray being sorted.</li>
+     *     along with the indices {@code left} and {@code right} that define the range of the subarray being
+     *     sorted.</li>
      *     <li>The first condition {@code if (left < right)} checks if the subarray has more than one element.
      *     If it does, the sorting continues; otherwise, the subarray is already sorted, and the method returns.</li>
-     *     <li>Inside the condition, the {@code quickInc} method is called to partition the array and obtain the {@code partitionIndex},
+     *     <li>Inside the condition, the {@code quickInc} method is called to partition the array and obtain the
+     *     {@code partitionIndex},
      *     which represents the correct position of the pivot element after the partitioning.</li>
      *     <li>The {@code quickInc} method is recursively called twice:</li>
      *     <li>The first recursive call sorts the left partition of the array by calling {@code quickInc}
@@ -93,16 +102,20 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * Implementation of a quick sort algorithm for sorting the array of {@link java.lang.Comparable Comparable} objects in ascending order.
+     * Implementation of a quick sort algorithm for sorting the array of {@link java.lang.Comparable Comparable} objects
+     * in ascending order.
      * The {@code quickDec} method follows the divide-and-conquer strategy of quicksort,
      * recursively partitioning the array into smaller subarrays and sorting them individually.
-     * The base case of the recursion is when the subarray has only one element, in which case it is considered already sorted.
+     * The base case of the recursion is when the subarray has only one element, in which case it is considered already
+     * sorted.
      * <ul>
      *     <li>The method {@code quickDec} takes an array of {@code Comparable} objects,
-     *     along with the indices {@code left} and {@code right} that define the range of the subarray being sorted.</li>
+     *     along with the indices {@code left} and {@code right} that define the range of the subarray being
+     *     sorted.</li>
      *     <li>The first condition {@code if (left < right)} checks if the subarray has more than one element.
      *     If it does, the sorting continues; otherwise, the subarray is already sorted, and the method returns.</li>
-     *     <li>Inside the condition, the {@code quickDec} method is called to partition the array and obtain the {@code partitionIndex},
+     *     <li>Inside the condition, the {@code quickDec} method is called to partition the array and obtain the
+     *     {@code partitionIndex},
      *     which represents the correct position of the pivot element after the partitioning.</li>
      *     <li>The {@code quickDec} method is recursively called twice:</li>
      *     <li>The first recursive call sorts the left partition of the array by calling {@code quickDec}
@@ -125,7 +138,8 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code quick} method takes an array {@code array} of type {@code T}, two integer parameters {@code left} and {@code right},
+     * {@code quick} method takes an array {@code array} of type {@code T}, two integer parameters {@code left} and
+     * {@code right},
      * and an instance of {@code mz.SortFunctional<T>} as parameters.
      * <ul>
      *     <li>It starts by checking if the value of {@code left} is less than the value of {@code right}.
@@ -163,22 +177,30 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * Provided seems to be an implementation of the partitioning step of the quicksort algorithm.
-     * It partitions an array into two parts, one with elements smaller than a pivot and another with elements greater than or equal to the pivot.
+     * It partitions an array into two parts, one with elements smaller than a pivot and another with elements greater
+     * than or equal to the pivot.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The method {@code partitionInc} takes an array of {@link java.lang.Comparable Comparable} objects, along with the indices left and right
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
+     *     <li>The method {@code partitionInc} takes an array of {@link java.lang.Comparable Comparable} objects,
+     *     along with the indices left and right
      *     that define the range of the subarray being partitioned.
      *     It returns the index of the pivot element after the partitioning is done.</li>
      *     <li>The pivot element is chosen as {@code array[right]}, which is the last element of the subarray.</li>
-     *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the elements smaller
+     *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the
+     *     elements smaller
      *     than the pivot and those greater than or equal to the pivot.</li>
      *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the subarray.</li>
-     *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@code compareTo} method of {@code Comparable}.
+     *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@code compareTo}
+     *     method of {@code Comparable}.
      *     If the element is smaller than the pivot, the following steps are executed:</li>
      *     <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
-     *     <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
+     *     <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller
+     *     element to the left.</li>
      *     <li>After the loop, the pivot element is moved to its correct position by swapping it with {@code array[i + 1]}.
      *     This ensures that all elements to the left of {@code array[i + 1]} are smaller than or equal to the pivot,
      *     and all elements to the right are greater than the pivot.</li>
@@ -204,23 +226,32 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * Provided seems to be an implementation of the partitioning step of the quicksort algorithm.
-     * It partitions an array into two parts, one with elements smaller than a pivot and another with elements greater than or equal to the pivot.
+     * It partitions an array into two parts, one with elements smaller than a pivot and another with elements greater
+     * than or equal to the pivot.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The method {@code partitionDec} takes an array of {@link java.lang.Comparable Comparable} objects, along with the indices left and right
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
+     *     <li>The method {@code partitionDec} takes an array of {@link java.lang.Comparable Comparable} objects,
+     *     along with the indices left and right
      *     that define the range of the subarray being partitioned.
      *     It returns the index of the pivot element after the partitioning is done.</li>
      *     <li>The pivot element is chosen as {@code array[right]}, which is the last element of the subarray.</li>
-     *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the elements smaller
+     *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the
+     *     elements smaller
      *     than the pivot and those greater than or equal to the pivot.</li>
      *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the subarray.</li>
-     *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@code compareTo} method of {@code Comparable}.
+     *     <li>Inside the loop, each element {@code array[j]} is compared to the pivot using the {@code compareTo}
+     *     method of {@code Comparable}.
      *     If the element is greater than the pivot, the following steps are executed:</li>
      *     <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
-     *     <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller element to the left.</li>
-     *     <li>After the loop, the pivot element is moved to its correct position by swapping it with {@code array[i + 1]}.
+     *     <li>The swap method is called to {@code swap} {@code array[i]} and {@code array[j]}, moving the smaller
+     *     element to the left.</li>
+     *     <li>After the loop, the pivot element is moved to its correct position by swapping it with
+     *     {@code array[i + 1]}.
      *     This ensures that all elements to the left of {@code array[i + 1]} are smaller than or equal to the pivot,
      *     and all elements to the right are greater than the pivot.</li>
      * </ul>
@@ -244,7 +275,8 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code partition} method takes an array {@code array} of type {@code T}, two integer parameters {@code left} and {@code right},
+     * {@code partition} method takes an array {@code array} of type {@code T}, two integer parameters {@code left}
+     * and {@code right},
      * and an instance of {@code SortFunctional<T>} as parameters.
      * <ul>
      *     <li>It starts by assigning the element at index {@code right} to the variable {@code pivot}.
@@ -264,7 +296,8 @@ extends Sorter<T>, SortSwap<T> {
      *     <li>Finally, it returns the index {@code (i + 1)} which represents
      *     the position of the pivot element in the sorted array.</li>
      * </ul>
-     * {@code partition} this method is to partition the array within the specified range using a single pivot element ({@code pivot})
+     * {@code partition} this method is to partition the array within the specified range using a single pivot element
+     * ({@code pivot})
      * and the comparison logic defined by the {@code SortFunctional} instance.
      * It rearranges the elements within the partition range such that all elements less than
      * the pivot are placed to the left and all elements greater than or equal to the pivot are placed to the right.
@@ -288,32 +321,46 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code partitionDualInc} It partitions an array of elements {@code array} between the indices {@code left} and {@code right} (inclusive)
+     * {@code partitionDualInc} It partitions an array of elements {@code array} between the indices {@code left} and
+     * {@code right} (inclusive)
      * and returns an array of two integers representing the indices of the pivots after the partitioning.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
      *     <li>The first step compares the elements at indices {@code left} and {@code right}
      *     and swaps them if the element at {@code left} is greater than the element at {@code right}.
-     *     This ensures that the {@code pivot1} (the leftmost pivot) is smaller than or equal to {@code pivot2} (the rightmost pivot).</li>
+     *     This ensures that the {@code pivot1} (the leftmost pivot) is smaller than or equal to {@code pivot2}
+     *     (the rightmost pivot).</li>
      *     <li>The variables {@code newLeft}, {@code newRight}, and {@code selectIndex} are initialized.
      *     {@code newLeft} points to the index after the {@code pivot1}, {@code newRight} points to
      *     the index before {@code pivot2}, and {@code selectIndex} starts from the index after the left pivot.</li>
-     *     <li>The algorithm enters a while loop that continues until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>Inside the loop, the algorithm checks if the element at {@code selectIndex} is smaller than {@code pivot1}. If it is,
+     *     <li>The algorithm enters a while loop that continues until {@code selectIndex} surpasses
+     *     {@code newRight}.</li>
+     *     <li>Inside the loop, the algorithm checks if the element at {@code selectIndex} is smaller than
+     *     {@code pivot1}. If it is,
      *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
-     *     <li>If the element at {@code selectIndex} is not smaller than {@code pivot1}, the algorithm checks if it is greater than or equal to {@code pivot2}.
-     *     If it is, the algorithm enters another loop that finds an element from the right side of the partition that is smaller than or equal to {@code pivot2}.
-     *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and {@code newRight} is decremented by 1.
+     *     <li>If the element at {@code selectIndex} is not smaller than {@code pivot1}, the algorithm checks if it is
+     *     greater than or equal to {@code pivot2}.
+     *     If it is, the algorithm enters another loop that finds an element from the right side of the partition that
+     *     is smaller than or equal to {@code pivot2}.
+     *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses
+     *     {@code newRight}.</li>
+     *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and
+     *     {@code newRight} is decremented by 1.
      *     Then, if the element at {@code selectIndex} is smaller than {@code pivot1},
      *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
-     *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at {@code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
+     *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex}
+     *     surpasses {@code newRight}.</li>
+     *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at
+     *     @code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
      *     This step puts the pivots in their correct positions.</li>
      * </ul>
-     * {@code partitionDualInc} The method returns an int array containing the indices of the pivots in the partitioned array, {@code [newLeft, newRight]}.
+     * {@code partitionDualInc} The method returns an int array containing the indices of the pivots in the partitioned
+     * array, {@code [newLeft, newRight]}.
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
@@ -347,32 +394,46 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code partitionDualDec} It partitions an array of elements {@code array} between the indices {@code left} and {@code right} (inclusive)
+     * {@code partitionDualDec} It partitions an array of elements {@code array} between the indices {@code left} and
+     * {@code right} (inclusive)
      * and returns an array of two integers representing the indices of the pivots after the partitioning.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
      *     <li>The first step compares the elements at indices {@code left} and {@code right}
      *     and swaps them if the element at {@code left} is greater than the element at {@code right}.
-     *     This ensures that the {@code pivot1} (the leftmost pivot) is smaller than or equal to {@code pivot2} (the rightmost pivot).</li>
+     *     This ensures that the {@code pivot1} (the leftmost pivot) is smaller than or equal to {@code pivot2}
+     *     (the rightmost pivot).</li>
      *     <li>The variables {@code newLeft}, {@code newRight}, and {@code selectIndex} are initialized.
      *     {@code newLeft} points to the index after the {@code pivot1}, {@code newRight} points to
      *     the index before {@code pivot2}, and {@code selectIndex} starts from the index after the left pivot.</li>
-     *     <li>The algorithm enters a while loop that continues until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>Inside the loop, the algorithm checks if the element at {@code selectIndex} is greater than {@code pivot1}. If it is,
+     *     <li>The algorithm enters a while loop that continues until {@code selectIndex} surpasses
+     *     {@code newRight}.</li>
+     *     <li>Inside the loop, the algorithm checks if the element at {@code selectIndex} is greater than
+     *     {@code pivot1}. If it is,
      *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
-     *     <li>If the element at {@code selectIndex} is not greater than {@code pivot1}, the algorithm checks if it is smaller than or equal to {@code pivot2}.
-     *     If it is, the algorithm enters another loop that finds an element from the right side of the partition that is greater than or equal to {@code pivot2}.
-     *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and {@code newRight} is decremented by 1.
+     *     <li>If the element at {@code selectIndex} is not greater than {@code pivot1}, the algorithm checks if it is
+     *     smaller than or equal to {@code pivot2}.
+     *     If it is, the algorithm enters another loop that finds an element from the right side of the partition that
+     *     is greater than or equal to {@code pivot2}.
+     *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses
+     *     {@code newRight}.</li>
+     *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and
+     *     {@code newRight} is decremented by 1.
      *     Then, if the element at {@code selectIndex} is greater than {@code pivot1},
      *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
-     *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at {@code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
+     *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex}
+     *     surpasses {@code newRight}.</li>
+     *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at
+     *     {@code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
      *     This step puts the pivots in their correct positions.</li>
      * </ul>
-     * {@code partitionDualDec} The method returns an int array containing the indices of the pivots in the partitioned array, {@code [newLeft, newRight]}.
+     * {@code partitionDualDec} The method returns an int array containing the indices of the pivots in the partitioned
+     * array, {@code [newLeft, newRight]}.
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
      * @param       right the value in the array must be greater than a {@code left} parameter.
@@ -411,29 +472,40 @@ extends Sorter<T>, SortSwap<T> {
      * and an instance of {@code mz.SortFunctional<T>} as parameters.
      * <ul>
      *     <li>It starts by checking if the element at index {@code left} is considered greater than
-     *     the element at index {@code right} according to the comparison logic defined by the {@code functional} instance.
+     *     the element at index {@code right} according to the comparison logic defined by the {@code functional}
+     *     instance.
      *     If so, it swaps the elements at indices {@code left} and {@code right}.</li>
-     *     <li>It initializes the variables {@code newLeft} and {@code newRight} to {@code (left + 1)} and {@code (right - 1)} respectively.
+     *     <li>It initializes the variables {@code newLeft} and {@code newRight} to {@code (left + 1)} and
+     *     {@code (right - 1)} respectively.
      *     These variables represent the boundaries of the partition.</li>
      *     <li>It initializes the variable {@code selectIndex} to {@code (left + 1)},
      *     which represents the current index being examined.</li>
-     *     <li>It assigns the elements at indices {@code left} and {@code right} to the variables {@code pivot1} and {@code pivot2} respectively.
+     *     <li>It assigns the elements at indices {@code left} and {@code right} to the variables {@code pivot1} and
+     *     {@code pivot2} respectively.
      *     These variables hold the pivot elements for partitioning.</li>
-     *     <li>It initializes a {@code functionalAddEquals} instance using the {@code functionalComparableToAddEquals} method,
+     *     <li>It initializes a {@code functionalAddEquals} instance using the {@code functionalComparableToAddEquals}
+     *     method,
      *     passing the {@code functional} instance as a parameter.</li>
-     *     <li>It enters a {@code while} loop that continues as long as {@code selectIndex} is less than or equal to {@code newRight}.
+     *     <li>It enters a {@code while} loop that continues as long as {@code selectIndex} is less than or equal to
+     *     {@code newRight}.
      *     This loop iterates over the array elements within the partition range.</li>
      *     <li>Within the loop, it checks if the element at index {@code selectIndex} is considered greater
      *     than {@code pivot1} according to the comparison logic defined by the {@code functional} instance.
-     *     If so, it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by <i>1</i>.</li>
+     *     If so, it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by
+     *     <i>1</i>.</li>
      *     <li>If the element at index {@code selectIndex} is considered equal to {@code pivot2} according to
-     *     the comparison logic defined by the {@code functionalAddEquals} instance, it enters an inner {@code while} loop.
+     *     the comparison logic defined by the {@code functionalAddEquals} instance, it enters an inner {@code while}
+     *     loop.
      *     This loop searches for the next element from the right that is not considered greater than {@code pivot2}.
-     *     It decrements {@code newRight} until it finds such an element or until {@code selectIndex} becomes greater than {@code newRight}.</li>
+     *     It decrements {@code newRight} until it finds such an element or until {@code selectIndex} becomes greater
+     *     than {@code newRight}.</li>
      *     <li>Once the inner {@code while} loop exits,
-     *     it swaps the element at index {@code selectIndex} with the element at index {@code newRight} and decrements {@code newRight} by <i>1</i>.
-     *     After the swap, if the element at index {@code selectIndex} is considered greater than {@code pivot1} according to the {@code functional} instance,
-     *     it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by <i>1</i>.</li>
+     *     it swaps the element at index {@code selectIndex} with the element at index {@code newRight} and decrements
+     *     {@code newRight} by <i>1</i>.
+     *     After the swap, if the element at index {@code selectIndex} is considered greater than {@code pivot1}
+     *     according to the {@code functional} instance,
+     *     it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by
+     *     <i>1</i>.</li>
      *     <li>After the necessary swaps and comparisons,
      *     it increments {@code selectIndex} by <i>1</i> to move to the next element in the partition range.</li>
      *     <li>Once the loop completes, it performs final swaps to place the pivot elements in their correct positions.
@@ -441,11 +513,14 @@ extends Sorter<T>, SortSwap<T> {
      *     and the element at index {@code right} with the element at index {@code (newRight + 1)}.</li>
      *     <li>Finally, it returns an integer array containing {@code newLeft} and {@code newRight}.</li>
      * </ul>
-     * {@code partitionDual} this method is to partition the array within the specified range based on two pivot elements ({@code pivot1} and {@code pivot2}) 
+     * {@code partitionDual} this method is to partition the array within the specified range based on two pivot
+     * elements ({@code pivot1} and {@code pivot2})
      * using the comparison logic defined by the {@code mz.SortFunctional} instance.
      * It employs a dual-pivot partitioning scheme similar to the one used in Dual-Pivot Quicksort.
-     * The elements are rearranged within the partition range such that all elements less than {@code pivot1} are placed to the left,
-     * elements equal to or between {@code pivot1} and {@code pivot2} are placed in the middle, and elements greater than {@code pivot2} are placed to the right.
+     * The elements are rearranged within the partition range such that all elements less than {@code pivot1} are placed
+     * to the left,
+     * elements equal to or between {@code pivot1} and {@code pivot2} are placed in the middle, and elements greater
+     * than {@code pivot2} are placed to the right.
      * The method returns the indices marking the boundaries of the middle section.
      * @param       array to be arranged.
      * @param       left the value in the array must be smaller than a {@code right} parameter.
@@ -483,10 +558,12 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * Implementation of a quick sort algorithm for sorting the list of {@link java.lang.Comparable Comparable} objects in ascending order.
+     * Implementation of a quick sort algorithm for sorting the list of {@link java.lang.Comparable Comparable} objects
+     * in ascending order.
      * The {@code quickInc} method follows the divide-and-conquer strategy of quicksort,
-     * recursively partitioning the list into smaller subarrays and sorting them individually.
-     * The base case of the recursion is when the subarray has only one element, in which case it is considered already sorted.
+     * recursively partitioning the list into smaller sublists and sorting them individually.
+     * The base case of the recursion is when the sublist has only one element, in which case it is considered already
+     * sorted.
      * @param       list to be arranged.
      * @see         QuickInterface#quickInc(List, int, int)
      */
@@ -495,10 +572,12 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * Implementation of a quick sort algorithm for sorting the list of {@link java.lang.Comparable Comparable} objects in ascending order.
+     * Implementation of a quick sort algorithm for sorting the list of {@link java.lang.Comparable Comparable} objects
+     * in ascending order.
      * The {@code quickDec} method follows the divide-and-conquer strategy of quicksort,
-     * recursively partitioning the list into smaller subarrays and sorting them individually.
-     * The base case of the recursion is when the subarray has only one element, in which case it is considered already sorted.
+     * recursively partitioning the list into smaller sublists and sorting them individually.
+     * The base case of the recursion is when the sublists has only one element, in which case it is considered already
+     * sorted.
      * @param       list to be arranged.
      * @see         QuickInterface#quickDec(List, int, int)
      */
@@ -508,17 +587,18 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * {@code quick} method now takes a list {@code list} of type {@code T}
-     * and an instance of {@code mz.SortFunctional<T>} as parameters.
+     * and an instance of {@code SortFunctional<T>} as parameters.
      * <ul>
      *     <li>It calls the overloaded {@code quick} method with additional parameters:
      *     {@code list}, <i>0</i> as the starting index ({@code left}),
      *     {@code (list.length - 1)} as the ending index ({@code right}), and the {@code functional} instance.</li>
      *     <li>The overloaded {@code quick} method is responsible for performing the actual sorting.
      *     It partitions the list within the specified range
-     *     and recursively sorts the resulting subarrays using the {@code functional} instance.</li>
+     *     and recursively sorts the resulting sublists using the {@code functional} instance.</li>
      *     <li>By calling {@code quick(list, 0, (list.length - 1), functional)},
      *     the {@code quick} method initiates the Quicksort algorithm on the entire list,
-     *     sorting it in ascending order according to the comparison logic defined by the {@code mz.SortFunctional} instance.</li>
+     *     sorting it in ascending order according to the comparison logic defined by the {@code SortFunctional}
+     *     instance.</li>
      * </ul>
      * {@code quick} method provides a convenient way to invoke the Quicksort algorithm on the entire list using
      * the comparison logic defined by the {@code mz.SortFunctional} instance.
@@ -531,16 +611,19 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * Implementation of a quick sort algorithm for sorting the list of {@link java.lang.Comparable Comparable} objects in ascending order.
+     * Implementation of a quick sort algorithm for sorting the list of {@link java.lang.Comparable Comparable} objects
+     * in ascending order.
      * The {@code quickInc} method follows the divide-and-conquer strategy of quicksort,
-     * recursively partitioning the list into smaller subarrays and sorting them individually.
-     * The base case of the recursion is when the subarray has only one element, in which case it is considered already sorted.
+     * recursively partitioning the list into smaller sublists and sorting them individually.
+     * The base case of the recursion is when the sublist has only one element, in which case it is considered already
+     * sorted.
      * <ul>
      *     <li>The method {@code quickInc} takes an list of {@code Comparable} objects,
-     *     along with the indices {@code left} and {@code right} that define the range of the subarray being sorted.</li>
-     *     <li>The first condition {@code if (left < right)} checks if the subarray has more than one element.
-     *     If it does, the sorting continues; otherwise, the subarray is already sorted, and the method returns.</li>
-     *     <li>Inside the condition, the {@code quickInc} method is called to partition the list and obtain the {@code partitionIndex},
+     *     along with the indices {@code left} and {@code right} that define the range of the sublist being sorted.</li>
+     *     <li>The first condition {@code if (left < right)} checks if the sublist has more than one element.
+     *     If it does, the sorting continues; otherwise, the sublist is already sorted, and the method returns.</li>
+     *     <li>Inside the condition, the {@code quickInc} method is called to partition the list and obtain the
+     *     {@code partitionIndex},
      *     which represents the correct position of the pivot element after the partitioning.</li>
      *     <li>The {@code quickInc} method is recursively called twice:</li>
      *     <li>The first recursive call sorts the left partition of the list by calling {@code quickInc}
@@ -563,16 +646,19 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * Implementation of a quick sort algorithm for sorting the list of {@link java.lang.Comparable Comparable} objects in ascending order.
+     * Implementation of a quick sort algorithm for sorting the list of {@link java.lang.Comparable Comparable} objects
+     * in ascending order.
      * The {@code quickDec} method follows the divide-and-conquer strategy of quicksort,
-     * recursively partitioning the list into smaller subarrays and sorting them individually.
-     * The base case of the recursion is when the subarray has only one element, in which case it is considered already sorted.
+     * recursively partitioning the list into smaller sublist and sorting them individually.
+     * The base case of the recursion is when the sublist has only one element, in which case it is considered already
+     * sorted.
      * <ul>
      *     <li>The method {@code quickDec} takes an list of {@code Comparable} objects,
-     *     along with the indices {@code left} and {@code right} that define the range of the subarray being sorted.</li>
-     *     <li>The first condition {@code if (left < right)} checks if the subarray has more than one element.
-     *     If it does, the sorting continues; otherwise, the subarray is already sorted, and the method returns.</li>
-     *     <li>Inside the condition, the {@code quickDec} method is called to partition the list and obtain the {@code partitionIndex},
+     *     along with the indices {@code left} and {@code right} that define the range of the sublist being sorted.</li>
+     *     <li>The first condition {@code if (left < right)} checks if the sublist has more than one element.
+     *     If it does, the sorting continues; otherwise, the sublist is already sorted, and the method returns.</li>
+     *     <li>Inside the condition, the {@code quickDec} method is called to partition the list and obtain the
+     *     {@code partitionIndex},
      *     which represents the correct position of the pivot element after the partitioning.</li>
      *     <li>The {@code quickDec} method is recursively called twice:</li>
      *     <li>The first recursive call sorts the left partition of the list by calling {@code quickDec}
@@ -595,8 +681,8 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code quick} method takes a list {@code list} of type {@code T}, two integer parameters {@code left} and {@code right},
-     * and an instance of {@code mz.SortFunctional<T>} as parameters.
+     * {@code quick} method takes a list {@code list} of type {@code T}, two integer parameters {@code left} and
+     * {@code right}, and an instance of {@code SortFunctional<T>} as parameters.
      * <ul>
      *     <li>It starts by checking if the value of {@code left} is less than the value of {@code right}.
      *     This condition ensures that there are at least two elements in the current partition range,
@@ -605,9 +691,9 @@ extends Sorter<T>, SortSwap<T> {
      *     it proceeds to call the {@code partition} method to partition the list within
      *     the specified range using the {@code functional} instance as the comparison logic.
      *     The result of the partitioning step is stored in the {@code partitionIndex} variable.</li>
-     *     <li>After the partitioning step, it recursively calls the {@code quick} method to sort the left subarray,
+     *     <li>After the partitioning step, it recursively calls the {@code quick} method to sort the left sublist,
      *     from {@code left} to {@code (partitionIndex - 1)}, using the same {@code functional} instance.</li>
-     *     <li>It also recursively calls the {@code quick} method to sort the right subarray,
+     *     <li>It also recursively calls the {@code quick} method to sort the right sublist,
      *     from {@code (partitionIndex + 1)} to {@code right}, using the same {@code functional} instance.</li>
      *     <li>The recursive calls continue until the base case is reached,
      *     where {@code left} becomes greater than or equal to {@code right}.
@@ -615,7 +701,7 @@ extends Sorter<T>, SortSwap<T> {
      * </ul>
      * {@code quick} method implements the Quicksort algorithm using the partitioning logic defined
      * by the {@code partition} method and the comparison logic defined by the {@code mz.SortFunctional} instance.
-     * It recursively divides the list into smaller subarrays,
+     * It recursively divides the list into smaller sublist,
      * partitions them based on the pivot element, and sorts them independently.
      * @param       list to be arranged.
      * @param       left the value in the list must be smaller than a {@code right} parameter.
@@ -633,24 +719,32 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * Provided seems to be an implementation of the partitioning step of the quicksort algorithm.
-     * It partitions an list into two parts, one with elements smaller than a pivot and another with elements greater than or equal to the pivot.
+     * It partitions a list into two parts, one with elements smaller than a pivot and another with elements greater
+     * than or equal to the pivot.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The method {@code partitionInc} takes an list of {@link java.lang.Comparable Comparable} objects, along with the indices left and right
-     *     that define the range of the subarray being partitioned.
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
+     *     <li>The method {@code partitionInc} takes an list of {@link java.lang.Comparable Comparable} objects,
+     *     along with the indices left and right
+     *     that define the range of the sublist being partitioned.
      *     It returns the index of the pivot element after the partitioning is done.</li>
-     *     <li>The pivot element is chosen as {@code list.get(right)}, which is the last element of the subarray.</li>
-     *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the elements smaller
+     *     <li>The pivot element is chosen as {@code list.get(right)}, which is the last element of the sublist.</li>
+     *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the
+     *     elements smaller
      *     than the pivot and those greater than or equal to the pivot.</li>
-     *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the subarray.</li>
+     *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the sublist.</li>
      *     <li>Inside the loop, each element {@code list.get(j)} is compared to the pivot using the {@code compareTo}
      *     method of {@link java.lang.Comparable Comparable}.
      *     If the element is smaller than the pivot, the following steps are executed:</li>
      *     <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
-     *     <li>The swap method is called to {@code swap} {@code list.get(i)} and {@code list.get(j)}, moving the smaller element to the left.</li>
-     *     <li>After the loop, the pivot element is moved to its correct position by swapping it with {@code list.get(i + 1)}.
+     *     <li>The swap method is called to {@code swap} {@code list.get(i)} and {@code list.get(j)}, moving the smaller
+     *     element to the left.</li>
+     *     <li>After the loop, the pivot element is moved to its correct position by swapping it with
+     *     {@code list.get(i + 1)}.
      *     This ensures that all elements to the left of {@code list.get(i + 1)} are smaller than or equal to the pivot,
      *     and all elements to the right are greater than the pivot.</li>
      * </ul>
@@ -675,24 +769,32 @@ extends Sorter<T>, SortSwap<T> {
 
     /**
      * Provided seems to be an implementation of the partitioning step of the quicksort algorithm.
-     * It partitions a list into two parts, one with elements smaller than a pivot and another with elements greater than or equal to the pivot.
+     * It partitions a list into two parts, one with elements smaller than a pivot and another with elements greater
+     * than or equal to the pivot.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
-     *     <li>The method {@code partitionDec} takes an list of {@link java.lang.Comparable Comparable} objects, along with the indices left and right
-     *     that define the range of the subarray being partitioned.
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
+     *     <li>The method {@code partitionDec} takes an list of {@link java.lang.Comparable Comparable} objects,
+     *     along with the indices left and right
+     *     that define the range of the sublist being partitioned.
      *     It returns the index of the pivot element after the partitioning is done.</li>
-     *     <li>The pivot element is chosen as {@code list.get(right)}, which is the last element of the subarray.</li>
-     *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the elements smaller
+     *     <li>The pivot element is chosen as {@code list.get(right)}, which is the last element of the sublist.</li>
+     *     <li>The variable i is initialized to {@code (left - 1)}. It will keep track of the boundary between the
+     *     elements smaller
      *     than the pivot and those greater than or equal to the pivot.</li>
-     *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the subarray.</li>
+     *     <li>A loop is executed from left to {@code (right - 1)} to iterate over the elements of the sublist.</li>
      *     <li>Inside the loop, each element {@code list.get(j)} is compared to the pivot using the {@code compareTo}
      *     method of {@link java.lang.Comparable Comparable}.
      *     If the element is greater than the pivot, the following steps are executed:</li>
      *     <li>{@code i} is incremented by 1 to expand the smaller elements region.</li>
-     *     <li>The swap method is called to {@code swap} {@code list.get(i)} and {@code list.get(j)}, moving the smaller element to the left.</li>
-     *     <li>After the loop, the pivot element is moved to its correct position by swapping it with {@code list.get(i + 1)}.
+     *     <li>The swap method is called to {@code swap} {@code list.get(i)} and {@code list.get(j)}, moving the smaller
+     *     element to the left.</li>
+     *     <li>After the loop, the pivot element is moved to its correct position by swapping it with
+     *     {@code list.get(i + 1)}.
      *     This ensures that all elements to the left of {@code list.get(i + 1)} are smaller than or equal to the pivot,
      *     and all elements to the right are greater than the pivot.</li>
      * </ul>
@@ -716,8 +818,9 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code partition} method takes a list {@code list} of type {@code T}, two integer parameters {@code left} and {@code right},
-     * and an instance of {@code mz.SortFunctional<T>} as parameters.
+     * {@code partition} method takes a list {@code list} of type {@code T}, two integer parameters {@code left} and
+     * {@code right},
+     * and an instance of {@code SortFunctional<T>} as parameters.
      * <ul>
      *     <li>It starts by assigning the element at index {@code right} to the variable {@code pivot}.
      *     This element will serve as the pivot for partitioning.</li>
@@ -736,7 +839,8 @@ extends Sorter<T>, SortSwap<T> {
      *     <li>Finally, it returns the index {@code (i + 1)} which represents
      *     the position of the pivot element in the sorted list.</li>
      * </ul>
-     * {@code partition} this method is to partition the list within the specified range using a single pivot element ({@code pivot})
+     * {@code partition} this method is to partition the list within the specified range using a single pivot element
+     * ({@code pivot})
      * and the comparison logic defined by the {@code mz.SortFunctional} instance.
      * It rearranges the elements within the partition range such that all elements less than
      * the pivot are placed to the left and all elements greater than or equal to the pivot are placed to the right.
@@ -762,32 +866,46 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code partitionDualInc} It partitions a list of elements {@code list} between the indices {@code left} and {@code right} (inclusive)
+     * {@code partitionDualInc} It partitions a list of elements {@code list} between the indices {@code left} and
+     * {@code right} (inclusive)
      * and returns a list of two integers representing the indices of the pivots after the partitioning.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
      *     <li>The first step compares the elements at indices {@code left} and {@code right}
      *     and swaps them if the element at {@code left} is greater than the element at {@code right}.
-     *     This ensures that the {@code pivot1} (the leftmost pivot) is smaller than or equal to {@code pivot2} (the rightmost pivot).</li>
+     *     This ensures that the {@code pivot1} (the leftmost pivot) is smaller than or equal to {@code pivot2}
+     *     (the rightmost pivot).</li>
      *     <li>The variables {@code newLeft}, {@code newRight}, and {@code selectIndex} are initialized.
      *     {@code newLeft} points to the index after the {@code pivot1}, {@code newRight} points to
      *     the index before {@code pivot2}, and {@code selectIndex} starts from the index after the left pivot.</li>
-     *     <li>The algorithm enters a while loop that continues until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>Inside the loop, the algorithm checks if the element at {@code selectIndex} is smaller than {@code pivot1}. If it is,
+     *     <li>The algorithm enters a while loop that continues until {@code selectIndex} surpasses
+     *     {@code newRight}.</li>
+     *     <li>Inside the loop, the algorithm checks if the element at {@code selectIndex} is smaller than
+     *     {@code pivot1}. If it is,
      *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
-     *     <li>If the element at {@code selectIndex} is not smaller than {@code pivot1}, the algorithm checks if it is greater than or equal to {@code pivot2}.
-     *     If it is, the algorithm enters another loop that finds an element from the right side of the partition that is smaller than or equal to {@code pivot2}.
-     *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and {@code newRight} is decremented by 1.
+     *     <li>If the element at {@code selectIndex} is not smaller than {@code pivot1}, the algorithm checks if it is
+     *     greater than or equal to {@code pivot2}.
+     *     If it is, the algorithm enters another loop that finds an element from the right side of the partition that
+     *     is smaller than or equal to {@code pivot2}.
+     *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses
+     *     {@code newRight}.</li>
+     *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and
+     *     {@code newRight} is decremented by 1.
      *     Then, if the element at {@code selectIndex} is smaller than {@code pivot1},
      *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
-     *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at {@code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
+     *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex}
+     *     surpasses {@code newRight}.</li>
+     *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at
+     *     {@code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
      *     This step puts the pivots in their correct positions.</li>
      * </ul>
-     * {@code partitionDualInc} The method returns an int list containing the indices of the pivots in the partitioned list, {@code [newLeft, newRight]}.
+     * {@code partitionDualInc} The method returns an int list containing the indices of the pivots in the partitioned
+     * list, {@code [newLeft, newRight]}.
      * @param       list to be arranged.
      * @param       left the value in the list must be smaller than a {@code right} parameter.
      * @param       right the value in the list must be greater than a {@code left} parameter.
@@ -821,32 +939,46 @@ extends Sorter<T>, SortSwap<T> {
     }
 
     /**
-     * {@code partitionDualDec} It partitions a list of elements {@code list} between the indices {@code left} and {@code right} (inclusive)
+     * {@code partitionDualDec} It partitions a list of elements {@code list} between the indices {@code left} and
+     * {@code right} (inclusive)
      * and returns a list of two integers representing the indices of the pivots after the partitioning.
      * <ul>
-     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to suppress compiler
-     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object) compareTo} method.
-     *     This annotation is not directly related to the functionality of the method but rather a way to handle warnings.</li>
+     *     <li>The {@link java.lang.SuppressWarnings @SuppressWarnings}{@code ("unchecked")} annotation is used to
+     *     suppress compiler
+     *     warnings related to unchecked type casting when using the {@link java.lang.Comparable#compareTo(Object)
+     *     compareTo} method.
+     *     This annotation is not directly related to the functionality of the method but rather a way to handle
+     *     warnings.</li>
      *     <li>The first step compares the elements at indices {@code left} and {@code right}
      *     and swaps them if the element at {@code left} is greater than the element at {@code right}.
-     *     This ensures that the {@code pivot1} (the leftmost pivot) is smaller than or equal to {@code pivot2} (the rightmost pivot).</li>
+     *     This ensures that the {@code pivot1} (the leftmost pivot) is smaller than or equal to {@code pivot2}
+     *     (the rightmost pivot).</li>
      *     <li>The variables {@code newLeft}, {@code newRight}, and {@code selectIndex} are initialized.
      *     {@code newLeft} points to the index after the {@code pivot1}, {@code newRight} points to
      *     the index before {@code pivot2}, and {@code selectIndex} starts from the index after the left pivot.</li>
-     *     <li>The algorithm enters a while loop that continues until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>Inside the loop, the algorithm checks if the element at {@code selectIndex} is greater than {@code pivot1}. If it is,
+     *     <li>The algorithm enters a while loop that continues until {@code selectIndex} surpasses
+     *     {@code newRight}.</li>
+     *     <li>Inside the loop, the algorithm checks if the element at {@code selectIndex} is greater than
+     *     {@code pivot1}. If it is,
      *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
-     *     <li>If the element at {@code selectIndex} is not greater than {@code pivot1}, the algorithm checks if it is smaller than or equal to {@code pivot2}.
-     *     If it is, the algorithm enters another loop that finds an element from the right side of the partition that is greater than or equal to {@code pivot2}.
-     *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and {@code newRight} is decremented by 1.
+     *     <li>If the element at {@code selectIndex} is not greater than {@code pivot1}, the algorithm checks if it is
+     *     smaller than or equal to {@code pivot2}.
+     *     If it is, the algorithm enters another loop that finds an element from the right side of the partition that
+     *     is greater than or equal to {@code pivot2}.
+     *     This loop decrements {@code newRight} until it finds such an element or until {@code selectIndex} surpasses
+     *     {@code newRight}.</li>
+     *     <li>Once the element is found, the element at {@code selectIndex} is swapped with the found element, and
+     *     {@code newRight} is decremented by 1.
      *     Then, if the element at {@code selectIndex} is greater than {@code pivot1},
      *     the element is swapped with the element at {@code newLeft}, and {@code newLeft} is incremented by 1.</li>
-     *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex} surpasses {@code newRight}.</li>
-     *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at {@code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
+     *     <li>Finally, {@code selectIndex} is incremented by 1, and the while loop continues until {@code selectIndex}
+     *     surpasses {@code newRight}.</li>
+     *     <li>After the loop finishes, the left pivot {@code pivot1} is swapped with the element at
+     *     {@code newLeft - 1}, and the right pivot {@code pivot2} is swapped with the element at {@code newRight + 1}.
      *     This step puts the pivots in their correct positions.</li>
      * </ul>
-     * {@code partitionDualDec} The method returns an int list containing the indices of the pivots in the partitioned list, {@code [newLeft, newRight]}.
+     * {@code partitionDualDec} The method returns an int list containing the indices of the pivots in the partitioned
+     * list, {@code [newLeft, newRight]}.
      * @param       list to be arranged.
      * @param       left the value in the list must be smaller than a {@code right} parameter.
      * @param       right the value in the list must be greater than a {@code left} parameter.
@@ -885,29 +1017,40 @@ extends Sorter<T>, SortSwap<T> {
      * and an instance of {@code mz.SortFunctional<T>} as parameters.
      * <ul>
      *     <li>It starts by checking if the element at index {@code left} is considered greater than
-     *     the element at index {@code right} according to the comparison logic defined by the {@code functional} instance.
+     *     the element at index {@code right} according to the comparison logic defined by the {@code functional}
+     *     instance.
      *     If so, it swaps the elements at indices {@code left} and {@code right}.</li>
-     *     <li>It initializes the variables {@code newLeft} and {@code newRight} to {@code (left + 1)} and {@code (right - 1)} respectively.
+     *     <li>It initializes the variables {@code newLeft} and {@code newRight} to {@code (left + 1)} and
+     *     {@code (right - 1)} respectively.
      *     These variables represent the boundaries of the partition.</li>
      *     <li>It initializes the variable {@code selectIndex} to {@code (left + 1)},
      *     which represents the current index being examined.</li>
-     *     <li>It assigns the elements at indices {@code left} and {@code right} to the variables {@code pivot1} and {@code pivot2} respectively.
+     *     <li>It assigns the elements at indices {@code left} and {@code right} to the variables {@code pivot1} and
+     *     {@code pivot2} respectively.
      *     These variables hold the pivot elements for partitioning.</li>
-     *     <li>It initializes a {@code functionalAddEquals} instance using the {@code functionalComparableToAddEquals} method,
+     *     <li>It initializes a {@code functionalAddEquals} instance using the {@code functionalComparableToAddEquals}
+     *     method,
      *     passing the {@code functional} instance as a parameter.</li>
-     *     <li>It enters a {@code while} loop that continues as long as {@code selectIndex} is less than or equal to {@code newRight}.
+     *     <li>It enters a {@code while} loop that continues as long as {@code selectIndex} is less than or equal to
+     *     {@code newRight}.
      *     This loop iterates over the list elements within the partition range.</li>
      *     <li>Within the loop, it checks if the element at index {@code selectIndex} is considered greater
      *     than {@code pivot1} according to the comparison logic defined by the {@code functional} instance.
-     *     If so, it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by <i>1</i>.</li>
+     *     If so, it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by
+     *     <i>1</i>.</li>
      *     <li>If the element at index {@code selectIndex} is considered equal to {@code pivot2} according to
-     *     the comparison logic defined by the {@code functionalAddEquals} instance, it enters an inner {@code while} loop.
+     *     the comparison logic defined by the {@code functionalAddEquals} instance, it enters an inner {@code while}
+     *     loop.
      *     This loop searches for the next element from the right that is not considered greater than {@code pivot2}.
-     *     It decrements {@code newRight} until it finds such an element or until {@code selectIndex} becomes greater than {@code newRight}.</li>
+     *     It decrements {@code newRight} until it finds such an element or until {@code selectIndex} becomes greater
+     *     than {@code newRight}.</li>
      *     <li>Once the inner {@code while} loop exits,
-     *     it swaps the element at index {@code selectIndex} with the element at index {@code newRight} and decrements {@code newRight} by <i>1</i>.
-     *     After the swap, if the element at index {@code selectIndex} is considered greater than {@code pivot1} according to the {@code functional} instance,
-     *     it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by <i>1</i>.</li>
+     *     it swaps the element at index {@code selectIndex} with the element at index {@code newRight} and decrements
+     *     {@code newRight} by <i>1</i>.
+     *     After the swap, if the element at index {@code selectIndex} is considered greater than {@code pivot1}
+     *     according to the {@code functional} instance,
+     *     it swaps the element with the element at index {@code newLeft} and increments {@code newLeft} by
+     *     <i>1</i>.</li>
      *     <li>After the necessary swaps and comparisons,
      *     it increments {@code selectIndex} by <i>1</i> to move to the next element in the partition range.</li>
      *     <li>Once the loop completes, it performs final swaps to place the pivot elements in their correct positions.
@@ -915,11 +1058,14 @@ extends Sorter<T>, SortSwap<T> {
      *     and the element at index {@code right} with the element at index {@code (newRight + 1)}.</li>
      *     <li>Finally, it returns an integer list containing {@code newLeft} and {@code newRight}.</li>
      * </ul>
-     * {@code partitionDual} this method is to partition the list within the specified range based on two pivot elements ({@code pivot1} and {@code pivot2})
+     * {@code partitionDual} this method is to partition the list within the specified range based on two pivot elements
+     * ({@code pivot1} and {@code pivot2})
      * using the comparison logic defined by the {@code mz.SortFunctional} instance.
      * It employs a dual-pivot partitioning scheme similar to the one used in Dual-Pivot Quicksort.
-     * The elements are rearranged within the partition range such that all elements less than {@code pivot1} are placed to the left,
-     * elements equal to or between {@code pivot1} and {@code pivot2} are placed in the middle, and elements greater than {@code pivot2} are placed to the right.
+     * The elements are rearranged within the partition range such that all elements less than {@code pivot1} are placed
+     * to the left,
+     * elements equal to or between {@code pivot1} and {@code pivot2} are placed in the middle, and elements greater
+     * than {@code pivot2} are placed to the right.
      * The method returns the indices marking the boundaries of the middle section.
      * @param       list to be arranged.
      * @param       left the value in the list must be smaller than a {@code right} parameter.

@@ -7,4 +7,4 @@ package github.magyarzoli;
  */
 @SuppressWarnings("rawtypes")
 public abstract class SortComparable
-implements Sorter<Comparable> { }
+        implements Sorter<Comparable> {}

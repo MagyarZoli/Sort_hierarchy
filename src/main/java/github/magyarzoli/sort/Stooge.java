@@ -1,6 +1,7 @@
 package github.magyarzoli.sort;
 
 import github.magyarzoli.SortSwap;
+import github.magyarzoli.sort.intro.IntroStooge;
 
 import java.util.List;
 
@@ -45,6 +46,7 @@ extends Slow {
      * Average Case Complexity: <em>O(n^(log 3/log 1.5))</em><br>
      * Auxiliary Space:         <em>O(log(n))</em><br>
      * Stability:               <b>No</b>
+     * @see         IntroStooge#IntroStooge() IntroStooge()
      */
     public Stooge() {}
 

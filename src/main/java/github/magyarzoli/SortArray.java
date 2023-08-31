@@ -5,18 +5,27 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The part of the hierarchy that refers to Array, through which all other interfaces, abstracts, supers, subclasses are
+ * accessible with polymorphism.
+ * @param       <T> setting of a type based on which the elements can be sorted.
+ * @since       1.3
+ * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
+ */
 @SuppressWarnings("rawtypes")
 public interface SortArray<T extends Comparable>
-extends Sort<T> {
+        extends Sort<T> {
 
     /**
-     * Increasing method that the inherited classes have to create. its task is to arrange the elements of the array in ascending order.
+     * Increasing method that the inherited classes have to create. its task is to arrange the elements of the array in
+     * ascending order.
      * @param       array to be arranged.
      */
     void sortArrayInc(T[] array);
 
     /**
-     * Decreasing method that inherited classes must create. its task is to arrange the elements of the array in decreasing order.
+     * Decreasing method that inherited classes must create. its task is to arrange the elements of the array in
+     * decreasing order.
      * @param       array to be arranged.
      */
     void sortArrayDec(T[] array);
@@ -39,7 +48,8 @@ extends Sort<T> {
     }
 
     /**
-     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
+     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls
+     * additional methods.
      * The {@code sortArray} method takes the {@code array} and the sorting {@code type} as parameters.
      * It then uses a switch statement to determine the value of type and perform the corresponding sorting operation.
      * @param       array to be arranged.
@@ -64,9 +74,11 @@ extends Sort<T> {
     }
 
     /**
-     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
+     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls
+     * additional methods.
      * The {@code sortArray} method takes the {@code array} and the sorting {@code sequence} as parameters.
-     * It then uses a switch statement to determine the value of sequence and perform the corresponding sorting operation.
+     * It then uses a switch statement to determine the value of sequence and perform the corresponding sorting
+     * operation.
      * @param       array to be arranged.
      * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types.
      *              Order can be specified here, which row arrangement you want to use.
@@ -89,9 +101,11 @@ extends Sort<T> {
     }
 
     /**
-     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
+     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls
+     * additional methods.
      * The {@code sortArray} method takes the {@code array} and the sorting {@code functional} as parameters.
-     * It then uses a switch statement to determine the value of functional and perform the corresponding sorting operation.
+     * It then uses a switch statement to determine the value of functional and perform the corresponding sorting
+     * operation.
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
      * @see         Sort.SortFunctional
@@ -101,7 +115,8 @@ extends Sort<T> {
     }
 
     /**
-     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
+     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls
+     * additional methods.
      * The {@code sortArray} method takes the {@code array} and the sorting {@code type} as parameters.
      * It then uses a switch statement to determine the value of type and perform the corresponding sorting operation.
      * @param       array to be arranged.
@@ -125,9 +140,11 @@ extends Sort<T> {
     }
 
     /**
-     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
+     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls
+     * additional methods.
      * The {@code sortArray} method takes the {@code array} and the sorting {@code sequence} as parameters.
-     * It then uses a switch statement to determine the value of sequence and perform the corresponding sorting operation.
+     * It then uses a switch statement to determine the value of sequence and perform the corresponding sorting
+     * operation.
      * @param       array to be arranged.
      * @param       sequence {@code SortType} you can choose from 4 selectable queue layout types.
      *              Order can be specified here, which row arrangement you want to use.
@@ -148,9 +165,11 @@ extends Sort<T> {
     }
 
     /**
-     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls additional methods.
+     * Every class inherited by polymorphism will contain the callable method. default pre-created method calls
+     * additional methods.
      * The {@code sortArray} method takes the {@code array} and the sorting {@code functional} as parameters.
-     * It then uses a switch statement to determine the value of functional and perform the corresponding sorting operation.
+     * It then uses a switch statement to determine the value of functional and perform the corresponding sorting
+     * operation.
      * @param       array to be arranged.
      * @param       functional lambda expression for comparison.
      * @param       thread on how many threads to run the queue arrangement.
@@ -166,7 +185,8 @@ extends Sort<T> {
      *     <li>The method begins by calculating the values of {@code length} and {@code correction}.
      *     {@code length} represents the length of each portion of the array that will be processed by each thread,
      *     while {@code correction} represents the remaining length that is not evenly divisible among the threads.</li>
-     *     <li>The {@code listArray} and {@code threads} lists are created as {@link java.util.ArrayList ArrayList} objects.</li>
+     *     <li>The {@code listArray} and {@code threads} lists are created as {@link java.util.ArrayList ArrayList}
+     *     objects.</li>
      *     <li>Inside the loop, the {@code subArray} is declared without setting it to {@code null} initially.
      *     The declaration and assignment are combined into one line.</li>
      *     <li>The {@code if} statement now checks if {@code i} is equal to {@code (thread - 1)}
@@ -210,7 +230,8 @@ extends Sort<T> {
      *     <li>The method begins by calculating the values of {@code length} and {@code correction}.
      *     {@code length} represents the length of each portion of the array that will be processed by each thread,
      *     while {@code correction} represents the remaining length that is not evenly divisible among the threads.</li>
-     *     <li>The {@code listArray} and {@code threads} lists are created as {@link java.util.ArrayList ArrayList} objects.</li>
+     *     <li>The {@code listArray} and {@code threads} lists are created as {@link java.util.ArrayList ArrayList}
+     *     objects.</li>
      *     <li>Inside the loop, the {@code subArray} is declared without setting it to {@code null} initially.
      *     The declaration and assignment are combined into one line.</li>
      *     <li>The {@code if} statement now checks if {@code i} is equal to {@code (thread - 1)}
@@ -255,7 +276,8 @@ extends Sort<T> {
      *     <li>The method begins by calculating the values of {@code length} and {@code correction}.
      *     {@code length} represents the length of each portion of the array that will be processed by each thread,
      *     while {@code correction} represents the remaining length that is not evenly divisible among the threads.</li>
-     *     <li>The {@code listArray} and {@code threads} lists are created as {@link java.util.ArrayList ArrayList} objects.</li>
+     *     <li>The {@code listArray} and {@code threads} lists are created as {@link java.util.ArrayList ArrayList}
+     *     objects.</li>
      *     <li>Inside the loop, the {@code subArray} is declared without setting it to {@code null} initially.
      *     The declaration and assignment are combined into one line.</li>
      *     <li>The {@code if} statement now checks if {@code i} is equal to {@code (thread - 1)}
@@ -362,7 +384,8 @@ extends Sort<T> {
      * @param       list A {@link java.util.List List} of arrays of type T[].
      * @param       n An integer representing the desired length of the new array.
      * @param       length An integer representing the expected length of the arrays in the {@code list}.
-     * @param       correction An integer used to calculate the correct index when the length of an array in the {@code list}.
+     * @param       correction An integer used to calculate the correct index when the length of an array in the
+     *              {@code list}.
      * @return      the {@code newArray} is cast to type {@code T[]}.
      */
     @SuppressWarnings("unchecked")
@@ -371,7 +394,8 @@ extends Sort<T> {
         Comparable[] newArray = new Comparable[n];
         for (Comparable[] comparables : list) {
             if (comparables.length != length) {
-                System.arraycopy(comparables, 0, newArray, ((comparables.length - correction) * j), comparables.length);
+                System.arraycopy(comparables, 0, newArray,
+                        ((comparables.length - correction) * j), comparables.length);
             } else {
                 System.arraycopy(comparables, 0, newArray, (comparables.length * j), comparables.length);
             }
@@ -390,7 +414,8 @@ extends Sort<T> {
      *     the unchecked cast when converting {@link java.lang.Comparable Comparable[]} to {@code T[]}.
      *     This is necessary because arrays of generic types cannot
      *     be directly created or casted due to type erasure in Java.</li>
-     *     <li>Within the method, a new array {@code newArray} of type {@code Comparable[]} is created with a length of {@code n}.</li>
+     *     <li>Within the method, a new array {@code newArray} of type {@code Comparable[]} is created with a length of
+     *     {@code n}.</li>
      *     <li>The method then enters a loop starting from {@code (n - 1)} and going down to <i>0</i>,
      *     decrementing {@code j} by <i>1</i> in each iteration.
      *     This loop is used to iterate through the {@code list} in reverse order.</li>
@@ -405,7 +430,8 @@ extends Sort<T> {
      * @param       list A {@link java.util.List List} of arrays of type T[].
      * @param       n An integer representing the desired length of the new array.
      * @param       length An integer representing the expected length of the arrays in the {@code list}.
-     * @param       correction An integer used to calculate the correct index when the length of an array in the {@code list}.
+     * @param       correction An integer used to calculate the correct index when the length of an array in the
+     * {@code list}.
      * @return      the {@code newArray} is cast to type {@code T[]}.
      */
     @SuppressWarnings("unchecked")
@@ -413,7 +439,8 @@ extends Sort<T> {
         Comparable[] newArray = new Comparable[n];
         for (int j = (n - 1); j >= 0; j--) {
             if (list.get(j).length != length) {
-                System.arraycopy(list.get(j), 0, newArray, ((list.get(j).length - correction) * j), list.get(j).length);
+                System.arraycopy(list.get(j), 0, newArray,
+                        ((list.get(j).length - correction) * j), list.get(j).length);
             } else {
                 System.arraycopy(list.get(j), 0, newArray, (list.get(j).length * j), list.get(j).length);
             }

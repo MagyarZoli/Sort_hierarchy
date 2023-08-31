@@ -9,4 +9,4 @@ package github.magyarzoli;
  */
 @SuppressWarnings("rawtypes")
 public interface Sorter<T extends Comparable>
-extends SortArray<T>, SortList<T> { }
+        extends SortArray<T>, SortList<T> {}

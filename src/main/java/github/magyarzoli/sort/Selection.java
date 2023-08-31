@@ -2,9 +2,6 @@ package github.magyarzoli.sort;
 
 import github.magyarzoli.SelectionInterface;
 import github.magyarzoli.SortComparable;
-import github.magyarzoli.sort.Bubble;
-import github.magyarzoli.sort.DoubleSelection;
-import github.magyarzoli.sort.Pancake;
 import github.magyarzoli.sort.intro.IntroSelection;
 
 import java.util.List;
