@@ -8,14 +8,18 @@ import github.magyarzoli.sort.intro.Intro;
 import java.util.List;
 
 /**
- * IntroDPQ (Dual Pivot Quick) Sort is a hybrid sorting algorithm that combines the strengths of Dual Pivot Quick Sort and Insertion Sort.
+ * IntroDPQ (Dual Pivot Quick) Sort is a hybrid sorting algorithm that combines the strengths of
+ * Dual Pivot Quick Sort and Insertion Sort.
  * It aims to provide fast average-case performance while maintaining worst-case guarantees.
- * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort, which is known for its efficiency on average,
+ * The basic idea behind Intro Sort is to start with Dual Pivot Quick Sort, which is known for its
+ * efficiency on average,
  * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.
- * To mitigate the risk of Dual Pivot Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
+ * To mitigate the risk of Dual Pivot Quick Sort's worst-case behavior, Intro Sort monitors the recursion
+ * depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to HeapSort,
  * which guarantees worst-case <em>O(n log(n))</em> time complexity but has higher overhead.
- * Additionally, for small subarrays, IntroSort switches to Insertion Sort, which has good performance for small input sizes.
+ * Additionally, for small subarrays, IntroSort switches to Insertion Sort, which has good performance for
+ * small input sizes.
  * @param       <T> setting of a type based on which the elements can be sorted.
  * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
@@ -31,9 +35,11 @@ public interface IntroDPQ<T extends Comparable>
      *     If it is, it proceeds with the intro sort algorithm.
      *     If not, it uses insertion sort to sort the sub-array.</li>
      *     <li>If the maximum recursion depth {@code maxDepth} is <i>0</i>,
-     *     it directly uses the {@code introSortClassInc} method to sort the sub-array using a different sorting algorithm.
+     *     it directly uses the {@code introSortClassInc} method to sort the sub-array using
+     *     a different sorting algorithm.
      *     This is a base case to prevent excessive recursion.</li>
-     *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>, it performs the following steps:</li>
+     *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>,
+     *     it performs the following steps:</li>
      *     <li>Calls the {@code partitionDualInc} method to partition the sub-array and obtain the pivot indices.</li>
      *     <li>Recursively calls {@code introRecursiveInc} on the three sub-arrays:</li>
      *     <li>From {@code left} to {@code (pivots[0] - 1)} (elements smaller than the first pivot)</li>
@@ -78,9 +84,11 @@ public interface IntroDPQ<T extends Comparable>
      *     If it is, it proceeds with the intro sort algorithm.
      *     If not, it uses insertion sort to sort the sub-array.</li>
      *     <li>If the maximum recursion depth {@code maxDepth} is <i>0</i>,
-     *     it directly uses the {@code introSortClassDec} method to sort the sub-array using a different sorting algorithm.
+     *     it directly uses the {@code introSortClassDec} method to sort the sub-array using a
+     *     different sorting algorithm.
      *     This is a base case to prevent excessive recursion.</li>
-     *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>, it performs the following steps:</li>
+     *     <li>If the sub-array size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>,
+     *     it performs the following steps:</li>
      *     <li>Calls the {@code partitionDualDec} method to partition the sub-array and obtain the pivot indices.</li>
      *     <li>Recursively calls {@code introRecursiveDec} on the three sub-arrays:</li>
      *     <li>From {@code left} to {@code (pivots[0] - 1)} (elements smaller than the first pivot)</li>
@@ -128,13 +136,16 @@ public interface IntroDPQ<T extends Comparable>
      *     <li>It checks if the size of the range {@code (right - left)}
      *     is greater than a predefined constant value {@code INTRO_SIZE}.
      *     If it is, it proceeds with the sorting algorithm.
-     *     Otherwise, it directly calls the {@code insertion} method to perform insertion sort on the smaller range.</li>
+     *     Otherwise, it directly calls the {@code insertion} method to perform insertion sort on
+     *     the smaller range.</li>
      *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is <i>0</i>
      *     (indicating that the recursion depth has reached its maximum allowed value),
-     *     it calls the {@code introSortClass} method to perform a specific sorting operation for the remaining range.</li>
+     *     it calls the {@code introSortClass} method to perform a specific sorting operation for
+     *     the remaining range.</li>
      *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is not <i>0</i>,
      *     it proceeds with the intro sort algorithm.</li>
-     *     <li>It calls the {@code partitionDual} method to select two pivot elements and partition the range into three sub-ranges.</li>
+     *     <li>It calls the {@code partitionDual} method to select two pivot elements and partition
+     *     the range into three sub-ranges.</li>
      *     <li>It recursively calls the {@code introRecursive} method on the left sub-range,
      *     from {@code left} to {@code (pivots[0] - 1)}, with the {@code maxDepth} reduced by <i>1</i>.</li>
      *     <li>It recursively calls the {@code introRecursive} method on the middle sub-range,
@@ -142,7 +153,8 @@ public interface IntroDPQ<T extends Comparable>
      *     <li>It recursively calls the introRecursive method on the right sub-range,
      *     from {@code pivots[1] + 1} to {@code right}, with the {@code maxDepth} reduced by <i>1</i>.</li>
      *     <li>The recursion continues until the range is small enough to switch to insertion sort.</li>
-     *     <li>At that point, it calls the {@code insertion} method to perform insertion sort on the remaining range.</li>
+     *     <li>At that point, it calls the {@code insertion} method to perform insertion sort on the
+     *     remaining range.</li>
      * </ul>
      * {@code introRecursive} method recursively applies the intro sort algorithm to sort a given array.
      * It switches to insertion sort when the sub-array size becomes small enough.
@@ -180,9 +192,11 @@ public interface IntroDPQ<T extends Comparable>
      *     If it is, it proceeds with the intro sort algorithm.
      *     If not, it uses insertion sort to sort the sub-list.</li>
      *     <li>If the maximum recursion depth {@code maxDepth} is <i>0</i>,
-     *     it directly uses the {@code introSortClassInc} method to sort the sub-list using a different sorting algorithm.
+     *     it directly uses the {@code introSortClassInc} method to sort the sub-list using a
+     *     different sorting algorithm.
      *     This is a base case to prevent excessive recursion.</li>
-     *     <li>If the sub-list size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>, it performs the following steps:</li>
+     *     <li>If the sub-list size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>,
+     *     it performs the following steps:</li>
      *     <li>Calls the {@code partitionDualInc} method to partition the sub-list and obtain the pivot indices.</li>
      *     <li>Recursively calls {@code introRecursiveInc} on the three sub-arrays:</li>
      *     <li>From {@code left} to {@code (pivots[0] - 1)} (elements smaller than the first pivot)</li>
@@ -227,9 +241,11 @@ public interface IntroDPQ<T extends Comparable>
      *     If it is, it proceeds with the intro sort algorithm.
      *     If not, it uses insertion sort to sort the sub-list.</li>
      *     <li>If the maximum recursion depth {@code maxDepth} is <i>0</i>,
-     *     it directly uses the {@code introSortClassDec} method to sort the sub-list using a different sorting algorithm.
+     *     it directly uses the {@code introSortClassDec} method to sort the sub-list using a
+     *     different sorting algorithm.
      *     This is a base case to prevent excessive recursion.</li>
-     *     <li>If the sub-list size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>, it performs the following steps:</li>
+     *     <li>If the sub-list size is larger than {@code INTRO_SIZE} and the maximum recursion depth is not <i>0</i>,
+     *     it performs the following steps:</li>
      *     <li>Calls the {@code partitionDualDec} method to partition the sub-list and obtain the pivot indices.</li>
      *     <li>Recursively calls {@code introRecursiveDec} on the three sub-arrays:</li>
      *     <li>From {@code left} to {@code (pivots[0] - 1)} (elements smaller than the first pivot)</li>
@@ -277,13 +293,16 @@ public interface IntroDPQ<T extends Comparable>
      *     <li>It checks if the size of the range {@code (right - left)}
      *     is greater than a predefined constant value {@code INTRO_SIZE}.
      *     If it is, it proceeds with the sorting algorithm.
-     *     Otherwise, it directly calls the {@code insertion} method to perform insertion sort on the smaller range.</li>
+     *     Otherwise, it directly calls the {@code insertion} method to perform insertion sort on
+     *     the smaller range.</li>
      *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is <i>0</i>
      *     (indicating that the recursion depth has reached its maximum allowed value),
-     *     it calls the {@code introSortClass} method to perform a specific sorting operation for the remaining range.</li>
+     *     it calls the {@code introSortClass} method to perform a specific sorting operation for
+     *     the remaining range.</li>
      *     <li>If the size of the range is larger than {@code INTRO_SIZE} and the {@code maxDepth} is not <i>0</i>,
      *     it proceeds with the intro sort algorithm.</li>
-     *     <li>It calls the {@code partitionDual} method to select two pivot elements and partition the range into three sub-ranges.</li>
+     *     <li>It calls the {@code partitionDual} method to select two pivot elements and partition the range
+     *     into three sub-ranges.</li>
      *     <li>It recursively calls the {@code introRecursive} method on the left sub-range,
      *     from {@code left} to {@code (pivots[0] - 1)}, with the {@code maxDepth} reduced by <i>1</i>.</li>
      *     <li>It recursively calls the {@code introRecursive} method on the middle sub-range,
@@ -291,7 +310,8 @@ public interface IntroDPQ<T extends Comparable>
      *     <li>It recursively calls the introRecursive method on the right sub-range,
      *     from {@code pivots[1] + 1} to {@code right}, with the {@code maxDepth} reduced by <i>1</i>.</li>
      *     <li>The recursion continues until the range is small enough to switch to insertion sort.</li>
-     *     <li>At that point, it calls the {@code insertion} method to perform insertion sort on the remaining range.</li>
+     *     <li>At that point, it calls the {@code insertion} method to perform insertion sort on the
+     *     remaining range.</li>
      * </ul>
      * {@code introRecursive} method recursively applies the intro sort algorithm to sort a given list.
      * It switches to insertion sort when the sub-list size becomes small enough.
@@ -308,7 +328,8 @@ public interface IntroDPQ<T extends Comparable>
      * @see         InsertionInterface#insertion(List, int, int, SortFunctional)
      */
     @Override
-    default <L extends T> void introRecursive(List<L> list, int left, int right, int maxDepth, SortFunctional<T> functional) {
+    default <L extends T> void introRecursive(
+            List<L> list, int left, int right, int maxDepth, SortFunctional<T> functional) {
         if ((right - left) > INTRO_SIZE) {
             if (maxDepth == 0) {
                 introSortClass(list, left, right, functional);
