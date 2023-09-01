@@ -1,7 +1,8 @@
 package github.magyarzoli.sort.intro;
 
+import java.util.List;
+
 import github.magyarzoli.SortFunctional;
-import github.magyarzoli.sort.intro.introDPQ.IntroDPQBogo;
 import github.magyarzoli.sort.Bogo;
 
 /**
@@ -12,7 +13,7 @@ import github.magyarzoli.sort.Bogo;
  * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
  * Another Sort is Bogo Sort.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -50,7 +51,7 @@ public class IntroBogo
      * </ol>
      * <b>Note:</b><br>
      * Implements an adaptive sorting algorithm called Intro Sort. It combines the Quick Sort
-     * algorithm with a switch to another sorting algorithm Odd-even Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
+     * algorithm with a switch to another sorting algorithm Bogo Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
      * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(n^2)</em><br>
@@ -58,7 +59,6 @@ public class IntroBogo
      * Average Case Complexity: <em>O(n log(n))</em><br>
      * Auxiliary Space:         <em>O(n)</em><br>
      * Stability:               <b>No</b>
-     * @see         IntroDPQBogo#IntroDPQBogo() IntroDPQBogo
      */
     public IntroBogo() {}
 
@@ -88,6 +88,34 @@ public class IntroBogo
     @Override
     public void sortArrayFun(Comparable[] array, SortFunctional<Comparable> functional) {
         intro(array, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        introInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        introDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        intro(list, functional);
     }
 
     /**
@@ -122,5 +150,40 @@ public class IntroBogo
     @Override
     public void introSortClass(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         bogo(array, left, right, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
+     */
+    @Override
+    public <L extends Comparable> void introSortClassInc(List<L> list, int left, int right) {
+        bogoInc(list, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
+     */
+    @Override
+    public <L extends Comparable> void introSortClassDec(List<L> list, int left, int right) {
+        bogoDec(list, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public <L extends Comparable> void introSortClass(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        bogo(list, left, right, functional);
     }
 }
