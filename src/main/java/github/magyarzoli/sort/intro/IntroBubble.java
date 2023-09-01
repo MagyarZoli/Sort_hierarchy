@@ -10,7 +10,8 @@ import github.magyarzoli.sort.Bubble;
  * It aims to provide fast average-case performance while maintaining worst-case guarantees.
  * The basic idea behind Intro Sort is to start with Quick Sort, which is known for its efficiency on average,
  * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.
- * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
+ * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the
+ * sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
  * Another Sort is Bubble Sort.
  * @since       1.3
@@ -27,7 +28,8 @@ public class IntroBubble
      * It aims to provide fast average-case performance while maintaining worst-case guarantees.
      * The basic idea behind Intro Sort is to start with Quick Sort, which is known for its efficiency on average,
      * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.<br><br>
-     * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
+     * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the
+     * sorting process.
      * If the depth exceeds a certain threshold, the algorithm switches to
      * Another Sort is Bubble Sort.
      * Implements an adaptive sorting algorithm called Intro Sort Interface.<br><br>
@@ -44,15 +46,17 @@ public class IntroBubble
      *     It returns the index of the pivot element.</li>
      *     <li>The recursively called on the left subarray (elements smaller than the pivot) to further sort it.</li>
      *     <li>The recursively called on the right subarray (elements greater than the pivot) to further sort it.</li>
-     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the array is considered small, and the
-     *     perform insertion sort on the subarray.</li>
+     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the array is considered small,
+     *     and the perform insertion sort on the subarray.</li>
      *     <li>This is a abstract method declaration.
      *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
      * </ol>
      * <b>Note:</b><br>
      * Implements an adaptive sorting algorithm called Intro Sort. It combines the Quick Sort
-     * algorithm with a switch to another sorting algorithm Bubble Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
-     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.<br><br>
+     * algorithm with a switch to another sorting algorithm Bubble Sort when the recursion depth exceeds a specified
+     * threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different
+     * sorting algorithms depending on the input size.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(n^2)</em><br>
      * Best Case Complexity:    <em>O(n log(n))</em><br>
@@ -182,7 +186,8 @@ public class IntroBubble
      * @param       functional lambda expression for comparison.
      */
     @Override
-    public <L extends Comparable> void introSortClass(List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+    public <L extends Comparable> void introSortClass(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         bubble(list, left, right, functional);
     }
 }
