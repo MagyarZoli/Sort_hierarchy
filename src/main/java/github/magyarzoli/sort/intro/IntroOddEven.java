@@ -1,5 +1,7 @@
 package github.magyarzoli.sort.intro;
 
+import java.util.List;
+
 import github.magyarzoli.SortFunctional;
 import github.magyarzoli.sort.OddEven;
 
@@ -8,10 +10,11 @@ import github.magyarzoli.sort.OddEven;
  * It aims to provide fast average-case performance while maintaining worst-case guarantees.
  * The basic idea behind Intro Sort is to start with Quick Sort, which is known for its efficiency on average,
  * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.
- * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
+ * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the
+ * sorting process.
  * If the depth exceeds a certain threshold, the algorithm switches to
  * Another Sort is Odd-even (Brick) Sort.
- * @since       1.1
+ * @since       1.3
  * @author      <a href=https://github.com/MagyarZoli>Magyar Zoltán</a>
  */
 @SuppressWarnings("rawtypes")
@@ -25,7 +28,8 @@ public class IntroOddEven
      * It aims to provide fast average-case performance while maintaining worst-case guarantees.
      * The basic idea behind Intro Sort is to start with Quick Sort, which is known for its efficiency on average,
      * but has a worst-case time complexity of <em>O(n^2)</em> in certain scenarios.<br><br>
-     * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the sorting process.
+     * To mitigate the risk of Quick Sort's worst-case behavior, Intro Sort monitors the recursion depth during the
+     * sorting process.
      * If the depth exceeds a certain threshold, the algorithm switches to
      * Another Sort is Odd-even Sort.
      * Implements an adaptive sorting algorithm called Intro Sort Interface.<br><br>
@@ -42,15 +46,17 @@ public class IntroOddEven
      *     It returns the index of the pivot element.</li>
      *     <li>The recursively called on the left subarray (elements smaller than the pivot) to further sort it.</li>
      *     <li>The recursively called on the right subarray (elements greater than the pivot) to further sort it.</li>
-     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the array is considered small, and the
-     *     perform insertion sort on the subarray.</li>
+     *     <li>Else the size of the subarray is not greater than {@code INTRO_SIZE}, the array is considered small,
+     *     and the perform insertion sort on the subarray.</li>
      *     <li>This is a abstract method declaration.
      *     It appears to be a separate sorting algorithm that is called when the maximum depth is reached.</li>
      * </ol>
      * <b>Note:</b><br>
      * Implements an adaptive sorting algorithm called Intro Sort. It combines the Quick Sort
-     * algorithm with a switch to another sorting algorithm Odd-even Sort when the recursion depth exceeds a specified threshold {@code maxDepth}.
-     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting algorithms depending on the input size.<br><br>
+     * algorithm with a switch to another sorting algorithm Odd-even Sort when the recursion depth exceeds a specified
+     * threshold {@code maxDepth}.
+     * The purpose of this adaptive approach is to optimize performance by leveraging the strengths of different sorting
+     * algorithms depending on the input size.<br><br>
      * <b>Property:</b><br>
      * Worst Case Complexity:   <em>O(n^2)</em><br>
      * Best Case Complexity:    <em>O(n log(n))</em><br>
@@ -90,6 +96,34 @@ public class IntroOddEven
 
     /**
      * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListInc(List<? extends Comparable> list) {
+        introInc(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     */
+    @Override
+    public void sortListDec(List<? extends Comparable> list) {
+        introDec(list);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list to be arranged.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public void sortListFun(List<? extends Comparable> list, SortFunctional<Comparable> functional) {
+        intro(list, functional);
+    }
+
+    /**
+     * {@inheritDoc}
      * @param       array The array to be sorted.
      * @param       left The starting index of the subarray to be sorted.
      * @param       right The ending index (inclusive) of the subarray to be sorted.
@@ -120,5 +154,40 @@ public class IntroOddEven
     @Override
     public void introSortClass(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         oddEven(array, left, right, functional);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
+     */
+    @Override
+    public <L extends Comparable> void introSortClassInc(List<L> list, int left, int right) {
+        oddEvenInc(list, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
+     */
+    @Override
+    public <L extends Comparable> void introSortClassDec(List<L> list, int left, int right) {
+        oddEvenDec(list, left, right);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param       list The array to be sorted.
+     * @param       left The starting index of the sublist to be sorted.
+     * @param       right The ending index (inclusive) of the sublist to be sorted.
+     * @param       functional lambda expression for comparison.
+     */
+    @Override
+    public <L extends Comparable> void introSortClass(
+            List<L> list, int left, int right, SortFunctional<Comparable> functional) {
+        oddEven(list, left, right, functional);
     }
 }
