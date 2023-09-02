@@ -119,12 +119,3 @@ magyarz95@gmail.com
 [license]: https://www.apache.org/licenses/LICENSE-2.0
 [sortDiagram]: image/diagram/Sort%20diagram.png
 [timeComplexity]: image/chart/Time%20Complexity%20diagram.png
-
-<style>
-body {
-text-align: justify;
-}
-div {
-width : 800px;
-}
-</style>
