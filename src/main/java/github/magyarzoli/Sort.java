@@ -192,22 +192,15 @@ public interface Sort<T extends Comparable> {
      */
     default int scanFunctionalComparableTo(SortFunctional<T> functional) {
         Integer a = 1, b = 2;
-        boolean f = functional.functionalCompareTo((T) a, (T) a),
-                g = functional.functionalCompareTo((T) a, (T) b),
-                h = functional.functionalCompareTo((T) b, (T) a);
-        if (!f && !g && h) {
-            return 0;
-        } else if (f && !g && h) {
-            return 1;
-        } else if (!f && g && !h) {
-            return 2;
-        } else if (f && g && !h) {
-            return 3;
-        } else if (!f && g && h) {
-            return 4;
-        } else {
-            return 5;
-        }
+        boolean f = functional.functionalCompareTo((T) a, (T) a);
+        boolean g = functional.functionalCompareTo((T) a, (T) b);
+        boolean h = functional.functionalCompareTo((T) b, (T) a);
+        if (!f && !g && h) return 0;
+        else if (f && !g && h) return 1;
+        else if (!f && g && !h) return 2;
+        else if (f && g && !h) return 3;
+        else if (!f && g && h) return 4;
+        else return 5;
     }
 
     /**

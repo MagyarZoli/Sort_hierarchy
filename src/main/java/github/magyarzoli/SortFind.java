@@ -37,9 +37,7 @@ public interface SortFind<T extends Comparable>
     default T findMax(T[] array) {
         T max = array[0];
         for (int i = 1; i < array.length; i++) {
-            if (max.compareTo(array[i]) < 0) {
-                max = array[i];
-            }
+            if (max.compareTo(array[i]) < 0) max = array[i];
         }
         return max;
     }
@@ -68,9 +66,7 @@ public interface SortFind<T extends Comparable>
     default T findMin(T[] array) {
         T min = array[0];
         for (int i = 1; i < array.length; i++) {
-            if (min.compareTo(array[i]) > 0) {
-                min = array[i];
-            }
+            if (min.compareTo(array[i]) > 0) min = array[i];
         }
         return min;
     }
@@ -103,9 +99,7 @@ public interface SortFind<T extends Comparable>
     default T find(T[] array, SortFunctional<T> functional) {
         T value = array[0];
         for (int i = 1; i < array.length; i++) {
-            if (functional.functionalCompareTo(value, array[i])) {
-                value = array[i];
-            }
+            if (functional.functionalCompareTo(value, array[i])) value = array[i];
         }
         return value;
     }
@@ -135,9 +129,7 @@ public interface SortFind<T extends Comparable>
     default T findMax(T[] array, int to) {
         T max = array[0];
         for (int i = 1; i < to; i++) {
-            if (max.compareTo(array[i]) < 0) {
-                max = array[i];
-            }
+            if (max.compareTo(array[i]) < 0) max = array[i];
         }
         return max;
     }
@@ -167,9 +159,7 @@ public interface SortFind<T extends Comparable>
     default T findMin(T[] array, int to) {
         T min = array[0];
         for (int i = 1; i < to; i++) {
-            if (min.compareTo(array[i]) > 0) {
-                min = array[i];
-            }
+            if (min.compareTo(array[i]) > 0) min = array[i];
         }
         return min;
     }
@@ -204,9 +194,7 @@ public interface SortFind<T extends Comparable>
     default T find(T[] array, int to, SortFunctional<T> functional) {
         T value = array[0];
         for (int i = 1; i < to; i++) {
-            if (functional.functionalCompareTo(value, array[i])) {
-                value = array[i];
-            }
+            if (functional.functionalCompareTo(value, array[i])) value = array[i];
         }
         return value;
     }
@@ -237,9 +225,7 @@ public interface SortFind<T extends Comparable>
     default T findMax(T[] array, int from, int to) {
         T max = array[from];
         for (int i = (from + 1); i < to; i++) {
-            if (max.compareTo(array[i]) < 0) {
-                max = array[i];
-            }
+            if (max.compareTo(array[i]) < 0) max = array[i];
         }
         return max;
     }
@@ -270,9 +256,7 @@ public interface SortFind<T extends Comparable>
     default T findMin(T[] array, int from, int to) {
         T min = array[from];
         for (int i = (from + 1); i < to; i++) {
-            if (min.compareTo(array[i]) > 0) {
-                min = array[i];
-            }
+            if (min.compareTo(array[i]) > 0) min = array[i];
         }
         return min;
     }
@@ -307,9 +291,7 @@ public interface SortFind<T extends Comparable>
     default T find(T[] array, int from, int to, SortFunctional<T> functional) {
         T value = array[from];
         for (int i = (from + 1); i < to; i++) {
-            if (functional.functionalCompareTo(value, array[i])) {
-                value = array[i];
-            }
+            if (functional.functionalCompareTo(value, array[i])) value = array[i];
         }
         return value;
     }
@@ -695,10 +677,7 @@ public interface SortFind<T extends Comparable>
      */
     @SuppressWarnings("unchecked")
     default int findMaximumIndex(T[] array, int a, int b) {
-        if (array[b].compareTo(array[a]) < 0) {
-            b = a;
-        }
-        return b;
+        return array[b].compareTo(array[a]) < 0 ? a : b;
     }
 
     /**
@@ -725,10 +704,7 @@ public interface SortFind<T extends Comparable>
      */
     @SuppressWarnings("unchecked")
     default int findMinimumIndex(T[] array, int a, int b) {
-        if (array[b].compareTo(array[a]) > 0) {
-            b = a;
-        }
-        return b;
+        return array[b].compareTo(array[a]) > 0 ? a : b;
     }
 
     /**
@@ -760,10 +736,7 @@ public interface SortFind<T extends Comparable>
      * @return      b of the element defined by the function.
      */
     default int findValueIndex(T[] array, int a, int b, SortFunctional<T> functional) {
-        if (functional.functionalCompareTo(array[b], array[a])) {
-            b = a;
-        }
-        return b;
+        return functional.functionalCompareTo(array[b], array[a]) ? a : b;
     }
 
     /**
@@ -793,9 +766,7 @@ public interface SortFind<T extends Comparable>
     default T findMax(List<T> list) {
         T max = list.get(0);
         for (int i = 1; i < list.size(); i++) {
-            if (max.compareTo(list.get(i)) < 0) {
-                max = list.get(i);
-            }
+            if (max.compareTo(list.get(i)) < 0) max = list.get(i);
         }
         return max;
     }
@@ -827,9 +798,7 @@ public interface SortFind<T extends Comparable>
     default <L extends T> L findMin(List<L> list) {
         L min = list.get(0);
         for (int i = 1; i < list.size(); i++) {
-            if (min.compareTo(list.get(i)) > 0) {
-                min = list.get(i);
-            }
+            if (min.compareTo(list.get(i)) > 0) min = list.get(i);
         }
         return min;
     }
@@ -863,9 +832,7 @@ public interface SortFind<T extends Comparable>
     default <L extends T> L find(List<L> list, SortFunctional<T> functional) {
         L value = list.get(0);
         for (int i = 1; i < list.size(); i++) {
-            if (functional.functionalCompareTo(value, list.get(i))) {
-                value = list.get(i);
-            }
+            if (functional.functionalCompareTo(value, list.get(i))) value = list.get(i);
         }
         return value;
     }
@@ -898,9 +865,7 @@ public interface SortFind<T extends Comparable>
     default <L extends T> L findMax(List<L> list, int to) {
         L max = list.get(0);
         for (int i = 1; i < to; i++) {
-            if (max.compareTo(list.get(i)) < 0) {
-                max = list.get(i);
-            }
+            if (max.compareTo(list.get(i)) < 0) max = list.get(i);
         }
         return max;
     }
@@ -933,9 +898,7 @@ public interface SortFind<T extends Comparable>
     default <L extends T> L findMin(List<L> list, int to) {
         L min = list.get(0);
         for (int i = 1; i < to; i++) {
-            if (min.compareTo(list.get(0)) > 0) {
-                min = list.get(0);
-            }
+            if (min.compareTo(list.get(0)) > 0) min = list.get(0);
         }
         return min;
     }
@@ -970,9 +933,7 @@ public interface SortFind<T extends Comparable>
     default <L extends T> L find(List<L> list, int to, SortFunctional<T> functional) {
         L value = list.get(0);
         for (int i = 1; i < to; i++) {
-            if (functional.functionalCompareTo(value, list.get(i))) {
-                value = list.get(i);
-            }
+            if (functional.functionalCompareTo(value, list.get(i))) value = list.get(i);
         }
         return value;
     }
@@ -1006,9 +967,7 @@ public interface SortFind<T extends Comparable>
     default <L extends T> L findMax(List<L> list, int from, int to) {
         L max = list.get(from);
         for (int i = (from + 1); i < to; i++) {
-            if (max.compareTo(list.get(i)) < 0) {
-                max = list.get(i);
-            }
+            if (max.compareTo(list.get(i)) < 0) max = list.get(i);
         }
         return max;
     }
@@ -1042,9 +1001,7 @@ public interface SortFind<T extends Comparable>
     default <L extends T> L findMin(List<L> list, int from, int to) {
         L min = list.get(from);
         for (int i = (from + 1); i < to; i++) {
-            if (min.compareTo(list.get(i)) > 0) {
-                min = list.get(i);
-            }
+            if (min.compareTo(list.get(i)) > 0) min = list.get(i);
         }
         return min;
     }
@@ -1080,9 +1037,7 @@ public interface SortFind<T extends Comparable>
     default <L extends T> L find(List<L> list, int from, int to, SortFunctional<T> functional) {
         L value = list.get(from);
         for (int i = (from + 1); i < to; i++) {
-            if (functional.functionalCompareTo(value, list.get(i))) {
-                value = list.get(i);
-            }
+            if (functional.functionalCompareTo(value, list.get(i))) value = list.get(i);
         }
         return value;
     }
@@ -1478,10 +1433,7 @@ public interface SortFind<T extends Comparable>
      */
     @SuppressWarnings("unchecked")
     default <L extends T> int findMaximumIndex(List<L> list, int a, int b) {
-        if (list.get(b).compareTo(list.get(a)) < 0) {
-            b = a;
-        }
-        return b;
+        return list.get(b).compareTo(list.get(a)) < 0 ? a : b;
     }
 
     /**
@@ -1508,10 +1460,7 @@ public interface SortFind<T extends Comparable>
      */
     @SuppressWarnings("unchecked")
     default <L extends T> int findMinimumIndex(List<L> list, int a, int b) {
-        if (list.get(b).compareTo(list.get(a)) > 0) {
-            b = a;
-        }
-        return b;
+        return list.get(b).compareTo(list.get(a)) > 0 ? a : b;
     }
 
     /**
@@ -1543,9 +1492,6 @@ public interface SortFind<T extends Comparable>
      * @return      b of the element defined by the function.
      */
     default <L extends T> int findValueIndex(List<L> list, int a, int b, SortFunctional<T> functional) {
-        if (functional.functionalCompareTo(list.get(b), list.get(a))) {
-            b = a;
-        }
-        return b;
+        return functional.functionalCompareTo(list.get(b), list.get(a)) ? a : b;
     }
 }

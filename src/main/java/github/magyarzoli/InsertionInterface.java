@@ -193,7 +193,9 @@ public interface InsertionInterface<T extends Comparable>
         for (int i = from; i <= to; i++) {
             T select = array[i];
             int j = i;
-            while ((j > from) && ((array[(j - 1)] != null) && (array[(j - 1)].compareTo(select) > 0))) {
+            while ((j > from)
+                    && ((array[(j - 1)] != null)
+                    && (array[(j - 1)].compareTo(select) > 0))) {
                 array[j] = array[(j - 1)];
                 j--;
             }
@@ -245,7 +247,9 @@ public interface InsertionInterface<T extends Comparable>
         for (int i = from; i <= to; i++) {
             T select = array[i];
             int j = i;
-            while ((j > from) && (array[(j - 1)] != null && array[(j - 1)].compareTo(select) < 0)) {
+            while ((j > from)
+                    && (array[(j - 1)] != null
+                    && array[(j - 1)].compareTo(select) < 0)) {
                 array[j] = array[(j - 1)];
                 j--;
             }
@@ -286,7 +290,8 @@ public interface InsertionInterface<T extends Comparable>
         for (int i = from; i <= to; i++) {
             T select = array[i];
             int j = i;
-            while ((j > from) && ((array[(j - 1)] != null)
+            while ((j > from)
+                    && ((array[(j - 1)] != null)
                     && (functional.functionalCompareTo(array[(j - 1)], select)))) {
                 array[j] = array[(j - 1)];
                 j--;
@@ -479,7 +484,9 @@ public interface InsertionInterface<T extends Comparable>
         for (int i = from; i <= to; i++) {
             L select = list.get(i);
             int j = i;
-            while ((j > from) && ((list.get(j - 1) != null) && (list.get(j - 1).compareTo(select) > 0))) {
+            while ((j > from)
+                    && ((list.get(j - 1) != null)
+                    && (list.get(j - 1).compareTo(select) > 0))) {
                 list.set(j, list.get(j - 1));
                 j--;
             }
@@ -532,7 +539,9 @@ public interface InsertionInterface<T extends Comparable>
         for (int i = from; i <= to; i++) {
             L select = list.get(i);
             int j = i;
-            while ((j > from) && (list.get(j - 1) != null && list.get(j - 1).compareTo(select) < 0)) {
+            while ((j > from)
+                    && (list.get(j - 1) != null
+                    && list.get(j - 1).compareTo(select) < 0)) {
                 list.set(j, list.get(j - 1));
                 j--;
             }
@@ -573,7 +582,8 @@ public interface InsertionInterface<T extends Comparable>
         for (int i = from; i <= to; i++) {
             L select = list.get(i);
             int j = i;
-            while ((j > from) && ((list.get(j - 1) != null)
+            while ((j > from)
+                    && ((list.get(j - 1) != null)
                     && (functional.functionalCompareTo(list.get(j - 1), select)))) {
                 list.set(j, list.get(j - 1));
                 j--;

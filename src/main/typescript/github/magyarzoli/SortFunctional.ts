@@ -1,0 +1,1 @@
+export type SortFunctional<T> = (a: T, b: T) => boolean;

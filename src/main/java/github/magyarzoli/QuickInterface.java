@@ -850,7 +850,7 @@ public interface QuickInterface<T extends Comparable>
      * @param       right the value in the list must be greater than a {@code left} parameter.
      * @param       functional lambda expression for comparison.
      * @return      the index of the pivot element.
-     * @see         Sort.SortFunctional#functionalCompareTo(Comparable, Comparable)
+     * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      * @see         SortSwap#swap(List, int, int)
      */
     default <L extends T> int partition(List<L> list, int left, int right, SortFunctional<T> functional) {
