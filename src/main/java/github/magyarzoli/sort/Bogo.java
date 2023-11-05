@@ -292,9 +292,7 @@ public class Bogo
     @SuppressWarnings("unchecked")
     protected boolean isSortedInc(Comparable[] array) {
         for (int i = 1; i < array.length; i++) {
-            if (array[(i - 1)].compareTo(array[i]) > 0) {
-                return false;
-            }
+            if (array[(i - 1)].compareTo(array[i]) > 0) return false;
         }
         return true;
     }
@@ -323,9 +321,7 @@ public class Bogo
     @SuppressWarnings("unchecked")
     protected boolean isSortedDec(Comparable[] array) {
         for (int i = 1; i < array.length; i++) {
-            if (array[(i - 1)].compareTo(array[i]) < 0) {
-                return false;
-            }
+            if (array[(i - 1)].compareTo(array[i]) < 0) return false;
         }
         return true;
     }
@@ -352,9 +348,7 @@ public class Bogo
      */
     protected boolean isSorted(Comparable[] array, SortFunctional<Comparable> functional) {
         for (int i = 1; i < array.length; i++) {
-            if (functional.functionalCompareTo(array[(i - 1)], array[i])) {
-                return false;
-            }
+            if (functional.functionalCompareTo(array[(i - 1)], array[i])) return false;
         }
         return true;
     }
@@ -386,9 +380,7 @@ public class Bogo
     @SuppressWarnings("unchecked")
     protected boolean isSortedInc(Comparable[] array, int left, int right) {
         for (int i = (left + 1); i < right; i++) {
-            if (array[(i - 1)].compareTo(array[i]) > 0) {
-                return false;
-            }
+            if (array[(i - 1)].compareTo(array[i]) > 0) return false;
         }
         return true;
     }
@@ -420,9 +412,7 @@ public class Bogo
     @SuppressWarnings("unchecked")
     protected boolean isSortedDec(Comparable[] array, int left, int right) {
         for (int i = (left + 1); i < right; i++) {
-            if (array[(i - 1)].compareTo(array[i]) < 0) {
-                return false;
-            }
+            if (array[(i - 1)].compareTo(array[i]) < 0) return false;
         }
         return true;
     }
@@ -452,9 +442,7 @@ public class Bogo
      */
     protected boolean isSorted(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         for (int i = (left + 1); i < right; i++) {
-            if (functional.functionalCompareTo(array[(i - 1)], array[i])) {
-                return false;
-            }
+            if (functional.functionalCompareTo(array[(i - 1)], array[i])) return false;
         }
         return true;
     }
@@ -687,9 +675,7 @@ public class Bogo
     @SuppressWarnings("unchecked")
     protected <L extends Comparable> boolean isSortedInc(List<L> list) {
         for (int i = 1; i < list.size(); i++) {
-            if (list.get(i - 1).compareTo(list.get(i)) > 0) {
-                return false;
-            }
+            if (list.get(i - 1).compareTo(list.get(i)) > 0) return false;
         }
         return true;
     }
@@ -718,9 +704,7 @@ public class Bogo
     @SuppressWarnings("unchecked")
     protected <L extends Comparable> boolean isSortedDec(List<L> list) {
         for (int i = 1; i < list.size(); i++) {
-            if (list.get(i - 1).compareTo(list.get(i)) < 0) {
-                return false;
-            }
+            if (list.get(i - 1).compareTo(list.get(i)) < 0) return false;
         }
         return true;
     }
@@ -747,9 +731,7 @@ public class Bogo
      */
     protected <L extends Comparable> boolean isSorted(List<L> list, SortFunctional<Comparable> functional) {
         for (int i = 1; i < list.size(); i++) {
-            if (functional.functionalCompareTo(list.get(i - 1), list.get(i))) {
-                return false;
-            }
+            if (functional.functionalCompareTo(list.get(i - 1), list.get(i))) return false;
         }
         return true;
     }
@@ -781,9 +763,7 @@ public class Bogo
     @SuppressWarnings("unchecked")
     protected <L extends Comparable> boolean isSortedInc(List<L> list, int left, int right) {
         for (int i = (left + 1); i < right; i++) {
-            if (list.get(i - 1).compareTo(list.get(i)) > 0) {
-                return false;
-            }
+            if (list.get(i - 1).compareTo(list.get(i)) > 0) return false;
         }
         return true;
     }
@@ -815,9 +795,7 @@ public class Bogo
     @SuppressWarnings("unchecked")
     protected <L extends Comparable> boolean isSortedDec(List<L> list, int left, int right) {
         for (int i = (left + 1); i < right; i++) {
-            if (list.get(i - 1).compareTo(list.get(i)) < 0) {
-                return false;
-            }
+            if (list.get(i - 1).compareTo(list.get(i)) < 0) return false;
         }
         return true;
     }
@@ -849,9 +827,7 @@ public class Bogo
     protected <L extends Comparable> boolean isSorted(
             List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         for (int i = (left + 1); i < right; i++) {
-            if (functional.functionalCompareTo(list.get(i - 1), list.get(i))) {
-                return false;
-            }
+            if (functional.functionalCompareTo(list.get(i - 1), list.get(i))) return false;
         }
         return true;
     }

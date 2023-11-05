@@ -135,11 +135,8 @@ public class Gnome
     protected void gnomeInc(Comparable[] array) {
         int n = array.length, pos = 0;
         while (pos < n) {
-            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) >= 0)) {
-                pos++;
-            } else {
-                swap(array, pos, --pos);
-            }
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) >= 0)) pos++;
+            else swap(array, pos, --pos);
         }
     }
 
@@ -168,11 +165,8 @@ public class Gnome
     protected void gnomeDec(Comparable[] array) {
         int n = array.length, pos = 0;
         while (pos < n) {
-            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) <= 0)) {
-                pos++;
-            } else {
-                swap(array, pos, --pos);
-            }
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) <= 0)) pos++;
+            else swap(array, pos, --pos);
         }
     }
 
@@ -208,11 +202,8 @@ public class Gnome
         int n = array.length, pos = 0;
         SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
         while (pos < n) {
-            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(array[pos], array[(pos - 1)]))) {
-                pos++;
-            } else {
-                swap(array, pos, --pos);
-            }
+            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(array[pos], array[(pos - 1)]))) pos++;
+            else swap(array, pos, --pos);
         }
     }
 
@@ -243,11 +234,8 @@ public class Gnome
     protected void gnomeInc(Comparable[] array, int left, int right) {
         int pos = left;
         while (pos < right) {
-            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) >= 0)) {
-                pos++;
-            } else {
-                swap(array, pos, --pos);
-            }
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) >= 0)) pos++;
+            else swap(array, pos, --pos);
         }
     }
 
@@ -278,11 +266,8 @@ public class Gnome
     protected void gnomeDec(Comparable[] array, int left, int right) {
         int pos = left;
         while (pos < right) {
-            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) <= 0)) {
-                pos++;
-            } else {
-                swap(array, pos, --pos);
-            }
+            if ((pos == 0) || (array[pos].compareTo(array[(pos - 1)]) <= 0)) pos++;
+            else swap(array, pos, --pos);
         }
     }
 
@@ -321,11 +306,8 @@ public class Gnome
         int pos = left;
         SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
         while (pos < right) {
-            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(array[pos], array[(pos - 1)]))) {
-                pos++;
-            } else {
-                swap(array, pos, --pos);
-            }
+            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(array[pos], array[(pos - 1)]))) pos++;
+            else swap(array, pos, --pos);
         }
     }
 
@@ -354,11 +336,8 @@ public class Gnome
     protected <L extends Comparable> void gnomeInc(List<L> list) {
         int n = list.size(), pos = 0;
         while (pos < n) {
-            if ((pos == 0) || (list.get(pos).compareTo(list.get(pos - 1)) >= 0)) {
-                pos++;
-            } else {
-                swap(list, pos, --pos);
-            }
+            if ((pos == 0) || (list.get(pos).compareTo(list.get(pos - 1)) >= 0)) pos++;
+            else swap(list, pos, --pos);
         }
     }
 
@@ -387,11 +366,8 @@ public class Gnome
     protected <L extends Comparable> void gnomeDec(List<L> list) {
         int n = list.size(), pos = 0;
         while (pos < n) {
-            if ((pos == 0) || (list.get(pos).compareTo(list.get(pos - 1)) <= 0)) {
-                pos++;
-            } else {
-                swap(list, pos, --pos);
-            }
+            if ((pos == 0) || (list.get(pos).compareTo(list.get(pos - 1)) <= 0)) pos++;
+            else swap(list, pos, --pos);
         }
     }
 
@@ -427,11 +403,8 @@ public class Gnome
         int n = list.size(), pos = 0;
         SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
         while (pos < n) {
-            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(list.get(pos), list.get(pos - 1)))) {
-                pos++;
-            } else {
-                swap(list, pos, --pos);
-            }
+            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(list.get(pos), list.get(pos - 1)))) pos++;
+            else swap(list, pos, --pos);
         }
     }
 
@@ -462,11 +435,8 @@ public class Gnome
     protected <L extends Comparable> void gnomeInc(List<L> list, int left, int right) {
         int pos = left;
         while (pos < right) {
-            if ((pos == 0) || (list.get(pos).compareTo(list.get(pos - 1)) >= 0)) {
-                pos++;
-            } else {
-                swap(list, pos, --pos);
-            }
+            if ((pos == 0) || (list.get(pos).compareTo(list.get(pos - 1)) >= 0)) pos++;
+            else swap(list, pos, --pos);
         }
     }
 
@@ -497,11 +467,8 @@ public class Gnome
     protected <L extends Comparable> void gnomeDec(List<L> list, int left, int right) {
         int pos = left;
         while (pos < right) {
-            if ((pos == 0) || (list.get(pos).compareTo(list.get(pos - 1)) <= 0)) {
-                pos++;
-            } else {
-                swap(list, pos, --pos);
-            }
+            if ((pos == 0) || (list.get(pos).compareTo(list.get(pos - 1)) <= 0)) pos++;
+            else swap(list, pos, --pos);
         }
     }
 
@@ -541,11 +508,8 @@ public class Gnome
         int pos = left;
         SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
         while (pos < right) {
-            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(list.get(pos), list.get(pos - 1)))) {
-                pos++;
-            } else {
-                swap(list, pos, --pos);
-            }
+            if ((pos == 0) || (functionalAddEquals.functionalCompareTo(list.get(pos), list.get(pos - 1)))) pos++;
+            else swap(list, pos, --pos);
         }
     }
 }

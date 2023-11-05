@@ -400,9 +400,7 @@ public class OddEven
     protected boolean indexedElementInc(Comparable[] array, int j, int n) {
         boolean element = true;
         for (int i = j; i <= (n - 2); i += 2) {
-            if (isSwapInc(array, i, 1)) {
-                element = false;
-            }
+            if (isSwapInc(array, i, 1)) element = false;
         }
         return element;
     }
@@ -433,9 +431,7 @@ public class OddEven
     protected boolean indexedElementDec(Comparable[] array, int j, int n) {
         boolean element = true;
         for (int i = j; i <= (n - 2); i += 2) {
-            if (isSwapDec(array, i, 1)) {
-                element = false;
-            }
+            if (isSwapDec(array, i, 1)) element = false;
         }
         return element;
     }
@@ -474,9 +470,7 @@ public class OddEven
     protected boolean indexedElement(Comparable[] array, int j, int n, SortFunctional<Comparable> functional) {
         boolean element = true;
         for (int i = j; i <= (n - 2); i += 2) {
-            if (isSwap(array, i, 1, functional)) {
-                element = false;
-            }
+            if (isSwap(array, i, 1, functional)) element = false;
         }
         return element;
     }
@@ -767,9 +761,7 @@ public class OddEven
     protected <L extends Comparable> boolean indexedElementInc(List<L> list, int j, int n) {
         boolean element = true;
         for (int i = j; i <= (n - 2); i += 2) {
-            if (isSwapInc(list, i, 1)) {
-                element = false;
-            }
+            if (isSwapInc(list, i, 1)) element = false;
         }
         return element;
     }
@@ -800,9 +792,7 @@ public class OddEven
     protected <L extends Comparable> boolean indexedElementDec(List<L> list, int j, int n) {
         boolean element = true;
         for (int i = j; i <= (n - 2); i += 2) {
-            if (isSwapDec(list, i, 1)) {
-                element = false;
-            }
+            if (isSwapDec(list, i, 1)) element = false;
         }
         return element;
     }
@@ -842,9 +832,7 @@ public class OddEven
             List<L> list, int j, int n, SortFunctional<Comparable> functional) {
         boolean element = true;
         for (int i = j; i <= (n - 2); i += 2) {
-            if (isSwap(list, i, 1, functional)) {
-                element = false;
-            }
+            if (isSwap(list, i, 1, functional)) element = false;
         }
         return element;
     }

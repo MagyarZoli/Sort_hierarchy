@@ -402,8 +402,8 @@ public class Bozo
      */
     protected void shuffleIndex(Comparable[] array) {
         Random random = new Random();
-        int index1 = random.nextInt(array.length),
-                index2 = random.nextInt(array.length);
+        int index1 = random.nextInt(array.length);
+        int index2 = random.nextInt(array.length);
         swap(array, index1, index2);
     }
 
@@ -431,8 +431,8 @@ public class Bozo
      */
     protected void shuffleIndex(Comparable[] array, int left, int right) {
         Random random = new Random();
-        int index1 = (random.nextInt((right - left)) + left),
-                index2 = (random.nextInt((right - left)) + left);
+        int index1 = (random.nextInt((right - left)) + left);
+        int index2 = (random.nextInt((right - left)) + left);
         swap(array, index1, index2);
     }
 
@@ -457,8 +457,8 @@ public class Bozo
      */
     protected <L extends Comparable> void shuffleIndex(List<L> list) {
         Random random = new Random();
-        int index1 = random.nextInt(list.size()),
-                index2 = random.nextInt(list.size());
+        int index1 = random.nextInt(list.size());
+        int index2 = random.nextInt(list.size());
         swap(list, index1, index2);
     }
 
@@ -486,8 +486,8 @@ public class Bozo
      */
     protected <L extends Comparable> void shuffleIndex(List<L> list, int left, int right) {
         Random random = new Random();
-        int index1 = (random.nextInt((right - left)) + left),
-                index2 = (random.nextInt((right - left)) + left);
+        int index1 = (random.nextInt((right - left)) + left);
+        int index2 = (random.nextInt((right - left)) + left);
         swap(list, index1, index2);
     }
 }

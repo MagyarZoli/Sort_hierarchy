@@ -156,9 +156,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = 0; i < (n - gap); i++) {
-                if (isSwapInc(array, i, gap)) {
-                    swapped = true;
-                }
+                if (isSwapInc(array, i, gap)) swapped = true;
             }
         }
     }
@@ -203,9 +201,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = 0; i < (n - gap); i++) {
-                if (isSwapDec(array, i, gap)) {
-                    swapped = true;
-                }
+                if (isSwapDec(array, i, gap)) swapped = true;
             }
         }
     }
@@ -249,9 +245,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = 0; i < (n - gap); i++) {
-                if (isSwap(array, i, gap, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(array, i, gap, functional)) swapped = true;
             }
         }
     }
@@ -298,9 +292,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = left; i < (right - gap); i++) {
-                if (isSwapInc(array, i, gap)) {
-                    swapped = true;
-                }
+                if (isSwapInc(array, i, gap)) swapped = true;
             }
         }
     }
@@ -347,9 +339,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = left; i < (right - gap); i++) {
-                if (isSwapDec(array, i, gap)) {
-                    swapped = true;
-                }
+                if (isSwapDec(array, i, gap)) swapped = true;
             }
         }
     }
@@ -395,9 +385,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = left; i < (right - gap); i++) {
-                if (isSwap(array, i, gap, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(array, i, gap, functional)) swapped = true;
             }
         }
     }
@@ -442,9 +430,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = 0; i < (n - gap); i++) {
-                if (isSwapInc(list, i, gap)) {
-                    swapped = true;
-                }
+                if (isSwapInc(list, i, gap)) swapped = true;
             }
         }
     }
@@ -489,9 +475,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = 0; i < (n - gap); i++) {
-                if (isSwapDec(list, i, gap)) {
-                    swapped = true;
-                }
+                if (isSwapDec(list, i, gap)) swapped = true;
             }
         }
     }
@@ -535,9 +519,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = 0; i < (n - gap); i++) {
-                if (isSwap(list, i, gap, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(list, i, gap, functional)) swapped = true;
             }
         }
     }
@@ -584,9 +566,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = left; i < (right - gap); i++) {
-                if (isSwapInc(list, i, gap)) {
-                    swapped = true;
-                }
+                if (isSwapInc(list, i, gap)) swapped = true;
             }
         }
     }
@@ -633,9 +613,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = left; i < (right - gap); i++) {
-                if (isSwapDec(list, i, gap)) {
-                    swapped = true;
-                }
+                if (isSwapDec(list, i, gap)) swapped = true;
             }
         }
     }
@@ -682,9 +660,7 @@ public class Comb
             gap = getNextGap(gap);
             swapped = false;
             for (int i = left; i < (right - gap); i++) {
-                if (isSwap(list, i, gap, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(list, i, gap, functional)) swapped = true;
             }
         }
     }
@@ -713,9 +689,6 @@ public class Comb
      */
     protected int getNextGap(int gap) {
         gap = ((gap * 10) / 13);
-        if (gap < 1) {
-            return 1;
-        }
-        return gap;
+        return Math.max(gap, 1);
     }
 }

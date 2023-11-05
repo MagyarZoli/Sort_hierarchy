@@ -166,18 +166,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwapInc(array, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapInc(array, i, 1)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwapInc(array, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapInc(array, i, 1)) swapped = true;
             }
             ++start;
         }
@@ -232,18 +226,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwapDec(array, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapDec(array, i, 1)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwapDec(array, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapDec(array, i, 1)) swapped = true;
             }
             ++start;
         }
@@ -290,18 +278,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwap(array, i, 1, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(array, i, 1, functional)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwap(array, i, 1, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(array, i, 1, functional)) swapped = true;
             }
             ++start;
         }
@@ -352,18 +334,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwapInc(array, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapInc(array, i, 1)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwapInc(array, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapInc(array, i, 1)) swapped = true;
             }
             ++start;
         }
@@ -414,18 +390,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwapDec(array, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapDec(array, i, 1)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwapDec(array, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapDec(array, i, 1)) swapped = true;
             }
             ++start;
         }
@@ -475,18 +445,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwap(array, i, 1, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(array, i, 1, functional)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwap(array, i, 1, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(array, i, 1, functional)) swapped = true;
             }
             ++start;
         }
@@ -541,18 +505,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwapInc(list, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapInc(list, i, 1)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwapInc(list, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapInc(list, i, 1)) swapped = true;
             }
             ++start;
         }
@@ -607,18 +565,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwapDec(list, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapDec(list, i, 1)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwapDec(list, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapDec(list, i, 1)) swapped = true;
             }
             ++start;
         }
@@ -665,18 +617,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwap(list, i, 1, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(list, i, 1, functional)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwap(list, i, 1, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(list, i, 1, functional)) swapped = true;
             }
             ++start;
         }
@@ -727,18 +673,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwapInc(list, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapInc(list, i, 1)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwapInc(list, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapInc(list, i, 1)) swapped = true;
             }
             ++start;
         }
@@ -789,18 +729,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwapDec(list, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapDec(list, i, 1)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwapDec(list, i, 1)) {
-                    swapped = true;
-                }
+                if (isSwapDec(list, i, 1)) swapped = true;
             }
             ++start;
         }
@@ -851,18 +785,12 @@ public class Cocktail
         while (swapped) {
             swapped = false;
             for (int i = start; i < end; ++i) {
-                if (isSwap(list, i, 1, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(list, i, 1, functional)) swapped = true;
             }
-            if (!swapped) {
-                break;
-            }
+            if (!swapped) break;
             swapped = false;
             for (int i = (--end - 1); i >= start; i--) {
-                if (isSwap(list, i, 1, functional)) {
-                    swapped = true;
-                }
+                if (isSwap(list, i, 1, functional)) swapped = true;
             }
             ++start;
         }

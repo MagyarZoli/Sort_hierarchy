@@ -144,9 +144,7 @@ public class DoubleSelection
                 maxIndex = findMaximumIndex(array, j, maxIndex);
             }
             swap(array, minIndex, left);
-            if (maxIndex == left) {
-                maxIndex = minIndex;
-            }
+            if (maxIndex == left) maxIndex = minIndex;
             swap(array, maxIndex, right--);
             left++;
         }
@@ -182,9 +180,7 @@ public class DoubleSelection
                 maxIndex = findMaximumIndex(array, j, maxIndex);
             }
             swap(array, maxIndex, left);
-            if (minIndex == left) {
-                minIndex = maxIndex;
-            }
+            if (minIndex == left) minIndex = maxIndex;
             swap(array, minIndex, right--);
             left++;
         }
@@ -243,9 +239,7 @@ public class DoubleSelection
                 valueReverseIndex = findValueIndex(array, j, valueReverseIndex, functionalReverse);
             }
             swap(array, valueReverseIndex, left);
-            if (valueIndex == left) {
-                valueIndex = valueReverseIndex;
-            }
+            if (valueIndex == left) valueIndex = valueReverseIndex;
             swap(array, valueIndex, right--);
             left++;
         }
@@ -282,9 +276,7 @@ public class DoubleSelection
                 maxIndex = findMaximumIndex(array, j, maxIndex);
             }
             swap(array, minIndex, left);
-            if (maxIndex == left) {
-                maxIndex = minIndex;
-            }
+            if (maxIndex == left) maxIndex = minIndex;
             swap(array, maxIndex, right--);
             left++;
         }
@@ -321,9 +313,7 @@ public class DoubleSelection
                 maxIndex = findMaximumIndex(array, j, maxIndex);
             }
             swap(array, maxIndex, left);
-            if (minIndex == left) {
-                minIndex = maxIndex;
-            }
+            if (minIndex == left) minIndex = maxIndex;
             swap(array, minIndex, right--);
             left++;
         }
@@ -385,9 +375,7 @@ public class DoubleSelection
                 valueReverseIndex = findValueIndex(array, j, valueReverseIndex, functionalReverse);
             }
             swap(array, valueReverseIndex, left);
-            if (valueIndex == left) {
-                valueIndex = valueReverseIndex;
-            }
+            if (valueIndex == left) valueIndex = valueReverseIndex;
             swap(array, valueIndex, right--);
             left++;
         }
@@ -422,9 +410,7 @@ public class DoubleSelection
                 maxIndex = findMaximumIndex(list, j, maxIndex);
             }
             swap(list, minIndex, left);
-            if (maxIndex == left) {
-                maxIndex = minIndex;
-            }
+            if (maxIndex == left) maxIndex = minIndex;
             swap(list, maxIndex, right--);
             left++;
         }
@@ -459,9 +445,7 @@ public class DoubleSelection
                 maxIndex = findMaximumIndex(list, j, maxIndex);
             }
             swap(list, maxIndex, left);
-            if (minIndex == left) {
-                minIndex = maxIndex;
-            }
+            if (minIndex == left) minIndex = maxIndex;
             swap(list, minIndex, right--);
             left++;
         }
@@ -519,9 +503,7 @@ public class DoubleSelection
                 valueReverseIndex = findValueIndex(list, j, valueReverseIndex, functionalReverse);
             }
             swap(list, valueReverseIndex, left);
-            if (valueIndex == left) {
-                valueIndex = valueReverseIndex;
-            }
+            if (valueIndex == left) valueIndex = valueReverseIndex;
             swap(list, valueIndex, right--);
             left++;
         }
@@ -557,9 +539,7 @@ public class DoubleSelection
                 maxIndex = findMaximumIndex(list, j, maxIndex);
             }
             swap(list, minIndex, left);
-            if (maxIndex == left) {
-                maxIndex = minIndex;
-            }
+            if (maxIndex == left) maxIndex = minIndex;
             swap(list, maxIndex, right--);
             left++;
         }
@@ -595,9 +575,7 @@ public class DoubleSelection
                 maxIndex = findMaximumIndex(list, j, maxIndex);
             }
             swap(list, maxIndex, left);
-            if (minIndex == left) {
-                minIndex = maxIndex;
-            }
+            if (minIndex == left) minIndex = maxIndex;
             swap(list, minIndex, right--);
             left++;
         }
@@ -661,9 +639,7 @@ public class DoubleSelection
                 valueReverseIndex = findValueIndex(list, j, valueReverseIndex, functionalReverse);
             }
             swap(list, valueReverseIndex, left);
-            if (valueIndex == left) {
-                valueIndex = valueReverseIndex;
-            }
+            if (valueIndex == left) valueIndex = valueReverseIndex;
             swap(list, valueIndex, right--);
             left++;
         }

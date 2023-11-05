@@ -147,9 +147,7 @@ public class Bubble
         int n = array.length;
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
-                if (array[(j - 1)].compareTo(array[j]) > 0) {
-                    swap(array, (j - 1), j);
-                }
+                if (array[(j - 1)].compareTo(array[j]) > 0) swap(array, (j - 1), j);
             }
         }
     }
@@ -189,9 +187,7 @@ public class Bubble
         int n = array.length;
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
-                if (array[(j - 1)].compareTo(array[j]) < 0) {
-                    swap(array, (j - 1), j);
-                }
+                if (array[(j - 1)].compareTo(array[j]) < 0) swap(array, (j - 1), j);
             }
         }
     }
@@ -228,9 +224,7 @@ public class Bubble
         int n = array.length;
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
-                if (functional.functionalCompareTo(array[(j - 1)], array[j])) {
-                    swap(array, (j - 1), j);
-                }
+                if (functional.functionalCompareTo(array[(j - 1)], array[j])) swap(array, (j - 1), j);
             }
         }
     }
@@ -271,9 +265,7 @@ public class Bubble
     protected void bubbleInc(Comparable[] array, int left, int right) {
         for (int i = left; i < right; i++) {
             for (int j = 1; j < (right - i); j++) {
-                if (array[(j - 1)].compareTo(array[j]) > 0) {
-                    swap(array, (j - 1), j);
-                }
+                if (array[(j - 1)].compareTo(array[j]) > 0) swap(array, (j - 1), j);
             }
         }
     }
@@ -314,9 +306,7 @@ public class Bubble
     protected void bubbleDec(Comparable[] array, int left, int right) {
         for (int i = left; i < right; i++) {
             for (int j = 1; j < (right - i); j++) {
-                if (array[(j - 1)].compareTo(array[j]) < 0) {
-                    swap(array, (j - 1), j);
-                }
+                if (array[(j - 1)].compareTo(array[j]) < 0) swap(array, (j - 1), j);
             }
         }
     }
@@ -353,9 +343,7 @@ public class Bubble
     protected void bubble(Comparable[] array, int left, int right, SortFunctional<Comparable> functional) {
         for (int i = left; i < right; i++) {
             for (int j = 1; j < (right - i); j++) {
-                if (functional.functionalCompareTo(array[(j - 1)], array[j])) {
-                    swap(array, (j - 1), j);
-                }
+                if (functional.functionalCompareTo(array[(j - 1)], array[j])) swap(array, (j - 1), j);
             }
         }
     }
@@ -395,9 +383,7 @@ public class Bubble
         int n = list.size();
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
-                if (list.get(j - 1).compareTo(list.get(j)) > 0) {
-                    swap(list, (j - 1), j);
-                }
+                if (list.get(j - 1).compareTo(list.get(j)) > 0) swap(list, (j - 1), j);
             }
         }
     }
@@ -437,9 +423,7 @@ public class Bubble
         int n = list.size();
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
-                if (list.get(j - 1).compareTo(list.get(j)) < 0) {
-                    swap(list, (j - 1), j);
-                }
+                if (list.get(j - 1).compareTo(list.get(j)) < 0) swap(list, (j - 1), j);
             }
         }
     }
@@ -475,9 +459,7 @@ public class Bubble
         int n = list.size();
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
-                if (functional.functionalCompareTo(list.get(j - 1), list.get(j))) {
-                    swap(list, (j - 1), j);
-                }
+                if (functional.functionalCompareTo(list.get(j - 1), list.get(j))) swap(list, (j - 1), j);
             }
         }
     }
@@ -518,9 +500,7 @@ public class Bubble
     protected <L extends Comparable> void bubbleInc(List<L> list, int left, int right) {
         for (int i = left; i < right; i++) {
             for (int j = 1; j < (right - i); j++) {
-                if (list.get(j - 1).compareTo(list.get(j)) > 0) {
-                    swap(list, (j - 1), j);
-                }
+                if (list.get(j - 1).compareTo(list.get(j)) > 0) swap(list, (j - 1), j);
             }
         }
     }
@@ -561,9 +541,7 @@ public class Bubble
     protected <L extends Comparable> void bubbleDec(List<L> list, int left, int right) {
         for (int i = left; i < right; i++) {
             for (int j = 1; j < (right - i); j++) {
-                if (list.get(j - 1).compareTo(list.get(j)) < 0) {
-                    swap(list, (j - 1), j);
-                }
+                if (list.get(j - 1).compareTo(list.get(j)) < 0) swap(list, (j - 1), j);
             }
         }
     }
@@ -601,9 +579,7 @@ public class Bubble
             List<L> list, int left, int right, SortFunctional<Comparable> functional) {
         for (int i = left; i < right; i++) {
             for (int j = 1; j < (right - i); j++) {
-                if (functional.functionalCompareTo(list.get(j - 1), list.get(j))) {
-                    swap(list, (j - 1), j);
-                }
+                if (functional.functionalCompareTo(list.get(j - 1), list.get(j))) swap(list, (j - 1), j);
             }
         }
     }
