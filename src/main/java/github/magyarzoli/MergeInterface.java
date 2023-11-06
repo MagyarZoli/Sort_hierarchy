@@ -792,26 +792,17 @@ public interface MergeInterface<T extends Comparable>
      */
     @SuppressWarnings("unchecked")
     default void mergingInc(T[] array, int left, int mid, int right) {
-        if ((left > mid) || ((mid + 1) > right)) {
-            return;
-        }
+        if ((left > mid) || ((mid + 1) > right)) return;
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         T[] leftArray = Arrays.copyOfRange(array, left, (mid + 1));
         T[] rightArray = Arrays.copyOfRange(array, (mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (rightArray[j].compareTo(leftArray[i]) > 0) {
-                array[k] = leftArray[i++];
-            } else {
-                array[k] = rightArray[j++];
-            }
+            if (rightArray[j].compareTo(leftArray[i]) > 0) array[k] = leftArray[i++];
+            else array[k] = rightArray[j++];
             k++;
         }
-        while (i < n1) {
-            array[k++] = leftArray[i++];
-        }
-        while (j < n2) {
-            array[k++] = rightArray[j++];
-        }
+        while (i < n1) array[k++] = leftArray[i++];
+        while (j < n2) array[k++] = rightArray[j++];
     }
 
     /**
@@ -861,26 +852,17 @@ public interface MergeInterface<T extends Comparable>
      */
     @SuppressWarnings("unchecked")
     default void mergingDec(T[] array, int left, int mid, int right) {
-        if ((left > mid) || ((mid + 1) > right)) {
-            return;
-        }
+        if ((left > mid) || ((mid + 1) > right)) return;
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         T[] leftArray = Arrays.copyOfRange(array, left, (mid + 1));
         T[] rightArray = Arrays.copyOfRange(array, (mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (rightArray[j].compareTo(leftArray[i]) < 0) {
-                array[k] = leftArray[i++];
-            } else {
-                array[k] = rightArray[j++];
-            }
+            if (rightArray[j].compareTo(leftArray[i]) < 0) array[k] = leftArray[i++];
+            else array[k] = rightArray[j++];
             k++;
         }
-        while (i < n1) {
-            array[k++] = leftArray[i++];
-        }
-        while (j < n2) {
-            array[k++] = rightArray[j++];
-        }
+        while (i < n1) array[k++] = leftArray[i++];
+        while (j < n2) array[k++] = rightArray[j++];
     }
 
     /**
@@ -934,26 +916,17 @@ public interface MergeInterface<T extends Comparable>
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
     default void merging(T[] array, int left, int mid, int right, SortFunctional<T> functional) {
-        if ((left > mid) || ((mid + 1) > right)) {
-            return;
-        }
+        if ((left > mid) || ((mid + 1) > right)) return;
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         T[] leftArray = Arrays.copyOfRange(array, left, (mid + 1));
         T[] rightArray = Arrays.copyOfRange(array, (mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (functional.functionalCompareTo(rightArray[j], leftArray[i])) {
-                array[k] = leftArray[i++];
-            } else {
-                array[k] = rightArray[j++];
-            }
+            if (functional.functionalCompareTo(rightArray[j], leftArray[i])) array[k] = leftArray[i++];
+            else array[k] = rightArray[j++];
             k++;
         }
-        while (i < n1) {
-            array[k++] = leftArray[i++];
-        }
-        while (j < n2) {
-            array[k++] = rightArray[j++];
-        }
+        while (i < n1) array[k++] = leftArray[i++];
+        while (j < n2) array[k++] = rightArray[j++];
     }
 
     /**
@@ -1000,11 +973,8 @@ public interface MergeInterface<T extends Comparable>
     default void mergingInc(T[] array, int left, int mid, int right, T[] buffer) {
         int n1 = left, n2 = (mid + 1);
         for (int i = left; i <= right; i++) {
-            if ((n1 <= mid) && ((n2 > right) || (array[n2].compareTo(array[n1]) >= 0))) {
-                buffer[i] = array[n1++];
-            } else {
-                buffer[i] = array[n2++];
-            }
+            if ((n1 <= mid) && ((n2 > right) || (array[n2].compareTo(array[n1]) >= 0))) buffer[i] = array[n1++];
+            else buffer[i] = array[n2++];
         }
         System.arraycopy(buffer, left, array, left, (right - left + 1));
     }
@@ -1053,11 +1023,8 @@ public interface MergeInterface<T extends Comparable>
     default void mergingDec(T[] array, int left, int mid, int right, T[] buffer) {
         int n1 = left, n2 = (mid + 1);
         for (int i = left; i <= right; i++) {
-            if ((n1 <= mid) && ((n2 > right) || (array[n2].compareTo(array[n1]) <= 0))) {
-                buffer[i] = array[n1++];
-            } else {
-                buffer[i] = array[n2++];
-            }
+            if ((n1 <= mid) && ((n2 > right) || (array[n2].compareTo(array[n1]) <= 0))) buffer[i] = array[n1++];
+            else buffer[i] = array[n2++];
         }
         System.arraycopy(buffer, left, array, left, (right - left + 1));
     }
@@ -1101,11 +1068,8 @@ public interface MergeInterface<T extends Comparable>
         int n1 = left, n2 = (mid + 1);
         SortFunctional<T> functionalAddEquals = functionalComparableToAddEquals(functional);
         for (int i = left; i <= right; i++) {
-            if ((n1 <= mid) && ((n2 > right) || (functionalAddEquals.functionalCompareTo(array[n2], array[n1])))) {
-                buffer[i] = array[n1++];
-            } else {
-                buffer[i] = array[n2++];
-            }
+            if ((n1 <= mid) && ((n2 > right) || (functionalAddEquals.functionalCompareTo(array[n2], array[n1])))) buffer[i] = array[n1++];
+            else buffer[i] = array[n2++];
         }
         System.arraycopy(buffer, left, array, left, (right - left + 1));
     }
@@ -1156,18 +1120,11 @@ public interface MergeInterface<T extends Comparable>
     default void mergingInc(T[] array, T[] leftArray, T[] rightArray) {
         int i = 0, j = 0, k = 0;
         while ((i < leftArray.length) && (j < rightArray.length)) {
-            if (rightArray[j].compareTo(leftArray[i]) > 0) {
-                array[k++] = leftArray[i++];
-            } else {
-                array[k++] = rightArray[j++];
-            }
+            if (rightArray[j].compareTo(leftArray[i]) > 0) array[k++] = leftArray[i++];
+            else array[k++] = rightArray[j++];
         }
-        while (i < leftArray.length) {
-            array[k++] = leftArray[i++];
-        }
-        while (j < rightArray.length) {
-            array[k++] = rightArray[j++];
-        }
+        while (i < leftArray.length) array[k++] = leftArray[i++];
+        while (j < rightArray.length) array[k++] = rightArray[j++];
     }
 
     /**
@@ -1217,18 +1174,11 @@ public interface MergeInterface<T extends Comparable>
     default void mergingDec(T[] array, T[] leftArray, T[] rightArray) {
         int i = 0, j = 0, k = 0;
         while ((i < leftArray.length) && (j < rightArray.length)) {
-            if (rightArray[j].compareTo(leftArray[i]) < 0) {
-                array[k++] = leftArray[i++];
-            } else {
-                array[k++] = rightArray[j++];
-            }
+            if (rightArray[j].compareTo(leftArray[i]) < 0) array[k++] = leftArray[i++];
+            else array[k++] = rightArray[j++];
         }
-        while (i < leftArray.length) {
-            array[k++] = leftArray[i++];
-        }
-        while (j < rightArray.length) {
-            array[k++] = rightArray[j++];
-        }
+        while (i < leftArray.length) array[k++] = leftArray[i++];
+        while (j < rightArray.length) array[k++] = rightArray[j++];
     }
 
     /**
@@ -1269,18 +1219,11 @@ public interface MergeInterface<T extends Comparable>
     default void merging(T[] array, T[] leftArray, T[] rightArray, SortFunctional<T> functional) {
         int i = 0, j = 0, k = 0;
         while ((i < leftArray.length) && (j < rightArray.length)) {
-            if (functional.functionalCompareTo(rightArray[j], leftArray[i])) {
-                array[k++] = leftArray[i++];
-            } else {
-                array[k++] = rightArray[j++];
-            }
+            if (functional.functionalCompareTo(rightArray[j], leftArray[i])) array[k++] = leftArray[i++];
+            else array[k++] = rightArray[j++];
         }
-        while (i < leftArray.length) {
-            array[k++] = leftArray[i++];
-        }
-        while (j < rightArray.length) {
-            array[k++] = rightArray[j++];
-        }
+        while (i < leftArray.length) array[k++] = leftArray[i++];
+        while (j < rightArray.length) array[k++] = rightArray[j++];
     }
 
     /**
@@ -2056,25 +1999,16 @@ public interface MergeInterface<T extends Comparable>
      */
     @SuppressWarnings("unchecked")
     default <L extends T> void mergingInc(List<L> list, int left, int mid, int right) {
-        if ((left > mid) || ((mid + 1) > right)) {
-            return;
-        }
+        if ((left > mid) || ((mid + 1) > right)) return;
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         List<L> leftList = list.subList(left, (mid + 1)), rightList = list.subList((mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (rightList.get(j).compareTo(leftList.get(i)) > 0) {
-                list.set(k, leftList.get(i++));
-            } else {
-                list.set(k, rightList.get(j++));
-            }
+            if (rightList.get(j).compareTo(leftList.get(i)) > 0) list.set(k, leftList.get(i++));
+            else list.set(k, rightList.get(j++));
             k++;
         }
-        while (i < n1) {
-            list.set(k++, leftList.get(i++));
-        }
-        while (j < n2) {
-            list.set(k++, rightList.get(j++));
-        }
+        while (i < n1) list.set(k++, leftList.get(i++));
+        while (j < n2) list.set(k++, rightList.get(j++));
     }
 
     /**
@@ -2124,25 +2058,16 @@ public interface MergeInterface<T extends Comparable>
      */
     @SuppressWarnings("unchecked")
     default <L extends T> void mergingDec(List<L> list, int left, int mid, int right) {
-        if ((left > mid) || ((mid + 1) > right)) {
-            return;
-        }
+        if ((left > mid) || ((mid + 1) > right)) return;
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         List<L> leftList = list.subList(left, (mid + 1)), rightList = list.subList((mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (rightList.get(j).compareTo(leftList.get(i)) < 0) {
-                list.set(k, leftList.get(i++));
-            } else {
-                list.set(k, rightList.get(j++));
-            }
+            if (rightList.get(j).compareTo(leftList.get(i)) < 0) list.set(k, leftList.get(i++));
+            else list.set(k, rightList.get(j++));
             k++;
         }
-        while (i < n1) {
-            list.set(k++, leftList.get(i++));
-        }
-        while (j < n2) {
-            list.set(k++, rightList.get(j++));
-        }
+        while (i < n1) list.set(k++, leftList.get(i++));
+        while (j < n2) list.set(k++, rightList.get(j++));
     }
 
     /**
@@ -2198,25 +2123,16 @@ public interface MergeInterface<T extends Comparable>
      * @see         SortFunctional#functionalCompareTo(Comparable, Comparable)
      */
     default <L extends T> void merging(List<L> list, int left, int mid, int right, SortFunctional<T> functional) {
-        if ((left > mid) || ((mid + 1) > right)) {
-            return;
-        }
+        if ((left > mid) || ((mid + 1) > right)) return;
         int n1 = (mid - left + 1), n2 = (right - mid), i = 0, j = 0, k = left;
         List<L> leftList = list.subList(left, (mid + 1)), rightList = list.subList((mid + 1), (right + 1));
         while (i < n1 && j < n2) {
-            if (functional.functionalCompareTo(rightList.get(j), leftList.get(i))) {
-                list.set(k, leftList.get(i++));
-            } else {
-                list.set(k, rightList.get(j++));
-            }
+            if (functional.functionalCompareTo(rightList.get(j), leftList.get(i))) list.set(k, leftList.get(i++));
+            else list.set(k, rightList.get(j++));
             k++;
         }
-        while (i < n1) {
-            list.set(k++, leftList.get(i++));
-        }
-        while (j < n2) {
-            list.set(k++, rightList.get(j++));
-        }
+        while (i < n1) list.set(k++, leftList.get(i++));
+        while (j < n2) list.set(k++, rightList.get(j++));
     }
 
     /**
@@ -2268,11 +2184,8 @@ public interface MergeInterface<T extends Comparable>
     default <L extends T> void mergingInc(List<L> list, int left, int mid, int right, List<L> buffer) {
         int n1 = left, n2 = (mid + 1);
         for (int i = left; i <= right; i++) {
-            if ((n1 <= mid) && ((n2 > right) || (list.get(n2).compareTo(list.get(n1)) >= 0))) {
-                buffer.add(i, list.get(n1++));
-            } else {
-                buffer.add(i, list.get(n2++));
-            }
+            if ((n1 <= mid) && ((n2 > right) || (list.get(n2).compareTo(list.get(n1)) >= 0))) buffer.add(i, list.get(n1++));
+            else buffer.add(i, list.get(n2++));
         }
         list.subList(left, right + 1).clear();
         list.addAll(left, buffer.subList(left, right + 1));
@@ -2327,11 +2240,8 @@ public interface MergeInterface<T extends Comparable>
     default <L extends T> void mergingDec(List<L> list, int left, int mid, int right, List<L> buffer) {
         int n1 = left, n2 = (mid + 1);
         for (int i = left; i <= right; i++) {
-            if ((n1 <= mid) && ((n2 > right) || (list.get(n2).compareTo(list.get(n1)) <= 0))) {
-                buffer.add(i, list.get(n1++));
-            } else {
-                buffer.add(i, list.get(n2++));
-            }
+            if ((n1 <= mid) && ((n2 > right) || (list.get(n2).compareTo(list.get(n1)) <= 0))) buffer.add(i, list.get(n1++));
+            else buffer.add(i, list.get(n2++));
         }
         list.subList(left, right + 1).clear();
         list.addAll(left, buffer.subList(left, right + 1));
@@ -2384,11 +2294,9 @@ public interface MergeInterface<T extends Comparable>
         SortFunctional<T> functionalAddEquals = functionalComparableToAddEquals(functional);
         for (int i = left; i <= right; i++) {
             if ((n1 <= mid) && ((n2 > right)
-                    || (functionalAddEquals.functionalCompareTo(list.get(n2), list.get(n1))))) {
+                    || (functionalAddEquals.functionalCompareTo(list.get(n2), list.get(n1)))))
                 buffer.add(i, list.get(n1++));
-            } else {
-                buffer.add(i, list.get(n2++));
-            }
+            else buffer.add(i, list.get(n2++));
         }
         list.subList(left, right + 1).clear();
         list.addAll(left, buffer.subList(left, right + 1));
@@ -2441,18 +2349,11 @@ public interface MergeInterface<T extends Comparable>
     default <L extends T> void mergingInc(List<L> list, List<L> leftList, List<L> rightList) {
         int i = 0, j = 0, k = 0;
         while ((i < leftList.size()) && (j < rightList.size())) {
-            if (rightList.get(j).compareTo(leftList.get(i)) > 0) {
-                list.set(k++, leftList.get(i++));
-            } else {
-                list.set(k++, rightList.get(j++));
-            }
+            if (rightList.get(j).compareTo(leftList.get(i)) > 0) list.set(k++, leftList.get(i++));
+            else list.set(k++, rightList.get(j++));
         }
-        while (i < leftList.size()) {
-            list.set(k++, leftList.get(i++));
-        }
-        while (j < rightList.size()) {
-            list.set(k++, rightList.get(j++));
-        }
+        while (i < leftList.size()) list.set(k++, leftList.get(i++));
+        while (j < rightList.size()) list.set(k++, rightList.get(j++));
     }
 
     /**
@@ -2500,18 +2401,11 @@ public interface MergeInterface<T extends Comparable>
     default <L extends T> void mergingDec(List<L> list, List<L> leftList, List<L> rightList) {
         int i = 0, j = 0, k = 0;
         while ((i < leftList.size()) && (j < rightList.size())) {
-            if (rightList.get(j).compareTo(leftList.get(i)) < 0) {
-                list.set(k++, leftList.get(i++));
-            } else {
-                list.set(k++, rightList.get(j++));
-            }
+            if (rightList.get(j).compareTo(leftList.get(i)) < 0) list.set(k++, leftList.get(i++));
+            else list.set(k++, rightList.get(j++));
         }
-        while (i < leftList.size()) {
-            list.set(k++, leftList.get(i++));
-        }
-        while (j < rightList.size()) {
-            list.set(k++, rightList.get(j++));
-        }
+        while (i < leftList.size()) list.set(k++, leftList.get(i++));
+        while (j < rightList.size()) list.set(k++, rightList.get(j++));
     }
 
     /**
@@ -2553,17 +2447,10 @@ public interface MergeInterface<T extends Comparable>
             List<L> list, List<L> leftList, List<L> rightList, SortFunctional<T> functional) {
         int i = 0, j = 0, k = 0;
         while ((i < leftList.size()) && (j < rightList.size())) {
-            if (functional.functionalCompareTo(rightList.get(j), leftList.get(i))) {
-                list.set(k++, leftList.get(i++));
-            } else {
-                list.set(k++, rightList.get(j++));
-            }
+            if (functional.functionalCompareTo(rightList.get(j), leftList.get(i))) list.set(k++, leftList.get(i++));
+            else list.set(k++, rightList.get(j++));
         }
-        while (i < leftList.size()) {
-            list.set(k++, leftList.get(i++));
-        }
-        while (j < rightList.size()) {
-            list.set(k++, rightList.get(j++));
-        }
+        while (i < leftList.size()) list.set(k++, leftList.get(i++));
+        while (j < rightList.size()) list.set(k++, rightList.get(j++));
     }
 }

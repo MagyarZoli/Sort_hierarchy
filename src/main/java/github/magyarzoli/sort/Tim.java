@@ -171,9 +171,7 @@ public class Tim
         for (int size = minRun; size < n; size *= 2) {
             for (int i = 0; i < n; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
-                if (mid < j) {
-                    mergeInc(array, i, mid, j);
-                }
+                if (mid < j) mergeInc(array, i, mid, j);
             }
         }
     }
@@ -221,9 +219,7 @@ public class Tim
         for (int size = minRun; size < n; size *= 2) {
             for (int i = 0; i < n; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
-                if (mid < j) {
-                    mergeDec(array, i, mid, j);
-                }
+                if (mid < j) mergeDec(array, i, mid, j);
             }
         }
     }
@@ -272,9 +268,7 @@ public class Tim
         for (int size = minRun; size < n; size *= 2) {
             for (int i = 0; i < n; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
-                if (mid < j) {
-                    merge(array, i, mid, j, functional);
-                }
+                if (mid < j) merge(array, i, mid, j, functional);
             }
         }
     }
@@ -324,9 +318,7 @@ public class Tim
         for (int size = minRun; size < right; size *= 2) {
             for (int i = left; i < right; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
-                if (mid < j) {
-                    mergeInc(array, i, mid, j);
-                }
+                if (mid < j) mergeInc(array, i, mid, j);
             }
         }
     }
@@ -430,9 +422,7 @@ public class Tim
         for (int size = minRun; size < right; size *= 2) {
             for (int i = left; i < right; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
-                if (mid < j) {
-                    merge(array, i, mid, j, functional);
-                }
+                if (mid < j) merge(array, i, mid, j, functional);
             }
         }
     }
@@ -480,9 +470,7 @@ public class Tim
         for (int size = minRun; size < n; size *= 2) {
             for (int i = 0; i < n; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
-                if (mid < j) {
-                    mergeInc(list, i, mid, j);
-                }
+                if (mid < j) mergeInc(list, i, mid, j);
             }
         }
     }
@@ -530,9 +518,7 @@ public class Tim
         for (int size = minRun; size < n; size *= 2) {
             for (int i = 0; i < n; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
-                if (mid < j) {
-                    mergeDec(list, i, mid, j);
-                }
+                if (mid < j) mergeDec(list, i, mid, j);
             }
         }
     }
@@ -582,9 +568,7 @@ public class Tim
         for (int size = minRun; size < n; size *= 2) {
             for (int i = 0; i < n; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), n) - 1);
-                if (mid < j) {
-                    merge(list, i, mid, j, functional);
-                }
+                if (mid < j) merge(list, i, mid, j, functional);
             }
         }
     }
@@ -634,9 +618,7 @@ public class Tim
         for (int size = minRun; size < right; size *= 2) {
             for (int i = left; i < right; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
-                if (mid < j) {
-                    mergeInc(list, i, mid, j);
-                }
+                if (mid < j) mergeInc(list, i, mid, j);
             }
         }
     }
@@ -686,9 +668,7 @@ public class Tim
         for (int size = minRun; size < right; size *= 2) {
             for (int i = left; i < right; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
-                if (mid < j) {
-                    mergeDec(list, i, mid, j);
-                }
+                if (mid < j) mergeDec(list, i, mid, j);
             }
         }
     }
@@ -741,9 +721,7 @@ public class Tim
         for (int size = minRun; size < right; size *= 2) {
             for (int i = left; i < right; i += (2 * size)) {
                 int mid = (i + size - 1), j = (Math.min(i + (2 * size), right) - 1);
-                if (mid < j) {
-                    merge(list, i, mid, j, functional);
-                }
+                if (mid < j) merge(list, i, mid, j, functional);
             }
         }
     }
