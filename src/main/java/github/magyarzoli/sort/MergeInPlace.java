@@ -160,9 +160,7 @@ public class MergeInPlace
     @SuppressWarnings("unchecked")
     public void mergingInc(Comparable[] array, int left, int mid, int right) {
         int start = (mid + 1);
-        if (array[start].compareTo(array[mid]) >= 0) {
-            return;
-        }
+        if (array[start].compareTo(array[mid]) >= 0) return;
         while ((left <= mid) && (start <= right)) {
             if (array[start].compareTo(array[left]) >= 0) {
                 left++;
@@ -230,9 +228,7 @@ public class MergeInPlace
     @SuppressWarnings("unchecked")
     public void mergingDec(Comparable[] array, int left, int mid, int right) {
         int start = (mid + 1);
-        if (array[start].compareTo(array[mid]) <= 0) {
-            return;
-        }
+        if (array[start].compareTo(array[mid]) <= 0) return;
         while ((left <= mid) && (start <= right)) {
             if (array[start].compareTo(array[left]) <= 0) {
                 left++;
@@ -301,9 +297,7 @@ public class MergeInPlace
     public void merging(Comparable[] array, int left, int mid, int right, SortFunctional<Comparable> functional) {
         int start = (mid + 1);
         SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
-        if (functionalAddEquals.functionalCompareTo(array[start], array[mid])) {
-            return;
-        }
+        if (functionalAddEquals.functionalCompareTo(array[start], array[mid])) return;
         while ((left <= mid) && (start <= right)) {
             if (functionalAddEquals.functionalCompareTo(array[start],array[left])) {
                 left++;
@@ -371,9 +365,7 @@ public class MergeInPlace
     @SuppressWarnings("unchecked")
     public <L extends Comparable> void mergingInc(List<L> list, int left, int mid, int right) {
         int start = (mid + 1);
-        if (list.get(start).compareTo(list.get(mid)) >= 0) {
-            return;
-        }
+        if (list.get(start).compareTo(list.get(mid)) >= 0) return;
         while ((left <= mid) && (start <= right)) {
             if (list.get(start).compareTo(list.get(left)) >= 0) {
                 left++;
@@ -441,9 +433,7 @@ public class MergeInPlace
     @SuppressWarnings("unchecked")
     public <L extends Comparable> void mergingDec(List<L> list, int left, int mid, int right) {
         int start = (mid + 1);
-        if (list.get(start).compareTo(list.get(mid)) <= 0) {
-            return;
-        }
+        if (list.get(start).compareTo(list.get(mid)) <= 0) return;
         while ((left <= mid) && (start <= right)) {
             if (list.get(start).compareTo(list.get(left)) <= 0) {
                 left++;
@@ -515,9 +505,7 @@ public class MergeInPlace
             List<L> list, int left, int mid, int right, SortFunctional<Comparable> functional) {
         int start = (mid + 1);
         SortFunctional<Comparable> functionalAddEquals = functionalComparableToAddEquals(functional);
-        if (functionalAddEquals.functionalCompareTo(list.get(start), list.get(mid))) {
-            return;
-        }
+        if (functionalAddEquals.functionalCompareTo(list.get(start), list.get(mid))) return;
         while ((left <= mid) && (start <= right)) {
             if (functionalAddEquals.functionalCompareTo(list.get(start), list.get(left))) {
                 left++;
